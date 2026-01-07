@@ -115,26 +115,64 @@
   line-height: 1.7;
   font-size: 0.95em;
 }
-.transcript-container {
-  border-top: 2px solid #e9ecef;
-  padding-top: 30px;
+.transcript-viewer {
+  margin-top: 15px;
+  border-top: 1px solid #e9ecef;
+  padding-top: 12px;
 }
-.transcript-title {
-  font-size: 1.2em;
+.transcript-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.transcript-label {
+  font-size: 0.9em;
   font-weight: 600;
-  margin-bottom: 15px;
   color: #2d3748;
+  margin: 0;
+}
+.transcript-toggle {
+  background: none;
+  border: 1px solid #667eea;
+  color: #667eea;
+  cursor: pointer;
+  font-size: 0.8em;
+  padding: 4px 10px;
+  font-family: inherit;
+}
+.transcript-toggle:hover {
+  background: #667eea;
+  color: white;
+}
+.transcript-content {
+  overflow: hidden;
+  position: relative;
+}
+.transcript-content.collapsed {
+  max-height: 300px;
+}
+.transcript-content.collapsed::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(transparent, white);
+  pointer-events: none;
+}
+.transcript-content.expanded {
+  max-height: none;
+  overflow-y: auto;
 }
 .transcript-text {
   color: #555;
-  line-height: 1.8;
-  font-size: 0.95em;
-  white-space: pre-wrap;
-  max-height: 500px;
-  overflow-y: auto;
+  line-height: 1.6;
+  font-size: 0.85em;
 }
-.transcript-entry {
-  display: inline;
+.transcript-sentence {
+  margin-bottom: 8px;
 }
 .timestamp-link {
   background: none;

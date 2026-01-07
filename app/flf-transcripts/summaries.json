@@ -2,160 +2,160 @@
   {
     "video_id": "20yWMxAx6QI",
     "url": "https://www.youtube.com/watch?v=20yWMxAx6QI",
-    "summary": "I guess I got shoehorned in here. Uh yeah, I am still Ben Sclarof, um former startup founder and lifelong AI doomer. Um and I'm here to explain why I'm not going to start another traditional company, but uh what I'm doing instead. And even though he's p like actually treated me personally quite well throughout my life, uh I'm going to do my best to avoid working for him going forward. Well um you know first of all I'm very in favor of trying to fix our existing governments uh to be more effective and particularly to serve their people uh more than corporate or crony interests.",
+    "summary": "Ben Sclaroff, a former startup founder, argues that as AI agents begin running companies, they will all serve the same master: profit maximization. He proposes worker cooperatives as an alternative economic structure, building an AI startup with democratic governance where workers elect their own board. The project includes transparent activity logs via Pivotal to help organizations run more effectively as democracies.",
     "word_count": 958,
     "status": "success"
   },
   {
     "video_id": "6CVBHgyo-V0",
     "url": "https://www.youtube.com/watch?v=6CVBHgyo-V0",
-    "summary": "So, yeah, I'm gonna present another related view on epismic evals and uh yeah, I'm Alejandro. Uh I worked, you know, most of the time here at this fellowship in this space and yeah, I'm going to skip a few things because Paul touched on them for me. So, um, yeah, there's a lot of background that like might be nice to cover, but, um, because of time, I'm going to skip forwards to looking at this kind of soup of like bad bad things. Squency, hallucination, reward hacking, um, because it's helped me help it's helped me at least like understand uh, where we are like what things might be useful and what the future um, might look like. And yeah, I'm centering this because if we tactfully add uh like good data and domains that we care about, uh then we can differentially refine the optimization spec in ways that are good.",
+    "summary": "Alejandro presents a framework for understanding epistemic failures in AI through the lens of reward hacking—arguing that sycophancy and hallucination are fundamentally specification gaming problems. He built evaluations using Wikipedia edit quality to test whether models can identify good vs. bad information changes, and is developing calibration benchmarks to measure model overconfidence. His approach focuses on creating easily verifiable outputs to improve AI epistemics.",
     "word_count": 831,
     "status": "success"
   },
   {
     "video_id": "9lX6cwiw0Ac",
     "url": "https://www.youtube.com/watch?v=9lX6cwiw0Ac",
-    "summary": ">> I'm still Kai, still a PhD student at Oxford. Uh we built this on Slack and today we're going to take you through a live demo of an asynchronous meeting workflow where first we plan a meeting on Slack, then we enter that meeting, we get some work done, and hopefully Pivotal helps us bring all of that together and we have some fun along the way. And uh I'm in the DM with Pivotal. And I'm just going to go ahead and send this message. \" And I'll just say, \"I'm available to meet uh this very second.",
+    "summary": "The Pivotal team (Anand Shah, Parker Whitfill, Kai Sandbrink, Ben Sclaroff) demonstrates their Slack-based coordination technology that schedules meetings by checking Google Calendar availability, creates meeting links, transcribes conversations, and automatically extracts action items. The system maintains shared organizational context via GitHub commits and includes an evaluation framework with simulated users to test the agent's reliability. Their vision is to reduce project management busywork while making organizations more efficient.",
     "word_count": 1598,
     "status": "success"
   },
   {
     "video_id": "ErYC-F7lJac",
     "url": "https://www.youtube.com/watch?v=ErYC-F7lJac",
-    "summary": "And uh one more round of applause for Vaughn, everyone. So, uh I'm just going to leap right in. So it's it's not uh it's not objective well we don't need this but that so it's not objective truths or facts that I'm trying to get people to make arguments about. So I'm going to talk a little bit more about that in just a second. So I started out by testing pen and paper mechanisms not online at all and the reason for this is faster iteration real-time modification and the tests look a lot like this.",
+    "summary": "Vaughn Tan, an academic and strategy consultant, built a 12-step reasoning scaffold tool to help students develop better arguments about subjective topics in just 15 minutes. The AI acts purely as a Socratic mirror—paraphrasing student inputs back to them using different words so they can decide if that's what they truly mean. This approach keeps 'meaning-making' (decisions about subjective value) exclusively in human hands, addressing the decline in subjective reasoning ability he's observed in organizations.",
     "word_count": 1219,
     "status": "success"
   },
   {
     "video_id": "EzVN2IJhP7Q",
     "url": "https://www.youtube.com/watch?v=EzVN2IJhP7Q",
-    "summary": "So, I'm excited to uh as part of this fellowship, um, I worked on a couple of projects. Um, and this is originally with Colin McIll. This is the successor to Polis, the original collective response system that was used in Taiwan for decision-making. So for this particular study, um, and I'm a social scientist by training, um, we recruited a a thousand quota sampled Americans to try to get as close to representation as we could and we achieved pretty good, um, representation across all of these dimensions that you see here. This is the interface that people see when they come in to pull us.",
+    "summary": "Steve Isley presents Polis 2.0, the successor to the collective response system used in Taiwan and Anthropic's Constitutional AI. In a study of 1,000 Americans' AI concerns, the system collected 80,000+ votes and identified bridging statements with 80%+ consensus across political groups—including concerns about deepfakes, privacy, and AI education. New features include semantic topic clustering and LLM-generated consensus summaries that synthesize areas of agreement.",
     "word_count": 1648,
     "status": "success"
   },
   {
     "video_id": "IkwKzNl6J-g",
     "url": "https://www.youtube.com/watch?v=IkwKzNl6J-g",
-    "summary": "Today, most of our group communications consist of serialized broadcast messages. And that includes this talk where I'm speaking and you're all listening. And this is incredibly inefficient because at any given point in time, it's unlikely that all of these people are having the most productive conversation they could have. AI gives us a new way of doing things that I'm calling orchestrative communication. This is similar to what Blake was talking about with the AI facilitator.",
+    "summary": "Blake Borgeson introduces 'orchestrated communication'—a paradigm where AI facilitators have parallelized one-on-one conversations with each participant instead of serialized group discussions. This approach enables faster decisions, more information gathering, and the ability to add participants without slowing everyone down. Chord, his implementation, helps small groups reach consensus by managing the flow of personalized information to each person simultaneously.",
     "word_count": 966,
     "status": "success"
   },
   {
     "video_id": "NOYGvoB3pk4",
     "url": "https://www.youtube.com/watch?v=NOYGvoB3pk4",
-    "summary": "I've been a lawyer for a decade and for the past five years I've been focusing more on helping uh victims of cyber harassment. So something that I'm really interested is within the area of an online safety and when I talk about online safety the heart of it is basically a content moderations. Now this is how majority of a standard scheme of the content moderations policy that we have in a major uh majority of our online platforms where you have a frontlininers of a human content moderations that disperse um across the globe and we have an AI moderators. So evidentary um basically improving when it comes to collaborative framework of regulators pla platforms survivors and law enforcement which is what we're trying to create is AI for trust and safety compliance as a consentbased control base based on the survivor and collaboration which is on four steps um and imagine that this is a reporting platform on Instagram so basically they're going to see the evidentary report through evidentry Okay. The survivor will then basically share this is my Instagram account so it's not going to be um compiled at the impersonator and then after that we're asking for the verifications and so from there we have a deep fake aggregators they're basically checking whether or not that this is exactly a deep fake or not.",
+    "summary": "Agita Pasaribu, a lawyer focused on cyber harassment, presents Evidentiary—a consent-based AI system for reporting and removing non-consensual intimate images and deepfake pornography. The platform uses four deepfake detection APIs, verifies survivor identity, hashes content to prevent re-uploads, and enables pattern detection for law enforcement escalation. It addresses the fact that 96% of deepfakes online are pornographic and that consent is contextual—something algorithms can't currently detect.",
     "word_count": 775,
     "status": "success"
   },
   {
     "video_id": "OA-nLfXV7Ks",
     "url": "https://www.youtube.com/watch?v=OA-nLfXV7Ks",
-    "summary": "I have some slides that Claude helped me cook up um about 30 minutes before this. So, I'll be talking about my little demo on AI supervised deliberation markets where the goal is to aggregate reasoning and not just beliefs. I'm going to just breeze through this um and get to the demo as quickly as I can. And so the implementation of this is instead of buying yes or no contracts as you would on a prediction market, you write an explanation of your view and LLM reads your explanation, synthesizes it into a probability, and trades on that belief. Um, some extensions that I am excited about forecasting is just one way to ground the evaluation of arguments.",
+    "summary": "Siddarth Srinivasan demonstrates AI-supervised deliberation markets, where instead of buying yes/no contracts like traditional prediction markets, participants write explanations of their reasoning. An LLM reads these explanations, synthesizes them into probabilities, and trades on their behalf. This aggregates reasoning rather than just beliefs, with the LLM evaluating argument quality to determine payouts. Extensions include using swarms of LLMs representing diverse populations to find bridging arguments.",
     "word_count": 897,
     "status": "success"
   },
   {
     "video_id": "P_uMaOzBH_Q",
     "url": "https://www.youtube.com/watch?v=P_uMaOzBH_Q",
-    "summary": "I have many things that I'm excited to share with y'all that I've been learning. It's a word I'm kind of making up and workshopping. On the left here, I'm talking about what that is. Better collective processes is another way and these both feed into what I'm calling collective agency and group collaboration tools feed into collective processes too. This next line down, this isn't too much of a change in this way of looking at things.",
+    "summary": "Paul de Font-Réaulx presents a framework for 'collective agency'—moving from a world where technology outpaces wisdom to one where we understand what we collectively want and can act on it. He maps interaction patterns from simple chatbots to AI intermediaries and collaboration guides, arguing that while AI intermediaries are effective starting points, they may feel isolating. He advocates for building infrastructure that maintains human connection while enabling large-scale collective sensemaking.",
     "word_count": 962,
     "status": "success"
   },
   {
     "video_id": "Q-2Ci4Ajmh8",
     "url": "https://www.youtube.com/watch?v=Q-2Ci4Ajmh8",
-    "summary": "do things and with that I'm gonna pass it over to Herby who's gonna talk about AI for the epistemic comments. um expanding this I believe uh can be fairly tractable for AI uh because the structured data aspect makes it quite easy to develop scaffolding and there's ways to make it quite convenient to just like take unstructured data and extract unstructured data things um and then I think expanding it could be quite upstream of for example community notes so community notes AI as themselves could site uh expanded wiki data um and other things like better articles better AI fact checks and so on uh I looked at lunch into prioritization and did some experiments to sort of figure out like what's the current distribution of things in wiki data uh but what might we also want to expand upon what might be most valuable and generally settled on like two directions firstly scientific literature and then uh sort of items downstream of current news um so I think there's like a significant here speed advantage where you can kind of relatively instantly add things to wiki data as events happen in the world and this is like something which doesn't really happen with human contributors and secondly AI tools for Wikipedia. I think an underrated consideration overall and also holds true for many of the other fellows is that it's possible to write and develop reinforcement learning environments once you have an evaluation uh and these environments can be sold or given to the air labs themselves uh they may train on them and then the models can become differentially better the task that you care about I think this is a very underrated mechanism of kind of improving things uh finally yes uh I'm just finishing up some technical work on this from this fellowship on a basic language model evaluation for you know the quality of current models at writing articles and then that could potentially be extended into a RL environment. Um okay yeah so I have bet spent my time on this fellowship exploring a somewhat related area um which is you know how to use AI to broaden the surface area of this thing called the epismic commons um you know the canonical example of this being of course Wikipedia uh related similar things uh the core motivation and theory of change stuff is like you know what content shall we write for future AI readers and writers and there's like something here where I think there's a reasonable assumption that in the future many or even most readers of content on the internet could the AIS or perhaps writers as well. Um, and so then what kind of criteria do we want to generate to maximally improve uh the epistemics of the future AI systems.",
+    "summary": "Herbie Bradley explores using AI to expand the epistemic commons—public knowledge resources like Wikipedia and WikiData—for future AI readers and writers. He focused on two directions: expanding WikiData with structured information from scientific literature and current news (where AI has a speed advantage over human contributors), and building AI tools for Wikipedia including detection of manipulative edits. He notes that AI labs could train on these evaluations to become differentially better at tasks we care about.",
     "word_count": 960,
     "status": "success"
   },
   {
     "video_id": "T3JAWlc1dq0",
     "url": "https://www.youtube.com/watch?v=T3JAWlc1dq0",
-    "summary": "Um, so I'm very excited to share deliberation bench with you. This is a kind of creative attempt to create a normative benchmark for LLM persuasiveness. And this is raising a lot of concerns across the political spectrum. So we have been looking at another kind of influence on people's views that is well while well studying political science and this is a practice known as deliberative polls. Um and what the the idea of this is that you bring a bunch of people together um that disagree on some set of policy questions usually from different sides of the political spectrum.",
+    "summary": "Deliberation Bench is a normative benchmark comparing LLM persuasiveness to deliberative polls—structured discussions where people from different political perspectives update their views through dialogue. Testing 4,000 Americans across six LLMs (GPT, Gemini, Claude, Grok, Llama, DeepSeek), they found LLM influence positively correlates with deliberative poll outcomes, but unlike deliberative polls, LLMs don't reduce political polarization. The benchmark could help monitor whether AI influence becomes manipulative over time.",
     "word_count": 1883,
     "status": "success"
   },
   {
     "video_id": "TZSCkqxl8q8",
     "url": "https://www.youtube.com/watch?v=TZSCkqxl8q8",
-    "summary": "I'm Paul and I want to talk with you about this initiative that I call virtuous. Now, if you're interested in this, uh, there's a QR code to a paper that outlines this in a little bit more detail, a working paper, but I'm presenting this primarily as a an illustrative example of a broader point that I want to make in the rest of the talk. This is becoming increasingly important if in cases of litigation for instance in case these benchmarks are used to arbitrate someone's liability say a mental health benchmark for example. But first I'd like to talk with you more broadly about evals and why I think that they're important. So eval is short for evaluations which are verifiable metrics of how an AI model performs on something that we care about.",
+    "summary": "Paul proposes Virtuous, a nonprofit focused on developing high-quality evaluations for complex normative AI behaviors—virtues like truthfulness, empowerment, and caring that are hard to quantify but important. He breaks down truthfulness into multiple dimensions including accuracy and representativeness, arguing that just because these qualities are 'mushy' doesn't make them less important. Without deliberate effort to make such virtues legible, they risk becoming invisible relative to easily quantified metrics.",
     "word_count": 978,
     "status": "success"
   },
   {
     "video_id": "_xtHcBQGYpE",
     "url": "https://www.youtube.com/watch?v=_xtHcBQGYpE",
-    "summary": "And I will say I really enjoy the Sentinel newsletter. There's some kind of pun there, but I'm not sure. >> So, I'm going to make that a little bit more concrete with a demo. There's a lot of work that we can do here, but this is just kind of gives you a bit of an idea or we look at each of the forecast numerics that were made and um yeah, just kind of like get a sense of how that goes. So we run the same basically the same simulation a bunch of different times but on the x- axis I'm varying uh the size of a jobs program.",
+    "summary": "Alex Bleakley and Emma Kumleben present Waymark Labs, an AI-powered strategic foresight tool developed in partnership with RAND for their geopolitics of AGI research. The system helps users define scenarios, identify driving forces, analyze stakeholder actions and their ramifications, and generate strategic reports with recommendations by time horizon. Key insight: asking LLMs directly about second-order effects produces overly dramatic predictions, but grounding them through explicit forecasts yields more realistic analysis.",
     "word_count": 1755,
     "status": "success"
   },
   {
     "video_id": "eHxQRoE3MmA",
     "url": "https://www.youtube.com/watch?v=eHxQRoE3MmA",
-    "summary": "Um I'm Kai, a PhD student at Oxford. I realize I'm kind of preaching to the choir here. I spend a lot of my time in the fellowship working on generative agent-based kind of simulations. Um one of the use cases is pivotal which we'll be talking about right after this. The other is this one negotiation station which is a benchmark and possibly a training environment for negotiating AI agents.",
+    "summary": "Kai Sandbrink presents Negotiation Station, a benchmark and training environment for AI-mediated negotiations using the classic 'cake cutting' problem from economics. The framework tests both negotiating agents (with positions to defend) and mediators (facilitating consensus), revealing that cooperative agents reach agreements faster than adversarial ones. Through iterative prompt improvement, a tuned mediator helped adversarial agents reach agreements almost as quickly as cooperative agents.",
     "word_count": 829,
     "status": "success"
   },
   {
     "video_id": "jqss-3RYjaE",
     "url": "https://www.youtube.com/watch?v=jqss-3RYjaE",
-    "summary": "I built an AI fact checker that figured that out. And, uh, this is currently showing live on Twitter. But uh one of the things I did that was a bit unique is that I built a system where every note that I submitted came with a link back to a companion website that had more details on it. Uh started with around um for for this particular demonstration I'm talking about a window of about uh 10 days uh in justested 2,000 notes. Uh, so anyway, so I I built an LLM pipeline to uh to try to filter out those kind of like lowarity notes.",
+    "summary": "Steve Isley built an AI fact-checker that writes X/Twitter community notes, achieving 1.7 million impressions on a note correcting Elon Musk about Tesla vs Porsche race claims. Each note links to a companion website with detailed breakdowns. Starting with 2,000 notes, only 13 made it through after filtering for video content and low-clarity requests. A key limitation: the bridging algorithm struggles with highly contentious political issues where factual corrections can't break through partisan voting.",
     "word_count": 1100,
     "status": "success"
   },
   {
     "video_id": "lCqQIabLKVo",
     "url": "https://www.youtube.com/watch?v=lCqQIabLKVo",
-    "summary": "My name is Sophia Vanhan or Sophie. I'm a computer scientist and software engineer. I worked a little bit on cord or decision m and I also built and shipped uh this tool called magic search which basically matchmaking tech for live job markets keeping humans into loop. Um but now I'm going to be talking about uh future visions hub uh which is like this world building platform. But currently, none of this is properly facilitated.",
+    "summary": "Sofia Vanhanen proposes Future Visions Hub—epistemic infrastructure for futures, similar to what LessWrong and the Alignment Forum provide for rationality and AI safety. The platform would help surface key ideas from complex scenario narratives (like AI 2027), connect predictions to markets, and enable collaborative development of future visions. Her theory of change: legible, modular futures thinking leads to better memes about the future, which serve as coordination tools for collective action.",
     "word_count": 937,
     "status": "success"
   },
   {
     "video_id": "m5h8Sx8kx18",
     "url": "https://www.youtube.com/watch?v=m5h8Sx8kx18",
-    "summary": "Another round of applause uh for experiments in epistemic infrastructure. But uh hi, my name is Alysia >> and I'm Martin. We built a lot of different prototypes. Um even though the tech exists for this, this is not some impossible task in terms of technology. Now if you use your social media, I'm sure everyone has, you'll see that image.",
+    "summary": "Alysia and Martin present two experiments in epistemic infrastructure. Image Epistemics attempted to use reverse image search for community notes fact-checking, but found traditional search engines only return matches 1% of the time—effectively 'dead' due to walled-garden social platforms blocking crawlers. RiskWatch aggregates prediction markets (Polymarket, Manifold, Kalshi) for catastrophic risks across categories like AI safety, biosecurity, and nuclear, creating a 'CoinMarketCap for predictions' useful for risk monitoring.",
     "word_count": 1313,
     "status": "success"
   },
   {
     "video_id": "qkvFfS_nTI8",
     "url": "https://www.youtube.com/watch?v=qkvFfS_nTI8",
-    "summary": "Um, uh, maybe I'll just give a tiny bit of context. I'm going to go a little more philosophical, but if time is short, I would love to show anyone demos or hands-on stuff oneonone or or in person or chat about it. Um, my own background, I'm I've worked as a like very hands-on founding engineer, but I've also done some research in the past, research labs, and I this feel like this has been a kind of a a period to be exploring software engineering and knowledge tools and then in particular around some of these topics around eval. So I had been experimenting before fellowship and in the beginning part of the fellowship of doing just fact-checking like take documents take things written by LLMs and try to do web searches check them much like the sorts of things like the community notes efforts earlier and this is really interesting and really valuable but I found it kind of frustrating as we began exploring because you're still at the end you're like okay now I'm checking what the LLM checker said and do you trust that and it's like turtles all the way down so it's hard it's slow and it's also kind of sparse data so I ended up thinking more about this and also talking with a friend and we came into a somewhat different direction but if agents are being used for more and more tasks um one angle and I didn't predict this would happen ironically but I found I getting much more interested in predictions like a lot of people here and if you can make predictions and check them that's like a real groundedness check of whether an agent is doing something legitimate and it's much different than trying to evaluate it by just checking sources that you might or might not trust as well so that's why predictions seem really powerful Um, agent prediction strategies uh are sort of like what's behind the scenes of these more complicated orchestrations of LLMs that we're now working with. And this is a somewhat new area for me.",
+    "summary": "Alex Bleakley explores 'cheap gradability' of AI agents—the ability to quickly verify whether agent predictions are accurate without waiting months for outcomes. Traditional fact-checking has a turtles-all-the-way-down problem; predictions that can be checked against reality provide true groundedness. He built a framework for backtesting agent predictions using financial APIs, exploring which reasoning strategies make agents more accurate. The goal: observability, groundedness, and scalable verification.",
     "word_count": 1152,
     "status": "success"
   },
   {
     "video_id": "r_vdUeoKbJE",
     "url": "https://www.youtube.com/watch?v=r_vdUeoKbJE",
-    "summary": "So, um I'm Gordon and sorry I couldn't be here with y'all today. This is just one of the nonlinear uh effects that we feel on a day-to-day basis. So I'm actually going to go ahead and ask Deep Future, how will AI agents transform the web by 2030. This is something I've been interested in as a founder. I'm going to go ahead and say I'm a founder looking for startup opportunities, inconsumer platforms.",
+    "summary": "Gordon Brander demonstrates Deep Future, an AI agent for scenario planning (like 'deep research for strategic foresight'). The tool guides users through identifying driving forces, mapping structural connections between them, and rating them by impact and uncertainty. It generates strategic reports with key insights, opportunities, threats, and early warning signals—compressing a week-long scenario workshop into 10-15 minutes. Future plans include automated horizon scanning with real-time news monitoring.",
     "word_count": 1482,
     "status": "success"
   },
   {
     "video_id": "uX3EdKWo3ZA",
     "url": "https://www.youtube.com/watch?v=uX3EdKWo3ZA",
-    "summary": "Um I'm a founder, a tech founder of an HR tech company. And I'm going to go through a few of them and tell you what I learned. Um so the first thing I built was an offers and asks Slackbot. Um, so I built a Slack where you could just put in a query and it will match you with fellows that have the skills or they're talking about it in Slack and it worked really well. The second thing I built was Matt GPT digital twin.",
+    "summary": "Matt Brooks shares learnings from four MVP experiments: an offers/asks Slackbot (worked but nobody remembered to use it), Matt GPT digital twin (80% accurate but the crucial 20% is locked in your head), Sealed.com anonymous feedback filter (solved one bottleneck but not the core issue), and EA Global Matcher (product-market fit in 30 minutes). The matcher succeeded because all data was already available, required zero user effort, and AI was the perfect 'cheap intelligence' to process 1,000 profiles.",
     "word_count": 1124,
     "status": "success"
   },
   {
     "video_id": "vqDRlSWTOUQ",
     "url": "https://www.youtube.com/watch?v=vqDRlSWTOUQ",
-    "summary": "Uh so we did AI discourse sensemaking. Um, so, uh, Matt and I pulled, um, Matt and I pulled a bunch of data from, uh, Blue Sky and Truth Social in the month of September, um, with the goal of like looking at where the left and right agree and what the discourse looks like and just getting a rough sense of, uh, how people are currently uh, talking about um, AI online. This is because Blue Sky is an open platform uh and Truth Social is not. I did in-group analysis of mostly um in-group Twitter and Nikki mostly did outgroup analysis um which was true social and blue sky. >> See, this would have been a great moment for me to do that announcement about the sun in the shade during this part.",
+    "summary": "Matt Brooks and Niki Dupuis analyzed AI discourse across platforms: in-group (Twitter, EA Forum, LessWrong) and out-group (Blue Sky for left, Truth Social for right). They identified five natural clusters: pragmatic safety establishment, high doomers, frontier capability maximizers, open-source democratizers, and paradigm skeptics. Key finding: Blue Sky users have made up their minds (mostly anti-AI), while Truth Social is more mixed. Both platforms share fears about big tech and AI surveillance states—potential common ground for reducing polarization.",
     "word_count": 1768,
     "status": "success"
   },
   {
     "video_id": "xsvCYhcxDX4",
     "url": "https://www.youtube.com/watch?v=xsvCYhcxDX4",
-    "summary": "Could not retrieve transcript: \nCould not retrieve a transcript for the video https://www.youtube.com/watch?v=xsvCYhcxDX4! This is most likely caused by:\n\nYouTube is blocking requests from your IP. This usually is due to one of the following reasons:\n- You have done too many requests and your IP has been blocked by YouTube\n- You are doing requests from an IP belonging to a cloud provider (like AWS, Google Cloud Platform, Azure, etc.). Unfortunately, most IPs from cloud providers are blocked by YouTube.\n\nWays to work around this are explained in the \"Working around IP bans\" section of the README (https://github.com/jdepoix/youtube-transcript-api?tab=readme-ov-file#working-around-ip-bans-requestblocked-or-ipblocked-exception).\n\n\nIf you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!",
+    "summary": "Jamie Joyce presents the Society Library, a nonprofit building epistemic infrastructure including automated fact-checking, argument extraction, provenance tracking, and structured deliberation graphs. Their graphs model complex reasoning from multiple perspectives with Socratic-style deconstruction—setting a 'maximalist truth-seeking standard' that goes beyond simple fact-checking to full deliberation checking. They produced a 600-page fully-cited collective intelligence report from 5,360 sources, and work with the Internet Archive to digitize government data (only 3.6% has ever been digitized).",
     "status": "failed"
   },
   {
     "video_id": "yqpcsat1Mxw",
     "url": "https://www.youtube.com/watch?v=yqpcsat1Mxw",
-    "summary": "Could not retrieve transcript: \nCould not retrieve a transcript for the video https://www.youtube.com/watch?v=yqpcsat1Mxw! This is most likely caused by:\n\nYouTube is blocking requests from your IP. This usually is due to one of the following reasons:\n- You have done too many requests and your IP has been blocked by YouTube\n- You are doing requests from an IP belonging to a cloud provider (like AWS, Google Cloud Platform, Azure, etc.). Unfortunately, most IPs from cloud providers are blocked by YouTube.\n\nWays to work around this are explained in the \"Working around IP bans\" section of the README (https://github.com/jdepoix/youtube-transcript-api?tab=readme-ov-file#working-around-ip-bans-requestblocked-or-ipblocked-exception).\n\n\nIf you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!",
+    "summary": "Nathan and Rob built an AI community note writer that achieved the world's first AI-written approved community note on X. Their notes have been viewed 2.5 million times, reducing misleading tweet shares at a cost of $385 in LLM fees. Key insight: early notes have much higher impact (25-50% reduction in shares within 12 hours vs. almost nothing after 2 days), making AI speed crucial. They're working on video notes and expanding to other platforms like TikTok, Chrome extensions, and YouTube.",
     "status": "failed"
   }
 ]

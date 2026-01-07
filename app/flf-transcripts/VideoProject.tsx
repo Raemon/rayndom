@@ -1,12 +1,7 @@
 'use client'
 import { useRef } from 'react'
 import type { Project } from './FLFTranscriptsPage'
-
-const formatTime = (seconds: number) => {
-  const mins = Math.floor(seconds / 60)
-  const secs = Math.floor(seconds % 60)
-  return `${mins}:${secs.toString().padStart(2, '0')}`
-}
+import TranscriptViewer from './TranscriptViewer'
 
 const VideoProject = ({ project }: { project: Project }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null)
@@ -38,32 +33,15 @@ const VideoProject = ({ project }: { project: Project }) => {
           <h2 className="video-title">{project.title}</h2>
           <div className="video-speaker">{project.speaker}</div>
           <div className="video-summary">{project.summary}</div>
-        </div>
-      </div>
-      {project.hasTranscript && (
-        <div className="transcript-container">
-          <h3 className="transcript-title">Complete Transcript</h3>
-          {project.transcriptWithTimestamps && project.transcriptWithTimestamps.length > 0 ? (
-            <div className="transcript-text">
-              {project.transcriptWithTimestamps.map((entry, index) => (
-                <span key={index} className="transcript-entry">
-                  <button
-                    className="timestamp-link"
-                    onClick={() => handleTimestampClick(entry.start)}
-                    title={`Jump to ${formatTime(entry.start)}`}
-                  >
-                    [{formatTime(entry.start)}]
-                  </button>
-                  {' '}
-                  {entry.text}{' '}
-                </span>
-              ))}
-            </div>
-          ) : (
-            <div className="transcript-text">{project.transcript}</div>
+          {project.hasTranscript && (
+            <TranscriptViewer
+              transcriptWithTimestamps={project.transcriptWithTimestamps}
+              transcript={project.transcript}
+              onTimestampClick={handleTimestampClick}
+            />
           )}
         </div>
-      )}
+      </div>
     </div>
   )
 }
