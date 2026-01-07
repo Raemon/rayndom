@@ -36,7 +36,7 @@ const TranscriptViewer = ({transcriptWithTimestamps, transcript, onTimestampClic
       if (currentSentence.trim()) result.push({ text: currentSentence.trim(), timestamp: currentTimestamp })
       return result
     } else {
-      return transcript.split(/(?<=[.!?])\s+/).filter(s => s.trim()).map(s => ({ text: s.trim() }))
+      return transcript.split(/(?<=[.!?])\s+/).filter(s => s.trim()).map((s): Sentence => ({ text: s.trim() }))
     }
   }, [transcriptWithTimestamps, transcript, hasTimestamps])
 
