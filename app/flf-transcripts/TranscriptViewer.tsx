@@ -41,10 +41,13 @@ const TranscriptViewer = ({transcriptWithTimestamps, transcript, onTimestampClic
   }, [transcriptWithTimestamps, transcript, hasTimestamps])
 
   return (
-    <div className="transcript-viewer">
+    <div className="transcript-viewer" onClick={() => setExpanded(true)}>
       <div className="transcript-header">
         <h4 className="transcript-label">Transcript</h4>
-        <button className="transcript-toggle" onClick={() => setExpanded(!expanded)}>
+        <button className="transcript-toggle" onClick={(e) => {
+          e.stopPropagation()
+          setExpanded(!expanded)
+        }}>
           {expanded ? 'Collapse' : 'Expand'}
         </button>
       </div>
