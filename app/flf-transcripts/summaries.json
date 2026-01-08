@@ -2,160 +2,160 @@
   {
     "video_id": "20yWMxAx6QI",
     "url": "https://www.youtube.com/watch?v=20yWMxAx6QI",
-    "summary": "Ben Sclaroff, a former startup founder, argues that as AI agents begin running companies, they will all serve the same master: profit maximization. He proposes worker cooperatives as an alternative economic structure, building an AI startup with democratic governance where workers elect their own board. The project includes transparent activity logs via Pivotal to help organizations run more effectively as democracies.",
+    "summary": "A worker cooperative AI startup with democratic governance where workers elect their own board. Addresses concerns about AI agents serving profit maximization by proposing worker cooperatives as an alternative economic structure. Includes transparent activity logs via Pivotal to help organizations run more effectively as democracies.",
     "word_count": 958,
     "status": "success"
   },
   {
     "video_id": "6CVBHgyo-V0",
     "url": "https://www.youtube.com/watch?v=6CVBHgyo-V0",
-    "summary": "Alejandro presents a framework for understanding epistemic failures in AI through the lens of reward hacking—arguing that sycophancy and hallucination are fundamentally specification gaming problems. He built evaluations using Wikipedia edit quality to test whether models can identify good vs. bad information changes, and is developing calibration benchmarks to measure model overconfidence. His approach focuses on creating easily verifiable outputs to improve AI epistemics.",
+    "summary": "A framework for understanding epistemic failures in AI through the lens of reward hacking—positioning sycophancy and hallucination as fundamentally specification gaming problems. Includes evaluations using Wikipedia edit quality to test whether models can identify good vs. bad information changes, and calibration benchmarks to measure model overconfidence. Focuses on creating easily verifiable outputs to improve AI epistemics.",
     "word_count": 831,
     "status": "success"
   },
   {
     "video_id": "9lX6cwiw0Ac",
     "url": "https://www.youtube.com/watch?v=9lX6cwiw0Ac",
-    "summary": "The Pivotal team (Anand Shah, Parker Whitfill, Kai Sandbrink, Ben Sclaroff) demonstrates their Slack-based coordination technology that schedules meetings by checking Google Calendar availability, creates meeting links, transcribes conversations, and automatically extracts action items. The system maintains shared organizational context via GitHub commits and includes an evaluation framework with simulated users to test the agent's reliability. Their vision is to reduce project management busywork while making organizations more efficient.",
+    "summary": "A Slack-based coordination technology that schedules meetings by checking Google Calendar availability, creates meeting links, transcribes conversations, and automatically extracts action items. Maintains shared organizational context via GitHub commits and includes an evaluation framework with simulated users to test reliability. Designed to reduce project management busywork while making organizations more efficient.",
     "word_count": 1598,
     "status": "success"
   },
   {
     "video_id": "ErYC-F7lJac",
     "url": "https://www.youtube.com/watch?v=ErYC-F7lJac",
-    "summary": "Vaughn Tan, an academic and strategy consultant, built a 12-step reasoning scaffold tool to help students develop better arguments about subjective topics in just 15 minutes. The AI acts purely as a Socratic mirror—paraphrasing student inputs back to them using different words so they can decide if that's what they truly mean. This approach keeps 'meaning-making' (decisions about subjective value) exclusively in human hands, addressing the decline in subjective reasoning ability he's observed in organizations.",
+    "summary": "A 12-step reasoning scaffold tool that helps users develop better arguments about subjective topics in just 15 minutes. The AI acts purely as a Socratic mirror—paraphrasing inputs back using different words so users can decide if that's what they truly mean. Keeps 'meaning-making' (decisions about subjective value) exclusively in human hands by avoiding direct suggestions or judgments.",
     "word_count": 1219,
     "status": "success"
   },
   {
     "video_id": "EzVN2IJhP7Q",
     "url": "https://www.youtube.com/watch?v=EzVN2IJhP7Q",
-    "summary": "Steve Isley presents Polis 2.0, the successor to the collective response system used in Taiwan and Anthropic's Constitutional AI. In a study of 1,000 Americans' AI concerns, the system collected 80,000+ votes and identified bridging statements with 80%+ consensus across political groups—including concerns about deepfakes, privacy, and AI education. New features include semantic topic clustering and LLM-generated consensus summaries that synthesize areas of agreement.",
+    "summary": "Polis 2.0: a collective response system (successor to the version used in Taiwan and Anthropic's Constitutional AI). In a study of 1,000 Americans' AI concerns, collected 80,000+ votes and identified bridging statements with 80%+ consensus across political groups—including concerns about deepfakes, privacy, and AI education. Features semantic topic clustering and LLM-generated consensus summaries that synthesize areas of agreement.",
     "word_count": 1648,
     "status": "success"
   },
   {
     "video_id": "IkwKzNl6J-g",
     "url": "https://www.youtube.com/watch?v=IkwKzNl6J-g",
-    "summary": "Blake Borgeson introduces 'orchestrated communication'—a paradigm where AI facilitators have parallelized one-on-one conversations with each participant instead of serialized group discussions. This approach enables faster decisions, more information gathering, and the ability to add participants without slowing everyone down. Chord, his implementation, helps small groups reach consensus by managing the flow of personalized information to each person simultaneously.",
+    "summary": "Chord: an 'orchestrated communication' system where AI facilitators have parallelized one-on-one conversations with each participant instead of serialized group discussions. Enables faster decisions, more information gathering, and the ability to add participants without slowing everyone down. Helps small groups reach consensus by managing the flow of personalized information to each person simultaneously.",
     "word_count": 966,
     "status": "success"
   },
   {
     "video_id": "NOYGvoB3pk4",
     "url": "https://www.youtube.com/watch?v=NOYGvoB3pk4",
-    "summary": "Agita Pasaribu, a lawyer focused on cyber harassment, presents Evidentiary—a consent-based AI system for reporting and removing non-consensual intimate images and deepfake pornography. The platform uses four deepfake detection APIs, verifies survivor identity, hashes content to prevent re-uploads, and enables pattern detection for law enforcement escalation. It addresses the fact that 96% of deepfakes online are pornographic and that consent is contextual—something algorithms can't currently detect.",
+    "summary": "Evidentiary: a consent-based AI system for reporting and removing non-consensual intimate images and deepfake pornography. Uses four deepfake detection APIs, verifies survivor identity, hashes content to prevent re-uploads, and enables pattern detection for law enforcement escalation. Addresses the fact that 96% of deepfakes online are pornographic and that consent is contextual—something algorithms can't currently detect.",
     "word_count": 775,
     "status": "success"
   },
   {
     "video_id": "OA-nLfXV7Ks",
     "url": "https://www.youtube.com/watch?v=OA-nLfXV7Ks",
-    "summary": "Siddarth Srinivasan demonstrates AI-supervised deliberation markets, where instead of buying yes/no contracts like traditional prediction markets, participants write explanations of their reasoning. An LLM reads these explanations, synthesizes them into probabilities, and trades on their behalf. This aggregates reasoning rather than just beliefs, with the LLM evaluating argument quality to determine payouts. Extensions include using swarms of LLMs representing diverse populations to find bridging arguments.",
+    "summary": "AI-supervised deliberation markets where participants write explanations of their reasoning instead of buying yes/no contracts like traditional prediction markets. An LLM reads these explanations, synthesizes them into probabilities, and trades on participants' behalf. Aggregates reasoning rather than just beliefs, with the LLM evaluating argument quality to determine payouts. Extensions include using swarms of LLMs representing diverse populations to find bridging arguments.",
     "word_count": 897,
     "status": "success"
   },
   {
     "video_id": "P_uMaOzBH_Q",
     "url": "https://www.youtube.com/watch?v=P_uMaOzBH_Q",
-    "summary": "Paul de Font-Réaulx presents a framework for 'collective agency'—moving from a world where technology outpaces wisdom to one where we understand what we collectively want and can act on it. He maps interaction patterns from simple chatbots to AI intermediaries and collaboration guides, arguing that while AI intermediaries are effective starting points, they may feel isolating. He advocates for building infrastructure that maintains human connection while enabling large-scale collective sensemaking.",
+    "summary": "A framework for 'collective agency'—moving from a world where technology outpaces wisdom to one where we understand what we collectively want and can act on it. Maps interaction patterns from simple chatbots to AI intermediaries and collaboration guides. Advocates for building infrastructure that maintains human connection while enabling large-scale collective sensemaking, noting that AI intermediaries are effective starting points but may feel isolating.",
     "word_count": 962,
     "status": "success"
   },
   {
     "video_id": "Q-2Ci4Ajmh8",
     "url": "https://www.youtube.com/watch?v=Q-2Ci4Ajmh8",
-    "summary": "Herbie Bradley explores using AI to expand the epistemic commons—public knowledge resources like Wikipedia and WikiData—for future AI readers and writers. He focused on two directions: expanding WikiData with structured information from scientific literature and current news (where AI has a speed advantage over human contributors), and building AI tools for Wikipedia including detection of manipulative edits. He notes that AI labs could train on these evaluations to become differentially better at tasks we care about.",
+    "summary": "Tools for expanding the epistemic commons—public knowledge resources like Wikipedia and WikiData—for future AI readers and writers. Two directions: expanding WikiData with structured information from scientific literature and current news (where AI has a speed advantage over human contributors), and AI tools for Wikipedia including detection of manipulative edits. AI labs could train on these evaluations to become differentially better at beneficial tasks.",
     "word_count": 960,
     "status": "success"
   },
   {
     "video_id": "T3JAWlc1dq0",
     "url": "https://www.youtube.com/watch?v=T3JAWlc1dq0",
-    "summary": "Deliberation Bench is a normative benchmark comparing LLM persuasiveness to deliberative polls—structured discussions where people from different political perspectives update their views through dialogue. Testing 4,000 Americans across six LLMs (GPT, Gemini, Claude, Grok, Llama, DeepSeek), they found LLM influence positively correlates with deliberative poll outcomes, but unlike deliberative polls, LLMs don't reduce political polarization. The benchmark could help monitor whether AI influence becomes manipulative over time.",
+    "summary": "Deliberation Bench: a normative benchmark comparing LLM persuasiveness to deliberative polls—structured discussions where people from different political perspectives update their views through dialogue. Tested 4,000 Americans across six LLMs (GPT, Gemini, Claude, Grok, Llama, DeepSeek). Found LLM influence positively correlates with deliberative poll outcomes, but unlike deliberative polls, LLMs don't reduce political polarization. Could help monitor whether AI influence becomes manipulative over time.",
     "word_count": 1883,
     "status": "success"
   },
   {
     "video_id": "TZSCkqxl8q8",
     "url": "https://www.youtube.com/watch?v=TZSCkqxl8q8",
-    "summary": "Paul proposes Virtuous, a nonprofit focused on developing high-quality evaluations for complex normative AI behaviors—virtues like truthfulness, empowerment, and caring that are hard to quantify but important. He breaks down truthfulness into multiple dimensions including accuracy and representativeness, arguing that just because these qualities are 'mushy' doesn't make them less important. Without deliberate effort to make such virtues legible, they risk becoming invisible relative to easily quantified metrics.",
+    "summary": "Virtuous: a nonprofit focused on developing high-quality evaluations for complex normative AI behaviors—virtues like truthfulness, empowerment, and caring that are hard to quantify but important. Breaks down truthfulness into multiple dimensions including accuracy and representativeness. Argues that without deliberate effort to make such virtues legible, they risk becoming invisible relative to easily quantified metrics.",
     "word_count": 978,
     "status": "success"
   },
   {
     "video_id": "_xtHcBQGYpE",
     "url": "https://www.youtube.com/watch?v=_xtHcBQGYpE",
-    "summary": "Alex Bleakley and Emma Kumleben present Waymark Labs, an AI-powered strategic foresight tool developed in partnership with RAND for their geopolitics of AGI research. The system helps users define scenarios, identify driving forces, analyze stakeholder actions and their ramifications, and generate strategic reports with recommendations by time horizon. Key insight: asking LLMs directly about second-order effects produces overly dramatic predictions, but grounding them through explicit forecasts yields more realistic analysis.",
+    "summary": "Waymark Labs: an AI-powered strategic foresight tool developed in partnership with RAND for geopolitics of AGI research. Helps users define scenarios, identify driving forces, analyze stakeholder actions and their ramifications, and generate strategic reports with recommendations by time horizon. Key insight: asking LLMs directly about second-order effects produces overly dramatic predictions, but grounding them through explicit forecasts yields more realistic analysis.",
     "word_count": 1755,
     "status": "success"
   },
   {
     "video_id": "eHxQRoE3MmA",
     "url": "https://www.youtube.com/watch?v=eHxQRoE3MmA",
-    "summary": "Kai Sandbrink presents Negotiation Station, a benchmark and training environment for AI-mediated negotiations using the classic 'cake cutting' problem from economics. The framework tests both negotiating agents (with positions to defend) and mediators (facilitating consensus), revealing that cooperative agents reach agreements faster than adversarial ones. Through iterative prompt improvement, a tuned mediator helped adversarial agents reach agreements almost as quickly as cooperative agents.",
+    "summary": "Negotiation Station: a benchmark and training environment for AI-mediated negotiations using the classic 'cake cutting' problem from economics. Tests both negotiating agents (with positions to defend) and mediators (facilitating consensus). Reveals that cooperative agents reach agreements faster than adversarial ones, and through iterative prompt improvement, a tuned mediator helped adversarial agents reach agreements almost as quickly as cooperative agents.",
     "word_count": 829,
     "status": "success"
   },
   {
     "video_id": "jqss-3RYjaE",
     "url": "https://www.youtube.com/watch?v=jqss-3RYjaE",
-    "summary": "Steve Isley built an AI fact-checker that writes X/Twitter community notes, achieving 1.7 million impressions on a note correcting Elon Musk about Tesla vs Porsche race claims. Each note links to a companion website with detailed breakdowns. Starting with 2,000 notes, only 13 made it through after filtering for video content and low-clarity requests. A key limitation: the bridging algorithm struggles with highly contentious political issues where factual corrections can't break through partisan voting.",
+    "summary": "An AI fact-checker that writes X/Twitter community notes, achieving 1.7 million impressions on a note correcting claims about Tesla vs Porsche race performance. Each note links to a companion website with detailed breakdowns. From 2,000 candidate notes, 13 made it through after filtering for video content and low-clarity requests. Key limitation: the bridging algorithm struggles with highly contentious political issues where factual corrections can't break through partisan voting.",
     "word_count": 1100,
     "status": "success"
   },
   {
     "video_id": "lCqQIabLKVo",
     "url": "https://www.youtube.com/watch?v=lCqQIabLKVo",
-    "summary": "Sofia Vanhanen proposes Future Visions Hub—epistemic infrastructure for futures, similar to what LessWrong and the Alignment Forum provide for rationality and AI safety. The platform would help surface key ideas from complex scenario narratives (like AI 2027), connect predictions to markets, and enable collaborative development of future visions. Her theory of change: legible, modular futures thinking leads to better memes about the future, which serve as coordination tools for collective action.",
+    "summary": "Future Visions Hub: epistemic infrastructure for futures, similar to what LessWrong and the Alignment Forum provide for rationality and AI safety. Surfaces key ideas from complex scenario narratives (like AI 2027), connects predictions to markets, and enables collaborative development of future visions. Theory of change: legible, modular futures thinking leads to better memes about the future, which serve as coordination tools for collective action.",
     "word_count": 937,
     "status": "success"
   },
   {
     "video_id": "m5h8Sx8kx18",
     "url": "https://www.youtube.com/watch?v=m5h8Sx8kx18",
-    "summary": "Alysia and Martin present two experiments in epistemic infrastructure. Image Epistemics attempted to use reverse image search for community notes fact-checking, but found traditional search engines only return matches 1% of the time—effectively 'dead' due to walled-garden social platforms blocking crawlers. RiskWatch aggregates prediction markets (Polymarket, Manifold, Kalshi) for catastrophic risks across categories like AI safety, biosecurity, and nuclear, creating a 'CoinMarketCap for predictions' useful for risk monitoring.",
+    "summary": "Two epistemic infrastructure experiments: Image Epistemics attempted to use reverse image search for community notes fact-checking, but found traditional search engines only return matches 1% of the time—effectively 'dead' due to walled-garden social platforms blocking crawlers. RiskWatch aggregates prediction markets (Polymarket, Manifold, Kalshi) for catastrophic risks across categories like AI safety, biosecurity, and nuclear, creating a 'CoinMarketCap for predictions' useful for risk monitoring.",
     "word_count": 1313,
     "status": "success"
   },
   {
     "video_id": "qkvFfS_nTI8",
     "url": "https://www.youtube.com/watch?v=qkvFfS_nTI8",
-    "summary": "Alex Bleakley explores 'cheap gradability' of AI agents—the ability to quickly verify whether agent predictions are accurate without waiting months for outcomes. Traditional fact-checking has a turtles-all-the-way-down problem; predictions that can be checked against reality provide true groundedness. He built a framework for backtesting agent predictions using financial APIs, exploring which reasoning strategies make agents more accurate. The goal: observability, groundedness, and scalable verification.",
+    "summary": "A framework for 'cheap gradability' of AI agents—the ability to quickly verify whether agent predictions are accurate without waiting months for outcomes. Traditional fact-checking has a turtles-all-the-way-down problem; predictions that can be checked against reality provide true groundedness. Uses financial APIs for backtesting agent predictions, exploring which reasoning strategies make agents more accurate. Goal: observability, groundedness, and scalable verification.",
     "word_count": 1152,
     "status": "success"
   },
   {
     "video_id": "r_vdUeoKbJE",
     "url": "https://www.youtube.com/watch?v=r_vdUeoKbJE",
-    "summary": "Gordon Brander demonstrates Deep Future, an AI agent for scenario planning (like 'deep research for strategic foresight'). The tool guides users through identifying driving forces, mapping structural connections between them, and rating them by impact and uncertainty. It generates strategic reports with key insights, opportunities, threats, and early warning signals—compressing a week-long scenario workshop into 10-15 minutes. Future plans include automated horizon scanning with real-time news monitoring.",
+    "summary": "Deep Future: an AI agent for scenario planning (like 'deep research for strategic foresight'). Guides users through identifying driving forces, mapping structural connections between them, and rating them by impact and uncertainty. Generates strategic reports with key insights, opportunities, threats, and early warning signals—compressing a week-long scenario workshop into 10-15 minutes. Future plans include automated horizon scanning with real-time news monitoring.",
     "word_count": 1482,
     "status": "success"
   },
   {
     "video_id": "uX3EdKWo3ZA",
     "url": "https://www.youtube.com/watch?v=uX3EdKWo3ZA",
-    "summary": "Matt Brooks shares learnings from four MVP experiments: an offers/asks Slackbot (worked but nobody remembered to use it), Matt GPT digital twin (80% accurate but the crucial 20% is locked in your head), Sealed.com anonymous feedback filter (solved one bottleneck but not the core issue), and EA Global Matcher (product-market fit in 30 minutes). The matcher succeeded because all data was already available, required zero user effort, and AI was the perfect 'cheap intelligence' to process 1,000 profiles.",
+    "summary": "Four MVP experiments with learnings: an offers/asks Slackbot (worked but nobody remembered to use it), a digital twin (80% accurate but the crucial 20% is locked in your head), an anonymous feedback filter via Sealed.com (solved one bottleneck but not the core issue), and EA Global Matcher (product-market fit in 30 minutes). The matcher succeeded because all data was already available, required zero user effort, and AI was the perfect 'cheap intelligence' to process 1,000 profiles.",
     "word_count": 1124,
     "status": "success"
   },
   {
     "video_id": "vqDRlSWTOUQ",
     "url": "https://www.youtube.com/watch?v=vqDRlSWTOUQ",
-    "summary": "Matt Brooks and Niki Dupuis analyzed AI discourse across platforms: in-group (Twitter, EA Forum, LessWrong) and out-group (Blue Sky for left, Truth Social for right). They identified five natural clusters: pragmatic safety establishment, high doomers, frontier capability maximizers, open-source democratizers, and paradigm skeptics. Key finding: Blue Sky users have made up their minds (mostly anti-AI), while Truth Social is more mixed. Both platforms share fears about big tech and AI surveillance states—potential common ground for reducing polarization.",
+    "summary": "AI discourse analysis across platforms: in-group (Twitter, EA Forum, LessWrong) and out-group (Blue Sky for left, Truth Social for right). Identifies five natural clusters: pragmatic safety establishment, high doomers, frontier capability maximizers, open-source democratizers, and paradigm skeptics. Key finding: Blue Sky users have made up their minds (mostly anti-AI), while Truth Social is more mixed. Both platforms share fears about big tech and AI surveillance states—potential common ground for reducing polarization.",
     "word_count": 1768,
     "status": "success"
   },
   {
     "video_id": "xsvCYhcxDX4",
     "url": "https://www.youtube.com/watch?v=xsvCYhcxDX4",
-    "summary": "Jamie Joyce presents the Society Library, a nonprofit building epistemic infrastructure including automated fact-checking, argument extraction, provenance tracking, and structured deliberation graphs. Their graphs model complex reasoning from multiple perspectives with Socratic-style deconstruction—setting a 'maximalist truth-seeking standard' that goes beyond simple fact-checking to full deliberation checking. They produced a 600-page fully-cited collective intelligence report from 5,360 sources, and work with the Internet Archive to digitize government data (only 3.6% has ever been digitized).",
+    "summary": "Society Library: a nonprofit building epistemic infrastructure including automated fact-checking, argument extraction, provenance tracking, and structured deliberation graphs. Graphs model complex reasoning from multiple perspectives with Socratic-style deconstruction—setting a 'maximalist truth-seeking standard' that goes beyond simple fact-checking to full deliberation checking. Produced a 600-page fully-cited collective intelligence report from 5,360 sources, and works with the Internet Archive to digitize government data (only 3.6% has ever been digitized).",
     "status": "failed"
   },
   {
     "video_id": "yqpcsat1Mxw",
     "url": "https://www.youtube.com/watch?v=yqpcsat1Mxw",
-    "summary": "Nathan and Rob built an AI community note writer that achieved the world's first AI-written approved community note on X. Their notes have been viewed 2.5 million times, reducing misleading tweet shares at a cost of $385 in LLM fees. Key insight: early notes have much higher impact (25-50% reduction in shares within 12 hours vs. almost nothing after 2 days), making AI speed crucial. They're working on video notes and expanding to other platforms like TikTok, Chrome extensions, and YouTube.",
+    "summary": "An AI community note writer that achieved the world's first AI-written approved community note on X. Notes have been viewed 2.5 million times, reducing misleading tweet shares at a cost of $385 in LLM fees. Key insight: early notes have much higher impact (25-50% reduction in shares within 12 hours vs. almost nothing after 2 days), making AI speed crucial. Expanding to video notes and other platforms like TikTok, Chrome extensions, and YouTube.",
     "status": "failed"
   }
 ]
