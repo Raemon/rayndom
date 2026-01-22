@@ -3,24 +3,59 @@ import path from 'path'
 import { marked } from 'marked'
 import styles from './CatEolResearchPage.module.css'
 
-type CsvRow = Record<string, string>
+type Provider = {
+  name: string
+  sourceUrl: string
+  servesBerkeley: 'yes' | 'no' | 'unknown'
+  inHomeEuthanasia: 'yes' | 'no' | 'unknown'
+  privateCremation: 'yes' | 'no' | 'unknown'
+  priceEuthanasia: string
+  priceSedation: string
+  priceTravel: string
+  priceAfterHours: string
+  pricePrivateCremation: string
+  priceCommunalCremation: string
+  priceBodyTransport: string
+  incidentals: string
+  waitTime: string
+  howToSchedule: string
+}
 
-const parseCsv = (csv: string) => {
+const parseTriState = (val: string): 'yes' | 'no' | 'unknown' => {
+  const v = val.toLowerCase().trim()
+  if (v === 'yes') return 'yes'
+  if (v === 'no') return 'no'
+  return 'unknown'
+}
+
+const parseCsvToProviders = (csv: string): Provider[] => {
   const lines = csv.split(/\r?\n/).filter((line) => line.trim().length > 0)
-  if (lines.length === 0) return { headers: [], rows: [] as CsvRow[] }
-  const headers = lines[0].split(',').map((h) => h.trim())
-  const rows = lines.slice(1).map((line) => {
+  if (lines.length <= 1) return []
+  const dataLines = lines.slice(1)
+  return dataLines.map((line) => {
     const cols = line.split(',')
-    const row: CsvRow = {}
-    headers.forEach((headerName) => row[headerName] = '')
-    headers.forEach((headerName, idx) => row[headerName] = (cols[idx] ?? '').trim())
-    return row
+    return {
+      name: cols[0]?.trim() || '',
+      sourceUrl: cols[1]?.trim() || '',
+      servesBerkeley: parseTriState(cols[3] || ''),
+      inHomeEuthanasia: parseTriState(cols[4] || ''),
+      privateCremation: parseTriState(cols[5] || ''),
+      priceEuthanasia: cols[6]?.trim() || '',
+      priceSedation: cols[7]?.trim() || '',
+      priceTravel: cols[8]?.trim() || '',
+      priceAfterHours: cols[9]?.trim() || '',
+      pricePrivateCremation: cols[10]?.trim() || '',
+      priceCommunalCremation: cols[11]?.trim() || '',
+      priceBodyTransport: cols[12]?.trim() || '',
+      incidentals: cols[13]?.trim() || '',
+      waitTime: cols[14]?.trim() || '',
+      howToSchedule: cols[15]?.trim() || '',
+    }
   })
-  return { headers, rows }
 }
 
 const slugify = (providerName: string) => {
-  return providerName.toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+  return providerName.toLowerCase().replace(/['']/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
 }
 
 const stripParenSuffix = (s: string) => {
@@ -36,12 +71,10 @@ const resolveProviderReport = (providerName: string) => {
     slugify(providerNameNoParen.replace(/\s*&\s*euthanasia\s*$/i, '').trim()),
     slugify(providerNameNoParen.replace(/\s*&\s*in-home euthanasia\s*$/i, '').trim()),
   ].filter((s) => s.length > 0)
-
   for (const candidateSlug of candidateSlugs) {
     const candidatePath = path.join(providersDir, `${candidateSlug}.md`)
     if (fs.existsSync(candidatePath)) return candidatePath
   }
-
   if (!fs.existsSync(providersDir)) return ''
   const providerMdFiles = fs.readdirSync(providersDir).filter((f) => f.endsWith('.md'))
   for (const providerMdFile of providerMdFiles) {
@@ -54,14 +87,52 @@ const resolveProviderReport = (providerName: string) => {
     if (title === providerNameNoParen) return candidatePath
     if (stripParenSuffix(title) === providerNameNoParen) return candidatePath
   }
-
   return ''
+}
+
+const TriStateIcon = ({value}: {value: 'yes' | 'no' | 'unknown'}) => {
+  if (value === 'yes') return <span className={styles.yes}>✓</span>
+  if (value === 'no') return <span className={styles.no}>✗</span>
+  return <span className={styles.unknown}>?</span>
+}
+
+const PriceCell = ({value}: {value: string}) => {
+  if (!value || value === 'unknown' || value === 'not published') {
+    return <span className={styles.noData}>—</span>
+  }
+  const shortened = value
+    .replace(/not published/gi, '—')
+    .replace(/unknown/gi, '?')
+    .replace(/included \(not itemized\)/gi, 'incl.')
+    .replace(/not itemized/gi, '—')
+  if (shortened.length > 40) {
+    return <span className={styles.priceComplex} title={value}>{shortened.slice(0, 37)}…</span>
+  }
+  return <span className={styles.price}>{shortened}</span>
+}
+
+const ContactCell = ({value}: {value: string}) => {
+  if (!value || value === 'unknown' || value === 'not published') {
+    return <span className={styles.noData}>—</span>
+  }
+  const phoneMatch = value.match(/\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/)
+  const phone = phoneMatch ? phoneMatch[0] : null
+  const hasOnline = /online|book|website|form/i.test(value)
+  const hasText = /text/i.test(value)
+  return (
+    <span className={styles.contact} title={value}>
+      {phone && <span className={styles.phone}>{phone}</span>}
+      {hasOnline && <span className={styles.tag}>web</span>}
+      {hasText && <span className={styles.tag}>txt</span>}
+      {!phone && !hasOnline && !hasText && value.slice(0, 20)}
+    </span>
+  )
 }
 
 const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) => {
   const csvPath = path.join(process.cwd(), 'cat-eol-research', 'providers.csv')
   const csvText = fs.readFileSync(csvPath, 'utf8')
-  const { headers, rows } = parseCsv(csvText)
+  const providers = parseCsvToProviders(csvText)
 
   const selectedProvider = searchParams?.provider || ''
   const hasSelection = !!selectedProvider
@@ -69,120 +140,65 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) 
   const markdown = hasSelection ? (mdPath && fs.existsSync(mdPath) ? fs.readFileSync(mdPath, 'utf8') : `# ${selectedProvider}\n\nNo report found for this provider under \`cat-eol-research/providers/\`.\n`) : ''
   const html = hasSelection ? marked.parse(markdown) : ''
 
-  const tableHeaders = headers.filter((h) => ['provider', 'source_pages', 'link', 'price_euthanasia', 'price_private_cremation', 'expected_wait_time', 'how_to_schedule'].includes(h))
+  const tableContent = (
+    <div className={styles.tableWrap}>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th className={`${styles.th} ${styles.sticky}`}>Provider</th>
+            <th className={styles.th} title="Serves Berkeley">Berk</th>
+            <th className={styles.th} title="In-Home Euthanasia">Home</th>
+            <th className={styles.th} title="Private Cremation Available">Priv</th>
+            <th className={styles.th}>Euthanasia $</th>
+            <th className={styles.th}>Priv Crem $</th>
+            <th className={styles.th}>Comm Crem $</th>
+            <th className={styles.th}>Travel $</th>
+            <th className={styles.th}>After Hrs $</th>
+            <th className={styles.th}>Contact</th>
+          </tr>
+        </thead>
+        <tbody>
+          {providers.map((p, idx) => {
+            const isActive = p.name === selectedProvider
+            const href = `/cat-eol-research?provider=${encodeURIComponent(p.name)}`
+            return (
+              <tr key={p.name || idx} className={`${idx % 2 === 1 ? styles.rowAlt : ''} ${isActive ? styles.rowActive : ''}`}>
+                <td className={`${styles.td} ${styles.sticky} ${styles.providerCell}`}>
+                  <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
+                  {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noreferrer" className={styles.sourceLink}>↗</a>}
+                </td>
+                <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.servesBerkeley} /></td>
+                <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.inHomeEuthanasia} /></td>
+                <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.privateCremation} /></td>
+                <td className={styles.td}><PriceCell value={p.priceEuthanasia} /></td>
+                <td className={styles.td}><PriceCell value={p.pricePrivateCremation} /></td>
+                <td className={styles.td}><PriceCell value={p.priceCommunalCremation} /></td>
+                <td className={styles.td}><PriceCell value={p.priceTravel} /></td>
+                <td className={styles.td}><PriceCell value={p.priceAfterHours} /></td>
+                <td className={styles.td}><ContactCell value={p.howToSchedule} /></td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </div>
+  )
 
   return (
     <div className={styles.wrap}>
       <div className={styles.titleRow}>
         <div className={styles.title}>Cat EOL Research</div>
-        <div className={styles.subtitle}>`cat-eol-research/providers.csv` + `cat-eol-research/providers/*.md`</div>
+        <div className={styles.subtitle}>{providers.length} providers</div>
       </div>
       {hasSelection ? (
-      <div className={styles.split}>
-        <div className={`${styles.card} ${styles.leftPane}`}>
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  {tableHeaders.map((h) => (
-                    <th key={h} className={styles.th}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map((row, idx) => {
-                  const providerName = row.provider || ''
-                  const isActive = providerName === selectedProvider
-                  const href = `/cat-eol-research?provider=${encodeURIComponent(providerName)}`
-                  return (
-                    <tr key={providerName || idx} className={idx % 2 === 1 ? styles.rowAlt : undefined}>
-                      {tableHeaders.map((h) => {
-                        if (h === 'provider') {
-                          return (
-                            <td key={h} className={styles.td}>
-                              <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{providerName}</a>
-                            </td>
-                          )
-                        }
-                        if (h === 'link') {
-                          return (
-                            <td key={h} className={styles.td}>
-                              <a href={href} className={styles.providerLink}>{row[h] || ''}</a>
-                            </td>
-                          )
-                        }
-                        if (h === 'source_pages') {
-                          return (
-                            <td key={h} className={styles.td}>
-                              <a href={row[h] || ''} target="_blank" rel="noreferrer" className={styles.providerLink}>{row[h] || ''}</a>
-                            </td>
-                          )
-                        }
-                        return (
-                          <td key={h} className={styles.td}>{row[h] || ''}</td>
-                        )
-                      })}
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
+        <div className={styles.split}>
+          <div className={`${styles.card} ${styles.leftPane}`}>{tableContent}</div>
+          <div className={`${styles.card} ${styles.rightPane}`}>
+            <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: html }} />
           </div>
         </div>
-        <div className={`${styles.card} ${styles.rightPane}`}>
-          <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: html }} />
-        </div>
-      </div>
       ) : (
-        <div className={styles.card}>
-          <div className={styles.tableWrap}>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  {tableHeaders.map((h) => (
-                    <th key={h} className={styles.th}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map((row, idx) => {
-                  const providerName = row.provider || ''
-                  const href = `/cat-eol-research?provider=${encodeURIComponent(providerName)}`
-                  return (
-                    <tr key={providerName || idx} className={idx % 2 === 1 ? styles.rowAlt : undefined}>
-                      {tableHeaders.map((h) => {
-                        if (h === 'provider') {
-                          return (
-                            <td key={h} className={styles.td}>
-                              <a className={styles.providerLink} href={href}>{providerName}</a>
-                            </td>
-                          )
-                        }
-                        if (h === 'link') {
-                          return (
-                            <td key={h} className={styles.td}>
-                              <a href={href} className={styles.providerLink}>{row[h] || ''}</a>
-                            </td>
-                          )
-                        }
-                        if (h === 'source_pages') {
-                          return (
-                            <td key={h} className={styles.td}>
-                              <a href={row[h] || ''} target="_blank" rel="noreferrer" className={styles.providerLink}>{row[h] || ''}</a>
-                            </td>
-                          )
-                        }
-                        return (
-                          <td key={h} className={styles.td}>{row[h] || ''}</td>
-                        )
-                      })}
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <div className={styles.card}>{tableContent}</div>
       )}
     </div>
   )
