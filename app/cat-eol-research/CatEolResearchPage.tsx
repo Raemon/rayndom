@@ -179,13 +179,15 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string, si
                   {providers.map((p, idx) => {
                     const isActive = p.name === selectedProvider
                     const href = `/cat-eol-research?provider=${encodeURIComponent(p.name)}`
+                    const providerMdPath = resolveProviderReport(p.name)
+                    const hasNotes = providerMdPath && fs.existsSync(providerMdPath)
                     return (
                       <tr key={p.name || idx} className={`${idx % 2 === 1 ? styles.rowAlt : ''} ${isActive ? styles.rowActive : ''}`}>
                         <td className={`${styles.td} ${styles.sticky} ${styles.providerCell}`}>
                           <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
                         </td>
                         <td className={`${styles.td} ${styles.center}`}>{p.sourceUrl && <a href={`/cat-eol-research?site=${encodeURIComponent(p.sourceUrl)}`} className={styles.sourceLink}>🔗</a>}</td>
-                        <td className={styles.td}><a href={href} className={styles.notesLink}>📝</a></td>
+                        <td className={styles.td}>{hasNotes && <a href={href} className={styles.notesLink}>📝</a>}</td>
                         <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.inHomeEuthanasia} /></td>
                         <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.privateCremation} /></td>
                         <td className={styles.td}><PriceCell value={p.priceEuthanasia} /></td>
@@ -232,13 +234,15 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string, si
               {providers.map((p, idx) => {
                 const isActive = p.name === selectedProvider
                 const href = `/cat-eol-research?provider=${encodeURIComponent(p.name)}`
+                const providerMdPath = resolveProviderReport(p.name)
+                const hasNotes = providerMdPath && fs.existsSync(providerMdPath)
                 return (
                   <tr key={p.name || idx} className={`${idx % 2 === 1 ? styles.rowAlt : ''} ${isActive ? styles.rowActive : ''}`}>
                     <td className={`${styles.td} ${styles.sticky} ${styles.providerCell}`}>
                       <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
                     </td>
                     <td className={`${styles.td} ${styles.center}`}>{p.sourceUrl && <a href={`/cat-eol-research?site=${encodeURIComponent(p.sourceUrl)}`} className={styles.sourceLink}>🔗</a>}</td>
-                    <td className={styles.td}><a href={href} className={styles.notesLink}>📝</a></td>
+                    <td className={styles.td}>{hasNotes && <a href={href} className={styles.notesLink}>📝</a>}</td>
                     <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.inHomeEuthanasia} /></td>
                     <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.privateCremation} /></td>
                     <td className={styles.td}><PriceCell value={p.priceEuthanasia} /></td>
