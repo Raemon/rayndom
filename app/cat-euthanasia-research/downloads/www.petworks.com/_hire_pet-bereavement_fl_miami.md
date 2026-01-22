@@ -1,0 +1,418 @@
+[](/)
+
+  * [get free quotes](/request_quote)
+  * [tips & advice](/articles)
+  * [about](/infos/about)
+  * [help](/help)
+  * __
+
+  * [LOGIN](/login)
+  * [PET PROS - APPLY HERE](/signup)
+
+
+
+#  Pet Bereavement Counselors **Serving Miami, Florida**
+
+  * [home](/)
+  * [pet bereavement](/hire/pet-bereavement)
+  * [florida](/hire/pet-bereavement/fl)
+  * miami
+
+
+
+#### Do you offer online sessions?
+
+Yes
+
+#### Licensed
+
+Yes
+
+#### Do you offer mobile services?
+
+Yes
+
+No
+
+#### Certified
+
+Yes
+
+#### Bonded and Insured
+
+Bonded
+
+Insured
+
+#### BBB Accredited
+
+Yes
+
+[Apply](javascript:void\(\))
+
+Losing a beloved pet is heartbreaking, but you don’t have to go through it alone. A compassionate pet bereavement counselor in Miami can help you navigate grief, process emotions, and find peace after the loss of your furry companion. Our licensed counselors offer personalized support and proven coping strategies through secure online sessions. All from the comfort of home. Whether you're facing recent loss or lingering sadness, professional guidance can make a meaningful difference. Connect with a trusted pet bereavement counselor Miami, FL residents rely on. Book a virtual session today and begin your healing journey with empathy and understanding. 
+
+featured
+
+  *   * Cindy Cooley
+  * [Certified Pet Loss Grief Counseling Professional - Naples, FL](/listing/certified-pet-loss-grief-counseling-professional-nationwide "Certified Pet Loss Grief Counseling Professional  - Naples, FL")
+  * PREMIUM PRO
+
+INSTANT CHECKOUT
+
+  * Naples, FL - As a Certified Pet Loss Professional (CPLP) with extensive experience serving pet parents for over 16 years, I offer empathetic, action-based support to guide you through the... 
+  * (4 reviews)
+
+  *     * Certified
+    * Online Sessions
+  * [Book Now](/certified-pet-loss-grief-counseling-professional-nationwide/book)
+
+
+
+  * 3 
+
+BOOKINGS 
+
+  * Terri Chaplin
+  * [Living in Gratitude with TLC - Pet Loss Grief Counseling - Riverview, FL](/listing/living-in-gratitude-with-tlc-pet-loss-grief-counseling-nationwide "Living in Gratitude with TLC - Pet Loss Grief Counseling  - Riverview, FL")
+  * INSTANT CHECKOUT
+
+  * Riverview, FL - Hello there, I’m Terri, and I’m so glad you’ve landed on my page. If you’re here, chances are you’ve experienced the loss of a beloved pet, or... 
+  * (1 review)
+
+  *     * Certified
+    * Online Sessions
+  * [Book Now](/living-in-gratitude-with-tlc-pet-loss-grief-counseling-nationwide/book)
+
+
+
+  * 43 
+
+BOOKINGS 
+
+  * Allison Armstrong
+  * [Living Well Therapy Coach - Pet Loss Grief Counseling - Jacksonville Beach, FL](/listing/living-well-therapy-coach-pet-loss-grief-counseling-nationwide "Living Well Therapy Coach - Pet Loss Grief Counseling - Jacksonville Beach, FL")
+  * PETWORKS PICK
+
+INSTANT CHECKOUT
+
+  * Jacksonville Beach, FL - I have been a Veterinarian for over thirty years, and completed a Masters degree in Mental Health Counseling in August 2024. I am a National Certified... 
+  * (11 reviews)
+
+  *     * Licensed
+    * Online Sessions
+  * [Book Now](/living-well-therapy-coach-pet-loss-grief-counseling-nationwide/book)
+
+
+
+  * 1 
+
+BOOKINGS 
+
+  * Hannah Jacobs
+  * [Certified Pet Loss Coach and Veterinarian - Cape Fear, NC](/listing/certified-pet-loss-coach-and-veterinarian-nationwide "Certified Pet Loss Coach and Veterinarian  - Cape Fear, NC")
+  * INSTANT CHECKOUT
+
+  * Cape Fear, NC - As an emergency veterinarian & pet mom, I understand pet loss. I have expertise in hospice care for animals and am very passionate about guiding animals... 
+  *   *     * Certified
+    * Online Sessions
+  * [Book Now](/certified-pet-loss-coach-and-veterinarian-nationwide/book)
+
+
+
+featured
+
+  * 1 
+
+BOOKINGS 
+
+  * Kimberly Tyler
+  * [Fur Love Forever - Pet Loss and Grief Support with Kim Tyler - Atlanta, GA](/listing/fur-love-forever-pet-loss-and-grief-support-with-kim-tyler-nationwide "Fur Love Forever - Pet Loss and Grief Support with Kim Tyler - Atlanta, GA")
+  * PREMIUM PRO
+
+INSTANT CHECKOUT
+
+  * Atlanta, GA - Please accept my heartfelt condolences for the loss of your beloved. I am a Certified Pet Loss & Grief Mentor and a Certified Transition Life Coach and... 
+  *   *     * Certified
+    * Online Sessions
+  * [Book Now](/fur-love-forever-pet-loss-and-grief-support-with-kim-tyler-nationwide/book)
+
+
+
+  *   * Steve Sullivan
+  * [Chaplain for Pet Bereavement and People Compassion - Raleigh, NC](/listing/chaplain-for-pet-bereavement-and-people-compassion-nationwide "Chaplain for Pet Bereavement and People Compassion - Raleigh, NC")
+  *   * Raleigh, NC - I'm an endorsed chaplain and have served as a chaplain for 21 years mostly working with Veterans. I know the stress, pain, and final cost of working... 
+  *   *     * Online Sessions
+  * [Request Quote](/en/request_quote?id=255034&listing=509830)
+
+
+
+  *   * Ronald Ross
+  * [Pet Loss and Grief Counseling - Virginia Beach, VA](/listing/pet-loss-and-grief-counseling-nationwide "Pet Loss and Grief Counseling - Virginia Beach, VA")
+  * INSTANT CHECKOUT
+
+  * Virginia Beach, VA - Losing a beloved pet can be one of the most heart-wrenching experiences in life. As a Licensed Clinical Social Worker (LCSW) with specialized training in Pet... 
+  *   *     * Licensed
+    * Insured
+    * Online Sessions
+  * [Book Now](/pet-loss-and-grief-counseling-nationwide/book)
+
+
+
+  * 1 
+
+BOOKINGS 
+
+  * Lori Krauth
+  * [Turtle Talk Pet Loss Support and Pet Photography - Clarksville, TN](/listing/turtle-talk-pet-loss-support-and-pet-photography-nationwide "Turtle Talk Pet Loss Support and Pet Photography - Clarksville, TN")
+  * INSTANT CHECKOUT
+
+  * Clarksville, TN - Losing a beloved pet can be an emotionally overwhelming experience, and navigating the grief that follows requires understanding and support. Our pet grief support services are tailored... 
+  *   *     * Online Sessions
+  * [Book Now](/turtle-talk-pet-loss-support-and-pet-photography-nationwide/book)
+
+
+
+featured
+
+  * 300 
+
+BOOKINGS 
+
+  * Sandra Ferrell
+  * [Pet Loss Bereavement Support - Louisville, KY](/listing/pet-loss-bereavement-support-nationwide "Pet Loss Bereavement Support  - Louisville, KY")
+  * PETWORKS PICK
+
+INSTANT CHECKOUT
+
+RAPID RESPONDER
+
+  * Louisville, KY - **Not accepting new clients at this time.** Specializing in affordable, compassionate pet loss support. I am a Certified Pet Loss Bereavement Specialist and Certified Mental Health Advocate,... 
+  * (71 reviews)
+
+  *     * Certified
+    * Online Sessions
+  * [Book Now](/pet-loss-bereavement-support-nationwide/book)
+
+
+
+featured
+
+  * 41 
+
+BOOKINGS 
+
+  * Patti DiMiceli
+  * [Embrace the Angel End-of-Life - Pet Loss Grief Counselor - Annapolis, MD](/listing/embrace-the-angel-end-of-life-pet-loss-grief-counselor-nationwide "Embrace the Angel End-of-Life - Pet Loss Grief Counselor - Annapolis, MD")
+  * PREMIUM PRO
+
+PETWORKS PICK
+
+INSTANT CHECKOUT
+
+RAPID RESPONDER
+
+RED CROSS CERTIFIED
+
+  * Annapolis, MD - From the moment you met your beloved companion, you felt it—a heart-to-heart connection, a profound Knowing. Now, as you face the final chapter of your physical life... 
+  * (3 reviews)
+
+  *     * Certified
+    * Insured
+    * Online Sessions
+  * [Book Now](/embrace-the-angel-end-of-life-pet-loss-grief-counselor-nationwide/book)
+
+
+
+  * 7 
+
+BOOKINGS 
+
+  * Beth Hewett
+  * [Good Words for Grieving - Pet Loss Grief Counselor - Forest Hill, MD](/listing/good-words-for-grieving-pet-loss-grief-counselor-nationwide "Good Words for Grieving - Pet Loss Grief Counselor - Forest Hill, MD")
+  * INSTANT CHECKOUT
+
+  * Forest Hill, MD - Dr. Beth Hewett is a certified grief coach and certified Pet Loss Bereavement Specialist who can walk the grief journey with you. Her understanding and compassion... 
+  * (4 reviews)
+
+  *     * Licensed
+    * Certified
+    * Insured
+    * Online Sessions
+  * [Book Now](/good-words-for-grieving-pet-loss-grief-counselor-nationwide/book)
+
+
+
+  * 10 
+
+BOOKINGS 
+
+  * Jessie Dangelo
+  * [Certified Pet Loss Grief Coach - CASTLE SHANN, PA](/listing/certified-pet-loss-grief-coach-nationwide "Certified Pet Loss Grief Coach - CASTLE SHANN, PA")
+  * PETWORKS PICK
+
+INSTANT CHECKOUT
+
+RAPID RESPONDER
+
+  * CASTLE SHANN, PA - As a certified grief coach and lifelong pet lover, I specialize in providing compassionate pet loss support for those navigating the heartbreak of saying goodbye to... 
+  * (3 reviews)
+
+  *     * Certified
+    * Online Sessions
+  * [Book Now](/certified-pet-loss-grief-coach-nationwide/book)
+
+
+
+featured
+
+  * 6 
+
+BOOKINGS 
+
+  * Donna Carlson
+  * [Soul and Tail Collective "You Don't Have to Grieve Alone" - Collegeville, PA](/listing/soul-and-tail-collective-you-dont-have-to-grieve-alone-nationwide "Soul and Tail Collective "You Don't Have to Grieve Alone" - Collegeville, PA")
+  * PREMIUM PRO
+
+INSTANT CHECKOUT
+
+RAPID RESPONDER
+
+  * Collegeville, PA - Donna Carlson - Certified Grief & Pet Loss Coach | PhD Student in Intuitive Interspecies Communication | Soul & Tail Collective Helping Hearts Heal — One Soul... 
+  * (1 review)
+
+  *     * Certified
+    * Online Sessions
+  * [Book Now](/soul-and-tail-collective-you-dont-have-to-grieve-alone-nationwide/book)
+
+
+
+  *   * Sandra Grossman
+  * [Sandra Grossman, Ph.D. - PetLoss Partners - Princeton, NJ](/listing/sandra-grossman-phd-petloss-partners-nationwide "Sandra Grossman, Ph.D. - PetLoss Partners - Princeton, NJ")
+  *   * Princeton, NJ - Losing a beloved pet is incredibly difficult. I know, because I experienced it with my own precious boy. It was the journey of healing from his loss... 
+  *   *     * Licensed
+    * Certified
+  * [Request Quote](/en/request_quote?id=160523&listing=502808)
+
+
+
+  *   * Anna Kuyumcuoglu
+  * [Pet Loss Counseling - Coping With The Death Of Your Pet - New York, NY](/listing/pet-loss-counseling-coping-with-the-death-of-your-pet-nationwide "Pet Loss Counseling - Coping With The Death Of Your Pet - New York, NY")
+  * INSTANT CHECKOUT
+
+  * New York, NY - Pet Bereavement. Few bonds in life are as pure and meaningful as the one we share with our animal companions. Pets offer us unconditional love, unwavering... 
+  *   *     * Licensed
+    * Certified
+    * Online Sessions
+  * [Book Now](/pet-loss-counseling-coping-with-the-death-of-your-pet-nationwide/book)
+
+
+
+  * 2 
+
+BOOKINGS 
+
+  * Brianna Laricchia
+  * [Compassionate Pet Loss Therapy - New York, NY](/listing/compassionate-pet-loss-therapy-nationwide "Compassionate Pet Loss Therapy - New York, NY")
+  * INSTANT CHECKOUT
+
+  * New York, NY - Hi, I’m Brianna, and I’m here to support you through one of the most challenging and deeply personal experiences...losing a beloved pet. As someone who has... 
+  * (1 review)
+
+  *     * Licensed
+    * Certified
+    * Bonded
+    * Insured
+    * BBB Accredited
+    * Online Sessions
+  * [Book Now](/compassionate-pet-loss-therapy-nationwide/book)
+
+
+
+  *   * Jeann Linsley
+  * [Jeann Linsley - Pet Loss Grief Counselor - New York, NY](/listing/jeann-linsley-pet-loss-grief-counselor-nationwide "Jeann Linsley - Pet Loss Grief Counselor - New York, NY")
+  * INSTANT CHECKOUT
+
+  * New York, NY - Hi! My name is Jeann Linsley, and I'm a psychotherapist with a firm background in many kinds of therapy, including psychodynamic, cognitive-behavioral, and psychoanalytic. I have... 
+  *   *     * Online Sessions
+  * [Book Now](/jeann-linsley-pet-loss-grief-counselor-nationwide/book)
+
+
+
+  *   * Veronica Lozada
+  * [Bilingual LMSW Pet Loss Support - Queens, NY](/listing/bilingual-lmsw-pet-loss-support-nationwide "Bilingual LMSW Pet Loss Support - Queens, NY")
+  * INSTANT CHECKOUT
+
+  * Queens, NY - The bond between a human and their soul pet is a profound relationship, extending beyond physical life. Losing your soul pet is extremely painful and the grief... 
+  *   *     * Licensed
+    * Insured
+  * [Book Now](/bilingual-lmsw-pet-loss-support-nationwide/book)
+
+
+
+  *   * Ita Dowler
+  * [LCSW Psychotherapist - Pet Loss Grief Counselor - Bronx, NY](/listing/lcsw-psychotherapist-pet-loss-grief-counselor-nationwide "LCSW Psychotherapist - Pet Loss Grief Counselor - Bronx, NY")
+  *   * Bronx, NY - I am a psychotherapist and have worked with loss for over 30 years. I'm a therapist who understands your loss. I know how significant the death of... 
+  *   *     * Licensed
+    * Online Sessions
+  * [Request Quote](/en/request_quote?id=255034&listing=509810)
+
+
+
+View More Pet Care Pros
+
+#### other categories
+
+  * [Pet Loss Grief Counselor](/hire/pet-grief-counselors/fl/miami)
+  * [Pet Loss Support](/hire/pet-loss-support/fl/miami)
+  * [Animal Communicator](/hire/animal-communicators/fl/miami)
+  * [Lost Pet Finder](/hire/lost-pet-recovery/fl/miami)
+  * [Pet Portrait Art](/hire/pet-portrait-artists/fl/miami)
+  * [In Home Pet Euthanasia](/hire/pet-euthanasia/fl/miami)
+
+
+
+#### more info
+
+**AMA**
+
+**How can a pet bereavement counselor help me with the loss of my pet?**
+
+A pet bereavement counselor in Miami, FL offers emotional support and guidance to help you process the deep grief that often follows the loss of a beloved animal companion. These professionals provide a safe, compassionate space to talk about your feelings, validate your pain, and help you find ways to honor your pet’s memory. Sessions can help you navigate guilt, loneliness, and the unique challenges of pet loss, which are often misunderstood or minimized by others.
+
+**What are some local towns and cities with pet bereavement counselors near me?**
+
+Miami-dade County, Fort Lauderdale, Hialeah, Pembroke Pines, Hollywood, Miramar, Coral Springs, Miami Gardens, Pompano Beach, Davie, Sunrise
+
+**What should I expect during a pet loss counseling session?**
+
+During a session, you can expect a warm, nonjudgmental conversation where you're encouraged to express your thoughts and emotions openly. The Miami, Florida counselor may help you explore coping strategies, manage difficult anniversaries, or create rituals for closure and healing. Sessions are tailored to your pace and grief journey and may take place in person, by phone, or through secure video chat. Some counselors are licensed therapists, while others are trained grief coaches or certified in pet loss support.
+
+**How much does Miami pet bereavement counseling typically cost?**
+
+Prices vary based on the counselor’s qualifications, location, and session length, but general ranges include:
+
+Licensed therapists or LCSWs: $80–$150 per session; Certified pet loss grief counselors or coaches: $50–$100 per session; Group sessions or virtual support circles: Often free to $40 per session.
+
+Many pet parents find even one or two sessions provide meaningful comfort during the grieving process.
+
+made with petworks tm
+
+  * [about us](/infos/about)
+  * [articles](/articles)
+  * [gift cards](/gift-cards)
+  * [terms](/en/infos/terms)
+  * [privacy](/en/infos/privacy)
+
+
+
+  * [ ](https://www.bbb.org/connecticut/business-reviews/pet-services/petmasters-llc-in-bridgeport-ct-87127121/)
+  * [Trustpilot](https://www.trustpilot.com/review/petworks.com)
+
+  * 
+
+  * [ ](https://www.facebook.com/petworksdotcom)
+  * [ ](https://www.instagram.com/petworks_com/)
+  * [ ](https://twitter.com/petworks_com)
+
+

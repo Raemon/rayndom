@@ -1,0 +1,2368 @@
+[
+  {
+    "siteName": "www.codapet.com",
+    "mainUrl": {
+      "url": "https://www.codapet.com/cities/oakland-ca",
+      "file": "_cities_oakland-ca.md"
+    },
+    "otherUrls": [
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-megan-duvall",
+        "file": "_veterinarians_dr-megan-duvall.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/bernese-mountain-dogs-lifespan",
+        "file": "_senior-pet-care_bernese-mountain-dogs-lifespan.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/chattanooga-tn",
+        "file": "_cities_chattanooga-tn.md"
+      },
+      {
+        "url": "https://www.codapet.com/quality-of-life-scale",
+        "file": "_quality-of-life-scale.md"
+      },
+      {
+        "url": "https://www.codapet.com/learn-more-about-pet-euthanasia",
+        "file": "_learn-more-about-pet-euthanasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/what-vets-wish-every-pet-parent-knew-about-saying-goodbye",
+        "file": "_pet-loss-and-grief_what-vets-wish-every-pet-parent-knew-about-saying-goodbye.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/where-to-put-your-pet-down-options-for-dog-and-cat-euthanasia",
+        "file": "_a-complete-guide-to-pet-euthanasia_where-to-put-your-pet-down-options-for-dog-and-cat-euthanasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-katherine-todd",
+        "file": "_veterinarians_dr-katherine-todd.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-tom-del-pico",
+        "file": "_veterinarians_dr-tom-del-pico.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/bellevue-wa",
+        "file": "_cities_bellevue-wa.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/virginia-beach-va",
+        "file": "_cities_virginia-beach-va.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/miami-fl",
+        "file": "_cities_miami-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/a-comprehensive-guide-to-leptospirosis-in-dogs",
+        "file": "_senior-pet-care_a-comprehensive-guide-to-leptospirosis-in-dogs.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/teleconsultations-for-end-of-life-pet-care",
+        "file": "_pet-loss-and-grief_teleconsultations-for-end-of-life-pet-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/spokane-wa",
+        "file": "_cities_spokane-wa.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kristin-kemper",
+        "file": "_veterinarians_dr-kristin-kemper.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/dr-meagan-batey-bringing-compassionate-in-home-pet-farewells-to-nashville",
+        "file": "_blog_dr-meagan-batey-bringing-compassionate-in-home-pet-farewells-to-nashville.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-brittany-rizzo",
+        "file": "_veterinarians_dr-brittany-rizzo.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-angela-de-villa",
+        "file": "_veterinarians_dr-angela-de-villa.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-brittany-dash",
+        "file": "_veterinarians_dr-brittany-dash.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/four-key-resources-to-help-with-euthanasia-decisions",
+        "file": "_how-will-i-know-when-its-time_four-key-resources-to-help-with-euthanasia-decisions.md"
+      },
+      {
+        "url": "https://www.codapet.com/dog-euthanasia-near-me",
+        "file": "_dog-euthanasia-near-me.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/naperville-il",
+        "file": "_cities_naperville-il.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/pet-euthanasia-how-loving-pet-parents-weigh-their-most-difficult-decision",
+        "file": "_how-will-i-know-when-its-time_pet-euthanasia-how-loving-pet-parents-weigh-their-most-difficult-decision.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-caroline-bailey",
+        "file": "_veterinarians_dr-caroline-bailey.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/aspen-co",
+        "file": "_cities_aspen-co.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/cane-corso-lifespan-understanding-and-extending-your-dog-s-life",
+        "file": "_senior-pet-care_cane-corso-lifespan-understanding-and-extending-your-dog-s-life.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-laurie-noe-fresno",
+        "file": "_veterinarians_dr-laurie-noe-fresno.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-meghan-salerian",
+        "file": "_veterinarians_dr-meghan-salerian.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/ways-to-help-a-grieving-pet",
+        "file": "_pet-loss-and-grief_ways-to-help-a-grieving-pet.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/introduction-to-pancreatitis-in-cats",
+        "file": "_senior-pet-care_introduction-to-pancreatitis-in-cats.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-bethany-hsia",
+        "file": "_veterinarians_dr-bethany-hsia.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lauren-ayala",
+        "file": "_veterinarians_dr-lauren-ayala.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/can-i-request-to-euthanize-a-pet-for-non-medical-reasons",
+        "file": "_a-complete-guide-to-pet-euthanasia_can-i-request-to-euthanize-a-pet-for-non-medical-reasons.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-corrie-bates",
+        "file": "_veterinarians_dr-corrie-bates.md"
+      },
+      {
+        "url": "https://www.codapet.com/cat-euthanasia-near-me",
+        "file": "_cat-euthanasia-near-me.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-dog-brain-tumors-a-comprehensive-guide-for-pet-parents",
+        "file": "_senior-pet-care_understanding-dog-brain-tumors-a-comprehensive-guide-for-pet-parents.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/las-vegas-nm",
+        "file": "_cities_las-vegas-nm.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/why-is-my-elderly-dog-panting-so-much",
+        "file": "_senior-pet-care_why-is-my-elderly-dog-panting-so-much.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lisa-stadler",
+        "file": "_veterinarians_dr-lisa-stadler.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jovanna-canty",
+        "file": "_veterinarians_dr-jovanna-canty.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/st-augustine-fl",
+        "file": "_cities_st-augustine-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/san-diego-ca",
+        "file": "_cities_san-diego-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/vets/mobile-versus-IHE-veterinarians",
+        "file": "_vets_mobile-versus-IHE-veterinarians.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-joey-durr",
+        "file": "_veterinarians_dr-joey-durr.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/syracuse-ny",
+        "file": "_cities_syracuse-ny.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/cara-gordon",
+        "file": "_experts_cara-gordon.md"
+      },
+      {
+        "url": "https://www.codapet.com/quality-of-life-scale/pet-info",
+        "file": "_quality-of-life-scale_pet-info.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/anniston-al",
+        "file": "_cities_anniston-al.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/what-is-lymphoma-in-dogs",
+        "file": "_senior-pet-care_what-is-lymphoma-in-dogs.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/how-to-prepare-for-dog-euthanasia",
+        "file": "_a-complete-guide-to-pet-euthanasia_how-to-prepare-for-dog-euthanasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kellie-ayle",
+        "file": "_veterinarians_dr-kellie-ayle.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/stillwater-ok",
+        "file": "_cities_stillwater-ok.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/from-emergency-room-to-living-room-dr-doolittle-offers-in-home-pet-care-in-fort-worth",
+        "file": "_blog_from-emergency-room-to-living-room-dr-doolittle-offers-in-home-pet-care-in-fort-worth.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-danielle-hundley",
+        "file": "_veterinarians_dr-danielle-hundley.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/codapet-s-newest-tampa-vet-dr-lisa-littlejohn",
+        "file": "_blog_codapet-s-newest-tampa-vet-dr-lisa-littlejohn.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-diabetes-in-dogs-a-guide-for-pet-parents",
+        "file": "_senior-pet-care_understanding-diabetes-in-dogs-a-guide-for-pet-parents.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/carson-city-nv",
+        "file": "_cities_carson-city-nv.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/plano-tx",
+        "file": "_cities_plano-tx.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/when-pet-care-becomes-overwhelming-recognizing-caregiver-burnout",
+        "file": "_how-will-i-know-when-its-time_when-pet-care-becomes-overwhelming-recognizing-caregiver-burnout.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/degenerative-myelopathy-in-dogs-what-pet-parents-need-to-know-about-care-and-quality-of-life",
+        "file": "_senior-pet-care_degenerative-myelopathy-in-dogs-what-pet-parents-need-to-know-about-care-and-quality-of-life.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/gainesville-fl",
+        "file": "_cities_gainesville-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/great-pyrenees-lifespan-ensuring-a-long-and-healthy-life",
+        "file": "_senior-pet-care_great-pyrenees-lifespan-ensuring-a-long-and-healthy-life.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lane-martin",
+        "file": "_veterinarians_dr-lane-martin.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities",
+        "file": "_cities.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/helping-children-grieve-the-loss-of-a-pet-guidance-for-parents-and-families",
+        "file": "_pet-loss-and-grief_helping-children-grieve-the-loss-of-a-pet-guidance-for-parents-and-families.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-heather-white",
+        "file": "_veterinarians_dr-heather-white.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-erin-scaglione",
+        "file": "_veterinarians_dr-erin-scaglione.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/santa-fe-nm",
+        "file": "_cities_santa-fe-nm.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-gary-hsia",
+        "file": "_veterinarians_dr-gary-hsia.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jennifer-holman",
+        "file": "_veterinarians_dr-jennifer-holman.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/new-orleans-la",
+        "file": "_cities_new-orleans-la.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/end-of-life-pet-services",
+        "file": "_a-complete-guide-to-pet-euthanasia_end-of-life-pet-services.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/charleston-sc",
+        "file": "_cities_charleston-sc.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/navigating-anticipatory-grief",
+        "file": "_pet-loss-and-grief_navigating-anticipatory-grief.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lydia-cook-mcanulty",
+        "file": "_veterinarians_dr-lydia-cook-mcanulty.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/introduction-to-feline-lower-urinary-tract-disease-flutd",
+        "file": "_senior-pet-care_introduction-to-feline-lower-urinary-tract-disease-flutd.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/kidney-disease-in-dogs-what-it-is-and-when-to-euthanize",
+        "file": "_senior-pet-care_kidney-disease-in-dogs-what-it-is-and-when-to-euthanize.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/lexington-ky",
+        "file": "_cities_lexington-ky.md"
+      },
+      {
+        "url": "https://www.codapet.com/urgent-request",
+        "file": "_urgent-request.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/the-average-lifespan-of-a-chihuahua",
+        "file": "_senior-pet-care_the-average-lifespan-of-a-chihuahua.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/when-is-it-time-understanding-pet-euthanasia-and-end-of-life-decisions",
+        "file": "_how-will-i-know-when-its-time_when-is-it-time-understanding-pet-euthanasia-and-end-of-life-decisions.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/understanding-the-unique-pain-of-pet-loss",
+        "file": "_pet-loss-and-grief_understanding-the-unique-pain-of-pet-loss.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/nathan-barclay-ph-d",
+        "file": "_experts_nathan-barclay-ph-d.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-diana-phillips",
+        "file": "_veterinarians_dr-diana-phillips.md"
+      },
+      {
+        "url": "https://www.codapet.com/",
+        "file": "index.md"
+      },
+      {
+        "url": "https://www.codapet.com/vets/us-ftc-is-banning-non-competes-nationwide",
+        "file": "_vets_us-ftc-is-banning-non-competes-nationwide.md"
+      },
+      {
+        "url": "https://www.codapet.com/services",
+        "file": "_services.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/australian-shepherd-lifespan-understanding-and-extending-your-dog-s-life",
+        "file": "_senior-pet-care_australian-shepherd-lifespan-understanding-and-extending-your-dog-s-life.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-mary-juber",
+        "file": "_veterinarians_dr-mary-juber.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/navigating-canine-cancer-an-exploration-of-neoplasia",
+        "file": "_senior-pet-care_navigating-canine-cancer-an-exploration-of-neoplasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-cat-diabetes",
+        "file": "_senior-pet-care_understanding-cat-diabetes.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/mid-willamette-valley-or",
+        "file": "_cities_mid-willamette-valley-or.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-marlene-anschultz",
+        "file": "_veterinarians_dr-marlene-anschultz.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-suzanne-causey",
+        "file": "_veterinarians_dr-suzanne-causey.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-melissa-goldberg",
+        "file": "_veterinarians_dr-melissa-goldberg.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/are-lumps-and-bumps-always-cancer-understanding-non-cancerous-masses-and-tumors-in-pets",
+        "file": "_a-complete-guide-to-pet-euthanasia_are-lumps-and-bumps-always-cancer-understanding-non-cancerous-masses-and-tumors-in-pets.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kit-warren",
+        "file": "_veterinarians_dr-kit-warren.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-daniella-ross",
+        "file": "_veterinarians_dr-daniella-ross.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/rochester-ny",
+        "file": "_cities_rochester-ny.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/palm-bay-fl",
+        "file": "_cities_palm-bay-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/demystifying-feline-infectious-peritonitis-fip-in-cats-an-essential-guide-for-pet-owners",
+        "file": "_senior-pet-care_demystifying-feline-infectious-peritonitis-fip-in-cats-an-essential-guide-for-pet-owners.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-mashawn-orth",
+        "file": "_veterinarians_dr-mashawn-orth.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-mackenzie-treece",
+        "file": "_veterinarians_dr-mackenzie-treece.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/codapet",
+        "file": "_experts_codapet.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/dr-gary-hsia",
+        "file": "_experts_dr-gary-hsia.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/madera-ca",
+        "file": "_cities_madera-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/charlotte-nc",
+        "file": "_cities_charlotte-nc.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/buffalo-ny",
+        "file": "_cities_buffalo-ny.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/tulsa-ok",
+        "file": "_cities_tulsa-ok.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/5-common-terminal-dog-diseases",
+        "file": "_senior-pet-care_5-common-terminal-dog-diseases.md"
+      },
+      {
+        "url": "https://www.codapet.com/schedule-appointment/",
+        "file": "_schedule-appointment.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jeffrey-perret",
+        "file": "_veterinarians_dr-jeffrey-perret.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-anna-stewart",
+        "file": "_veterinarians_dr-anna-stewart.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/helping-children-grieve-the-loss-of-a-pet-guidance-from-angela-sims-lpc",
+        "file": "_pet-loss-and-grief_helping-children-grieve-the-loss-of-a-pet-guidance-from-angela-sims-lpc.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/companioning-a-grieving-pet-parent-what-to-say-and-what-to-avoid",
+        "file": "_pet-loss-and-grief_companioning-a-grieving-pet-parent-what-to-say-and-what-to-avoid.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/columbus-ga",
+        "file": "_cities_columbus-ga.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/seattle-wa",
+        "file": "_cities_seattle-wa.md"
+      },
+      {
+        "url": "https://www.codapet.com/vets/veterinarian-job-flexibility",
+        "file": "_vets_veterinarian-job-flexibility.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-beagle-lifespan-and-end-of-life-care",
+        "file": "_senior-pet-care_understanding-beagle-lifespan-and-end-of-life-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-diana-gersten",
+        "file": "_veterinarians_dr-diana-gersten.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/fayetteville-nc",
+        "file": "_cities_fayetteville-nc.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/hackensack-nj",
+        "file": "_cities_hackensack-nj.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/why-consider-at-home-pet-euthanasia-services",
+        "file": "_a-complete-guide-to-pet-euthanasia_why-consider-at-home-pet-euthanasia-services.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-maltese-dogs-health-care-and-end-of-life-considerations",
+        "file": "_senior-pet-care_understanding-maltese-dogs-health-care-and-end-of-life-considerations.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/palatine-il",
+        "file": "_cities_palatine-il.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/birmingham-al",
+        "file": "_cities_birmingham-al.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/what-pet-parents-should-consider-with-a-paralyzed-cat",
+        "file": "_senior-pet-care_what-pet-parents-should-consider-with-a-paralyzed-cat.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-cara-gordon",
+        "file": "_veterinarians_dr-cara-gordon.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/bentonville-ar",
+        "file": "_cities_bentonville-ar.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/end-of-life-care-how-to-help-a-dying-dog",
+        "file": "_blog_end-of-life-care-how-to-help-a-dying-dog.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lisa-fieg",
+        "file": "_veterinarians_dr-lisa-fieg.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/scottsdale-az",
+        "file": "_cities_scottsdale-az.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time",
+        "file": "_how-will-i-know-when-its-time.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-john-murray",
+        "file": "_veterinarians_dr-john-murray.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jessica-ayers",
+        "file": "_veterinarians_dr-jessica-ayers.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/ames-ia",
+        "file": "_cities_ames-ia.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/ann-arbor-mi",
+        "file": "_cities_ann-arbor-mi.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-sarah-crozier",
+        "file": "_veterinarians_dr-sarah-crozier.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-morgan-early",
+        "file": "_veterinarians_dr-morgan-early.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/houston-tx",
+        "file": "_cities_houston-tx.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-cara-mitchell",
+        "file": "_veterinarians_dr-cara-mitchell.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kimberly-patterson",
+        "file": "_veterinarians_dr-kimberly-patterson.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/orlando-fl",
+        "file": "_cities_orlando-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/how-does-pet-cremation-work",
+        "file": "_a-complete-guide-to-pet-euthanasia_how-does-pet-cremation-work.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kelsey-jones",
+        "file": "_veterinarians_dr-kelsey-jones.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/recognizing-the-signs-of-dog-cancer",
+        "file": "_senior-pet-care_recognizing-the-signs-of-dog-cancer.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-alexandra-wolfingbarger",
+        "file": "_veterinarians_dr-alexandra-wolfingbarger.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-sheryl-hemmer",
+        "file": "_veterinarians_dr-sheryl-hemmer.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog-category/pet-aftercare",
+        "file": "_blog-category_pet-aftercare.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/duluth-ga",
+        "file": "_cities_duluth-ga.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/when-to-euthanize-a-cat-with-end-stage-lymphoma",
+        "file": "_how-will-i-know-when-its-time_when-to-euthanize-a-cat-with-end-stage-lymphoma.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/how-to-care-for-a-dog-with-advanced-hip-dysplasia",
+        "file": "_senior-pet-care_how-to-care-for-a-dog-with-advanced-hip-dysplasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/pensacola-fl",
+        "file": "_cities_pensacola-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-caitlin-klepper",
+        "file": "_veterinarians_dr-caitlin-klepper.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-victoria-falen",
+        "file": "_veterinarians_dr-victoria-falen.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-amanda-mccasland",
+        "file": "_veterinarians_dr-amanda-mccasland.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/why-choose-in-home-pet-euthanasia",
+        "file": "_a-complete-guide-to-pet-euthanasia_why-choose-in-home-pet-euthanasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/navigating-quality-of-life-qol-in-pets-understanding-the-good-days-vs-bad-days-method",
+        "file": "_how-will-i-know-when-its-time_navigating-quality-of-life-qol-in-pets-understanding-the-good-days-vs-bad-days-method.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/south-lake-tahoe-ca",
+        "file": "_cities_south-lake-tahoe-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/nashville-tn",
+        "file": "_cities_nashville-tn.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/auburn-al",
+        "file": "_cities_auburn-al.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-pugs-lifespan-health-and-end-of-life-care",
+        "file": "_senior-pet-care_understanding-pugs-lifespan-health-and-end-of-life-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-ann-gonnering",
+        "file": "_veterinarians_dr-ann-gonnering.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kyra-heirich",
+        "file": "_veterinarians_dr-kyra-heirich.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/comprehensive-guide-to-understanding-cancer-in-dogs",
+        "file": "_senior-pet-care_comprehensive-guide-to-understanding-cancer-in-dogs.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-camille-gangulee",
+        "file": "_veterinarians_dr-camille-gangulee.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/clarksville-tn",
+        "file": "_cities_clarksville-tn.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/college-station-tx",
+        "file": "_cities_college-station-tx.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/will-the-vet-examine-my-pet-once-they-get-to-my-home",
+        "file": "_a-complete-guide-to-pet-euthanasia_will-the-vet-examine-my-pet-once-they-get-to-my-home.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/augusta-ga",
+        "file": "_cities_augusta-ga.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-amira-guerrero",
+        "file": "_veterinarians_dr-amira-guerrero.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/hollywood-fl",
+        "file": "_cities_hollywood-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/small-steps-to-prolonging-mobility-in-aging-pets",
+        "file": "_senior-pet-care_small-steps-to-prolonging-mobility-in-aging-pets.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-laurie-anne-walden",
+        "file": "_veterinarians_dr-laurie-anne-walden.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/cape-cod-ma",
+        "file": "_cities_cape-cod-ma.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lis-pilago",
+        "file": "_veterinarians_dr-lis-pilago.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/staunton-va",
+        "file": "_cities_staunton-va.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/5-reasons-to-take-your-healthy-pet-to-the-vet",
+        "file": "_senior-pet-care_5-reasons-to-take-your-healthy-pet-to-the-vet.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/tacoma-wa",
+        "file": "_cities_tacoma-wa.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/conroe-tx",
+        "file": "_cities_conroe-tx.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/dr-bethany-hsia",
+        "file": "_experts_dr-bethany-hsia.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-evymarie-prado-sanchez",
+        "file": "_veterinarians_dr-evymarie-prado-sanchez.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-eugene-alexeev",
+        "file": "_veterinarians_dr-eugene-alexeev.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-brian-ortman",
+        "file": "_veterinarians_dr-brian-ortman.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/bozeman-mt",
+        "file": "_cities_bozeman-mt.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/ashburn-va",
+        "file": "_cities_ashburn-va.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/provo-ut",
+        "file": "_cities_provo-ut.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog",
+        "file": "_blog.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-nicolette-michelli",
+        "file": "_veterinarians_dr-nicolette-michelli.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-katharyn-hart",
+        "file": "_veterinarians_dr-katharyn-hart.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/understanding-your-pets-quality-of-life-score-insights-from-pet-parents-like-you",
+        "file": "_how-will-i-know-when-its-time_understanding-your-pets-quality-of-life-score-insights-from-pet-parents-like-you.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-beth-nunn",
+        "file": "_veterinarians_dr-beth-nunn.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief",
+        "file": "_pet-loss-and-grief.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/fort-collins-co",
+        "file": "_cities_fort-collins-co.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/what-to-consider-before-burying-your-pet",
+        "file": "_a-complete-guide-to-pet-euthanasia_what-to-consider-before-burying-your-pet.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-meagan-batey",
+        "file": "_veterinarians_dr-meagan-batey.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-melissa-clauson",
+        "file": "_veterinarians_dr-melissa-clauson.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-elizabeth-parks",
+        "file": "_veterinarians_dr-elizabeth-parks.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-bulldog-life-expectancy-and-health",
+        "file": "_senior-pet-care_understanding-bulldog-life-expectancy-and-health.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-meredith-somerset",
+        "file": "_veterinarians_dr-meredith-somerset.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/seneca-sc",
+        "file": "_cities_seneca-sc.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/what-if-my-pet-passes-before-my-euthanasia-appointment",
+        "file": "_a-complete-guide-to-pet-euthanasia_what-if-my-pet-passes-before-my-euthanasia-appointment.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-michele-sims",
+        "file": "_veterinarians_dr-michele-sims.md"
+      },
+      {
+        "url": "https://www.codapet.com",
+        "file": "index.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/new-york-city-ny",
+        "file": "_cities_new-york-city-ny.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-claire-gibson",
+        "file": "_veterinarians_dr-claire-gibson.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-derecka-alexander",
+        "file": "_veterinarians_dr-derecka-alexander.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/anaheim-ca",
+        "file": "_cities_anaheim-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-alexandra-loughmiller",
+        "file": "_veterinarians_dr-alexandra-loughmiller.md"
+      },
+      {
+        "url": "https://www.codapet.com/vets/veterinarian-jobs",
+        "file": "_vets_veterinarian-jobs.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/phoenix-az",
+        "file": "_cities_phoenix-az.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/pet-euthanasia-what-to-expect",
+        "file": "_a-complete-guide-to-pet-euthanasia_pet-euthanasia-what-to-expect.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kristi-thompson",
+        "file": "_veterinarians_dr-kristi-thompson.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/unraveling-canine-parvovirus-a-comprehensive-guide-for-pet-owners",
+        "file": "_senior-pet-care_unraveling-canine-parvovirus-a-comprehensive-guide-for-pet-owners.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-courtney-white",
+        "file": "_veterinarians_dr-courtney-white.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/missoula-mt",
+        "file": "_cities_missoula-mt.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-kidney-failure-in-cats-a-comprehensive-guide",
+        "file": "_senior-pet-care_understanding-kidney-failure-in-cats-a-comprehensive-guide.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/athens-ga",
+        "file": "_cities_athens-ga.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/fresno-ca",
+        "file": "_cities_fresno-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/help-needed-is-my-dog-suffering-and-what-should-i-do",
+        "file": "_how-will-i-know-when-its-time_help-needed-is-my-dog-suffering-and-what-should-i-do.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/salisbury-md",
+        "file": "_cities_salisbury-md.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lauren-frary",
+        "file": "_veterinarians_dr-lauren-frary.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/what-are-mast-cell-tumors-in-dogs",
+        "file": "_senior-pet-care_what-are-mast-cell-tumors-in-dogs.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kelly-stern",
+        "file": "_veterinarians_dr-kelly-stern.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/kansas-city-mo",
+        "file": "_cities_kansas-city-mo.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jessica-digenova",
+        "file": "_veterinarians_dr-jessica-digenova.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/st-louis-mo",
+        "file": "_cities_st-louis-mo.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/norfolk-va",
+        "file": "_cities_norfolk-va.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/all-you-need-to-know-about-feline-leukemia",
+        "file": "_senior-pet-care_all-you-need-to-know-about-feline-leukemia.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-susannah-mays",
+        "file": "_veterinarians_dr-susannah-mays.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-abbey-wesner",
+        "file": "_veterinarians_dr-abbey-wesner.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/pet-loss-support-what-pet-parents-need-to-know",
+        "file": "_pet-loss-and-grief_pet-loss-support-what-pet-parents-need-to-know.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-american-staffordshire-terriers-a-comprehensive-guide",
+        "file": "_senior-pet-care_understanding-american-staffordshire-terriers-a-comprehensive-guide.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/understanding-rabies",
+        "file": "_how-will-i-know-when-its-time_understanding-rabies.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-michelle-vosburg",
+        "file": "_veterinarians_dr-michelle-vosburg.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-laura-krogman",
+        "file": "_veterinarians_dr-laura-krogman.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jacque-murray",
+        "file": "_veterinarians_dr-jacque-murray.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/torrington-ct",
+        "file": "_cities_torrington-ct.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/what-is-laryngeal-paralysis-in-dogs",
+        "file": "_senior-pet-care_what-is-laryngeal-paralysis-in-dogs.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/dog-euthanasia-process-breaking-down-misconceptions",
+        "file": "_a-complete-guide-to-pet-euthanasia_dog-euthanasia-process-breaking-down-misconceptions.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-robert-devlin",
+        "file": "_veterinarians_dr-robert-devlin.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/coral-springs-fl",
+        "file": "_cities_coral-springs-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-feline-lower-urinary-tract-disease-flutd",
+        "file": "_senior-pet-care_understanding-feline-lower-urinary-tract-disease-flutd.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/identifying-the-initial-signs-of-cushing-s-disease-in-dogs",
+        "file": "_senior-pet-care_identifying-the-initial-signs-of-cushing-s-disease-in-dogs.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/how-to-prepare-for-cat-euthanasia",
+        "file": "_a-complete-guide-to-pet-euthanasia_how-to-prepare-for-cat-euthanasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/what-your-vet-can-and-can-t-say-in-regards-to-euthanasia-understanding-the-boundaries-of",
+        "file": "_how-will-i-know-when-its-time_what-your-vet-can-and-can-t-say-in-regards-to-euthanasia-understanding-the-boundaries-of.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lauren-keyser",
+        "file": "_veterinarians_dr-lauren-keyser.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/dr-cassandra-lewis-chicago-end-of-life-pet-care",
+        "file": "_blog_dr-cassandra-lewis-chicago-end-of-life-pet-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/vets/veterinarian-gigs",
+        "file": "_vets_veterinarian-gigs.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jessica-pruitt",
+        "file": "_veterinarians_dr-jessica-pruitt.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/which-animals-does-the-humane-society-euthanize",
+        "file": "_a-complete-guide-to-pet-euthanasia_which-animals-does-the-humane-society-euthanize.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/arlington-va",
+        "file": "_cities_arlington-va.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-angela-schmillen",
+        "file": "_veterinarians_dr-angela-schmillen.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/vancouver-wa",
+        "file": "_cities_vancouver-wa.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog-category/pet-health",
+        "file": "_blog-category_pet-health.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/identifying-signs-and-symptoms-of-diabetes-in-your-dog",
+        "file": "_senior-pet-care_identifying-signs-and-symptoms-of-diabetes-in-your-dog.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/reno-nv",
+        "file": "_cities_reno-nv.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lori-schmalz",
+        "file": "_veterinarians_dr-lori-schmalz.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/how-army-service-shaped-dr-angela-schmillen-s-journey-to-in-home-pet-euthanasia-in-richmond",
+        "file": "_blog_how-army-service-shaped-dr-angela-schmillen-s-journey-to-in-home-pet-euthanasia-in-richmond.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/what-pet-quality-of-life-qol-tools-are-available",
+        "file": "_how-will-i-know-when-its-time_what-pet-quality-of-life-qol-tools-are-available.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/memphis-tn",
+        "file": "_cities_memphis-tn.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/philadelphia-pa",
+        "file": "_cities_philadelphia-pa.md"
+      },
+      {
+        "url": "https://www.codapet.com/contact",
+        "file": "_contact.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-border-collie-lifespan-and-end-of-life-care",
+        "file": "_senior-pet-care_understanding-border-collie-lifespan-and-end-of-life-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-katie-simpson",
+        "file": "_veterinarians_dr-katie-simpson.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/saint-paul-mn",
+        "file": "_cities_saint-paul-mn.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/tampa-bay-fl",
+        "file": "_cities_tampa-bay-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-karen-whala",
+        "file": "_veterinarians_dr-karen-whala.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kim-bagnoni",
+        "file": "_veterinarians_dr-kim-bagnoni.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-and-caring-for-your-shiba-inu-a-comprehensive-guide",
+        "file": "_senior-pet-care_understanding-and-caring-for-your-shiba-inu-a-comprehensive-guide.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/baton-rouge-la",
+        "file": "_cities_baton-rouge-la.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/topeka-ks",
+        "file": "_cities_topeka-ks.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/when-to-euthanize-a-dog-with-cushings-disease",
+        "file": "_a-complete-guide-to-pet-euthanasia_when-to-euthanize-a-dog-with-cushings-disease.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/valdosta-ga",
+        "file": "_cities_valdosta-ga.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/huntington-beach-ca",
+        "file": "_cities_huntington-beach-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/what-to-expect-during-at-home-pet-euthanasia",
+        "file": "_a-complete-guide-to-pet-euthanasia_what-to-expect-during-at-home-pet-euthanasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-matthew-randolph",
+        "file": "_veterinarians_dr-matthew-randolph.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/las-cruces-nm",
+        "file": "_cities_las-cruces-nm.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/fort-mill-sc",
+        "file": "_cities_fort-mill-sc.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-christina-meiners",
+        "file": "_veterinarians_dr-christina-meiners.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/lebanon-nh",
+        "file": "_cities_lebanon-nh.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jessica-loweth",
+        "file": "_veterinarians_dr-jessica-loweth.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-amy-roberts",
+        "file": "_veterinarians_dr-amy-roberts.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/knoxville-tn",
+        "file": "_cities_knoxville-tn.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/who-can-be-present-during-the-euthanasia-process",
+        "file": "_a-complete-guide-to-pet-euthanasia_who-can-be-present-during-the-euthanasia-process.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-megan-lowman",
+        "file": "_veterinarians_dr-megan-lowman.md"
+      },
+      {
+        "url": "https://www.codapet.com/vets/veterinarian-hourly-salary-compensation",
+        "file": "_vets_veterinarian-hourly-salary-compensation.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/what-is-addison-s-disease-in-dogs",
+        "file": "_senior-pet-care_what-is-addison-s-disease-in-dogs.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/hendersonville-tn",
+        "file": "_cities_hendersonville-tn.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/how-to-identify-a-dog-cancer-lump",
+        "file": "_senior-pet-care_how-to-identify-a-dog-cancer-lump.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/ithaca-ny",
+        "file": "_cities_ithaca-ny.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/end-of-life-care-how-to-help-a-dying-dog",
+        "file": "_how-will-i-know-when-its-time_end-of-life-care-how-to-help-a-dying-dog.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-golden-retriever-lifespan",
+        "file": "_senior-pet-care_understanding-golden-retriever-lifespan.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/new-haven-ct",
+        "file": "_cities_new-haven-ct.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/great-falls-mt",
+        "file": "_cities_great-falls-mt.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-juli-peters",
+        "file": "_veterinarians_dr-juli-peters.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-laurie-noe",
+        "file": "_veterinarians_dr-laurie-noe.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-laura-dubose",
+        "file": "_veterinarians_dr-laura-dubose.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/louisville-ky",
+        "file": "_cities_louisville-ky.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/blanka-molnar",
+        "file": "_experts_blanka-molnar.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/how-to-find-and-choose-a-local-vet-for-in-home-pet-euthanasia",
+        "file": "_a-complete-guide-to-pet-euthanasia_how-to-find-and-choose-a-local-vet-for-in-home-pet-euthanasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/torrance-ca",
+        "file": "_cities_torrance-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/duluth-mn",
+        "file": "_cities_duluth-mn.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-beau-bradbeer",
+        "file": "_veterinarians_dr-beau-bradbeer.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-renee-schott",
+        "file": "_veterinarians_dr-renee-schott.md"
+      },
+      {
+        "url": "https://www.codapet.com/grief-counselors",
+        "file": "_grief-counselors.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/el-paso-tx",
+        "file": "_cities_el-paso-tx.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-christie-banks",
+        "file": "_veterinarians_dr-christie-banks.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/dr-megan-duvall-compassionate-vet-in-atlanta",
+        "file": "_blog_dr-megan-duvall-compassionate-vet-in-atlanta.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/dr-karen-whala",
+        "file": "_experts_dr-karen-whala.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/agonal-breathing-in-dogs-what-it-really-means-for-your-pet",
+        "file": "_senior-pet-care_agonal-breathing-in-dogs-what-it-really-means-for-your-pet.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/alpharetta-ga",
+        "file": "_cities_alpharetta-ga.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/chicago-il",
+        "file": "_cities_chicago-il.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kristen-maul",
+        "file": "_veterinarians_dr-kristen-maul.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/from-lsu-s-tiger-den-to-new-orleans-homes-dr-jeffrey-perret-s-journey-of-compassionate",
+        "file": "_blog_from-lsu-s-tiger-den-to-new-orleans-homes-dr-jeffrey-perret-s-journey-of-compassionate.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jake-quin",
+        "file": "_veterinarians_dr-jake-quin.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-erin-struble",
+        "file": "_veterinarians_dr-erin-struble.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/assessing-the-weight-of-your-pet",
+        "file": "_senior-pet-care_assessing-the-weight-of-your-pet.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/norwich-ct",
+        "file": "_cities_norwich-ct.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/rockville-md",
+        "file": "_cities_rockville-md.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-joanne-dixon",
+        "file": "_veterinarians_dr-joanne-dixon.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/riverside-ca",
+        "file": "_cities_riverside-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/redwood-city-ca",
+        "file": "_cities_redwood-city-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-rebecca-houck",
+        "file": "_veterinarians_dr-rebecca-houck.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/atlanta-ga",
+        "file": "_cities_atlanta-ga.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/children-and-pet-loss",
+        "file": "_pet-loss-and-grief_children-and-pet-loss.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-allie-poole",
+        "file": "_veterinarians_dr-allie-poole.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-carol-earls",
+        "file": "_veterinarians_dr-carol-earls.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/baltimore-md",
+        "file": "_cities_baltimore-md.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/cary-nc",
+        "file": "_cities_cary-nc.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-frankie-dupre",
+        "file": "_veterinarians_dr-frankie-dupre.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-christina-vernon",
+        "file": "_veterinarians_dr-christina-vernon.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/how-much-does-pet-cremation-cost",
+        "file": "_a-complete-guide-to-pet-euthanasia_how-much-does-pet-cremation-cost.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog-category/pet-loss",
+        "file": "_blog-category_pet-loss.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/norman-ok",
+        "file": "_cities_norman-ok.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/springfield-mo",
+        "file": "_cities_springfield-mo.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/when-to-euthanize-a-dog-with-end-stage-liver-failure",
+        "file": "_senior-pet-care_when-to-euthanize-a-dog-with-end-stage-liver-failure.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-cory-korsgen",
+        "file": "_veterinarians_dr-cory-korsgen.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care",
+        "file": "_senior-pet-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-katie-elder",
+        "file": "_veterinarians_dr-katie-elder.md"
+      },
+      {
+        "url": "https://www.codapet.com/privacy-policy",
+        "file": "_privacy-policy.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-anne-szczotka",
+        "file": "_veterinarians_dr-anne-szczotka.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/a-pet-s-final-days-recognizing-signs-of-natural-death-and-how-to-offer-comfort",
+        "file": "_how-will-i-know-when-its-time_a-pet-s-final-days-recognizing-signs-of-natural-death-and-how-to-offer-comfort.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-john-crawford",
+        "file": "_veterinarians_dr-john-crawford.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/how-veterinarians-assess-quality-of-life-vs-how-owners-do",
+        "file": "_how-will-i-know-when-its-time_how-veterinarians-assess-quality-of-life-vs-how-owners-do.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/making-the-heartbreaking-decision-to-euthanize-a-beloved-pet-a-question-of-morality-and",
+        "file": "_how-will-i-know-when-its-time_making-the-heartbreaking-decision-to-euthanize-a-beloved-pet-a-question-of-morality-and.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/murfreesboro-tn",
+        "file": "_cities_murfreesboro-tn.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-dan-taylor",
+        "file": "_veterinarians_dr-dan-taylor.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/santa-clarita-ca",
+        "file": "_cities_santa-clarita-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/worcester-ma",
+        "file": "_cities_worcester-ma.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-dawn-fitzhugh",
+        "file": "_veterinarians_dr-dawn-fitzhugh.md"
+      },
+      {
+        "url": "https://www.codapet.com/schedule-appointment",
+        "file": "_schedule-appointment.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/jacksonville-fl",
+        "file": "_cities_jacksonville-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/roanoke-va",
+        "file": "_cities_roanoke-va.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-keri-wasmoen",
+        "file": "_veterinarians_dr-keri-wasmoen.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/st-petersburg-fl",
+        "file": "_cities_st-petersburg-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-amy-lutgen-dewitt",
+        "file": "_veterinarians_dr-amy-lutgen-dewitt.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/des-moines-ia",
+        "file": "_cities_des-moines-ia.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-john-bruker",
+        "file": "_veterinarians_dr-john-bruker.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/6-questions-to-ask-your-vet-before-euthanasia",
+        "file": "_how-will-i-know-when-its-time_6-questions-to-ask-your-vet-before-euthanasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/lubbock-tx",
+        "file": "_cities_lubbock-tx.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/cedar-rapids-ia",
+        "file": "_cities_cedar-rapids-ia.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/greenville-sc",
+        "file": "_cities_greenville-sc.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/santa-ana-ca",
+        "file": "_cities_santa-ana-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/your-pet-s-final-chapter",
+        "file": "_blog_your-pet-s-final-chapter.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-cassandra-lewis",
+        "file": "_veterinarians_dr-cassandra-lewis.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jenny-tovar",
+        "file": "_veterinarians_dr-jenny-tovar.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/pet-memorial-ideas",
+        "file": "_pet-loss-and-grief_pet-memorial-ideas.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog-category/meet-our-vets",
+        "file": "_blog-category_meet-our-vets.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/looking-for-a-trusted-vet-in-philadelphia-for-at-home-pet-farewells-meet-dr-melissa-goldberg",
+        "file": "_blog_looking-for-a-trusted-vet-in-philadelphia-for-at-home-pet-farewells-meet-dr-melissa-goldberg.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-congestive-heart-failure-chf-in-dogs",
+        "file": "_senior-pet-care_understanding-congestive-heart-failure-chf-in-dogs.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/everett-wa",
+        "file": "_cities_everett-wa.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-shannon-nakaya",
+        "file": "_veterinarians_dr-shannon-nakaya.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/cognitive-dysfunction-in-dogs-signs-and-care-tips",
+        "file": "_senior-pet-care_cognitive-dysfunction-in-dogs-signs-and-care-tips.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr.-bethany-butler",
+        "file": "_veterinarians_dr.-bethany-butler.-bethany-butler"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jacob-givens",
+        "file": "_veterinarians_dr-jacob-givens.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-marisel-san-miguel",
+        "file": "_veterinarians_dr-marisel-san-miguel.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/from-farm-roots-to-gentle-goodbyes-introducing-tulsa-s-dr-amanda-mccasland",
+        "file": "_blog_from-farm-roots-to-gentle-goodbyes-introducing-tulsa-s-dr-amanda-mccasland.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/irvine-ca",
+        "file": "_cities_irvine-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/medford-or",
+        "file": "_cities_medford-or.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-victoria-torres",
+        "file": "_veterinarians_dr-victoria-torres.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-daniela-lutri-r",
+        "file": "_veterinarians_dr-daniela-lutri-r.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/irish-wolfhound-lifespan-and-end-of-life-care",
+        "file": "_senior-pet-care_irish-wolfhound-lifespan-and-end-of-life-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog-category/pet-euthanasia",
+        "file": "_blog-category_pet-euthanasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/littleton-co",
+        "file": "_cities_littleton-co.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/newport-news-va",
+        "file": "_cities_newport-news-va.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jill-thomason",
+        "file": "_veterinarians_dr-jill-thomason.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/overland-park-ks",
+        "file": "_cities_overland-park-ks.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-margaret-valentino",
+        "file": "_veterinarians_dr-margaret-valentino.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/dallas-tx",
+        "file": "_cities_dallas-tx.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/essential-tips-for-maintaining-senior-pet-health",
+        "file": "_senior-pet-care_essential-tips-for-maintaining-senior-pet-health.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/alexandria-va",
+        "file": "_cities_alexandria-va.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/columbia-sc",
+        "file": "_cities_columbia-sc.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/bothell-wa",
+        "file": "_cities_bothell-wa.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-steven-silberman",
+        "file": "_veterinarians_dr-steven-silberman.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-cherissa-abdul-hamid",
+        "file": "_veterinarians_dr-cherissa-abdul-hamid.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-deborah-perzak",
+        "file": "_veterinarians_dr-deborah-perzak.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/creating-loving-final-moments-with-your-pet-at-home",
+        "file": "_pet-loss-and-grief_creating-loving-final-moments-with-your-pet-at-home.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/what-to-say-to-someone-whose-pet-dies-a-guide-to-offering-comfort-and-support",
+        "file": "_pet-loss-and-grief_what-to-say-to-someone-whose-pet-dies-a-guide-to-offering-comfort-and-support.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/kailua-kona-hi",
+        "file": "_cities_kailua-kona-hi.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/dublin-oh",
+        "file": "_cities_dublin-oh.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/east-raleigh-nc",
+        "file": "_cities_east-raleigh-nc.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-siberian-husky-lifespan-and-end-of-life-care",
+        "file": "_senior-pet-care_understanding-siberian-husky-lifespan-and-end-of-life-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kristina-pugh",
+        "file": "_veterinarians_dr-kristina-pugh.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/carlsbad-ca",
+        "file": "_cities_carlsbad-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/concord-ca",
+        "file": "_cities_concord-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-amanda-harper",
+        "file": "_veterinarians_dr-amanda-harper.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/what-is-pancreatitis-in-dogs",
+        "file": "_senior-pet-care_what-is-pancreatitis-in-dogs.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/understanding-behavioral-euthanasia-will-a-vet-put-down-an-aggressive-dog",
+        "file": "_a-complete-guide-to-pet-euthanasia_understanding-behavioral-euthanasia-will-a-vet-put-down-an-aggressive-dog.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kara-riano",
+        "file": "_veterinarians_dr-kara-riano.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/washington-in",
+        "file": "_cities_washington-in.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/10-signs-your-dog-is-approaching-the-end-of-life-and-how-to-help",
+        "file": "_how-will-i-know-when-its-time_10-signs-your-dog-is-approaching-the-end-of-life-and-how-to-help.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/help-its-time-to-euthanize-but-my-family-is-in-denial",
+        "file": "_how-will-i-know-when-its-time_help-its-time-to-euthanize-but-my-family-is-in-denial.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-sara-gardhouse",
+        "file": "_veterinarians_dr-sara-gardhouse.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/frederick-md",
+        "file": "_cities_frederick-md.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/unraveling-the-mysteries-of-lyme-disease-in-dogs",
+        "file": "_senior-pet-care_unraveling-the-mysteries-of-lyme-disease-in-dogs.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-briell-dzierga",
+        "file": "_veterinarians_dr-briell-dzierga.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/boston-terrier-lifespan-compassionate-care-for-your-aging-companion",
+        "file": "_senior-pet-care_boston-terrier-lifespan-compassionate-care-for-your-aging-companion.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-alexis-strode",
+        "file": "_veterinarians_dr-alexis-strode.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jenny-krueger",
+        "file": "_veterinarians_dr-jenny-krueger.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/where-to-bury-a-pet-understanding-private-vs-cemetery-burial",
+        "file": "_a-complete-guide-to-pet-euthanasia_where-to-bury-a-pet-understanding-private-vs-cemetery-burial.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/-dr-jesse-blades",
+        "file": "_veterinarians_-dr-jesse-blades.md"
+      },
+      {
+        "url": "https://www.codapet.com/about",
+        "file": "_about.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/westwood-nj",
+        "file": "_cities_westwood-nj.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/ocala-fl",
+        "file": "_cities_ocala-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/jackson-ms",
+        "file": "_cities_jackson-ms.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/understanding-behavioral-euthanasia-in-dogs",
+        "file": "_a-complete-guide-to-pet-euthanasia_understanding-behavioral-euthanasia-in-dogs.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/washington-dc",
+        "file": "_cities_washington-dc.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/when-to-seek-a-second-opinion-about-euthanasia-timing",
+        "file": "_how-will-i-know-when-its-time_when-to-seek-a-second-opinion-about-euthanasia-timing.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-its-time",
+        "file": "_how-will-i-know-its-time.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/keeping-your-aging-pet-happy-and-healthy",
+        "file": "_senior-pet-care_keeping-your-aging-pet-happy-and-healthy.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jennifer-tolbert",
+        "file": "_veterinarians_dr-jennifer-tolbert.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/smyrna-tn",
+        "file": "_cities_smyrna-tn.md"
+      },
+      {
+        "url": "https://www.codapet.com/faqs",
+        "file": "_faqs.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/carbondale-co",
+        "file": "_cities_carbondale-co.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lauren-silvesti",
+        "file": "_veterinarians_dr-lauren-silvesti.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/how-to-tell-if-my-dog-is-dying",
+        "file": "_a-complete-guide-to-pet-euthanasia_how-to-tell-if-my-dog-is-dying.md"
+      },
+      {
+        "url": "https://www.codapet.com/vets/careers",
+        "file": "_vets_careers.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/what-is-an-oral-tumor-and-types-of-oral-tumors-in-pets",
+        "file": "_senior-pet-care_what-is-an-oral-tumor-and-types-of-oral-tumors-in-pets.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/most-common-terminal-cat-diseases",
+        "file": "_how-will-i-know-when-its-time_most-common-terminal-cat-diseases.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/kailua-hi",
+        "file": "_cities_kailua-hi.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/what-to-expect-for-euthanasia-a-peaceful-goodbye-at-home-with-codapet",
+        "file": "_a-complete-guide-to-pet-euthanasia_what-to-expect-for-euthanasia-a-peaceful-goodbye-at-home-with-codapet.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-euthanasia-near-me",
+        "file": "_pet-euthanasia-near-me.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-karen-duncan",
+        "file": "_veterinarians_dr-karen-duncan.md"
+      },
+      {
+        "url": "https://www.codapet.com/request-urgent-bookings",
+        "file": "_request-urgent-bookings.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-christina-divine",
+        "file": "_veterinarians_dr-christina-divine.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jason-labes",
+        "file": "_veterinarians_dr-jason-labes.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-stephanie-norman",
+        "file": "_veterinarians_dr-stephanie-norman.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/la-jolla-ca",
+        "file": "_cities_la-jolla-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/vets",
+        "file": "_vets.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-sarah-clem",
+        "file": "_veterinarians_dr-sarah-clem.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/amanda-mccasland",
+        "file": "_experts_amanda-mccasland.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/a-comprehensive-guide-to-understanding-your-cats-lifespan",
+        "file": "_senior-pet-care_a-comprehensive-guide-to-understanding-your-cats-lifespan.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia",
+        "file": "_a-complete-guide-to-pet-euthanasia.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/denver-co",
+        "file": "_cities_denver-co.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/rochester-mn",
+        "file": "_cities_rochester-mn.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/dr-pam-cohen",
+        "file": "_experts_dr-pam-cohen.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/sacramento-ca",
+        "file": "_cities_sacramento-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jason-doolittle",
+        "file": "_veterinarians_dr-jason-doolittle.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-philip-haros",
+        "file": "_veterinarians_dr-philip-haros.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/angela-sims",
+        "file": "_experts_angela-sims.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/los-angeles-ca",
+        "file": "_cities_los-angeles-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/olathe-ks",
+        "file": "_cities_olathe-ks.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-dog-nasal-tumors",
+        "file": "_senior-pet-care_understanding-dog-nasal-tumors.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/kimberly-blair",
+        "file": "_experts_kimberly-blair.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-debbie-yang",
+        "file": "_veterinarians_dr-debbie-yang.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/glendale-az",
+        "file": "_cities_glendale-az.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/when-is-it-time-to-put-your-pet-to-sleep-signs-your-dog-or-cat-may-be-dying",
+        "file": "_how-will-i-know-when-its-time_when-is-it-time-to-put-your-pet-to-sleep-signs-your-dog-or-cat-may-be-dying.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/pottstown-pa",
+        "file": "_cities_pottstown-pa.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/maine-coon-cats-lifespan-and-end-of-life-care",
+        "file": "_senior-pet-care_maine-coon-cats-lifespan-and-end-of-life-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/albuquerque-nm",
+        "file": "_cities_albuquerque-nm.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-alexandria-bufford",
+        "file": "_veterinarians_dr-alexandria-bufford.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/richmond-va",
+        "file": "_cities_richmond-va.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/fort-worth-tx",
+        "file": "_cities_fort-worth-tx.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/what-is-degenerative-myelopathy",
+        "file": "_senior-pet-care_what-is-degenerative-myelopathy.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/how-to-care-for-senior-dogs-and-cats-with-incontinence",
+        "file": "_senior-pet-care_how-to-care-for-senior-dogs-and-cats-with-incontinence.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/marietta-ga",
+        "file": "_cities_marietta-ga.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-josh-williams",
+        "file": "_veterinarians_dr-josh-williams.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/can-you-legally-put-your-pet-to-sleep-a-guide-to-pet-euthanasia-laws-and-your-options",
+        "file": "_a-complete-guide-to-pet-euthanasia_can-you-legally-put-your-pet-to-sleep-a-guide-to-pet-euthanasia-laws-and-your-options.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/6-signs-your-dog-is-approaching-the-end-of-life-and-how-to-help",
+        "file": "_how-will-i-know-when-its-time_6-signs-your-dog-is-approaching-the-end-of-life-and-how-to-help.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/flagstaff-az",
+        "file": "_cities_flagstaff-az.md"
+      },
+      {
+        "url": "https://www.codapet.com/vets/why-Join-CodaPet",
+        "file": "_vets_why-Join-CodaPet.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-louise-mandeville",
+        "file": "_veterinarians_dr-louise-mandeville.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/a-complete-guide-to-understanding-your-dogs-lifespan",
+        "file": "_senior-pet-care_a-complete-guide-to-understanding-your-dogs-lifespan.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-taylor-martin",
+        "file": "_veterinarians_dr-taylor-martin.md"
+      },
+      {
+        "url": "https://www.codapet.com/vets/freelance-veterinarian",
+        "file": "_vets_freelance-veterinarian.md"
+      },
+      {
+        "url": "https://www.codapet.com/vets/community-impact",
+        "file": "_vets_community-impact.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/iowa-city-ia",
+        "file": "_cities_iowa-city-ia.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/minneapolis-mn",
+        "file": "_cities_minneapolis-mn.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/grief-support-for-pet-loss",
+        "file": "_pet-loss-and-grief_grief-support-for-pet-loss.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-helena-carner",
+        "file": "_veterinarians_dr-helena-carner.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/las-vegas-nv",
+        "file": "_cities_las-vegas-nv.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/akron-oh",
+        "file": "_cities_akron-oh.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-courtney-mills",
+        "file": "_veterinarians_dr-courtney-mills.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-brianna-fowler",
+        "file": "_veterinarians_dr-brianna-fowler.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/dr-alexandra-wolfingbarger-providing-serene-transitions-for-pets-in-columbus-oh",
+        "file": "_blog_dr-alexandra-wolfingbarger-providing-serene-transitions-for-pets-in-columbus-oh.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/oklahoma-city-ok",
+        "file": "_cities_oklahoma-city-ok.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/raleigh-nc",
+        "file": "_cities_raleigh-nc.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/edmond-ok",
+        "file": "_cities_edmond-ok.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-danelle-jackson",
+        "file": "_veterinarians_dr-danelle-jackson.md"
+      },
+      {
+        "url": "https://www.codapet.com/marketing/request-brochure",
+        "file": "_marketing_request-brochure.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/where-you-can-have-your-dog-euthanized-and-how-to-choose",
+        "file": "_a-complete-guide-to-pet-euthanasia_where-you-can-have-your-dog-euthanized-and-how-to-choose.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-the-lifespan-of-great-danes",
+        "file": "_senior-pet-care_understanding-the-lifespan-of-great-danes.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/orange-ca",
+        "file": "_cities_orange-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kirsten-stukey",
+        "file": "_veterinarians_dr-kirsten-stukey.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-melissa-magnotta",
+        "file": "_veterinarians_dr-melissa-magnotta.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-end-of-life-care-for-yorkshire-terriers",
+        "file": "_senior-pet-care_understanding-end-of-life-care-for-yorkshire-terriers.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-alexandra-hyman",
+        "file": "_veterinarians_dr-alexandra-hyman.md"
+      },
+      {
+        "url": "https://www.codapet.com/pricing",
+        "file": "_pricing.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-cancer-in-cats-an-overview",
+        "file": "_senior-pet-care_understanding-cancer-in-cats-an-overview.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/",
+        "file": "_how-will-i-know-when-its-time.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/did-i-put-my-pet-to-sleep-too-soon",
+        "file": "_pet-loss-and-grief_did-i-put-my-pet-to-sleep-too-soon.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/youngstown-oh",
+        "file": "_cities_youngstown-oh.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/santa-rosa-ca",
+        "file": "_cities_santa-rosa-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kelli-bays",
+        "file": "_veterinarians_dr-kelli-bays.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/understanding-pet-hospice-care",
+        "file": "_how-will-i-know-when-its-time_understanding-pet-hospice-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/understanding-the-death-of-a-pet-before-during-and-after",
+        "file": "_pet-loss-and-grief_understanding-the-death-of-a-pet-before-during-and-after.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/does-pet-insurance-cover-euthanasia-and-cremation",
+        "file": "_a-complete-guide-to-pet-euthanasia_does-pet-insurance-cover-euthanasia-and-cremation.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lisa-littlejohn",
+        "file": "_veterinarians_dr-lisa-littlejohn.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lara-allison",
+        "file": "_veterinarians_dr-lara-allison.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/manhattan-ks",
+        "file": "_cities_manhattan-ks.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-cremation-near-me",
+        "file": "_pet-cremation-near-me.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lauren-peek",
+        "file": "_veterinarians_dr-lauren-peek.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/columbus-oh",
+        "file": "_cities_columbus-oh.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-april-leblanc",
+        "file": "_veterinarians_dr-april-leblanc.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/navigating-the-unique-journey-of-grieving-a-pet",
+        "file": "_pet-loss-and-grief_navigating-the-unique-journey-of-grieving-a-pet.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/san-jose-ca",
+        "file": "_cities_san-jose-ca.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-rebecca-walton",
+        "file": "_veterinarians_dr-rebecca-walton.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-alex-pruett",
+        "file": "_veterinarians_dr-alex-pruett.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/boca-raton-fl",
+        "file": "_cities_boca-raton-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/courtney-mills-in-home-pet-euthanasia-services-in-jacksonville-fl",
+        "file": "_blog_courtney-mills-in-home-pet-euthanasia-services-in-jacksonville-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lori-thomas",
+        "file": "_veterinarians_dr-lori-thomas.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/florida-keys-fl",
+        "file": "_cities_florida-keys-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/omaha-ne",
+        "file": "_cities_omaha-ne.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-brittany-southern",
+        "file": "_veterinarians_dr-brittany-southern.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/cypress-tx",
+        "file": "_cities_cypress-tx.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-fiv-in-cats-symptoms-care-and-prevention",
+        "file": "_senior-pet-care_understanding-fiv-in-cats-symptoms-care-and-prevention.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/asheville-nc",
+        "file": "_cities_asheville-nc.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-andrea-dover",
+        "file": "_veterinarians_dr-andrea-dover.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/yuma-az",
+        "file": "_cities_yuma-az.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-anna-peterson",
+        "file": "_veterinarians_dr-anna-peterson.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/ogden-ut",
+        "file": "_cities_ogden-ut.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/understanding-dog-hospice-care",
+        "file": "_how-will-i-know-when-its-time_understanding-dog-hospice-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/can-i-let-my-dog-die-naturally",
+        "file": "_a-complete-guide-to-pet-euthanasia_can-i-let-my-dog-die-naturally.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-nicole-ramos",
+        "file": "_veterinarians_dr-nicole-ramos.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-bonnie-goldthwaite",
+        "file": "_veterinarians_dr-bonnie-goldthwaite.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jaime-pickett",
+        "file": "_veterinarians_dr-jaime-pickett.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/birman-cats-a-comprehensive-guide-to-their-lifespan-and-care",
+        "file": "_a-complete-guide-to-pet-euthanasia_birman-cats-a-comprehensive-guide-to-their-lifespan-and-care.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/eastern-iowa-vet-dr-danielle-hundley",
+        "file": "_blog_eastern-iowa-vet-dr-danielle-hundley.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-casey-clark",
+        "file": "_veterinarians_dr-casey-clark.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-dachshund-lifespan-and-health",
+        "file": "_senior-pet-care_understanding-dachshund-lifespan-and-health.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/dog-cancer-treatment-what-you-need-to-know",
+        "file": "_senior-pet-care_dog-cancer-treatment-what-you-need-to-know.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts/erica-messer",
+        "file": "_experts_erica-messer.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/cheyenne-wy",
+        "file": "_cities_cheyenne-wy.md"
+      },
+      {
+        "url": "https://www.codapet.com/how-will-i-know-when-its-time/when-quality-of-life-changes-overnight-emergency-decision-making",
+        "file": "_how-will-i-know-when-its-time_when-quality-of-life-changes-overnight-emergency-decision-making.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/helena-mt",
+        "file": "_cities_helena-mt.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/west-palm-beach-fl",
+        "file": "_cities_west-palm-beach-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/discovering-the-longest-living-dog-breeds",
+        "file": "_senior-pet-care_discovering-the-longest-living-dog-breeds.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jessica-mumm",
+        "file": "_veterinarians_dr-jessica-mumm.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/elgin-il",
+        "file": "_cities_elgin-il.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-feline-upper-respiratory-infections",
+        "file": "_senior-pet-care_understanding-feline-upper-respiratory-infections.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/dr-kim-bagnoni-compassionate-veterinary-care-and-community-leadership-in-augusta-ga",
+        "file": "_blog_dr-kim-bagnoni-compassionate-veterinary-care-and-community-leadership-in-augusta-ga.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/bend-or",
+        "file": "_cities_bend-or.md"
+      },
+      {
+        "url": "https://www.codapet.com/terms-and-conditions",
+        "file": "_terms-and-conditions.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kimberly-gaddis",
+        "file": "_veterinarians_dr-kimberly-gaddis.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jem-scott-emuakpor",
+        "file": "_veterinarians_dr-jem-scott-emuakpor.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/understanding-heartworm-in-dogs-a-comprehensive-guide",
+        "file": "_senior-pet-care_understanding-heartworm-in-dogs-a-comprehensive-guide.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-alex-doss",
+        "file": "_veterinarians_dr-alex-doss.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/bowling-green-ky",
+        "file": "_cities_bowling-green-ky.md"
+      },
+      {
+        "url": "https://www.codapet.com/landing",
+        "file": "_landing.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-brandon-meadows",
+        "file": "_veterinarians_dr-brandon-meadows.md"
+      },
+      {
+        "url": "https://www.codapet.com/senior-pet-care/4-joyful-and-stimulating-activities-to-engage-a-senior-dog",
+        "file": "_senior-pet-care_4-joyful-and-stimulating-activities-to-engage-a-senior-dog.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jill-holt",
+        "file": "_veterinarians_dr-jill-holt.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-jennifer-dykstra",
+        "file": "_veterinarians_dr-jennifer-dykstra.md"
+      },
+      {
+        "url": "https://www.codapet.com/a-complete-guide-to-pet-euthanasia/how-much-does-it-cost-to-put-a-pet-to-sleep",
+        "file": "_a-complete-guide-to-pet-euthanasia_how-much-does-it-cost-to-put-a-pet-to-sleep.md"
+      },
+      {
+        "url": "https://www.codapet.com/pet-loss-and-grief/pet-loss-finding-comfort-in-quotes-poems-prayers-and-songs",
+        "file": "_pet-loss-and-grief_pet-loss-finding-comfort-in-quotes-poems-prayers-and-songs.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/winston-salem-nc",
+        "file": "_cities_winston-salem-nc.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-natalie-dennis",
+        "file": "_veterinarians_dr-natalie-dennis.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-kate-white",
+        "file": "_veterinarians_dr-kate-white.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-lauren-rexing",
+        "file": "_veterinarians_dr-lauren-rexing.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-delia-gregory-macdonald",
+        "file": "_veterinarians_dr-delia-gregory-macdonald.md"
+      },
+      {
+        "url": "https://www.codapet.com/experts",
+        "file": "_experts.md"
+      },
+      {
+        "url": "https://www.codapet.com/veterinarians/dr-alicia-nolfi",
+        "file": "_veterinarians_dr-alicia-nolfi.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/fort-lauderdale-fl",
+        "file": "_cities_fort-lauderdale-fl.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/savannah-ga",
+        "file": "_cities_savannah-ga.md"
+      },
+      {
+        "url": "https://www.codapet.com/cities/austin-tx",
+        "file": "_cities_austin-tx.md"
+      },
+      {
+        "url": "https://www.codapet.com/clinics",
+        "file": "_clinics.md"
+      },
+      {
+        "url": "https://www.codapet.com/blog/dr-mackenzie-treece-bringing-comfort-and-compassion-to-knoxville-s-at-home-pet-care",
+        "file": "_blog_dr-mackenzie-treece-bringing-comfort-and-compassion-to-knoxville-s-at-home-pet-care.md"
+      }
+    ],
+    "dateDownloaded": "2026-01-22T04:00:01.478431"
+  }
+]
