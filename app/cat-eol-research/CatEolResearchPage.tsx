@@ -107,12 +107,32 @@ const PriceCell = ({value}: {value: string}) => {
     .replace(/unknown/gi, '?')
     .replace(/included \(not itemized\)/gi, 'incl.')
     .replace(/not itemized/gi, '—')
+  const textSources = display.split(';').map(s => s.trim()).filter(s => s.length > 0)
+  if (textSources.length > 1) {
+    return (
+      <span className={styles.price}>
+        {textSources.map((source, idx) => (
+          <span key={idx} style={{display: 'block'}}>{source}</span>
+        ))}
+      </span>
+    )
+  }
   return <span className={styles.price}>{display}</span>
 }
 
 const ContactCell = ({value}: {value: string}) => {
   if (!value || value === 'unknown' || value === 'not published') {
     return <span className={styles.noData}>—</span>
+  }
+  const textSources = value.split(';').map(s => s.trim()).filter(s => s.length > 0)
+  if (textSources.length > 1) {
+    return (
+      <span className={styles.contact}>
+        {textSources.map((source, idx) => (
+          <span key={idx} style={{display: 'block'}}>{source}</span>
+        ))}
+      </span>
+    )
   }
   return <span className={styles.contact}>{value}</span>
 }
