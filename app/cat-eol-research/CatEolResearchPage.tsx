@@ -3,6 +3,7 @@ import path from 'path'
 import { marked } from 'marked'
 import styles from './CatEolResearchPage.module.css'
 import ProviderCardView from './ProviderCardView'
+import CloseButton from './CloseButton'
 
 type Provider = {
   name: string
@@ -127,49 +128,6 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) 
   const markdown = hasSelection ? (mdPath && fs.existsSync(mdPath) ? fs.readFileSync(mdPath, 'utf8') : `# ${selectedProvider}\n\nNo report found for this provider under \`cat-eol-research/providers/\`.\n`) : ''
   const html = hasSelection ? marked.parse(markdown) : ''
 
-  const tableContent = (
-    <div className={styles.tableWrap}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th className={`${styles.th} ${styles.sticky}`}>Provider</th>
-            <th className={styles.th} title="In-Home Euthanasia">Home</th>
-            <th className={styles.th} title="Private Cremation Available">Priv</th>
-            <th className={styles.th}>Euthanasia $</th>
-            <th className={styles.th}>Priv Crem $</th>
-            <th className={styles.th}>Comm Crem $</th>
-            <th className={styles.th}>Travel $</th>
-            <th className={styles.th}>After Hrs $</th>
-            <th className={styles.th}>Contact</th>
-          </tr>
-        </thead>
-        <tbody>
-          {providers.map((p, idx) => {
-            const isActive = p.name === selectedProvider
-            const href = `/cat-eol-research?provider=${encodeURIComponent(p.name)}`
-            return (
-              <tr key={p.name || idx} className={`${idx % 2 === 1 ? styles.rowAlt : ''} ${isActive ? styles.rowActive : ''}`}>
-                <td className={`${styles.td} ${styles.sticky} ${styles.providerCell}`}>
-                  <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
-                  {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noreferrer" className={styles.sourceLink}>↗</a>}
-                </td>
-                <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.servesBerkeley} /></td>
-                <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.inHomeEuthanasia} /></td>
-                <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.privateCremation} /></td>
-                <td className={styles.td}><PriceCell value={p.priceEuthanasia} /></td>
-                <td className={styles.td}><PriceCell value={p.pricePrivateCremation} /></td>
-                <td className={styles.td}><PriceCell value={p.priceCommunalCremation} /></td>
-                <td className={styles.td}><PriceCell value={p.priceTravel} /></td>
-                <td className={styles.td}><PriceCell value={p.priceAfterHours} /></td>
-                <td className={styles.td}><ContactCell value={p.howToSchedule} /></td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
-    </div>
-  )
-
   return (
     <div className={styles.wrap}>
       <div className={styles.titleRow}>
@@ -178,13 +136,92 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) 
       </div>
       {hasSelection ? (
         <div className={styles.split}>
-          <div className={`${styles.card} ${styles.leftPane}`}>{tableContent}</div>
+          <div className={`${styles.card} ${styles.leftPane}`}>
+            <div className={styles.tableWrap}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th className={`${styles.th} ${styles.sticky}`}>Provider</th>
+                    <th className={styles.th} title="In-Home Euthanasia">Home</th>
+                    <th className={styles.th} title="Private Cremation Available">Priv</th>
+                    <th className={styles.th}>Euthanasia $</th>
+                    <th className={styles.th}>Priv Crem $</th>
+                    <th className={styles.th}>Comm Crem $</th>
+                    <th className={styles.th}>Travel $</th>
+                    <th className={styles.th}>After Hrs $</th>
+                    <th className={styles.th}>Contact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {providers.map((p, idx) => {
+                    const isActive = p.name === selectedProvider
+                    const href = `/cat-eol-research?provider=${encodeURIComponent(p.name)}`
+                    return (
+                      <tr key={p.name || idx} className={`${idx % 2 === 1 ? styles.rowAlt : ''} ${isActive ? styles.rowActive : ''}`}>
+                        <td className={`${styles.td} ${styles.sticky} ${styles.providerCell}`}>
+                          <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
+                          {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noreferrer" className={styles.sourceLink}>↗</a>}
+                        </td>
+                        <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.inHomeEuthanasia} /></td>
+                        <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.privateCremation} /></td>
+                        <td className={styles.td}><PriceCell value={p.priceEuthanasia} /></td>
+                        <td className={styles.td}><PriceCell value={p.pricePrivateCremation} /></td>
+                        <td className={styles.td}><PriceCell value={p.priceCommunalCremation} /></td>
+                        <td className={styles.td}><PriceCell value={p.priceTravel} /></td>
+                        <td className={styles.td}><PriceCell value={p.priceAfterHours} /></td>
+                        <td className={styles.td}><ContactCell value={p.howToSchedule} /></td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
           <div className={`${styles.card} ${styles.rightPane}`}>
+            <CloseButton />
             <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: html }} />
           </div>
         </div>
       ) : (
-        <div className={styles.card}>{tableContent}</div>
+        <div className={styles.tableWrapFullWidth}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th className={`${styles.th} ${styles.sticky}`}>Provider</th>
+                <th className={styles.th} title="In-Home Euthanasia">Home</th>
+                <th className={styles.th} title="Private Cremation Available">Priv</th>
+                <th className={styles.th}>Euthanasia $</th>
+                <th className={styles.th}>Priv Crem $</th>
+                <th className={styles.th}>Comm Crem $</th>
+                <th className={styles.th}>Travel $</th>
+                <th className={styles.th}>After Hrs $</th>
+                <th className={styles.th}>Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              {providers.map((p, idx) => {
+                const isActive = p.name === selectedProvider
+                const href = `/cat-eol-research?provider=${encodeURIComponent(p.name)}`
+                return (
+                  <tr key={p.name || idx} className={`${idx % 2 === 1 ? styles.rowAlt : ''} ${isActive ? styles.rowActive : ''}`}>
+                    <td className={`${styles.td} ${styles.sticky} ${styles.providerCell}`}>
+                      <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
+                      {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noreferrer" className={styles.sourceLink}>↗</a>}
+                    </td>
+                    <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.inHomeEuthanasia} /></td>
+                    <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.privateCremation} /></td>
+                    <td className={styles.td}><PriceCell value={p.priceEuthanasia} /></td>
+                    <td className={styles.td}><PriceCell value={p.pricePrivateCremation} /></td>
+                    <td className={styles.td}><PriceCell value={p.priceCommunalCremation} /></td>
+                    <td className={styles.td}><PriceCell value={p.priceTravel} /></td>
+                    <td className={styles.td}><PriceCell value={p.priceAfterHours} /></td>
+                    <td className={styles.td}><ContactCell value={p.howToSchedule} /></td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
       <ProviderCardView providers={providers} selectedProvider={selectedProvider} />
     </div>

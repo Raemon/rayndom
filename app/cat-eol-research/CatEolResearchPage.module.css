@@ -35,6 +35,31 @@
 }
 .rightPane {
   min-width: 0;
+  position: relative;
+}
+.closeButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: #888;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.closeButton:hover {
+  color: #333;
+}
+@media (prefers-color-scheme: dark) {
+  .closeButton { color: #aaa; }
+  .closeButton:hover { color: #fff; }
 }
 .card {
   background: rgba(0, 0, 0, 0.02);
@@ -44,7 +69,14 @@
   .card { background: rgba(255, 255, 255, 0.04); }
 }
 .tableWrap {
-  overflow-x: auto;
+  overflow: auto;
+}
+.tableWrapFullWidth {
+  overflow: auto;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 0;
+  max-width: none;
 }
 .table {
   width: 100%;
@@ -240,4 +272,5 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 12px;
+  margin-top: 12px;
 }
