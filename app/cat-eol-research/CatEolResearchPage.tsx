@@ -143,6 +143,8 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string, si
                 <thead>
                   <tr>
                     <th className={`${styles.th} ${styles.sticky}`}>Provider</th>
+                    <th className={styles.th}>Link</th>
+                    <th className={styles.th}>Notes</th>
                     <th className={styles.th} title="In-Home Euthanasia">Home</th>
                     <th className={styles.th} title="Private Cremation Available">Priv</th>
                     <th className={styles.th}>Euthanasia $</th>
@@ -160,11 +162,10 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string, si
                     return (
                       <tr key={p.name || idx} className={`${idx % 2 === 1 ? styles.rowAlt : ''} ${isActive ? styles.rowActive : ''}`}>
                         <td className={`${styles.td} ${styles.sticky} ${styles.providerCell}`}>
-                          <div className={styles.providerCellInner}>
-                            <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
-                            {p.sourceUrl && <a href={`/cat-eol-research?site=${encodeURIComponent(p.sourceUrl)}`} className={styles.sourceLink}>↗</a>}
-                          </div>
+                          <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
                         </td>
+                        <td className={`${styles.td} ${styles.center}`}>{p.sourceUrl && <a href={`/cat-eol-research?site=${encodeURIComponent(p.sourceUrl)}`} className={styles.sourceLink}>🔗</a>}</td>
+                        <td className={styles.td}><a href={href} className={styles.notesLink}>📝</a></td>
                         <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.inHomeEuthanasia} /></td>
                         <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.privateCremation} /></td>
                         <td className={styles.td}><PriceCell value={p.priceEuthanasia} /></td>
@@ -195,6 +196,8 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string, si
             <thead>
               <tr>
                 <th className={`${styles.th} ${styles.sticky}`}>Provider</th>
+                <th className={styles.th}>Link</th>
+                <th className={styles.th}>Notes</th>
                 <th className={styles.th} title="In-Home Euthanasia">Home</th>
                 <th className={styles.th} title="Private Cremation Available">Priv</th>
                 <th className={styles.th}>Euthanasia $</th>
@@ -213,8 +216,9 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string, si
                   <tr key={p.name || idx} className={`${idx % 2 === 1 ? styles.rowAlt : ''} ${isActive ? styles.rowActive : ''}`}>
                     <td className={`${styles.td} ${styles.sticky} ${styles.providerCell}`}>
                       <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
-                      {p.sourceUrl && <a href={`/cat-eol-research?site=${encodeURIComponent(p.sourceUrl)}`} className={styles.sourceLink}>↗</a>}
                     </td>
+                    <td className={`${styles.td} ${styles.center}`}>{p.sourceUrl && <a href={`/cat-eol-research?site=${encodeURIComponent(p.sourceUrl)}`} className={styles.sourceLink}>🔗</a>}</td>
+                    <td className={styles.td}><a href={href} className={styles.notesLink}>📝</a></td>
                     <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.inHomeEuthanasia} /></td>
                     <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.privateCremation} /></td>
                     <td className={styles.td}><PriceCell value={p.priceEuthanasia} /></td>

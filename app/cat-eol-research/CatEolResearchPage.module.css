@@ -124,6 +124,7 @@
 }
 .providerCell {
   max-width: 220px;
+  white-space: nowrap;
 }
 .providerCellInner {
   display: flex;
