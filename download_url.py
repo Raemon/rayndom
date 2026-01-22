@@ -35,16 +35,17 @@ import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import Lock
 
+def strip_query_params(url):
+    """Remove query parameters from URL."""
+    parsed = urlparse(url)
+    return urlunparse((parsed.scheme, parsed.netloc, parsed.path, parsed.params, '', ''))
+
 def sanitize_filename(url):
-    """Convert URL to filesystem-safe filename (max 200 chars)."""
+    """Convert URL to filesystem-safe filename (max 200 chars), ignoring query params."""
     parsed = urlparse(url)
     path = parsed.path.rstrip('/') or 'index'
     path = path.replace('/', '_').replace('\\', '_')
-    query = parsed.query.replace('&', '_').replace('=', '_') if parsed.query else ''
-    filename = path
-    if query:
-        filename += '_' + query
-    filename = re.sub(r'[^\w\-_.]', '', filename)
+    filename = re.sub(r'[^\w\-_.]', '', path)
     return filename[:200]
 
 def get_domain(url):
@@ -86,7 +87,7 @@ def download_content(url):
         return (None, False, None)
 
 def extract_links(html, base_url):
-    """Extract all same-domain links from HTML, normalized (no fragments)."""
+    """Extract all same-domain links from HTML, normalized (no fragments or query params)."""
     soup = BeautifulSoup(html, 'html.parser')
     links = set()
     parsed_base = urlparse(base_url)
@@ -95,7 +96,7 @@ def extract_links(html, base_url):
         absolute_url = urljoin(base_url, href)
         parsed = urlparse(absolute_url)
         if parsed.scheme in ('http', 'https') and parsed.netloc == parsed_base.netloc:
-            normalized = urlunparse((parsed.scheme, parsed.netloc, parsed.path, parsed.params, parsed.query, ''))
+            normalized = urlunparse((parsed.scheme, parsed.netloc, parsed.path, parsed.params, '', ''))
             links.add(normalized)
     return list(links)
 
@@ -193,6 +194,8 @@ def process_domain(start_url, conversation_topic, processed_urls, processed_urls
 
 def run_in_background(conversation_topic, urls):
     """Re-launch this script as a background process without --bg flag."""
+    # Strip query params and deduplicate before spawning background process
+    urls = list(dict.fromkeys(strip_query_params(url) for url in urls))
     script_path = os.path.abspath(__file__)
     cmd = [sys.executable, script_path, conversation_topic] + urls
     if os.name == 'nt':  # Windows
@@ -209,6 +212,11 @@ def run_in_background(conversation_topic, urls):
 
 def run_download(conversation_topic, start_urls):
     """Main download logic: process all URLs in parallel, save results."""
+    # Strip query params and deduplicate input URLs
+    normalized_urls = list(dict.fromkeys(strip_query_params(url) for url in start_urls))
+    if len(normalized_urls) < len(start_urls):
+        print(f"Deduplicated {len(start_urls)} URLs to {len(normalized_urls)} (stripped query params)")
+    start_urls = normalized_urls
     print(f"Processing {len(start_urls)} URL(s) in parallel...")
     print(f"Conversation topic: {conversation_topic}")
     processed_urls = {}
