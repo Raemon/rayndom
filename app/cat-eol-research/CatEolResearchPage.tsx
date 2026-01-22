@@ -117,16 +117,17 @@ const ContactCell = ({value}: {value: string}) => {
   return <span className={styles.contact}>{value}</span>
 }
 
-const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) => {
+const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string, site?: string}}) => {
   const csvPath = path.join(process.cwd(), 'cat-eol-research', 'providers.csv')
   const csvText = fs.readFileSync(csvPath, 'utf8')
   const providers = parseCsvToProviders(csvText)
 
   const selectedProvider = searchParams?.provider || ''
-  const hasSelection = !!selectedProvider
-  const mdPath = hasSelection ? resolveProviderReport(selectedProvider) : ''
-  const markdown = hasSelection ? (mdPath && fs.existsSync(mdPath) ? fs.readFileSync(mdPath, 'utf8') : `# ${selectedProvider}\n\nNo report found for this provider under \`cat-eol-research/providers/\`.\n`) : ''
-  const html = hasSelection ? marked.parse(markdown) : ''
+  const siteUrl = searchParams?.site || ''
+  const hasSelection = !!selectedProvider || !!siteUrl
+  const mdPath = selectedProvider ? resolveProviderReport(selectedProvider) : ''
+  const markdown = selectedProvider ? (mdPath && fs.existsSync(mdPath) ? fs.readFileSync(mdPath, 'utf8') : `# ${selectedProvider}\n\nNo report found for this provider under \`cat-eol-research/providers/\`.\n`) : ''
+  const html = selectedProvider ? marked.parse(markdown) : ''
 
   return (
     <div className={styles.wrap}>
@@ -161,7 +162,7 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) 
                         <td className={`${styles.td} ${styles.sticky} ${styles.providerCell}`}>
                           <div className={styles.providerCellInner}>
                             <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
-                            {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noreferrer" className={styles.sourceLink}>↗</a>}
+                            {p.sourceUrl && <a href={`/cat-eol-research?site=${encodeURIComponent(p.sourceUrl)}`} className={styles.sourceLink}>↗</a>}
                           </div>
                         </td>
                         <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.inHomeEuthanasia} /></td>
@@ -181,7 +182,11 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) 
           </div>
           <div className={`${styles.card} ${styles.rightPane}`}>
             <CloseButton />
-            <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: html }} />
+            {siteUrl ? (
+              <iframe src={siteUrl} className={styles.iframe} />
+            ) : (
+              <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: html }} />
+            )}
           </div>
         </div>
       ) : (
@@ -208,7 +213,7 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) 
                   <tr key={p.name || idx} className={`${idx % 2 === 1 ? styles.rowAlt : ''} ${isActive ? styles.rowActive : ''}`}>
                     <td className={`${styles.td} ${styles.sticky} ${styles.providerCell}`}>
                       <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
-                      {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noreferrer" className={styles.sourceLink}>↗</a>}
+                      {p.sourceUrl && <a href={`/cat-eol-research?site=${encodeURIComponent(p.sourceUrl)}`} className={styles.sourceLink}>↗</a>}
                     </td>
                     <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.inHomeEuthanasia} /></td>
                     <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.privateCremation} /></td>

@@ -1,7 +1,4 @@
 .wrap {
-  padding: 12px;
-  max-width: 1600px;
-  margin: 0 auto;
 }
 .titleRow {
   display: flex;
@@ -275,4 +272,9 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 12px;
   margin-top: 12px;
+}
+.iframe {
+  width: 100%;
+  height: calc(100vh - 100px);
+  border: none;
 }
