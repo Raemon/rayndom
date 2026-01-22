@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { marked } from 'marked'
 import styles from './CatEolResearchPage.module.css'
+import ProviderCardView from './ProviderCardView'
 
 type Provider = {
   name: string
@@ -100,33 +101,19 @@ const PriceCell = ({value}: {value: string}) => {
   if (!value || value === 'unknown' || value === 'not published') {
     return <span className={styles.noData}>—</span>
   }
-  const shortened = value
+  const display = value
     .replace(/not published/gi, '—')
     .replace(/unknown/gi, '?')
     .replace(/included \(not itemized\)/gi, 'incl.')
     .replace(/not itemized/gi, '—')
-  if (shortened.length > 40) {
-    return <span className={styles.priceComplex} title={value}>{shortened.slice(0, 37)}…</span>
-  }
-  return <span className={styles.price}>{shortened}</span>
+  return <span className={styles.price}>{display}</span>
 }
 
 const ContactCell = ({value}: {value: string}) => {
   if (!value || value === 'unknown' || value === 'not published') {
     return <span className={styles.noData}>—</span>
   }
-  const phoneMatch = value.match(/\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/)
-  const phone = phoneMatch ? phoneMatch[0] : null
-  const hasOnline = /online|book|website|form/i.test(value)
-  const hasText = /text/i.test(value)
-  return (
-    <span className={styles.contact} title={value}>
-      {phone && <span className={styles.phone}>{phone}</span>}
-      {hasOnline && <span className={styles.tag}>web</span>}
-      {hasText && <span className={styles.tag}>txt</span>}
-      {!phone && !hasOnline && !hasText && value.slice(0, 20)}
-    </span>
-  )
+  return <span className={styles.contact}>{value}</span>
 }
 
 const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) => {
@@ -200,6 +187,7 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) 
       ) : (
         <div className={styles.card}>{tableContent}</div>
       )}
+      <ProviderCardView providers={providers} selectedProvider={selectedProvider} />
     </div>
   )
 }
