@@ -1,0 +1,20 @@
+[
+  {
+    "siteName": "rainbowbridgevet.com",
+    "mainUrl": {
+      "url": "https://rainbowbridgevet.com/",
+      "file": "index.md"
+    },
+    "otherUrls": [
+      {
+        "url": "https://rainbowbridgevet.com/new-folder",
+        "file": "_new-folder.md"
+      },
+      {
+        "url": "https://rainbowbridgevet.com/new-page-1",
+        "file": "_new-page-1.md"
+      }
+    ],
+    "dateDownloaded": "2026-01-22T03:53:14.084621"
+  }
+]

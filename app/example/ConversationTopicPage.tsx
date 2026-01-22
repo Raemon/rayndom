@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { marked } from 'marked'
 import ConversationTopicSiteItem from './ConversationTopicSiteItem'
+import MarkdownContent from './MarkdownContent'
 
 export type DomainInfo = {
   domain: string
@@ -61,7 +62,7 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
 
   return (
     <div className="p-5 flex gap-5">
-      <div className="w-[500px] flex-shrink-0 max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <div className="w-[300px] flex-shrink-0 max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {title && <h1 className="text-lg m-0 mb-3">{title}</h1>}
         <div>
           {domains.map(domainInfo => (
@@ -74,7 +75,7 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
           ))}
         </div>
       </div>
-      <div className="flex-1 max-h-[90vh] overflow-y-auto">
+      <div className="flex-1 max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {selectedFile && (
           <div>
             <div className="mb-2 text-xs text-gray-600">
@@ -83,7 +84,7 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
             </div>
             {loading && <div>Loading...</div>}
             {!loading && getFileType(selectedFile.file) === 'markdown' && content && (
-              <div dangerouslySetInnerHTML={{ __html: content }} className="leading-[1.6]" />
+              <MarkdownContent html={content} />
             )}
             {!loading && getFileType(selectedFile.file) === 'image' && (
               <img src={getFileUrl(selectedFile.domain, selectedFile.file)} alt={selectedFile.file} className="max-w-full" />
