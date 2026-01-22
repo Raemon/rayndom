@@ -1,0 +1,162 @@
+.wrap {
+  padding: 12px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.titleRow {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.split {
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .split {
+    display: block;
+  }
+}
+
+.leftPane {
+  width: 50vw;
+}
+
+@media (max-width: 900px) {
+  .leftPane {
+    width: auto;
+    margin-bottom: 12px;
+  }
+}
+
+.rightPane {
+  flex: 1;
+  min-width: 320px;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.th {
+  text-align: left;
+  font-weight: 600;
+  padding: 6px 8px;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+.td {
+  padding: 6px 8px;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.rowAlt {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+@media (prefers-color-scheme: dark) {
+  .rowAlt {
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+.providerLink {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.providerLinkActive {
+  font-weight: 700;
+}
+
+.markdown {
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.markdown h1 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.markdown h2 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 10px 0 6px 0;
+}
+
+.markdown h3 {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 10px 0 6px 0;
+}
+
+.markdown p {
+  margin: 6px 0;
+}
+
+.markdown ul {
+  margin: 6px 0 6px 18px;
+}
+
+.markdown li {
+  margin: 2px 0;
+}
+
+.markdown code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+
+.markdown a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
