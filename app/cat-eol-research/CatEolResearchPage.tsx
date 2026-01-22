@@ -159,8 +159,10 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) 
                     return (
                       <tr key={p.name || idx} className={`${idx % 2 === 1 ? styles.rowAlt : ''} ${isActive ? styles.rowActive : ''}`}>
                         <td className={`${styles.td} ${styles.sticky} ${styles.providerCell}`}>
-                          <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
-                          {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noreferrer" className={styles.sourceLink}>↗</a>}
+                          <div className={styles.providerCellInner}>
+                            <a className={`${styles.providerLink} ${isActive ? styles.providerLinkActive : ''}`} href={href}>{p.name}</a>
+                            {p.sourceUrl && <a href={p.sourceUrl} target="_blank" rel="noreferrer" className={styles.sourceLink}>↗</a>}
+                          </div>
                         </td>
                         <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.inHomeEuthanasia} /></td>
                         <td className={`${styles.td} ${styles.center}`}><TriStateIcon value={p.privateCremation} /></td>
