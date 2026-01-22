@@ -133,7 +133,6 @@ const CatEolResearchPage = ({searchParams}:{searchParams?:{provider?: string}}) 
         <thead>
           <tr>
             <th className={`${styles.th} ${styles.sticky}`}>Provider</th>
-            <th className={styles.th} title="Serves Berkeley">Berk</th>
             <th className={styles.th} title="In-Home Euthanasia">Home</th>
             <th className={styles.th} title="Private Cremation Available">Priv</th>
             <th className={styles.th}>Euthanasia $</th>
