@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import ConversationTopicPage, { DomainInfo } from './ConversationTopicPage'
 
-function getDomainsFromDownloads(): DomainInfo[] {
-  const downloadsPath = path.join(process.cwd(), 'app', 'conversation-topic', 'downloads')
+export function getDomainsFromDownloads(topic: string): DomainInfo[] {
+  const downloadsPath = path.join(process.cwd(), 'app', topic, 'downloads')
   if (!fs.existsSync(downloadsPath)) return []
   const entries = fs.readdirSync(downloadsPath, { withFileTypes: true })
   const domainFolders = entries.filter(e => e.isDirectory() && !e.name.startsWith('.'))
@@ -16,6 +16,6 @@ function getDomainsFromDownloads(): DomainInfo[] {
 }
 
 export default function Page() {
-  const domains = getDomainsFromDownloads()
-  return <ConversationTopicPage domains={domains} />
+  const domains = getDomainsFromDownloads('example')
+  return <ConversationTopicPage domains={domains} topic="example" title="Example" />
 }

@@ -14,7 +14,13 @@ export type SelectedFile = {
   showAsIframe?: boolean
 }
 
-const ConversationTopicPage = ({ domains, topic = 'conversation-topic' }: { domains: DomainInfo[], topic?: string }) => {
+type Props = {
+  domains: DomainInfo[]
+  topic: string
+  title?: string
+}
+
+const ConversationTopicPage = ({ domains, topic, title }: Props) => {
   const [selectedFile, setSelectedFile] = useState<SelectedFile | null>(null)
   const [content, setContent] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -56,7 +62,7 @@ const ConversationTopicPage = ({ domains, topic = 'conversation-topic' }: { doma
   return (
     <div className="p-5 flex gap-5">
       <div className="w-[500px] flex-shrink-0 max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-        <h1 className="text-lg m-0 mb-3">Conversation Topic</h1>
+        {title && <h1 className="text-lg m-0 mb-3">{title}</h1>}
         <div>
           {domains.map(domainInfo => (
             <ConversationTopicSiteItem
