@@ -11,6 +11,7 @@ export type DomainInfo = {
 export type SelectedFile = {
   domain: string
   file: string
+  showAsIframe?: boolean
 }
 
 const ConversationTopicPage = ({ domains }: { domains: DomainInfo[] }) => {
@@ -83,6 +84,9 @@ const ConversationTopicPage = ({ domains }: { domains: DomainInfo[] }) => {
             )}
             {!loading && getFileType(selectedFile.file) === 'pdf' && (
               <iframe src={getFileUrl(selectedFile.domain, selectedFile.file)} className="w-full h-[80vh] border-none" />
+            )}
+            {selectedFile.showAsIframe && (
+              <iframe src={`https://${selectedFile.domain}`} className="w-full h-[80vh] border-none" />
             )}
           </div>
         )}
