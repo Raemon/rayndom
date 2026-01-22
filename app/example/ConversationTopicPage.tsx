@@ -14,7 +14,7 @@ export type SelectedFile = {
   showAsIframe?: boolean
 }
 
-const ConversationTopicPage = ({ domains }: { domains: DomainInfo[] }) => {
+const ConversationTopicPage = ({ domains, topic = 'conversation-topic' }: { domains: DomainInfo[], topic?: string }) => {
   const [selectedFile, setSelectedFile] = useState<SelectedFile | null>(null)
   const [content, setContent] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -27,7 +27,7 @@ const ConversationTopicPage = ({ domains }: { domains: DomainInfo[] }) => {
     const ext = selectedFile.file.split('.').pop()?.toLowerCase()
     if (ext === 'md') {
       setLoading(true)
-      fetch(`/api/conversation-topic/file?domain=${encodeURIComponent(selectedFile.domain)}&file=${encodeURIComponent(selectedFile.file)}`)
+      fetch(`/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(selectedFile.domain)}&file=${encodeURIComponent(selectedFile.file)}`)
         .then(res => res.json())
         .then(data => {
           if (data.type === 'markdown') {
@@ -50,7 +50,7 @@ const ConversationTopicPage = ({ domains }: { domains: DomainInfo[] }) => {
   }
 
   const getFileUrl = (domain: string, file: string) => {
-    return `/api/conversation-topic/file?domain=${encodeURIComponent(domain)}&file=${encodeURIComponent(file)}`
+    return `/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(domain)}&file=${encodeURIComponent(file)}`
   }
 
   return (

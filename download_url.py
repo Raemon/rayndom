@@ -13,11 +13,11 @@ LLM USAGE:
     This will:
     - Download each URL and crawl all same-domain links recursively
     - Convert HTML to markdown, preserve other file types as-is
-    - Save to: <topic>/downloads/<domain>/*.md
+    - Save to: app/<topic>/downloads/<domain>/*.md
     - Create metadata.json per domain with download info
     
     Use --bg when you want to continue other tasks while downloads run in parallel.
-    Background logs saved to: <topic>/downloads/.logs/
+    Background logs saved to: app/<topic>/downloads/.logs/
 
 Dependencies: pip install requests beautifulsoup4 html2text
 """
@@ -119,6 +119,43 @@ def html_to_markdown(html):
     markdown = h.handle(str(body))
     return markdown
 
+def html_body_to_markdown(html):
+    """Convert HTML body to markdown, no filtering."""
+    soup = BeautifulSoup(html, 'html.parser')
+    body = soup.find('body')
+    if not body:
+        return ""
+    h = html2text.HTML2Text()
+    h.ignore_links = False
+    h.ignore_images = True
+    h.body_width = 0
+    return h.handle(str(body))
+
+def html_content_to_markdown(html):
+    """Convert only main content elements (p, tables, blockquotes, lists, headings, etc) to markdown."""
+    soup = BeautifulSoup(html, 'html.parser')
+    body = soup.find('body')
+    if not body:
+        return ""
+    # Whitelist of content elements
+    content_tags = ['p', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 
+                    'blockquote', 'ul', 'ol', 'li', 'dl', 'dt', 'dd',
+                    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+                    'pre', 'code', 'article', 'section', 'main', 'figure', 'figcaption']
+    # Create a new soup with only content elements
+    new_soup = BeautifulSoup('<div></div>', 'html.parser')
+    container = new_soup.div
+    for element in body.find_all(content_tags):
+        # Skip if this element is nested inside another content element we'll capture
+        if element.find_parent(content_tags):
+            continue
+        container.append(element.extract())
+    h = html2text.HTML2Text()
+    h.ignore_links = False
+    h.ignore_images = True
+    h.body_width = 0
+    return h.handle(str(container))
+
 def process_url(url, processed_urls, processed_urls_lock, base_domain, conversation_topic):
     """Process single URL: download, save (as .md for HTML, original ext otherwise), return discovered links."""
     domain = get_domain(url)
@@ -132,7 +169,7 @@ def process_url(url, processed_urls, processed_urls_lock, base_domain, conversat
     content, is_binary, content_type = download_content(url)
     if content is None:
         return ([], None, domain)
-    domain_dir = os.path.join(conversation_topic, 'downloads', domain)
+    domain_dir = os.path.join('app', conversation_topic, 'downloads', domain)
     os.makedirs(domain_dir, exist_ok=True)
     filename_base = sanitize_filename(url)
     url_ext = get_url_extension(url)
@@ -148,13 +185,24 @@ def process_url(url, processed_urls, processed_urls_lock, base_domain, conversat
         print(f"  Saved: {file_path}")
         saved_filename = f"{filename_base}{url_ext}"
         return ([], saved_filename, domain)
-    # HTML content: convert to markdown
+    # HTML content: convert to markdown (three versions)
     html = content
+    # 1. Current version (body with nav/img removed)
     markdown = html_to_markdown(html)
     markdown_path = os.path.join(domain_dir, f"{filename_base}.md")
     with open(markdown_path, 'w', encoding='utf-8') as f:
         f.write(markdown)
-    print(f"  Saved Markdown: {markdown_path}")
+    # 2. Body-only version
+    markdown_body = html_body_to_markdown(html)
+    body_path = os.path.join(domain_dir, f"{filename_base}_body.md")
+    with open(body_path, 'w', encoding='utf-8') as f:
+        f.write(markdown_body)
+    # 3. Content-only version (whitelisted elements)
+    markdown_content = html_content_to_markdown(html)
+    content_path = os.path.join(domain_dir, f"{filename_base}_content.md")
+    with open(content_path, 'w', encoding='utf-8') as f:
+        f.write(markdown_content)
+    print(f"  Saved Markdown: {markdown_path} (+_body.md, +_content.md)")
     links = extract_links(html, url)
     print(f"  Found {len(links)} links")
     saved_filename = f"{filename_base}.md"
@@ -201,14 +249,14 @@ def run_in_background(conversation_topic, urls):
     if os.name == 'nt':  # Windows
         subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)
     else:  # Unix-like (macOS, Linux)
-        log_dir = os.path.join(conversation_topic, 'downloads', '.logs')
+        log_dir = os.path.join('app', conversation_topic, 'downloads', '.logs')
         os.makedirs(log_dir, exist_ok=True)
         url_hash = hashlib.md5(' '.join(urls).encode()).hexdigest()[:8]
         log_file = os.path.join(log_dir, f'download_{url_hash}.log')
         with open(log_file, 'w') as log:
             subprocess.Popen(cmd, stdout=log, stderr=log, start_new_session=True)
     print(f"Started background download for {len(urls)} URL(s) in topic '{conversation_topic}'")
-    print(f"Downloads will be saved to: {conversation_topic}/downloads/")
+    print(f"Downloads will be saved to: app/{conversation_topic}/downloads/")
 
 def run_download(conversation_topic, start_urls):
     """Main download logic: process all URLs in parallel, save results."""
@@ -247,7 +295,7 @@ def run_download(conversation_topic, start_urls):
             "otherUrls": result['otherUrls'],
             "dateDownloaded": datetime.now().isoformat()
         }]
-        domain_dir = os.path.join(conversation_topic, 'downloads', domain)
+        domain_dir = os.path.join('app', conversation_topic, 'downloads', domain)
         os.makedirs(domain_dir, exist_ok=True)
         metadata_path = os.path.join(domain_dir, 'metadata.json')
         with open(metadata_path, 'w', encoding='utf-8') as f:

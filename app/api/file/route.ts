@@ -4,12 +4,13 @@ import path from 'path'
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
+  const topic = searchParams.get('topic')
   const domain = searchParams.get('domain')
   const file = searchParams.get('file')
-  if (!domain || !file) {
-    return NextResponse.json({ error: 'Missing domain or file parameter' }, { status: 400 })
+  if (!topic || !domain || !file) {
+    return NextResponse.json({ error: 'Missing topic, domain or file parameter' }, { status: 400 })
   }
-  const filePath = path.join(process.cwd(), 'app', 'cat-euthanasia-berkeley', 'downloads', domain, file)
+  const filePath = path.join(process.cwd(), 'app', topic, 'downloads', domain, file)
   if (!fs.existsSync(filePath)) {
     return NextResponse.json({ error: 'File not found' }, { status: 404 })
   }
