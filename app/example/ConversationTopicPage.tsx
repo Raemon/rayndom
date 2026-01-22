@@ -27,6 +27,12 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    if (domains.length > 0 && domains[0].files.length > 0) {
+      setSelectedFile({ domain: domains[0].domain, file: domains[0].files[0] })
+    }
+  }, [])
+
+  useEffect(() => {
     if (!selectedFile) {
       setContent(null)
       return
@@ -65,12 +71,13 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
       <div className="w-[300px] flex-shrink-0 max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {title && <h1 className="text-lg m-0 mb-3">{title}</h1>}
         <div>
-          {domains.map(domainInfo => (
+          {domains.map((domainInfo, index) => (
             <ConversationTopicSiteItem
               key={domainInfo.domain}
               domainInfo={domainInfo}
               selectedFile={selectedFile}
               onSelectFile={setSelectedFile}
+              initiallyExpanded={index === 0}
             />
           ))}
         </div>

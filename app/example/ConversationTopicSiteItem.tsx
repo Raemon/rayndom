@@ -5,10 +5,11 @@ type Props = {
   domainInfo: DomainInfo
   selectedFile: SelectedFile | null
   onSelectFile: (file: SelectedFile | null) => void
+  initiallyExpanded?: boolean
 }
 
-const ConversationTopicSiteItem = ({domainInfo, selectedFile, onSelectFile}: Props) => {
-  const [isExpanded, setIsExpanded] = useState(false)
+const ConversationTopicSiteItem = ({domainInfo, selectedFile, onSelectFile, initiallyExpanded = false}: Props) => {
+  const [isExpanded, setIsExpanded] = useState(initiallyExpanded)
   const isSupported = (file: string) => {
     const ext = file.split('.').pop()?.toLowerCase()
     return ext === 'md' || ext === 'pdf' || ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'].includes(ext || '')
