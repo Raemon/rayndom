@@ -7,7 +7,7 @@ Website: https://www.goldengatevet.com/
 - In-home euthanasia: Yes (published pricing tiers by weight)
 - Private cremation: Yes (pricing starts at $300; includes urn selection; direct shipping included)
 - Expected wait time: Must be scheduled one or more days in advance (per pricing page; specific earliest-available not listed)
-- Scheduling: Not captured yet (need to confirm phone/email/form flow)
+- Scheduling: Phone (415) 665-1340 or email bavhca@gmail.com
 
 ## Pricing breakdown (itemized)
 
@@ -20,9 +20,18 @@ Website: https://www.goldengatevet.com/
 - Body transport: $150 (Body Removal & Transport for Bubbling Wells cremation; for patients they provided euthanasia services for)
 - Incidentals to consider: Cancellation fee $350 (<12 hours before appointment); state-required rabies testing fee $300 if bite within 10 days (per policy); add-on urn/memorial items may have added fee (implied); taxes/shipping for add-ons (if any)
 
+## Additional services (from pricing page)
+
+- Quality of Life Appointment: $450 weekday, $525 weekend
+- Hospice Appointment: $650 weekday, $725 weekend (includes up to 30 days case management)
+- Tech Visit: $150 for 30 min, $75 each additional half hour
+- Body Removal (if already passed): $250 (0-50 lbs), $300 (>50 lbs)
+
 ## Scheduling details
 
-Pricing page notes: some services must be scheduled one or more days in advance; after-hours is “subject to availability”. How to schedule (phone/email/form) is TBD.
+Pricing page notes: some services must be scheduled one or more days in advance; after-hours is "subject to availability".
+
+**Contact:** Phone **(415) 665-1340**, email bavhca@gmail.com. Address: 491 27th Avenue, San Francisco, CA 94121.
 
 ## Sources (archived HTML)
 

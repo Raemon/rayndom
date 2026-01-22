@@ -4,10 +4,11 @@ Website: https://www.berkeleydogandcat.com/
 
 ## Summary
 
-- In-home euthanasia: Not described on their end-of-life page (appears to be in-clinic end-of-life care + euthanasia; verify)
+- In-home euthanasia: **No** — their end-of-life page describes in-clinic euthanasia only; no mention of home visits
 - Private cremation: They partner with West Coast Pet Memorial Services (aftercare); pricing not listed
 - Expected wait time: Not listed
 - Scheduling: Book online or call (510) 848-5041
+- Location: 2126 Haste St, Berkeley, CA 94704 (AAHA-accredited hospital)
 
 ## Pricing breakdown (itemized)
 

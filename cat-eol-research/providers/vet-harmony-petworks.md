@@ -2,16 +2,19 @@
 
 Website: https://www.petworks.com/listing/vet-harmony-in-home-pet-euthanasia-berkeley-ca
 
+**STATUS: LISTING PAUSED/CLOSED** (as of Jan 2026, the Petworks listing shows "This in home pet euthanasia listing in berkeley, ca has been paused or closed.")
+
 ## Summary
 
-- In-home euthanasia: Listing is for “In Home Pet Euthanasia” in Berkeley
+- In-home euthanasia: Listing was for "In Home Pet Euthanasia" in Berkeley (currently inactive)
+- Provider: Crystal Heath (UC Davis School of Veterinary Medicine, serving pets since 2012)
 - Private cremation: Not shown on listing; likely depends on service package / booking flow
-- Expected wait time: Not stated; listing text claims “quick and affordable care” and “swift service without the need to stand in line” (pop-up clinic framing; may not apply to euthanasia)
-- Scheduling: Book through Petworks (“book a pet pro”)
+- Expected wait time: Not stated; listing text claims "quick and affordable care" and "swift service without the need to stand in line" (pop-up clinic framing; may not apply to euthanasia)
+- Scheduling: Book through Petworks ("book a pet pro") — currently unavailable
 
 ## Pricing breakdown (itemized)
 
-- Euthanasia fee: Not specified on the public listing (only “Starting Price” package is shown; may not reflect euthanasia)
+- Euthanasia fee: Not specified on the public listing (only "Starting Price" package is shown; may not reflect euthanasia)
 - Sedation fee: TBD
 - Travel fee: TBD
 - After-hours/weekend fee: TBD
@@ -23,11 +26,11 @@ Website: https://www.petworks.com/listing/vet-harmony-in-home-pet-euthanasia-ber
 
 ## Pricing shown on listing
 
-- Starting Price: $25.00 per visit (public listing package)
+- Starting Price: $25.00 per visit (public listing package) — **NOTE: This appears to be for pop-up clinic/mobile vet services, NOT euthanasia pricing. Actual euthanasia pricing was never published on this listing.**
 
 ## Scheduling details
 
-Book via Petworks. Listing text says cancellation policy requires 24 hours’ notice.
+Book via Petworks. Listing text says cancellation policy requires 24 hours' notice.
 
 ## Sources (archived HTML)
 

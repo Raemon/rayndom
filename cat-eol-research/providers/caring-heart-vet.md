@@ -11,7 +11,7 @@ Website: https://caringheartvet.com/
 
 ## Pricing breakdown (itemized)
 
-- Euthanasia fee: For pets 60 lb and under $550; 61-80 lb $600 (page is not cat-specific; cats are typically in the <=60 lb tier)
+- Euthanasia fee: For pets 60 lb and under $550; 61-80 lb $600 (page is not cat-specific; cats are typically in the <=60 lb tier). **Note:** Dr. Allegra is unable to provide services for dogs over 75-80 lbs.
 - Sedation fee: Not separately listed (likely included; confirm)
 - Travel fee: Additional fees starting at $50-150 may apply for extended travel time (>20 min driving distance)
 - After-hours/weekend fee: Additional fees starting at $50-150 may apply for evening/weekend/holiday/short notice appointments
