@@ -1,0 +1,2 @@
+[![Zola](https://d1tntvpcrzvon2.cloudfront.net/vpassets/_next/static/media/zola-logomark-marine-d6ed80a8949d03cb6947.svg)](/)© 2026 Zola, Inc. All rights reserved.[Privacy Policy](/privacy) / [Terms of Use](/terms) /   
+[Web Accessibility](/webaccessibility) / [Your privacy choices![](https://d1tntvpcrzvon2.cloudfront.net/vpassets/_next/static/media/privacy-options-07d853f507039b2489d9.svg)](/privacy-center)

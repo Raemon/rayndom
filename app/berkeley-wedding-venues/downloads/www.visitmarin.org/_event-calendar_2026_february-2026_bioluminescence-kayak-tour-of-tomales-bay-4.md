@@ -1,0 +1,108 @@
+  * [Trending](/blog/)
+    * [Outdoor Adventures Collection](/blog/outdoor-adventures-collection/)
+    * [Winter in Marin Collection](/blog/winter-in-marin-collection/)
+    * [Marin Festival and Holiday Collection](/blog/marin-festival-and-holiday-collection/)
+    * [Shopping in Marin Collection](/blog/shopping-in-marin-collection/)
+    * [Dining in Marin Collection](/blog/dining-in-marin-collection/)
+    * [The Best in Marin Collection](/blog/the-best-in-marin-collection/)
+  * [Events](/event-calendar/)
+    * [January 2026](/event-calendar/2026/january-2026/)
+    * [February 2026](/event-calendar/2026/february-2026/)
+  * [Travel](/maps-transportation/)
+    * [Beach Travel Tips](/beach-travel-tips/)
+    * [Green Travel Marin](/green-travel-marin/)
+    * [Visitor's Guide](https://issuu.com/devorahjean/docs/2025visitorguide?fr=sOGNjNDg2MTQ1NDg)
+    * [Map of Marin & Directions](/maps-transportation/map-of-marin-and-directions/)
+    * [Marin Transportation Resources](/maps-transportation/marin-transportation-resources/)
+    * [Trip Ideas](/trip-ideas/)
+  * [Media](/media/)
+    * [Get Social](/media/get-social/)
+    * [Press](/media/press/)
+    * [Press and Blogs for San Rafael](/media/press-and-blogs-for-san-rafael/)
+    * [Newsletter Archives](/media/newsletter-archives/)
+    * [Marin Video](/media/marin-video/)
+    * [Marin Photo Gallery](/media/marin-photo-gallery/)
+  * [Contact / About](/contact-us/)
+    * [MCVB Scope of Services](/contact-about-us/mcvb-scope-of-services/)
+    * [Meet Our Board of Directors](/contact-about-us/meet-our-board-of-directors/)
+    * [Meet Our Team](/contact-about-us/meet-our-team/)
+    * [Join Us - Become a Partner](/contact-about-us/join-us-become-a-partner/)
+    * [Annual Reports](/contact-about-us/annual-reports/)
+
+
+
+__
+
+# Main Menu
+
+## [Events Calendar](/event-calendar/) · [February 2026](/event-calendar/2026/february-2026/)
+
+# Bioluminescence Kayak Tour of Tomales Bay
+
+**Date** : Saturday, February 7, 2026
+
+**Time** : 4:30pm
+
+**Phone** : (415) 669-2600
+
+[**Website**](https://www.bluewaterskayaking.com/bioluminescence-evening-tours/)
+
+Bioluminescence is the production and emission of light by a living organism. On dark (moonless) nights on Tomales Bay, bluish white flickers are visible in the water column, which come from blooms of bioluminescent “dinoflagellates”. These tiny creatures emit short flashes of light when disturbed, and at certain times of the year put on quite a show for kayakers. Schools of fish in the bay create a phosphorescent trail which can look like a glowing cloud in the water. Seals chasing the fish may create a phosphorescent event which can be very exciting to watch. Night Herons are often out and about as well, chasing the same schools of fish. All this glowing activity is only visible at night when the sun and moon are both down. Accordingly, we have set up evening paddles which should afford some good viewing after sunset.  
+  
+_Bioluminescence is a naturally occurring phenomenon and we can not guarantee that you will see Bioluminescence. We schedule these trips when there are the most ideal viewing conditions._  
+  
+We offer Bioluminescence tours when the moon is dark during our tour timeframe, which is about 12 nights each month.  
+  
+This is a 3 hour tour that will launch at Miller Boat Launch (next to the restaurant at Nick’s Cove). The first 30-40 minutes are spent on shore preparing for your adventure.   
+  
+We use only tandem kayaks on all evening tours, so you must register in even-numbered groups (2, 4, etc.). Each paddler must be at least 13 years old, and everyone under 18 years old must be accompanied by an adult.
+
+Please book online in the above website link or call for more information. 
+
+Next: [Community Tour at Charlie's Acres Farm Animal Sanctuary](/event-calendar/2026/february-2026/community-tour-at-charlies-acres-farm-animal-sanctuary-10/) »
+
+« Previous: [New Monsoon with F.A.T. Betty at Sweetwater Music Hall](/event-calendar/2026/february-2026/petty-theft-at-sweetwater-music-hall/)
+
+**Looking for Marin images?** **We have them here.**
+
+[Sign In/Register Here](http://visitmarin.org/media/marin-photo-gallery/)
+
+**Sample a few****Marin tours**
+
+[Room to Roam in Marin](https://www.visitmarin.org/things-to-do/tours/walking-tours/)
+
+**Soak up our outdoors and have some fun!**
+
+[Visit Marin Wildside](https://www.visitmarin.org/outdoor-activities/)
+
+**What to Know** **about our Marin Cheeses!**
+
+[Learn More...](https://vimeo.com/221668622)
+
+**What to do with visiting friends and family?**
+
+[Check out our 2025 Visitor Guide](https://issuu.com/devorahjean/docs/2025visitorguide?fr=sNzNlMTg2MDYzMTA)
+
+## Follow us: 
+
+[TikTok](https://www.tiktok.com/@visitmarin) [Facebook](https://www.facebook.com/VisitMarin) [LinkedIn](https://www.linkedin.com/company/marin-convention-&-visitors-bureau/) [Pinterest](https://pinterest.com/marincvb) [Twitter](https://twitter.com/VisitMarin) [Youtube](https://www.youtube.com/channel/UCvKa37pdEFwVIpy__G9avkw) [Instagram](https://instagram.com/visitmarin)
+
+## Get the App:
+
+[ ](https://play.google.com/store/apps/details?id=org.visitmarin.app "Download App via Google Play") [ ](https://apps.apple.com/us/app/marin-convention-visitors/id6503944203 "Download App via App Store")
+
+Copyright ©2026 | Marin Convention & Visitors Bureau | 1 Mitchell Boulevard, Suite B, San Rafael, CA 94903 | Toll Free (866) 925-2060 | (415) 925-2060 
+
+Country Specific Visitor's Guide PDFs are available in [Francais](/site/assets/files/1/frenchbrochure2013-1.pdf) | [Espanol](/site/assets/files/1/spanishbrochure2013-1.pdf) | [Deutsch](/site/assets/files/1/germanbrochure2013-1.pdf) | [官话](/site/assets/files/1/mandarinbrochure2013.pdf)
+
+[ ](https://www.visitcalifornia.com/?utm_source=dmo_site&utm_campaign=affiliate_program "Visit California - Explore the Golden State")
+
+[Site Map](/site-map) · [Accessibility Policy](/accessibility-policy/)
+
+[](https://www.facebook.com/VisitMarin/) [](https://x.com/VisitMarin) [](https://www.tiktok.com/@visitmarin) [](https://www.linkedin.com/company/marin-convention-&-visitors-bureau/) [](https://www.pinterest.com/marincvb) [](https://www.youtube.com/channel/UCvKa37pdEFwVIpy__G9avkw) [](https://instagram.com/visitmarin) [](/blog/)
+
+We're Social
+
+[Download our Visitor's Guide](https://issuu.com/devorahjean/docs/2025visitorguide?fr=sOGNjNDg2MTQ1NDg "Download the 2025 Digital Marin Visitors Guide")
+
+[Sign up for our Email Newsletter](/join-our-newsletter/)

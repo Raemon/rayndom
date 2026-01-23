@@ -6,11 +6,16 @@ LLM USAGE:
     python download_url.py <topic> <url1> [url2] [url3] ...          # blocking
     python download_url.py --bg <topic> <url1> [url2] [url3] ...     # background (non-blocking)
     python download_url.py --include-files <topic> <url1> ...        # include all file types
+    python download_url.py --js <topic> <url1> ...                   # use Playwright for JS-heavy pages
+    python download_url.py --auto <topic> <url1> ...                 # auto-detect if JS rendering needed
+    python download_url.py --no-crawl <topic> <url1> ...             # only download specified URLs, don't follow links
     
     Examples:
         python download_url.py "ai-safety-research" https://example.com/article
         python download_url.py --bg "ai-safety-research" https://example.com/article https://other.com/page
         python download_url.py --include-files "research" https://example.com  # downloads pdfs, images, etc
+        python download_url.py --js "lesswrong" https://www.lesswrong.com/s/KfCjeconYRdFbMxsy
+        python download_url.py --auto "research" https://example.com  # tries requests, falls back to Playwright
     
     This will:
     - Download each URL and crawl all same-domain links recursively
@@ -20,8 +25,12 @@ LLM USAGE:
     
     Use --bg when you want to continue other tasks while downloads run in parallel.
     Background logs saved to: app/<topic>/downloads/.logs/
+    
+    Use --js for JavaScript-heavy sites (React, Vue, Angular, etc.) that need browser rendering.
+    Use --auto to automatically detect and retry with Playwright if content looks JS-rendered.
 
 Dependencies: pip install requests beautifulsoup4 html2text
+             For --js/--auto: pip install playwright && playwright install chromium
 """
 import sys
 import os
@@ -91,6 +100,63 @@ def download_content(url):
         print(f"Error downloading {url}: {e}")
         return (None, False, None)
 
+def download_content_js(url, wait_seconds=3):
+    """Download content using Playwright for JS-heavy pages, returns (content, is_binary, content_type)."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        print("Playwright not installed. Run: pip install playwright && playwright install chromium")
+        return (None, False, None)
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.goto(url, wait_until='domcontentloaded', timeout=60000)
+            page.wait_for_timeout(wait_seconds * 1000)
+            html = page.content()
+            browser.close()
+            return (html, False, 'text/html')
+    except Exception as e:
+        print(f"Error downloading {url} with Playwright: {e}")
+        return (None, False, None)
+
+def looks_like_js_rendered(html):
+    """Detect if HTML looks like it needs JavaScript rendering.
+    Returns True if the page appears to be a JS-heavy SPA with little static content."""
+    if not html:
+        return False
+    soup = BeautifulSoup(html, 'html.parser')
+    body = soup.find('body')
+    if not body:
+        return True  # No body tag is suspicious
+    # Remove script/style tags for text analysis
+    for tag in body.find_all(['script', 'style', 'noscript']):
+        tag.decompose()
+    text = body.get_text(strip=True)
+    # Heuristic 1: Very little text content (< 300 chars after stripping JS/CSS)
+    if len(text) < 300:
+        return True
+    # Heuristic 2: Common SPA markers
+    html_lower = html.lower()
+    spa_markers = [
+        'id="root"',  # React
+        'id="app"',   # Vue
+        'id="__next"', # Next.js
+        'data-reactroot',
+        'ng-app',     # Angular
+        '__nuxt__',   # Nuxt
+        'data-server-rendered',
+    ]
+    root_divs = soup.find_all('div', id=lambda x: x in ['root', 'app', '__next'])
+    for marker in spa_markers:
+        if marker in html_lower:
+            # Check if the marker div has almost no content
+            for div in root_divs:
+                div_text = div.get_text(strip=True)
+                if len(div_text) < 100:
+                    return True
+    return False
+
 def extract_links(html, base_url):
     """Extract all same-domain links from HTML, normalized (no fragments or query params)."""
     soup = BeautifulSoup(html, 'html.parser')
@@ -114,17 +180,14 @@ def html_to_markdown(html):
     # Remove all <nav> elements and their contents
     for nav in body.find_all('nav'):
         nav.decompose()
-    # Remove all <img> elements
-    for img in body.find_all('img'):
-        img.decompose()
     h = html2text.HTML2Text()
     h.ignore_links = False
-    h.ignore_images = True
+    h.ignore_images = False
     h.body_width = 0
     markdown = h.handle(str(body))
     return markdown
 
-def process_url(url, processed_urls, processed_urls_lock, base_domain, conversation_topic, include_files=False):
+def process_url(url, processed_urls, processed_urls_lock, base_domain, conversation_topic, include_files=False, use_js=False, auto_detect=False):
     """Process single URL: download, save (as .md for HTML, original ext otherwise), return discovered links."""
     domain = get_domain(url)
     url_ext = get_url_extension(url)
@@ -139,7 +202,15 @@ def process_url(url, processed_urls, processed_urls_lock, base_domain, conversat
             return ([], None, domain)
         processed_urls[domain].add(url)
     print(f"Processing: {url}")
-    content, is_binary, content_type = download_content(url)
+    # Choose download method based on flags
+    if use_js:
+        content, is_binary, content_type = download_content_js(url)
+    else:
+        content, is_binary, content_type = download_content(url)
+        # Auto-detect: if content looks JS-rendered, retry with Playwright
+        if auto_detect and content and not is_binary and looks_like_js_rendered(content):
+            print(f"  Auto-detected JS-heavy page, retrying with Playwright...")
+            content, is_binary, content_type = download_content_js(url)
     if content is None:
         return ([], None, domain)
     domain_dir = os.path.join('app', conversation_topic, 'downloads', domain)
@@ -170,7 +241,7 @@ def process_url(url, processed_urls, processed_urls_lock, base_domain, conversat
     saved_filename = f"{filename_base}.md"
     return (links, saved_filename, domain)
 
-def process_domain(start_url, conversation_topic, processed_urls, processed_urls_lock, include_files=False):
+def process_domain(start_url, conversation_topic, processed_urls, processed_urls_lock, include_files=False, use_js=False, auto_detect=False, no_crawl=False):
     """Crawl a domain starting from URL, processing all same-domain links recursively."""
     base_domain = get_domain(start_url)
     url_file_map = {}  # Maps URL -> filename
@@ -181,10 +252,12 @@ def process_domain(start_url, conversation_topic, processed_urls, processed_urls
     while urls_to_process:
         current_url = urls_to_process.pop(0)
         new_links, saved_filename, domain = process_url(
-            current_url, processed_urls, processed_urls_lock, base_domain, conversation_topic, include_files
+            current_url, processed_urls, processed_urls_lock, base_domain, conversation_topic, include_files, use_js, auto_detect
         )
         if saved_filename:
             url_file_map[current_url] = saved_filename
+        if no_crawl:
+            continue  # Don't follow links
         with processed_urls_lock:
             domain_set = processed_urls.get(base_domain, set())
             for link in new_links:
@@ -202,7 +275,7 @@ def process_domain(start_url, conversation_topic, processed_urls, processed_urls
         "allUrls": all_urls
     }
 
-def run_in_background(conversation_topic, urls, include_files=False):
+def run_in_background(conversation_topic, urls, include_files=False, use_js=False, auto_detect=False, no_crawl=False):
     """Re-launch this script as a background process without --bg flag."""
     # Strip query params and deduplicate before spawning background process
     urls = list(dict.fromkeys(strip_query_params(url) for url in urls))
@@ -210,6 +283,12 @@ def run_in_background(conversation_topic, urls, include_files=False):
     cmd = [sys.executable, script_path]
     if include_files:
         cmd.append('--include-files')
+    if use_js:
+        cmd.append('--js')
+    if auto_detect:
+        cmd.append('--auto')
+    if no_crawl:
+        cmd.append('--no-crawl')
     cmd.extend([conversation_topic] + urls)
     if os.name == 'nt':  # Windows
         subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)
@@ -223,7 +302,7 @@ def run_in_background(conversation_topic, urls, include_files=False):
     print(f"Started background download for {len(urls)} URL(s) in topic '{conversation_topic}'")
     print(f"Downloads will be saved to: app/{conversation_topic}/downloads/")
 
-def run_download(conversation_topic, start_urls, include_files=False):
+def run_download(conversation_topic, start_urls, include_files=False, use_js=False, auto_detect=False, no_crawl=False):
     """Main download logic: process all URLs in parallel, save results."""
     # Strip query params and deduplicate input URLs
     normalized_urls = list(dict.fromkeys(strip_query_params(url) for url in start_urls))
@@ -234,12 +313,18 @@ def run_download(conversation_topic, start_urls, include_files=False):
     print(f"Conversation topic: {conversation_topic}")
     if not include_files:
         print("Skipping file downloads (use --include-files to download pdfs, images, etc)")
+    if use_js:
+        print("Using Playwright for JavaScript rendering")
+    elif auto_detect:
+        print("Auto-detecting JS-heavy pages (will retry with Playwright if needed)")
+    if no_crawl:
+        print("Not following links (--no-crawl)")
     processed_urls = {}
     processed_urls_lock = Lock()
     domain_results = []
     with ThreadPoolExecutor(max_workers=min(len(start_urls), 10)) as executor:
         future_to_url = {
-            executor.submit(process_domain, url, conversation_topic, processed_urls, processed_urls_lock, include_files): url
+            executor.submit(process_domain, url, conversation_topic, processed_urls, processed_urls_lock, include_files, use_js, auto_detect, no_crawl): url
             for url in start_urls
         }
         for future in as_completed(future_to_url):
@@ -276,6 +361,9 @@ def main():
     # Check for flags
     background = False
     include_files = False
+    use_js = False
+    auto_detect = False
+    no_crawl = False
     while args and args[0].startswith('--'):
         if args[0] == '--bg':
             background = True
@@ -283,20 +371,33 @@ def main():
         elif args[0] == '--include-files':
             include_files = True
             args = args[1:]
+        elif args[0] == '--js':
+            use_js = True
+            args = args[1:]
+        elif args[0] == '--auto':
+            auto_detect = True
+            args = args[1:]
+        elif args[0] == '--no-crawl':
+            no_crawl = True
+            args = args[1:]
         else:
             break
     if len(args) < 2:
-        print("Usage: python download_url.py [--bg] [--include-files] <topic> <url1> [url2] [url3] ...")
+        print("Usage: python download_url.py [--bg] [--include-files] [--js] [--auto] [--no-crawl] <topic> <url1> [url2] [url3] ...")
         print("  --bg             Run in background (non-blocking)")
         print("  --include-files  Download all file types (pdfs, images, etc)")
+        print("  --js             Use Playwright for JS-heavy pages (React, Vue, etc)")
+        print("  --auto           Auto-detect JS pages and retry with Playwright if needed")
+        print("  --no-crawl       Only download specified URLs, don't follow links")
         print("Example: python download_url.py --bg 'research-topic' https://example.com/page1")
+        print("Example: python download_url.py --js 'lesswrong' https://www.lesswrong.com/posts/...")
         sys.exit(1)
     conversation_topic = args[0]
     urls = args[1:]
     if background:
-        run_in_background(conversation_topic, urls, include_files)
+        run_in_background(conversation_topic, urls, include_files, use_js, auto_detect, no_crawl)
     else:
-        run_download(conversation_topic, urls, include_files)
+        run_download(conversation_topic, urls, include_files, use_js, auto_detect, no_crawl)
 
 if __name__ == '__main__':
     try:

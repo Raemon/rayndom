@@ -1,0 +1,649 @@
+Skip to content
+
+[ ](https://filoli.org/)
+
+[ ](https://filoli.org/)
+
+[ __ Donate ](https://51772.blackbaudhosting.com/51772/Annual-Fund-Donations?_gl=1*mor4nk*_gcl_au*MTEwODg4Njc0NC4xNzM4Mjc3MTk2*_ga*MTkyNjkwMzY2MC4xNzM4Mjc3MTk3*_ga_SFCYR6JK8K*MTczODc3NTgyMi40LjEuMTczODc5MTUwMy41Mi4wLjA)
+
+__
+
+## 
+
+[ ](https://filoli.org/)
+
+[ __ Donate ](https://51772.blackbaudhosting.com/51772/Annual-Fund-Donations?_gl=1*mor4nk*_gcl_au*MTEwODg4Njc0NC4xNzM4Mjc3MTk2*_ga*MTkyNjkwMzY2MC4xNzM4Mjc3MTk3*_ga_SFCYR6JK8K*MTczODc3NTgyMi40LjEuMTczODc5MTUwMy41Mi4wLjA)
+
+# 
+
+35 events found. 
+
+#  Tea 
+
+##  Events Search and Views Navigation 
+
+Search 
+
+Enter Keyword. Search for Events by Keyword. 
+
+Find Events
+
+Hide filters 
+
+###  Event Views Navigation 
+
+Month 
+
+  * [ List  ](https://filoli.org/events/tag/tea/list/?tribe-bar-date=2025-12-01)
+  * [ Month  ](https://filoli.org/events/tag/tea/2025-12/)
+  * [ Photo  ](https://filoli.org/?post_type=tribe_events&eventDisplay=photo&tag=tea&eventDate=2025-12-01)
+
+
+
+# Events
+
+[ This Month](https://filoli.org/events/tag/tea/month/)
+
+12/1/2025  December 2025  Select date. 
+
+##  Filters 
+
+Changing any of the form inputs will cause the list of events to refresh with the filtered results. 
+
+Done  Clear 
+
+### 
+
+Event Category:
+
+Open filter  Close filter 
+
+Event Category 
+
+### 
+
+Tags:
+
+Open filter  Close filter 
+
+Tags 
+
+### 
+
+Day:
+
+Open filter  Close filter 
+
+Day 
+
+Sunday 
+
+Monday 
+
+Tuesday 
+
+Wednesday 
+
+Thursday 
+
+Friday 
+
+Saturday 
+
+### 
+
+Time:
+
+Open filter  Close filter 
+
+Time 
+
+All Day 
+
+Morning 
+
+Afternoon 
+
+Evening 
+
+Night 
+
+##  Calendar of Events 
+
+S  Sunday  |  M  Monday  |  T  Tuesday  |  W  Wednesday  |  T  Thursday  |  F  Friday  |  S  Saturday   
+---|---|---|---|---|---|---  
+0 events  30  0 events,  30  |  0 events  1  0 events,  1  |  3 events  2  3 events,  [ 2 ](https://filoli.org/events/tag/tea/day/2025-12-02/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-02/ "Holiday Tea") December 2, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-02/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray of treats, and unlimited champagne and tea. Seated at a family-style table, guests are welcomed into an elegant setting that invites meaningful connection and timeless… 1:00 pm  - 2:30 pm  [ Holiday Tea ](https://filoli.org/event/holiday-tea-2/ "Holiday Tea") December 2, 2025 @ 1:00 pm-2:30 pm [ Holiday Tea ](https://filoli.org/event/holiday-tea-2/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray of treats, and unlimited champagne and tea. Seated at a family-style table, guests are welcomed into an elegant setting that invites meaningful connection and timeless… 3:30 pm  - 5:00 pm  [ Holiday Tea ](https://filoli.org/event/holiday-tea-3/ "Holiday Tea") December 2, 2025 @ 3:30 pm-5:00 pm [ Holiday Tea ](https://filoli.org/event/holiday-tea-3/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray of treats, and unlimited champagne and tea. Seated at a family-style table, guests are welcomed into an elegant setting that invites meaningful connection and timeless… |  3 events  3  3 events,  [ 3 ](https://filoli.org/events/tag/tea/day/2025-12-03/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/ "Holiday Tea") December 3, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/2/ "Holiday Tea") December 3, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/2/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/3/ "Holiday Tea") December 3, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/3/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… |  3 events  4  3 events,  [ 4 ](https://filoli.org/events/tag/tea/day/2025-12-04/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/ "Holiday Tea") December 4, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/4/ "Holiday Tea") December 4, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/4/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/5/ "Holiday Tea") December 4, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/5/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… |  3 events  5  3 events,  [ 5 ](https://filoli.org/events/tag/tea/day/2025-12-05/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/ "Holiday Tea") December 5, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/6/ "Holiday Tea") December 5, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/6/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/7/ "Holiday Tea") December 5, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/7/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… |  0 events  6  0 events,  6   
+2 events  7  2 events,  [ 7 ](https://filoli.org/events/tag/tea/day/2025-12-07/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-07/ "Toto’s Tea") December 7, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-07/ "Toto’s Tea") Make magical memories this holiday season with Toto’s Tea, inspired by the Bourn family’s beloved French Bulldog, Toto. Enjoy festive treats, storytelling, engaging activities, and a cuddly Toto plushie to… 2:30 pm  - 4:00 pm  [ Toto’s Tea ](https://filoli.org/event/totos-tea-3/ "Toto’s Tea") December 7, 2025 @ 2:30 pm-4:00 pm [ Toto’s Tea ](https://filoli.org/event/totos-tea-3/ "Toto’s Tea") Make magical memories this holiday season with Toto’s Tea, inspired by the Bourn family’s beloved French Bulldog, Toto. Enjoy festive treats, storytelling, engaging activities, and a cuddly Toto plushie to… |  3 events  8  3 events,  [ 8 ](https://filoli.org/events/tag/tea/day/2025-12-08/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-08/ "Holiday Tea") December 8, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-08/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-08/ "Holiday Tea") December 8, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-08/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-08/8/ "Holiday Tea") December 8, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-08/8/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… |  3 events  9  3 events,  [ 9 ](https://filoli.org/events/tag/tea/day/2025-12-09/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-09/ "Holiday Tea") December 9, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-09/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-09/9/ "Holiday Tea") December 9, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-09/9/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-09/10/ "Holiday Tea") December 9, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-09/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray of treats, and unlimited champagne and tea. Seated at a family-style table, guests are welcomed into an elegant setting that invites meaningful connection and timeless… |  3 events  10  3 events,  [ 10 ](https://filoli.org/events/tag/tea/day/2025-12-10/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-10/ "Holiday Tea") December 10, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-10/10/ "Holiday Tea") December 10, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-10/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-10/10/ "Holiday Tea") December 10, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-10/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray of treats, and unlimited champagne and tea. Seated at a family-style table, guests are welcomed into an elegant setting that invites meaningful connection and timeless… |  3 events  11  3 events,  [ 11 ](https://filoli.org/events/tag/tea/day/2025-12-11/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-11/ "Holiday Tea") December 11, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-11/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-11/10/ "Holiday Tea") December 11, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-11/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-11/ "Holiday Tea") December 11, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-11/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray of treats, and unlimited champagne and tea. Seated at a family-style table, guests are welcomed into an elegant setting that invites meaningful connection and timeless… |  3 events  12  3 events,  [ 12 ](https://filoli.org/events/tag/tea/day/2025-12-12/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-12/ "Holiday Tea") December 12, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-12/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-12/10/ "Holiday Tea") December 12, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-12/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-12/10/ "Holiday Tea") December 12, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-12/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray of treats, and unlimited champagne and tea. Seated at a family-style table, guests are welcomed into an elegant setting that invites meaningful connection and timeless… |  0 events  13  0 events,  13   
+0 events  14  0 events,  14  |  3 events  15  3 events,  [ 15 ](https://filoli.org/events/tag/tea/day/2025-12-15/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-15/ "Holiday Tea") December 15, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-15/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-15/10/ "Holiday Tea") December 15, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-15/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-15/10/ "Holiday Tea") December 15, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-15/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… |  3 events  16  3 events,  [ 16 ](https://filoli.org/events/tag/tea/day/2025-12-16/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-16/ "Holiday Tea") December 16, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-16/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-16/10/ "Holiday Tea") December 16, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-16/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-16/10/ "Holiday Tea") December 16, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-16/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… |  3 events  17  3 events,  [ 17 ](https://filoli.org/events/tag/tea/day/2025-12-17/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-17/ "Holiday Tea") December 17, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-17/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-17/10/ "Holiday Tea") December 17, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-17/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-17/10/ "Holiday Tea") December 17, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-17/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray of treats, and unlimited champagne and tea. Seated at a family-style table, guests are welcomed into an elegant setting that invites meaningful connection and timeless… |  3 events  18  3 events,  [ 18 ](https://filoli.org/events/tag/tea/day/2025-12-18/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-18/ "Holiday Tea") December 18, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-18/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-18/10/ "Holiday Tea") December 18, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-18/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-18/10/ "Holiday Tea") December 18, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-18/10/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… |  0 events  19  0 events,  19  |  2 events  20  2 events,  [ 20 ](https://filoli.org/events/tag/tea/day/2025-12-20/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-20/ "Toto’s Tea") December 20, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-20/ "Toto’s Tea") Make magical memories this holiday season with Toto’s Tea, inspired by the Bourn family’s beloved French Bulldog, Toto. Enjoy festive treats, storytelling, engaging activities, and a cuddly Toto plushie to take home—all in a winter wonderland setting. Toto's Tea Tickets 2:30 pm  - 4:00 pm  [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-20/2/ "Toto’s Tea") December 20, 2025 @ 2:30 pm-4:00 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-20/2/ "Toto’s Tea") Make magical memories this holiday season with Toto’s Tea, inspired by the Bourn family’s beloved French Bulldog, Toto. Enjoy festive treats, storytelling, engaging activities, and a cuddly Toto plushie to take home—all in a winter wonderland setting. Toto's Tea Tickets  
+2 events  21  2 events,  [ 21 ](https://filoli.org/events/tag/tea/day/2025-12-21/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-21/ "Toto’s Tea") December 21, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-21/ "Toto’s Tea") Make magical memories this holiday season with Toto’s Tea, inspired by the Bourn family’s beloved French Bulldog, Toto. Enjoy festive treats, storytelling, engaging activities, and a cuddly Toto plushie to… 2:30 pm  - 4:00 pm  [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-21/3/ "Toto’s Tea") December 21, 2025 @ 2:30 pm-4:00 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-21/3/ "Toto’s Tea") Make magical memories this holiday season with Toto’s Tea, inspired by the Bourn family’s beloved French Bulldog, Toto. Enjoy festive treats, storytelling, engaging activities, and a cuddly Toto plushie to… |  2 events  22  2 events,  [ 22 ](https://filoli.org/events/tag/tea/day/2025-12-22/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-22/ "Toto’s Tea") December 22, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-22/ "Toto’s Tea") Make magical memories this holiday season with Toto’s Tea, inspired by the Bourn family’s beloved French Bulldog, Toto. Enjoy festive treats, storytelling, engaging activities, and a cuddly Toto plushie to… 2:30 pm  - 4:00 pm  [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-22/4/ "Toto’s Tea") December 22, 2025 @ 2:30 pm-4:00 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-22/4/ "Toto’s Tea") Make magical memories this holiday season with Toto’s Tea, inspired by the Bourn family’s beloved French Bulldog, Toto. Enjoy festive treats, storytelling, engaging activities, and a cuddly Toto plushie to… |  2 events  23  2 events,  [ 23 ](https://filoli.org/events/tag/tea/day/2025-12-23/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-23/ "Toto’s Tea") December 23, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-23/ "Toto’s Tea") Make magical memories this holiday season with Toto’s Tea, inspired by the Bourn family’s beloved French Bulldog, Toto. Enjoy festive treats, storytelling, engaging activities, and a cuddly Toto plushie to… 2:30 pm  - 4:00 pm  [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-23/5/ "Toto’s Tea") December 23, 2025 @ 2:30 pm-4:00 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/) [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-23/5/ "Toto’s Tea") Make magical memories this holiday season with Toto’s Tea, inspired by the Bourn family’s beloved French Bulldog, Toto. Enjoy festive treats, storytelling, engaging activities, and a cuddly Toto plushie to… |  0 events  24  0 events,  24  |  0 events  25  0 events,  25  |  0 events  26  0 events,  26  |  0 events  27  0 events,  27   
+0 events  28  0 events,  28  |  0 events  29  0 events,  29  |  0 events  30  0 events,  30  |  0 events  31  0 events,  31  |  0 events  1  0 events,  1  |  0 events  2  0 events,  2  |  0 events  3  0 events,  3   
+  
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+December 2 
+
+December 2, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-02/ "Holiday Tea")
+
+December 2, 2025 @ 1:00 pm-2:30 pm
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea-2/ "Holiday Tea")
+
+December 2, 2025 @ 3:30 pm-5:00 pm
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea-3/ "Holiday Tea")
+
+December 3 
+
+December 3, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/ "Holiday Tea")
+
+December 3, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/2/ "Holiday Tea")
+
+December 3, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/3/ "Holiday Tea")
+
+December 4 
+
+December 4, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/ "Holiday Tea")
+
+December 4, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/4/ "Holiday Tea")
+
+December 4, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/5/ "Holiday Tea")
+
+December 5 
+
+December 5, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/ "Holiday Tea")
+
+December 5, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/6/ "Holiday Tea")
+
+December 5, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/7/ "Holiday Tea")
+
+Notice
+
+There are no events on this day. 
+
+December 7 
+
+December 7, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/)
+
+###  [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-07/ "Toto’s Tea")
+
+December 7, 2025 @ 2:30 pm-4:00 pm
+
+###  [ Toto’s Tea ](https://filoli.org/event/totos-tea-3/ "Toto’s Tea")
+
+December 8 
+
+December 8, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-08/ "Holiday Tea")
+
+December 8, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-08/ "Holiday Tea")
+
+December 8, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-08/8/ "Holiday Tea")
+
+December 9 
+
+December 9, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-09/ "Holiday Tea")
+
+December 9, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-09/9/ "Holiday Tea")
+
+December 9, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-09/10/ "Holiday Tea")
+
+December 10 
+
+December 10, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-10/ "Holiday Tea")
+
+December 10, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-10/10/ "Holiday Tea")
+
+December 10, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-10/10/ "Holiday Tea")
+
+December 11 
+
+December 11, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-11/ "Holiday Tea")
+
+December 11, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-11/10/ "Holiday Tea")
+
+December 11, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-11/ "Holiday Tea")
+
+December 12 
+
+December 12, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-12/ "Holiday Tea")
+
+December 12, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-12/10/ "Holiday Tea")
+
+December 12, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-12/10/ "Holiday Tea")
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+December 15 
+
+December 15, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-15/ "Holiday Tea")
+
+December 15, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-15/10/ "Holiday Tea")
+
+December 15, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-15/10/ "Holiday Tea")
+
+December 16 
+
+December 16, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-16/ "Holiday Tea")
+
+December 16, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-16/10/ "Holiday Tea")
+
+December 16, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-16/10/ "Holiday Tea")
+
+December 17 
+
+December 17, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-17/ "Holiday Tea")
+
+December 17, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-17/10/ "Holiday Tea")
+
+December 17, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-17/10/ "Holiday Tea")
+
+December 18 
+
+December 18, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-18/ "Holiday Tea")
+
+December 18, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-18/10/ "Holiday Tea")
+
+December 18, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-18/10/ "Holiday Tea")
+
+Notice
+
+There are no events on this day. 
+
+December 20 
+
+December 20, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/)
+
+###  [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-20/ "Toto’s Tea")
+
+December 20, 2025 @ 2:30 pm-4:00 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/)
+
+###  [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-20/2/ "Toto’s Tea")
+
+December 21 
+
+December 21, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/)
+
+###  [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-21/ "Toto’s Tea")
+
+December 21, 2025 @ 2:30 pm-4:00 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/)
+
+###  [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-21/3/ "Toto’s Tea")
+
+December 22 
+
+December 22, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/)
+
+###  [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-22/ "Toto’s Tea")
+
+December 22, 2025 @ 2:30 pm-4:00 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/)
+
+###  [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-22/4/ "Toto’s Tea")
+
+December 23 
+
+December 23, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/)
+
+###  [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-23/ "Toto’s Tea")
+
+December 23, 2025 @ 2:30 pm-4:00 pm [ Recurring  ](https://filoli.org/event/totos-tea/all/)
+
+###  [ Toto’s Tea ](https://filoli.org/event/totos-tea/2025-12-23/5/ "Toto’s Tea")
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Subscribe to calendar 
+
+  * [ Google Calendar ](https://www.google.com/calendar/render?cid=webcal%3A%2F%2Ffiloli.org%2F%3Fpost_type%3Dtribe_events%26tribe-bar-date%3D2025-12%26ical%3D1%26eventDisplay%3Dlist)
+  * [ iCalendar ](webcal://filoli.org/?post_type=tribe_events&tribe-bar-date=2025-12&ical=1&eventDisplay=list)
+  * [ Outlook 365 ](https://outlook.office.com/owa?path=/calendar/action/compose&rru=addsubscription&url=webcal%3A%2F%2Ffiloli.org%2F%3Fpost_type%3Dtribe_events%26tribe-bar-date%3D2025-12%26ical%3D1%26eventDisplay%3Dlist&name=Filoli+Filoli)
+  * [ Outlook Live ](https://outlook.live.com/owa?path=/calendar/action/compose&rru=addsubscription&url=webcal%3A%2F%2Ffiloli.org%2F%3Fpost_type%3Dtribe_events%26tribe-bar-date%3D2025-12%26ical%3D1%26eventDisplay%3Dlist&name=Filoli+Filoli)
+  * [ Export .ics file ](https://filoli.org/events/tag/tea/2025-12/?ical=1)
+  * [ Export Outlook .ics file ](https://filoli.org/events/tag/tea/2025-12/?outlook-ical=1)
+
+
+
+[ ](https://www.filoli.org/)
+
+86 Cañada Road  
+Woodside, CA 94062
+
+**Open Daily**  
+10am-5pm
+
+[ Contact Us ](https://filoli.org/about/contact/)
+
+650.364.8300 | [info@filoli.org](mailto:info@filoli.org)
+
+[ Newsletter Sign-Up ](https://filoli.org/about/contact/#newsletter-subscribe)
+
+[ __](http://www.facebook.com/FiloliEstate/ "Facebook") [ __](http://www.instagram.com/filoliestate/ "Instagram") [ __](https://www.tiktok.com/@filoliestate "TikTok") [ __](http://www.youtube.com/@FiloliEstate "YouTube") [ __](https://www.linkedin.com/company/filoliestate "LinkedIn")
+
+[ ](https://savingplaces.org/)
+
+© 2026 Filoli, All Rights Reserved. | [Privacy Policy](https://filoli.org/privacy-policy/) | [Photography Guidelines](https://filoli.org/personal-photography/) | [Brand Kit](https://filoli.canto.com/g/FiloliBrandGuidelines/index?viewIndex=0)  
+Filoli is a 501(c)(3) nonprofit organization.
+
+## Select Language 
+
+Scroll To Top __
+
+__
+
+  * [General Admission Tickets](https://api.socialgoodsoftware.com/api/calendar/cdn?id=f08c5103c1a70f2dcef37e4c43414f4ae4b34ce11b3ca75a60dfe8fc76ba84571127f7da88a441c4ee6a04d900ca2094563de1a160a3d2c4edaaadebdf92d4c6ef49c30b158e8460e261d1d4bdef22c021e283926efaa658cc349b1fdd50e54e)
+  * [Member Tickets](https://api.socialgoodsoftware.com/api/calendar/cdn?id=f08c5103c1a70f2dcef37e4c43414f4ae4b34ce11b3ca75a60dfe8fc76ba84571127f7da88a441c4ee6a04d900ca2094043331d3839234846c9ec9c365f591ff4858045c20a2a65aef4abe9078f5704608de702b7ff77db6e8b716ad62d365fd)
+
+
+
+  * Visit
+    * [Winter at Filoli](https://filoli.org/winter/)
+    * [Plan Your Visit](https://filoli.org/visit/)
+    * [Families & Kids](https://filoli.org/visit/families-kids/)
+    * [Groups](https://filoli.org/visit/groups/)
+    * [Shopping & Dining](https://filoli.org/visit/dining-shopping/)
+    * [School Field Trips](https://filoli.org/visit/field-trips/)
+  * What’s On
+    * [Calendar](https://filoli.org/events/)
+    * [Winter at Filoli](https://filoli.org/winter/)
+      * [Railroad at the Redwoods](https://filoli.org/redwood-railroad/)
+      * [Lunar New Year](https://filoli.org/lunar-new-year/)
+      * [Stories in Bloom](https://filoli.org/events/stories-in-bloom/)
+      * [Wellness Wednesday](https://filoli.org/wellness-wednesday/)
+    * [Ballroom Performance Series](https://filoli.org/performance/)
+    * [Rose Wonders](https://filoli.org/rose-wonders/)
+    * [Flora Parties](https://filoli.org/events/parties/)
+    * [Service Learning](https://filoli.org/service-learning/)
+    * [Tours](https://filoli.org/tours/)
+  * Support
+    * [Ways to Give](https://filoli.org/support/ways-to-give/)
+    * [Impact](https://filoli.org/support/impact/)
+    * [Fundraising Events](https://filoli.org/fundraising-events/)
+    * [Sponsorship](https://filoli.org/sponsorship/)
+  * Membership
+    * [Membership](https://filoli.org/support/membership/)
+    * [Filoli Guild](https://filoli.org/support/membership/#guild)
+    * [Filoli Circle](https://filoli.org/support/membership/#filolicircle)
+    * [For Members](https://filoli.org/for-members/)
+  * Learn & Explore
+    * [Explore](https://filoli.org/explore/)
+    * [Youth Programs](https://filoli.org/youth-programs/)
+    * [What’s Blooming](https://filoli.org/explore/whats-blooming/)
+    * [Blog](https://filoli.org/explore/blog/)
+    * [Podcast](https://filoli.org/podcast/)
+  * Rentals
+    * [Rentals](https://filoli.org/rentals/private-events/)
+    * [Weddings](https://filoli.org/rentals/weddings/)
+    * [Venues](https://filoli.org/rentals/venues/)
+    * [Filming & Photography](https://filoli.org/rentals/filming-and-photography/)
+    * [Partners](https://filoli.org/partners/)
+
+
+
+__
+
+  * Visit
+    * [Winter at Filoli](https://filoli.org/winter/)
+    * [Plan Your Visit](https://filoli.org/visit/)
+    * [Families & Kids](https://filoli.org/visit/families-kids/)
+    * [Groups](https://filoli.org/visit/groups/)
+    * [Shopping & Dining](https://filoli.org/visit/dining-shopping/)
+    * [School Field Trips](https://filoli.org/visit/field-trips/)
+  * What’s On
+    * [Calendar](https://filoli.org/events/)
+    * [Winter at Filoli](https://filoli.org/winter/)
+      * [Railroad at the Redwoods](https://filoli.org/redwood-railroad/)
+      * [Lunar New Year](https://filoli.org/lunar-new-year/)
+      * [Stories in Bloom](https://filoli.org/events/stories-in-bloom/)
+      * [Wellness Wednesday](https://filoli.org/wellness-wednesday/)
+    * [Ballroom Performance Series](https://filoli.org/performance/)
+    * [Rose Wonders](https://filoli.org/rose-wonders/)
+    * [Flora Parties](https://filoli.org/events/parties/)
+    * [Service Learning](https://filoli.org/service-learning/)
+    * [Tours](https://filoli.org/tours/)
+  * Support
+    * [Ways to Give](https://filoli.org/support/ways-to-give/)
+    * [Impact](https://filoli.org/support/impact/)
+    * [Fundraising Events](https://filoli.org/fundraising-events/)
+    * [Sponsorship](https://filoli.org/sponsorship/)
+  * Membership
+    * [Membership](https://filoli.org/support/membership/)
+    * [Filoli Guild](https://filoli.org/support/membership/#guild)
+    * [Filoli Circle](https://filoli.org/support/membership/#filolicircle)
+    * [For Members](https://filoli.org/for-members/)
+  * Learn & Explore
+    * [Explore](https://filoli.org/explore/)
+    * [Youth Programs](https://filoli.org/youth-programs/)
+    * [What’s Blooming](https://filoli.org/explore/whats-blooming/)
+    * [Blog](https://filoli.org/explore/blog/)
+    * [Podcast](https://filoli.org/podcast/)
+  * Rentals
+    * [Rentals](https://filoli.org/rentals/private-events/)
+    * [Weddings](https://filoli.org/rentals/weddings/)
+    * [Venues](https://filoli.org/rentals/venues/)
+    * [Filming & Photography](https://filoli.org/rentals/filming-and-photography/)
+    * [Partners](https://filoli.org/partners/)
+
+
+
+  * Visit
+    * [Winter at Filoli](https://filoli.org/winter/)
+    * [Plan Your Visit](https://filoli.org/visit/)
+    * [Families & Kids](https://filoli.org/visit/families-kids/)
+    * [Groups](https://filoli.org/visit/groups/)
+    * [Shopping & Dining](https://filoli.org/visit/dining-shopping/)
+    * [School Field Trips](https://filoli.org/visit/field-trips/)
+  * What’s On
+    * [Calendar](https://filoli.org/events/)
+    * [Winter at Filoli](https://filoli.org/winter/)
+      * [Railroad at the Redwoods](https://filoli.org/redwood-railroad/)
+      * [Lunar New Year](https://filoli.org/lunar-new-year/)
+      * [Stories in Bloom](https://filoli.org/events/stories-in-bloom/)
+      * [Wellness Wednesday](https://filoli.org/wellness-wednesday/)
+    * [Ballroom Performance Series](https://filoli.org/performance/)
+    * [Rose Wonders](https://filoli.org/rose-wonders/)
+    * [Flora Parties](https://filoli.org/events/parties/)
+    * [Service Learning](https://filoli.org/service-learning/)
+    * [Tours](https://filoli.org/tours/)
+  * Support
+    * [Ways to Give](https://filoli.org/support/ways-to-give/)
+    * [Impact](https://filoli.org/support/impact/)
+    * [Fundraising Events](https://filoli.org/fundraising-events/)
+    * [Sponsorship](https://filoli.org/sponsorship/)
+  * Membership
+    * [Membership](https://filoli.org/support/membership/)
+    * [Filoli Guild](https://filoli.org/support/membership/#guild)
+    * [Filoli Circle](https://filoli.org/support/membership/#filolicircle)
+    * [For Members](https://filoli.org/for-members/)
+  * Learn & Explore
+    * [Explore](https://filoli.org/explore/)
+    * [Youth Programs](https://filoli.org/youth-programs/)
+    * [What’s Blooming](https://filoli.org/explore/whats-blooming/)
+    * [Blog](https://filoli.org/explore/blog/)
+    * [Podcast](https://filoli.org/podcast/)
+  * Rentals
+    * [Rentals](https://filoli.org/rentals/private-events/)
+    * [Weddings](https://filoli.org/rentals/weddings/)
+    * [Venues](https://filoli.org/rentals/venues/)
+    * [Filming & Photography](https://filoli.org/rentals/filming-and-photography/)
+    * [Partners](https://filoli.org/partners/)
+
+
+
+__
+
+  * Visit
+    * [Winter at Filoli](https://filoli.org/winter/)
+    * [Plan Your Visit](https://filoli.org/visit/)
+    * [Families & Kids](https://filoli.org/visit/families-kids/)
+    * [Groups](https://filoli.org/visit/groups/)
+    * [Shopping & Dining](https://filoli.org/visit/dining-shopping/)
+    * [School Field Trips](https://filoli.org/visit/field-trips/)
+  * What’s On
+    * [Calendar](https://filoli.org/events/)
+    * [Winter at Filoli](https://filoli.org/winter/)
+      * [Railroad at the Redwoods](https://filoli.org/redwood-railroad/)
+      * [Lunar New Year](https://filoli.org/lunar-new-year/)
+      * [Stories in Bloom](https://filoli.org/events/stories-in-bloom/)
+      * [Wellness Wednesday](https://filoli.org/wellness-wednesday/)
+    * [Ballroom Performance Series](https://filoli.org/performance/)
+    * [Rose Wonders](https://filoli.org/rose-wonders/)
+    * [Flora Parties](https://filoli.org/events/parties/)
+    * [Service Learning](https://filoli.org/service-learning/)
+    * [Tours](https://filoli.org/tours/)
+  * Support
+    * [Ways to Give](https://filoli.org/support/ways-to-give/)
+    * [Impact](https://filoli.org/support/impact/)
+    * [Fundraising Events](https://filoli.org/fundraising-events/)
+    * [Sponsorship](https://filoli.org/sponsorship/)
+  * Membership
+    * [Membership](https://filoli.org/support/membership/)
+    * [Filoli Guild](https://filoli.org/support/membership/#guild)
+    * [Filoli Circle](https://filoli.org/support/membership/#filolicircle)
+    * [For Members](https://filoli.org/for-members/)
+  * Learn & Explore
+    * [Explore](https://filoli.org/explore/)
+    * [Youth Programs](https://filoli.org/youth-programs/)
+    * [What’s Blooming](https://filoli.org/explore/whats-blooming/)
+    * [Blog](https://filoli.org/explore/blog/)
+    * [Podcast](https://filoli.org/podcast/)
+  * Rentals
+    * [Rentals](https://filoli.org/rentals/private-events/)
+    * [Weddings](https://filoli.org/rentals/weddings/)
+    * [Venues](https://filoli.org/rentals/venues/)
+    * [Filming & Photography](https://filoli.org/rentals/filming-and-photography/)
+    * [Partners](https://filoli.org/partners/)
+
+
+
+__
+
+  * [General Admission Tickets](https://api.socialgoodsoftware.com/api/calendar/cdn?id=f08c5103c1a70f2dcef37e4c43414f4ae4b34ce11b3ca75a60dfe8fc76ba84571127f7da88a441c4ee6a04d900ca2094563de1a160a3d2c4edaaadebdf92d4c6ef49c30b158e8460e261d1d4bdef22c021e283926efaa658cc349b1fdd50e54e)
+  * [Member Tickets](https://api.socialgoodsoftware.com/api/calendar/cdn?id=f08c5103c1a70f2dcef37e4c43414f4ae4b34ce11b3ca75a60dfe8fc76ba84571127f7da88a441c4ee6a04d900ca2094043331d3839234846c9ec9c365f591ff4858045c20a2a65aef4abe9078f5704608de702b7ff77db6e8b716ad62d365fd)
+
+

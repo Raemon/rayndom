@@ -1,0 +1,107 @@
+The Knot The Knot The Knot The Knot The Knot The Bump XO Group The Knot Worldwide
+
+Skip to Main Content
+
+[Ceremony & Reception](/paper/ceremony-reception)
+
+/
+
+[Cocktail Napkins](/paper/ceremony-reception/napkins?format=cocktail)
+
+/
+
+Opulent Garden
+
+[](https://pinterest.com/pin/create/button/?url=https://www.theknot.com/paper/product/opulent-garden-cocktail-napkins&media=https://tkww-paper-designs.s3.amazonaws.com/master/f6b48676848341de9f2b5c366402c974.jpg&description=Opulent%20Garden%20Cocktail%20Napkins)
+
+Showing slide number 1 out of 5
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/f6b48676848341de9f2b5c366402c974.jpg/transform~rs_1200.1200-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/505e3ca34ff3427ba15532e59d0ff71c.jpg/transform~rs_1200.1200-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/f644bbc932274fc89bbed89195438478.jpg/transform~rs_1200.1200-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/5e0aef81b63146d6bd8335a073b3ac07.jpg/transform~rs_1200.1200-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/a90bed698f4b4c1a9d70a1660b3221dc.jpg/transform~rs_1200.1200-fit)
+
+
+
+
+1/5
+
+Showing slide number 1 out of 5
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/f6b48676848341de9f2b5c366402c974.jpg/transform~rs_192.192-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/505e3ca34ff3427ba15532e59d0ff71c.jpg/transform~rs_192.192-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/f644bbc932274fc89bbed89195438478.jpg/transform~rs_192.192-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/5e0aef81b63146d6bd8335a073b3ac07.jpg/transform~rs_192.192-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/a90bed698f4b4c1a9d70a1660b3221dc.jpg/transform~rs_192.192-fit)
+
+
+
+
+[](https://pinterest.com/pin/create/button/?url=https://www.theknot.com/paper/product/opulent-garden-cocktail-napkins&media=https://tkww-paper-designs.s3.amazonaws.com/master/f6b48676848341de9f2b5c366402c974.jpg&description=Opulent%20Garden%20Cocktail%20Napkins%20Scottish%20Green%20Napkin%20Uncoined)
+
+Showing slide number 1 out of 5
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/f6b48676848341de9f2b5c366402c974.jpg/transform~rs_600.600-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/505e3ca34ff3427ba15532e59d0ff71c.jpg/transform~rs_600.600-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/f644bbc932274fc89bbed89195438478.jpg/transform~rs_600.600-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/5e0aef81b63146d6bd8335a073b3ac07.jpg/transform~rs_600.600-fit)
+
+  * ![Opulent Garden Cocktail Napkins Scottish Green Napkin Uncoined](https://media-api.xogrp.com/images/fetch/https://tkww-paper-designs.s3.amazonaws.com/master/a90bed698f4b4c1a9d70a1660b3221dc.jpg/transform~rs_600.600-fit)
+
+
+
+
+# Opulent Garden Cocktail Napkins
+
+Format:Cocktail
+
+![Cocktail](https://media-api.xogrp.com/images/41795e66-90e2-43ac-bbd0-118a64f4ec67)Cocktail![Luncheon](https://media-api.xogrp.com/images/7c825991-dbdf-4adc-882f-3503db269a3e)Luncheon
+
+Design color:Scottish Green
+
+SGRDBLMGDSBECHA
+
+Paper type:Napkin
+
+Quantity
+
+50 items ($0.79/ea.)
+
+$39.50
+
+You’ll also get:
+
+  * Free design assistance to create a personalized look
+  * QR codes included—no extra cost!
+  * Free matching wedding website
+  * Easy guest addressing
+
+
+
+Personalize
+
+Details
+
+These simple yet classic cocktail napkins add an opulent touch to your celebrations. Your sweeping initials appear in romantic calligraphy-style script against a clean, bright backdrop. These napkins add an elegant and custom touch to any occasion, making them a stylish and thoughtful addition. 
+
+**Size:** 4.75 x 4.75 inches
+
+Paper
+
+Shipping
+
+### Explore similar designs
+
+![](https://www.theknot.com/akam/13/pixel_14ee368b?a=dD1lNGQxYzM1M2FmYmZmMTlkMTM4ZjQ0MTZjMjllMTA2ZTE1Mjc5ZTgwJmpzPW9mZg==)

@@ -1,0 +1,142 @@
+[](/)
+
+[BUY TICKETS](https://chabotspace.org/general-admission-tickets/)
+
+  * [Visit](https://chabotspace.org/visit/)
+  * [Programs](https://chabotspace.org/programs/)
+  * [Education](https://chabotspace.org/education/)
+  * [Event Rentals](https://chabotspace.org/visit/rent-chabot/)
+  * [About](https://chabotspace.org/about/)
+  * [Join and Give](https://chabotspace.org/join-and-give/)
+  * []()
+  * [BUY TICKETS](https://chabotspace.org/general-admission-tickets/)
+
+
+
+  * [Visit](https://chabotspace.org/visit/)
+  * [Programs](https://chabotspace.org/programs/)
+  * [Education](https://chabotspace.org/education/)
+  * [Event Rentals](https://chabotspace.org/visit/rent-chabot/)
+  * [About](https://chabotspace.org/about/)
+  * [Join and Give](https://chabotspace.org/join-and-give/)
+
+
+
+[BUY TICKETS](https://chabotspace.org/general-admission-tickets/)
+
+[BUY TICKETS](https://chabotspace.org/general-admission-tickets/)
+
+  * [Visit](https://chabotspace.org/visit/)
+  * [Programs](https://chabotspace.org/programs/)
+  * [Education](https://chabotspace.org/education/)
+  * [Event Rentals](https://chabotspace.org/visit/rent-chabot/)
+  * [About](https://chabotspace.org/about/)
+  * [Join and Give](https://chabotspace.org/join-and-give/)
+  * []()
+  * [BUY TICKETS](https://chabotspace.org/general-admission-tickets/)
+
+
+
+  * [Contact](https://chabotspace.org/about/contact/)
+  * [Employment](https://chabotspace.org/about/employment/)
+  * [Privacy Policy](https://chabotspace.org/privacy-policy/)
+  * [Across Our Universe: Chabot’s Blog](https://chabotspace.org/blogs-home/)
+
+
+
+## [Programs](https://chabotspace.org/programs/)
+
+  * [Programs Listing](https://chabotspace.org/programs/events-listing/)
+  * [Winter at Chabot](https://chabotspace.org/programs/winter-at-chabot/)
+  * [Festivals at Chabot](https://chabotspace.org/programs/festivals-at-chabot/)
+    * [Tinkerfest](https://chabotspace.org/programs/festivals-at-chabot/tinkerfest/)
+    * [Bubblefest](https://chabotspace.org/programs/festivals-at-chabot/bubblefest/)
+    * [Space Week Festival](https://chabotspace.org/programs/festivals-at-chabot/space-week-festival/)
+    * [WinterFest](https://chabotspace.org/programs/festivals-at-chabot/winterfest/)
+  * [Space Week](https://chabotspace.org/programs/space-week/)
+  * [Family Nature Adventures](https://chabotspace.org/programs/family-nature-adventures/)
+  * [Sip Series](https://chabotspace.org/programs/sip-series/)
+  * [Free Telescope Viewings](https://chabotspace.org/programs/free-telescope-viewings/)
+  * [Educational Events](https://chabotspace.org/programs/educational-events/)
+  * [Calendar View](https://chabotspace.org/programs/calendar-view/)
+
+
+
+[Home](https://chabotspace.org/) [Events](https://chabotspace.org/calendar/) ElectroLaze: Laser Pop
+
+Programs Programs Listing Winter at Chabot Festivals at Chabot Tinkerfest Bubblefest Space Week Festival WinterFest Space Week Family Nature Adventures Sip Series Free Telescope Viewings Educational Events Calendar View
+
+[ « All Events](https://chabotspace.org/calendar/)
+
+  * This event has passed.
+
+
+
+Event Series:  [ ElectroLaze: Laser Pop  ](https://chabotspace.org/series/electrolaze-laser-pop/)
+
+# ElectroLaze: Laser Pop
+
+November 1, 2025 @ 8:00 am \- 5:00 pm
+
+30 min, all ages
+
+Pink, N’Sync, Smash Mouth and more!
+
+Add to calendar 
+
+  * [ Google Calendar ](https://www.google.com/calendar/event?action=TEMPLATE&dates=20251101T080000/20251101T170000&text=ElectroLaze%3A%20Laser%20Pop&details=30+min%2C+all+agesPink%2C+N%E2%80%99Sync%2C+Smash+Mouth+and+more%21&trp=false&ctz=America/Los_Angeles&sprop=website:https://chabotspace.org)
+  * [ iCalendar ](webcal://chabotspace.org/calendar/electrolaze-laser-pop/2025-11-01/?ical=1)
+  * [ Outlook 365 ](https://outlook.office.com/owa/?path=/calendar/action/compose&rrv=addevent&startdt=2025-11-01T08%3A00%3A00-07%3A00&enddt=2025-11-01T17%3A00%3A00-07%3A00&location&subject=ElectroLaze%3A%20Laser%20Pop&body=30%20min%2C%20all%20agesPink%2C%20N%E2%80%99Sync%2C%20Smash%20Mouth%20and%20more%21)
+  * [ Outlook Live ](https://outlook.live.com/owa/?path=/calendar/action/compose&rrv=addevent&startdt=2025-11-01T08%3A00%3A00-07%3A00&enddt=2025-11-01T17%3A00%3A00-07%3A00&location&subject=ElectroLaze%3A%20Laser%20Pop&body=30%20min%2C%20all%20agesPink%2C%20N%E2%80%99Sync%2C%20Smash%20Mouth%20and%20more%21)
+
+
+
+##  Details 
+
+  * Date: November 1, 2025 
+  * Time:
+
+8:00 am - 5:00 pm
+
+Series: 
+     [ ElectroLaze: Laser Pop ](https://chabotspace.org/series/electrolaze-laser-pop/ "ElectroLaze: Laser Pop")
+  * Event Category: [Planetarium](https://chabotspace.org/calendar/category/planetarium/)
+
+
+
+## Visit Us
+
+[10000 Skyline Blvd.  
+Oakland, California 94619](https://www.google.com/maps/place/10000+Skyline+Blvd,+Oakland,+CA+94619/@37.8187204,-122.1829024,17z/data=!3m1!4b1!4m5!3m4!1s0x808f87da2c19bc4b:0x8823e91599fa59d8!8m2!3d37.8187162!4d-122.1807137)
+
+[(510) 336 - 7300](tel:+15103367300)
+
+[Plan your visit](/visit/plan-your-visit/)
+
+[Chabot Weather Station](/weather-station/)
+
+## Connect With Us
+
+[](https://twitter.com/ChabotSpace)[](https://www.facebook.com/ChabotSpace/)[](https://www.instagram.com/chabotspace/)
+
+## Subscribe To Our Newsletter
+
+Get Chabot's latest activities, events, programs and more delivered right to your inbox.
+
+[Sign up](https://lp.constantcontactpages.com/sl/13HPzS4/Evoyager)
+
+  * [Contact](https://chabotspace.org/about/contact/)
+  * [Employment](https://chabotspace.org/about/employment/)
+  * [Privacy Policy](https://chabotspace.org/privacy-policy/)
+  * [Across Our Universe: Chabot’s Blog](https://chabotspace.org/blogs-home/)
+
+
+
+## About
+
+[Learn About the Next Telescope Viewing](https://chabotspace.org/events/free-telescope-viewings/)
+
+© Chabot Space & Science Center 2026
+
+[WordPress Web Design and Development by HyperArts](https://www.hyperarts.com/design-programming-web-development/web-design-and-development-wordpress/)
+  *[ November 1, 2025 ]: 2025-11-01

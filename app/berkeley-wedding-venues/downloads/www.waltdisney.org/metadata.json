@@ -1,0 +1,2631 @@
+[
+  {
+    "siteName": "www.waltdisney.org",
+    "mainUrl": {
+      "url": "https://www.waltdisney.org/visit/events-venue-rentals/weddings",
+      "file": "_visit_events-venue-rentals_weddings.md"
+    },
+    "otherUrls": [
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-pop-studio-dog-maquettes",
+        "file": "_education_workshops_sold-out-pop-studio-dog-maquettes.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sip-and-sketch-sketching-cherry-blossoms",
+        "file": "_education_workshops_sip-and-sketch-sketching-cherry-blossoms.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/seeds-legacy-walt-disney-and-aristocats",
+        "file": "_blog_seeds-legacy-walt-disney-and-aristocats.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/directing-disney-conversation-director-brenda-chapman-and-historian-mindy-johnson",
+        "file": "_education_talks_directing-disney-conversation-director-brenda-chapman-and-historian-mindy-johnson.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/art-playground-holiday-crafts",
+        "file": "_education_workshops_art-playground-holiday-crafts.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/books/nine-old-men-lessons-techniques-and-inspiration-disneys-great-animators",
+        "file": "_store_books_nine-old-men-lessons-techniques-and-inspiration-disneys-great-animators.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/sold-out-curator-talk-happiest-place-earth-author-and-curator-don-hahn",
+        "file": "_education_talks_sold-out-curator-talk-happiest-place-earth-author-and-curator-don-hahn.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/press-room/mary-blair-mid-century-magic",
+        "file": "_press-room_mary-blair-mid-century-magic.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/books/starstruck-my-unlikely-road-hollywood",
+        "file": "_store_books_starstruck-my-unlikely-road-hollywood.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/princess-and-frog-2009-0",
+        "file": "_education_films_princess-and-frog-2009-0.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/imagineering-story-official-biography-walt-disney-imagineering",
+        "file": "_store_new_imagineering-story-official-biography-walt-disney-imagineering.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/exclusives",
+        "file": "_store_exclusives.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/art-playground-lunar-new-year-0",
+        "file": "_education_workshops_art-playground-lunar-new-year-0.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/other/blackwing-matte-soft",
+        "file": "_store_other_blackwing-matte-soft.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/visitor-information/social-narrative-visiting-museum",
+        "file": "_visit_visitor-information_social-narrative-visiting-museum.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/other/blackwing-pearl-white-balanced",
+        "file": "_store_other_blackwing-pearl-white-balanced.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/films/princess-and-frog-2009-0",
+        "file": "_education_films_princess-and-frog-2009-0.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/after-school-animation-advanced-digital-animation",
+        "file": "_education_classes_after-school-animation-advanced-digital-animation.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/walt-disney-treasures-personal-art-and-artifacts-walt-disney-family-museum",
+        "file": "_store_new_walt-disney-treasures-personal-art-and-artifacts-walt-disney-family-museum.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/exclusives/mickey-mouse-1928-shirt-blue",
+        "file": "_store_exclusives_mickey-mouse-1928-shirt-blue.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-broomstick-coming-life-adult-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-broomstick-coming-life-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/virtual-experiences",
+        "file": "_virtual-experiences.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/field-trips/storytelling",
+        "file": "_education_field-trips_storytelling.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibition-object/employee-directory-and-organizational-analysis",
+        "file": "_exhibition-object_employee-directory-and-organizational-analysis.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/walt-disney-treasures-personal-art-and-artifacts-walt-disney-family-museum",
+        "file": "_store_new_walt-disney-treasures-personal-art-and-artifacts-walt-disney-family-museum.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/disneyland-loan",
+        "file": "_disneyland-loan.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/field-trips/magic-storytelling-zoetrope",
+        "file": "_education_field-trips_magic-storytelling-zoetrope.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/after-school-animation-beginner-mixed-media-winter-2026",
+        "file": "_education_classes_after-school-animation-beginner-mixed-media-winter-2026.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/walt-disney-treasures-walts-train-uniform",
+        "file": "_blog_walt-disney-treasures-walts-train-uniform.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-butterflies-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-butterflies-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/website-account-set-guide",
+        "file": "_website-account-set-guide.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/virtual-winter-fun",
+        "file": "_virtual-winter-fun.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/virtual-experiences",
+        "file": "_virtual-experiences.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-river-hippo-rising-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-river-hippo-rising-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/jiminy-cricket-star-pin",
+        "file": "_store_exclusives_jiminy-cricket-star-pin.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/sensory-friendly-film-screening-sword-stone-1963",
+        "file": "_education_films_sensory-friendly-film-screening-sword-stone-1963.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/members/join/portal",
+        "file": "_members_join_portal.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/books/south-border-disney-walt-disney-and-good-neighbor-program",
+        "file": "_store_books_south-border-disney-walt-disney-and-good-neighbor-program.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-happy-dog-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-happy-dog-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/early-closure",
+        "file": "_education_early-closure.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket/e-ticket-no-35-spring-2001",
+        "file": "_store_e-ticket_e-ticket-no-35-spring-2001.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-were-creature-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-were-creature-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks",
+        "file": "_education_talks.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/limited-edition",
+        "file": "_store_limited-edition.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket/e-ticket-cd-rom-vol-2-no-9-16",
+        "file": "_store_e-ticket_e-ticket-cd-rom-vol-2-no-9-16.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/press-room/chris-miller-kaleidoscope",
+        "file": "_press-room_chris-miller-kaleidoscope.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/press-room/directing-disney",
+        "file": "_press-room_directing-disney.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/after-school-animation-intermediate-hand-drawn-animation",
+        "file": "_education_classes_after-school-animation-intermediate-hand-drawn-animation.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/special-exhibitions/lights-camera-glamour-photography-george-hurrell-exhibition-catalog",
+        "file": "_store_special-exhibitions_lights-camera-glamour-photography-george-hurrell-exhibition-catalog.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/diane-portrait",
+        "file": "_blog_diane-portrait.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/special-exhibitions/snow-white-and-seven-dwarfs-creation-classic-exhibition-catalog",
+        "file": "_store_special-exhibitions_snow-white-and-seven-dwarfs-creation-classic-exhibition-catalog.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibition-object/comments-pinocchio-1940-character-development",
+        "file": "_exhibition-object_comments-pinocchio-1940-character-development.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-no-38-fall-2002",
+        "file": "_store_e-ticket_e-ticket-no-38-fall-2002.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/walt-disney-pin",
+        "file": "_store_exclusives_walt-disney-pin.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-were-creature-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-were-creature-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/guest-services",
+        "file": "_guest-services.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/virtual-talk-north-winter-journey-animated-movies-graphic-novels-pixars-bobby",
+        "file": "_education_talks_virtual-talk-north-winter-journey-animated-movies-graphic-novels-pixars-bobby.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/general/mary-blair-i-can-fly-coloring-mat",
+        "file": "_store_general_mary-blair-i-can-fly-coloring-mat.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-airship-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-airship-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-magic-fairy-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-magic-fairy-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/join-give/legacy-giving",
+        "file": "_join-give_legacy-giving.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-pop-dance-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-pop-dance-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/join/donate",
+        "file": "_join_donate.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/blog/giving-lillian-her-flowers-lillian-disneys-window-main-street-usa",
+        "file": "_blog_giving-lillian-her-flowers-lillian-disneys-window-main-street-usa.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/after-school-animation-intermediate-spring-2025",
+        "file": "_education_classes_after-school-animation-intermediate-spring-2025.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-magical-castle-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-magical-castle-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/art-playground-autumn",
+        "file": "_education_workshops_art-playground-autumn.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-pop-dance-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-pop-dance-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/after-disney-toil-trouble-and-transformation-americas-favorite-media-company-author",
+        "file": "_education_talks_after-disney-toil-trouble-and-transformation-americas-favorite-media-company-author.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/blog/seeing-mickeys-true-colors-band-concert-90",
+        "file": "_blog_seeing-mickeys-true-colors-band-concert-90.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/world-building-concept-art-grades-6-10-session",
+        "file": "_education_classes_world-building-concept-art-grades-6-10-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/privacy-policy",
+        "file": "_privacy-policy.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sip-and-sketch-dreamy-winter-scene",
+        "file": "_education_workshops_sip-and-sketch-dreamy-winter-scene.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-wild-ride-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-wild-ride-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/special-exhibitions",
+        "file": "_store_special-exhibitions.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/films/happiest-place-earth-walts-disneyland-2025",
+        "file": "_education_films_happiest-place-earth-walts-disneyland-2025.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/paint-jar-pin",
+        "file": "_store_new_paint-jar-pin.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/special-exhibitions/lights-camera-glamour-photography-george-hurrell-exhibition-catalog",
+        "file": "_store_special-exhibitions_lights-camera-glamour-photography-george-hurrell-exhibition-catalog.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/academy-awardr-winnie-pooh-and-blustery-day-1969",
+        "file": "_blog_academy-awardr-winnie-pooh-and-blustery-day-1969.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/after-school-animation-beginner-spring-2025",
+        "file": "_education_classes_after-school-animation-beginner-spring-2025.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/inspired-mary-blair-disney-animation-artists-brittney-lee-and-lorelay-bove",
+        "file": "_education_talks_inspired-mary-blair-disney-animation-artists-brittney-lee-and-lorelay-bove.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-sip-and-sketch-whimsical-flowers",
+        "file": "_education_workshops_sold-out-sip-and-sketch-whimsical-flowers.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-broomstick-coming-life-adult-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-broomstick-coming-life-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/press-room/disney-cats-dogs",
+        "file": "_press-room_disney-cats-dogs.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/disney-cats-dogs",
+        "file": "_disney-cats-dogs.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-pop-studio-creative-lettering-techniques",
+        "file": "_education_workshops_sold-out-pop-studio-creative-lettering-techniques.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/happiest-place-earth-incredible-story-walt-disneys-disneyland",
+        "file": "_store_new_happiest-place-earth-incredible-story-walt-disneys-disneyland.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-collections-clash-orange",
+        "file": "_featured-videos_wd-fm-collections-clash-orange.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/person-class-after-school-animation-intermediate",
+        "file": "_education_classes_person-class-after-school-animation-intermediate.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit",
+        "file": "_visit.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/about/the-museum",
+        "file": "_about_the-museum.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/art-playground-earth-day",
+        "file": "_education_workshops_art-playground-earth-day.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/exclusives/minnie-mouse-collectible-doll",
+        "file": "_store_exclusives_minnie-mouse-collectible-doll.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/special-events/happiest-place-earth-member-preview-night",
+        "file": "_education_special-events_happiest-place-earth-member-preview-night.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket/e-ticket-no-44-summer-2006",
+        "file": "_store_e-ticket_e-ticket-no-44-summer-2006.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/venue-rentals/wonder-wednesdays",
+        "file": "_visit_venue-rentals_wonder-wednesdays.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-bird-flying-adult-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-bird-flying-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/disney-space",
+        "file": "_blog_disney-space.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/special-exhibitions/walt-disneys-jungle-book-making-masterpiece-exhibition-catalog",
+        "file": "_store_special-exhibitions_walt-disneys-jungle-book-making-masterpiece-exhibition-catalog.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/sold-out-magic-behind-mid-century-design-shag",
+        "file": "_education_talks_sold-out-magic-behind-mid-century-design-shag.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/pioneering-women-disney-animation-archivists-jill-breznican-and-doug-engalla",
+        "file": "_education_talks_pioneering-women-disney-animation-archivists-jill-breznican-and-doug-engalla.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/exhibition-object/animation-notes-mother-goose-goes-hollywood-1938",
+        "file": "_exhibition-object_animation-notes-mother-goose-goes-hollywood-1938.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/virtual-class-best-friend-canine-character-design-adult-session-0",
+        "file": "_education_classes_virtual-class-best-friend-canine-character-design-adult-session-0.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/about/our-mission",
+        "file": "_about_our-mission.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/mickey-mouse-1928-shirt-red",
+        "file": "_store_exclusives_mickey-mouse-1928-shirt-red.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/virtual-class-art-storyboarding-adult-session",
+        "file": "_education_classes_virtual-class-art-storyboarding-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/press-room/pencils-and-passion-student-art-exhibition",
+        "file": "_press-room_pencils-and-passion-student-art-exhibition.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-pop-studio-create-nature-sprite",
+        "file": "_education_workshops_sold-out-pop-studio-create-nature-sprite.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/venue-rentals",
+        "file": "_visit_venue-rentals.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/spirit",
+        "file": "_spirit.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/summer-classes/summer-class-sketch-screen-trailer-animation",
+        "file": "_education_summer-classes_summer-class-sketch-screen-trailer-animation.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/field-trips/magic-storytelling-zoetrope",
+        "file": "_education_field-trips_magic-storytelling-zoetrope.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-were-creature-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-were-creature-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/join-give/legacy-giving",
+        "file": "_join-give_legacy-giving.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/virtual/virtual-program-spill-tea-party-ashley-eckstein-and-nina-west",
+        "file": "_education_virtual_virtual-program-spill-tea-party-ashley-eckstein-and-nina-west.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/blog/stories-steamboat-history-walt-disneys-mark-twain-riverboat",
+        "file": "_blog_stories-steamboat-history-walt-disneys-mark-twain-riverboat.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/virtual-replay-memories-mary-blair-historian-john-canemaker-and-marys-niece-maggie",
+        "file": "_education_talks_virtual-replay-memories-mary-blair-historian-john-canemaker-and-marys-niece-maggie.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibitions",
+        "file": "_exhibitions.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/how-walt-disney-devised-idea-space-mountain-walt-disney-world-and-disneyland",
+        "file": "_blog_how-walt-disney-devised-idea-space-mountain-walt-disney-world-and-disneyland.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/holiday-venue-rentals",
+        "file": "_holiday-venue-rentals.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/summer-classes/sold-out-summer-class-illustrating-procreate",
+        "file": "_education_summer-classes_sold-out-summer-class-illustrating-procreate.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/featured-videos/wd-fm-collections-corner-disneyland-objects",
+        "file": "_featured-videos_wd-fm-collections-corner-disneyland-objects.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/walt-disney-magical-life-walt-disney-audio-animatronics-figure",
+        "file": "_blog_walt-disney-magical-life-walt-disney-audio-animatronics-figure.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/canceled-person-studio-series-animate-hair-blowing-wind-youth-session",
+        "file": "_education_workshops_canceled-person-studio-series-animate-hair-blowing-wind-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/other/blackwing-natural-extra-firm",
+        "file": "_store_other_blackwing-natural-extra-firm.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-bubbling-cauldron-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-bubbling-cauldron-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-pop-studio-clay-animation",
+        "file": "_education_workshops_sold-out-pop-studio-clay-animation.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/after-school-animation-beginner-mixed-media-winter-2026",
+        "file": "_education_classes_after-school-animation-beginner-mixed-media-winter-2026.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/transportation",
+        "file": "_visit_transportation.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/jimmie-dodds-mousegetar",
+        "file": "_blog_jimmie-dodds-mousegetar.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/holiday-gift-guide",
+        "file": "_blog_holiday-gift-guide.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/wildest-ride-wilderness-celebrating-45-years-big-thunder-mountain-railroad",
+        "file": "_blog_wildest-ride-wilderness-celebrating-45-years-big-thunder-mountain-railroad.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/walt-disneys-trains-grand-circle-tour-through-his-life-and-legacy",
+        "file": "_store_new_walt-disneys-trains-grand-circle-tour-through-his-life-and-legacy.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket",
+        "file": "_store_e-ticket.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-pets/featured-pets-may-2024",
+        "file": "_featured-pets_featured-pets-may-2024.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-river-hippo-rising-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-river-hippo-rising-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/second-opening-disneyland",
+        "file": "_blog_second-opening-disneyland.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-magic-fairy-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-magic-fairy-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-cat-adult-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-cat-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/art-studio-stop-motion-film-techniques",
+        "file": "_education_workshops_art-studio-stop-motion-film-techniques.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/books/fairest-one-all",
+        "file": "_store_books_fairest-one-all.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/user",
+        "file": "_user.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/calendar",
+        "file": "_calendar.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-sip-and-sketch-whimsical-flowers",
+        "file": "_education_workshops_sold-out-sip-and-sketch-whimsical-flowers.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/books/disney-monorail-imagineering-highway-sky",
+        "file": "_store_books_disney-monorail-imagineering-highway-sky.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit/transportation",
+        "file": "_visit_transportation.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/sensory-friendly-film-screening-many-adventures-winnie-pooh-1977",
+        "file": "_education_films_sensory-friendly-film-screening-many-adventures-winnie-pooh-1977.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/canceled-person-studio-series-animate-hair-blowing-wind-youth-session",
+        "file": "_education_workshops_canceled-person-studio-series-animate-hair-blowing-wind-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/raya-and-last-dragon-2021",
+        "file": "_education_films_raya-and-last-dragon-2021.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/walts-deep-sea-adventures-tomorrowlands-submarine-voyage",
+        "file": "_blog_walts-deep-sea-adventures-tomorrowlands-submarine-voyage.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/join/membership",
+        "file": "_join_membership.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/calendar",
+        "file": "_calendar.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibitions/100th-anniversary-pop-objects",
+        "file": "_exhibitions_100th-anniversary-pop-objects.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/virtual-talk-funny-boy-richard-hunt-biography-author-jessica-max-stein",
+        "file": "_education_talks_virtual-talk-funny-boy-richard-hunt-biography-author-jessica-max-stein.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/pirates-caribbean-curse-black-pearl-2003",
+        "file": "_education_films_pirates-caribbean-curse-black-pearl-2003.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/featured-videos/wd-fm-collections-clash-orange",
+        "file": "_featured-videos_wd-fm-collections-clash-orange.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/field-trips/exploring-trains",
+        "file": "_education_field-trips_exploring-trains.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-collections-corner-disneyland-objects",
+        "file": "_featured-videos_wd-fm-collections-corner-disneyland-objects.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-bird-flying-adult-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-bird-flying-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-magical-carriage-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-magical-carriage-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/museum-closed",
+        "file": "_education_museum-closed.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/black-cauldron-1985",
+        "file": "_education_films_black-cauldron-1985.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/cats-and-dogs",
+        "file": "_cats-and-dogs.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-growing-and-shrinking-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-growing-and-shrinking-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/art-playground-lunar-new-year",
+        "file": "_education_workshops_art-playground-lunar-new-year.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/virtual-tour",
+        "file": "_virtual-tour.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/inspired-mary-blair-disney-animation-artists-brittney-lee-and-lorelay-bove",
+        "file": "_education_talks_inspired-mary-blair-disney-animation-artists-brittney-lee-and-lorelay-bove.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog",
+        "file": "_blog.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/books/maps-disney-parks",
+        "file": "_store_books_maps-disney-parks.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/art-playground-springtime",
+        "file": "_education_workshops_art-playground-springtime.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/books/walts-disneyland-walk-park-walt-disney",
+        "file": "_store_books_walts-disneyland-walk-park-walt-disney.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/press-room/walt-disney-family-museum-commemorates-15-years-new-book",
+        "file": "_press-room_walt-disney-family-museum-commemorates-15-years-new-book.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/field-trips/hand-drawn-animation",
+        "file": "_education_field-trips_hand-drawn-animation.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-magical-carriage-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-magical-carriage-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/unleashed",
+        "file": "_unleashed.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/after-school-animation-advanced-digital-animation-winter-2026",
+        "file": "_education_classes_after-school-animation-advanced-digital-animation-winter-2026.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit/visitor-information/museum-store",
+        "file": "_visit_visitor-information_museum-store.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibitions/walt-disney-treasures-objects",
+        "file": "_exhibitions_walt-disney-treasures-objects.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-happy-dog-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-happy-dog-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/happiest-place",
+        "file": "_happiest-place.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-sip-and-sketch-cartoons-love",
+        "file": "_education_workshops_sold-out-sip-and-sketch-cartoons-love.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/world-building-concept-art-grades-6-10-session",
+        "file": "_education_classes_world-building-concept-art-grades-6-10-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-pop-dance-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-pop-dance-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/mary-blairs-parasols-paint-number-kit",
+        "file": "_store_new_mary-blairs-parasols-paint-number-kit.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/visitor-information/accessibility",
+        "file": "_visit_visitor-information_accessibility.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/special-exhibitions/walt-disneys-nine-old-men-masters-animation-exhibition-catalog",
+        "file": "_store_special-exhibitions_walt-disneys-nine-old-men-masters-animation-exhibition-catalog.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-fall-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-fall-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/epcot-sketches",
+        "file": "_blog_epcot-sketches.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-pop-studio-mini-wardrobe-worlds",
+        "file": "_education_workshops_sold-out-pop-studio-mini-wardrobe-worlds.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/summer-classes/sold-out-summer-class-lighting-environments",
+        "file": "_education_summer-classes_sold-out-summer-class-lighting-environments.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/blog/how-walt-disney-devised-idea-space-mountain-walt-disney-world-and-disneyland",
+        "file": "_blog_how-walt-disney-devised-idea-space-mountain-walt-disney-world-and-disneyland.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/story-disney-100-years-wonder",
+        "file": "_store_new_story-disney-100-years-wonder.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-cat-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-cat-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/special-events/happiest-place-earth-member-preview-night",
+        "file": "_education_special-events_happiest-place-earth-member-preview-night.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/mary-blairs-parasols-paint-number-kit",
+        "file": "_store_new_mary-blairs-parasols-paint-number-kit.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-bubbling-cauldron-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-bubbling-cauldron-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-virtual-studio-series-animate-cat-youth-session",
+        "file": "_education_workshops_sold-out-virtual-studio-series-animate-cat-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/exclusives/mickey-mouse-1928-crewneck-sweatshirt",
+        "file": "_store_exclusives_mickey-mouse-1928-crewneck-sweatshirt.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/mickey-mouse-collectible-doll",
+        "file": "_store_exclusives_mickey-mouse-collectible-doll.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-interview-women-walt-disney-imagineering-part-1",
+        "file": "_featured-videos_wd-fm-interview-women-walt-disney-imagineering-part-1.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/happiest-place-earth-incredible-story-walt-disneys-disneyland",
+        "file": "_store_new_happiest-place-earth-incredible-story-walt-disneys-disneyland.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/paint-jar-tote",
+        "file": "_store_new_paint-jar-tote.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/summer-classes/sold-out-summer-class-wild-west-animation",
+        "file": "_education_summer-classes_sold-out-summer-class-wild-west-animation.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/earth-day",
+        "file": "_earth-day.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/pop-studio-paint-were-creature-mask",
+        "file": "_education_workshops_pop-studio-paint-were-creature-mask.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/new-heights-walt-and-third-man-mountain",
+        "file": "_blog_new-heights-walt-and-third-man-mountain.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibitions/directing-disney",
+        "file": "_exhibitions_directing-disney.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/unleashed",
+        "file": "_unleashed.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/books/walt-disneys-disneyland",
+        "file": "_store_books_walt-disneys-disneyland.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/after-school-animation-intermediate-hand-drawn-animation-spring-2026",
+        "file": "_education_classes_after-school-animation-intermediate-hand-drawn-animation-spring-2026.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket/e-ticket-no-33-spring-2000",
+        "file": "_store_e-ticket_e-ticket-no-33-spring-2000.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit/visitor-information/social-narrative-visiting-museum",
+        "file": "_visit_visitor-information_social-narrative-visiting-museum.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/featured-videos/wd-fm-deep-dive-package-features",
+        "file": "_featured-videos_wd-fm-deep-dive-package-features.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/about/team",
+        "file": "_about_team.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-bird-flying-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-bird-flying-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-magic-staff-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-magic-staff-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit/events-venue-rentals/virtual-guest-speakers",
+        "file": "_visit_events-venue-rentals_virtual-guest-speakers.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/books",
+        "file": "_store_books.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/exhibitions/walt-disney-treasures-objects",
+        "file": "_exhibitions_walt-disney-treasures-objects.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/join/corporate",
+        "file": "_join_corporate.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-pop-dance-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-pop-dance-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/special-events/member-morning-welcome-members",
+        "file": "_education_special-events_member-morning-welcome-members.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/sold-out-storytime-kids-santa-j-claus-comin-town-1",
+        "file": "_education_talks_sold-out-storytime-kids-santa-j-claus-comin-town-1.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/directing-pixar-producer-jonas-rivera-and-directors-carrie-hobson-mike-jones-and",
+        "file": "_education_talks_directing-pixar-producer-jonas-rivera-and-directors-carrie-hobson-mike-jones-and.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/directing-disney-conversation-director-brenda-chapman-and-historian-mindy-johnson",
+        "file": "_education_talks_directing-disney-conversation-director-brenda-chapman-and-historian-mindy-johnson.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibition-object/scene-draft-pages-steamboat-willie-1928",
+        "file": "_exhibition-object_scene-draft-pages-steamboat-willie-1928.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-pop-studio-create-pop-castle",
+        "file": "_education_workshops_sold-out-pop-studio-create-pop-castle.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/special-events/family-access-day-0",
+        "file": "_education_special-events_family-access-day-0.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/blog/former-imagineer-tom-morris-explains-just-who-built-original-disneyland",
+        "file": "_blog_former-imagineer-tom-morris-explains-just-who-built-original-disneyland.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/sold-out-walt-disneys-trains-grand-circle-tour-through-his-life-and-legacy-author",
+        "file": "_education_talks_sold-out-walt-disneys-trains-grand-circle-tour-through-his-life-and-legacy-author.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos",
+        "file": "_featured-videos.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/press-room/walt-disney-family-museum-celebrates-100-years-walt-disney-company",
+        "file": "_press-room_walt-disney-family-museum-celebrates-100-years-walt-disney-company.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket/e-ticket-no-45-summer-2007",
+        "file": "_store_e-ticket_e-ticket-no-45-summer-2007.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-no-35-spring-2001",
+        "file": "_store_e-ticket_e-ticket-no-35-spring-2001.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/featured-videos/wd-fm-museum-musings-april-2025",
+        "file": "_featured-videos_wd-fm-museum-musings-april-2025.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-no-39-spring-2003",
+        "file": "_store_e-ticket_e-ticket-no-39-spring-2003.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/terms-use",
+        "file": "_terms-use.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/chris-miller",
+        "file": "_chris-miller.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/special-exhibitions/mickey-mouse-walt-world-exhibition-catalog",
+        "file": "_store_special-exhibitions_mickey-mouse-walt-world-exhibition-catalog.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/field-trips/background-design",
+        "file": "_education_field-trips_background-design.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit/events-and-venue-rentals",
+        "file": "_visit_events-and-venue-rentals.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibition-object/animation-notes-mother-goose-goes-hollywood-1938",
+        "file": "_exhibition-object_animation-notes-mother-goose-goes-hollywood-1938.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/special-events/member-morning-mary-blair-mid-century-magic",
+        "file": "_education_special-events_member-morning-mary-blair-mid-century-magic.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-pop-studio-dog-maquettes",
+        "file": "_education_workshops_sold-out-pop-studio-dog-maquettes.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/special-events/member-appreciation-weekend-2",
+        "file": "_education_special-events_member-appreciation-weekend-2.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/field-trips/color-theory",
+        "file": "_education_field-trips_color-theory.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket/e-ticket-cd-rom-vol-1-no-1-8",
+        "file": "_store_e-ticket_e-ticket-cd-rom-vol-1-no-1-8.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/mickey-mouse-1928-bomber-jacket",
+        "file": "_store_new_mickey-mouse-1928-bomber-jacket.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-bouncing-bear-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-bouncing-bear-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/disneyland-loan",
+        "file": "_disneyland-loan.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/view/traveling-exhibitions",
+        "file": "_view_traveling-exhibitions.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/about/board-of-directors",
+        "file": "_about_board-of-directors.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/about/advisory-committee",
+        "file": "_about_advisory-committee.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/exhibition-object/comments-pinocchio-1940-character-development",
+        "file": "_exhibition-object_comments-pinocchio-1940-character-development.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-pop-studio-create-pop-castle",
+        "file": "_education_workshops_sold-out-pop-studio-create-pop-castle.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/other/stoneware-mickey-mug-red",
+        "file": "_store_other_stoneware-mickey-mug-red.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/animation-festival",
+        "file": "_animation-festival.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/general/mary-blair-i-can-fly-coloring-mat",
+        "file": "_store_general_mary-blair-i-can-fly-coloring-mat.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/special-events/member-morning-mary-blair-mid-century-magic",
+        "file": "_education_special-events_member-morning-mary-blair-mid-century-magic.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/exclusives/mickey-mouse-pin",
+        "file": "_store_exclusives_mickey-mouse-pin.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/exclusives/wdfm-coaster",
+        "file": "_store_exclusives_wdfm-coaster.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/exhibitions/art-disneyland-attraction-posters",
+        "file": "_exhibitions_art-disneyland-attraction-posters.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/20000-leagues-under-sea-70-whale-tale-harper-goffs-influence",
+        "file": "_blog_20000-leagues-under-sea-70-whale-tale-harper-goffs-influence.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/about/the-museum",
+        "file": "_about_the-museum.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-mary-blair-mid-century-magic",
+        "file": "_featured-videos_wd-fm-mary-blair-mid-century-magic.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sip-and-sketch-reflective-puddle-painting",
+        "file": "_education_workshops_sip-and-sketch-reflective-puddle-painting.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/join/donate",
+        "file": "_join_donate.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-collections-clash-winter",
+        "file": "_featured-videos_wd-fm-collections-clash-winter.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-deep-dive-package-features",
+        "file": "_featured-videos_wd-fm-deep-dive-package-features.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/special-exhibitions/disney-dali-architects-imagination-exhibition-catalog",
+        "file": "_store_special-exhibitions_disney-dali-architects-imagination-exhibition-catalog.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-cat-adult-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-cat-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-sip-and-sketch-draw-loyal-pet",
+        "file": "_education_workshops_sold-out-sip-and-sketch-draw-loyal-pet.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/museum-store",
+        "file": "_visit_museum-store.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-happy-train-ride-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-happy-train-ride-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-director-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-director-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/sale",
+        "file": "_store_sale.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/museum-cafe",
+        "file": "_visit_museum-cafe.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-toy-falling-down-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-toy-falling-down-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/after-disney-toil-trouble-and-transformation-americas-favorite-media-company-author",
+        "file": "_education_talks_after-disney-toil-trouble-and-transformation-americas-favorite-media-company-author.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/virtual-experiences/virtual-group-experiences",
+        "file": "_virtual-experiences_virtual-group-experiences.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/all",
+        "file": "_store_all.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/terms-use",
+        "file": "_terms-use.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-happy-train-ride-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-happy-train-ride-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/field-trips/background-design",
+        "file": "_education_field-trips_background-design.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/after-school-animation-advanced-digital-animation-spring-2026",
+        "file": "_education_classes_after-school-animation-advanced-digital-animation-spring-2026.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/join-give/virtual-fundraisers",
+        "file": "_join-give_virtual-fundraisers.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/accessibility",
+        "file": "_visit_accessibility.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/search",
+        "file": "_search.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-were-creature-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-were-creature-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-no-40-fall-2003",
+        "file": "_store_e-ticket_e-ticket-no-40-fall-2003.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/films/special-screening-two-ships-2025",
+        "file": "_education_films_special-screening-two-ships-2025.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/education-resources",
+        "file": "_education_education-resources.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/films/sensory-friendly-film-screening-many-adventures-winnie-pooh-1977",
+        "file": "_education_films_sensory-friendly-film-screening-many-adventures-winnie-pooh-1977.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-river-hippo-rising-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-river-hippo-rising-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/join/walts-circle",
+        "file": "_join_walts-circle.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-puppet-coming-life-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-puppet-coming-life-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit/visitor-information/accessibility",
+        "file": "_visit_visitor-information_accessibility.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/tafi",
+        "file": "_tafi.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/virtual-talk-funny-boy-richard-hunt-biography-author-jessica-max-stein",
+        "file": "_education_talks_virtual-talk-funny-boy-richard-hunt-biography-author-jessica-max-stein.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/pencils-and-passion",
+        "file": "_pencils-and-passion.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-wizard-casting-spell-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-wizard-casting-spell-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibition-object/story-meeting-notes-dumbo-1941-sequence-190-learn-fly",
+        "file": "_exhibition-object_story-meeting-notes-dumbo-1941-sequence-190-learn-fly.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/field-trips/multiplane-animation",
+        "file": "_education_field-trips_multiplane-animation.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/steve-martin-remembers-wally-boag",
+        "file": "_blog_steve-martin-remembers-wally-boag.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-magical-carriage-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-magical-carriage-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-river-hippo-rising-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-river-hippo-rising-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/user/login",
+        "file": "_user_login.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/epacenter-beginner-mixed-media",
+        "file": "_education_classes_epacenter-beginner-mixed-media.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket/e-ticket-no-38-fall-2002",
+        "file": "_store_e-ticket_e-ticket-no-38-fall-2002.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/about/board-of-directors",
+        "file": "_about_board-of-directors.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/members/join/portal",
+        "file": "_members_join_portal.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/art-studio-stop-motion-film-techniques",
+        "file": "_education_workshops_art-studio-stop-motion-film-techniques.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/",
+        "file": "index.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/miniature-vase-dragon",
+        "file": "_blog_miniature-vase-dragon.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/minnie-mouse-collectible-doll",
+        "file": "_store_exclusives_minnie-mouse-collectible-doll.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/films/perfect-pairing-brews-views-princess-and-frog-2009-brewing-brothas",
+        "file": "_education_films_perfect-pairing-brews-views-princess-and-frog-2009-brewing-brothas.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/plane-crazy-pin",
+        "file": "_store_exclusives_plane-crazy-pin.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/artifact-donation",
+        "file": "_artifact-donation.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibition-object/comments-snow-white-and-seven-dwarfs-test-reels",
+        "file": "_exhibition-object_comments-snow-white-and-seven-dwarfs-test-reels.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/books/lost-notebook-herman-schultheis-and-secrets-walt-disneys-movie-magic",
+        "file": "_store_books_lost-notebook-herman-schultheis-and-secrets-walt-disneys-movie-magic.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/field-trips/theme-park-design",
+        "file": "_education_field-trips_theme-park-design.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-bear-eating-honey-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-bear-eating-honey-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-magic-staff-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-magic-staff-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/virtual-screening-qa-two-ships-2025-filmmakers-mckinley-mackenzie-and-jodi-benson",
+        "file": "_education_talks_virtual-screening-qa-two-ships-2025-filmmakers-mckinley-mackenzie-and-jodi-benson.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-mini-musings-walt-disneys-reception-around-world",
+        "file": "_featured-videos_wd-fm-mini-musings-walt-disneys-reception-around-world.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/general/eyvind-earle-notecard-set-forests",
+        "file": "_store_general_eyvind-earle-notecard-set-forests.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films",
+        "file": "_education_films.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/highway-sky",
+        "file": "_blog_highway-sky.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/pixar-parks-pixars-roger-gould-and-krista-sheffler",
+        "file": "_education_talks_pixar-parks-pixars-roger-gould-and-krista-sheffler.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit/groups",
+        "file": "_visit_groups.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/happiest-place-earth-walts-disneyland-2025",
+        "file": "_education_films_happiest-place-earth-walts-disneyland-2025.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/user/password",
+        "file": "_user_password.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/bequest-intention-and-legacy-society-enrollment",
+        "file": "_bequest-intention-and-legacy-society-enrollment.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/other",
+        "file": "_store_other.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/summer-classes/sold-out-summer-class-wild-west-animation",
+        "file": "_education_summer-classes_sold-out-summer-class-wild-west-animation.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/directing-pixar-producer-jonas-rivera-and-directors-carrie-hobson-mike-jones-and",
+        "file": "_education_talks_directing-pixar-producer-jonas-rivera-and-directors-carrie-hobson-mike-jones-and.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/special-events/community-day-big-draw-2025-drawn-together",
+        "file": "_education_special-events_community-day-big-draw-2025-drawn-together.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/field-trips",
+        "file": "_field-trips.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/books/walts-disneyland-walk-park-walt-disney",
+        "file": "_store_books_walts-disneyland-walk-park-walt-disney.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/mary-blair",
+        "file": "_mary-blair.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/events-form",
+        "file": "_events-form.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/walt-disney-family-museum-throw",
+        "file": "_store_exclusives_walt-disney-family-museum-throw.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/smallworld",
+        "file": "_smallworld.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/sold-out-storytime-kids-my-zoo-book-feelings-illustrator-eliza-reisfeld",
+        "file": "_education_talks_sold-out-storytime-kids-my-zoo-book-feelings-illustrator-eliza-reisfeld.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/about/team",
+        "file": "_about_team.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/field-trips/theme-park-design",
+        "file": "_education_field-trips_theme-park-design.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/mickey-mouse-1928-crewneck-sweatshirt",
+        "file": "_store_exclusives_mickey-mouse-1928-crewneck-sweatshirt.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/virtual-screening-qa-two-ships-2025-filmmakers-mckinley-mackenzie-and-jodi-benson",
+        "file": "_education_talks_virtual-screening-qa-two-ships-2025-filmmakers-mckinley-mackenzie-and-jodi-benson.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/events-and-venue-rentals",
+        "file": "_visit_events-and-venue-rentals.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/about/board-of-directors/ron-miller",
+        "file": "_about_board-of-directors_ron-miller.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/cats-and-dogs",
+        "file": "_cats-and-dogs.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/curator-talk-happiest-place-earth-author-and-curator-don-hahn",
+        "file": "_education_talks_curator-talk-happiest-place-earth-author-and-curator-don-hahn.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/after-school-animation-intermediate-hand-drawn-animation",
+        "file": "_education_classes_after-school-animation-intermediate-hand-drawn-animation.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/general/eyvind-earle-notecard-set-forests",
+        "file": "_store_general_eyvind-earle-notecard-set-forests.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/lilly-belletm-pull-back-train",
+        "file": "_store_new_lilly-belletm-pull-back-train.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/special-events",
+        "file": "_education_special-events.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/special-events/enchanted-evenings-tim-burtons-nightmare-christmas-1993",
+        "file": "_education_special-events_enchanted-evenings-tim-burtons-nightmare-christmas-1993.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/other",
+        "file": "_store_other.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/xavier-x-atencio-legacy-artist-imagineer-and-disney-legend",
+        "file": "_education_talks_xavier-x-atencio-legacy-artist-imagineer-and-disney-legend.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/exclusives/mickey-mouse-1928-shirt-red",
+        "file": "_store_exclusives_mickey-mouse-1928-shirt-red.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-museum-updates-march-2025",
+        "file": "_featured-videos_wd-fm-museum-updates-march-2025.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/field-trips/storyboarding",
+        "file": "_education_field-trips_storyboarding.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/apparel/wdfm-hoodie",
+        "file": "_store_apparel_wdfm-hoodie.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/70-years-lady-and-tramp-1955-disney-author-and-historian-marcy-carriker-smothers",
+        "file": "_education_talks_70-years-lady-and-tramp-1955-disney-author-and-historian-marcy-carriker-smothers.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/field-trips",
+        "file": "_education_field-trips.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-playful-puppy-adult-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-playful-puppy-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-pop-studio-paper-collage-cheshire-cat",
+        "file": "_education_workshops_sold-out-pop-studio-paper-collage-cheshire-cat.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/art-playground-earth-day-0",
+        "file": "_education_workshops_art-playground-earth-day-0.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket/e-ticket-no-39-spring-2003",
+        "file": "_store_e-ticket_e-ticket-no-39-spring-2003.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/press-room/pencils-and-passion-student-art-exhibition",
+        "file": "_press-room_pencils-and-passion-student-art-exhibition.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/out-night-60-years-walt-disneys-zorro",
+        "file": "_blog_out-night-60-years-walt-disneys-zorro.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/view/traveling-exhibitions",
+        "file": "_view_traveling-exhibitions.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/field-trips/exploring-trains",
+        "file": "_education_field-trips_exploring-trains.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/walt-disney-family-museum-animation-academy",
+        "file": "_education_walt-disney-family-museum-animation-academy.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/user/login",
+        "file": "_user_login.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/featured-videos/wd-fm-collections-clash-winter",
+        "file": "_featured-videos_wd-fm-collections-clash-winter.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/after-school-animation-beginner-mixed-media",
+        "file": "_education_classes_after-school-animation-beginner-mixed-media.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes-workshops",
+        "file": "_education_classes-workshops.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/canceled-sip-and-sketch-create-secret-club-badge",
+        "file": "_education_workshops_canceled-sip-and-sketch-create-secret-club-badge.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/field-trips/pointillism",
+        "file": "_education_field-trips_pointillism.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/visitor-information/presidio",
+        "file": "_visit_visitor-information_presidio.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-happy-dog-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-happy-dog-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/directing",
+        "file": "_directing.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/spirit-season-exhibition-details-2022",
+        "file": "_spirit-season-exhibition-details-2022.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/other/walt-man-behind-myth-dvd-blu-ray",
+        "file": "_store_other_walt-man-behind-myth-dvd-blu-ray.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops",
+        "file": "_education_workshops.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/look-closer-great-moments-mr-lincoln",
+        "file": "_blog_look-closer-great-moments-mr-lincoln.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-were-creature-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-were-creature-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/summer-classes/sold-out-summer-class-fantasy-collage",
+        "file": "_education_summer-classes_sold-out-summer-class-fantasy-collage.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/press-room/pawsibilities-unleashed-pet-portrait-exhibition",
+        "file": "_press-room_pawsibilities-unleashed-pet-portrait-exhibition.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/books/walt-disney-family-museum-man-magic-memories",
+        "file": "_store_books_walt-disney-family-museum-man-magic-memories.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/other/walt-man-behind-myth-dvd-standard",
+        "file": "_store_other_walt-man-behind-myth-dvd-standard.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wdfm-collections-corner-sketchbook-alice-estes-davis",
+        "file": "_featured-videos_wdfm-collections-corner-sketchbook-alice-estes-davis.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/other/blackwing-natural-extra-firm",
+        "file": "_store_other_blackwing-natural-extra-firm.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/after-school-animation-intermediate-hand-drawn-animation-winter-2026",
+        "file": "_education_classes_after-school-animation-intermediate-hand-drawn-animation-winter-2026.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-wild-ride-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-wild-ride-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/mrs-davis-letter-display-walt-disney-companys-100th-anniversary",
+        "file": "_blog_mrs-davis-letter-display-walt-disney-companys-100th-anniversary.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/general/eyvind-earle-notecard-set-coastline",
+        "file": "_store_general_eyvind-earle-notecard-set-coastline.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-river-hippo-rising-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-river-hippo-rising-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-pop-studio-create-mythical-creatures",
+        "file": "_education_workshops_sold-out-pop-studio-create-mythical-creatures.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/special-events",
+        "file": "_education_special-events.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/mary-blairs-pigments-imagination-2025",
+        "file": "_education_films_mary-blairs-pigments-imagination-2025.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/special-events/member-appreciation-weekend-1",
+        "file": "_education_special-events_member-appreciation-weekend-1.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/mickey-mouse-pin",
+        "file": "_store_exclusives_mickey-mouse-pin.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks",
+        "file": "_education_talks.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/story-disney-100-years-wonder",
+        "file": "_store_new_story-disney-100-years-wonder.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/museum-closed",
+        "file": "_education_museum-closed.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/walts-last-adventure-50th-anniversary-pirates-caribbean",
+        "file": "_blog_walts-last-adventure-50th-anniversary-pirates-caribbean.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/field-trips/character-design",
+        "file": "_education_field-trips_character-design.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit/visitor-information/spotlight-talks",
+        "file": "_visit_visitor-information_spotlight-talks.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/members",
+        "file": "_members.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-butterflies-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-butterflies-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/press-room/directing-disney",
+        "file": "_press-room_directing-disney.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-cd-rom-vol-1-no-1-8",
+        "file": "_store_e-ticket_e-ticket-cd-rom-vol-1-no-1-8.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/exclusives/mickey-mouse-1928-hat-red",
+        "file": "_store_exclusives_mickey-mouse-1928-hat-red.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/mickey-mouse-1928-hat-grey",
+        "file": "_store_new_mickey-mouse-1928-hat-grey.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-toy-falling-down-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-toy-falling-down-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-bear-eating-honey-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-bear-eating-honey-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-were-creature-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-were-creature-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-growing-and-shrinking-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-growing-and-shrinking-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/press-room/happiest-place-earth-disneyland-story",
+        "file": "_press-room_happiest-place-earth-disneyland-story.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-airship-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-airship-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/films/emperors-new-groove-2000",
+        "file": "_education_films_emperors-new-groove-2000.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-happy-train-ride-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-happy-train-ride-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-broomstick-coming-life-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-broomstick-coming-life-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives",
+        "file": "_store_exclusives.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/exclusives/walt-disney-pin",
+        "file": "_store_exclusives_walt-disney-pin.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-were-creature-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-were-creature-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/disney-careers",
+        "file": "_disney-careers.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes",
+        "file": "_education_classes.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-happy-dog-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-happy-dog-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/books/starstruck-my-unlikely-road-hollywood",
+        "file": "_store_books_starstruck-my-unlikely-road-hollywood.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-playful-puppy-adult-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-playful-puppy-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/seeing-mickeys-true-colors-band-concert-90",
+        "file": "_blog_seeing-mickeys-true-colors-band-concert-90.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/conversation-animator-willie-ito-and-historian-mindy-johnson",
+        "file": "_education_talks_conversation-animator-willie-ito-and-historian-mindy-johnson.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/special-exhibitions/walt-disneys-nine-old-men-masters-animation-exhibition-catalog",
+        "file": "_store_special-exhibitions_walt-disneys-nine-old-men-masters-animation-exhibition-catalog.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/virtual-tour",
+        "file": "_virtual-tour.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket/e-ticket-no-27-summer-1997",
+        "file": "_store_e-ticket_e-ticket-no-27-summer-1997.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-pop-studio-create-nature-sprite",
+        "file": "_education_workshops_sold-out-pop-studio-create-nature-sprite.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-disneylands-70th-anniversary",
+        "file": "_featured-videos_wd-fm-disneylands-70th-anniversary.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-bear-eating-honey-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-bear-eating-honey-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/accessibility",
+        "file": "_accessibility.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/other/blackwing-two-step-sharpener",
+        "file": "_store_other_blackwing-two-step-sharpener.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/field-trips/diving-disney-virtual-tour-field-trip",
+        "file": "_education_field-trips_diving-disney-virtual-tour-field-trip.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/join/membership/faqs",
+        "file": "_join_membership_faqs.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/events-venue-rentals/virtual-guest-speakers",
+        "file": "_visit_events-venue-rentals_virtual-guest-speakers.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/other/blackwing-602-firm",
+        "file": "_store_other_blackwing-602-firm.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/blog/20000-leagues-under-sea-70-whale-tale-harper-goffs-influence",
+        "file": "_blog_20000-leagues-under-sea-70-whale-tale-harper-goffs-influence.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sip-and-sketch-clay-cat-sculptures",
+        "file": "_education_workshops_sip-and-sketch-clay-cat-sculptures.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/virtual-talk-behind-studio-ghiblis-colors-mary-blair-2009-special-exhibition",
+        "file": "_education_talks_virtual-talk-behind-studio-ghiblis-colors-mary-blair-2009-special-exhibition.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/directing-disney-original-directors-walts-animated-films",
+        "file": "_store_new_directing-disney-original-directors-walts-animated-films.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/films/sword-stone-1963",
+        "file": "_education_films_sword-stone-1963.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/field-trips/imagineering-creative-problem-solving",
+        "file": "_education_field-trips_imagineering-creative-problem-solving.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/pixar-parks-pixars-roger-gould-and-krista-sheffler",
+        "file": "_education_talks_pixar-parks-pixars-roger-gould-and-krista-sheffler.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-happy-train-ride-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-happy-train-ride-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/visitor-information/museum-cafe",
+        "file": "_visit_visitor-information_museum-cafe.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibition-object/inter-office-communication-regarding-responses-test-reels",
+        "file": "_exhibition-object_inter-office-communication-regarding-responses-test-reels.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-wild-ride-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-wild-ride-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/mary-blair-world-whimsy-paint-number-kit",
+        "file": "_store_new_mary-blair-world-whimsy-paint-number-kit.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-bear-eating-honey-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-bear-eating-honey-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-bear-eating-honey-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-bear-eating-honey-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-bouncing-bear-adult-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-bouncing-bear-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/user/register",
+        "file": "_user_register.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-no-37-spring-2002",
+        "file": "_store_e-ticket_e-ticket-no-37-spring-2002.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/talks",
+        "file": "_talks.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-happy-train-ride-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-happy-train-ride-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-sip-and-sketch-draw-loyal-pet",
+        "file": "_education_workshops_sold-out-sip-and-sketch-draw-loyal-pet.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-no-43-fall-2005",
+        "file": "_store_e-ticket_e-ticket-no-43-fall-2005.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/join/corporate",
+        "file": "_join_corporate.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-pop-dance-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-pop-dance-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/south-america-tour",
+        "file": "_blog_south-america-tour.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/curator-talk-happiest-place-earth-author-and-curator-don-hahn",
+        "file": "_education_talks_curator-talk-happiest-place-earth-author-and-curator-don-hahn.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/next-stop-tomorrowland-walt-disneys-future-1967",
+        "file": "_blog_next-stop-tomorrowland-walt-disneys-future-1967.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/join-give/virtual-fundraisers",
+        "file": "_join-give_virtual-fundraisers.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/official-walt-disney-quote-book",
+        "file": "_store_new_official-walt-disney-quote-book.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/books/fairest-one-all",
+        "file": "_store_books_fairest-one-all.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-pop-dance-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-pop-dance-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-puppet-coming-life-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-puppet-coming-life-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/mickey-mouse-1928-hat-grey",
+        "file": "_store_new_mickey-mouse-1928-hat-grey.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/art-playground-lunar-new-year-0",
+        "file": "_education_workshops_art-playground-lunar-new-year-0.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/art-playground-springtime",
+        "file": "_education_workshops_art-playground-springtime.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-pop-studio-decorative-airships",
+        "file": "_education_workshops_sold-out-pop-studio-decorative-airships.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/perfect-pairing-brews-views-princess-and-frog-2009-brewing-brothas",
+        "file": "_education_films_perfect-pairing-brews-views-princess-and-frog-2009-brewing-brothas.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store",
+        "file": "_store.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/artist-studio-stop-motion-film-techniques",
+        "file": "_education_workshops_artist-studio-stop-motion-film-techniques.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sip-and-sketch-dreamy-winter-scene",
+        "file": "_education_workshops_sip-and-sketch-dreamy-winter-scene.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/join/volunteer",
+        "file": "_join_volunteer.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/exclusives/steamboat-willie-mickey-mouse-magnet",
+        "file": "_store_exclusives_steamboat-willie-mickey-mouse-magnet.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/visitor-information/lodging",
+        "file": "_visit_visitor-information_lodging.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/walking-giants-untold-story-mary-poppins-1964-gregg-sherman",
+        "file": "_education_talks_walking-giants-untold-story-mary-poppins-1964-gregg-sherman.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-cat-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-cat-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/mary-blair-world-whimsy-paint-number-kit",
+        "file": "_store_new_mary-blair-world-whimsy-paint-number-kit.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/virtual-class-best-friend-canine-character-design-grades-6-12-session-0",
+        "file": "_education_classes_virtual-class-best-friend-canine-character-design-grades-6-12-session-0.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/press-room/disney-cats-dogs",
+        "file": "_press-room_disney-cats-dogs.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/paint-jar-tote",
+        "file": "_store_new_paint-jar-tote.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/books/south-border-disney-walt-disney-and-good-neighbor-program",
+        "file": "_store_books_south-border-disney-walt-disney-and-good-neighbor-program.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/events-venue-rentals/wonder-wednesdays",
+        "file": "_visit_events-venue-rentals_wonder-wednesdays.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/after-school-animation-beginner-mixed-media-spring-2026",
+        "file": "_education_classes_after-school-animation-beginner-mixed-media-spring-2026.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-growing-and-shrinking-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-growing-and-shrinking-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/special-exhibitions/snow-white-and-seven-dwarfs-creation-classic-exhibition-catalog",
+        "file": "_store_special-exhibitions_snow-white-and-seven-dwarfs-creation-classic-exhibition-catalog.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/books/nine-old-men-lessons-techniques-and-inspiration-disneys-great-animators",
+        "file": "_store_books_nine-old-men-lessons-techniques-and-inspiration-disneys-great-animators.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-fall-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-fall-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/press-room/walt-disney-family-museum-celebrates-100-years-walt-disney-company",
+        "file": "_press-room_walt-disney-family-museum-celebrates-100-years-walt-disney-company.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/sold-out-imagineering-beginning-1952-1955-they-created-disneyland-former-imagineer",
+        "file": "_education_talks_sold-out-imagineering-beginning-1952-1955-they-created-disneyland-former-imagineer.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/press-room/spirit-season-community-art-exhibition-0",
+        "file": "_press-room_spirit-season-community-art-exhibition-0.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/books/lost-notebook-herman-schultheis-and-secrets-walt-disneys-movie-magic",
+        "file": "_store_books_lost-notebook-herman-schultheis-and-secrets-walt-disneys-movie-magic.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/field-trips/storytelling",
+        "file": "_education_field-trips_storytelling.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/education-resources",
+        "file": "_education_education-resources.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/sword-stone-1963",
+        "file": "_education_films_sword-stone-1963.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/disneyland-quintessential-classics-haunted-mansion",
+        "file": "_blog_disneyland-quintessential-classics-haunted-mansion.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-director-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-director-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-puppet-coming-life-youth-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-puppet-coming-life-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/lilly-belletm-pull-back-train",
+        "file": "_store_new_lilly-belletm-pull-back-train.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/field-trips/multiplane-animation",
+        "file": "_education_field-trips_multiplane-animation.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/summer-classes/sold-out-summer-class-dungeons-drawing",
+        "file": "_education_summer-classes_sold-out-summer-class-dungeons-drawing.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/special-events/family-access-day-0",
+        "file": "_education_special-events_family-access-day-0.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket/e-ticket-no-36-fall-2001",
+        "file": "_store_e-ticket_e-ticket-no-36-fall-2001.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/directing-at-disney-exhibition-details",
+        "file": "_directing-at-disney-exhibition-details.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/collection-christmas-lights",
+        "file": "_blog_collection-christmas-lights.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/ink-paint-pin",
+        "file": "_store_exclusives_ink-paint-pin.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/after-school-animation-intermediate-hand-drawn-animation-spring-2026",
+        "file": "_education_classes_after-school-animation-intermediate-hand-drawn-animation-spring-2026.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/former-imagineer-tom-morris-explains-just-who-built-original-disneyland",
+        "file": "_blog_former-imagineer-tom-morris-explains-just-who-built-original-disneyland.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/books/disney-monorail-imagineering-highway-sky",
+        "file": "_store_books_disney-monorail-imagineering-highway-sky.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/virtual-class-art-storyboarding-grades-6-12-session",
+        "file": "_education_classes_virtual-class-art-storyboarding-grades-6-12-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/mickey-mouse-1928-hat-red",
+        "file": "_store_exclusives_mickey-mouse-1928-hat-red.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/exhibitions",
+        "file": "_exhibitions.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/calendar/list",
+        "file": "_calendar_list.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-river-hippo-rising-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-river-hippo-rising-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/special-exhibitions",
+        "file": "_store_special-exhibitions.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/walt-disney-family-museum-animation-academy",
+        "file": "_education_walt-disney-family-museum-animation-academy.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new",
+        "file": "_store_new.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/directing-at-disney-exhibition-details",
+        "file": "_directing-at-disney-exhibition-details.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/special-screening-two-ships-2025",
+        "file": "_education_films_special-screening-two-ships-2025.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-ghostly-greeting-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-ghostly-greeting-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/wdfm-mobile-app",
+        "file": "_wdfm-mobile-app.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/featured-videos/wd-fm-disneylands-70th-anniversary",
+        "file": "_featured-videos_wd-fm-disneylands-70th-anniversary.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/artist-studio-stop-motion-film-techniques",
+        "file": "_education_workshops_artist-studio-stop-motion-film-techniques.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/sensory-friendly-film-screening-happiest-place-earth-walts-disneyland-2025",
+        "file": "_education_films_sensory-friendly-film-screening-happiest-place-earth-walts-disneyland-2025.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education",
+        "file": "_education.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/books/maps-disney-parks",
+        "file": "_store_books_maps-disney-parks.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/blog/walt-disney-treasures-lillian-disneys-tea-set",
+        "file": "_blog_walt-disney-treasures-lillian-disneys-tea-set.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/art-playground-lunar-new-year",
+        "file": "_education_workshops_art-playground-lunar-new-year.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/exhibitions/lights-camera-glamour-photography-george-hurrell",
+        "file": "_exhibitions_lights-camera-glamour-photography-george-hurrell.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit/visitor-information/museum-cafe",
+        "file": "_visit_visitor-information_museum-cafe.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/films/mary-blairs-pigments-imagination-2025",
+        "file": "_education_films_mary-blairs-pigments-imagination-2025.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-playful-puppy-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-playful-puppy-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/classes/epacenter-world-building-concept-art",
+        "file": "_education_classes_epacenter-world-building-concept-art.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/virtual-experiences/virtual-group-experiences",
+        "file": "_virtual-experiences_virtual-group-experiences.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/other/blackwing-matte-soft",
+        "file": "_store_other_blackwing-matte-soft.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-happy-dog-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-happy-dog-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/special-exhibitions/mickey-mouse-walt-world-exhibition-catalog",
+        "file": "_store_special-exhibitions_mickey-mouse-walt-world-exhibition-catalog.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/sold-out-walt-disneys-trains-grand-circle-tour-through-his-life-and-legacy-author",
+        "file": "_education_talks_sold-out-walt-disneys-trains-grand-circle-tour-through-his-life-and-legacy-author.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-collections-clash-mythical-creatures",
+        "file": "_featured-videos_wd-fm-collections-clash-mythical-creatures.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/imagineering-story-official-biography-walt-disney-imagineering",
+        "file": "_store_new_imagineering-story-official-biography-walt-disney-imagineering.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/virtual-talk-north-winter-journey-animated-movies-graphic-novels-pixars-bobby",
+        "file": "_education_talks_virtual-talk-north-winter-journey-animated-movies-graphic-novels-pixars-bobby.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-hair-blowing-wind-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-hair-blowing-wind-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-virtual-studio-series-animate-playful-puppy-adult-session",
+        "file": "_education_workshops_sold-out-virtual-studio-series-animate-playful-puppy-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/adventures-tom-sawyer-book-inscribed-norman-rockwell",
+        "file": "_blog_adventures-tom-sawyer-book-inscribed-norman-rockwell.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/enchanted-evenings",
+        "file": "_enchanted-evenings.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/films/sensory-friendly-film-screening-mary-blairs-pigments-imagination-2025",
+        "file": "_education_films_sensory-friendly-film-screening-mary-blairs-pigments-imagination-2025.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/e-ticket/e-ticket-no-43-fall-2005",
+        "file": "_store_e-ticket_e-ticket-no-43-fall-2005.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/other/blackwing-602-firm",
+        "file": "_store_other_blackwing-602-firm.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/press-room/pawsibilities-unleashed-pet-portrait-exhibition",
+        "file": "_press-room_pawsibilities-unleashed-pet-portrait-exhibition.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/artist-studio-2",
+        "file": "_education_workshops_artist-studio-2.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-no-46-summer-2009",
+        "file": "_store_e-ticket_e-ticket-no-46-summer-2009.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/films/sensory-friendly-film-screening-sword-stone-1963",
+        "file": "_education_films_sensory-friendly-film-screening-sword-stone-1963.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/special-exhibitions/pinocchio-making-disney-epic-exhibition-catalog",
+        "file": "_store_special-exhibitions_pinocchio-making-disney-epic-exhibition-catalog.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-happy-dog-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-happy-dog-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/press-room/mary-blair-mid-century-magic",
+        "file": "_press-room_mary-blair-mid-century-magic.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/sold-out-imagineering-beginning-1952-1955-they-created-disneyland-former-imagineer",
+        "file": "_education_talks_sold-out-imagineering-beginning-1952-1955-they-created-disneyland-former-imagineer.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/featured-videos/virtual-fundraiser-fireside-chat-sir-tim-rice",
+        "file": "_featured-videos_virtual-fundraiser-fireside-chat-sir-tim-rice.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/special-exhibitions/tyrus-wong-note-cards",
+        "file": "_store_special-exhibitions_tyrus-wong-note-cards.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-magical-carriage-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-magical-carriage-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/women-walt-disney-imagineering-12-women-reflect-their-trailblazing-theme-park-careers",
+        "file": "_store_new_women-walt-disney-imagineering-12-women-reflect-their-trailblazing-theme-park-careers.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/presidio",
+        "file": "_visit_presidio.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit/events-venue-rentals/holiday-venue-rentals",
+        "file": "_visit_events-venue-rentals_holiday-venue-rentals.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/directing-disney-sons-disney-legend-wolfgang-woolie-reitherman",
+        "file": "_education_talks_directing-disney-sons-disney-legend-wolfgang-woolie-reitherman.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/sold-out-magic-behind-mid-century-design-shag",
+        "file": "_education_talks_sold-out-magic-behind-mid-century-design-shag.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-pop-studio-castle-tower-salt-pepper-shakers",
+        "file": "_education_workshops_sold-out-pop-studio-castle-tower-salt-pepper-shakers.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-sip-and-sketch-rubber-hose-characters",
+        "file": "_education_workshops_sold-out-sip-and-sketch-rubber-hose-characters.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/paper-cut-out-animation-adult-session",
+        "file": "_education_classes_paper-cut-out-animation-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/form/asl-interpreter-form",
+        "file": "_form_asl-interpreter-form.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-no-27-summer-1997",
+        "file": "_store_e-ticket_e-ticket-no-27-summer-1997.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/join/membership",
+        "file": "_join_membership.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/museum-open",
+        "file": "_education_museum-open.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/privacy-policy",
+        "file": "_privacy-policy.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/virtual-exhibitions",
+        "file": "_virtual-exhibitions.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/blog/opening-day-disneyland-what-attractions-would-you-ride",
+        "file": "_blog_opening-day-disneyland-what-attractions-would-you-ride.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/sold-out-pop-studio-paper-collage-cheshire-cat",
+        "file": "_education_workshops_sold-out-pop-studio-paper-collage-cheshire-cat.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-happy-train-ride-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-happy-train-ride-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-interview-author-natasha-yim",
+        "file": "_featured-videos_wd-fm-interview-author-natasha-yim.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-puppet-coming-life-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-puppet-coming-life-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/blog/100-years-ago-walt-goes-west",
+        "file": "_blog_100-years-ago-walt-goes-west.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/virtual-fundraiser-evening-alan-menken",
+        "file": "_featured-videos_virtual-fundraiser-evening-alan-menken.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/exclusives/mickey-mouse-logo-tote",
+        "file": "_store_exclusives_mickey-mouse-logo-tote.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/walt-disney",
+        "file": "_walt-disney.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/workshop-draw-and-stylize-expressive-animals-illustrator-eliza-reisfeld",
+        "file": "_education_workshops_workshop-draw-and-stylize-expressive-animals-illustrator-eliza-reisfeld.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/the-golden-horseshoe-revue-1962",
+        "file": "_blog_the-golden-horseshoe-revue-1962.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-hair-blowing-wind-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-hair-blowing-wind-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/other/blackwing-slate-notebook-ruled",
+        "file": "_store_other_blackwing-slate-notebook-ruled.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-pop-studio-creative-lettering-techniques",
+        "file": "_education_workshops_sold-out-pop-studio-creative-lettering-techniques.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-airship-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-airship-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/virtual-studio-series-animate-happy-train-ride-youth-session",
+        "file": "_education_workshops_virtual-studio-series-animate-happy-train-ride-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/search",
+        "file": "_search.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/grim-grinning-ghosts",
+        "file": "_blog_grim-grinning-ghosts.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/sold-out-storytime-kids-santa-j-claus-comin-town-1",
+        "file": "_education_talks_sold-out-storytime-kids-santa-j-claus-comin-town-1.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/press-room",
+        "file": "_press-room.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/after-school-animation-beginner-mixed-media-spring-2026",
+        "file": "_education_classes_after-school-animation-beginner-mixed-media-spring-2026.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/exhibition-object/inter-office-communication-regarding-responses-test-reels",
+        "file": "_exhibition-object_inter-office-communication-regarding-responses-test-reels.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/after-school-animation-intermediate-spring-2025",
+        "file": "_education_classes_after-school-animation-intermediate-spring-2025.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/virtual-studio-series-animate-growing-and-shrinking-adult-session",
+        "file": "_education_workshops_virtual-studio-series-animate-growing-and-shrinking-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-no-45-summer-2007",
+        "file": "_store_e-ticket_e-ticket-no-45-summer-2007.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-virtual-studio-series-animate-playful-puppy-adult-session",
+        "file": "_education_workshops_sold-out-virtual-studio-series-animate-playful-puppy-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/mickey-mouse-1928-bomber-jacket",
+        "file": "_store_new_mickey-mouse-1928-bomber-jacket.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-person-studio-series-animate-bouncing-bear-adult-session",
+        "file": "_education_workshops_sold-out-person-studio-series-animate-bouncing-bear-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/talks/sold-out-memories-mary-blair-historian-john-canemaker-and-marys-niece-maggie",
+        "file": "_education_talks_sold-out-memories-mary-blair-historian-john-canemaker-and-marys-niece-maggie.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/featured-videos/wd-fm-collections-clash-love",
+        "file": "_featured-videos_wd-fm-collections-clash-love.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/events-venue-rentals/holiday-venue-rentals",
+        "file": "_visit_events-venue-rentals_holiday-venue-rentals.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/membership",
+        "file": "_membership.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit/events-venue-rentals/wonder-wednesdays",
+        "file": "_visit_events-venue-rentals_wonder-wednesdays.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/featured-videos/wd-fm-interview-author-natasha-yim",
+        "file": "_featured-videos_wd-fm-interview-author-natasha-yim.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/featured-videos/wd-fm-mini-musings-walt-disneys-reception-around-world",
+        "file": "_featured-videos_wd-fm-mini-musings-walt-disneys-reception-around-world.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-toy-falling-down-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-toy-falling-down-youth-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/artist-studio-winter-stop-motion-film-techniques",
+        "file": "_education_workshops_artist-studio-winter-stop-motion-film-techniques.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/virtual-winter-fun",
+        "file": "_virtual-winter-fun.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/summer-classes/summer-class-stop-motion-animation-culinary-arts",
+        "file": "_education_summer-classes_summer-class-stop-motion-animation-culinary-arts.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-bear-eating-honey-youth-session",
+        "file": "_education_workshops_person-studio-series-animate-bear-eating-honey-youth-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/press-room/walt-disney-family-museum-commemorates-15-years-new-book",
+        "file": "_press-room_walt-disney-family-museum-commemorates-15-years-new-book.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/gallery-associate-full-time-0",
+        "file": "_gallery-associate-full-time-0.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/limited-edition",
+        "file": "_store_limited-edition.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/new/official-walt-disney-quote-book",
+        "file": "_store_new_official-walt-disney-quote-book.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sip-and-sketch-reflective-puddle-painting",
+        "file": "_education_workshops_sip-and-sketch-reflective-puddle-painting.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/exclusives/plane-crazy-pin",
+        "file": "_store_exclusives_plane-crazy-pin.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/virtual/virtual-program-spill-tea-party-ashley-eckstein-and-nina-west",
+        "file": "_education_virtual_virtual-program-spill-tea-party-ashley-eckstein-and-nina-west.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/classes/world-building-concept-art-adult-session",
+        "file": "_education_classes_world-building-concept-art-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/other/walt-man-behind-myth-dvd-standard",
+        "file": "_store_other_walt-man-behind-myth-dvd-standard.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/blog/100-years-ago-walt-goes-west",
+        "file": "_blog_100-years-ago-walt-goes-west.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/sold-out-pop-studio-design-shoulder-conscience",
+        "file": "_education_workshops_sold-out-pop-studio-design-shoulder-conscience.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/special-exhibitions/baloo-mowgli-jungle-book-exhibition-pin-set",
+        "file": "_store_special-exhibitions_baloo-mowgli-jungle-book-exhibition-pin-set.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education",
+        "file": "_education.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/workshops/person-studio-series-animate-growing-and-shrinking-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-growing-and-shrinking-adult-session.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/deia-mission",
+        "file": "_deia-mission.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/join",
+        "file": "_join.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/press-room",
+        "file": "_press-room.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/education/talks/groundbreaking-magic-disney-legend-martha-blanding-and-disney-historian-marcy",
+        "file": "_education_talks_groundbreaking-magic-disney-legend-martha-blanding-and-disney-historian-marcy.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/general",
+        "file": "_store_general.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-no-36-fall-2001",
+        "file": "_store_e-ticket_e-ticket-no-36-fall-2001.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/new/walt-disneys-trains-grand-circle-tour-through-his-life-and-legacy",
+        "file": "_store_new_walt-disneys-trains-grand-circle-tour-through-his-life-and-legacy.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/store/e-ticket/e-ticket-no-42-spring-2005",
+        "file": "_store_e-ticket_e-ticket-no-42-spring-2005.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/blog/laurence-boag-growing-disneyland-and-his-fathers-bond-walt-disney",
+        "file": "_blog_laurence-boag-growing-disneyland-and-his-fathers-bond-walt-disney.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/visit/visitor-information/spotlight-talks",
+        "file": "_visit_visitor-information_spotlight-talks.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/education/workshops/person-studio-series-animate-growing-and-shrinking-adult-session",
+        "file": "_education_workshops_person-studio-series-animate-growing-and-shrinking-adult-session.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/visit",
+        "file": "_visit.md"
+      },
+      {
+        "url": "http://www.waltdisney.org/featured-videos/wd-fm-mary-blair-mid-century-magic",
+        "file": "_featured-videos_wd-fm-mary-blair-mid-century-magic.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/store/books",
+        "file": "_store_books.md"
+      },
+      {
+        "url": "https://www.waltdisney.org/",
+        "file": "index.md"

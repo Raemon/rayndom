@@ -1,0 +1,276 @@
+  * [__](https://www.instagram.com/herecomestheguide/)
+  * [__](https://www.pinterest.com/hctg)
+  * [__](https://www.tiktok.com/@herecomestheguide)
+  * [__](https://www.facebook.com/HereComesTheGuide)
+  * [__](https://theguidegalspodcast.com/)
+  * [__](mailto:info@herecomestheguide.com)
+
+[Start Here](/wedding-ideas/start-here)
+
+# Kwataqnuk Resort & Casino 49708 US HWY 93 East • Polson • MT 59860 
+
+[Carin Rene Photo](https://carinrene.com/)
+
+[Carin Rene Photo](https://carinrene.com/)
+
+[Carin Rene Photo](https://carinrene.com/)
+
+[Carin Rene Photo](https://carinrene.com/)
+
+[Carin Rene Photo](https://carinrene.com/)
+
+[Carin Rene Photo](https://carinrene.com/)
+
+[Carin Rene Photo](https://carinrene.com/)
+
+[Carin Rene Photo](https://carinrene.com/)
+
+[Carin Rene Photo](https://carinrene.com/)
+
+[Carin Rene Photo](https://carinrene.com/)
+
+[Carin Rene Photo](https://carinrene.com/)
+
+[Carin Rene Photo](https://carinrene.com/)
+
+* * *
+
+Contact **__Events Department**
+
+Check My Date
+
+[ VISIT WEBSITE](https://kwataqnuk.com/weddings/)
+
+We'd love it if you would mention that you found Kwataqnuk Resort & Casino on the Here Comes The Guide website.
+
+[406-883-3636 x475](tel:406-883-3636 x475)
+
+
+
+
+  
+
+
+* * *
+
+### PRICES: _What's this going to cost?_
+
+###### Rental Fee
+
+  * **$3,000–8,000/event**
+  * _Rental fees include:_
+
+    * Choice of indoor or outdoor ceremony & reception
+    * Tables, chairs, linens, napkins, and place settings
+    * Indoor dance floor or outdoor dance platform
+    * Champagne toast
+    * 1-night stay in the Executive Suite for the wedding couple
+
+**Ballroom Deluxe** | $3,000  
+Indoor ceremony & reception.
+
+**Ballroom Luxe** | $5,000  
+Indoor ceremony & reception, plus a projector, menu tasting, and a rehearsal dinner the previous evening.
+
+**Lakefront Platinum** | $6,000  
+Outdoor ceremony & reception, plus a menu tasting and a rehearsal dinner the previous evening.
+
+**Lakefront Diamond** | $8,000  
+Outdoor ceremony & reception, plus full patio access, a menu tasting, and a rehearsal dinner the previous evening.
+
+
+
+
+###### Meals (when priced separately)
+
+  * In-house catering options include buffet, plated, or family-style service. 
+
+
+
+
+get a custom quote!
+
+### GUEST COUNT: _How many people can we have here? What’s the max capacity?_
+
+|  | Indoors | Outdoors  
+---|---|---|---  
+Ceremony | Seated | 200 | 200  
+Cocktails, etc. | Standing | 200 | 200  
+Reception | Seated | 200 | 200  
+Meetings | Total meeting capacity for this venue is 200.  
+  
+## Venue Info & FAQs
+
+### OPTIONS: _What kinds of events can we have here?_
+
+  * All-Inclusive
+  * Outdoor Ceremony
+  * Ceremony
+  * Wedding Receptions
+  * Outdoor Reception
+  * Rehearsal Dinner
+  * Special Events / Parties
+  * Business Functions / Meetings
+  * On-Site Accommodations
+
+
+
+### POLICIES: _What are the food, alcohol, music, and other rules here?_
+
+###### Price
+
+$ • $$ 
+
+###### Catering
+
+In-house  
+
+
+###### Alcohol
+
+In-house  
+
+
+###### Amplified Music
+
+Indoors  
+Outdoors  
+
+
+###### Wheelchair Access
+
+Wheelchair accessible 
+
+###### Availability
+
+Year-round, daily.
+
+### STYLE: _What’s the style and overall vibe of this venue?_
+
+#### __Buildings & other settings available:
+
+  * Lake
+  * Patio / Deck / Terrace
+  * Ballroom
+  * Resort / Spa
+  * Hotel
+
+
+
+### VIEWS: _What kind of views does this place have?_
+
+#### Peep the views you’ll enjoy from this venue!
+
+  * Forest / Woods
+  * Lake
+  * Landscaped Grounds
+  * Mountains
+
+
+
+* * *
+
+[Wondering what CBA or BYO means?](/help/key-to-terms/ "Wondering what CBA or BYO means?")  
+[Want more info on our editorial process?](/about/editorial-process/ "Want more info on our editorial process?")
+
+###  Kwataqnuk Resort & Casino 
+
+### Send an email to Kwataqnuk Resort & Casino
+
+Desired Date
+
+Is Your Date Flexible?
+
+YesNo
+
+Approximate Guest Count
+
+Select your best guessUnder 2526–7576–100101–125126–150151–175176–200Over 200
+
+Message
+
+_We play nice. We promise never to share your info with anyone except Kwataqnuk Resort & Casino._
+
+Your Name
+
+Your Email Address
+
+Your Phone #
+
+Your Preferred Contact Method
+
+EmailTextPhone
+
+Send Email 
+
+_We play nice. We promise never to share your info with anyone except Kwataqnuk Resort & Casino._
+
+### Your email is on its way!
+
+######  Keep AN EYE ON YOUR INBOX 
+
+######  FOR A RESPONSE FROM 
+
+######  Kwataqnuk Resort & Casino 
+
+Email this venue
+
+*Sending your email through the Here Comes The Guide website lets this venue know we sent you! Thank you for your support!
+
+Is it love? Check My Date __
+
+[ Wedding Venues ](/wedding-venues) > [Montana Wedding Venues ](/wedding-venues/montana) > [Whitefish / Kalispell / Northwest Montana Wedding Venues ](/wedding-venues/montana/region/whitefish-kalispell-northwest-montana)   
+
+
+Find Montana Wedding Venues [Search Montana Wedding Venues](/wedding-venues/montana "Search Montana Wedding Venues") | [Whitefish / Kalispell / Northwest Montana](/wedding-venues/montana/region/whitefish-kalispell-northwest-montana "See All Whitefish / Kalispell / Northwest Montana Wedding Venues") | [Missoula](/wedding-venues/montana/region/missoula "See All Missoula Wedding Venues") | [Bozeman / Helena / Southwest Montana](/wedding-venues/montana/region/bozeman-helena-southwest-montana "See All Bozeman / Helena / Southwest Montana Wedding Venues") | [Billings / Central Montana](/wedding-venues/montana/region/billings-central-montana "See All Billings / Central Montana Wedding Venues") | [Find By Style of Venue](/wedding-venues/by-style/montana) | [Outdoor Wedding Venues in Montana](/wedding-venues/montana/outdoor) | [Affordable Wedding Venues in Montana](/wedding-venues/montana/cheap)
+
+"Best of" Lists & Ideas for Montana  [Best of Wedding Venues in Montana](/wedding-ideas/montana "See Best of Montana Wedding Venues") | [Whitefish / Kalispell / Northwest Montana](/wedding-ideas/montana/region/whitefish-kalispell-northwest-montana "See Best of Whitefish / Kalispell / Northwest Montana Wedding Venues") | [Bozeman / Helena / Southwest Montana](/wedding-ideas/montana/region/bozeman-helena-southwest-montana "See Best of Bozeman / Helena / Southwest Montana Wedding Venues")
+
+Want to recommend a wedding venue in Montana? Please email us at [info@herecomestheguide.com](mailto:info@herecomestheguide.com).
+
+[_Download_ our Wedding Checklist __](/wedding-ideas/the-guide-brides-wedding-checklist)
+
+Follow Along 
+
+  * [__](https://www.instagram.com/herecomestheguide/)
+  * [__](https://www.pinterest.com/hctg)
+  * [__](https://www.tiktok.com/@herecomestheguide)
+  * [__](https://www.facebook.com/HereComesTheGuide)
+  * [__](https://theguidegalspodcast.com/)
+  * [__](mailto:info@herecomestheguide.com)
+
+
+
+[Wedding Locations](https://www.herecomestheguide.com/wedding-venues)
+
+[Wedding Ideas](https://www.herecomestheguide.com/wedding-ideas)
+
+[Real Weddings](https://www.herecomestheguide.com/real-wedding)
+
+[Plan Your Travel](https://www.herecomestheguide.com/about/here-comes-the-getaway)
+
+[Choosing Wedding Vendors](https://www.herecomestheguide.com/wedding-ideas/the-ultimate-guide-to-choosing-your-wedding-vendors)
+
+[MyGuide](https://www.herecomestheguide.com/myguide)
+
+[Editorial Process](https://www.herecomestheguide.com/about/editorial-process)
+
+[Disclaimer / DCMA Notice](https://www.herecomestheguide.com/about/disclaimer)
+
+[Venue Business Education](https://www.herecomestheguide.com/about/the-venue-business-boot-camp)
+
+[Join Our Venue Directory](https://www.herecomestheguide.com/about/advertise-your-wedding-venue)
+
+[Link to Us](https://www.herecomestheguide.com/about/link-to-us)
+
+[Help](https://www.herecomestheguide.com/help)
+
+[Login](https://www.herecomestheguide.com/about/login)
+
+[Contact Here Comes The Guide](https://www.herecomestheguide.com/contact)
+
+Back to Top __
+
+Page last updated: Thu, 11 Dec 25 08:57:04
+
+© 1989 - 2026, Hopscotch Press, Inc. All text is written and copyrighted by Here Comes The Guide. The work on this website is licensed under a Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 United States License. [Privacy Policy](https://www.herecomestheguide.com/about/privacy-policy) • [Cookie Notice](https://www.herecomestheguide.com/about/cookie-notice) • [Do Not Sell My Info](https://www.herecomestheguide.com/about/privacy-policy)

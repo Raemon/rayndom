@@ -1,0 +1,52 @@
+[
+  {
+    "siteName": "www.greenacresranchandweddingvenue.com",
+    "mainUrl": {
+      "url": "https://www.greenacresranchandweddingvenue.com/",
+      "file": "index.md"
+    },
+    "otherUrls": [
+      {
+        "url": "https://www.greenacresranchandweddingvenue.com/the-space.html",
+        "file": "_the-space.html.md"
+      },
+      {
+        "url": "https://www.greenacresranchandweddingvenue.com/events-and-services/category/_blank",
+        "file": "_events-and-services_category__blank.md"
+      },
+      {
+        "url": "https://www.greenacresranchandweddingvenue.com/events-and-services.html",
+        "file": "_events-and-services.html.md"
+      },
+      {
+        "url": "https://www.greenacresranchandweddingvenue.com/cdn-cgi/l/email-protection",
+        "file": "_cdn-cgi_l_email-protection.md"
+      },
+      {
+        "url": "https://www.greenacresranchandweddingvenue.com/events-and-services/green-acres-is-now-open-for-weddings-corporate-events-team-bonding-experiences-and-much-more",
+        "file": "_events-and-services_green-acres-is-now-open-for-weddings-corporate-events-team-bonding-experiences-and-much-more.md"
+      },
+      {
+        "url": "https://www.greenacresranchandweddingvenue.com/events-and-services/category/all",
+        "file": "_events-and-services_category_all.md"
+      },
+      {
+        "url": "https://www.greenacresranchandweddingvenue.com/1/feed",
+        "file": "_1_feed.md"
+      },
+      {
+        "url": "https://www.greenacresranchandweddingvenue.com/contact.html",
+        "file": "_contact.html.md"
+      },
+      {
+        "url": "https://www.greenacresranchandweddingvenue.com/events-and-services/archives/11-2022",
+        "file": "_events-and-services_archives_11-2022.md"
+      },
+      {
+        "url": "https://www.greenacresranchandweddingvenue.com/about.html",
+        "file": "_about.html.md"
+      }
+    ],
+    "dateDownloaded": "2026-01-23T13:31:34.051711"
+  }
+]

@@ -1,0 +1,627 @@
+Skip to main content
+
+[ __ARE YOU A VENDOR?](https://www.weddingwire.com/vendors/home)
+
+[ ![Weddings](https://www.weddingwire.com/assets/img/logos/gen_logoHeader.svg) ](https://www.weddingwire.com/ "Weddings")
+
+  * [ Planning tools ](https://www.weddingwire.com/wedding-planning.html)
+
+__[ Planning tools ](https://www.weddingwire.com/wedding-planning.html) __
+
+[ Organize with ease ](https://www.weddingwire.com/wedding-planning.html)
+    * [View all](https://www.weddingwire.com/wedding-planning.html)
+    * [ __Checklist](https://www.weddingwire.com/wedding-checklists.html)
+    * [ __Guests](https://www.weddingwire.com/wedding-planning/wedding-guests-list.html)
+    * [ __Seating chart](https://www.weddingwire.com/wedding-planning/wedding-seating-tables.html)
+    * [ __Budget](https://www.weddingwire.com/wedding-planning/wedding-budget.html)
+    * [ __Wedding Vendors](https://www.weddingwire.com/wedding-planning/vendor-manager.html)
+    * [ __Wedding website](https://www.weddingwire.com/website/index.php?actionReferrer=8)
+
+[ Personalize your wedding ](https://www.weddingwire.com/wedding-planning.html)
+    * [ Hotel Blocks ](https://theknot.partners.engine.com/new-trip?utm_source=the-knot&utm_medium=channel&utm_campaign=2025-q1-the-knot-channel-groups-a018X00000bV3kuQAC&utm_term=wwtopnavigation&referral=MKT%20-%20Partner&rel=sponsored)
+    * [ Date Finder ](https://go.weddingwire.com/wedding-date)
+    * [ Cost Guide ](https://www.weddingwire.com/cost)
+    * [ Color generator ](https://go.weddingwire.com/color-palette-generator)
+    * [ Hashtag generator ](https://www.weddingwire.com/wedding-hashtag-generator)
+
+Get the WeddingWire app
+
+Plan your wedding wherever and whenever you want on the WeddingWire app.
+
+  * [ Venues ](https://www.weddingwire.com/wedding-venues)
+
+__[ Venues ](https://www.weddingwire.com/wedding-venues) __
+
+[ Find your wedding venue ](https://www.weddingwire.com/wedding-venues)
+    * [View all](https://www.weddingwire.com/wedding-venues)
+    * [ Barns & Farms ](https://www.weddingwire.com/barn-farm-weddings)
+    * [ Outdoor ](https://www.weddingwire.com/outdoor-weddings)
+    * [ Gardens ](https://www.weddingwire.com/garden-weddings)
+    * [ Beaches ](https://www.weddingwire.com/beach-weddings)
+    * [ Rooftops & Lofts ](https://www.weddingwire.com/rooftop-loft-weddings)
+    * [ Hotels ](https://www.weddingwire.com/hotel-weddings)
+    * [ Waterfronts ](https://www.weddingwire.com/waterfront-weddings)
+    * [ Wineries & Breweries ](https://www.weddingwire.com/winery-brewery-weddings)
+    * [ Parks ](https://www.weddingwire.com/park-weddings)
+    * [ Country Clubs ](https://www.weddingwire.com/country-club-weddings)
+    * [ Mansions ](https://www.weddingwire.com/mansion-weddings)
+    * [ Historic Venues ](https://www.weddingwire.com/historic-venue-weddings)
+    * [ Boats ](https://www.weddingwire.com/boat-weddings)
+    * [ Restaurants ](https://www.weddingwire.com/restaurant-weddings)
+    * [ Museums ](https://www.weddingwire.com/museum-weddings)
+    * [ Banquet Halls ](https://www.weddingwire.com/banquet-hall-weddings)
+    * [ Churches & Temples ](https://www.weddingwire.com/church-temple-weddings)
+    * [ Deals ](https://www.weddingwire.com/promotions/wedding-venues)
+
+  * [ Vendors ](https://www.weddingwire.com/wedding-vendors)
+
+__[ Vendors ](https://www.weddingwire.com/wedding-vendors) __
+
+[ Start hiring your vendors ](https://www.weddingwire.com/wedding-vendors)
+    * [View all](https://www.weddingwire.com/wedding-vendors)
+    * __[ Photography ](https://www.weddingwire.com/wedding-photographers)
+    * __[ DJs ](https://www.weddingwire.com/wedding-djs)
+    * __[ Hair & Makeup ](https://www.weddingwire.com/wedding-beauty-health)
+    * __[ Wedding Planning ](https://www.weddingwire.com/wedding-planners)
+    * __[ Catering ](https://www.weddingwire.com/wedding-caterers)
+    * __[ Flowers ](https://www.weddingwire.com/wedding-florists)
+    * __[ Videography ](https://www.weddingwire.com/wedding-videographers)
+    * __[ Officiants ](https://www.weddingwire.com/wedding-officiants)
+
+Complete your wedding team
+
+    * [ Event Rentals ](https://www.weddingwire.com/wedding-event-rentals)
+    * [ Photo Booths ](https://www.weddingwire.com/photo-booths)
+    * [ Bands ](https://www.weddingwire.com/wedding-bands)
+    * [ Dress & Attire ](https://www.weddingwire.com/wedding-dresses)
+    * [ Cakes ](https://www.weddingwire.com/wedding-cakes)
+    * [ Transportation ](https://www.weddingwire.com/wedding-limos)
+    * [ Ceremony Music ](https://www.weddingwire.com/wedding-ceremony-music)
+    * [ Lighting & Decor ](https://www.weddingwire.com/lighting-decor)
+    * [ Invitations ](https://www.weddingwire.com/wedding-invitations)
+    * [ Travel Agents ](https://www.weddingwire.com/travel-agents)
+    * [ Jewelry ](https://www.weddingwire.com/wedding-jewelers)
+    * [ Favors & Gifts ](https://www.weddingwire.com/wedding-favors)
+    * [ Deals ](https://www.weddingwire.com/promotions/wedding-vendors)
+
+Destination Weddings
+
+Easily plan your international wedding.
+
+2026 Couples' Choice Awards
+
+Check out this year’s best local pros, rated by couples like you.
+
+  * [ Forums ](https://www.weddingwire.com/wedding-forums)
+
+__[ Forums ](https://www.weddingwire.com/wedding-forums) __
+
+[ Forums ](https://www.weddingwire.com/wedding-forums)
+    * [View all](https://www.weddingwire.com/wedding-forums)
+    * [ Planning ](https://www.weddingwire.com/wedding-forums/planning)
+    * [ Wedding Attire ](https://www.weddingwire.com/wedding-forums/beauty-and-attire)
+    * [ Honeymoon ](https://www.weddingwire.com/wedding-forums/honeymoon)
+    * [ Community Conversations ](https://www.weddingwire.com/wedding-forums/community)
+    * [ Reception ](https://www.weddingwire.com/wedding-forums/wedding-reception)
+    * [ Ceremony ](https://www.weddingwire.com/wedding-forums/wedding-ceremony)
+    * [ Married Life ](https://www.weddingwire.com/wedding-forums/newlyweds-and-parenting)
+    * [ Family and Relationships ](https://www.weddingwire.com/wedding-forums/family-and-relationships)
+    * [ Etiquette and Advice ](https://www.weddingwire.com/wedding-forums/etiquette-and-advice)
+    * [ Parties and Events ](https://www.weddingwire.com/wedding-forums/parties-and-events)
+    * [ Style and Décor ](https://www.weddingwire.com/wedding-forums/style-and-decor)
+    * [ Fitness and Health ](https://www.weddingwire.com/wedding-forums/weight-loss-and-health)
+    * [ Hair and Makeup ](https://www.weddingwire.com/wedding-forums/hair-and-makeup)
+    * [ Registry ](https://www.weddingwire.com/wedding-forums/registry)
+    * [ Local Groups ](https://www.weddingwire.com/wedding-forums/local-groups)
+
+Stay up to date
+
+    * [ Discussions ](https://www.weddingwire.com/wedding-forums)
+    * [ Photos ](https://www.weddingwire.com/wedding-forums/photos)
+    * [ Videos ](https://www.weddingwire.com/wedding-forums/videos)
+    * [ Users ](https://www.weddingwire.com/wedding-forums/users)
+    * [Account support](https://www.weddingwire.com/wedding-forums/weddingwire-support)
+
+  * [ Dresses ](https://www.weddingwire.com/wedding-photos/dresses)
+
+__[ Dresses ](https://www.weddingwire.com/wedding-photos/dresses) __
+
+[ The latest in bridal fashion ](https://www.weddingwire.com/wedding-photos/dresses)
+    * [View all](https://www.weddingwire.com/wedding-photos/dresses)
+    * [ __Bride](https://www.weddingwire.com/wedding-photos/dresses)
+
+Featured designers
+
+[ Beloved by Casablanca Bridal ](https://www.weddingwire.com/wedding-photos/dresses/beloved) [ Essense of Australia ](https://www.weddingwire.com/wedding-photos/dresses/essense-of-australia) [ Amaré Couture ](https://www.weddingwire.com/wedding-photos/dresses/amar-couture-dress) [ Justin Alexander ](https://www.weddingwire.com/wedding-photos/dresses/justin-alexander) [ Stella York ](https://www.weddingwire.com/wedding-photos/dresses/stella-york-dress)
+
+  * [ Ideas ](https://www.weddingwire.com/wedding-ideas)
+
+__[ Ideas ](https://www.weddingwire.com/wedding-ideas) __
+
+[ Get wedding inspiration ](https://www.weddingwire.com/wedding-ideas)
+    * [View all](https://www.weddingwire.com/wedding-ideas)
+    * [ Planning Basics ](https://www.weddingwire.com/wedding-ideas/planning-basics--t1)
+    * [ Wedding Ceremony ](https://www.weddingwire.com/wedding-ideas/ceremony--t2)
+    * [ Wedding Reception ](https://www.weddingwire.com/wedding-ideas/reception--t3)
+    * [ Wedding Services ](https://www.weddingwire.com/wedding-ideas/services--t4)
+    * [ Wedding Fashion ](https://www.weddingwire.com/wedding-ideas/fashion--t6)
+    * [ Hair & Makeup ](https://www.weddingwire.com/wedding-ideas/health-beauty--t5)
+    * [ Destination Weddings ](https://www.weddingwire.com/wedding-ideas/destination-weddings--t8)
+    * [ Married Life ](https://www.weddingwire.com/wedding-ideas/married-life--t11)
+    * [ Events & Parties ](https://www.weddingwire.com/wedding-ideas/events-parties--t10)
+    * [ Family & Friends ](https://www.weddingwire.com/wedding-ideas/family-friends--t9)
+
+[Real Weddings](https://www.weddingwire.com/wedding-photos/real-weddings "Real Weddings")
+
+Find wedding inspiration that fits your style with photos from real couples 
+
+[Honeymoons](https://www.weddingwire.com/honeymoons "Honeymoons")
+
+Sit back and relax with travel info + exclusive deals for the hottest honeymoon destinations 
+
+  * [ Registry ](https://www.weddingwire.com/wedding-registry)
+
+__[Registry](https://www.weddingwire.com/wedding-registry) __
+
+Create your all-in-one registry 
+    * [ Start Your Registry ](https://www.weddingwire.com/wedding-registry)
+    * [ Registry Retailers ](https://www.weddingwire.com/wedding-registry/retail-registries)
+    * [ Registry Ideas ](https://www.weddingwire.com/wedding-ideas/registry--t17)
+[Find a couple's WeddingWire Registry](https://www.weddingwire.us)
+
+Featured registry brands 
+    * [ Amazon  ](https://www.weddingwire.com/wedding-registry/retail-registries)
+    * [ Crate & Barrel  ](https://www.weddingwire.com/wedding-registry/retail-registries)
+    * [ Target  ](https://www.weddingwire.com/wedding-registry/retail-registries)
+    * [ Traveler's Joy  ](https://www.weddingwire.com/wedding-registry/retail-registries)
+[See all registry brands](https://www.weddingwire.com/wedding-registry/retail-registries)
+
+  * [ Wedding Website ](https://www.weddingwire.com/wedding-websites.html)
+
+__[ Your wedding website ](https://www.weddingwire.com/wedding-websites.html) __
+
+[ Set up your website in minutes ](https://www.weddingwire.com/tools/website-wizard?actionReferrer=11)
+    * [ Create your wedding website ](https://www.weddingwire.com/tools/website-wizard?actionReferrer=3)
+    * [ Find a couple's WeddingWire website ](https://www.weddingwire.us/)
+
+[ Choose your design ](https://www.weddingwire.com/tools/website-wizard?actionReferrer=12)
+
+[ Tangerine Dream  ](https://www.weddingwire.com/tools/website-wizard?templateId=201&layoutId=1&actionReferrer=5) [ Floral Circles  ](https://www.weddingwire.com/tools/website-wizard?templateId=265&layoutId=1&actionReferrer=5) [ Modern Angles  ](https://www.weddingwire.com/tools/website-wizard?templateId=233&layoutId=1&actionReferrer=5) [ Illustrated Floral  ](https://www.weddingwire.com/tools/website-wizard?templateId=291&layoutId=1&actionReferrer=5)
+
+[ See all website designs ](https://www.weddingwire.com/tools/website-wizard?actionReferrer=6)
+
+
+
+
+[Log in](https://www.weddingwire.com/users-login.php) [ Join now ](https://www.weddingwire.com/users-signup.php)
+
+  * [Weddings](https://www.weddingwire.com/)
+  * [Forums](https://www.weddingwire.com/wedding-forums)
+  * [Community Conversations](https://www.weddingwire.com/wedding-forums/community)
+  * [Discussions](https://www.weddingwire.com/wedding-forums/community/discussions)
+  * Bride & Groom changed wedding to different country..
+
+
+
+_ _
+
+## Post content has been hidden
+
+To unblock this content, please click here
+
+![Ma](https://cdn0.weddingwire.com/usr/7/6/7/3/utmr_41597673.jpg?r=63550)
+
+# Bride & Groom changed wedding to different country..
+
+[Ma](https://www.weddingwire.com/profiles/ma--u41597673), on November 1, 2025 at 12:10 AM  Posted in [Community Conversations](https://www.weddingwire.com/wedding-forums/community) _ _ 1 _ _ 10 
+
+_ _ Saved  _ _ Save 
+
+Reply 
+
+__
+
+  * Flag
+  * Hide content
+
+
+
+Has anyone ever delt with this?  
+  
+  
+I said yes almost two years ago to being matron of honor. And the bride is my childhood best friend decided to have a destination wedding, which has become way more expensive than expected. I would absolutely love to be there but sine accepting the invitation there has been a series of unfortunate financial events and the burden of cost has become too much. How should I let her know that I can no longer attend after the location was changed to a different country less than two weeks from their wedding date?
+
+  * Flag
+  * Hide content
+
+
+
+__ __ __
+
+##  10 Comments 
+
+Latest activity by Maddy, on December 30, 2025 at 3:08 PM 
+
+  * ![LM](https://cdn0.weddingwire.com/usr/7/0/3/3/utmr_40127033.jpg?r=62281)
+
+Super December 2022 
+
+[LM](https://www.weddingwire.com/profiles/lm--u40127033) · on November 1, 2025 at 4:13 PM
+
+__
+
+    * Flag 
+    * Hide content 
+
+She changed to an international location within 2 weeks?? She should pay your arrangements for the hassle. Just because you're the MOH, doesn't mean you have to take on Unreasonable financial burden. Let them elope as I doubt most of their other guests can accommodate their lack of planning.   
+  
+  
+Honestly, some couples think they should get what they want when they want, but it stops being about them when their day involves other people. 
+
+    * Reply 
+
+  * ![Alisha](https://cdn0.weddingwire.com/usr/4/5/3/1/utmr_29354531.jpg?r=96523)
+
+VIP April 2021 
+
+[Alisha](https://www.weddingwire.com/profiles/alisha--u29354531) · on November 1, 2025 at 5:42 PM
+
+__
+
+    * Flag 
+    * Hide content 
+
+I would talk her about it and let her know that you you love to be a part of the wedding but financially you are able to participate. You can probably help her to do other things to help her out with the wedding if you can. Hopefully everything will work out for you and her. Good luck 
+
+    * Reply 
+
+  * ![Ma](https://cdn0.weddingwire.com/usr/7/6/7/3/utmr_41597673.jpg?r=63550)
+
+[Ma](https://www.weddingwire.com/profiles/ma--u41597673) · on November 1, 2025 at 8:00 PM
+
+__
+
+    * Flag 
+    * Hide content 
+
+View Quoted Comment
+
+Thank you for your response, I should have stated that it was already out of the country, but due to a natural disaster two weeks from their wedding date, the bride and groom changed the destination to another country 12 days before their wedding.
+
+    * Reply 
+
+  * ![Ma](https://cdn0.weddingwire.com/usr/7/6/7/3/utmr_41597673.jpg?r=63550)
+
+[Ma](https://www.weddingwire.com/profiles/ma--u41597673) · on November 1, 2025 at 8:01 PM
+
+__
+
+    * Flag 
+    * Hide content 
+
+View Quoted Comment
+
+Thank you! This is helpful!
+
+    * Reply 
+
+  * ![Alisha](https://cdn0.weddingwire.com/usr/4/5/3/1/utmr_29354531.jpg?r=96523)
+
+VIP April 2021 
+
+[Alisha](https://www.weddingwire.com/profiles/alisha--u29354531) · on November 2, 2025 at 8:49 AM
+
+__
+
+    * Flag 
+    * Hide content 
+
+View Quoted Comment
+
+You are welcome 
+
+    * Reply 
+
+  * V
+
+Champion July 2019 
+
+[Veronica](https://www.weddingwire.com/profiles/veronica--u9868175) · on November 3, 2025 at 8:53 AM
+
+__
+
+    * Flag 
+    * Hide content 
+
+View Quoted Comment
+
+I honestly don't know how they can expect any of their guests to change their plans on such short notice. This would be a huge cost burden to everyone involved. I think you just need to be honest with her that you can't afford to attend the wedding at the new location. She needs to be understanding because it's not like you had much notice. 
+
+    * Reply 
+
+  * ![Pat](https://cdn0.weddingwire.com/usr/8/3/0/9/utmr_40978309.jpg?r=60768)
+
+Dedicated October 2023 
+
+[Pat](https://www.weddingwire.com/profiles/pat--u40978309) · on November 3, 2025 at 3:40 PM
+
+__
+
+    * Flag 
+    * Hide content 
+
+View Quoted Comment
+
+I'm agreeing with Alisha since you are not making no issues about their decisions nor are you asking anything from them. It also is good that you offer continuing interest. If they offer help it is their concept, not your demand. But be ready to hold to any continuing concerns if they still create too much of a burden.
+
+It is sad that various wedding plans have been interrupted by storms in recent years. 
+
+    * Reply 
+
+  * ![Drei](https://cdn0.weddingwire.com/usr/9/4/0/1/utmr_40709401.jpg?r=70443)
+
+Just Said Yes December 2023 
+
+[Drei](https://www.weddingwire.com/profiles/drei--u40709401) · on November 19, 2025 at 1:02 PM
+
+__
+
+    * Flag 
+    * Hide content 
+
+I think if they made that decision they have to accept the reality that people's rsvps will adjust. Sorry that happened but everyone has to do what is best for them
+
+    * Reply 
+
+  * A
+
+Just Said Yes December 2025 
+
+[Audrey](https://www.weddingwire.com/profiles/audrey--u44995426) · on November 21, 2025 at 11:49 AM
+
+__
+
+    * Flag 
+    * Hide content 
+
+Let’s chat privately 
+
+    * Reply 
+
+  * ![Lorenzo](https://cdn0.weddingwire.com/usr/2/9/5/4/utmr_45012954.jpg?r=40529)
+
+[Lorenzo](https://www.weddingwire.com/profiles/lorenzo--u45012954) · on December 29, 2025 at 5:03 AM
+
+__
+
+    * Flag 
+    * Hide content 
+
+That’s a really tough spot, but it’s also not your fault. Changing the wedding to another country that close to the date comes with the reality that not everyone can afford it. I’d be honest and kind — let her know you truly want to be there, but due to unexpected financial issues, it’s just not possible anymore. Emphasize that this doesn’t change how much you care about her or support her marriage. A good friend may be disappointed, but she should understand that this was out of your control.
+
+    * Reply 
+
+
+
+
+You voted for ****. Add a comment 👇
+
+![](https://cdn1.weddingwire.com/assets/img/user/120x120/user-unknown-120.jpg)
+
+×
+
+<p><br></p>
+
+The characters written do not match the verification word. Try again.
+
+Reply
+
+## Related articles
+
+![The Ultimate Guide to Greek Wedding Dances ](https://cdn0.weddingwire.com/img_g/ww/tb_annette-jamie-hannamonikaweddingphotography-hmja106-0.jpg)
+
+Speeches & Traditions [The Ultimate Guide to Greek Wedding Dances ](https://www.weddingwire.com/wedding-ideas/greek-wedding-dance-videos) Rompi Rompi to Mavi Mavi, kick off your shoes and get ready to review classic...
+
+[ Read more articles ](https://www.weddingwire.com/wedding-ideas)
+
+__
+
+WeddingWire celebrates love ...and so does everyone on our site! [Explore how we embrace diversity](https://go.weddingwire.com/nondiscrimination)
+
+Groups 
+
+  * __
+
+[Planning](https://www.weddingwire.com/wedding-forums/planning)
+
+  * __
+
+[Wedding Attire](https://www.weddingwire.com/wedding-forums/beauty-and-attire)
+
+  * __
+
+[Do It Yourself](https://www.weddingwire.com/wedding-forums/do-it-yourself)
+
+  * __
+
+[Honeymoon](https://www.weddingwire.com/wedding-forums/honeymoon)
+
+
+
+  * __
+
+[Community Conversations](https://www.weddingwire.com/wedding-forums/community)
+
+  * __
+
+[Wedding Reception](https://www.weddingwire.com/wedding-forums/wedding-reception)
+
+  * __
+
+[Wedding Ceremony](https://www.weddingwire.com/wedding-forums/wedding-ceremony)
+
+  * __
+
+[Married Life](https://www.weddingwire.com/wedding-forums/newlyweds-and-parenting)
+
+  * __
+
+[Family and Relationships](https://www.weddingwire.com/wedding-forums/family-and-relationships)
+
+  * __
+
+[Account Support](https://www.weddingwire.com/wedding-forums/weddingwire-support)
+
+  * __
+
+[Etiquette and Advice](https://www.weddingwire.com/wedding-forums/etiquette-and-advice)
+
+  * __
+
+[Parties and Events](https://www.weddingwire.com/wedding-forums/parties-and-events)
+
+  * __
+
+[Style and Décor](https://www.weddingwire.com/wedding-forums/style-and-decor)
+
+  * __
+
+[Fitness and Health](https://www.weddingwire.com/wedding-forums/weight-loss-and-health)
+
+  * __
+
+[Hair and Makeup](https://www.weddingwire.com/wedding-forums/hair-and-makeup)
+
+  * __
+
+[Registry](https://www.weddingwire.com/wedding-forums/registry)
+
+
+
+
+Show more __
+
+WeddingWire article topics
+
+  * [Planning Basics](https://www.weddingwire.com/wedding-ideas/planning-basics--t1)
+
+  * [Etiquette](https://www.weddingwire.com/wedding-ideas/etiquette--t15)
+
+  * [Bride & Bridesmaids](https://www.weddingwire.com/wedding-ideas/bride-bridesmaids--t37)
+
+  * [Bachelor & Bachelorette Fun](https://www.weddingwire.com/wedding-ideas/bachelor-bachelorette-parties--t55)
+
+  * [Bridal & Wedding Showers](https://www.weddingwire.com/wedding-ideas/bridal-wedding-showers--t54)
+
+  * [Favors](https://www.weddingwire.com/wedding-ideas/favors--t24)
+
+  * [Wedding Flowers](https://www.weddingwire.com/wedding-ideas/flowers--t29)
+
+  * [Invitations & Stationery](https://www.weddingwire.com/wedding-ideas/invitations-stationery--t28)
+
+  * [Places to Celebrate](https://www.weddingwire.com/wedding-ideas/places-to-celebrate--t21)
+
+  * [Wedding Decor](https://www.weddingwire.com/wedding-ideas/decor--t31)
+
+  * [Honeymoon Advice](https://www.weddingwire.com/wedding-ideas/honeymoon-advice--t7)
+
+  * [Health & Beauty](https://www.weddingwire.com/wedding-ideas/health-beauty--t5)
+
+  * [Lifestyle](https://www.weddingwire.com/wedding-ideas/lifestyle--t59)
+
+  * [Wedding Registry](https://www.weddingwire.com/wedding-ideas/registry--t17)
+
+
+
+
+![](https://www.weddingwire.com/traces-CommunityDebate.php?id=2315342&1440962362)
+
+WeddingWire
+
+  * [Weddings home](https://www.weddingwire.com/)
+  * [About us](https://www.weddingwire.com/corp/about-us)
+  * [Editorial team & policies](https://www.weddingwire.com/wedding-ideas/about-us)
+  * [Nondiscrimination](https://www.theknotww.com/impact/)
+  * Careers
+  * [Press center](https://www.theknotww.com/press-room/)
+  * [Advertising](https://www.weddingwire.com/corp/advertise)
+  * [Terms of use](https://www.weddingwire.com/corp/legal/terms-of-use)
+  * [Privacy policy](https://www.weddingwire.com/corp/legal/privacy-policy)
+  * Do not sell my info
+  * CA privacy
+  * [Web accessibility](https://www.weddingwire.com/accessibility-statement)
+  * Manage Preferences
+
+Find Vendors
+
+  * [Directory](https://www.weddingwire.com/wedding-vendors)
+  * [Reviews](https://www.weddingwire.com/vendor-reviews)
+  * [Couples’ Choice Awards®](https://www.weddingwire.com/couples-choice-awards)
+  * [Gay Weddings](https://www.weddingwire.com/gay-weddings)
+
+
+
+Planning tools
+
+  * [Your wedding website](https://www.weddingwire.com/wedding-websites.html)
+  * [Checklist](https://www.weddingwire.com/wedding-checklists.html)
+  * [Guest list](https://www.weddingwire.com/wedding-planning/wedding-guests-list.html)
+  * [Budget](https://www.weddingwire.com/wedding-planning/wedding-budget.html)
+  * [Vendor manager](https://www.weddingwire.com/wedding-planning/vendor-manager.html)
+  * [Seating chart](https://www.weddingwire.com/wedding-planning/wedding-seating-tables.html)
+  * [Hotel Blocks](https://hotelblocks.weddingwire.com/Group-Rate/?sc=WW_Footer&utm_source=weddingwire&utm_medium=onsite&utm_campaign=footer)
+  * [Cost Guide](https://www.weddingwire.com/cost)
+  * [Help](https://wedding-wire.zendesk.com)
+
+
+
+More
+
+  * [Wedding planning app](https://www.weddingwire.com/wedding-apps)
+  * [Hashtag generator](https://www.weddingwire.com/wedding-hashtag-generator)
+  * [Wedding giveaways](https://go.weddingwire.com/giveaways)
+  * [Wedding timeline](https://www.weddingwire.com/wedding-ideas/wedding-timeline)
+  * [Color generator](https://go.weddingwire.com/color-palette-generator)
+  * [Real Weddings](https://www.weddingwire.com/wedding-photos/real-weddings)
+  * [Honeymoons](https://www.weddingwire.com/honeymoons)
+
+
+
+Going to a wedding?
+
+  * [Find a couple’s wedding website](https://www.weddingwire.us)
+
+
+
+Are you a vendor?
+
+  * [ Learn about WeddingWire for Business ](https://www.weddingwire.com/vendors/home)
+  * [ Visit vendor support ](https://wedding-wire.zendesk.com)
+
+
+
+Get the WeddingWire app
+
+![App icon](https://cdn1.weddingwire.com/assets/img/dropdown/app.png) Plan your wedding wherever and whenever you want on the WeddingWire app. 
+
+  * [ ![App Store](https://cdn1.weddingwire.com/assets/img/footer/appstore.png) ](https://app.appsflyer.com/id316565575?pid=WP-iOS-US&c=WP-US-LANDINGS&s=us "App Store")
+  * [ ![Google Play](https://cdn1.weddingwire.com/assets/img/footer/googleplay.png) ](https://app.appsflyer.com/com.weddingwire.user?pid=WP-Android-US&c=WP-US-LANDINGS "Google Play")
+
+
+
+Follow us on
+
+  * [ __](https://www.facebook.com/weddingwire "Facebook")
+  * [ __](https://twitter.com/weddingwire "Twitter")
+  * [ __](https://www.pinterest.com/weddingwire/ "Pinterest")
+  * [ __](https://www.instagram.com/weddingwire/ "Instagram")
+
+
+
+Choose a country
+
+![United States](https://cdn1.weddingwire.com/assets/img/flags/country-selector/usa.png) United States __
+
+![ww logo](https://cdn1.weddingwire.com/assets/img/footer/tkww_logo_KO.png)
+
+© 2006 - 2026 The Knot Worldwide Inc.

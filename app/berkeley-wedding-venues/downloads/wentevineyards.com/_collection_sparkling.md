@@ -1,0 +1,102 @@
+Skip to main content
+
+[ ![Wente Vineyards](https://wentevineyards.com/wp-content/uploads/2025/03/Went-Family-Vineyard-Logo-Black-1.png) ](https://wentevineyards.com/)
+
+# Sparkling Wine
+
+## Browse by Collection
+
+## Product List
+
+[ [ ![Brut Sparkling Wine](https://images.commerce7.com/wente-family-estates/images/large/brut-web-1766090985642.png) ](/product/brut-sparkling-wine) ](/product/brut-sparkling-wine)
+
+###  [Brut Sparkling Wine](/product/brut-sparkling-wine)
+
+QUICK VIEW
+
++ [ ![Brut Sparkling Wine](https://images.commerce7.com/wente-family-estates/images/large/brut-web-1766090985642.png) ](/product/brut-sparkling-wine)
+
+[ Brut Sparkling Wine ](/product/brut-sparkling-wine)
+
+This is a classic Brut, with aromas and flavors of pear and dried apricot with hints of crème brulee and apple. It has nice complexity from the sur lies aging in the Methode Champenoise, and has a refreshing crispness and lingering vanilla cream aftertaste that pairs exceptionally well with food.
+
+[LEARN MORE](/product/brut-sparkling-wine)
+
+New Release
+
+[ [ ![Brut Reserve Sparkling Wine](https://images.commerce7.com/wente-family-estates/images/large/brut-reserve-web-2-1766090951204.png) ](/product/brut-sparkling-wine-reserve) ](/product/brut-sparkling-wine-reserve)
+
+###  [Brut Reserve Sparkling Wine](/product/brut-sparkling-wine-reserve)
+
+QUICK VIEW
+
++ [ ![Brut Reserve Sparkling Wine](https://images.commerce7.com/wente-family-estates/images/large/brut-reserve-web-2-1766090951204.png) ](/product/brut-sparkling-wine-reserve)
+
+[ Brut Reserve Sparkling Wine ](/product/brut-sparkling-wine-reserve)
+
+Founded in 1883, the Wente family has a long history of crafting estate-grown wines that express the character of the Livermore Valley. Our Legacy Series Brut Reserve continues this tradition, produced from select vineyard blocks chosen for their exceptional fruit quality in a standout harvest. Extended aging on the lees contributes depth, refinement, and a beautifully integrated mousse. The result is a sparkling wine of precision, freshness, and layered complexity that reflects the Wente family's enduring commitment to crafting wines of elegance and distinction.
+
+[LEARN MORE](/product/brut-sparkling-wine-reserve)
+
+Showing 1 to 2 of 2
+
+[ ![](https://wentevineyards.com/wp-content/themes/wentevineyards/assets/images/Footer/Shop Icon.svg) Shop ](/shop)
+
+[ ![](https://wentevineyards.com/wp-content/themes/wentevineyards/assets/images/Footer/Book A Tasting Iconn.svg) Book A Tasting Book ](/visit)
+
+[ ![](https://wentevineyards.com/wp-content/themes/wentevineyards/assets/images/Footer/Email Icon.svg) concierge@wentevineyards.com Email ](mailto:concierge@wentevineyards.com)
+
+[ ![](https://wentevineyards.com/wp-content/themes/wentevineyards/assets/images/Footer/Call Icon.svg) 925.456.2300 Call ](tel:9254562450)
+
+### Join Our Mailing List!
+
+Get the latest on events, tastings, wine & more!
+
+  * [Shop Wine](/collection/all-wine)
+    * [Coastal Series](/collection/coastal-series)
+    * [Appellation Series](/collection/appellation-series)
+    * [Artist Series](/collection/artist-series-wines)
+    * [Limited Release](/collection/limited-release-wines/)
+    * [Chardonnay](https://wentevineyards.com/chardonnay/)
+    * [nth Degree](/collection/nth-degree-wines)
+    * [Sparkling Wine](/collection/sparkling)
+    * [Award Winning Wines](/collection/award-winning-wines)
+    * [Holiday Gift Sets](/collection/gifting/)
+    * [Egift Cards](/product/egift)
+    * [Riva Diva Merch](https://wente-family-vineyards-gear.printful.me/)
+  * [Discover](https://wentevineyards.com/?page_id=465)
+    * [Our Story](https://wentevineyards.com/our-story/)
+    * [Wente Family](https://wentevineyards.com/family/)
+    * [Our Vineyards](https://wentevineyards.com/wente-vineyards/)
+    * [Sustainability](https://wentevineyards.com/sustainability/)
+    * [Journal](https://wentevineyards.com/journal/)
+    * [Wine Clubs](https://wentevineyards.com/wine-clubs/)
+    * [Wente Foundation](https://www.wentefoundation.org/)
+    * [Find Our Wines](/find-our-wines/)
+  * [Visit Wente](https://wentevineyards.com/visit/)
+    * [Wine Tastings](https://wentevineyards.com/visit/)
+    * [The Grill](https://wentevineyards.com/the-grill/)
+    * [Golf](https://wentevineyards.com/golf/)
+    * [Winery Events](https://wentevineyards.com/events/)
+    * [Wedding Events](https://wentevineyards.com/plan-your-wedding/)
+    * [Corporate Events](https://wentevineyards.com/corporate-events/)
+    * [Private Events](https://wentevineyards.com/plan-your-event/)
+  * [Info](https://wentevineyards.com/request-more-information/)
+    * [Contact Us](https://wentevineyards.com/contact-us/)
+    * [Trade & Media](https://wentetrellis.com/portals/trellis)
+    * [Donations](https://wentevineyards.com/donations-request/)
+    * [Careers](https://wentevineyards.com/careers/)
+    * [Shipping & Returns](https://wentevineyards.com/shipping-returns/)
+    * [Check Your Cart](/cart)
+    * [Update Your Profile](/profile)
+
+
+
+![](https://wentevineyards.com/wp-content/themes/wentevineyards/assets/images/Footer/universalaccessicon.png) [](https://www.facebook.com/WenteVineyards/) [](https://www.instagram.com/wente/) [](https://www.linkedin.com/company/wente-vineyards/)
+
+© Copyright 2026 Wente Vineyards • 5050 Arroyo Road, Livermore, CA 94550 • All rights reserved. 
+
+  * [Privacy Policy](https://wentevineyards.com/privacy/)
+  * [Terms of Service](https://wentevineyards.com/terms/)
+
+

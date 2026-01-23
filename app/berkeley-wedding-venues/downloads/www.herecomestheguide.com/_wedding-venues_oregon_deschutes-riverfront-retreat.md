@@ -1,0 +1,254 @@
+  * [__](https://www.instagram.com/herecomestheguide/)
+  * [__](https://www.pinterest.com/hctg)
+  * [__](https://www.tiktok.com/@herecomestheguide)
+  * [__](https://www.facebook.com/HereComesTheGuide)
+  * [__](https://theguidegalspodcast.com/)
+  * [__](mailto:info@herecomestheguide.com)
+
+[Start Here](/wedding-ideas/start-here)
+
+# Deschutes Riverfront Retreat 55753 Chief Paulina Road • Bend • OR 97707 
+
+* * *
+
+Contact **__Owners & Adventure Planners - Scott & Lisa**
+
+Check My Date
+
+[ VISIT WEBSITE](https://deschutesriverfrontretreat.com/micro-weddings)
+
+We'd love it if you would mention that you found Deschutes Riverfront Retreat on the Here Comes The Guide website.
+
+[503-313-5133](tel:503-313-5133)
+
+
+
+
+  
+
+
+* * *
+
+## Why You'll Love This Place
+
+##### A Here Comes The Guide Wedding Venue Review
+
+Read More Show Less
+
+  * **This riverfront haven along the Deschutes is your private micro-wedding retreat,** with a lush lawn sloping down to the water, towering trees offering shady nooks for your “I do”s, and plenty of space for everyone to stay and play all weekend long.
+  * **Micro-weddings find a perfect fit here, with tons of flexibility for customizing your celebration.** You might set a ceremony arch at the river’s edge, wander the property to snap romantic photos as the sun filters through the pines, gather for cocktails on the deck, or cozy up by the fire pit for s’mores.
+  * **Surrounded by 3 acres of wilderness, the Lodge and Cottage are airy, modern, and perfectly cozy,** with 11 bedrooms that can sleep up to 28 guests (and furry friends), a game room, fireplace, private dock, hammocks, and a hot tub that’s perfect for stargazing. 
+
+
+
+### DEALS: _What discounts, special offers, or packages are available here?_
+
+**Book two weekdays, and receive****HALF OFF****your site fee!**_Contact the venue for more details._
+
+### PRICES: _What's this going to cost?_
+
+###### Rental Fee
+
+  * **$1,000/event and up**
+  * _Rental fees start at $1,000._
+
+A minimum two-night stay is also required (ranging $2,000–9,000). This includes exclusive use of the property.
+
+
+
+
+get a custom quote!
+
+### GUEST COUNT: _How many people can we have here? What’s the max capacity?_
+
+|  | Indoors | Outdoors  
+---|---|---|---  
+Ceremony | Seated | 40 | 40  
+Cocktails, etc. | Standing | 40 | 40  
+Reception | Seated | 40 | 40  
+Meetings | Total meeting capacity for this venue is 40.  
+  
+## Venue Info & FAQs
+
+### OPTIONS: _What kinds of events can we have here?_
+
+  * Outdoor Ceremony
+  * Ceremony
+  * Wedding Receptions
+  * Outdoor Reception
+  * LGBTQ+ Friendly
+  * Elopement Packages
+  * Small Wedding
+  * Rehearsal Dinner
+  * Special Events / Parties
+  * Business Functions / Meetings
+  * On-Site Accommodations
+
+
+
+### POLICIES: _What are the food, alcohol, music, and other rules here?_
+
+###### Price
+
+$ • $$ 
+
+###### Catering
+
+BYO  
+
+
+###### Alcohol
+
+BYO  
+
+
+###### Amplified Music
+
+Indoors  
+Some restrictions  
+Acoustic Only  
+
+
+###### Wheelchair Access
+
+Not wheelchair accessible 
+
+###### Availability
+
+﻿Year-round, daily.
+
+### STYLE: _What’s the style and overall vibe of this venue?_
+
+#### __Buildings & other settings available:
+
+  * Inn / Lodge
+  * Mountain
+  * Park
+  * Patio / Deck / Terrace
+  * Private Estate
+  * Retreat
+  * River
+
+
+
+### VIEWS: _What kind of views does this place have?_
+
+#### Peep the views you’ll enjoy from this venue!
+
+  * Creek / River
+  * Forest / Woods
+  * Garden
+  * Meadow / Fields
+  * Mountains
+  * Park
+
+
+
+* * *
+
+[Wondering what CBA or BYO means?](/help/key-to-terms/ "Wondering what CBA or BYO means?")  
+[Want more info on our editorial process?](/about/editorial-process/ "Want more info on our editorial process?")
+
+###  Deschutes Riverfront Retreat 
+
+### Send an email to Deschutes Riverfront Retreat
+
+Desired Date
+
+Is Your Date Flexible?
+
+YesNo
+
+Approximate Guest Count
+
+Select your best guessUnder 2526–7576–100101–125126–150151–175176–200Over 200
+
+Message
+
+_We play nice. We promise never to share your info with anyone except Deschutes Riverfront Retreat._
+
+Your Name
+
+Your Email Address
+
+Your Phone #
+
+Your Preferred Contact Method
+
+EmailTextPhone
+
+Send Email 
+
+_We play nice. We promise never to share your info with anyone except Deschutes Riverfront Retreat._
+
+### Your email is on its way!
+
+######  Keep AN EYE ON YOUR INBOX 
+
+######  FOR A RESPONSE FROM 
+
+######  Deschutes Riverfront Retreat 
+
+Email this venue
+
+*Sending your email through the Here Comes The Guide website lets this venue know we sent you! Thank you for your support!
+
+Is it love? Check My Date __
+
+[ Wedding Venues ](/wedding-venues) > [Oregon Wedding Venues ](/wedding-venues/oregon) > [Willamette Valley / Eugene / Salem Wedding Venues ](/wedding-venues/oregon/region/willamette-valley)   
+
+
+Find Oregon Wedding Venues [Search Oregon Wedding Venues](/wedding-venues/oregon "Search Oregon Wedding Venues") | [Bend](/wedding-venues/oregon/region/bend "See All Bend Wedding Venues") | [The Gorge / Mt. Hood](/wedding-venues/oregon/region/columbia-river-gorge "See All The Gorge / Mt. Hood Wedding Venues") | [Oregon Coast](/wedding-venues/oregon/region/oregon-coast "See All Oregon Coast Wedding Venues") | [Portland Metro](/wedding-venues/oregon/region/portland "See All Portland Metro Wedding Venues") | [Southern Oregon / Medford](/wedding-venues/oregon/region/southern-oregon-medford "See All Southern Oregon / Medford Wedding Venues") | [Willamette Valley / Eugene / Salem](/wedding-venues/oregon/region/willamette-valley "See All Willamette Valley / Eugene / Salem Wedding Venues") | [Find By Style of Venue](/wedding-venues/by-style/oregon) | [Outdoor Wedding Venues in Oregon](/wedding-venues/oregon/outdoor) | [Affordable Wedding Venues in Oregon](/wedding-venues/oregon/cheap)
+
+"Best of" Lists & Ideas for Oregon  [Best of Wedding Venues in Oregon](/wedding-ideas/oregon "See Best of Oregon Wedding Venues") | [Bend](/wedding-ideas/oregon/region/bend "See Best of Bend Wedding Venues") | [The Gorge / Mt. Hood](/wedding-ideas/oregon/region/columbia-river-gorge "See Best of The Gorge / Mt. Hood Wedding Venues") | [Eastern Oregon](/wedding-ideas/oregon/region/eastern-oregon "See Best of Eastern Oregon Wedding Venues") | [Oregon Coast](/wedding-ideas/oregon/region/oregon-coast "See Best of Oregon Coast Wedding Venues") | [Portland Metro](/wedding-ideas/oregon/region/portland "See Best of Portland Metro Wedding Venues") | [Willamette Valley / Eugene / Salem](/wedding-ideas/oregon/region/willamette-valley "See Best of Willamette Valley / Eugene / Salem Wedding Venues")
+
+Even More Oregon Goodness [Oregon Real Weddings](/real-wedding/oregon "Real Oregon Weddings")
+
+Want to recommend a wedding venue in Oregon? Please email us at [info@herecomestheguide.com](mailto:info@herecomestheguide.com).
+
+[_Download_ our Wedding Checklist __](/wedding-ideas/the-guide-brides-wedding-checklist)
+
+Follow Along 
+
+  * [__](https://www.instagram.com/herecomestheguide/)
+  * [__](https://www.pinterest.com/hctg)
+  * [__](https://www.tiktok.com/@herecomestheguide)
+  * [__](https://www.facebook.com/HereComesTheGuide)
+  * [__](https://theguidegalspodcast.com/)
+  * [__](mailto:info@herecomestheguide.com)
+
+
+
+[Wedding Locations](https://www.herecomestheguide.com/wedding-venues)
+
+[Wedding Ideas](https://www.herecomestheguide.com/wedding-ideas)
+
+[Real Weddings](https://www.herecomestheguide.com/real-wedding)
+
+[Plan Your Travel](https://www.herecomestheguide.com/about/here-comes-the-getaway)
+
+[Choosing Wedding Vendors](https://www.herecomestheguide.com/wedding-ideas/the-ultimate-guide-to-choosing-your-wedding-vendors)
+
+[MyGuide](https://www.herecomestheguide.com/myguide)
+
+[Editorial Process](https://www.herecomestheguide.com/about/editorial-process)
+
+[Disclaimer / DCMA Notice](https://www.herecomestheguide.com/about/disclaimer)
+
+[Venue Business Education](https://www.herecomestheguide.com/about/the-venue-business-boot-camp)
+
+[Join Our Venue Directory](https://www.herecomestheguide.com/about/advertise-your-wedding-venue)
+
+[Link to Us](https://www.herecomestheguide.com/about/link-to-us)
+
+[Help](https://www.herecomestheguide.com/help)
+
+[Login](https://www.herecomestheguide.com/about/login)
+
+[Contact Here Comes The Guide](https://www.herecomestheguide.com/contact)
+
+Back to Top __
+
+Page last updated: Mon, 29 Dec 25 08:36:06
+
+© 1989 - 2026, Hopscotch Press, Inc. All text is written and copyrighted by Here Comes The Guide. The work on this website is licensed under a Creative Commons Attribution-Noncommercial-No Derivative Works 3.0 United States License. [Privacy Policy](https://www.herecomestheguide.com/about/privacy-policy) • [Cookie Notice](https://www.herecomestheguide.com/about/cookie-notice) • [Do Not Sell My Info](https://www.herecomestheguide.com/about/privacy-policy)

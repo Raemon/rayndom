@@ -1,0 +1,72 @@
+[
+  {
+    "siteName": "ggyc.org",
+    "mainUrl": {
+      "url": "https://ggyc.org/wp/facilities/",
+      "file": "_wp_facilities.md"
+    },
+    "otherUrls": [
+      {
+        "url": "https://ggyc.org/wp/our-club/contact-us/",
+        "file": "_wp_our-club_contact-us.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/certificates-of-recognition/",
+        "file": "_wp_certificates-of-recognition.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/our-club/",
+        "file": "_wp_our-club.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/on-the-water/youth-sailing/",
+        "file": "_wp_on-the-water_youth-sailing.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/our-club/history/",
+        "file": "_wp_our-club_history.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/",
+        "file": "_wp.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/on-the-water/race-committee/",
+        "file": "_wp_on-the-water_race-committee.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/on-the-water/",
+        "file": "_wp_on-the-water.md"
+      },
+      {
+        "url": "https://ggyc.org/wp",
+        "file": "_wp.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/our-club/officers-staff/",
+        "file": "_wp_our-club_officers-staff.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/home/calendar/",
+        "file": "_wp_home_calendar.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/on-the-water/race-registration-results/",
+        "file": "_wp_on-the-water_race-registration-results.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/on-the-water/club-sailing/",
+        "file": "_wp_on-the-water_club-sailing.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/our-club/80th-anniversary/",
+        "file": "_wp_our-club_80th-anniversary.md"
+      },
+      {
+        "url": "https://ggyc.org/wp/membership/",
+        "file": "_wp_membership.md"
+      }
+    ],
+    "dateDownloaded": "2026-01-23T13:29:47.793052"
+  }
+]

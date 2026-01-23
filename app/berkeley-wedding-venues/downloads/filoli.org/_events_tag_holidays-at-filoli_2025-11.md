@@ -1,0 +1,688 @@
+Skip to content
+
+[ ](https://filoli.org/)
+
+[ ](https://filoli.org/)
+
+[ __ Donate ](https://51772.blackbaudhosting.com/51772/Annual-Fund-Donations?_gl=1*mor4nk*_gcl_au*MTEwODg4Njc0NC4xNzM4Mjc3MTk2*_ga*MTkyNjkwMzY2MC4xNzM4Mjc3MTk3*_ga_SFCYR6JK8K*MTczODc3NTgyMi40LjEuMTczODc5MTUwMy41Mi4wLjA)
+
+__
+
+## 
+
+[ ](https://filoli.org/)
+
+[ __ Donate ](https://51772.blackbaudhosting.com/51772/Annual-Fund-Donations?_gl=1*mor4nk*_gcl_au*MTEwODg4Njc0NC4xNzM4Mjc3MTk2*_ga*MTkyNjkwMzY2MC4xNzM4Mjc3MTk3*_ga_SFCYR6JK8K*MTczODc3NTgyMi40LjEuMTczODc5MTUwMy41Mi4wLjA)
+
+# 
+
+42 events found. 
+
+#  Holidays at Filoli 
+
+##  Events Search and Views Navigation 
+
+Search 
+
+Enter Keyword. Search for Events by Keyword. 
+
+Find Events
+
+Hide filters 
+
+###  Event Views Navigation 
+
+Month 
+
+  * [ List  ](https://filoli.org/events/tag/holidays-at-filoli/list/?tribe-bar-date=2025-11-01)
+  * [ Month  ](https://filoli.org/events/tag/holidays-at-filoli/2025-11/)
+  * [ Photo  ](https://filoli.org/?post_type=tribe_events&eventDisplay=photo&tag=holidays-at-filoli&eventDate=2025-11-01)
+
+
+
+# Events
+
+[ This Month](https://filoli.org/events/tag/holidays-at-filoli/month/)
+
+11/1/2025  November 2025  Select date. 
+
+##  Filters 
+
+Changing any of the form inputs will cause the list of events to refresh with the filtered results. 
+
+Done  Clear 
+
+### 
+
+Event Category:
+
+Open filter  Close filter 
+
+Event Category 
+
+### 
+
+Tags:
+
+Open filter  Close filter 
+
+Tags 
+
+### 
+
+Day:
+
+Open filter  Close filter 
+
+Day 
+
+Sunday 
+
+Monday 
+
+Tuesday 
+
+Wednesday 
+
+Thursday 
+
+Friday 
+
+Saturday 
+
+### 
+
+Time:
+
+Open filter  Close filter 
+
+Time 
+
+All Day 
+
+Morning 
+
+Afternoon 
+
+Evening 
+
+Night 
+
+##  Calendar of Events 
+
+S  Sunday  |  M  Monday  |  T  Tuesday  |  W  Wednesday  |  T  Thursday  |  F  Friday  |  S  Saturday   
+---|---|---|---|---|---|---  
+0 events  26  0 events,  26  |  0 events  27  0 events,  27  |  0 events  28  0 events,  28  |  0 events  29  0 events,  29  |  0 events  30  0 events,  30  |  0 events  31  0 events,  31  |  0 events  1  0 events,  1   
+0 events  2  0 events,  2  |  0 events  3  0 events,  3  |  0 events  4  0 events,  4  |  0 events  5  0 events,  5  |  0 events  6  0 events,  6  |  0 events  7  0 events,  7  |  0 events  8  0 events,  8   
+0 events  9  0 events,  9  |  0 events  10  0 events,  10  |  0 events  11  0 events,  11  |  0 events  12  0 events,  12  |  0 events  13  0 events,  13  |  0 events  14  0 events,  14  |  0 events  15  0 events,  15   
+0 events  16  0 events,  16  |  0 events  17  0 events,  17  |  0 events  18  0 events,  18  |  0 events  19  0 events,  19  |  0 events  20  0 events,  20  |  1 event  21  1 event,  [ 21 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-21/) 6:30 pm  - 10:00 pm  [ Merry & Bright Preview Night ](https://filoli.org/event/merry-bright-preview-night-2/ "Merry & Bright Preview Night") November 21, 2025 @ 6:30 pm-10:00 pm [ Merry & Bright Preview Night ](https://filoli.org/event/merry-bright-preview-night-2/ "Merry & Bright Preview Night") Be among the first to experience the wonder of the season before Holidays at Filoli opens to the public. Step into a world of holiday magic as the estate sparkles to life with twinkling lights, joyful sounds of live carolers, complimentary hot drinks served in a keepsake mug, and so much more! Begin your holiday… |  5 events  22  5 events,  [ 22 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-22/) 4:30 pm  - 5:30 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-22/ "Ballroom Champagne Lounge") November 22, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-22/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… 4:30 pm  - 6:00 pm  [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-22/ "Holidays Private Fire Pit Experience") November 22, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-22/ "Holidays Private Fire Pit Experience") Cozy up this season with Filoli’s Private Fire Pit experience! Invite your favorite people for an intimate evening around your own private fire pit. Surrounded by the glow of the… 6:00 pm  - 7:00 pm  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge-2/ "Ballroom Champagne Lounge") November 22, 2025 @ 6:00 pm-7:00 pm [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge-2/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… [ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-22/)  
+5 events  23  5 events,  [ 23 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-23/) 4:30 pm  - 5:30 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-23/ "Ballroom Champagne Lounge") November 23, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-23/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… 4:30 pm  - 6:00 pm  [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-23/ "Holidays Private Fire Pit Experience") November 23, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-23/ "Holidays Private Fire Pit Experience") Cozy up this season with Filoli’s Private Fire Pit experience! Invite your favorite people for an intimate evening around your own private fire pit. Surrounded by the glow of the… 6:00 pm  - 7:00 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-23/2/ "Ballroom Champagne Lounge") November 23, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-23/2/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… [ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-23/) |  6 events  24  6 events,  [ 24 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-24/) 2:00 pm  - 4:00 pm  [ Recurring  ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/all/) [ Flora Party: Thanksgiving Centerpieces ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/2025-11-24/ "Flora Party: Thanksgiving Centerpieces") November 24, 2025 @ 2:00 pm-4:00 pm [ Recurring  ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/all/) [ Flora Party: Thanksgiving Centerpieces ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/2025-11-24/ "Flora Party: Thanksgiving Centerpieces") Create a show-stopping centerpiece sure to be the talk of your Thanksgiving table. Guided by Filoli’s expert instructors, you’ll craft an elegant focal point using seasonal materials thoughtfully sourced from Filoli’s estate and local vendors. Thanksgiving Centerpiece Tickets 4:30 pm  - 5:30 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-24/ "Ballroom Champagne Lounge") November 24, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-24/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… 4:30 pm  - 6:00 pm  [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-24/ "Holidays Private Fire Pit Experience") November 24, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-24/ "Holidays Private Fire Pit Experience") Cozy up this season with Filoli’s Private Fire Pit experience! Invite your favorite people for an intimate evening around your own private fire pit. Surrounded by the glow of the holidays, you’ll enjoy a relaxed and festive atmosphere perfect for sipping warm drinks, sharing treats, and making memories under the stars. It’s the ultimate way… [ \+ 3 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-24/) |  7 events  25  7 events,  [ 25 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-25/) 10:00 am  - 12:00 pm  [ Recurring  ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/all/) [ Flora Party: Thanksgiving Centerpieces ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/2025-11-25/ "Flora Party: Thanksgiving Centerpieces") November 25, 2025 @ 10:00 am-12:00 pm [ Recurring  ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/all/) [ Flora Party: Thanksgiving Centerpieces ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/2025-11-25/ "Flora Party: Thanksgiving Centerpieces") Create a show-stopping centerpiece sure to be the talk of your Thanksgiving table. Guided by Filoli’s expert instructors, you’ll craft an elegant focal point using seasonal materials thoughtfully sourced from Filoli’s estate and local vendors. Thanksgiving Centerpiece Tickets 2:00 pm  - 4:00 pm  [ Recurring  ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/all/) [ Flora Party: Thanksgiving Centerpieces ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/2025-11-25/2/ "Flora Party: Thanksgiving Centerpieces") November 25, 2025 @ 2:00 pm-4:00 pm [ Recurring  ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/all/) [ Flora Party: Thanksgiving Centerpieces ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/2025-11-25/2/ "Flora Party: Thanksgiving Centerpieces") Create a show-stopping centerpiece sure to be the talk of your Thanksgiving table. Guided by Filoli’s expert instructors, you’ll craft an elegant focal point using seasonal materials thoughtfully sourced from Filoli’s estate and local vendors. Thanksgiving Centerpiece Tickets 4:30 pm  - 5:30 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-25/ "Ballroom Champagne Lounge") November 25, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-25/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… [ \+ 4 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-25/) |  5 events  26  5 events,  [ 26 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-26/) 4:30 pm  - 5:30 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-26/ "Ballroom Champagne Lounge") November 26, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-26/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… 4:30 pm  - 6:00 pm  [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-26/ "Holidays Private Fire Pit Experience") November 26, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-26/ "Holidays Private Fire Pit Experience") Cozy up this season with Filoli’s Private Fire Pit experience! Invite your favorite people for an intimate evening around your own private fire pit. Surrounded by the glow of the holidays, you’ll enjoy a relaxed and festive atmosphere perfect for sipping warm drinks, sharing treats, and making memories under the stars. It’s the ultimate way… 6:00 pm  - 7:00 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-26/ "Ballroom Champagne Lounge") November 26, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-26/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… [ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-26/) |  0 events  27  0 events,  27  |  5 events  28  5 events,  [ 28 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-28/) 4:30 pm  - 5:30 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-28/ "Ballroom Champagne Lounge") November 28, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-28/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here. Surrounded by gilded décor and timeless grandeur, sip Moët & Chandon Champagne in the glow of the season. As the House sparkles and the Garden… 4:30 pm  - 6:00 pm  [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-28/ "Holidays Private Fire Pit Experience") November 28, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-28/ "Holidays Private Fire Pit Experience") Cozy up this season with Filoli’s Private Fire Pit experience! Invite your favorite people for an intimate evening around your own private fire pit. Surrounded by the glow of the holidays, you’ll enjoy a relaxed and festive atmosphere perfect for sipping warm drinks, sharing treats, and making memories under the stars. It’s the ultimate way… 6:00 pm  - 7:00 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-28/9/ "Ballroom Champagne Lounge") November 28, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-28/9/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here. Surrounded by gilded décor and timeless grandeur, sip Moët & Chandon Champagne in the glow of the season. As the House sparkles and the Garden… [ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-28/) |  5 events  29  5 events,  [ 29 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-29/) 4:30 pm  - 5:30 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-29/ "Ballroom Champagne Lounge") November 29, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-29/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here. Surrounded by gilded décor and timeless grandeur, sip Moët & Chandon Champagne in the glow of the season. As the House sparkles and the Garden… 4:30 pm  - 6:00 pm  [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-29/ "Holidays Private Fire Pit Experience") November 29, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-29/ "Holidays Private Fire Pit Experience") Cozy up this season with Filoli’s Private Fire Pit experience! Invite your favorite people for an intimate evening around your own private fire pit. Surrounded by the glow of the holidays, you’ll enjoy a relaxed and festive atmosphere perfect for sipping warm drinks, sharing treats, and making memories under the stars. It’s the ultimate way… 6:00 pm  - 7:00 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-29/10/ "Ballroom Champagne Lounge") November 29, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-29/10/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here. Surrounded by gilded décor and timeless grandeur, sip Moët & Chandon Champagne in the glow of the season. As the House sparkles and the Garden… [ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-29/)  
+5 events  30  5 events,  [ 30 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-30/) 4:30 pm  - 5:30 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-30/ "Ballroom Champagne Lounge") November 30, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-30/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… 4:30 pm  - 6:00 pm  [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-30/ "Holidays Private Fire Pit Experience") November 30, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-30/ "Holidays Private Fire Pit Experience") Cozy up this season with Filoli’s Private Fire Pit experience! Invite your favorite people for an intimate evening around your own private fire pit. Surrounded by the glow of the… 6:00 pm  - 7:00 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-30/10/ "Ballroom Champagne Lounge") November 30, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-30/10/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… [ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-30/) |  5 events  1  5 events,  [ 1 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-01/) 4:30 pm  - 5:30 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-01/ "Ballroom Champagne Lounge") December 1, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-01/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… 4:30 pm  - 6:00 pm  [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-12-01/ "Holidays Private Fire Pit Experience") December 1, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-12-01/ "Holidays Private Fire Pit Experience") Cozy up this season with Filoli’s Private Fire Pit experience! Invite your favorite people for an intimate evening around your own private fire pit. Surrounded by the glow of the holidays, you’ll enjoy a relaxed and festive atmosphere perfect for sipping warm drinks, sharing treats, and making memories under the stars. It’s the ultimate way… 6:00 pm  - 7:00 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-01/10/ "Ballroom Champagne Lounge") December 1, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-01/10/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here. Surrounded by gilded décor and timeless grandeur, sip Moët & Chandon Champagne in the glow of the season. As the House sparkles and the Garden… [ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-01/) |  9 events  2  9 events,  [ 2 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-02/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-02/ "Holiday Tea") December 2, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-02/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray of treats, and unlimited champagne and tea. Seated at a family-style table, guests are welcomed into an elegant setting that invites meaningful connection and timeless… 1:00 pm  - 2:30 pm  [ Holiday Tea ](https://filoli.org/event/holiday-tea-2/ "Holiday Tea") December 2, 2025 @ 1:00 pm-2:30 pm [ Holiday Tea ](https://filoli.org/event/holiday-tea-2/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray of treats, and unlimited champagne and tea. Seated at a family-style table, guests are welcomed into an elegant setting that invites meaningful connection and timeless… 1:30 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/filoli-unwrapped/all/) [ Filoli Unwrapped ](https://filoli.org/event/filoli-unwrapped/2025-12-02/ "Filoli Unwrapped") December 2, 2025 @ 1:30 pm-2:30 pm [ Recurring  ](https://filoli.org/event/filoli-unwrapped/all/) [ Filoli Unwrapped ](https://filoli.org/event/filoli-unwrapped/2025-12-02/ "Filoli Unwrapped") This behind-the-scenes tour will reveal the hidden secrets of the historic House and grant guests exclusive access to the upstairs. Highlights include viewing the curatorial offices and the sweeping vistas from family bedrooms, upstairs sitting rooms, and balconies. Filoli Unwrapped Tickets [ \+ 6 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-02/) |  8 events  3  8 events,  [ 3 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-03/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/ "Holiday Tea") December 3, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/2/ "Holiday Tea") December 3, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/2/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/3/ "Holiday Tea") December 3, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/3/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… [ \+ 5 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-03/) |  9 events  4  9 events,  [ 4 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-04/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/ "Holiday Tea") December 4, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/4/ "Holiday Tea") December 4, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/4/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:30 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/filoli-unwrapped/all/) [ Filoli Unwrapped ](https://filoli.org/event/filoli-unwrapped/2025-12-04/ "Filoli Unwrapped") December 4, 2025 @ 1:30 pm-2:30 pm [ Recurring  ](https://filoli.org/event/filoli-unwrapped/all/) [ Filoli Unwrapped ](https://filoli.org/event/filoli-unwrapped/2025-12-04/ "Filoli Unwrapped") This behind-the-scenes tour will reveal the hidden secrets of the historic House and grant guests exclusive access to the upstairs. Highlights include viewing the curatorial offices and the sweeping vistas… [ \+ 6 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-04/) |  8 events  5  8 events,  [ 5 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-05/) 11:00 am  - 12:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/ "Holiday Tea") December 5, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 1:00 pm  - 2:30 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/6/ "Holiday Tea") December 5, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/6/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… 3:30 pm  - 5:00 pm  [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/7/ "Holiday Tea") December 5, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/) [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/7/ "Holiday Tea") Grab a seat in the Garden House where holiday décor, shimmering lights, and seasonal florals set an unforgettable, cheerful tone. Enjoy a thoughtfully curated afternoon tea featuring a tiered tray… [ \+ 5 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-05/) |  5 events  6  5 events,  [ 6 ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-06/) 4:30 pm  - 5:30 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-06/ "Ballroom Champagne Lounge") December 6, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-06/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… 4:30 pm  - 6:00 pm  [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-12-06/ "Holidays Private Fire Pit Experience") December 6, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/) [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-12-06/ "Holidays Private Fire Pit Experience") Cozy up this season with Filoli’s Private Fire Pit experience! Invite your favorite people for an intimate evening around your own private fire pit. Surrounded by the glow of the… 6:00 pm  - 7:00 pm  [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-06/10/ "Ballroom Champagne Lounge") December 6, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/) [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-06/10/ "Ballroom Champagne Lounge") Let the season’s elegance envelop you in Filoli’s grand Ballroom. This exclusive holiday experience is a luxurious complement to your Holidays at Filoli visit, whether you begin or conclude your evening here.… [ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-06/)  
+  
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+Notice
+
+There are no events on this day. 
+
+November 21 
+
+November 21, 2025 @ 6:30 pm-10:00 pm
+
+###  [ Merry & Bright Preview Night ](https://filoli.org/event/merry-bright-preview-night-2/ "Merry & Bright Preview Night")
+
+November 22 
+
+November 22, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-22/ "Ballroom Champagne Lounge")
+
+November 22, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/)
+
+###  [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-22/ "Holidays Private Fire Pit Experience")
+
+November 22, 2025 @ 6:00 pm-7:00 pm
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge-2/ "Ballroom Champagne Lounge")
+
+[ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-22/)
+
+November 23 
+
+November 23, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-23/ "Ballroom Champagne Lounge")
+
+November 23, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/)
+
+###  [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-23/ "Holidays Private Fire Pit Experience")
+
+November 23, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-23/2/ "Ballroom Champagne Lounge")
+
+[ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-23/)
+
+November 24 
+
+November 24, 2025 @ 2:00 pm-4:00 pm [ Recurring  ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/all/)
+
+###  [ Flora Party: Thanksgiving Centerpieces ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/2025-11-24/ "Flora Party: Thanksgiving Centerpieces")
+
+November 24, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-24/ "Ballroom Champagne Lounge")
+
+November 24, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/)
+
+###  [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-24/ "Holidays Private Fire Pit Experience")
+
+[ \+ 3 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-24/)
+
+November 25 
+
+November 25, 2025 @ 10:00 am-12:00 pm [ Recurring  ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/all/)
+
+###  [ Flora Party: Thanksgiving Centerpieces ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/2025-11-25/ "Flora Party: Thanksgiving Centerpieces")
+
+November 25, 2025 @ 2:00 pm-4:00 pm [ Recurring  ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/all/)
+
+###  [ Flora Party: Thanksgiving Centerpieces ](https://filoli.org/event/flora-party-thanksgiving-centerpieces/2025-11-25/2/ "Flora Party: Thanksgiving Centerpieces")
+
+November 25, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-25/ "Ballroom Champagne Lounge")
+
+[ \+ 4 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-25/)
+
+November 26 
+
+November 26, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-26/ "Ballroom Champagne Lounge")
+
+November 26, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/)
+
+###  [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-26/ "Holidays Private Fire Pit Experience")
+
+November 26, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-26/ "Ballroom Champagne Lounge")
+
+[ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-26/)
+
+Notice
+
+There are no events on this day. 
+
+November 28 
+
+November 28, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-28/ "Ballroom Champagne Lounge")
+
+November 28, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/)
+
+###  [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-28/ "Holidays Private Fire Pit Experience")
+
+November 28, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-28/9/ "Ballroom Champagne Lounge")
+
+[ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-28/)
+
+November 29 
+
+November 29, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-29/ "Ballroom Champagne Lounge")
+
+November 29, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/)
+
+###  [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-29/ "Holidays Private Fire Pit Experience")
+
+November 29, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-29/10/ "Ballroom Champagne Lounge")
+
+[ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-29/)
+
+November 30 
+
+November 30, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-30/ "Ballroom Champagne Lounge")
+
+November 30, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/)
+
+###  [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-11-30/ "Holidays Private Fire Pit Experience")
+
+November 30, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-11-30/10/ "Ballroom Champagne Lounge")
+
+[ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-11-30/)
+
+December 1 
+
+December 1, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-01/ "Ballroom Champagne Lounge")
+
+December 1, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/)
+
+###  [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-12-01/ "Holidays Private Fire Pit Experience")
+
+December 1, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-01/10/ "Ballroom Champagne Lounge")
+
+[ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-01/)
+
+December 2 
+
+December 2, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-02/ "Holiday Tea")
+
+December 2, 2025 @ 1:00 pm-2:30 pm
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea-2/ "Holiday Tea")
+
+December 2, 2025 @ 1:30 pm-2:30 pm [ Recurring  ](https://filoli.org/event/filoli-unwrapped/all/)
+
+###  [ Filoli Unwrapped ](https://filoli.org/event/filoli-unwrapped/2025-12-02/ "Filoli Unwrapped")
+
+[ \+ 6 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-02/)
+
+December 3 
+
+December 3, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/ "Holiday Tea")
+
+December 3, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/2/ "Holiday Tea")
+
+December 3, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-03/3/ "Holiday Tea")
+
+[ \+ 5 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-03/)
+
+December 4 
+
+December 4, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/ "Holiday Tea")
+
+December 4, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-04/4/ "Holiday Tea")
+
+December 4, 2025 @ 1:30 pm-2:30 pm [ Recurring  ](https://filoli.org/event/filoli-unwrapped/all/)
+
+###  [ Filoli Unwrapped ](https://filoli.org/event/filoli-unwrapped/2025-12-04/ "Filoli Unwrapped")
+
+[ \+ 6 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-04/)
+
+December 5 
+
+December 5, 2025 @ 11:00 am-12:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/ "Holiday Tea")
+
+December 5, 2025 @ 1:00 pm-2:30 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/6/ "Holiday Tea")
+
+December 5, 2025 @ 3:30 pm-5:00 pm [ Recurring  ](https://filoli.org/event/holiday-tea/all/)
+
+###  [ Holiday Tea ](https://filoli.org/event/holiday-tea/2025-12-05/7/ "Holiday Tea")
+
+[ \+ 5 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-05/)
+
+December 6 
+
+December 6, 2025 @ 4:30 pm-5:30 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-06/ "Ballroom Champagne Lounge")
+
+December 6, 2025 @ 4:30 pm-6:00 pm [ Recurring  ](https://filoli.org/event/holidays-private-fire-pit-experience/all/)
+
+###  [ Holidays Private Fire Pit Experience ](https://filoli.org/event/holidays-private-fire-pit-experience/2025-12-06/ "Holidays Private Fire Pit Experience")
+
+December 6, 2025 @ 6:00 pm-7:00 pm [ Recurring  ](https://filoli.org/event/ballroom-champagne-lounge/all/)
+
+###  [ Ballroom Champagne Lounge ](https://filoli.org/event/ballroom-champagne-lounge/2025-12-06/10/ "Ballroom Champagne Lounge")
+
+[ \+ 2 More ](https://filoli.org/events/tag/holidays-at-filoli/day/2025-12-06/)
+
+Subscribe to calendar 
+
+  * [ Google Calendar ](https://www.google.com/calendar/render?cid=webcal%3A%2F%2Ffiloli.org%2F%3Fpost_type%3Dtribe_events%26tribe-bar-date%3D2025-11%26ical%3D1%26eventDisplay%3Dlist)
+  * [ iCalendar ](webcal://filoli.org/?post_type=tribe_events&tribe-bar-date=2025-11&ical=1&eventDisplay=list)
+  * [ Outlook 365 ](https://outlook.office.com/owa?path=/calendar/action/compose&rru=addsubscription&url=webcal%3A%2F%2Ffiloli.org%2F%3Fpost_type%3Dtribe_events%26tribe-bar-date%3D2025-11%26ical%3D1%26eventDisplay%3Dlist&name=Filoli+Filoli)
+  * [ Outlook Live ](https://outlook.live.com/owa?path=/calendar/action/compose&rru=addsubscription&url=webcal%3A%2F%2Ffiloli.org%2F%3Fpost_type%3Dtribe_events%26tribe-bar-date%3D2025-11%26ical%3D1%26eventDisplay%3Dlist&name=Filoli+Filoli)
+  * [ Export .ics file ](https://filoli.org/events/tag/holidays-at-filoli/2025-11/?ical=1)
+  * [ Export Outlook .ics file ](https://filoli.org/events/tag/holidays-at-filoli/2025-11/?outlook-ical=1)
+
+
+
+[ ](https://www.filoli.org/)
+
+86 Cañada Road  
+Woodside, CA 94062
+
+**Open Daily**  
+10am-5pm
+
+[ Contact Us ](https://filoli.org/about/contact/)
+
+650.364.8300 | [info@filoli.org](mailto:info@filoli.org)
+
+[ Newsletter Sign-Up ](https://filoli.org/about/contact/#newsletter-subscribe)
+
+[ __](http://www.facebook.com/FiloliEstate/ "Facebook") [ __](http://www.instagram.com/filoliestate/ "Instagram") [ __](https://www.tiktok.com/@filoliestate "TikTok") [ __](http://www.youtube.com/@FiloliEstate "YouTube") [ __](https://www.linkedin.com/company/filoliestate "LinkedIn")
+
+[ ](https://savingplaces.org/)
+
+© 2026 Filoli, All Rights Reserved. | [Privacy Policy](https://filoli.org/privacy-policy/) | [Photography Guidelines](https://filoli.org/personal-photography/) | [Brand Kit](https://filoli.canto.com/g/FiloliBrandGuidelines/index?viewIndex=0)  
+Filoli is a 501(c)(3) nonprofit organization.
+
+## Select Language 
+
+Scroll To Top __
+
+__
+
+  * [General Admission Tickets](https://api.socialgoodsoftware.com/api/calendar/cdn?id=f08c5103c1a70f2dcef37e4c43414f4ae4b34ce11b3ca75a60dfe8fc76ba84571127f7da88a441c4ee6a04d900ca2094563de1a160a3d2c4edaaadebdf92d4c6ef49c30b158e8460e261d1d4bdef22c021e283926efaa658cc349b1fdd50e54e)
+  * [Member Tickets](https://api.socialgoodsoftware.com/api/calendar/cdn?id=f08c5103c1a70f2dcef37e4c43414f4ae4b34ce11b3ca75a60dfe8fc76ba84571127f7da88a441c4ee6a04d900ca2094043331d3839234846c9ec9c365f591ff4858045c20a2a65aef4abe9078f5704608de702b7ff77db6e8b716ad62d365fd)
+
+
+
+  * Visit
+    * [Winter at Filoli](https://filoli.org/winter/)
+    * [Plan Your Visit](https://filoli.org/visit/)
+    * [Families & Kids](https://filoli.org/visit/families-kids/)
+    * [Groups](https://filoli.org/visit/groups/)
+    * [Shopping & Dining](https://filoli.org/visit/dining-shopping/)
+    * [School Field Trips](https://filoli.org/visit/field-trips/)
+  * What’s On
+    * [Calendar](https://filoli.org/events/)
+    * [Winter at Filoli](https://filoli.org/winter/)
+      * [Railroad at the Redwoods](https://filoli.org/redwood-railroad/)
+      * [Lunar New Year](https://filoli.org/lunar-new-year/)
+      * [Stories in Bloom](https://filoli.org/events/stories-in-bloom/)
+      * [Wellness Wednesday](https://filoli.org/wellness-wednesday/)
+    * [Ballroom Performance Series](https://filoli.org/performance/)
+    * [Rose Wonders](https://filoli.org/rose-wonders/)
+    * [Flora Parties](https://filoli.org/events/parties/)
+    * [Service Learning](https://filoli.org/service-learning/)
+    * [Tours](https://filoli.org/tours/)
+  * Support
+    * [Ways to Give](https://filoli.org/support/ways-to-give/)
+    * [Impact](https://filoli.org/support/impact/)
+    * [Fundraising Events](https://filoli.org/fundraising-events/)
+    * [Sponsorship](https://filoli.org/sponsorship/)
+  * Membership
+    * [Membership](https://filoli.org/support/membership/)
+    * [Filoli Guild](https://filoli.org/support/membership/#guild)
+    * [Filoli Circle](https://filoli.org/support/membership/#filolicircle)
+    * [For Members](https://filoli.org/for-members/)
+  * Learn & Explore
+    * [Explore](https://filoli.org/explore/)
+    * [Youth Programs](https://filoli.org/youth-programs/)
+    * [What’s Blooming](https://filoli.org/explore/whats-blooming/)
+    * [Blog](https://filoli.org/explore/blog/)
+    * [Podcast](https://filoli.org/podcast/)
+  * Rentals
+    * [Rentals](https://filoli.org/rentals/private-events/)
+    * [Weddings](https://filoli.org/rentals/weddings/)
+    * [Venues](https://filoli.org/rentals/venues/)
+    * [Filming & Photography](https://filoli.org/rentals/filming-and-photography/)
+    * [Partners](https://filoli.org/partners/)
+
+
+
+__
+
+  * Visit
+    * [Winter at Filoli](https://filoli.org/winter/)
+    * [Plan Your Visit](https://filoli.org/visit/)
+    * [Families & Kids](https://filoli.org/visit/families-kids/)
+    * [Groups](https://filoli.org/visit/groups/)
+    * [Shopping & Dining](https://filoli.org/visit/dining-shopping/)
+    * [School Field Trips](https://filoli.org/visit/field-trips/)
+  * What’s On
+    * [Calendar](https://filoli.org/events/)
+    * [Winter at Filoli](https://filoli.org/winter/)
+      * [Railroad at the Redwoods](https://filoli.org/redwood-railroad/)
+      * [Lunar New Year](https://filoli.org/lunar-new-year/)
+      * [Stories in Bloom](https://filoli.org/events/stories-in-bloom/)
+      * [Wellness Wednesday](https://filoli.org/wellness-wednesday/)
+    * [Ballroom Performance Series](https://filoli.org/performance/)
+    * [Rose Wonders](https://filoli.org/rose-wonders/)
+    * [Flora Parties](https://filoli.org/events/parties/)
+    * [Service Learning](https://filoli.org/service-learning/)
+    * [Tours](https://filoli.org/tours/)
+  * Support
+    * [Ways to Give](https://filoli.org/support/ways-to-give/)
+    * [Impact](https://filoli.org/support/impact/)
+    * [Fundraising Events](https://filoli.org/fundraising-events/)
+    * [Sponsorship](https://filoli.org/sponsorship/)
+  * Membership
+    * [Membership](https://filoli.org/support/membership/)
+    * [Filoli Guild](https://filoli.org/support/membership/#guild)
+    * [Filoli Circle](https://filoli.org/support/membership/#filolicircle)
+    * [For Members](https://filoli.org/for-members/)
+  * Learn & Explore
+    * [Explore](https://filoli.org/explore/)
+    * [Youth Programs](https://filoli.org/youth-programs/)
+    * [What’s Blooming](https://filoli.org/explore/whats-blooming/)
+    * [Blog](https://filoli.org/explore/blog/)
+    * [Podcast](https://filoli.org/podcast/)
+  * Rentals
+    * [Rentals](https://filoli.org/rentals/private-events/)
+    * [Weddings](https://filoli.org/rentals/weddings/)
+    * [Venues](https://filoli.org/rentals/venues/)
+    * [Filming & Photography](https://filoli.org/rentals/filming-and-photography/)
+    * [Partners](https://filoli.org/partners/)
+
+
+
+  * Visit
+    * [Winter at Filoli](https://filoli.org/winter/)
+    * [Plan Your Visit](https://filoli.org/visit/)
+    * [Families & Kids](https://filoli.org/visit/families-kids/)
+    * [Groups](https://filoli.org/visit/groups/)
+    * [Shopping & Dining](https://filoli.org/visit/dining-shopping/)
+    * [School Field Trips](https://filoli.org/visit/field-trips/)
+  * What’s On
+    * [Calendar](https://filoli.org/events/)
+    * [Winter at Filoli](https://filoli.org/winter/)
+      * [Railroad at the Redwoods](https://filoli.org/redwood-railroad/)
+      * [Lunar New Year](https://filoli.org/lunar-new-year/)
+      * [Stories in Bloom](https://filoli.org/events/stories-in-bloom/)
+      * [Wellness Wednesday](https://filoli.org/wellness-wednesday/)
+    * [Ballroom Performance Series](https://filoli.org/performance/)
+    * [Rose Wonders](https://filoli.org/rose-wonders/)
+    * [Flora Parties](https://filoli.org/events/parties/)
+    * [Service Learning](https://filoli.org/service-learning/)
+    * [Tours](https://filoli.org/tours/)
+  * Support
+    * [Ways to Give](https://filoli.org/support/ways-to-give/)
+    * [Impact](https://filoli.org/support/impact/)
+    * [Fundraising Events](https://filoli.org/fundraising-events/)
+    * [Sponsorship](https://filoli.org/sponsorship/)
+  * Membership
+    * [Membership](https://filoli.org/support/membership/)
+    * [Filoli Guild](https://filoli.org/support/membership/#guild)
+    * [Filoli Circle](https://filoli.org/support/membership/#filolicircle)
+    * [For Members](https://filoli.org/for-members/)
+  * Learn & Explore
+    * [Explore](https://filoli.org/explore/)
+    * [Youth Programs](https://filoli.org/youth-programs/)
+    * [What’s Blooming](https://filoli.org/explore/whats-blooming/)
+    * [Blog](https://filoli.org/explore/blog/)
+    * [Podcast](https://filoli.org/podcast/)
+  * Rentals
+    * [Rentals](https://filoli.org/rentals/private-events/)
+    * [Weddings](https://filoli.org/rentals/weddings/)
+    * [Venues](https://filoli.org/rentals/venues/)
+    * [Filming & Photography](https://filoli.org/rentals/filming-and-photography/)
+    * [Partners](https://filoli.org/partners/)
+
+
+
+__
+
+  * Visit
+    * [Winter at Filoli](https://filoli.org/winter/)
+    * [Plan Your Visit](https://filoli.org/visit/)
+    * [Families & Kids](https://filoli.org/visit/families-kids/)
+    * [Groups](https://filoli.org/visit/groups/)
+    * [Shopping & Dining](https://filoli.org/visit/dining-shopping/)
+    * [School Field Trips](https://filoli.org/visit/field-trips/)
+  * What’s On
+    * [Calendar](https://filoli.org/events/)
+    * [Winter at Filoli](https://filoli.org/winter/)
+      * [Railroad at the Redwoods](https://filoli.org/redwood-railroad/)
+      * [Lunar New Year](https://filoli.org/lunar-new-year/)
+      * [Stories in Bloom](https://filoli.org/events/stories-in-bloom/)
+      * [Wellness Wednesday](https://filoli.org/wellness-wednesday/)
+    * [Ballroom Performance Series](https://filoli.org/performance/)
+    * [Rose Wonders](https://filoli.org/rose-wonders/)
+    * [Flora Parties](https://filoli.org/events/parties/)
+    * [Service Learning](https://filoli.org/service-learning/)
+    * [Tours](https://filoli.org/tours/)
+  * Support
+    * [Ways to Give](https://filoli.org/support/ways-to-give/)
+    * [Impact](https://filoli.org/support/impact/)
+    * [Fundraising Events](https://filoli.org/fundraising-events/)
+    * [Sponsorship](https://filoli.org/sponsorship/)
+  * Membership
+    * [Membership](https://filoli.org/support/membership/)
+    * [Filoli Guild](https://filoli.org/support/membership/#guild)
+    * [Filoli Circle](https://filoli.org/support/membership/#filolicircle)
+    * [For Members](https://filoli.org/for-members/)
+  * Learn & Explore
+    * [Explore](https://filoli.org/explore/)
+    * [Youth Programs](https://filoli.org/youth-programs/)
+    * [What’s Blooming](https://filoli.org/explore/whats-blooming/)
+    * [Blog](https://filoli.org/explore/blog/)
+    * [Podcast](https://filoli.org/podcast/)
+  * Rentals
+    * [Rentals](https://filoli.org/rentals/private-events/)
+    * [Weddings](https://filoli.org/rentals/weddings/)
+    * [Venues](https://filoli.org/rentals/venues/)
+    * [Filming & Photography](https://filoli.org/rentals/filming-and-photography/)
+    * [Partners](https://filoli.org/partners/)
+
+
+
+__
+
+  * [General Admission Tickets](https://api.socialgoodsoftware.com/api/calendar/cdn?id=f08c5103c1a70f2dcef37e4c43414f4ae4b34ce11b3ca75a60dfe8fc76ba84571127f7da88a441c4ee6a04d900ca2094563de1a160a3d2c4edaaadebdf92d4c6ef49c30b158e8460e261d1d4bdef22c021e283926efaa658cc349b1fdd50e54e)
+  * [Member Tickets](https://api.socialgoodsoftware.com/api/calendar/cdn?id=f08c5103c1a70f2dcef37e4c43414f4ae4b34ce11b3ca75a60dfe8fc76ba84571127f7da88a441c4ee6a04d900ca2094043331d3839234846c9ec9c365f591ff4858045c20a2a65aef4abe9078f5704608de702b7ff77db6e8b716ad62d365fd)
+
+

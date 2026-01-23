@@ -1,0 +1,96 @@
+[
+  {
+    "siteName": "maverickshouse.com",
+    "mainUrl": {
+      "url": "https://maverickshouse.com/weddings",
+      "file": "_weddings.md"
+    },
+    "otherUrls": [
+      {
+        "url": "https://maverickshouse.com/meetings",
+        "file": "_meetings.md"
+      },
+      {
+        "url": "https://maverickshouse.com/search",
+        "file": "_search.md"
+      },
+      {
+        "url": "https://maverickshouse.com/blog/looking-for-an-oceanfront-wedding-venue-in-the-san-francisco-bay-area",
+        "file": "_blog_looking-for-an-oceanfront-wedding-venue-in-the-san-francisco-bay-area.md"
+      },
+      {
+        "url": "https://maverickshouse.com/gallery",
+        "file": "_gallery.md"
+      },
+      {
+        "url": "https://maverickshouse.com/blog",
+        "file": "_blog.md"
+      },
+      {
+        "url": "https://maverickshouse.com/blog/welcome-to-mavericks-house",
+        "file": "_blog_welcome-to-mavericks-house.md"
+      },
+      {
+        "url": "https://maverickshouse.com/weddings.html",
+        "file": "_weddings.html.md"
+      },
+      {
+        "url": "https://maverickshouse.com/blog/mavericks-house-celebrates-fall-in-half-moon-bay",
+        "file": "_blog_mavericks-house-celebrates-fall-in-half-moon-bay.md"
+      },
+      {
+        "url": "https://maverickshouse.com/blog/the-perfect-waterfront-holiday-party-venue-in-the-san-francisco-bay-area",
+        "file": "_blog_the-perfect-waterfront-holiday-party-venue-in-the-san-francisco-bay-area.md"
+      },
+      {
+        "url": "https://maverickshouse.com/blog/its-whale-watching-season-at-half-moon-bay",
+        "file": "_blog_its-whale-watching-season-at-half-moon-bay.md"
+      },
+      {
+        "url": "https://maverickshouse.com/blog/vdbzcen8uvhd1ltn4vzal4v9r4phwi",
+        "file": "_blog_vdbzcen8uvhd1ltn4vzal4v9r4phwi.md"
+      },
+      {
+        "url": "https://maverickshouse.com/blog/combine-team-building-with-volunteering-at-mavericks-house",
+        "file": "_blog_combine-team-building-with-volunteering-at-mavericks-house.md"
+      },
+      {
+        "url": "https://maverickshouse.com/contact",
+        "file": "_contact.md"
+      },
+      {
+        "url": "https://maverickshouse.com/events",
+        "file": "_events.md"
+      },
+      {
+        "url": "https://maverickshouse.com/",
+        "file": "index.md"
+      },
+      {
+        "url": "https://maverickshouse.com/blog/why-your-perfect-offsite-meeting-venue-is-mavericks-event-center",
+        "file": "_blog_why-your-perfect-offsite-meeting-venue-is-mavericks-event-center.md"
+      },
+      {
+        "url": "https://maverickshouse.com/virtual-tour",
+        "file": "_virtual-tour.md"
+      },
+      {
+        "url": "https://maverickshouse.com/privacy",
+        "file": "_privacy.md"
+      },
+      {
+        "url": "https://maverickshouse.com/barservice",
+        "file": "_barservice.md"
+      },
+      {
+        "url": "https://maverickshouse.com/about-us",
+        "file": "_about-us.md"
+      },
+      {
+        "url": "https://maverickshouse.com/holiday-parties",
+        "file": "_holiday-parties.md"
+      }
+    ],
+    "dateDownloaded": "2026-01-23T13:31:34.054669"
+  }
+]

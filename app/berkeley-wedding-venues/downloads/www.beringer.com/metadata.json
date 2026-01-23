@@ -1,0 +1,1860 @@
+[
+  {
+    "siteName": "www.beringer.com",
+    "mainUrl": {
+      "url": "https://www.beringer.com/en/wine-country-weddings.html",
+      "file": "_en_wine-country-weddings.html.md"
+    },
+    "otherUrls": [
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/cheese-pairing-guide",
+        "file": "_blogs_connect-with-beringer_cheese-pairing-guide.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2020-celebration-cuvee-magnum",
+        "file": "_products_2020-celebration-cuvee-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/virtual-tasting-inquiry",
+        "file": "_pages_virtual-tasting-inquiry.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2020-bancroft-ranch-napa-valley-merlot",
+        "file": "_products_2020-bancroft-ranch-napa-valley-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2019-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2019-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merlot/products/2020-bancroft-ranch-napa-valley-merlot",
+        "file": "_collections_merlot_products_2020-bancroft-ranch-napa-valley-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2023-private-reserve-chardonnay",
+        "file": "_products_2023-private-reserve-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2022-luminus-chardonnay",
+        "file": "_collections_90-points_products_2022-luminus-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2017-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2017-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2022-winery-exclusive-pinot-noir",
+        "file": "_products_2022-winery-exclusive-pinot-noir.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2015-steinhauer-ranch-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2015-steinhauer-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2019-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2019-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2022-distinction-series-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2022-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2020-q-napa-valley-red-blend",
+        "file": "_collections_all-wines_products_2020-q-napa-valley-red-blend.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/gifting",
+        "file": "_pages_gifting.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2015-steinhauer-ranch-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2015-steinhauer-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2020-winery-exclusive-merlot",
+        "file": "_collections_all-non-sale-wines_products_2020-winery-exclusive-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2022-knights-valley-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2022-knights-valley-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2018-winery-exclusive-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2018-winery-exclusive-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2018-steinhauer-ranch-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2018-steinhauer-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/6-bottle-vertical-wine-set/products/2020-private-reserve-cabernet-sauvignon",
+        "file": "_collections_6-bottle-vertical-wine-set_products_2020-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/beringer-chef-kitchen-set",
+        "file": "_collections_all-wines_products_beringer-chef-kitchen-set.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2022-knights-valley-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2022-knights-valley-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2018-beringer-napa-valley-merlot",
+        "file": "_collections_all-non-sale-wines_products_2018-beringer-napa-valley-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2018-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2018-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merlot/products/2020-winery-exclusive-merlot",
+        "file": "_collections_merlot_products_2020-winery-exclusive-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/single-vineyard-gift-set",
+        "file": "_collections_single-vineyard-wines_products_single-vineyard-gift-set.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2017-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2017-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/uncork-a-bottle-unleash-a-bocce-ball",
+        "file": "_blogs_connect-with-beringer_uncork-a-bottle-unleash-a-bocce-ball.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2017-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2017-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2020-bancroft-ranch-napa-valley-merlot",
+        "file": "_collections_all-wines_products_2020-bancroft-ranch-napa-valley-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/alluvium-blanc-a-new-chapter-in-knights-valley-wine-history",
+        "file": "_blogs_connect-with-beringer_alluvium-blanc-a-new-chapter-in-knights-valley-wine-history.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2019-lampyridae-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2019-lampyridae-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2020-celebration-cuvee-magnum",
+        "file": "_collections_all-non-sale-wines_products_2020-celebration-cuvee-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/balsamic-pear-and-gorgonzola-salad-pairing",
+        "file": "_blogs_connect-with-beringer_balsamic-pear-and-gorgonzola-salad-pairing.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2024-knights-valley-mountain-rose",
+        "file": "_collections_all-non-sale-wines_products_2024-knights-valley-mountain-rose.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2024-knights-valley-alluvium-blanc",
+        "file": "_collections_all-non-sale-wines_products_2024-knights-valley-alluvium-blanc.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/beringer-x-cynthia-rowley-wild-refined-playing-cards",
+        "file": "_collections_all-wines_products_beringer-x-cynthia-rowley-wild-refined-playing-cards.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/event-inquiry",
+        "file": "_pages_event-inquiry.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-vertical-collections",
+        "file": "_collections_private-reserve-vertical-collections.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2020-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2020-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2018-stagecoach-vineyard-cabernet-sauvignon",
+        "file": "_products_2018-stagecoach-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/ber-sh-hme-vyd-nv-cabs-22",
+        "file": "_collections_single-vineyard-wines_products_ber-sh-hme-vyd-nv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/ber-lampyridae-mtv-cabs-22",
+        "file": "_collections_all-wines_products_ber-lampyridae-mtv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2017-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2017-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2019-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2019-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/knights-valley-wine/products/2024-knights-valley-alluvium-blanc",
+        "file": "_collections_knights-valley-wine_products_2024-knights-valley-alluvium-blanc.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/the-rhine-house-mystery-days-revealed/products/2016-rhine-house-reserve-cabernet-sauvignon",
+        "file": "_collections_the-rhine-house-mystery-days-revealed_products_2016-rhine-house-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2017-pauli-vineyard-howell-mountain",
+        "file": "_collections_90-points_products_2017-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2014-vogt-vineyard-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2014-vogt-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2019-pauli-vineyard-howell-mountain",
+        "file": "_collections_single-vineyard-wines_products_2019-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points",
+        "file": "_collections_90-points.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2023-private-reserve-chardonnay",
+        "file": "_collections_shop-90-point-wines_products_2023-private-reserve-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/wine-club-terms-conditions",
+        "file": "_pages_wine-club-terms-conditions.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/mustard-season-at-beringer",
+        "file": "_blogs_connect-with-beringer_mustard-season-at-beringer.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/lunar-new-year-2026-year-of-the-horse",
+        "file": "_blogs_connect-with-beringer_lunar-new-year-2026-year-of-the-horse.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2017-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2017-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2018-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2018-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2019-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2019-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2019-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2019-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/3-ways-to-celebrate-ca-wine-month",
+        "file": "_blogs_connect-with-beringer_3-ways-to-celebrate-ca-wine-month.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2020-lampyridae-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2020-lampyridae-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/magnum/products/2020-celebration-cuvee-magnum",
+        "file": "_collections_magnum_products_2020-celebration-cuvee-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/beringer-market-tote",
+        "file": "_collections_all-wines_products_beringer-market-tote.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2022-winery-exclusive-pinot-noir",
+        "file": "_collections_all-wines_products_2022-winery-exclusive-pinot-noir.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/introducing-beringer-year-of-the-dragon-cuvee",
+        "file": "_blogs_connect-with-beringer_introducing-beringer-year-of-the-dragon-cuvee.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/binge-worthy-pairings",
+        "file": "_blogs_connect-with-beringer_binge-worthy-pairings.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2022-knights-valley-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2022-knights-valley-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2019-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2019-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/holiday-cheese-wine-board-101",
+        "file": "_blogs_connect-with-beringer_holiday-cheese-wine-board-101.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2018-private-reserve-cabernet-sauvignon-magnum",
+        "file": "_collections_cabernet-sauvignon_products_2018-private-reserve-cabernet-sauvignon-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2018-beringer-napa-valley-merlot",
+        "file": "_products_2018-beringer-napa-valley-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/spending-fall-at-beringer",
+        "file": "_blogs_connect-with-beringer_spending-fall-at-beringer.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/holiday-pairings-for-your-table",
+        "file": "_blogs_connect-with-beringer_holiday-pairings-for-your-table.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/tagged/pairings",
+        "file": "_blogs_connect-with-beringer_tagged_pairings.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2017-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2017-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2022-distinction-series-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2022-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merchandise/products/beringer-chef-kitchen-set",
+        "file": "_collections_merchandise_products_beringer-chef-kitchen-set.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2019-bancroft-ranch-merlot",
+        "file": "_collections_all-wines_products_2019-bancroft-ranch-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2018-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2018-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2019-private-reserve-cabernet-sauvignon",
+        "file": "_products_2019-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/ber-sh-hme-vyd-nv-cabs-22",
+        "file": "_collections_all-non-sale-wines_products_ber-sh-hme-vyd-nv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2019-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2019-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2020-winery-exclusive-meritage-white-wine",
+        "file": "_collections_all-wines_products_2020-winery-exclusive-meritage-white-wine.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/seared-scallops-with-brown-butter-sage-butternut-squash-puree",
+        "file": "_blogs_connect-with-beringer_seared-scallops-with-brown-butter-sage-butternut-squash-puree.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2019-private-reserve-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2019-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2022-knights-valley-red-blend",
+        "file": "_collections_all-wines_products_2022-knights-valley-red-blend.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2019-pauli-vineyard-howell-mountain",
+        "file": "_collections_cabernet-sauvignon_products_2019-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/savory-beef-bourguignon",
+        "file": "_blogs_connect-with-beringer_savory-beef-bourguignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2024-knights-valley-alluvium-blanc",
+        "file": "_products_2024-knights-valley-alluvium-blanc.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2021-private-reserve-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2021-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2019-distinction-series-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2019-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2019-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2019-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/distinction-cabernet/products/2019-distinction-series-cabernet-sauvignon",
+        "file": "_collections_distinction-cabernet_products_2019-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2018-stagecoach-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2018-stagecoach-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/beringer-2025-gift-guide",
+        "file": "_blogs_connect-with-beringer_beringer-2025-gift-guide.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2022-private-reserve-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2022-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2021-year-of-the-dragon-cuvee-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2021-year-of-the-dragon-cuvee-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2020-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_products_2020-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/cart",
+        "file": "_cart.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/meritage-citrus-spritzer",
+        "file": "_blogs_connect-with-beringer_meritage-citrus-spritzer.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/ber-chabot-nv-cabs-22",
+        "file": "_collections_all-non-sale-wines_products_ber-chabot-nv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/account",
+        "file": "_account.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/ber-lampyridae-mtv-cabs-22",
+        "file": "_collections_cabernet-sauvignon_products_ber-lampyridae-mtv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2021-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2021-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/chardonnay",
+        "file": "_collections_chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2020-private-reserve-cabernet-sauvignon",
+        "file": "_products_2020-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/winemaking",
+        "file": "_pages_winemaking.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2020-lampyridae-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2020-lampyridae-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2019-lampyridae-vineyard-cabernet-sauvignon",
+        "file": "_products_2019-lampyridae-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/wine-club-options/",
+        "file": "_pages_wine-club-options.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merchandise/products/beringer-market-tote",
+        "file": "_collections_merchandise_products_beringer-market-tote.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/knights-valley-wine/products/2021-knights-valley-reserve-cabernet-sauvignon",
+        "file": "_collections_knights-valley-wine_products_2021-knights-valley-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/knights-valley-wine/products/2022-knights-valley-cabernet-sauvignon",
+        "file": "_collections_knights-valley-wine_products_2022-knights-valley-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2014-vogt-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2014-vogt-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-cabernet-sauvignon/products/2020-private-reserve-cabernet-sauvignon",
+        "file": "_collections_private-reserve-cabernet-sauvignon_products_2020-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2018-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2018-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2017-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2017-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2017-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2017-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2015-steinhauer-ranch-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2015-steinhauer-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2019-private-reserve-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2019-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/distinction-cabernet/products/2020-distinction-series-cabernet-sauvignon",
+        "file": "_collections_distinction-cabernet_products_2020-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2015-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2015-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2019-chabot-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2019-chabot-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/the-rhine-house-mystery-days-revealed/products/2019-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_the-rhine-house-mystery-days-revealed_products_2019-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2016-private-reserve-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2016-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2021-private-reserve-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2021-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/policies/privacy-policy",
+        "file": "_policies_privacy-policy.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/napa-narrative",
+        "file": "_pages_napa-narrative.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2015-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2015-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/visit",
+        "file": "_pages_visit.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2019-distinction-series-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2019-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2018-steinhauer-ranch-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2018-steinhauer-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/shipping-faq",
+        "file": "_pages_shipping-faq.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/knights-valley",
+        "file": "_pages_knights-valley.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2019-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2019-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2017-borrow-pit-single-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2017-borrow-pit-single-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2014-vogt-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2014-vogt-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/6-bottle-vertical-wine-set/products/2019-private-reserve-cabernet-sauvignon",
+        "file": "_collections_6-bottle-vertical-wine-set_products_2019-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merlot/products/2021-bancroft-ranch-napa-valley-merlot",
+        "file": "_collections_merlot_products_2021-bancroft-ranch-napa-valley-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines",
+        "file": "_collections_shop-90-point-wines.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2018-private-reserve-cabernet-sauvignon-magnum",
+        "file": "_collections_all-non-sale-wines_products_2018-private-reserve-cabernet-sauvignon-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2022-beringer-year-of-the-snake-cuvee-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2022-beringer-year-of-the-snake-cuvee-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2021-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2021-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-cabernet-sauvignon/products/2018-private-reserve-cabernet-sauvignon-magnum",
+        "file": "_collections_private-reserve-cabernet-sauvignon_products_2018-private-reserve-cabernet-sauvignon-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2017-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2017-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merlot",
+        "file": "_collections_merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2023-private-reserve-chardonnay",
+        "file": "_collections_all-wines_products_2023-private-reserve-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/the-taste-of-beringer-tour-at-beringer-vineyards",
+        "file": "_blogs_connect-with-beringer_the-taste-of-beringer-tour-at-beringer-vineyards.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2016-pauli-vineyard-howell-mountain",
+        "file": "_collections_90-points_products_2016-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2019-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2019-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/pumpkin-risotto-with-crispy-pancetta-sage-parmesan",
+        "file": "_blogs_connect-with-beringer_pumpkin-risotto-with-crispy-pancetta-sage-parmesan.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/ber-borrow-pit-sv-cabs-22",
+        "file": "_collections_cabernet-sauvignon_products_ber-borrow-pit-sv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2018-stagecoach-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2018-stagecoach-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-cabernet-sauvignon/products/3-bottle-vertical-wine-set",
+        "file": "_collections_private-reserve-cabernet-sauvignon_products_3-bottle-vertical-wine-set.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2018-st-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2018-st-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2016-rhine-house-reserve-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2016-rhine-house-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2019-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2019-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2018-pauli-vineyard-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2018-pauli-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2024-luminus-chardonnay",
+        "file": "_collections_all-non-sale-wines_products_2024-luminus-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/6-bottle-vertical-wine-set",
+        "file": "_collections_all-wines_products_6-bottle-vertical-wine-set.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2020-private-reserve-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2020-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merchandise",
+        "file": "_collections_merchandise.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2019-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2019-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2016-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2016-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2021-bancroft-ranch-napa-valley-merlot",
+        "file": "_collections_all-wines_products_2021-bancroft-ranch-napa-valley-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2018-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_products_2018-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/the-rhine-house-mystery-days-revealed/products/2018-winery-exclusive-cabernet-sauvignon",
+        "file": "_collections_the-rhine-house-mystery-days-revealed_products_2018-winery-exclusive-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2020-lampyridae-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2020-lampyridae-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2015-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2015-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2021-knights-valley-reserve-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2021-knights-valley-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/ber-borrow-pit-sv-cabs-22",
+        "file": "_collections_all-wines_products_ber-borrow-pit-sv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2021-year-of-the-dragon-cuvee-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2021-year-of-the-dragon-cuvee-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2019-pauli-vineyard-howell-mountain",
+        "file": "_collections_all-wines_products_2019-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2023-private-reserve-chardonnay",
+        "file": "_collections_all-non-sale-wines_products_2023-private-reserve-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/150th-anniversary",
+        "file": "_pages_150th-anniversary.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2017-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2017-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines",
+        "file": "_collections_all-wines.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/red-blends",
+        "file": "_collections_red-blends.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2019-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2019-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/pioneer-in-napa",
+        "file": "_pages_pioneer-in-napa.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2022-beringer-year-of-the-snake-cuvee-cabernet-sauvignon",
+        "file": "_products_2022-beringer-year-of-the-snake-cuvee-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2018-pauli-vineyard-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2018-pauli-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/roasted-heirloom-tomato-tart-with-herbed-ricotta",
+        "file": "_blogs_connect-with-beringer_roasted-heirloom-tomato-tart-with-herbed-ricotta.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2016-pauli-vineyard-howell-mountain",
+        "file": "_collections_single-vineyard-wines_products_2016-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/knights-valley-wine/products/2024-knights-valley-mountain-rose",
+        "file": "_collections_knights-valley-wine_products_2024-knights-valley-mountain-rose.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2018-pauli-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2018-pauli-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2019-pauli-vineyard-howell-mountain",
+        "file": "_collections_90-points_products_2019-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2020-winery-exclusive-merlot",
+        "file": "_collections_all-wines_products_2020-winery-exclusive-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2018-winery-exclusive-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2018-winery-exclusive-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2018-steinhauer-ranch-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2018-steinhauer-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2016-rhine-house-reserve-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2016-rhine-house-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/magnum",
+        "file": "_collections_magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/tagged/education",
+        "file": "_blogs_connect-with-beringer_tagged_education.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/monopoly-napa-valley-edition-featuring-beringer",
+        "file": "_blogs_connect-with-beringer_monopoly-napa-valley-edition-featuring-beringer.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2018-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2018-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/wine-sets",
+        "file": "_collections_wine-sets.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2022-knights-valley-red-blend",
+        "file": "_products_2022-knights-valley-red-blend.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/cookies",
+        "file": "_pages_cookies.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/the-rhine-house-mystery-days-revealed/products/2019-distinction-series-cabernet-sauvignon",
+        "file": "_collections_the-rhine-house-mystery-days-revealed_products_2019-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merchandise/products/beringer-x-cynthia-rowley-wild-refined-playing-cards",
+        "file": "_collections_merchandise_products_beringer-x-cynthia-rowley-wild-refined-playing-cards.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2016-pauli-vineyard-howell-mountain",
+        "file": "_collections_all-non-sale-wines_products_2016-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2014-vogt-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2014-vogt-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/your-quick-guide-to-cellaring-wine",
+        "file": "_blogs_connect-with-beringer_your-quick-guide-to-cellaring-wine.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/rose-non-sale",
+        "file": "_collections_rose-non-sale.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2019-lampyridae-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2019-lampyridae-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2020-lampyridae-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2020-lampyridae-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/chardonnay/products/2022-luminus-chardonnay",
+        "file": "_collections_chardonnay_products_2022-luminus-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2019-lampyridae-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2019-lampyridae-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections",
+        "file": "_collections.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2019-chabot-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2019-chabot-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2020-lampyridae-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2020-lampyridae-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/wild-refined-holiday-pairings",
+        "file": "_blogs_connect-with-beringer_wild-refined-holiday-pairings.md"
+      },
+      {
+        "url": "https://www.beringer.com/en/club-tastings.html",
+        "file": "_en_club-tastings.html.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2017-pauli-vineyard-howell-mountain",
+        "file": "_collections_all-wines_products_2017-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2017-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2017-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2018-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2018-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2018-stagecoach-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2018-stagecoach-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/gift-membership",
+        "file": "_pages_gift-membership.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/ber-bancroft-ranch-hm-cabs-22",
+        "file": "_collections_all-non-sale-wines_products_ber-bancroft-ranch-hm-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/the-rhine-house-mystery-days-revealed",
+        "file": "_collections_the-rhine-house-mystery-days-revealed.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/best-vineyards-in-napa",
+        "file": "_pages_best-vineyards-in-napa.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2022-beringer-year-of-the-snake-cuvee-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2022-beringer-year-of-the-snake-cuvee-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2017-borrow-pit-single-vineyard-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2017-borrow-pit-single-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/chardonnay/products/2023-private-reserve-chardonnay",
+        "file": "_collections_chardonnay_products_2023-private-reserve-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/wine-club-faq",
+        "file": "_pages_wine-club-faq.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2019-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2019-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/ber-lampyridae-mtv-cabs-22",
+        "file": "_collections_single-vineyard-wines_products_ber-lampyridae-mtv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/update-password",
+        "file": "_pages_update-password.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2016-pauli-vineyard-howell-mountain",
+        "file": "_collections_cabernet-sauvignon_products_2016-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/wine-club-options",
+        "file": "_pages_wine-club-options.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2024-knights-valley-mountain-rose",
+        "file": "_products_2024-knights-valley-mountain-rose.md"
+      },
+      {
+        "url": "https://www.beringer.com/",
+        "file": "index.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2017-pauli-vineyard-howell-mountain",
+        "file": "_collections_cabernet-sauvignon_products_2017-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2017-pauli-vineyard-howell-mountain",
+        "file": "_collections_all-non-sale-wines_products_2017-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2017-borrow-pit-single-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2017-borrow-pit-single-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2020-winery-exclusive-meritage-white-wine",
+        "file": "_collections_all-non-sale-wines_products_2020-winery-exclusive-meritage-white-wine.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/chardonnay/products/2024-luminus-chardonnay",
+        "file": "_collections_chardonnay_products_2024-luminus-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/en/best-vineyards-in-napa.html",
+        "file": "_en_best-vineyards-in-napa.html.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2020-distinction-series-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2020-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2021-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2021-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines",
+        "file": "_collections_single-vineyard-wines.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-cabernet-sauvignon/products/2022-private-reserve-cabernet-sauvignon",
+        "file": "_collections_private-reserve-cabernet-sauvignon_products_2022-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merlot/products/2018-beringer-napa-valley-merlot",
+        "file": "_collections_merlot_products_2018-beringer-napa-valley-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/sustainability-focus",
+        "file": "_pages_sustainability-focus.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2022-luminus-chardonnay",
+        "file": "_collections_all-wines_products_2022-luminus-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2022-beringer-year-of-the-snake-cuvee-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2022-beringer-year-of-the-snake-cuvee-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/knights-valley-wine/products/2022-knights-valley-red-blend",
+        "file": "_collections_knights-valley-wine_products_2022-knights-valley-red-blend.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2018-pauli-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2018-pauli-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/ber-steinhauer-rch-nv-cabs-22",
+        "file": "_collections_all-wines_products_ber-steinhauer-rch-nv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2022-winery-exclusive-pinot-noir",
+        "file": "_collections_all-non-sale-wines_products_2022-winery-exclusive-pinot-noir.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2021-distinction-series-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2021-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/ber-steinhauer-rch-nv-cabs-22",
+        "file": "_collections_all-non-sale-wines_products_ber-steinhauer-rch-nv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/brunch-with-beringer",
+        "file": "_blogs_connect-with-beringer_brunch-with-beringer.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2020-private-reserve-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2020-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/tour-the-monopoly-board-napa-valley-edition",
+        "file": "_blogs_connect-with-beringer_tour-the-monopoly-board-napa-valley-edition.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-cabernet-sauvignon/products/2016-private-reserve-cabernet-sauvignon",
+        "file": "_collections_private-reserve-cabernet-sauvignon_products_2016-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2019-8th-maker-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2019-8th-maker-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2021-knights-valley-reserve-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2021-knights-valley-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merchandise/products/monopoly-napa-valley-edition",
+        "file": "_collections_merchandise_products_monopoly-napa-valley-edition.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/magnum/products/2023-celebration-cuvee-magnum",
+        "file": "_collections_magnum_products_2023-celebration-cuvee-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/historic-property",
+        "file": "_pages_historic-property.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-cabernet-sauvignon",
+        "file": "_collections_private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2022-private-reserve-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2022-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2017-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2017-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2019-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2019-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/herb-roasted-lamb-chops-with-root-vegetables",
+        "file": "_blogs_connect-with-beringer_herb-roasted-lamb-chops-with-root-vegetables.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2019-distinction-series-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2019-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2017-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2017-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2021-year-of-the-dragon-cuvee-cabernet-sauvignon",
+        "file": "_products_2021-year-of-the-dragon-cuvee-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2018-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2018-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2017-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2017-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2016-pauli-vineyard-howell-mountain",
+        "file": "_collections_shop-90-point-wines_products_2016-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/event-spaces",
+        "file": "_pages_event-spaces.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/beringer-2023-gift-guide",
+        "file": "_blogs_connect-with-beringer_beringer-2023-gift-guide.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2018-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2018-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2023-private-reserve-chardonnay",
+        "file": "_collections_90-points_products_2023-private-reserve-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/ber-steinhauer-rch-nv-cabs-22",
+        "file": "_products_ber-steinhauer-rch-nv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/single-vineyard-gift-set",
+        "file": "_collections_all-wines_products_single-vineyard-gift-set.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2018-stagecoach-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2018-stagecoach-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2019-bancroft-ranch-merlot",
+        "file": "_collections_shop-90-point-wines_products_2019-bancroft-ranch-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/citrus-glazed-salmon-with-roasted-vegetables",
+        "file": "_blogs_connect-with-beringer_citrus-glazed-salmon-with-roasted-vegetables.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/red-blends/products/2020-q-napa-valley-red-blend",
+        "file": "_collections_red-blends_products_2020-q-napa-valley-red-blend.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2018-st-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2018-st-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2017-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2017-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2020-bancroft-ranch-napa-valley-merlot",
+        "file": "_collections_all-non-sale-wines_products_2020-bancroft-ranch-napa-valley-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2019-lampyridae-vineyard-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2019-lampyridae-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2019-pauli-vineyard-howell-mountain",
+        "file": "_collections_shop-90-point-wines_products_2019-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2024-knights-valley-alluvium-blanc",
+        "file": "_collections_all-wines_products_2024-knights-valley-alluvium-blanc.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2019-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2019-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/4-reasons-to-love-the-beringer-wine-club",
+        "file": "_blogs_connect-with-beringer_4-reasons-to-love-the-beringer-wine-club.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/ber-lampyridae-mtv-cabs-22",
+        "file": "_collections_all-non-sale-wines_products_ber-lampyridae-mtv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-cabernet-sauvignon/products/6-bottle-vertical-wine-set",
+        "file": "_collections_private-reserve-cabernet-sauvignon_products_6-bottle-vertical-wine-set.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2019-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2019-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/red-blends/products/2022-knights-valley-red-blend",
+        "file": "_collections_red-blends_products_2022-knights-valley-red-blend.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2022-knights-valley-red-blend",
+        "file": "_collections_all-non-sale-wines_products_2022-knights-valley-red-blend.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/lunar-new-year-bundle",
+        "file": "_collections_all-wines_products_lunar-new-year-bundle.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2024-luminus-chardonnay",
+        "file": "_collections_all-wines_products_2024-luminus-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/5-holiday-movies-and-the-wines-to-pair-them-with",
+        "file": "_blogs_connect-with-beringer_5-holiday-movies-and-the-wines-to-pair-them-with.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2016-pauli-vineyard-howell-mountain",
+        "file": "_collections_all-wines_products_2016-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2019-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2019-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/grilled-casaba-melon-and-prosciutto-skewers-with-basil-lime-drizzle",
+        "file": "_blogs_connect-with-beringer_grilled-casaba-melon-and-prosciutto-skewers-with-basil-lime-drizzle.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2019-8th-maker-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2019-8th-maker-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/6-bottle-vertical-wine-set",
+        "file": "_collections_6-bottle-vertical-wine-set.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2018-st-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2018-st-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2022-bancroft-ranch-malbec",
+        "file": "_collections_all-non-sale-wines_products_2022-bancroft-ranch-malbec.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/magnum/products/2018-private-reserve-cabernet-sauvignon-magnum",
+        "file": "_collections_magnum_products_2018-private-reserve-cabernet-sauvignon-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2017-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2017-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-cabernet-sauvignon/products/2023-private-reserve-chardonnay",
+        "file": "_collections_private-reserve-cabernet-sauvignon_products_2023-private-reserve-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/a-thanksgiving-table-to-remember",
+        "file": "_blogs_connect-with-beringer_a-thanksgiving-table-to-remember.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2018-private-reserve-cabernet-sauvignon-magnum",
+        "file": "_collections_shop-90-point-wines_products_2018-private-reserve-cabernet-sauvignon-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2021-private-reserve-cabernet-sauvignon",
+        "file": "_products_2021-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2022-distinction-series-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2022-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2014-vogt-vineyard-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2014-vogt-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2019-marston-ranch-cabernet-sauvignon",
+        "file": "_products_2019-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2018-st-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2018-st-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2021-knights-valley-reserve-cabernet-sauvignon",
+        "file": "_products_2021-knights-valley-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/3-bottle-vertical-wine-set",
+        "file": "_collections_all-wines_products_3-bottle-vertical-wine-set.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/ber-chabot-nv-cabs-22",
+        "file": "_collections_single-vineyard-wines_products_ber-chabot-nv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2018-beringer-napa-valley-merlot",
+        "file": "_collections_all-wines_products_2018-beringer-napa-valley-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/ber-sh-hme-vyd-nv-cabs-22",
+        "file": "_collections_cabernet-sauvignon_products_ber-sh-hme-vyd-nv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2018-st-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2018-st-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2014-vogt-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2014-vogt-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/winery-events",
+        "file": "_pages_winery-events.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2018-st-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2018-st-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2022-knights-valley-cabernet-sauvignon",
+        "file": "_products_2022-knights-valley-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2019-private-reserve-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2019-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2020-private-reserve-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2020-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2018-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2018-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/beringer-market-tote",
+        "file": "_collections_shop-90-point-wines_products_beringer-market-tote.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/groups-inquiry",
+        "file": "_pages_groups-inquiry.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2016-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2016-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2022-howell-mountain-cabernet-franc",
+        "file": "_collections_all-non-sale-wines_products_2022-howell-mountain-cabernet-franc.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2018-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2018-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2016-rhine-house-reserve-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2016-rhine-house-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2023-year-of-the-horse-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2023-year-of-the-horse-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2015-steinhauer-ranch-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2015-steinhauer-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/beringer-blanket-wrap",
+        "file": "_collections_all-wines_products_beringer-blanket-wrap.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2021-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2021-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2019-chabot-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2019-chabot-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/ber-bancroft-ranch-hm-cabs-22",
+        "file": "_collections_all-wines_products_ber-bancroft-ranch-hm-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2019-chabot-vineyard-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2019-chabot-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/ber-chabot-nv-cabs-22",
+        "file": "_collections_all-wines_products_ber-chabot-nv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/barrel-aging-101-french-vs-american-oak",
+        "file": "_blogs_connect-with-beringer_barrel-aging-101-french-vs-american-oak.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2017-borrow-pit-single-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2017-borrow-pit-single-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2016-rhine-house-reserve-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2016-rhine-house-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2020-q-napa-valley-red-blend",
+        "file": "_collections_all-non-sale-wines_products_2020-q-napa-valley-red-blend.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/filet-mignon-with-port-wine-reduction",
+        "file": "_blogs_connect-with-beringer_filet-mignon-with-port-wine-reduction.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2018-private-reserve-cabernet-sauvignon-magnum",
+        "file": "_collections_90-points_products_2018-private-reserve-cabernet-sauvignon-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/beringer-2022-gift-guide",
+        "file": "_blogs_connect-with-beringer_beringer-2022-gift-guide.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2017-private-reserve-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2017-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/beringer-vineyards-2022-harvest",
+        "file": "_blogs_connect-with-beringer_beringer-vineyards-2022-harvest.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/red-blends/products/2020-celebration-cuvee-magnum",
+        "file": "_collections_red-blends_products_2020-celebration-cuvee-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2019-pauli-vineyard-howell-mountain",
+        "file": "_collections_all-non-sale-wines_products_2019-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2022-bancroft-ranch-malbec",
+        "file": "_collections_all-wines_products_2022-bancroft-ranch-malbec.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merchandise/products/beringer-blanket-wrap",
+        "file": "_collections_merchandise_products_beringer-blanket-wrap.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2020-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2020-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2022-howell-mountain-cabernet-franc",
+        "file": "_collections_all-wines_products_2022-howell-mountain-cabernet-franc.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2017-pauli-vineyard-howell-mountain",
+        "file": "_collections_shop-90-point-wines_products_2017-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/rose-non-sale/products/2024-knights-valley-mountain-rose",
+        "file": "_collections_rose-non-sale_products_2024-knights-valley-mountain-rose.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2018-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2018-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2015-steinhauer-ranch-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2015-steinhauer-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2020-distinction-series-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2020-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2020-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2020-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2020-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2020-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2021-bancroft-ranch-napa-valley-merlot",
+        "file": "_collections_all-non-sale-wines_products_2021-bancroft-ranch-napa-valley-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2019-distinction-series-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2019-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2022-knights-valley-red-blend",
+        "file": "_collections_90-points_products_2022-knights-valley-red-blend.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/an-unforgettable-grill-experience",
+        "file": "_blogs_connect-with-beringer_an-unforgettable-grill-experience.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2018-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2018-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/search",
+        "file": "_search.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2017-borrow-pit-single-vineyard-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2017-borrow-pit-single-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2022-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2022-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/2023-year-of-the-horse-cabernet-sauvignon",
+        "file": "_products_2023-year-of-the-horse-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2019-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2019-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/ber-sh-hme-vyd-nv-cabs-22",
+        "file": "_collections_all-wines_products_ber-sh-hme-vyd-nv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-cabernet-sauvignon/products/2019-private-reserve-cabernet-sauvignon",
+        "file": "_collections_private-reserve-cabernet-sauvignon_products_2019-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2019-8th-maker-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2019-8th-maker-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/lunar-new-year-bundle",
+        "file": "_products_lunar-new-year-bundle.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2021-knights-valley-reserve-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2021-knights-valley-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/merlot/products/2019-bancroft-ranch-merlot",
+        "file": "_collections_merlot_products_2019-bancroft-ranch-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2019-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2019-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2019-chabot-vineyard-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2019-chabot-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2022-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2022-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2021-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2021-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2021-distinction-series-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2021-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2022-private-reserve-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2022-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2018-private-reserve-cabernet-sauvignon-magnum",
+        "file": "_collections_all-wines_products_2018-private-reserve-cabernet-sauvignon-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2018-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2018-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2024-knights-valley-mountain-rose",
+        "file": "_collections_all-wines_products_2024-knights-valley-mountain-rose.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/monopoly-napa-valley-edition",
+        "file": "_collections_all-wines_products_monopoly-napa-valley-edition.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/knights-valley-wine",
+        "file": "_collections_knights-valley-wine.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2019-bancroft-ranch-merlot",
+        "file": "_collections_90-points_products_2019-bancroft-ranch-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2021-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2021-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2019-distinction-series-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2019-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2019-bancroft-ranch-merlot",
+        "file": "_collections_all-non-sale-wines_products_2019-bancroft-ranch-merlot.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2020-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2020-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2017-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2017-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-cabernet-sauvignon/products/2017-private-reserve-cabernet-sauvignon",
+        "file": "_collections_private-reserve-cabernet-sauvignon_products_2017-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2021-private-reserve-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2021-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/ghost-stories",
+        "file": "_blogs_connect-with-beringer_ghost-stories.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2023-year-of-the-horse-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2023-year-of-the-horse-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2021-year-of-the-dragon-cuvee-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2021-year-of-the-dragon-cuvee-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2018-steinhauer-ranch-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2018-steinhauer-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/account/login",
+        "file": "_account_login.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2021-saint-helena-home-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2021-saint-helena-home-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2022-knights-valley-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2022-knights-valley-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer",
+        "file": "_blogs_connect-with-beringer.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2023-celebration-cuvee-magnum",
+        "file": "_collections_all-wines_products_2023-celebration-cuvee-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/gifting-inquiry",
+        "file": "_pages_gifting-inquiry.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/ahi-tuna-tacos",
+        "file": "_blogs_connect-with-beringer_ahi-tuna-tacos.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2017-pauli-vineyard-howell-mountain",
+        "file": "_collections_single-vineyard-wines_products_2017-pauli-vineyard-howell-mountain.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/st-helenas-holiday-wine-barrel-tree",
+        "file": "_blogs_connect-with-beringer_st-helenas-holiday-wine-barrel-tree.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/single-vineyard-wines/products/2019-chabot-vineyard-cabernet-sauvignon",
+        "file": "_collections_single-vineyard-wines_products_2019-chabot-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2017-borrow-pit-single-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2017-borrow-pit-single-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2021-distinction-series-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2021-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2015-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2015-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2018-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2018-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2022-knights-valley-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2022-knights-valley-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2022-distinction-series-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2022-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2019-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2019-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2015-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2015-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/summer-essentials-case",
+        "file": "_collections_all-wines_products_summer-essentials-case.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/private-reserve-cabernet-sauvignon/products/2021-private-reserve-cabernet-sauvignon",
+        "file": "_collections_private-reserve-cabernet-sauvignon_products_2021-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/candy-pairings",
+        "file": "_blogs_connect-with-beringer_candy-pairings.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/host-an-evening-of-blind-tastings-with-cabernets-best-kept-secret",
+        "file": "_blogs_connect-with-beringer_host-an-evening-of-blind-tastings-with-cabernets-best-kept-secret.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/distinction-cabernet/products/2021-distinction-series-cabernet-sauvignon",
+        "file": "_collections_distinction-cabernet_products_2021-distinction-series-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2024-luminus-chardonnay",
+        "file": "_collections_90-points_products_2024-luminus-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines",
+        "file": "_collections_all-non-sale-wines.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2020-celebration-cuvee-magnum",
+        "file": "_collections_all-wines_products_2020-celebration-cuvee-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/distinction-cabernet",
+        "file": "_collections_distinction-cabernet.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2016-private-reserve-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2016-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2019-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2019-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/private-events",
+        "file": "_pages_private-events.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2020-private-reserve-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2020-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2019-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2019-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2018-pauli-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2018-pauli-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2019-lampyridae-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2019-lampyridae-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/thank-you-for-naming-us-napas-best-wine-tour",
+        "file": "_blogs_connect-with-beringer_thank-you-for-naming-us-napas-best-wine-tour.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/90-points/products/2019-lampyridae-vineyard-cabernet-sauvignon",
+        "file": "_collections_90-points_products_2019-lampyridae-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2016-private-reserve-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2016-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2018-pauli-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2018-pauli-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/products/ber-bancroft-ranch-hm-cabs-22",
+        "file": "_products_ber-bancroft-ranch-hm-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2018-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2018-borrow-pit-vineyard-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/virtual-tastings",
+        "file": "_pages_virtual-tastings.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2023-celebration-cuvee-magnum",
+        "file": "_collections_all-non-sale-wines_products_2023-celebration-cuvee-magnum.md"
+      },
+      {
+        "url": "https://www.beringer.com/blogs/connect-with-beringer/beringer-featured-in-gather",
+        "file": "_blogs_connect-with-beringer_beringer-featured-in-gather.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2018-steinhauer-ranch-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2018-steinhauer-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2018-winery-exclusive-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2018-winery-exclusive-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/policies/terms-of-service",
+        "file": "_policies_terms-of-service.md"
+      },
+      {
+        "url": "https://www.beringer.com/policies/refund-policy",
+        "file": "_policies_refund-policy.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/ber-chabot-nv-cabs-22",
+        "file": "_collections_cabernet-sauvignon_products_ber-chabot-nv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2017-private-reserve-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2017-private-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2016-rhine-house-reserve-cabernet-sauvignon",
+        "file": "_collections_all-non-sale-wines_products_2016-rhine-house-reserve-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/pages/wine-country-weddings",
+        "file": "_pages_wine-country-weddings.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/ber-borrow-pit-sv-cabs-22",
+        "file": "_collections_all-non-sale-wines_products_ber-borrow-pit-sv-cabs-22.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-non-sale-wines/products/2022-luminus-chardonnay",
+        "file": "_collections_all-non-sale-wines_products_2022-luminus-chardonnay.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/all-wines/products/2018-marston-ranch-cabernet-sauvignon",
+        "file": "_collections_all-wines_products_2018-marston-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2023-year-of-the-horse-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2023-year-of-the-horse-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/cabernet-sauvignon/products/2017-bancroft-ranch-cabernet-sauvignon",
+        "file": "_collections_cabernet-sauvignon_products_2017-bancroft-ranch-cabernet-sauvignon.md"
+      },
+      {
+        "url": "https://www.beringer.com/collections/shop-90-point-wines/products/2019-borrow-pit-vineyard-cabernet-sauvignon",
+        "file": "_collections_shop-90-point-wines_products_2019-borrow-pit-vineyard-cabernet-sauvignon.md"
+      }
+    ],
+    "dateDownloaded": "2026-01-23T13:31:37.219054"
+  }
+]

@@ -1,0 +1,26 @@
+The Knot The Knot The Knot The Knot The Knot The Bump XO Group The Knot Worldwide
+
+Skip to Main Content
+
+Engagement ring details
+
+  * Metal:
+
+[Gold](/fashion/gold-engagement-rings)
+
+  * Stone Shape:
+
+[Oval](/fashion/oval-engagement-rings)
+
+  * Price:
+
+$$$
+
+
+
+
+The Knot provides price estimates to give you a general idea of the cost of a dress. Please visit retailers in your area for exact pricing. Prices will vary by region.
+
+Description
+
+This contemporary rope style engagement ring features two woven Pavé diamond bands accenting the diamond or gemstone of your choice. Unique and beautiful, this setting perfectly showcases her sense of fashion with your love for her. 

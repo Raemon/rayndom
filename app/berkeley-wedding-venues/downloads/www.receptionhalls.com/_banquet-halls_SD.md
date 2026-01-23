@@ -1,0 +1,143 @@
+# Banquet Halls and Wedding Venues in South Dakota
+
+**Popular cities** • [ Sioux Falls ](https://www.receptionhalls.com/banquet-halls/SD/Sioux%20Falls) • [ Aberdeen ](https://www.receptionhalls.com/banquet-halls/SD/Aberdeen) • [ Lead ](https://www.receptionhalls.com/banquet-halls/SD/Lead) • [ Whitewood ](https://www.receptionhalls.com/banquet-halls/SD/Whitewood) • [ Rapid City ](https://www.receptionhalls.com/banquet-halls/SD/Rapid%20City)
+
+[ ![Terry Peak](/media/SD/14092/terry-peal-lead-sd_4x3.jpg) ](https://www.receptionhalls.com/venue/terry-peal-lead-sd)
+
+[Terry Peak](https://www.receptionhalls.com/venue/terry-peal-lead-sd)   
+Lead, SD
+
+**Style:** Banquet Hall, Town House, Country Club,... 
+
+**Min price per 100:** $50,000 
+
+**Seated Capacity:** 250 
+
+Elevate Your Love Story: A Dream Wedding at Avalanche Chalet. The romance of the mountains meets the warmth of rustic... 
+
+[ ![Holiday Inn City Centre](/media/SD/10002/holiday-inn-city-centre-sioux-falls-sd_4x3.jpg) ](https://www.receptionhalls.com/venue/holiday-inn-city-centre-sioux-falls-sd)
+
+[Holiday Inn City Centre](https://www.receptionhalls.com/venue/holiday-inn-city-centre-sioux-falls-sd)   
+Sioux Falls, SD
+
+**Style:** Hotel, Ballroom 
+
+**Min price per 100:** $1,800 
+
+**Capacity (Cocktail/Seated):** 500 / 400 
+
+The Holiday Inn City Centre extends our congratulations to you on your engagement and would like to say thank you for... 
+
+[ ![Summit Events Hall](/media/SD/11559/summit-events-hall-sioux-falls-sd_4x3.jpg) ](https://www.receptionhalls.com/venue/summit-events-hall-sioux-falls-sd)
+
+[Summit Events Hall](https://www.receptionhalls.com/venue/summit-events-hall-sioux-falls-sd)   
+Sioux Falls, SD
+
+**Style:** Banquet Hall, Historical Building, Bar/L... 
+
+**Min price per 100:** $3,000 
+
+**Capacity (Cocktail/Seated):** 220 / 220 
+
+Features Seating up to 220 Near downtown Sioux Falls Full commercial kitchen Sound system and projector screen Dates... 
+
+[ ![Summit Events Hall](/media/SD/11560/summit-events-hall-sioux-falls-sd-57104_4x3.jpg) ](https://www.receptionhalls.com/venue/summit-events-hall-sioux-falls-sd-57104)
+
+[Summit Events Hall](https://www.receptionhalls.com/venue/summit-events-hall-sioux-falls-sd-57104)   
+Sioux Falls, SD
+
+**Style:** Banquet Hall, Historical Building, Bar/L... 
+
+**Min price per 100:** $3,000 
+
+**Capacity (Cocktail/Seated):** 220 / 220 
+
+The Summit Events Hall near downtown Sioux Falls, South Dakota is a unique, historic location for your next party. We... 
+
+[ ![Ward Plaza Down Town Event Center](/media/SD/10849/ward-plaza-down-town-event-center-aberdeen-sd_4x3.jpg) ](https://www.receptionhalls.com/venue/ward-plaza-down-town-event-center-aberdeen-sd)
+
+[Ward Plaza Down Town Event Center](https://www.receptionhalls.com/venue/ward-plaza-down-town-event-center-aberdeen-sd)   
+Aberdeen, SD
+
+**Style:** Ballroom, Historical Building 
+
+**Min price per 100:** $1,000 
+
+**Capacity (Cocktail/Seated):** 60 / 310 
+
+The Ward Plaza Downtown Event Center is located in the center of Aberdeen in the historic and fully restored Alonzo... 
+
+[ ![The Coliseum](/media/SD/12246/the-coliseum-sioux-falls-sd_4x3.jpg) ](https://www.receptionhalls.com/venue/the-coliseum-sioux-falls-sd)
+
+[The Coliseum](https://www.receptionhalls.com/venue/the-coliseum-sioux-falls-sd)   
+Sioux Falls, SD
+
+**Style:** Ballroom, Historical Building 
+
+**Min price per 100:** $7,500 
+
+**Capacity (Cocktail/Seated):** 1300 / 480 
+
+Hello! We are a 100 year old building that is filled to the brim with character. We contain almost completely original... 
+
+[ ![Raz Hideaway](/media/SD/14056/raz-hideaway-whitewood-sd_4x3.jpg) ](https://www.receptionhalls.com/venue/raz-hideaway-whitewood-sd)
+
+[Raz Hideaway](https://www.receptionhalls.com/venue/raz-hideaway-whitewood-sd)   
+Whitewood, SD
+
+**Style:** Town House, Country Club, Loft 
+
+**Min price per 100:** $500,000 
+
+**Seated Capacity:** 250 
+
+Say "I do" beneath the boundless sky, surrounded by breathtaking panoramic views of the Black Hills, Bear Butte, Terry... 
+
+[ ![Canyon Lake Resort](/media/SD/9713/canyon-lake-resort-chophouse-rapid-city-sd_4x3.jpg) ](https://www.receptionhalls.com/venue/canyon-lake-resort-chophouse-rapid-city-sd)
+
+[Canyon Lake Resort](https://www.receptionhalls.com/venue/canyon-lake-resort-chophouse-rapid-city-sd)   
+Rapid City, SD
+
+**Style:** Mansion, Inn 
+
+**Min price per 100:** $2,000 
+
+**Capacity (Cocktail/Seated):** 75 / 20 
+
+Canyon Lake Resort is located on the west shore of Canyon Lake in Rapid City, South Dakota. Nestled in the foothills of... 
+
+[ ![Izaak Walton Event Center](/media/SD/13555/izaak-walton-event-center-sioux-falls-sd_4x3.jpg) ](https://www.receptionhalls.com/venue/izaak-walton-event-center-sioux-falls-sd)
+
+[Izaak Walton Event Center](https://www.receptionhalls.com/venue/izaak-walton-event-center-sioux-falls-sd)   
+Sioux Falls, SD
+
+**Style:** Clubhouse 
+
+**Min price per 100:** $2,000 
+
+**Capacity (Cocktail/Seated):** 300 / 300 
+
+The Sioux Falls Izaak Walton League chapter was chartered in 1925. It is the oldest and most respected conservation... 
+
+About Us
+
+  * Since 1999 we've helped millions of brides, families and event planners find affordable and dream banquet halls and wedding venues. Our goal is to make the process of finding a banquet hall easier and hopefully save you some time and money along the way. Congratulations on taking the first step towards a successful reception! 
+
+
+
+Connect With Us
+
+  * [@ReceptionHalls on Twitter](https://twitter.com/receptionhalls)
+
+
+
+Venue Managers and Owners
+
+  * [Login To Your Account](/owners)
+  * [Claim Your Venue](/claim)
+  * [Add Your Venue](/advertising)
+  * [Email Us](/contact)
+
+
+
+© 1999-2026 ReceptionHalls.com, All rights reserved. • [Terms of Use](https://www.receptionhalls.com/terms) • [Privacy Policy](https://www.receptionhalls.com/privacy)

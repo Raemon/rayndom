@@ -1,0 +1,378 @@
+Skip to main content 
+
+Show Mobile Menu
+
+[ ![ Logo](/sites/default/files/EBRPD-Logo.png) ](/ "East Bay Parks")
+
+Select a Park or Trail Select a Park or TrailAlameda Creek Regional TrailAnthony ChabotAntioch/OakleyArdenwoodBay PointBig BreakBishop RanchBlack Diamond MinesBrionesBriones to Las Trampas Regional TrailBriones to Mt. Diablo Regional TrailBrooks IslandBrowns IslandBrushy PeakCalifornia Riding and Hiking TrailCarquinez StraitCastle RockClaremont CanyonContra Costa Canal Regional TrailContra LomaCoyote HillsCrockett HillsCrown BeachCull CanyonDeer ValleyDel ValleDelta de Anza Regional TrailDiablo FoothillsDon CastroDry Creek PioneerDublin HillsDumbarton Quarry CampgroundEast Bay Skyline National Recreation TrailFive CanyonsGarinHaywardHuckleberryIron Horse Regional TrailJuan Bautista de Anza National Historic TrailJudge John SutterKennedy GroveLafayette-Moraga Regional TrailLake ChabotLas Trampas to Mt. Diablo Regional TrailLas TrampasLeona CanyonLittle HillsMarsh Creek Regional TrailMartin Luther King Jr.McLaughlin EastshoreMiller/KnoxMission PeakMorgan TerritoryOhlone WildernessOyster BayPleasanton RidgePoint IsabelPoint PinoleQuarry LakesRadke MartinezReinhardt RedwoodRobertsRound ValleySan Francisco Bay TrailSan Pablo Bay Regional Shoreline TrailShadow CliffsSibleySobrante RidgeSunolSycamore ValleyTemescalThurgood MarshallTildenTilden Botanic GardenTilden Nature AreaVargas PlateauVasco CavesWaterbirdWildcat Canyon
+
+Leave this field blank
+
+Search Terms
+
+__
+
+Leave this field blank
+
+  * [Visit a Park](/visit)
+    * [Parks](/parks)
+      * [Visitor Centers](/parks/visitor-centers)
+    * [Trails](/trails)
+      * [Trail Courtesy](/trails/courtesy)
+    * [Maps](/maps)
+    * [Alerts & Closures](/alerts-closures)
+    * [Rules & Regulations](/public-safety/ordinance-38)
+    * [New Visitors](/visit/new-visitors)
+    * [Visitor Safety](/safety)
+    * [ADA Accessibility](/ada-accessibility)
+    * [Public Transit](/visit/public-transit)
+  * [Things to Do](/things-to-do)
+    * [Calendar](/calendar)
+      * [Activities and Events](/calendar)
+      * [Public Meetings](/calendar/public-meetings)
+      * [Community Meetings](/calendar/community-meetings)
+    * [Recreation](/recreation)
+      * [Archery](/recreation/archery)
+      * [Biking](/recreation/biking)
+      * [Birding](/birding)
+      * [Boating](/recreation/boating)
+      * [Camping](/recreation/camping)
+      * [Equestrian Resources](/recreation/equestrian-resources)
+      * [Fishing](/recreation/fishing)
+      * [Geocaching](/recreation/geocaching)
+      * [Golfing](/recreation/golfing)
+      * [Hiking](/recreation/hiking)
+      * [Merry-Go-Round](/parks/venues/merry-go-round)
+      * [Model Boats, Planes & Trains](/recreation/model-boats-planes-trains)
+      * [Picnics](/recreation/picnics)
+      * [Swimming](https://www.ebparks.org/recreation/swimming)
+    * [Programs](/programs)
+      * [Community Outreach](/programs/community-outreach)
+      * [Day Camps](/programs/day-camps)
+      * [Educator Resources](/programs/educators)
+      * [Field Trips](/programs/field-trips)
+      * [Healthy Parks Healthy People](/programs/hphp)
+      * [Memorial Bench Program](/programs/memorial-bench)
+      * [Naturalist Education](/programs/naturalists)
+      * [Outdoor Recreation](/programs/outdoor-recreation)
+      * [Registration](/reservations)
+      * [Youth and Teens](/programs/youth-teens)
+    * [Reservations](/reservations)
+      * [Activity Registration](/node/16754)
+      * [Camping](/recreation/camping)
+      * [Event Venues](/reservations/event-venues)
+      * [Picnics](/recreation/picnics)
+      * [Swimming](/recreation/swimming)
+    * [Permits](/permits)
+    * [Get Involved](/get-involved)
+      * [Become a Member](https://www.regionalparksfoundation.org/join)
+      * [Donate](https://www.regionalparksfoundation.org/donate)
+    * [Volunteer](/volunteer)
+  * [Our Work](/our-work)
+    * [Park Projects](/projects)
+      * [Park Improvements](/projects/parkland-improvements)
+      * [Regional Trails Projects](/projects/regional-trails)
+      * [Future Planning](/projects/future-planning)
+      * [Resource Management](/projects/resource-management)
+    * [Natural Resources](/natural-resources)
+      * [Biodiversity](/natural-resources/biodiversity)
+      * [Climate Adaptation](/natural-resources/climate-adaptation)
+      * [Grazing](/natural-resources/grazing)
+      * [Pest Management](/natural-resources/integrated-pest-management)
+      * [Water Quality](https://www.ebparks.org/natural-resources/water-quality)
+      * [Wildfire Resilience](/natural-resources/wildfire-resilience)
+    * [Government Affairs](/government-affairs)
+    * [Public Safety](/public-safety)
+      * [Police Department](/public-safety/police)
+      * [Fire Department](/public-safety/fire)
+      * [Lifeguard Services](/public-safety/lifeguard)
+  * [About Us](/about-us)
+    * [Mission & Vision](/about-us/mission-vision)
+    * [Board & Staff](/about-us/board-and-staff)
+      * [Board of Directors](/board-and-staff/board)
+      * [General Manager](/board-and-staff/gm)
+      * [Park Advisory Committee](https://www.ebparks.org/calendar/public-meetings/park-advisory)
+      * [Staff](/board-and-staff/staff)
+      * [Human Resources Division](https://www.ebparks.org/human-resources-division)
+    * [Jobs](/jobs)
+    * [What's New](/whats-new)
+      * [News](/whats-new/news)
+      * [e-Newsletter](/whats-new/newsletters)
+      * [RIN Activity Guide](https://www.ebparks.org/whats-new/rin)
+      * [Social Media](/social-media)
+    * [We Celebrate](/we-celebrate)
+    * [Public Info](/public-info)
+      * [Awards](/awards-and-recognition)
+      * [Bids & RFPs](/public-info/bids-rfps)
+      * [Budget](/public-info/budget)
+    * [Publications & Media](/publications-media)
+      * [e-Newsletter](/whats-new/newsletters)
+      * [Interpretive Panels](/publications-media/panels)
+      * [Print Publications](/publications-media/print)
+      * [Story Maps](/publications-media/story-maps)
+      * [Videos](/publications-media/videos)
+    * [History](/history)
+    * [Regional Parks Foundation](https://www.regionalparksfoundation.org/)
+      * [Compass Magazine](/publications-media/print/rpf-compass)
+      * [Memberships & Donations](/get-involved/regional-parks-foundation)
+    * [Contact Us](/contact)
+  * [Get Help](/get-help)
+    * [New to the Outdoors](/visit/new-visitors)
+    * [Police](/public-safety/police)
+    * [Fire](/public-safety/fire)
+    * [Register/Reserve](/reservations)
+    * [Report an Incident](/public-safety/incident)
+
+
+
+![Martin Luther King Jr. Regional Shoreline](/sites/default/files/styles/short_hero_800_x_686_/public/16x9_Martin%20Luther%20King_Jerry%20Ting.jpg?h=1a26e954&itok=i8iogLzp)
+
+# Outdoor Recreation Programs
+
+  * [Community](/programs/community-outreach)
+  * [Day Camps](/programs/day-camps)
+  * [Educators](/programs/educators)
+  * [Field Trips](/programs/field-trips)
+  * [HPHP](/programs/hphp)
+  * [Naturalist](/programs/naturalists)
+  * [Outdoor Rec](/programs/outdoor-recreation)
+  * [Youth & Teens](/programs/youth-teens)
+
+
+
+__Back to top
+
+## Public Programs
+
+  * **For information on class times, fees, and to register, visit:[EBParks.org/Register](https://apm.activecommunities.com/ebparks/ "Register Now!")**  
+Browse classes and activities online,register online and make payments
+  * **[Account Login Instructions for EBParks.org/Register](https://apm.activecommunities.com/ebparks/ActiveNet_Home?FileName=faqPage.sdi#3 "Account Login Steps - EBPO")**  
+Directions on how to create, activate or log on to an account online****
+
+
+
+[ REGISTER (Opens in new window) ](https://anc.apm.activecommunities.com/ebparks/activity/search)
+
+Image
+
+![Archery at Roberts Park](/sites/default/files/styles/1x1_400w/public/archery%20day%20camp%20at%20roberts%20june%202013.png?h=6eb229a4&itok=0Kc2GaDy)
+
+### 
+
+Archery
+
+Redwood Bowmen Archery Club instructors teach safety, proper gear care, aiming, and shooting technique, in beautiful Roberts Regional Park, high in the Oakland Hills. The club provides bows, arrows, and gear, and after a thorough introduction, students practice shooting under the careful coaching of certified instructors. [Visit the Archery page](/recreation/archery), for more information.
+
+Read more...
+
+Image
+
+![Visitors biking in park](/sites/default/files/styles/1x1_400w/public/Biking-meta2.png?h=8ad5a422&itok=8IcGL1aX)
+
+### 
+
+Biking
+
+Bikes are a great way to get to and ride through your beautiful Regional Parks. Join Recreation staff on a weekend ride, and learn basic bike maintenance, bike safety, safe group riding skills, and more as you get a good workout.
+
+Read more...
+
+Image
+
+![Brooks Island Regional Preserve](/sites/default/files/styles/1x1_400w/public/16x9_Brooks%20Island_Stephen%20Joseph.jpg?h=a3eba8cf&itok=63Rjclj1)
+
+### 
+
+Boat Trips to Brooks Island
+
+Join seasoned Dolphin Charters skipper Ronn Patterson aboard Delphinus for a relaxed, narrated boat ride to Brooks Island. Once on the island, enjoy a naturalist-guided, two mile hike around this beautiful preserve. Trips are offered in spring and fall. For more information [visit the Brooks Island page](/parks/brooks-island).
+
+Read more...
+
+Image
+
+![Fishing Contra Loma](/sites/default/files/styles/1x1_400w/public/Fishing%20Contra%20Loma%20by%20Jerry%20W%20Britton.png?h=b2cc6db9&itok=nKB52tfs)
+
+### 
+
+Fishing
+
+Beginning to intermediate anglers can learn the basics of trout fishing, cat fishing, bass fishing, and fishing for other types of species at various District lakes or piers. Courses include instruction on fish habitat and ecology, knot tying, rigging, casting, bait and gear selection, licensing and regulations, and trip planning.
+
+Read more...
+
+Image
+
+![Lake Chabot Movie Night](/sites/default/files/styles/1x1_400w/public/lake-chabot-movie-night-16x9-meta.png?h=a76e418d&itok=RFUXFSir)
+
+### 
+
+Movie Nights
+
+FREE movies are shown in various parks in the spring and summer on our giant outdoor screen and all movies shown are G or PG rated. Come early to secure a seat and join the pre-movie activities. Movies begins at sunset. We suggest participants bring warm layers, flashlights, chairs, and snacks. Parking fees may apply. No pets allowed. Rain will cancel.
+
+Read more...
+
+Image
+
+![pole hiking group](/sites/default/files/styles/1x1_400w/public/pole-hiking-group-16x9-meta.png?h=c74750f6&itok=A-7SbtWc)
+
+### 
+
+Pole Walking and Pole Hiking
+
+Learning how to use poles helps walkers and hikers improve endurance, posture, balance, confidence and strength and enhances your enjoyment of the outdoors. All class levels focus on anatomically-optimal techniques to achieve your desired performance while learning how to avoid joint stress or strain. Instructor Jayah Faye Paley, an AFAA & ACE certified Personal Trainer, is the creator of the only comprehensive educational media on how to use poles, including two award-winning DVD’s.
+
+Read more...
+
+Image
+
+![Day camp kids playing lawn hockey](/sites/default/files/styles/1x1_400w/public/park%27n%20it%20day%20camp%20kids%20-%20lawn%20hockey%20-hero.jpg?h=10d202d3&itok=V_ZDAtc2)
+
+### 
+
+Day Camp
+
+Park'n It Day Camp is a safe and fun day camp in the Regional Parks for 5 to 12 year olds. Our highly-trained and caring staff lead hikes, field games, fishing, arts + crafts, environmental education activities, and swimming. Camp runs Monday-Friday from 9am to 4pm at various parks. Ask about our family discount (not available online). For more information and to register, please visit our Day Camp and Leaders-in-Training page.
+
+Read more...
+
+Image
+
+![kids at an opening circle](/sites/default/files/styles/1x1_400w/public/litgallery-opening-circle.jpg?h=c9f93661&itok=rt7lCaKX)
+
+### 
+
+Leaders-in-Training
+
+This program gives teens an opportunity to learn what it takes to be a Recreation Leader. They receive hands-on training, skills workshops, and community service hours while assisting our camp staff during Park'n It Summer Day Camp. For more information and to apply for this position, please [visit our Day Camp and Leaders-in-Training page](/programs/day-camps/park-n-it).
+
+Read more...
+
+Image
+
+![Kayaking](/sites/default/files/styles/1x1_400w/public/Kayaking.jpg?h=13b5cbb2&itok=f-OOcUMP)
+
+### 
+
+Kayaking
+
+Join Recreation staff on a challenging and rewarding paddle and experience your Regional Parks, Lakes, and Shorelines from a whole new angle! Highly-trained staff teach water safety and basic canoeing technique, and we provide all gear as well as lifevests. Some trips also feature a naturalist.
+
+Read more...
+
+Image
+
+![canoeing group](/sites/default/files/styles/1x1_400w/public/canoeing-group-16x9-meta.png?h=097c05ce&itok=9N5wjUSS)
+
+### 
+
+Canoeing
+
+Join Recreation staff on a challenging and rewarding paddle and experience your Regional Parks, Lakes, and Shorelines from a whole new angle! Highly-trained staff teach water safety and basic canoeing technique, and we provide all gear as well as lifevests. Some trips also feature a naturalist.
+
+Read more...
+
+## Recreation Programs for Community Groups and Schools
+
+### Boating / Fishing / Biking
+
+The Outdoor Recreation Department offers affordable Boating, Biking and Fishing field trips for schools and community organizations. Knowledgeable Recreation staff provide the gear, meet your group at the park, and lead a safe trip at your Regional parks, lakes, trails and shorelines. Fees vary depending on group size and program duration. Trips must be requested at least 60 days prior to the trip date and paid in full at least 30 days prior to the trip date.
+
+[ APPLY (Opens in new window) ](https://apply.ebparks.org/custom/501/#/propose_opportunity?step=1)
+
+If you need more information on Boating field trips, contact [[email protected]](/cdn-cgi/l/email-protection#610c120402020e0c03042104031100130a124f0e1306). For Biking or Fishing field trips, contact [[email protected]](/cdn-cgi/l/email-protection#a4c5cfcdcad0e4c1c6d4c5d6cfd78acbd6c3).
+
+Select an Outdoor Recreation Program for more information: \--Select--BoatingFishingBiking
+
+In-Person Program| Ages| Duration| MAX Participants  
+---|---|---|---  
+**Boating - Canoeing**  
+We offer a variety of canoeing programs for all ages, from skill-building to nature tours, taught by trained, friendly instructors. All classes include instruction on basic paddling techniques and are offered at various parks throughout the District, both at lakes and tidal waterways| Lake locations: 8 years & aboveTidal waterways: 11 years & above| 1.5 hours  
+2 hours  
+3 hours| 14  
+  
+*Rotation format program available if group exceeds max participants  
+**Boating - Kayaking**  
+We offer a variety of kayaking programs for all ages, from skill-building to nature tours, taught by trained, friendly instructors. All classes include instruction on basic paddling techniques and are offered at various parks throughout the District, both at lakes and tidal waterways| Lake locations: 8 years & above  
+Tidal waterways: 11 years & above| 1.5 hours  
+2 hours  
+3 hours| 12  
+  
+*Rotation format program available if group exceeds max participants  
+  
+In-Person Program| Ages| Duration| MAX Participants  
+---|---|---|---  
+**Fishing - Freshwater**  
+Beginning to intermediate anglers can learn the basics of trout fishing, cat fishing, bass fishing, and fishing for other types of species at various District lakes. Courses include instruction on fish habitat and ecology, knot tying, rigging, casting, bait and gear selection, licensing and regulations, and trip planning. Participants 16 years and above require a fishing license at all lakes.| 7 years & up| 1.5 hours  
+2 hours  
+3 hours| 20  
+  
+*Rotation format program available if group exceeds max participants  
+**Fishing - Saltwater**  
+Beginning to intermediate anglers can learn the basics of saltwater fishing for types of species at various District piers and tidal waterways. Courses include instruction on fish habitat and ecology, knot tying, rigging, casting, bait and gear selection, licensing and regulations, and trip planning. Participants over 16 years and above require a fishing license at all pier and shoreline locations that require one, but several District piers do not require a license.| 7 years & up| 1.5 hours  
+2 hours  
+3 hours| 20  
+  
+*Rotation format program available if group exceeds max participants  
+  
+In-Person Program| Ages| Duration| MAX Participants  
+---|---|---|---  
+**Biking**  
+Bikes are a great way to get to and ride through your beautiful Regional Parks. Join Recreation staff on a daytime ride, and learn basic bike maintenance, bike safety, safe group riding skills, and more as you get a good workout.| Participants must know how to ride a bike and be 4’11’’ & up| 1.5 hours  
+2 hours  
+3 hours| 14  
+  
+*Rotation format program available if group exceeds max participants  
+  
+## Free Camping Partnerships for Non-Profits
+
+### Community Outreach Outdoor Program (CO-OP)
+
+Image
+
+![Co-op Tent Setup](/sites/default/files/styles/original_800w_/public/CO_OP_%242712_Tent_Setup.jpg?itok=gqUMYs_P)
+
+**The Community Outreach-Outdoor Programs (CO-OP)** is a Summer partnership with local non-profit organizations during the months of **July, August, and September**. Our goal is to equip, educate, and empower partners to independently lead overnight recreation activities in their beautiful parks. Partners can choose between either an overnight car camping or an introductory backpacking trip. We provide campsite reservations, buses, food, equipment, and recreation staff to facilitate various activities (such as hiking, fishing, field games, environmental education, and more!); as well as an information night for partner staff and participants. Partners must commit to recruiting participants, helping plan activities, promoting trips, completing paperwork, and supervising campers. This program is supported by the Regional Parks Foundation and focuses on communities that face access, transportation, or other barriers to outdoor recreation in their EBRPD parks.
+
+If you are interested in applying, please email/print out and mail in the [CO-OP-Partner-Application.PDF](/sites/default/files/CO-OP-Partner-Application-2026-Final.pdf) or contact the Recreation Coordinator Morgan Evans, [[email protected]](/cdn-cgi/l/email-protection#107d7566717e635075726071627b633e7f6277), or at 1 (510) 544-2566 for more information.
+
+Image
+
+![Co-Op Program 2026 Flyer](/sites/default/files/styles/original_600w_/public/co-op-flyer-for-website-v2.jpg?itok=ijhxdO4X)
+
+## Recreation Jobs
+
+Do you know somebody who is passionate about outdoor recreation and skilled in backpacking, biking, canoeing, fishing, or kayaking? Most of our programs are led by our team of recreation staff and we are always looking for new guides to join our team!
+
+To apply for a position, please visit: [GovernmentJobs.com/ebparks](https://www.governmentjobs.com/careers/ebparks?keywords=recreation%20leader "GovernmetJobs.com")
+
+## Contact
+
+[[email protected]](/cdn-cgi/l/email-protection#e9bb8c8a9b8c889d808687a98c8b99889b829ac7869b8e)  
+(510) 544-2553
+
+[ ](/ "East Bay Parks")
+
+2950 Peralta Oaks Court,  
+Oakland, CA 94605  
+1-888-EBPARKS,  
+1-888-327-2757  
+(Deaf or Hearing Impaired, use the TRS at 711)
+
+[ ](/ "East Bay Parks")
+
+© 2026 East Bay Regional Park District.  
+All Rights Reserved.
+
+[ ](/ "MidPen OpenSpace Homepage")
+
+Select a Park or Trail Select a Park or TrailAlameda Creek Regional TrailAnthony ChabotAntioch/OakleyArdenwoodBay PointBig BreakBishop RanchBlack Diamond MinesBrionesBriones to Las Trampas Regional TrailBriones to Mt. Diablo Regional TrailBrooks IslandBrowns IslandBrushy PeakCalifornia Riding and Hiking TrailCarquinez StraitCastle RockClaremont CanyonContra Costa Canal Regional TrailContra LomaCoyote HillsCrockett HillsCrown BeachCull CanyonDeer ValleyDel ValleDelta de Anza Regional TrailDiablo FoothillsDon CastroDry Creek PioneerDublin HillsDumbarton Quarry CampgroundEast Bay Skyline National Recreation TrailFive CanyonsGarinHaywardHuckleberryIron Horse Regional TrailJuan Bautista de Anza National Historic TrailJudge John SutterKennedy GroveLafayette-Moraga Regional TrailLake ChabotLas Trampas to Mt. Diablo Regional TrailLas TrampasLeona CanyonLittle HillsMarsh Creek Regional TrailMartin Luther King Jr.McLaughlin EastshoreMiller/KnoxMission PeakMorgan TerritoryOhlone WildernessOyster BayPleasanton RidgePoint IsabelPoint PinoleQuarry LakesRadke MartinezReinhardt RedwoodRobertsRound ValleySan Francisco Bay TrailSan Pablo Bay Regional Shoreline TrailShadow CliffsSibleySobrante RidgeSunolSycamore ValleyTemescalThurgood MarshallTildenTilden Botanic GardenTilden Nature AreaVargas PlateauVasco CavesWaterbirdWildcat Canyon
+
+Leave this field blank
+
+Search Terms
+
+__
+
+Leave this field blank

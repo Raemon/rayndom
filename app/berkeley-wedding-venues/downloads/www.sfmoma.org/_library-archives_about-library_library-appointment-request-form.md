@@ -1,0 +1,75 @@
+Skip to content
+
+## Main navigation
+
+# Library Appointment Request Form
+
+* * *
+
+Please search our [library catalog](https://sanfranciscomuseumofmodernart.on.worldcat.org/advancedsearch) to identify items of interest, then include your request list on this form or send it to [library@sfmoma.org](mailto:library@sfmoma.org). Once we have confirmed the availability of your requests, we will be in touch to schedule your visit. In limited cases, we may provide scans instead (scan requests can also be submitted through ILL). Please expect a response within three to five workdays.
+
+All library materials are non-circulating and public requests are paged from our stacks by library staff. Materials stored offsite at our Collections Center require a longer delivery time. To allow adequate time for paging, please submit your appointment request at least one week in advance of the date you would like to visit.
+
+Please do not hesitate to contact us with any questions about using our collections and catalog. Library staff are happy to help you navigate our holdings and research resources.
+
+We look forward to sharing our collections with you!
+
+[Form powered by ](https://asana.com/?utm_source=embedded_form)
+
+## Footer
+
+![Red SFMOMA logo](https://www.sfmoma.org/wp-content/themes/sfmomatheme/library/img/logos/logo-red.png)
+
+### San Francisco Museum of Modern Art
+
+### SFMOMA
+
+151 Third St  
+San Francisco, CA 94103
+
+[About SFMOMA](/about/)[View on map](https://www.google.com/maps/d/u/0/viewer?mid=1yGZMbKJNRSpu5V9QrMo-GtiVU1M&ll=37.78566540849548%2C-122.40050257479936&z=17)[415.357.4000](tel:415.357.4000)[Contact Us](/about/contact-us/)
+
+### Hours
+
+Mon–Tue 10 a.m.–5 p.m.
+
+Wed Closed
+
+Thu Noon–8 p.m.  
+Fri–Sun 10 a.m.–5 p.m.
+
+[Visit](/visit/)
+
+### Museum Store Hours
+
+Mon–Tue 11 a.m.–5 p.m.  
+Wed Closed  
+Thu Noon–8 p.m.Fri–Sun 11 a.m.–5 p.m.
+
+[Shop](https://museumstore.sfmoma.org/)
+
+### Learn More
+
+[Our DEI Commitment](https://www.sfmoma.org/dei-actions/)[Join Our Team](https://www.sfmoma.org/join-the-team/)[Rental Events](/rental-events/)[Library + Archives](https://www.sfmoma.org/library-archives/)[Dining Options](https://www.sfmoma.org/visit/dining-at-sfmoma/)
+
+### Social media
+
+  * [ __](https://youtube.com/sfmoma)
+  * [ __](https://instagram.com/sfmoma)
+  * [ __](https://twitter.com/sfmoma)
+  * [ __](https://facebook.com/sfmoma)
+  * [ ](https://www.tiktok.com/@sfmoma)
+  * [Newsletter Sign-up](https://sfmoma.prospect2.com/f/4)
+
+
+
+© 2026 San Francisco Museum of Modern Art
+
+### Legal links
+
+  * [Terms of Use](https://www.sfmoma.org/terms-of-use/) |
+  * [Privacy Policy](https://www.sfmoma.org/privacy-policy/) |
+  * [Collections Management Policy](https://d1hhug17qm51in.cloudfront.net/www-media/2024/02/12151811/POLICY-SFMOMA-Collections-Management-Policy-FINAL-Approved-by-BOT-12-7-23.pdf) |
+  * [Health and Safety Plans](https://www.sfmoma.org/healthandsafetyplans/)
+
+

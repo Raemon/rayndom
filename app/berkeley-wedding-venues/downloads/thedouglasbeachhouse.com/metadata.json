@@ -1,0 +1,96 @@
+[
+  {
+    "siteName": "thedouglasbeachhouse.com",
+    "mainUrl": {
+      "url": "https://thedouglasbeachhouse.com/",
+      "file": "index.md"
+    },
+    "otherUrls": [
+      {
+        "url": "https://thedouglasbeachhouse.com",
+        "file": "index.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/caterer/",
+        "file": "_caterer.md"
+      },
+      {
+        "url": "http://thedouglasbeachhouse.com/seating_floor-plan/",
+        "file": "_seating_floor-plan.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/sample-menus/",
+        "file": "_sample-menus.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/gallery/",
+        "file": "_gallery.md"
+      },
+      {
+        "url": "http://thedouglasbeachhouse.com/contact-us/",
+        "file": "_contact-us.md"
+      },
+      {
+        "url": "http://thedouglasbeachhouse.com/fact-sheet/",
+        "file": "_fact-sheet.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/weddings/",
+        "file": "_weddings.md"
+      },
+      {
+        "url": "http://thedouglasbeachhouse.com/sample-menus/",
+        "file": "_sample-menus.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/additional-information/",
+        "file": "_additional-information.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/tag/cuisine/",
+        "file": "_tag_cuisine.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/location/",
+        "file": "_location.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/contact-us/",
+        "file": "_contact-us.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/about-us/",
+        "file": "_about-us.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/celebrations/",
+        "file": "_celebrations.md"
+      },
+      {
+        "url": "http://thedouglasbeachhouse.com/gallery/",
+        "file": "_gallery.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/seating_floor-plan/",
+        "file": "_seating_floor-plan.md"
+      },
+      {
+        "url": "http://thedouglasbeachhouse.com",
+        "file": "index.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/fact-sheet/",
+        "file": "_fact-sheet.md"
+      },
+      {
+        "url": "https://thedouglasbeachhouse.com/meetings/",
+        "file": "_meetings.md"
+      },
+      {
+        "url": "http://thedouglasbeachhouse.com/wedding-reception-venue-photos/",
+        "file": "_wedding-reception-venue-photos.md"
+      }
+    ],
+    "dateDownloaded": "2026-01-23T13:27:12.244191"
+  }
+]

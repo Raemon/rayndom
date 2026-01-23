@@ -1,0 +1,280 @@
+# Banquet Halls and Wedding Venues around _Mesa, Arizona_
+
+[ ![Lido](/media/AZ/13510/lido-tempe-az_4x3.jpg) ](https://www.receptionhalls.com/venue/lido-tempe-az)
+
+[Lido](https://www.receptionhalls.com/venue/lido-tempe-az)   
+Tempe, AZ
+
+**Style:** Waterfront, Restaurant (Private Room) 
+
+**Min price per 100:** $500,000 
+
+**Capacity (Cocktail/Seated):** 600 / 400 
+
+Lakefront venue overlooking at 53 acres of lake in the heart of Tempe, we offer 3 indoor and outdoor main areas for... 
+
+[ ![Superstition Manor Wedding & Event Center](/media/AZ/14130/superstition-manor-wedding-event-center-mesa-az_4x3.jpg) ](https://www.receptionhalls.com/venue/superstition-manor-wedding-event-center-mesa-az)
+
+[Superstition Manor Wedding & Event Center](https://www.receptionhalls.com/venue/superstition-manor-wedding-event-center-mesa-az)   
+Mesa, AZ
+
+**Style:** Banquet Hall, Mansion, Ballroom, Atrium,... 
+
+**Min price per 100:** $150,000 
+
+**Capacity (Cocktail/Seated):** 700 / 300 
+
+Superstition Manor is the valley’s premier wedding and event center located in Mesa, Arizona with iconic views of... 
+
+[ ![Tre Bella](/media/AZ/12493/tre-bella-mesa-az_4x3.jpg) ](https://www.receptionhalls.com/venue/tre-bella-mesa-az)
+
+[Tre Bella](https://www.receptionhalls.com/venue/tre-bella-mesa-az)   
+Mesa, AZ
+
+**Style:** Banquet Hall, Ballroom, Historical Build... 
+
+**Min price per 100:** $6,800 
+
+**Capacity (Cocktail/Seated):** 250 / 250 
+
+While there are a number of wedding venues in Arizona, the stylish affordability of Tre Bella makes it a favorite for... 
+
+[ ![Antique Wedding House](/media/AZ/9958/antique-wedding-house-mesa-az_4x3.jpg) ](https://www.receptionhalls.com/venue/antique-wedding-house-mesa-az)
+
+[Antique Wedding House](https://www.receptionhalls.com/venue/antique-wedding-house-mesa-az)   
+Mesa, AZ
+
+**Style:** Garden 
+
+**Min price per 100:** $1,500 
+
+**Capacity (Cocktail/Seated):** 200 / 200 
+
+The Antique Wedding House provides an ideal setting in which to celebrate Wedding Ceremonies, Anniversary Parties, or... 
+
+[ ![DoubleTree by Hilton Phoenix Mesa](/media/AZ/13089/doubletree-by-hilton-phoenix-mesa-mesa-az_4x3.jpg) ](https://www.receptionhalls.com/venue/doubletree-by-hilton-phoenix-mesa-mesa-az)
+
+[DoubleTree By Hilton Phoenix Mesa](https://www.receptionhalls.com/venue/doubletree-by-hilton-phoenix-mesa-mesa-az)   
+Mesa, AZ
+
+**Style:** Hotel, Ballroom, Atrium 
+
+**Min price per 100:** $6,500 
+
+**Capacity (Cocktail/Seated):** 1000 / 400 
+
+A perfect stay in Mesa! At the DoubleTree by Hilton Phoenix Mesa, we want to welcome you to your new life together and... 
+
+[ ![Villa Tuscana Reception Hall](/media/AZ/10740/villa-tuscana-reception-hall-mesa-az_4x3.jpg) ](https://www.receptionhalls.com/venue/villa-tuscana-reception-hall-mesa-az)
+
+[Villa Tuscana Reception Hall](https://www.receptionhalls.com/venue/villa-tuscana-reception-hall-mesa-az)   
+Mesa, AZ
+
+**Style:** Banquet Hall, Ballroom 
+
+**Min price per 100:** $1,600 
+
+**Capacity (Cocktail/Seated):** 100 / 300 
+
+Villa Tuscana Reception Hall has a charming Tuscan décor perfect for the elegant ambiance your dream wedding deserves!... 
+
+[ ![AZ Inspirations Catering](/media/AZ/12619/az-inspirations-catering-tempe-az_4x3.jpg) ](https://www.receptionhalls.com/venue/az-inspirations-catering-tempe-az)
+
+[AZ Inspirations Catering](https://www.receptionhalls.com/venue/az-inspirations-catering-tempe-az)   
+Tempe, AZ
+
+**Style:** Banquet Hall 
+
+**Min price per 100:** $4,000 
+
+**Capacity (Cocktail/Seated):** 999 / 999 
+
+AZ Inspirations Catering is a full-service catering company in Arizona offering fresh catering menu concepts, top-rated... 
+
+[ ![Mesa Spirit RV Resort](/media/AZ/10554/mesa-spirit-rv-resort-mesa-az_4x3.jpg) ](https://www.receptionhalls.com/venue/mesa-spirit-rv-resort-mesa-az)
+
+[Mesa Spirit RV Resort](https://www.receptionhalls.com/venue/mesa-spirit-rv-resort-mesa-az)   
+Mesa, AZ
+
+**Style:** Banquet Hall, Hotel, Ballroom, Raw Space 
+
+**Min price per 100:** $1,500 
+
+**Capacity (Cocktail/Seated):** 600 / 500 
+
+Looking for a venue for your next meeting, conference, party or reunion? Mesa Spirit has facilities on property that... 
+
+[ ![Hackett House](/media/AZ/13389/hackett-house-tempe-az_4x3.jpg) ](https://www.receptionhalls.com/venue/hackett-house-tempe-az)
+
+[Hackett House](https://www.receptionhalls.com/venue/hackett-house-tempe-az)   
+Tempe, AZ
+
+**Style:** Historical Building 
+
+**Capacity (Cocktail/Seated):** 125 / 125 
+
+Tempe’s unique historic venue for weddings, parties, meetings, and more. All proceeds go towards City of Tempe... 
+
+[ ![Stars Ballroom](/media/AZ/9701/stars-ballroom-mesa-az_4x3.jpg) ](https://www.receptionhalls.com/venue/stars-ballroom-mesa-az)
+
+[Stars Ballroom](https://www.receptionhalls.com/venue/stars-ballroom-mesa-az)   
+Mesa, AZ
+
+**Style:** Banquet Hall, Ballroom, Conference Hall,... 
+
+**Min price per 100:** $500 
+
+**Capacity (Cocktail/Seated):** 187 / 150 
+
+Celebrations/parties starting at $500 - Call Today to Reserve your Special Day! Tours by appointment only, as other... 
+
+[ ![Four Peaks Brewing Co. - Wilson Taproom](/media/AZ/12863/four-peaks-brewing-co-wilson-taproom-tempe-az_4x3.jpg) ](https://www.receptionhalls.com/venue/four-peaks-brewing-co-wilson-taproom-tempe-az)
+
+[Four Peaks Brewing Co. - Wilson Taproom](https://www.receptionhalls.com/venue/four-peaks-brewing-co-wilson-taproom-tempe-az)   
+Tempe, AZ
+
+**Style:** Banquet Hall, Conference Hall, Bar/Loung... 
+
+**Min price per 100:** $1,500 
+
+**Capacity (Cocktail/Seated):** 120 / 120 
+
+Welcome to Four Peaks Brewing Co.'s Wilson Taproom! This unique event space was built inside of our Wilson Production... 
+
+[ ![Cervantes Reception Hall](/media/AZ/9623/cervantes-reception-hall-tempe-az_4x3.jpg) ](https://www.receptionhalls.com/venue/cervantes-reception-hall-tempe-az)
+
+[Cervantes Reception Hall](https://www.receptionhalls.com/venue/cervantes-reception-hall-tempe-az)   
+Tempe, AZ
+
+**Style:** Banquet Hall, Restaurant (Private Room),... 
+
+**Min price per 100:** $1,000 
+
+**Capacity (Cocktail/Seated):** 100 / 200 
+
+SPECIAL EVENTS FOR UP TO 250 PEOPLE WITH FULL SERVICE BANQUET Welcome to Cervantes your guest will love the food and a... 
+
+[ ![Grimaldis Banquets & Catering](/media/AZ/10250/grimaldis-banquets-catering-scottsdale-az_4x3.jpg) ](https://www.receptionhalls.com/venue/grimaldis-banquets-catering-scottsdale-az)
+
+[Grimaldis Banquets & Catering](https://www.receptionhalls.com/venue/grimaldis-banquets-catering-scottsdale-az)   
+Scottsdale, AZ
+
+**Style:** Restaurant (Private Room), Bar/Lounge 
+
+**Capacity (Cocktail/Seated):** 50 / 110 
+
+Sure, we have specialized in NY style coal-fired brick oven pizza since the 1930's, but we also boast a full Italian... 
+
+[ ![Boulevard 35 Weddings & Banquets](/media/AZ/10557/boulevard-35-chandler-az_4x3.jpg) ](https://www.receptionhalls.com/venue/boulevard-35-chandler-az)
+
+[Boulevard 35 Weddings & Banquets](https://www.receptionhalls.com/venue/boulevard-35-chandler-az)   
+Chandler, AZ
+
+**Style:** Banquet Hall, Restaurant (Private Room),... 
+
+**Min price per 100:** $500 
+
+**Capacity (Cocktail/Seated):** 500 / 300 
+
+If looking for a great facility for your Banquet, Wedding, Birthday, Anniversary, Corporate, or other special event,... 
+
+[ ![Perimeter83](/media/AZ/14016/perimeter83-study-tempe-az_4x3.jpg) ](https://www.receptionhalls.com/venue/perimeter83-study-tempe-az)
+
+[Perimeter83](https://www.receptionhalls.com/venue/perimeter83-study-tempe-az)   
+Tempe, AZ
+
+**Style:** Banquet Hall, Conference Hall, Raw Space 
+
+**Min price per 100:** $5,500 
+
+**Seated Capacity:** 148 
+
+Perimeter83 offers a variety of event and coworking spaces that can accommodate groups of various sizes. Our modern and... 
+
+[ ![Recreo](/media/AZ/13732/recreo-chandler-az_4x3.jpg) ](https://www.receptionhalls.com/venue/recreo-chandler-az)
+
+[Recreo](https://www.receptionhalls.com/venue/recreo-chandler-az)   
+Chandler, AZ
+
+**Style:** Banquet Hall, Restaurant (Private Room),... 
+
+**Min price per 100:** $1,500 
+
+**Seated Capacity:** 100 
+
+Recreo in downtown Chandler celebrates Arizona with fresh local ingredients, inviting indoor/outdoor garden hangout... 
+
+[ ![Ahwatukee Event Center](/media/AZ/13065/ahwatukee-event-center-phoenix-az_4x3.jpg) ](https://www.receptionhalls.com/venue/ahwatukee-event-center-phoenix-az)
+
+[Ahwatukee Event Center](https://www.receptionhalls.com/venue/ahwatukee-event-center-phoenix-az)   
+Phoenix, AZ
+
+**Style:** Banquet Hall 
+
+**Min price per 100:** $600 
+
+**Capacity (Cocktail/Seated):** 140 / 120 
+
+The Ahwatukee Event Center is in the scenic and tranquil village of Ahwatukee. It features incredible panoramic views... 
+
+[ ![Liberty Wildlife](/media/AZ/13109/liberty-wildlife-phoenix-az_4x3.jpg) ](https://www.receptionhalls.com/venue/liberty-wildlife-phoenix-az)
+
+[Liberty Wildlife](https://www.receptionhalls.com/venue/liberty-wildlife-phoenix-az)   
+Phoenix, AZ
+
+**Style:** Garden 
+
+**Min price per 100:** $1,000 
+
+**Capacity (Cocktail/Seated):** 30 / 30 
+
+The Rob and Melani Walton Campus of Liberty Wildlife, located along the picturesque Rio Salado, is available to host... 
+
+[ ![Audubon Arizona](/media/AZ/12470/audubon-arizona-phoenix-az_4x3.jpg) ](https://www.receptionhalls.com/venue/audubon-arizona-phoenix-az)
+
+[Audubon Arizona](https://www.receptionhalls.com/venue/audubon-arizona-phoenix-az)   
+Phoenix, AZ
+
+**Style:** Museum, Garden 
+
+**Min price per 100:** $7,000 
+
+**Capacity (Cocktail/Seated):** 200 / 150 
+
+The Nina Mason Pulliam Rio Salado Audubon Center, located in Phoenix’s beautiful Rio Salado habitat and is available... 
+
+[ ![Antigua Garden](/media/AZ/10404/antigua-garden-phoenix-az_4x3.jpg) ](https://www.receptionhalls.com/venue/antigua-garden-phoenix-az)
+
+[Antigua Garden](https://www.receptionhalls.com/venue/antigua-garden-phoenix-az)   
+Phoenix, AZ
+
+**Style:** Banquet Hall, Ballroom, Conference Hall 
+
+**Min price per 100:** $1,500 
+
+**Capacity (Cocktail/Seated):** 300 / 220 
+
+Conveniently located close to Down Town Phoenix with an elegant exterior and interior design, private parking, and much... 
+
+About Us
+
+  * Since 1999 we've helped millions of brides, families and event planners find affordable and dream banquet halls and wedding venues. Our goal is to make the process of finding a banquet hall easier and hopefully save you some time and money along the way. Congratulations on taking the first step towards a successful reception! 
+
+
+
+Connect With Us
+
+  * [@ReceptionHalls on Twitter](https://twitter.com/receptionhalls)
+
+
+
+Venue Managers and Owners
+
+  * [Login To Your Account](/owners)
+  * [Claim Your Venue](/claim)
+  * [Add Your Venue](/advertising)
+  * [Email Us](/contact)
+
+
+
+© 1999-2026 ReceptionHalls.com, All rights reserved. • [Terms of Use](https://www.receptionhalls.com/terms) • [Privacy Policy](https://www.receptionhalls.com/privacy)
