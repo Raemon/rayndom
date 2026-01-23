@@ -5,10 +5,12 @@ Download URLs and crawl all same-domain links, saving content as markdown.
 LLM USAGE:
     python download_url.py <topic> <url1> [url2] [url3] ...          # blocking
     python download_url.py --bg <topic> <url1> [url2] [url3] ...     # background (non-blocking)
+    python download_url.py --include-files <topic> <url1> ...        # include all file types
     
     Examples:
         python download_url.py "ai-safety-research" https://example.com/article
         python download_url.py --bg "ai-safety-research" https://example.com/article https://other.com/page
+        python download_url.py --include-files "research" https://example.com  # downloads pdfs, images, etc
     
     This will:
     - Download each URL and crawl all same-domain links recursively
@@ -34,6 +36,9 @@ import html2text
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import Lock
+
+# Extensions that are allowed to be downloaded by default (without --include-files flag)
+ALLOWED_EXTENSIONS = {'.html', '.htm', '.md', None}  # None means no extension (e.g. /about)
 
 def strip_query_params(url):
     """Remove query parameters from URL."""
@@ -119,9 +124,14 @@ def html_to_markdown(html):
     markdown = h.handle(str(body))
     return markdown
 
-def process_url(url, processed_urls, processed_urls_lock, base_domain, conversation_topic):
+def process_url(url, processed_urls, processed_urls_lock, base_domain, conversation_topic, include_files=False):
     """Process single URL: download, save (as .md for HTML, original ext otherwise), return discovered links."""
     domain = get_domain(url)
+    url_ext = get_url_extension(url)
+    # Skip URLs with file extensions unless they're allowed or --include-files is set
+    if not include_files and url_ext not in ALLOWED_EXTENSIONS:
+        print(f"Skipping (file extension {url_ext}): {url}")
+        return ([], None, domain)
     with processed_urls_lock:
         if domain not in processed_urls:
             processed_urls[domain] = set()
@@ -160,7 +170,7 @@ def process_url(url, processed_urls, processed_urls_lock, base_domain, conversat
     saved_filename = f"{filename_base}.md"
     return (links, saved_filename, domain)
 
-def process_domain(start_url, conversation_topic, processed_urls, processed_urls_lock):
+def process_domain(start_url, conversation_topic, processed_urls, processed_urls_lock, include_files=False):
     """Crawl a domain starting from URL, processing all same-domain links recursively."""
     base_domain = get_domain(start_url)
     url_file_map = {}  # Maps URL -> filename
@@ -171,7 +181,7 @@ def process_domain(start_url, conversation_topic, processed_urls, processed_urls
     while urls_to_process:
         current_url = urls_to_process.pop(0)
         new_links, saved_filename, domain = process_url(
-            current_url, processed_urls, processed_urls_lock, base_domain, conversation_topic
+            current_url, processed_urls, processed_urls_lock, base_domain, conversation_topic, include_files
         )
         if saved_filename:
             url_file_map[current_url] = saved_filename
@@ -192,12 +202,15 @@ def process_domain(start_url, conversation_topic, processed_urls, processed_urls
         "allUrls": all_urls
     }
 
-def run_in_background(conversation_topic, urls):
+def run_in_background(conversation_topic, urls, include_files=False):
     """Re-launch this script as a background process without --bg flag."""
     # Strip query params and deduplicate before spawning background process
     urls = list(dict.fromkeys(strip_query_params(url) for url in urls))
     script_path = os.path.abspath(__file__)
-    cmd = [sys.executable, script_path, conversation_topic] + urls
+    cmd = [sys.executable, script_path]
+    if include_files:
+        cmd.append('--include-files')
+    cmd.extend([conversation_topic] + urls)
     if os.name == 'nt':  # Windows
         subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)
     else:  # Unix-like (macOS, Linux)
@@ -210,7 +223,7 @@ def run_in_background(conversation_topic, urls):
     print(f"Started background download for {len(urls)} URL(s) in topic '{conversation_topic}'")
     print(f"Downloads will be saved to: app/{conversation_topic}/downloads/")
 
-def run_download(conversation_topic, start_urls):
+def run_download(conversation_topic, start_urls, include_files=False):
     """Main download logic: process all URLs in parallel, save results."""
     # Strip query params and deduplicate input URLs
     normalized_urls = list(dict.fromkeys(strip_query_params(url) for url in start_urls))
@@ -219,12 +232,14 @@ def run_download(conversation_topic, start_urls):
     start_urls = normalized_urls
     print(f"Processing {len(start_urls)} URL(s) in parallel...")
     print(f"Conversation topic: {conversation_topic}")
+    if not include_files:
+        print("Skipping file downloads (use --include-files to download pdfs, images, etc)")
     processed_urls = {}
     processed_urls_lock = Lock()
     domain_results = []
     with ThreadPoolExecutor(max_workers=min(len(start_urls), 10)) as executor:
         future_to_url = {
-            executor.submit(process_domain, url, conversation_topic, processed_urls, processed_urls_lock): url
+            executor.submit(process_domain, url, conversation_topic, processed_urls, processed_urls_lock, include_files): url
             for url in start_urls
         }
         for future in as_completed(future_to_url):
@@ -258,22 +273,30 @@ def run_download(conversation_topic, start_urls):
 
 def main():
     args = sys.argv[1:]
-    # Check for --bg flag
+    # Check for flags
     background = False
-    if args and args[0] == '--bg':
-        background = True
-        args = args[1:]
+    include_files = False
+    while args and args[0].startswith('--'):
+        if args[0] == '--bg':
+            background = True
+            args = args[1:]
+        elif args[0] == '--include-files':
+            include_files = True
+            args = args[1:]
+        else:
+            break
     if len(args) < 2:
-        print("Usage: python download_url.py [--bg] <topic> <url1> [url2] [url3] ...")
-        print("  --bg  Run in background (non-blocking)")
+        print("Usage: python download_url.py [--bg] [--include-files] <topic> <url1> [url2] [url3] ...")
+        print("  --bg             Run in background (non-blocking)")
+        print("  --include-files  Download all file types (pdfs, images, etc)")
         print("Example: python download_url.py --bg 'research-topic' https://example.com/page1")
         sys.exit(1)
     conversation_topic = args[0]
     urls = args[1:]
     if background:
-        run_in_background(conversation_topic, urls)
+        run_in_background(conversation_topic, urls, include_files)
     else:
-        run_download(conversation_topic, urls)
+        run_download(conversation_topic, urls, include_files)
 
 if __name__ == '__main__':
     try:
