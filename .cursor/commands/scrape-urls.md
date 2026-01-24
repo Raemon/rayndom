@@ -1,6 +1,6 @@
 # scrape-urls
 
-For any url or description of how to find a url in the rest of my request, generate a short conversation topic name (e.g., "pet-euthanasia-research", "competitor-analysis", "product-docs") that describes the purpose of downloading these URLs, and then use python3 to run the downloadurl.py script to download the url(s) and save them and their child links in the /app/[conversationtopic]/downloads/[websitedomainname] folder in the current directory.
+For any url or description of how to find a url in the rest of my request, generate a short conversation topic name (e.g., "competitor-analysis", "product-docs") that describes the purpose of downloading these URLs, and then use python3 to run the downloadurl.py script to download the url(s) and save them and their child links in the /app/[conversationtopic]/downloads/[websitedomainname] folder in the current directory.
 
 The script supports multiple URLs and processes them in parallel for efficient batch downloading. When you find multiple relevant URLs during web search, you can pass them all at once:
     python download_url.py <conversationtopic> <url1> <url2> <url3> ...
@@ -30,3 +30,5 @@ TRADITIONAL SEQUENTIAL APPROACH (if you prefer to wait):
 4. Run: python download_url.py <topic> <url1> <url2> ...
 5. The script downloads all URLs in parallel, each crawling its domain
 6. HTML content is converted to markdown and saved as .md files; files with extensions (like .pdf, .txt) are saved with their original extension. All files can be read offline for analysis 
+
+Also run the create_conversation_topic.py script to create the conversation topic folder and page components, if those don't already exist.
