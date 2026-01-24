@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import VenuesGrid from './VenuesGrid'
+import DetailRowList from './DetailRowList'
 
 export type Venue = {
   name: string
@@ -71,15 +72,34 @@ const parseCsvToVenues = (csv: string): Venue[] => {
   })
 }
 
+const parseCsvToRows = (csv: string): {columns: string[], rows: Record<string, string>[]} => {
+  const lines = csv.split(/\r?\n/).filter((line) => line.trim().length > 0)
+  if (lines.length <= 1) return {columns: [], rows: []}
+  const headerLine = lines[0]
+  const columns = parseCsvLine(headerLine)
+  const dataLines = lines.slice(1)
+  const rows = dataLines.map((line) => {
+    const cols = parseCsvLine(line)
+    const row: Record<string, string> = {}
+    for (let i = 0; i < columns.length; i++) {
+      row[columns[i]] = cols[i] || ''
+    }
+    return row
+  })
+  return {columns, rows}
+}
+
 const WeddingVenuesPage = () => {
   const csvPath = path.join(process.cwd(), 'app', 'berkeley-wedding-venues', 'venues.csv')
   const csvText = fs.readFileSync(csvPath, 'utf8')
   const venues = parseCsvToVenues(csvText)
+  const {columns, rows} = parseCsvToRows(csvText)
   return (
     <div style={{padding: '20px', fontFamily: 'system-ui, sans-serif'}}>
       <h1 style={{margin: '0 0 8px 0', fontSize: '24px'}}>Wedding Venues Near Berkeley</h1>
       <p style={{margin: '0 0 16px 0', color: '#666', fontSize: '14px'}}>{venues.length} venues within ~1 hour drive</p>
       <VenuesGrid venues={venues} />
+      <DetailRowList rows={rows} columns={columns} rowNameKey="Name" />
     </div>
   )
 }
