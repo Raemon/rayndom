@@ -1,6 +1,0 @@
-  
-Loading...  
-  
-
-
-**Please enable Javascript!**
