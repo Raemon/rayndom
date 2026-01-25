@@ -3,12 +3,12 @@
 Download URLs and crawl all same-domain links, saving content as markdown.
 
 LLM USAGE:
-    python download_url.py <topic> <url1> [url2] [url3] ...          # blocking
+    python download_url.py <topic> <url1> [url2] [url3] ...          # blocking, top-level only
     python download_url.py --bg <topic> <url1> [url2] [url3] ...     # background (non-blocking)
-    python download_url.py --include-files <topic> <url1> ...        # include all file types
+    python download_url.py --include-files <topic> <url1> ...         # include all file types
     python download_url.py --js <topic> <url1> ...                   # use Playwright for JS-heavy pages
     python download_url.py --auto <topic> <url1> ...                 # auto-detect if JS rendering needed
-    python download_url.py --no-crawl <topic> <url1> ...             # only download specified URLs, don't follow links
+    python download_url.py --recurse-one <topic> <url1> ...          # follow links one level deep
     
     Examples:
         python download_url.py "ai-safety-research" https://example.com/article
@@ -16,9 +16,11 @@ LLM USAGE:
         python download_url.py --include-files "research" https://example.com  # downloads pdfs, images, etc
         python download_url.py --js "lesswrong" https://www.lesswrong.com/s/KfCjeconYRdFbMxsy
         python download_url.py --auto "research" https://example.com  # tries requests, falls back to Playwright
+        python download_url.py --recurse-one "research" https://example.com  # downloads page + direct links
     
     This will:
-    - Download each URL and crawl all same-domain links recursively
+    - Download each URL (by default, only the top-level URL)
+    - Use --recurse-one to follow links found on the top-level page (one level deep)
     - Convert HTML to markdown, preserve other file types as-is
     - Save to: downloads/<topic>/<domain>/*.md
     - Create metadata.json per domain with download info
@@ -241,29 +243,35 @@ def process_url(url, processed_urls, processed_urls_lock, base_domain, conversat
     saved_filename = f"{filename_base}.md"
     return (links, saved_filename, domain)
 
-def process_domain(start_url, conversation_topic, processed_urls, processed_urls_lock, include_files=False, use_js=False, auto_detect=False, no_crawl=False):
-    """Crawl a domain starting from URL, processing all same-domain links recursively."""
+def process_domain(start_url, conversation_topic, processed_urls, processed_urls_lock, include_files=False, use_js=False, auto_detect=False, recurse_one=False):
+    """Process a domain starting from URL. By default only downloads the top-level URL.
+    If recurse_one=True, follows links found on the top-level page (one level deep)."""
     base_domain = get_domain(start_url)
     url_file_map = {}  # Maps URL -> filename
     with processed_urls_lock:
         if base_domain not in processed_urls:
             processed_urls[base_domain] = set()
     urls_to_process = [start_url]
+    processed_level = {start_url: 0}  # Track depth level for each URL
     while urls_to_process:
         current_url = urls_to_process.pop(0)
+        current_level = processed_level.get(current_url, 0)
         new_links, saved_filename, domain = process_url(
             current_url, processed_urls, processed_urls_lock, base_domain, conversation_topic, include_files, use_js, auto_detect
         )
         if saved_filename:
             url_file_map[current_url] = saved_filename
-        if no_crawl:
-            continue  # Don't follow links
+        if not recurse_one:
+            continue  # By default, don't follow links
+        if current_level >= 1:
+            continue  # Only process one level deep
         with processed_urls_lock:
             domain_set = processed_urls.get(base_domain, set())
             for link in new_links:
                 link_domain = get_domain(link)
                 if link_domain == base_domain and link not in domain_set:
                     urls_to_process.append(link)
+                    processed_level[link] = current_level + 1
     with processed_urls_lock:
         all_urls = list(processed_urls[base_domain])
     main_file = url_file_map.get(start_url)
@@ -275,7 +283,7 @@ def process_domain(start_url, conversation_topic, processed_urls, processed_urls
         "allUrls": all_urls
     }
 
-def run_in_background(conversation_topic, urls, include_files=False, use_js=False, auto_detect=False, no_crawl=False):
+def run_in_background(conversation_topic, urls, include_files=False, use_js=False, auto_detect=False, recurse_one=False):
     """Re-launch this script as a background process without --bg flag."""
     # Strip query params and deduplicate before spawning background process
     urls = list(dict.fromkeys(strip_query_params(url) for url in urls))
@@ -287,8 +295,8 @@ def run_in_background(conversation_topic, urls, include_files=False, use_js=Fals
         cmd.append('--js')
     if auto_detect:
         cmd.append('--auto')
-    if no_crawl:
-        cmd.append('--no-crawl')
+    if recurse_one:
+        cmd.append('--recurse-one')
     cmd.extend([conversation_topic] + urls)
     if os.name == 'nt':  # Windows
         subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)
@@ -302,7 +310,7 @@ def run_in_background(conversation_topic, urls, include_files=False, use_js=Fals
     print(f"Started background download for {len(urls)} URL(s) in topic '{conversation_topic}'")
     print(f"Downloads will be saved to: downloads/{conversation_topic}/")
 
-def run_download(conversation_topic, start_urls, include_files=False, use_js=False, auto_detect=False, no_crawl=False):
+def run_download(conversation_topic, start_urls, include_files=False, use_js=False, auto_detect=False, recurse_one=False):
     """Main download logic: process all URLs in parallel, save results."""
     # Strip query params and deduplicate input URLs
     normalized_urls = list(dict.fromkeys(strip_query_params(url) for url in start_urls))
@@ -317,14 +325,16 @@ def run_download(conversation_topic, start_urls, include_files=False, use_js=Fal
         print("Using Playwright for JavaScript rendering")
     elif auto_detect:
         print("Auto-detecting JS-heavy pages (will retry with Playwright if needed)")
-    if no_crawl:
-        print("Not following links (--no-crawl)")
+    if recurse_one:
+        print("Following links one level deep (--recurse-one)")
+    else:
+        print("Only downloading top-level URLs (use --recurse-one to follow links one level)")
     processed_urls = {}
     processed_urls_lock = Lock()
     domain_results = []
     with ThreadPoolExecutor(max_workers=min(len(start_urls), 10)) as executor:
         future_to_url = {
-            executor.submit(process_domain, url, conversation_topic, processed_urls, processed_urls_lock, include_files, use_js, auto_detect, no_crawl): url
+            executor.submit(process_domain, url, conversation_topic, processed_urls, processed_urls_lock, include_files, use_js, auto_detect, recurse_one): url
             for url in start_urls
         }
         for future in as_completed(future_to_url):
@@ -363,7 +373,7 @@ def main():
     include_files = False
     use_js = False
     auto_detect = False
-    no_crawl = False
+    recurse_one = False
     while args and args[0].startswith('--'):
         if args[0] == '--bg':
             background = True
@@ -377,27 +387,27 @@ def main():
         elif args[0] == '--auto':
             auto_detect = True
             args = args[1:]
-        elif args[0] == '--no-crawl':
-            no_crawl = True
+        elif args[0] == '--recurse-one':
+            recurse_one = True
             args = args[1:]
         else:
             break
     if len(args) < 2:
-        print("Usage: python download_url.py [--bg] [--include-files] [--js] [--auto] [--no-crawl] <topic> <url1> [url2] [url3] ...")
+        print("Usage: python download_url.py [--bg] [--include-files] [--js] [--auto] [--recurse-one] <topic> <url1> [url2] [url3] ...")
         print("  --bg             Run in background (non-blocking)")
         print("  --include-files  Download all file types (pdfs, images, etc)")
         print("  --js             Use Playwright for JS-heavy pages (React, Vue, etc)")
         print("  --auto           Auto-detect JS pages and retry with Playwright if needed")
-        print("  --no-crawl       Only download specified URLs, don't follow links")
+        print("  --recurse-one    Follow links one level deep (default: top-level URL only)")
         print("Example: python download_url.py --bg 'research-topic' https://example.com/page1")
         print("Example: python download_url.py --js 'lesswrong' https://www.lesswrong.com/posts/...")
         sys.exit(1)
     conversation_topic = args[0]
     urls = args[1:]
     if background:
-        run_in_background(conversation_topic, urls, include_files, use_js, auto_detect, no_crawl)
+        run_in_background(conversation_topic, urls, include_files, use_js, auto_detect, recurse_one)
     else:
-        run_download(conversation_topic, urls, include_files, use_js, auto_detect, no_crawl)
+        run_download(conversation_topic, urls, include_files, use_js, auto_detect, recurse_one)
 
 if __name__ == '__main__':
     try:

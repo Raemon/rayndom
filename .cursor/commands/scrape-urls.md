@@ -5,7 +5,7 @@ For any url or description of how to find a url in the rest of my request, gener
 The script supports multiple URLs and processes them in parallel for efficient batch downloading. When you find multiple relevant URLs during web search, you can pass them all at once:
     python tools/download_url.py <conversationtopic> <url1> <url2> <url3> ...
 
-Each URL will be processed independently, crawling all same-domain links recursively. Different domains are handled separately and saved in their own subdirectories.
+Each URL will be processed independently, downloading only the top-level URL (no recursion). Different domains are handled separately and saved in their own subdirectories.
 `
 The conversation topic should be a short, descriptive identifier that groups related downloads together (e.g., use kebab-case or lowercase with hyphens).
 
