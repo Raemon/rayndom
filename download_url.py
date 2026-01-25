@@ -20,11 +20,11 @@ LLM USAGE:
     This will:
     - Download each URL and crawl all same-domain links recursively
     - Convert HTML to markdown, preserve other file types as-is
-    - Save to: app/<topic>/downloads/<domain>/*.md
+    - Save to: downloads/<topic>/<domain>/*.md
     - Create metadata.json per domain with download info
     
     Use --bg when you want to continue other tasks while downloads run in parallel.
-    Background logs saved to: app/<topic>/downloads/.logs/
+    Background logs saved to: downloads/<topic>/.logs/
     
     Use --js for JavaScript-heavy sites (React, Vue, Angular, etc.) that need browser rendering.
     Use --auto to automatically detect and retry with Playwright if content looks JS-rendered.
@@ -213,7 +213,7 @@ def process_url(url, processed_urls, processed_urls_lock, base_domain, conversat
             content, is_binary, content_type = download_content_js(url)
     if content is None:
         return ([], None, domain)
-    domain_dir = os.path.join('app', conversation_topic, 'downloads', domain)
+    domain_dir = os.path.join('downloads', conversation_topic, domain)
     os.makedirs(domain_dir, exist_ok=True)
     filename_base = sanitize_filename(url)
     url_ext = get_url_extension(url)
@@ -293,14 +293,14 @@ def run_in_background(conversation_topic, urls, include_files=False, use_js=Fals
     if os.name == 'nt':  # Windows
         subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)
     else:  # Unix-like (macOS, Linux)
-        log_dir = os.path.join('app', conversation_topic, 'downloads', '.logs')
+        log_dir = os.path.join('downloads', conversation_topic, '.logs')
         os.makedirs(log_dir, exist_ok=True)
         url_hash = hashlib.md5(' '.join(urls).encode()).hexdigest()[:8]
         log_file = os.path.join(log_dir, f'download_{url_hash}.log')
         with open(log_file, 'w') as log:
             subprocess.Popen(cmd, stdout=log, stderr=log, start_new_session=True)
     print(f"Started background download for {len(urls)} URL(s) in topic '{conversation_topic}'")
-    print(f"Downloads will be saved to: app/{conversation_topic}/downloads/")
+    print(f"Downloads will be saved to: downloads/{conversation_topic}/")
 
 def run_download(conversation_topic, start_urls, include_files=False, use_js=False, auto_detect=False, no_crawl=False):
     """Main download logic: process all URLs in parallel, save results."""
@@ -347,7 +347,7 @@ def run_download(conversation_topic, start_urls, include_files=False, use_js=Fal
             "otherUrls": result['otherUrls'],
             "dateDownloaded": datetime.now().isoformat()
         }]
-        domain_dir = os.path.join('app', conversation_topic, 'downloads', domain)
+        domain_dir = os.path.join('downloads', conversation_topic, domain)
         os.makedirs(domain_dir, exist_ok=True)
         metadata_path = os.path.join(domain_dir, 'metadata.json')
         with open(metadata_path, 'w', encoding='utf-8') as f:

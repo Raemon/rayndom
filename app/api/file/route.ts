@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
   if (!topic || !domain || !file) {
     return NextResponse.json({ error: 'Missing topic, domain or file parameter' }, { status: 400 })
   }
-  const filePath = path.join(process.cwd(), 'app', topic, 'downloads', domain, file)
+  const filePath = path.join(process.cwd(), 'downloads', topic, domain, file)
   if (!fs.existsSync(filePath)) {
     return NextResponse.json({ error: 'File not found' }, { status: 404 })
   }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { DomainInfo, SelectedFile } from './ConversationTopicPage'
 
 type Props = {
@@ -6,14 +6,40 @@ type Props = {
   selectedFile: SelectedFile | null
   onSelectFile: (file: SelectedFile | null) => void
   initiallyExpanded?: boolean
+  topic: string
 }
 
-const ConversationTopicSiteItem = ({domainInfo, selectedFile, onSelectFile, initiallyExpanded = false}: Props) => {
+const ConversationTopicSiteItem = ({domainInfo, selectedFile, onSelectFile, initiallyExpanded = false, topic}: Props) => {
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded)
+  const [files, setFiles] = useState<string[]>(domainInfo.files)
+  const [loading, setLoading] = useState(false)
+  const [hasLoaded, setHasLoaded] = useState(domainInfo.files.length > 0)
+  const [loadError, setLoadError] = useState(false)
+  const [loadAttempt, setLoadAttempt] = useState(0)
   const isSupported = (file: string) => {
     const ext = file.split('.').pop()?.toLowerCase()
     return ext === 'md' || ext === 'pdf' || ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'].includes(ext || '')
   }
+  useEffect(() => {
+    if (isExpanded && !hasLoaded && !loading) {
+      setLoading(true)
+      setLoadError(false)
+      fetch(`/api/files?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(domainInfo.domain)}`)
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load files')
+          return res.json()
+        })
+        .then(data => {
+          setFiles(data.files || [])
+          setHasLoaded(true)
+          setLoading(false)
+        })
+        .catch(() => {
+          setLoadError(true)
+          setLoading(false)
+        })
+    }
+  }, [isExpanded, hasLoaded, loadAttempt, topic, domainInfo.domain])
 
   return (
     <div className="mb-3">
@@ -23,8 +49,12 @@ const ConversationTopicSiteItem = ({domainInfo, selectedFile, onSelectFile, init
         </svg>
         {domainInfo.domain}
       </h3>
-      {isExpanded && <ul className="m-0 pl-4 text-xs">
-        {domainInfo.files.map(file => {
+      {isExpanded && loading && <div className="text-xs text-gray-500 pl-4">Loading...</div>}
+      {isExpanded && loadError && !loading && <div className="text-xs text-red-400 pl-4">
+        Failed to load files. <span className="cursor-pointer underline" onClick={() => setLoadAttempt(loadAttempt + 1)}>Retry</span>
+      </div>}
+      {isExpanded && !loading && !loadError && <ul className="m-0 pl-4 text-xs">
+        {files.map(file => {
           const supported = isSupported(file)
           const isSelected = selectedFile?.domain === domainInfo.domain && selectedFile?.file === file
           return (

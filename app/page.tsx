@@ -7,6 +7,7 @@ function getRouteDirectories() {
   const entries = fs.readdirSync(appDir, { withFileTypes: true })
   return entries
     .filter(entry => entry.isDirectory())
+    .filter(dir => dir.name !== 'downloads')
     .filter(dir => {
       const pagePath = path.join(appDir, dir.name, 'page.tsx')
       return fs.existsSync(pagePath)

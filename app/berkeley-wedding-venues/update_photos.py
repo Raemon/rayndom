@@ -9,7 +9,7 @@ from urllib.parse import urlparse
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-DOWNLOADS_DIR = Path(__file__).parent / "downloads"
+DOWNLOADS_DIR = Path(__file__).resolve().parents[2] / "downloads" / "berkeley-wedding-venues"
 CSV_PATH = Path(__file__).parent / "venues.csv"
 
 # Patterns to exclude (logos, icons, small images, etc.)

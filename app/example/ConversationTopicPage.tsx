@@ -78,6 +78,7 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
               selectedFile={selectedFile}
               onSelectFile={setSelectedFile}
               initiallyExpanded={index === 0}
+              topic={topic}
             />
           ))}
         </div>

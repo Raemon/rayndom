@@ -3,7 +3,7 @@ import path from 'path'
 import ConversationTopicPage, { DomainInfo } from './ConversationTopicPage'
 
 export function getDomainsFromDownloads(topic: string): DomainInfo[] {
-  const downloadsPath = path.join(process.cwd(), 'app', topic, 'downloads')
+  const downloadsPath = path.join(process.cwd(), `downloads/${topic}`)
   if (!fs.existsSync(downloadsPath)) return []
   const entries = fs.readdirSync(downloadsPath, { withFileTypes: true })
   const domainFolders = entries.filter(e => e.isDirectory() && !e.name.startsWith('.'))

@@ -149,7 +149,7 @@ def main():
         domains[domain].append(url)
     results = []
     for domain, domain_urls in domains.items():
-        output_dir = os.path.join('app', topic, 'downloads', domain)
+        output_dir = os.path.join('downloads', topic, domain)
         processed = set()
         to_process = list(domain_urls)
         while to_process:

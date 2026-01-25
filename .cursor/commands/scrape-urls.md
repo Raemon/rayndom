@@ -1,6 +1,6 @@
 # scrape-urls
 
-For any url or description of how to find a url in the rest of my request, generate a short conversation topic name (e.g., "competitor-analysis", "product-docs") that describes the purpose of downloading these URLs, and then use python3 to run the downloadurl.py script to download the url(s) and save them and their child links in the /app/[conversationtopic]/downloads/[websitedomainname] folder in the current directory.
+For any url or description of how to find a url in the rest of my request, generate a short conversation topic name (e.g., "competitor-analysis", "product-docs") that describes the purpose of downloading these URLs, and then use python3 to run the downloadurl.py script to download the url(s) and save them and their child links in the /downloads/[conversationtopic]/[websitedomainname] folder in the current directory.
 
 The script supports multiple URLs and processes them in parallel for efficient batch downloading. When you find multiple relevant URLs during web search, you can pass them all at once:
     python download_url.py <conversationtopic> <url1> <url2> <url3> ...
