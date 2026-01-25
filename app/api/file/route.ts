@@ -32,6 +32,9 @@ export async function GET(request: NextRequest) {
     return new NextResponse(buffer, {
       headers: { 'Content-Type': 'application/pdf' }
     })
+  } else if (ext === '.csv') {
+    const content = fs.readFileSync(filePath, 'utf-8')
+    return NextResponse.json({ type: 'csv', content })
   }
   return NextResponse.json({ error: 'Unsupported file type' }, { status: 400 })
 }

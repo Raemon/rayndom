@@ -9,6 +9,7 @@ LLM USAGE:
     python download_url.py --js <topic> <url1> ...                   # use Playwright for JS-heavy pages
     python download_url.py --auto <topic> <url1> ...                 # auto-detect if JS rendering needed
     python download_url.py --recurse-one <topic> <url1> ...          # follow links one level deep
+    python download_url.py --subtopic <subtopic> <topic> <url1> ...  # organize files in subtopic subdirectory
     
     Examples:
         python download_url.py "ai-safety-research" https://example.com/article
@@ -22,7 +23,7 @@ LLM USAGE:
     - Download each URL (by default, only the top-level URL)
     - Use --recurse-one to follow links found on the top-level page (one level deep)
     - Convert HTML to markdown, preserve other file types as-is
-    - Save to: downloads/<topic>/<domain>/*.md
+    - Save to: downloads/<topic>/<domain>/*.md (or downloads/<topic>/<subtopic>/<domain>/*.md if --subtopic is provided)
     - Create metadata.json per domain with download info
     
     Use --bg when you want to continue other tasks while downloads run in parallel.
@@ -189,7 +190,7 @@ def html_to_markdown(html):
     markdown = h.handle(str(body))
     return markdown
 
-def process_url(url, processed_urls, processed_urls_lock, base_domain, conversation_topic, include_files=False, use_js=False, auto_detect=False):
+def process_url(url, processed_urls, processed_urls_lock, base_domain, conversation_topic, subtopic=None, include_files=False, use_js=False, auto_detect=False):
     """Process single URL: download, save (as .md for HTML, original ext otherwise), return discovered links."""
     domain = get_domain(url)
     url_ext = get_url_extension(url)
@@ -215,7 +216,10 @@ def process_url(url, processed_urls, processed_urls_lock, base_domain, conversat
             content, is_binary, content_type = download_content_js(url)
     if content is None:
         return ([], None, domain)
-    domain_dir = os.path.join('downloads', conversation_topic, domain)
+    if subtopic:
+        domain_dir = os.path.join('downloads', conversation_topic, subtopic, domain)
+    else:
+        domain_dir = os.path.join('downloads', conversation_topic, domain)
     os.makedirs(domain_dir, exist_ok=True)
     filename_base = sanitize_filename(url)
     url_ext = get_url_extension(url)
@@ -243,7 +247,7 @@ def process_url(url, processed_urls, processed_urls_lock, base_domain, conversat
     saved_filename = f"{filename_base}.md"
     return (links, saved_filename, domain)
 
-def process_domain(start_url, conversation_topic, processed_urls, processed_urls_lock, include_files=False, use_js=False, auto_detect=False, recurse_one=False):
+def process_domain(start_url, conversation_topic, subtopic=None, processed_urls=None, processed_urls_lock=None, include_files=False, use_js=False, auto_detect=False, recurse_one=False):
     """Process a domain starting from URL. By default only downloads the top-level URL.
     If recurse_one=True, follows links found on the top-level page (one level deep)."""
     base_domain = get_domain(start_url)
@@ -257,7 +261,7 @@ def process_domain(start_url, conversation_topic, processed_urls, processed_urls
         current_url = urls_to_process.pop(0)
         current_level = processed_level.get(current_url, 0)
         new_links, saved_filename, domain = process_url(
-            current_url, processed_urls, processed_urls_lock, base_domain, conversation_topic, include_files, use_js, auto_detect
+            current_url, processed_urls, processed_urls_lock, base_domain, conversation_topic, subtopic, include_files, use_js, auto_detect
         )
         if saved_filename:
             url_file_map[current_url] = saved_filename
@@ -283,7 +287,7 @@ def process_domain(start_url, conversation_topic, processed_urls, processed_urls
         "allUrls": all_urls
     }
 
-def run_in_background(conversation_topic, urls, include_files=False, use_js=False, auto_detect=False, recurse_one=False):
+def run_in_background(conversation_topic, urls, subtopic=None, include_files=False, use_js=False, auto_detect=False, recurse_one=False):
     """Re-launch this script as a background process without --bg flag."""
     # Strip query params and deduplicate before spawning background process
     urls = list(dict.fromkeys(strip_query_params(url) for url in urls))
@@ -297,20 +301,30 @@ def run_in_background(conversation_topic, urls, include_files=False, use_js=Fals
         cmd.append('--auto')
     if recurse_one:
         cmd.append('--recurse-one')
-    cmd.extend([conversation_topic] + urls)
+    cmd.append(conversation_topic)
+    if subtopic:
+        cmd.append('--subtopic')
+        cmd.append(subtopic)
+    cmd.extend(urls)
     if os.name == 'nt':  # Windows
         subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)
     else:  # Unix-like (macOS, Linux)
-        log_dir = os.path.join('downloads', conversation_topic, '.logs')
+        if subtopic:
+            log_dir = os.path.join('downloads', conversation_topic, subtopic, '.logs')
+        else:
+            log_dir = os.path.join('downloads', conversation_topic, '.logs')
         os.makedirs(log_dir, exist_ok=True)
         url_hash = hashlib.md5(' '.join(urls).encode()).hexdigest()[:8]
         log_file = os.path.join(log_dir, f'download_{url_hash}.log')
         with open(log_file, 'w') as log:
             subprocess.Popen(cmd, stdout=log, stderr=log, start_new_session=True)
     print(f"Started background download for {len(urls)} URL(s) in topic '{conversation_topic}'")
-    print(f"Downloads will be saved to: downloads/{conversation_topic}/")
+    if subtopic:
+        print(f"Downloads will be saved to: downloads/{conversation_topic}/{subtopic}/")
+    else:
+        print(f"Downloads will be saved to: downloads/{conversation_topic}/")
 
-def run_download(conversation_topic, start_urls, include_files=False, use_js=False, auto_detect=False, recurse_one=False):
+def run_download(conversation_topic, start_urls, subtopic=None, include_files=False, use_js=False, auto_detect=False, recurse_one=False):
     """Main download logic: process all URLs in parallel, save results."""
     # Strip query params and deduplicate input URLs
     normalized_urls = list(dict.fromkeys(strip_query_params(url) for url in start_urls))
@@ -319,6 +333,8 @@ def run_download(conversation_topic, start_urls, include_files=False, use_js=Fal
     start_urls = normalized_urls
     print(f"Processing {len(start_urls)} URL(s) in parallel...")
     print(f"Conversation topic: {conversation_topic}")
+    if subtopic:
+        print(f"Subtopic: {subtopic}")
     if not include_files:
         print("Skipping file downloads (use --include-files to download pdfs, images, etc)")
     if use_js:
@@ -334,7 +350,7 @@ def run_download(conversation_topic, start_urls, include_files=False, use_js=Fal
     domain_results = []
     with ThreadPoolExecutor(max_workers=min(len(start_urls), 10)) as executor:
         future_to_url = {
-            executor.submit(process_domain, url, conversation_topic, processed_urls, processed_urls_lock, include_files, use_js, auto_detect, recurse_one): url
+            executor.submit(process_domain, url, conversation_topic, subtopic, processed_urls, processed_urls_lock, include_files, use_js, auto_detect, recurse_one): url
             for url in start_urls
         }
         for future in as_completed(future_to_url):
@@ -357,7 +373,10 @@ def run_download(conversation_topic, start_urls, include_files=False, use_js=Fal
             "otherUrls": result['otherUrls'],
             "dateDownloaded": datetime.now().isoformat()
         }]
-        domain_dir = os.path.join('downloads', conversation_topic, domain)
+        if subtopic:
+            domain_dir = os.path.join('downloads', conversation_topic, subtopic, domain)
+        else:
+            domain_dir = os.path.join('downloads', conversation_topic, domain)
         os.makedirs(domain_dir, exist_ok=True)
         metadata_path = os.path.join(domain_dir, 'metadata.json')
         with open(metadata_path, 'w', encoding='utf-8') as f:
@@ -374,6 +393,7 @@ def main():
     use_js = False
     auto_detect = False
     recurse_one = False
+    subtopic = None
     while args and args[0].startswith('--'):
         if args[0] == '--bg':
             background = True
@@ -390,24 +410,32 @@ def main():
         elif args[0] == '--recurse-one':
             recurse_one = True
             args = args[1:]
+        elif args[0] == '--subtopic':
+            if len(args) < 2:
+                print("Error: --subtopic requires a value")
+                sys.exit(1)
+            subtopic = args[1]
+            args = args[2:]
         else:
             break
     if len(args) < 2:
-        print("Usage: python download_url.py [--bg] [--include-files] [--js] [--auto] [--recurse-one] <topic> <url1> [url2] [url3] ...")
+        print("Usage: python download_url.py [--bg] [--include-files] [--js] [--auto] [--recurse-one] [--subtopic <subtopic>] <topic> <url1> [url2] [url3] ...")
         print("  --bg             Run in background (non-blocking)")
         print("  --include-files  Download all file types (pdfs, images, etc)")
         print("  --js             Use Playwright for JS-heavy pages (React, Vue, etc)")
         print("  --auto           Auto-detect JS pages and retry with Playwright if needed")
         print("  --recurse-one    Follow links one level deep (default: top-level URL only)")
+        print("  --subtopic       Optional subtopic for organizing downloads")
         print("Example: python download_url.py --bg 'research-topic' https://example.com/page1")
         print("Example: python download_url.py --js 'lesswrong' https://www.lesswrong.com/posts/...")
+        print("Example: python download_url.py --subtopic 'ai-safety' 'research-topic' https://example.com/page1")
         sys.exit(1)
     conversation_topic = args[0]
     urls = args[1:]
     if background:
-        run_in_background(conversation_topic, urls, include_files, use_js, auto_detect, recurse_one)
+        run_in_background(conversation_topic, urls, subtopic, include_files, use_js, auto_detect, recurse_one)
     else:
-        run_download(conversation_topic, urls, include_files, use_js, auto_detect, recurse_one)
+        run_download(conversation_topic, urls, subtopic, include_files, use_js, auto_detect, recurse_one)
 
 if __name__ == '__main__':
     try:

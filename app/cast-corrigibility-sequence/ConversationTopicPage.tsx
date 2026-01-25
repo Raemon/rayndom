@@ -1,8 +1,13 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { marked } from 'marked'
 import ConversationTopicSiteItem from './ConversationTopicSiteItem'
 import MarkdownContent from './MarkdownContent'
+import DetailRowList from '../berkeley-wedding-venues/DetailRowList'
+import { AgGridReact } from 'ag-grid-react'
+import { AllCommunityModule, ModuleRegistry, ColDef } from 'ag-grid-community'
+
+ModuleRegistry.registerModules([AllCommunityModule])
 
 export type DomainInfo = {
   domain: string
@@ -21,25 +26,63 @@ type Props = {
   title?: string
 }
 
-const ConversationTopicPage = ({ domains, topic, title }: Props) => {
-  const [selectedFile, setSelectedFile] = useState<SelectedFile | null>(null)
-  const [content, setContent] = useState<string | null>(null)
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    if (domains.length > 0 && domains[0].files.length > 0) {
-      setSelectedFile({ domain: domains[0].domain, file: domains[0].files[0] })
+const parseCsvLine = (line: string): string[] => {
+  const result: string[] = []
+  let current = ''
+  let inQuotes = false
+  const lineCharacters = line.split('')
+  for (const char of lineCharacters) {
+    if (char === '"') {
+      inQuotes = !inQuotes
+    } else if (char === ',' && !inQuotes) {
+      result.push(current.trim())
+      current = ''
+    } else {
+      current += char
     }
-  }, [])
+  }
+  result.push(current.trim())
+  return result
+}
+
+const parseCsvToRows = (csv: string): {columns: string[], rows: Record<string, string>[]} => {
+  const lines = csv.split(/\r?\n/).filter((line) => line.trim().length > 0)
+  if (lines.length <= 1) return {columns: [], rows: []}
+  const headerLine = lines[0]
+  const columns = parseCsvLine(headerLine)
+  const dataLines = lines.slice(1)
+  const rows = dataLines.map((line) => {
+    const cols = parseCsvLine(line)
+    const row: Record<string, string> = {}
+    for (let i = 0; i < columns.length; i++) {
+      row[columns[i]] = cols[i] || ''
+    }
+    return row
+  })
+  return {columns, rows}
+}
+
+const ConversationTopicPage = ({ domains, topic, title }: Props) => {
+  const [selectedFile, setSelectedFile] = useState<SelectedFile | null>(() => {
+    if (domains.length > 0 && domains[0].files.length > 0) {
+      return { domain: domains[0].domain, file: domains[0].files[0] }
+    }
+    return null
+  })
+  const [content, setContent] = useState<string | null>(null)
+  const [csvData, setCsvData] = useState<{columns: string[], rows: Record<string, string>[]} | null>(null)
+  const handleSelectFile = (nextFile: SelectedFile | null) => {
+    setSelectedFile(nextFile)
+    setContent(null)
+    setCsvData(null)
+  }
 
   useEffect(() => {
     if (!selectedFile) {
-      setContent(null)
       return
     }
     const ext = selectedFile.file.split('.').pop()?.toLowerCase()
     if (ext === 'md') {
-      setLoading(true)
       fetch(`/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(selectedFile.domain)}&file=${encodeURIComponent(selectedFile.file)}`)
         .then(res => res.json())
         .then(data => {
@@ -47,24 +90,59 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
             const renderer = new marked.Renderer()
             renderer.image = () => ''
             setContent(marked.parse(data.content, { renderer }) as string)
+          } else {
+            setContent('')
           }
-          setLoading(false)
         })
-        .catch(() => setLoading(false))
+        .catch(() => setContent(''))
+    } else if (ext === 'csv') {
+      fetch(`/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(selectedFile.domain)}&file=${encodeURIComponent(selectedFile.file)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.type === 'csv') {
+            const parsed = parseCsvToRows(data.content)
+            setCsvData(parsed)
+          } else {
+            setCsvData({columns: [], rows: []})
+          }
+        })
+        .catch(() => setCsvData({columns: [], rows: []}))
     }
-  }, [selectedFile])
+  }, [selectedFile, topic])
 
-  const getFileType = (file: string): 'markdown' | 'image' | 'pdf' | 'unknown' => {
+  const getFileType = (file: string): 'markdown' | 'image' | 'pdf' | 'csv' | 'unknown' => {
     const ext = file.split('.').pop()?.toLowerCase()
     if (ext === 'md') return 'markdown'
     if (['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'].includes(ext || '')) return 'image'
     if (ext === 'pdf') return 'pdf'
+    if (ext === 'csv') return 'csv'
     return 'unknown'
   }
 
   const getFileUrl = (domain: string, file: string) => {
     return `/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(domain)}&file=${encodeURIComponent(file)}`
   }
+  const csvColumnDefs = useMemo<ColDef[]>(() => {
+    if (!csvData) return []
+    return csvData.columns.map((column) => ({
+      field: column,
+      headerName: column,
+    }))
+  }, [csvData])
+  const csvDefaultColDef = useMemo(() => ({
+    resizable: true,
+    sortable: true,
+    filter: true,
+  }), [])
+  const csvRowNameKey = useMemo(() => {
+    if (!csvData || csvData.columns.length === 0) return ''
+    if (csvData.columns.includes('Name')) return 'Name'
+    return csvData.columns[0]
+  }, [csvData])
+  const isLoading = selectedFile && (
+    (getFileType(selectedFile.file) === 'markdown' && content === null) ||
+    (getFileType(selectedFile.file) === 'csv' && csvData === null)
+  )
 
   return (
     <div className="p-5 flex gap-5">
@@ -76,7 +154,7 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
               key={domainInfo.domain}
               domainInfo={domainInfo}
               selectedFile={selectedFile}
-              onSelectFile={setSelectedFile}
+              onSelectFile={handleSelectFile}
               initiallyExpanded={index === 0}
             />
           ))}
@@ -87,17 +165,33 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
           <div>
             <div className="mb-2 text-xs text-gray-600">
               {selectedFile.domain}/{selectedFile.file}
-              <button onClick={() => setSelectedFile(null)} className="ml-2 cursor-pointer">×</button>
+              <button onClick={() => handleSelectFile(null)} className="ml-2 cursor-pointer">×</button>
             </div>
-            {loading && <div>Loading...</div>}
-            {!loading && getFileType(selectedFile.file) === 'markdown' && content && (
+            {isLoading && <div>Loading...</div>}
+            {!isLoading && getFileType(selectedFile.file) === 'markdown' && content && (
               <MarkdownContent html={content} />
             )}
-            {!loading && getFileType(selectedFile.file) === 'image' && (
+            {!isLoading && getFileType(selectedFile.file) === 'image' && (
               <img src={getFileUrl(selectedFile.domain, selectedFile.file)} alt={selectedFile.file} className="max-w-full" />
             )}
-            {!loading && getFileType(selectedFile.file) === 'pdf' && (
+            {!isLoading && getFileType(selectedFile.file) === 'pdf' && (
               <iframe src={getFileUrl(selectedFile.domain, selectedFile.file)} className="w-full h-[80vh] border-none" />
+            )}
+            {!isLoading && getFileType(selectedFile.file) === 'csv' && csvData && (
+              <div>
+                <div className="h-[60vh]">
+                  <AgGridReact
+                    rowData={csvData.rows}
+                    columnDefs={csvColumnDefs}
+                    defaultColDef={csvDefaultColDef}
+                    pagination={true}
+                    paginationPageSize={50}
+                    headerHeight={40}
+                    animateRows={true}
+                  />
+                </div>
+                {csvRowNameKey && <DetailRowList rows={csvData.rows} columns={csvData.columns} rowNameKey={csvRowNameKey} />}
+              </div>
             )}
             {selectedFile.showAsIframe && (
               <iframe src={`https://${selectedFile.domain}`} className="w-full h-[80vh] border-none" />

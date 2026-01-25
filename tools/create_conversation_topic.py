@@ -24,7 +24,7 @@ def to_kebab_case(text: str) -> str:
 
 def create_conversation_topic(topic_name: str):
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    app_dir = os.path.join(script_dir, 'app')
+    app_dir = os.path.abspath(os.path.join(script_dir, '..', 'app'))
     
     folder_name = to_kebab_case(topic_name)
     title = to_title_case(topic_name)
