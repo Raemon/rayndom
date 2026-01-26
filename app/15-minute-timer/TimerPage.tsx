@@ -228,7 +228,6 @@ const TimerPage = ({}:{}) => {
     <div className="p-4 text-sm" onClick={isAlarming ? stopAlarming : undefined}>
       <div className="mb-4">
         <div className="text-2xl font-bold mb-2">
-          {isAlarming && <span className="text-red-600 mr-2">TIME UP!</span>}
           {formatTime(secondsRemaining)}
         </div>
         <div className="flex items-center gap-2">
