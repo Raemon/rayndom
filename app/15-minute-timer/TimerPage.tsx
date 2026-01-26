@@ -1,5 +1,11 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
+import DaySection from './DaySection'
+import TagSidebar from './TagSidebar'
+import { useTags } from './hooks/useTags'
+import { useTimeblocks } from './hooks/useTimeblocks'
+import { useTagInstances } from './hooks/useTagInstances'
+import type { Timeblock } from './types'
 
 type AlarmSound = {
   name: string
@@ -54,18 +60,32 @@ const ALARM_SOUNDS: AlarmSound[] = [
   { name: 'Beep', play: playBeep },
 ]
 
+type ChecklistItem = { id: number; title: string; completed: boolean }
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 const TimerPage = ({}:{}) => {
   const [secondsRemaining, setSecondsRemaining] = useState(0)
   const [selectedSoundIndex, setSelectedSoundIndex] = useState(0)
-  const [checklistItems, setChecklistItems] = useState<string[]>([])
-  const [checkedItems, setCheckedItems] = useState<Set<number>>(new Set())
+  const [checklistItems, setChecklistItems] = useState<ChecklistItem[]>([])
   const [newItem, setNewItem] = useState('')
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default')
   const [isAlarming, setIsAlarming] = useState(false)
+  const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
   const audioContextRef = useRef<AudioContext | null>(null)
   const selectedSoundIndexRef = useRef(0)
   const prevSecondsRef = useRef<number | null>(null)
   const flashIntervalRef = useRef<NodeJS.Timeout | null>(null)
+  const checklistItemsRef = useRef<ChecklistItem[]>([])
+
+  const endDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+  const startDate = new Date(new Date().getTime() - 14 * 24 * 60 * 60 * 1000)
+  startDate.setHours(0, 0, 0, 0)
+  endDate.setHours(0, 0, 0, 0)
+  const startIso = startDate.toISOString()
+  const endIso = endDate.toISOString()
+  const { tags, createTag, updateTag, deleteTag } = useTags()
+  const { timeblocks, createTimeblock, patchTimeblockDebounced } = useTimeblocks({ start: startIso, end: endIso })
+  const { tagInstances, createTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
 
   const getNext15MinuteMark = () => {
     const now = new Date()
@@ -94,10 +114,13 @@ const TimerPage = ({}:{}) => {
   }
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
     if ('Notification' in window) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setNotificationPermission(Notification.permission)
     }
+    fetch('/api/checklist').then(r => r.json()).then(setChecklistItems)
     return () => {
       if (audioContextRef.current) {
         audioContextRef.current.close()
@@ -161,7 +184,12 @@ const TimerPage = ({}:{}) => {
   }, [selectedSoundIndex])
 
   useEffect(() => {
+    checklistItemsRef.current = checklistItems
+  }, [checklistItems])
+
+  useEffect(() => {
     const initial = getNext15MinuteMark()
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSecondsRemaining(initial)
     prevSecondsRef.current = initial
     const interval = setInterval(() => {
@@ -175,6 +203,13 @@ const TimerPage = ({}:{}) => {
         playAlarm()
         showNotification()
         startAlarming()
+        // Reset all items to unchecked
+        checklistItemsRef.current.forEach(item => {
+          if (item.completed) {
+            fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: item.id, completed: false }) })
+          }
+        })
+        setChecklistItems(items => items.map(item => ({ ...item, completed: false })))
         // Play alarm multiple times to be more noticeable
         setTimeout(playAlarm, 500)
         setTimeout(playAlarm, 1000)
@@ -197,34 +232,26 @@ const TimerPage = ({}:{}) => {
     playAlarm()
   }, [selectedSoundIndex])
 
-  const addChecklistItem = () => {
+  const addChecklistItem = async () => {
     if (newItem.trim()) {
-      setChecklistItems([...checklistItems, newItem.trim()])
+      const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title: newItem.trim() }) })
+      const item = await res.json()
+      setChecklistItems([...checklistItems, item])
       setNewItem('')
     }
   }
 
-  const removeChecklistItem = (index: number) => {
-    setChecklistItems(checklistItems.filter((_, i) => i !== index))
-    const newChecked = new Set<number>()
-    checkedItems.forEach(i => {
-      if (i < index) {
-        newChecked.add(i)
-      } else if (i > index) {
-        newChecked.add(i - 1)
-      }
-    })
-    setCheckedItems(newChecked)
+  const removeChecklistItem = async (id: number) => {
+    await fetch('/api/checklist', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
+    setChecklistItems(checklistItems.filter(item => item.id !== id))
   }
 
-  const toggleChecked = (index: number) => {
-    const newChecked = new Set(checkedItems)
-    if (newChecked.has(index)) {
-      newChecked.delete(index)
-    } else {
-      newChecked.add(index)
-    }
-    setCheckedItems(newChecked)
+  const toggleChecked = async (id: number) => {
+    const item = checklistItems.find(i => i.id === id)
+    if (!item) return
+    const completed = !item.completed
+    await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, completed }) })
+    setChecklistItems(checklistItems.map(i => i.id === id ? { ...i, completed } : i))
   }
 
   return (
@@ -255,7 +282,48 @@ const TimerPage = ({}:{}) => {
           {notificationPermission === 'denied' && <span className="text-red-600">Notifications blocked</span>}
         </div>
       </div>
-      <div className="mt-4">
+      <div className="flex gap-6">
+        <div className="flex-1 min-w-0">
+          {Array.from({ length: 14 }).map((_, i) => {
+            const day = new Date()
+            day.setDate(day.getDate() - i)
+            day.setHours(0, 0, 0, 0)
+            const key = day.toISOString().slice(0, 10)
+            const isCollapsed = collapsedDays[key] ?? (i !== 0)
+            return (
+              <DaySection
+                key={key}
+                day={day}
+                isCollapsed={isCollapsed}
+                onToggleCollapsed={() => setCollapsedDays(prev => ({ ...prev, [key]: !(prev[key] ?? (i !== 0)) }))}
+                timeblocks={timeblocks}
+                tags={tags}
+                tagInstances={tagInstances}
+                onCreateTimeblock={async (args) => {
+                  const tb = await createTimeblock(args)
+                  return tb as Timeblock
+                }}
+                onPatchTimeblockDebounced={patchTimeblockDebounced}
+                onCreateTag={createTag}
+                onCreateTagInstance={createTagInstance}
+                onDeleteTagInstance={deleteTagInstance}
+              />
+            )
+          })}
+        </div>
+        <div className="w-96">
+          <TagSidebar
+            tags={tags}
+            tagInstances={tagInstances}
+            onUpdateTag={updateTag}
+            onDeleteTag={deleteTag}
+            onDeleteTagInstance={deleteTagInstance}
+            onCreateTag={createTag}
+            onCreateTagInstance={createTagInstance}
+          />
+        </div>
+      </div>
+      <div className="mt-4" style={{ width: '300px' }}>
         <div className="mb-2 font-semibold">Checklist:</div>
         <div className="flex gap-2 mb-2">
           <input
@@ -269,11 +337,11 @@ const TimerPage = ({}:{}) => {
           <button onClick={addChecklistItem} className="px-2 py-1 bg-gray-200">Add</button>
         </div>
         <div className="flex flex-col gap-1">
-          {checklistItems.map((item, index) => (
-            <div key={index} className="flex items-center gap-2">
-              <input type="checkbox" checked={checkedItems.has(index)} onChange={() => toggleChecked(index)} />
-              <span className="flex-1">{item}</span>
-              <button onClick={() => removeChecklistItem(index)} className="px-2 py-1 bg-gray-200">Remove</button>
+          {checklistItems.map((item) => (
+            <div key={item.id} className="flex items-center gap-2 cursor-pointer" onClick={() => toggleChecked(item.id)}>
+              <input type="checkbox" checked={item.completed} onChange={() => {}} />
+              <span className="flex-1">{item.title}</span>
+              <button onClick={(e) => { e.stopPropagation(); removeChecklistItem(item.id) }} className="px-2 py-1 bg-gray-200">Remove</button>
             </div>
           ))}
           {checklistItems.length === 0 && <div className="text-gray-600">No items</div>}

@@ -16,3 +16,35 @@ model ChecklistItem {
 
   @@map("checklist_items")
 }
+
+model Timeblock {
+  id             Int      @id @default(autoincrement())
+  rayNotes       String?  @map("ray_notes")
+  assistantNotes String?  @map("assistant_notes")
+  datetime       DateTime @db.Timestamptz
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("timeblocks")
+}
+
+model Tag {
+  id        Int           @id @default(autoincrement())
+  name      String
+  type      String
+  instances TagInstance[]
+  createdAt DateTime      @default(now()) @map("created_at") @db.Timestamptz
+
+  @@unique([name, type])
+  @@map("tags")
+}
+
+model TagInstance {
+  id        Int      @id @default(autoincrement())
+  tagId     Int      @map("tag_id")
+  tag       Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  datetime  DateTime @db.Timestamptz
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("tag_instances")
+}
