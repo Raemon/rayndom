@@ -1,8 +1,9 @@
 'use client'
 import { useState } from 'react'
 import groupBy from 'lodash/groupBy'
+import countBy from 'lodash/countBy'
 import TagEditor from './TagEditor'
-import type { Tag } from './types'
+import type { Tag, TagInstance } from './types'
 
 const NewTagForm = ({ onCreateTag }:{ onCreateTag: (args: { name: string, type: string }) => Promise<Tag> }) => {
   const [name, setName] = useState('')
@@ -22,8 +23,9 @@ const NewTagForm = ({ onCreateTag }:{ onCreateTag: (args: { name: string, type: 
   )
 }
 
-const TagSidebar = ({ tags, onUpdateTag, onDeleteTag, onCreateTag }:{
+const TagSidebar = ({ tags, tagInstances, onUpdateTag, onDeleteTag, onCreateTag }:{
   tags: Tag[],
+  tagInstances: TagInstance[],
   onUpdateTag: (args: { id: number, name?: string, type?: string }) => Promise<void> | void,
   onDeleteTag: (args: { id: number }) => Promise<void> | void,
   onCreateTag: (args: { name: string, type: string }) => Promise<Tag>,
@@ -31,6 +33,7 @@ const TagSidebar = ({ tags, onUpdateTag, onDeleteTag, onCreateTag }:{
   const [editingTagId, setEditingTagId] = useState<number | null>(null)
 
   const tagsByType: Record<string, Tag[]> = groupBy(tags, 'type')
+  const instanceCountByTagId: Record<string, number> = countBy(tagInstances, 'tagId')
   const typeNames = Object.keys(tagsByType).sort()
 
   return (
@@ -49,7 +52,10 @@ const TagSidebar = ({ tags, onUpdateTag, onDeleteTag, onCreateTag }:{
                     onDelete={async ({ id }) => { await onDeleteTag({ id }); setEditingTagId(null) }}
                   />
                 ) : (
-                  <button className="text-left w-full bg-transparent" onClick={() => setEditingTagId(tag.id)}>{tag.name}</button>
+                  <button className="text-left w-full bg-transparent flex justify-between" onClick={() => setEditingTagId(tag.id)}>
+                    <span>{tag.name}</span>
+                    <span className="text-gray-500">{instanceCountByTagId[tag.id] || 0}</span>
+                  </button>
                 )}
               </div>
             ))}

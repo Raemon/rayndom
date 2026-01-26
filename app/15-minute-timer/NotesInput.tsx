@@ -4,11 +4,14 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import { BubbleMenu } from '@tiptap/react/menus'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
+import { useFocusedNotes } from './FocusedNotesContext'
 
-const NotesInput = ({ initialValue, placeholder, onSave }:{ initialValue: string, placeholder: string, onSave?: (content: string) => void }) => {
+const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void }) => {
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
   const lastSavedRef = useRef<string>(initialValue || '')
   const initializedRef = useRef(false)
+  const isFocusedRef = useRef(false)
+  const { registerFocus, unregisterFocus } = useFocusedNotes()
   const saveContent = useCallback((content: string) => {
     if (onSave && content !== lastSavedRef.current) {
       lastSavedRef.current = content
@@ -34,7 +37,13 @@ const NotesInput = ({ initialValue, placeholder, onSave }:{ initialValue: string
         saveContent(editor.getHTML())
       }, 500)
     },
+    onFocus: () => {
+      isFocusedRef.current = true
+      if (noteKey) registerFocus(noteKey)
+    },
     onBlur: ({ editor }) => {
+      isFocusedRef.current = false
+      if (noteKey) unregisterFocus(noteKey)
       if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current)
       saveContent(editor.getHTML())
     }
@@ -42,8 +51,9 @@ const NotesInput = ({ initialValue, placeholder, onSave }:{ initialValue: string
   useEffect(() => {
     return () => {
       if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current)
+      if (noteKey) unregisterFocus(noteKey)
     }
-  }, [])
+  }, [noteKey, unregisterFocus])
   useEffect(() => {
     if (editor && !initializedRef.current && initialValue) {
       editor.commands.setContent(initialValue)
@@ -51,6 +61,16 @@ const NotesInput = ({ initialValue, placeholder, onSave }:{ initialValue: string
       initializedRef.current = true
     }
   }, [initialValue, editor])
+  // Update content from external source when not focused
+  useEffect(() => {
+    if (editor && externalValue !== undefined && !isFocusedRef.current && initializedRef.current) {
+      const currentContent = editor.getHTML()
+      if (externalValue !== currentContent && externalValue !== lastSavedRef.current) {
+        editor.commands.setContent(externalValue)
+        lastSavedRef.current = externalValue
+      }
+    }
+  }, [externalValue, editor])
 
   if (!editor) return null
 

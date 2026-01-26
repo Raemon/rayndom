@@ -1,5 +1,5 @@
 'use client'
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import TimeBlockRow from './TimeBlockRow'
 import type { Tag, TagInstance, Timeblock } from './types'
 
@@ -83,6 +83,11 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tags, tag
       return hasNotes || hasTags
     })
   }, [slots, showOnlyWithContent, slotToTimeblock, tagTypes, slotKeyToTagInstances])
+  const [currentSlotMs, setCurrentSlotMs] = useState(() => floorTo15(new Date()).getTime())
+  useEffect(() => {
+    const interval = setInterval(() => setCurrentSlotMs(floorTo15(new Date()).getTime()), 10000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div className="mb-3">
@@ -115,6 +120,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tags, tag
                     const key = `${slotMs}:${type}`
                     return [type, slotKeyToTagInstances.get(key) || []]
                   }))}
+                  isCurrent={slotMs === currentSlotMs}
                   onCreateTimeblock={onCreateTimeblock}
                   onPatchTimeblockDebounced={onPatchTimeblockDebounced}
                   onCreateTag={onCreateTag}

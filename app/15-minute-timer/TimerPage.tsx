@@ -5,6 +5,7 @@ import TagSidebar from './TagSidebar'
 import { useTags } from './hooks/useTags'
 import { useTimeblocks } from './hooks/useTimeblocks'
 import { useTagInstances } from './hooks/useTagInstances'
+import { FocusedNotesProvider, useFocusedNotes } from './FocusedNotesContext'
 import type { Timeblock } from './types'
 
 type AlarmSound = {
@@ -62,8 +63,7 @@ const ALARM_SOUNDS: AlarmSound[] = [
 
 type ChecklistItem = { id: number; title: string; completed: boolean }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-const TimerPage = ({}:{}) => {
+const TimerPageInner = () => {
   const [secondsRemaining, setSecondsRemaining] = useState(0)
   const [selectedSoundIndex, setSelectedSoundIndex] = useState(0)
   const [checklistItems, setChecklistItems] = useState<ChecklistItem[]>([])
@@ -71,12 +71,13 @@ const TimerPage = ({}:{}) => {
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default')
   const [isAlarming, setIsAlarming] = useState(false)
   const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
-  const [showOnlyWithContent, setShowOnlyWithContent] = useState(true)
+  const [showOnlyWithContent, setShowOnlyWithContent] = useState(false)
   const audioContextRef = useRef<AudioContext | null>(null)
   const selectedSoundIndexRef = useRef(0)
   const prevSecondsRef = useRef<number | null>(null)
   const flashIntervalRef = useRef<NodeJS.Timeout | null>(null)
   const checklistItemsRef = useRef<ChecklistItem[]>([])
+  const { focusedNoteKeys } = useFocusedNotes()
 
   const endDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
   const startDate = new Date(new Date().getTime() - 14 * 24 * 60 * 60 * 1000)
@@ -85,8 +86,16 @@ const TimerPage = ({}:{}) => {
   const startIso = startDate.toISOString()
   const endIso = endDate.toISOString()
   const { tags, createTag, updateTag, deleteTag } = useTags()
-  const { timeblocks, createTimeblock, patchTimeblockDebounced } = useTimeblocks({ start: startIso, end: endIso })
+  const { timeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused } = useTimeblocks({ start: startIso, end: endIso })
   const { tagInstances, createTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
+
+  // Poll database every 5 seconds to refresh unfocused notes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refreshUnfocused(focusedNoteKeys)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [refreshUnfocused, focusedNoteKeys])
 
   const getNext15MinuteMark = () => {
     const now = new Date()
@@ -327,6 +336,7 @@ const TimerPage = ({}:{}) => {
         <div className="w-96">
           <TagSidebar
             tags={tags}
+            tagInstances={tagInstances}
             onUpdateTag={updateTag}
             onDeleteTag={deleteTag}
             onCreateTag={createTag}
@@ -360,5 +370,12 @@ const TimerPage = ({}:{}) => {
     </div>
   )
 }
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+const TimerPage = ({}:{}) => (
+  <FocusedNotesProvider>
+    <TimerPageInner />
+  </FocusedNotesProvider>
+)
 
 export default TimerPage
