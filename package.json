@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "migrate": "tsx scripts/migrate.ts"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
     "ag-grid-community": "^35.0.1",
     "ag-grid-react": "^35.0.1",
     "googleapis": "^170.1.0",
@@ -26,6 +28,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

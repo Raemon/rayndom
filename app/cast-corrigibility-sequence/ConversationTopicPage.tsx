@@ -4,10 +4,7 @@ import { marked } from 'marked'
 import ConversationTopicSiteItem from './ConversationTopicSiteItem'
 import MarkdownContent from './MarkdownContent'
 import DetailRowList from '../berkeley-wedding-venues/DetailRowList'
-import { AgGridReact } from 'ag-grid-react'
-import { AllCommunityModule, ModuleRegistry, ColDef } from 'ag-grid-community'
-
-ModuleRegistry.registerModules([AllCommunityModule])
+import CsvDataGrid from '../common/CsvDataGrid'
 
 export type DomainInfo = {
   domain: string
@@ -128,18 +125,6 @@ const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Prop
     const source = domain === '__outputs__' ? 'outputs' : 'downloads'
     return `/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(domain)}&file=${encodeURIComponent(file)}&source=${source}`
   }
-  const csvColumnDefs = useMemo<ColDef[]>(() => {
-    if (!csvData) return []
-    return csvData.columns.map((column) => ({
-      field: column,
-      headerName: column,
-    }))
-  }, [csvData])
-  const csvDefaultColDef = useMemo(() => ({
-    resizable: true,
-    sortable: true,
-    filter: true,
-  }), [])
   const csvRowNameKey = useMemo(() => {
     if (!csvData || csvData.columns.length === 0) return ''
     if (csvData.columns.includes('Name')) return 'Name'
@@ -152,7 +137,7 @@ const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Prop
 
   return (
     <div className="p-5 flex gap-5">
-      <div className="w-[300px] flex-shrink-0 max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <div className="w-[300px] flex-shrink-0 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {title && <h1 className="text-lg m-0 mb-3">{title}</h1>}
         {outputFiles.length > 0 && (
           <div className="mb-4">
@@ -186,10 +171,10 @@ const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Prop
           ))}
         </div>
       </div>
-      <div className={`flex-1 max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${selectedFile && getFileType(selectedFile.file) === 'csv' ? '' : 'max-w-3xl'}`}>
+      <div className={`flex-1 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${selectedFile && getFileType(selectedFile.file) === 'csv' ? '' : 'max-w-3xl'}`}>
         {selectedFile && (
           <div>
-            <div className="mb-2 text-xs text-gray-600">
+            <div className="mb-2 text-gray-200">
               {selectedFile.domain === '__outputs__' ? 'outputs' : selectedFile.domain}/{selectedFile.file}
               <button onClick={() => handleSelectFile(null)} className="ml-2 cursor-pointer">×</button>
             </div>
@@ -205,19 +190,10 @@ const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Prop
             )}
             {!isLoading && getFileType(selectedFile.file) === 'csv' && csvData && (
               <div>
-                <div className="h-[60vh] text-xs">
-                  <AgGridReact
-                    rowData={csvData.rows}
-                    columnDefs={csvColumnDefs}
-                    defaultColDef={csvDefaultColDef}
-                    pagination={true}
-                    paginationPageSize={50}
-                    headerHeight={28}
-                    rowHeight={24}
-                    animateRows={true}
-                  />
+                <div className="text-xs">
+                  <CsvDataGrid key={`${selectedFile.domain}/${selectedFile.file}`} columns={csvData.columns} rows={csvData.rows} />
                 </div>
-                {csvRowNameKey && <DetailRowList rows={csvData.rows} columns={csvData.columns} rowNameKey={csvRowNameKey} />}
+                {/* {csvRowNameKey && <DetailRowList rows={csvData.rows} columns={csvData.columns} rowNameKey={csvRowNameKey} />} */}
               </div>
             )}
             {selectedFile.showAsIframe && (

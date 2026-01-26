@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #252533;
     --foreground: #ededed;
   }
 }
@@ -23,4 +23,24 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+pre {
+  background-color: #444;
+  padding: 10px;
+  border-radius: 4px;
+}
+pre code {
+  background-color: #444;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+input, select, textarea, button {
+  background-color: #6e6363;
+  color: white;
+  font-size: 16px;
+}
+label {
+  font-size: 16px;
 }

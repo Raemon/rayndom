@@ -24,6 +24,23 @@ const getHeader = (headers: { name?: string | null, value?: string | null }[], n
   return header?.value || ''
 }
 
+const getErrorMessage = (error: unknown) => {
+  if (error && typeof error === 'object') {
+    const maybeError = error as { message?: string, response?: { data?: { error?: string, error_description?: string } } }
+    const baseMessage = maybeError.message || 'Unknown error'
+    const responseData = maybeError.response?.data
+    if (responseData?.error || responseData?.error_description) {
+      const detail = [responseData.error, responseData.error_description].filter(Boolean).join(': ')
+      return `${baseMessage} (${detail})`
+    }
+    if (responseData) {
+      return `${baseMessage} (${JSON.stringify(responseData)})`
+    }
+    return baseMessage
+  }
+  return 'Unknown error'
+}
+
 export async function GET(request: NextRequest) {
   try {
     const gmail = getGmailClient()
@@ -55,7 +72,7 @@ export async function GET(request: NextRequest) {
     })
     return NextResponse.json({ messages })
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Unknown error'
+    const message = getErrorMessage(error)
     return NextResponse.json({ error: message }, { status: 500 })
   }
 }
@@ -75,7 +92,7 @@ export async function POST(request: NextRequest) {
     })))
     return NextResponse.json({ archived: results.length })
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Unknown error'
+    const message = getErrorMessage(error)
     return NextResponse.json({ error: message }, { status: 500 })
   }
 }
