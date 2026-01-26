@@ -1,15 +1,19 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
 import { BubbleMenu } from '@tiptap/react/menus'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
 
-const NotesInput = ({ value, placeholder, onStartTyping, onDebouncedChange, debounceMs=500 }:{ value: string, placeholder: string, onStartTyping: () => Promise<unknown> | void, onDebouncedChange: (value: string) => Promise<void> | void, debounceMs?: number }) => {
-  const hasStartedRef = useRef(false)
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const isExternalUpdate = useRef(false)
-
+const NotesInput = ({ value, placeholder, onSave }:{ value: string, placeholder: string, onSave?: (content: string) => void }) => {
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const lastSavedRef = useRef<string>(value || '')
+  const saveContent = useCallback((content: string) => {
+    if (onSave && content !== lastSavedRef.current) {
+      lastSavedRef.current = content
+      onSave(content)
+    }
+  }, [onSave])
   const editor = useEditor({
     extensions: [
       StarterKit.configure({ heading: { levels: [1, 2, 3] } }),
@@ -19,43 +23,45 @@ const NotesInput = ({ value, placeholder, onStartTyping, onDebouncedChange, debo
     immediatelyRender: false,
     editorProps: {
       attributes: {
-        class: 'px-2 py-1 outline-none'
+        class: 'px-2 py-1 outline-none',
+        style: 'height: 100%; min-height: 100%;'
       }
     },
-    onUpdate: async ({ editor }) => {
-      if (isExternalUpdate.current) {
-        isExternalUpdate.current = false
-        return
-      }
-      const html = editor.getHTML()
-      if (!hasStartedRef.current && editor.getText().trim().length > 0) {
-        hasStartedRef.current = true
-        await onStartTyping()
-      }
-      if (debounceRef.current) clearTimeout(debounceRef.current)
-      debounceRef.current = setTimeout(() => onDebouncedChange(html), debounceMs)
+    onUpdate: ({ editor }) => {
+      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current)
+      debounceTimerRef.current = setTimeout(() => {
+        saveContent(editor.getHTML())
+      }, 500)
+    },
+    onBlur: ({ editor }) => {
+      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current)
+      saveContent(editor.getHTML())
     }
   })
-
+  useEffect(() => {
+    return () => {
+      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current)
+    }
+  }, [])
   useEffect(() => {
     if (editor && editor.getHTML() !== value) {
-      isExternalUpdate.current = true
       editor.commands.setContent(value || '')
+      lastSavedRef.current = value || ''
     }
   }, [value, editor])
 
   if (!editor) return null
 
   return (
-    <div className="flex-1 min-w-0 bg-gray-100">
+    <div className="flex-1 min-w-0 bg-gray-100 h-full" style={{ height: '100%' }}>
       <BubbleMenu editor={editor}>
-        <div className="flex gap-1 bg-gray-800 text-white px-1 py-0.5 text-xs">
+        <div className="flex gap-1 bg-gray-800 text-black px-1 py-0.5 text-xs">
           <button onClick={() => editor.chain().focus().toggleBold().run()} className={`px-1 ${editor.isActive('bold') ? 'bg-gray-600' : ''}`} title="Bold (Cmd+B)">B</button>
           <button onClick={() => editor.chain().focus().toggleItalic().run()} className={`px-1 ${editor.isActive('italic') ? 'bg-gray-600' : ''}`} title="Italic (Cmd+I)">I</button>
           <button onClick={() => editor.chain().focus().toggleStrike().run()} className={`px-1 ${editor.isActive('strike') ? 'bg-gray-600' : ''}`} title="Strikethrough">S</button>
         </div>
       </BubbleMenu>
-      <EditorContent editor={editor} />
+      <EditorContent editor={editor} style={{ height: '100%' }} />
     </div>
   )
 }

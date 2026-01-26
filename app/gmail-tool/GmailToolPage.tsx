@@ -80,8 +80,8 @@ const GmailToolPage = ({}:{}) => {
           className="px-2 py-1 bg-gray-100 outline-none flex-1"
           placeholder="Gmail search query"
         />
-        <button onClick={loadMessages} className="px-2 py-1 bg-gray-200">Refresh</button>
-        <button onClick={archiveSelected} className="px-2 py-1 bg-gray-200">Archive</button>
+        <button onClick={loadMessages} className="px-2 py-1 bg-gray-600">Refresh</button>
+        <button onClick={archiveSelected} className="px-2 py-1 bg-gray-600">Archive</button>
       </div>
       {error && <div className="mt-2 text-red-600">{error}</div>}
       {isLoading && <div className="mt-2">Loading...</div>}

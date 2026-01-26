@@ -1,5 +1,5 @@
 'use client'
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import TagTypeahead from './TagTypeahead'
 import type { Tag, TagInstance } from './types'
 
@@ -13,20 +13,19 @@ const TagCell = ({ type, tags, tagInstances, datetime, onCreateTag, onCreateTagI
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
   const [isEditing, setIsEditing] = useState(false)
-  const pills = useMemo(() => tagInstances.map(ti => ti.tag?.name || tags.find(t => t.id === ti.tagId)?.name || '').filter(Boolean), [tagInstances, tags])
 
   return (
-    <div className="flex items-center gap-1 min-w-0">
-      <button className="px-2 py-1 bg-gray-100 text-left min-w-24 max-w-48 truncate" onClick={() => setIsEditing(v => !v)} title={type}>
-        {pills.length ? pills.join(', ') : type}
-      </button>
-      {pills.length > 0 && (
-        <div className="flex gap-1">
-          {tagInstances.map(ti => (
-            <button key={ti.id} className="text-gray-500" onClick={() => onDeleteTagInstance({ id: ti.id })}>×</button>
-          ))}
-        </div>
-      )}
+    <div className="flex items-center gap-1 min-w-0 flex-wrap">
+      {tagInstances.map(ti => {
+        const name = ti.tag?.name || tags.find(t => t.id === ti.tagId)?.name || ''
+        return (
+          <span key={ti.id} className="inline-flex items-center px-2 py-0.5 bg-gray-600 text-sm">
+            {name}
+            <button className="ml-1 text-gray-500 bg-transparent" onClick={() => onDeleteTagInstance({ id: ti.id })}>×</button>
+          </span>
+        )
+      })}
+      <button className="px-2 py-0.5 bg-gray-100 text-gray-500 bg-transparent" onClick={() => setIsEditing(v => !v)} title={`Add ${type}`}>+</button>
       {isEditing && (
         <TagTypeahead
           tags={tags}

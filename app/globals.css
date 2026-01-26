@@ -36,8 +36,13 @@ pre code {
   padding: 2px 4px;
   border-radius: 4px;
 }
-input, select, textarea, button {
-  background-color: #6e6363;
+input, select, textarea, [contenteditable="true"], .tiptap {
+  background-color: #6e6363 !important;
+  color: white;
+  font-size: 16px;
+}
+button {
+  background-color: transparent !important;
   color: white;
   font-size: 16px;
 }

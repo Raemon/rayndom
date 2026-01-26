@@ -1,0 +1,3731 @@
+[
+  {
+    "id": "recMeUb8o2ZJ73JbC",
+    "createdTime": "2026-01-19T23:39:13.000Z",
+    "fields": {
+      "Today’s Time from Datetime": {
+        "error": "#ERROR!"
+      }
+    }
+  },
+  {
+    "id": "recuLayqKDk1np6B3",
+    "createdTime": "2026-01-20T03:25:21.000Z",
+    "fields": {
+      "Datetime": "2026-01-19T05:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T05:00:00.000Z",
+      "Date": "01/18/2026"
+    }
+  },
+  {
+    "id": "recwXWBDRCTqkzXIT",
+    "createdTime": "2026-01-19T20:54:24.000Z",
+    "fields": {
+      "Datetime": "2026-01-19T18:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:30:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recZErDRypiWYfsIw",
+    "createdTime": "2026-01-19T20:54:24.000Z",
+    "fields": {
+      "Datetime": "2026-01-19T18:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:45:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "rec1vCM30jzGDzp8X",
+    "createdTime": "2026-01-19T20:54:24.000Z",
+    "fields": {
+      "Datetime": "2026-01-19T19:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:00:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recdEnJA7pMnoTnW3",
+    "createdTime": "2026-01-19T21:03:47.000Z",
+    "fields": {
+      "Datetime": "2026-01-19T19:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:15:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recI1CwduFS9O45Es",
+    "createdTime": "2026-01-19T21:04:53.000Z",
+    "fields": {
+      "Datetime": "2026-01-19T19:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:30:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recC2KjnWdFOYheWA",
+    "createdTime": "2026-01-19T21:04:53.000Z",
+    "fields": {
+      "Datetime": "2026-01-19T19:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:45:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recclACTH6Z8IgMzd",
+    "createdTime": "2026-01-19T21:04:54.000Z",
+    "fields": {
+      "Datetime": "2026-01-19T20:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:00:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recd1XE3InCy4qlHG",
+    "createdTime": "2026-01-19T21:05:51.000Z",
+    "fields": {
+      "Datetime": "2026-01-19T20:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:15:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recJfqnGGINJfzk8M",
+    "createdTime": "2026-01-19T21:05:52.000Z",
+    "fields": {
+      "Datetime": "2026-01-19T20:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:30:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "rec1oFZBdoh2R3bkZ",
+    "createdTime": "2026-01-19T21:05:59.000Z",
+    "fields": {
+      "Datetime": "2026-01-19T20:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:45:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "rec0fzSm2qY6L88QS",
+    "createdTime": "2026-01-19T21:05:59.000Z",
+    "fields": {
+      "Project": [
+        "LW",
+        "LW Moderation",
+        "Orienting",
+        "Ray Infra"
+      ],
+      "Rating": 55,
+      "Datetime": "2026-01-19T21:00:00.000Z",
+      "???": [
+        "Secondary Priority"
+      ],
+      "Tried": [
+        "rec3Ybxdd028HokGV"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T21:00:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "Decided to ship first ask questions later"
+      ]
+    }
+  },
+  {
+    "id": "recNyPuc20vEWp5N9",
+    "createdTime": "2026-01-19T21:06:00.000Z",
+    "fields": {
+      "Project": [
+        "LW",
+        "LW Moderation"
+      ],
+      "Datetime": "2026-01-19T21:15:00.000Z",
+      "???": [
+        "PR Review",
+        "Secondary Priority"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T21:15:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recGJeDSoRVU8nS8u",
+    "createdTime": "2026-01-19T21:06:00.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030",
+        "Lunch"
+      ],
+      "Rating": 60,
+      "Datetime": "2026-01-19T21:30:00.000Z",
+      "???": [
+        "Top Priority"
+      ],
+      "Tried": [
+        "rec5oQehi2vRjkJSO",
+        "recSSmfOpV7EAPRQ4"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T21:30:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "Multiple agents",
+        "Short agents"
+      ]
+    }
+  },
+  {
+    "id": "reckWpSzHNo4wqZsS",
+    "createdTime": "2026-01-19T21:06:07.000Z",
+    "fields": {
+      "Ray Notes": "how to make boxes look good\n\nhow to make boxes easy to iterate on design on\n\n\n",
+      "Project": [
+        "AI 2030"
+      ],
+      "Rating": 55,
+      "Datetime": "2026-01-19T21:45:00.000Z",
+      "???": [
+        "Design",
+        "Confused",
+        "Downlift Waiting"
+      ],
+      "Tried": [
+        "rec3mv9HRvu4SKVIY",
+        "recF3brL180XfovrU"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T21:45:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "Rapid Design Infra",
+        "Struggling to focus on most important question"
+      ]
+    }
+  },
+  {
+    "id": "recj7nNNF9fCjKHXx",
+    "createdTime": "2026-01-19T21:06:09.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Rating": 58,
+      "Datetime": "2026-01-19T22:00:00.000Z",
+      "???": [
+        "Design",
+        "Can't get small detail working",
+        "CSS Bug"
+      ],
+      "Tried": [
+        "recgWcAuzxvSS7fnI",
+        "reccvkC8bbN8N4LUU"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:00:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "Give up on small detail",
+        "Switch to Browser Inspector"
+      ]
+    }
+  },
+  {
+    "id": "recVpcK787JBOKvex",
+    "createdTime": "2026-01-19T21:06:12.000Z",
+    "fields": {
+      "Ray Notes": "<https://fatebook.io/q/agent-will-have-at-least-one-decent--cmklqoph20000pdtnv3tw5xel?ext=1>\n",
+      "Project": [
+        "AI 2030"
+      ],
+      "Datetime": "2026-01-19T22:15:00.000Z",
+      "???": [
+        "Design",
+        "Waiting for Agent"
+      ],
+      "Tried": [
+        "recpmJfoLUrWv8tbf"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:15:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "Agent does design variations"
+      ]
+    }
+  },
+  {
+    "id": "rec3a7sI50HApv0Co",
+    "createdTime": "2026-01-19T21:06:12.000Z",
+    "fields": {
+      "Ray Notes": "[⚖ Agent will make at least one good design when I specify \"have to use multiple squares of some kind\" (Raymond Arnold: 55.00000000000001% yes)](https://fatebook.io/q/agent-will-make-at-least-one-good-design--cmklqrd3g000122jh0qqhnymf?ext=1)\n",
+      "Project": [
+        "AI 2030"
+      ],
+      "Rating": 49,
+      "Datetime": "2026-01-19T22:30:00.000Z",
+      "???": [
+        "argue with Robert",
+        "Design"
+      ],
+      "Tried": [
+        "recpmJfoLUrWv8tbf"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:30:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "Agent does design variations"
+      ]
+    }
+  },
+  {
+    "id": "recO4rW6KUlhxif1Q",
+    "createdTime": "2026-01-19T21:06:14.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Rating": 49,
+      "Datetime": "2026-01-19T22:45:00.000Z",
+      "???": [
+        "argue with Robert",
+        "Design"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:45:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recStRAbc8ncYYIvt",
+    "createdTime": "2026-01-19T21:06:25.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030",
+        "LW"
+      ],
+      "Rating": 40,
+      "Datetime": "2026-01-19T23:00:00.000Z",
+      "???": [
+        "argue with Robert",
+        "Design",
+        "Waiting for Agent",
+        "Debugging"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:00:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recm60Ac9HVfptJVj",
+    "createdTime": "2026-01-19T21:06:26.000Z",
+    "fields": {
+      "Project": [
+        "Orienting",
+        "AI 2030",
+        "LW"
+      ],
+      "Rating": 45,
+      "Datetime": "2026-01-19T23:15:00.000Z",
+      "???": [
+        "Debugging"
+      ],
+      "Tried": [
+        "recdUZgzaWuhOHX4y",
+        "rec3mv9HRvu4SKVIY"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:15:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "Abandoned confused AI run",
+        "Rapid Design Infra"
+      ]
+    }
+  },
+  {
+    "id": "recnSGOtok0GgkfOt",
+    "createdTime": "2026-01-19T21:06:27.000Z",
+    "fields": {
+      "Ray Notes": "[⚖ 5.2codex will solve the interior line bug (Raymond Arnold: 45% yes)](https://fatebook.io/q/5-2codex-will-solve-the-interior-line--cmklt45la000012c2a57y3nm7?ext=1)\n",
+      "Project": [
+        "AI 2030",
+        "Ray Infra"
+      ],
+      "Rating": 40,
+      "Datetime": "2026-01-19T23:30:00.000Z",
+      "???": [
+        "Debugging"
+      ],
+      "Tried": [
+        "recTpP5OMzBsNtj5M"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:30:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "AI debugging visuals"
+      ]
+    }
+  },
+  {
+    "id": "recaGSjAbpfa5iwPg",
+    "createdTime": "2026-01-19T23:39:31.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030",
+        "LW",
+        "LW Review"
+      ],
+      "Rating": 39,
+      "Datetime": "2026-01-19T23:45:00.000Z",
+      "???": [
+        "Secondary Priority",
+        "Confused",
+        "Bouncing"
+      ],
+      "Tried": [
+        "recsByh3wqAR2kLA3"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:45:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "LW Commenting"
+      ]
+    }
+  },
+  {
+    "id": "rec5FCOJCA3bekTtT",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Datetime": "2026-01-20T00:00:00.000Z",
+      "???": [
+        "Talking to Oli"
+      ],
+      "Tried": [
+        "recVH7bqHp6tgIqOP"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T00:00:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "Said \"that phrasing doesn't work but I'll try to translate it to me\" to Oli"
+      ]
+    }
+  },
+  {
+    "id": "recKyVbsaXMUhH6gZ",
+    "createdTime": "2026-01-20T18:45:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T00:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:00:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recNXpZU5MIlfqwm3",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Datetime": "2026-01-20T00:15:00.000Z",
+      "???": [
+        "Talking to Oli"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T00:15:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recpCv34azwUiI5Es",
+    "createdTime": "2026-01-20T18:45:03.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T00:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:15:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recBn7iorURbyHivJ",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Datetime": "2026-01-20T00:30:00.000Z",
+      "???": [
+        "Talking to Oli"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T00:30:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recj9GnjDRKqg6vgJ",
+    "createdTime": "2026-01-20T18:45:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T00:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:30:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recNULqtJiJxAdsYc",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Rating": 15,
+      "Datetime": "2026-01-20T00:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:45:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recD47xxmZisSUPJm",
+    "createdTime": "2026-01-20T18:45:07.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T00:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:45:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recldCOWkqYY1xYR0",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Rating": 10,
+      "Datetime": "2026-01-20T01:00:00.000Z",
+      "???": [
+        "Break",
+        "Bouncing"
+      ],
+      "Tried": [
+        "recy9lj7oGFOnXbpH"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T01:00:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "Whirlwind Vibecode"
+      ]
+    }
+  },
+  {
+    "id": "rechfjrvRZ3ckf3YL",
+    "createdTime": "2026-01-20T18:45:03.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T01:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:00:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recXDz2BfVHTez789",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T01:15:00.000Z",
+      "???": [
+        "Got Snack",
+        "Break"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T01:15:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "reckNZGMi1V3Dbb5p",
+    "createdTime": "2026-01-20T18:45:05.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T01:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:15:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recpPMT6gH85V879K",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Rating": 35,
+      "Datetime": "2026-01-20T01:30:00.000Z",
+      "???": [
+        "Vibecode Bug",
+        "Tired"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T01:30:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "rec6QzxeOeO0hjcWN",
+    "createdTime": "2026-01-20T18:45:02.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T01:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:30:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "rec41skkGyHDJcjUE",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Datetime": "2026-01-20T01:45:00.000Z",
+      "???": [
+        "Waiting for Agent"
+      ],
+      "Tried": [
+        "recs6RuQROFbYhAuO"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T01:45:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "Notice Waiting for Agent"
+      ]
+    }
+  },
+  {
+    "id": "reccM3ywU5h9pgw1c",
+    "createdTime": "2026-01-20T18:45:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T01:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:45:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recCdbzUx4FG4yj9g",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Datetime": "2026-01-20T02:00:00.000Z",
+      "???": [
+        "Vibecode Bug"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T02:00:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recWtOrEpQz7W2l9q",
+    "createdTime": "2026-01-20T18:45:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T02:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:00:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "rec1WKQIW9NcUMIMU",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Ray Notes": "Globe\n",
+      "Project": [
+        "AI 2030",
+        "LW Review"
+      ],
+      "Datetime": "2026-01-20T02:15:00.000Z",
+      "???": [
+        "Waiting for Agent"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T02:15:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recnQoSky3xBGSW7n",
+    "createdTime": "2026-01-20T18:45:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T02:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:15:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recknjs09HVgV10ga",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Ray Notes": "Noticed AI's own tests \nWakeup rendered\n\n",
+      "Project": [
+        "AI 2030"
+      ],
+      "Datetime": "2026-01-20T02:30:00.000Z",
+      "???": [
+        "Tired",
+        "Vibecode Bug",
+        "Bouncing"
+      ],
+      "Tried": [
+        "recfQQQUjSx71eYQu"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T02:30:00.000Z",
+      "Date": "01/19/2026",
+      "Name (from Techniques)": [
+        "Pivot from Vibecode"
+      ]
+    }
+  },
+  {
+    "id": "rec9DicyXZ5WAmO4V",
+    "createdTime": "2026-01-20T18:45:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T02:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:30:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recrO5RGttzR6cFAC",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030",
+        "Break",
+        "Youtube"
+      ],
+      "Datetime": "2026-01-20T02:45:00.000Z",
+      "???": [
+        "Tired",
+        "Bouncing"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T02:45:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recLWLLrceepC6bQE",
+    "createdTime": "2026-01-20T18:45:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T02:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:45:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recbvw7zKzEp9YdUu",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T03:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T03:00:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "rectfogteq6ZXpuvq",
+    "createdTime": "2026-01-20T18:45:03.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T03:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T03:00:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recc9aAIpDqW49BAH",
+    "createdTime": "2026-01-19T23:39:33.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T03:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T03:15:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recxXY0MYJwGve7b8",
+    "createdTime": "2026-01-20T18:45:02.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T03:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T03:15:00.000Z",
+      "Date": "01/19/2026"
+    }
+  },
+  {
+    "id": "recv4CHUBmrR3OQXT",
+    "createdTime": "2026-01-21T16:54:48.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T17:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T17:00:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "rec9zV4eE3gKobUqJ",
+    "createdTime": "2026-01-21T16:55:27.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T17:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T17:15:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "rec0hhl0lBjh56env",
+    "createdTime": "2026-01-21T16:55:41.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T17:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T17:30:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "rec7PLhHZgPQbnwF4",
+    "createdTime": "2026-01-21T16:55:47.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T17:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T17:45:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "rec0DmkBwJ5pPmMfx",
+    "createdTime": "2026-01-20T18:45:07.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T18:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:30:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recPB3An6l8A4uNcj",
+    "createdTime": "2026-01-20T18:45:07.000Z",
+    "fields": {
+      "Ray Notes": "responded to Tsvi on LW\n\n",
+      "Project": [
+        "Orienting",
+        "LW Commenting"
+      ],
+      "Rating": 70,
+      "Datetime": "2026-01-20T18:45:00.000Z",
+      "???": [
+        "Top Priority",
+        "Bouncing",
+        "Distracted by Notification"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T18:45:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recdkx1TzbdktSrXR",
+    "createdTime": "2026-01-20T18:45:07.000Z",
+    "fields": {
+      "Project": [
+        "Orienting"
+      ],
+      "Datetime": "2026-01-20T19:00:00.000Z",
+      "???": [
+        "Confused",
+        "Top Priority",
+        "Bounced but bounced back"
+      ],
+      "Tried": [
+        "rec46QOWuhhmJGbjH",
+        "recxYGqigJgykuzlI"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T19:00:00.000Z",
+      "Date": "01/20/2026",
+      "Name (from Techniques)": [
+        "3+ Plans",
+        "Distill Takeaways"
+      ]
+    }
+  },
+  {
+    "id": "recgFGGIdNCM9pRXw",
+    "createdTime": "2026-01-20T18:45:02.000Z",
+    "fields": {
+      "Ray Notes": "[⚖ I will either solve globe or work on it for 60 min of deep work by 3:30pm (Raymond Arnold: 90%)](https://fatebook.io/q/i-will-either-solve-globe-or-work-on-it--cmkmzbt0c0000y3uy7llwbrs6?ext=1)\n\n[⚖ By end of day I will have a new technique-phrase helpful for getting AI design work done (either via helping with deep work, or better leveraging LLMs in shallow/med way) (Raymond Arnold: 50%)](https://fatebook.io/q/by-end-of-day-i-will-have-a-new--cmkmze5x70005y3uyzea3e0d9?ext=1)\n\n\"70\" conditional on figuring stuff out later that made orienting worthwhile\n\n[⚖ I'll think the globe constraint evaluation was useful at end of day (Raymond Arnold: 95%)](https://fatebook.io/q/i-ll-think-the-globe-constraint--cmkmzqc3w00001qjs40ul0n2c?ext=1)\n\n\n",
+      "Project": [
+        "Orienting",
+        "AI 2030",
+        "AI 2030 Globe",
+        "AI 2030 Graphs"
+      ],
+      "Rating": 75,
+      "Datetime": "2026-01-20T19:15:00.000Z",
+      "???": [
+        "Confused"
+      ],
+      "Tried": [
+        "recrCYCnoVOng3wh5",
+        "recKVHfdT8utNKHVG",
+        "recxVB1BKRltjvIAb"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T19:15:00.000Z",
+      "Date": "01/20/2026",
+      "Name (from Techniques)": [
+        "Either Make it True or Admit It's <= 50% likely",
+        "Identify Constraints",
+        "Pivot from UI Finetuning"
+      ]
+    }
+  },
+  {
+    "id": "recjhcsOtomwvaohB",
+    "createdTime": "2026-01-20T18:45:04.000Z",
+    "fields": {
+      "Ray Notes": "\n",
+      "Project": [
+        "AI 2030",
+        "Ray Infra"
+      ],
+      "Datetime": "2026-01-20T19:30:00.000Z",
+      "???": [
+        "Too Meta?",
+        "Bouncing"
+      ],
+      "Tried": [
+        "recxVB1BKRltjvIAb"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T19:30:00.000Z",
+      "Date": "01/20/2026",
+      "Mabel Notes": "little bit of tracking-meta\nback to globe-ing\nstill looks tense\ndoing minor style stuff himself instead of using ai - probably good for avoiding downlift\nllm-ing a task that looks very llm-able - let's see if he waits for it or does other things while it works",
+      "Name (from Techniques)": [
+        "Pivot from UI Finetuning"
+      ]
+    }
+  },
+  {
+    "id": "recqWjwp8nsirJXo6",
+    "createdTime": "2026-01-20T18:45:06.000Z",
+    "fields": {
+      "Ray Notes": "[⚖ Hand-manipulating datacenters will a) work, b) I'll use it to reposition datacenters in a way that seems faster than hand-manipulating them in json or writing a script (Raymond Arnold: 50%)](https://fatebook.io/q/hand-manipulating-datacenters-will-a---cmkn0d4cu0000auze0pqibpkg?ext=1)\n",
+      "Project": [
+        "AI 2030",
+        "AI 2030 Globe"
+      ],
+      "Rating": 80,
+      "Datetime": "2026-01-20T19:45:00.000Z",
+      "???": [
+        "Top Priority",
+        "Vibecode Bug"
+      ],
+      "Tried": [
+        "rec4keac1ay4Zc8qP"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T19:45:00.000Z",
+      "Date": "01/20/2026",
+      "Mabel Notes": "more globe-ing\nmostly UI fiddling, seems like\n",
+      "Name (from Techniques)": [
+        "UI Infra"
+      ]
+    }
+  },
+  {
+    "id": "recCR97RntTnSebsY",
+    "createdTime": "2026-01-20T18:45:06.000Z",
+    "fields": {
+      "Ray Notes": "\n\n\n",
+      "Project": [
+        "AI 2030",
+        "AI 2030 Globe"
+      ],
+      "Rating": 25,
+      "Datetime": "2026-01-20T20:00:00.000Z",
+      "???": [
+        "Vibecode Bug"
+      ],
+      "Tried": [
+        "recAGMHLOshg7ude4"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:00:00.000Z",
+      "Date": "01/20/2026",
+      "Mabel Notes": "llm-changes - commit first?\n*did* commit! good!\n",
+      "Name (from Techniques)": [
+        "Ask AI to improve it's code"
+      ]
+    }
+  },
+  {
+    "id": "recD08uqdUPPYs4xe",
+    "createdTime": "2026-01-20T18:45:07.000Z",
+    "fields": {
+      "Ray Notes": "realized problem was scrollbars\n",
+      "Project": [
+        "Break"
+      ],
+      "Datetime": "2026-01-20T20:15:00.000Z",
+      "???": [
+        "Bouncing",
+        "Vibecode Bug"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:15:00.000Z",
+      "Date": "01/20/2026",
+      "Mabel Notes": "ui-fiddling\nlooks tense?\nwaiting for llm by doing something else - good\nmeta\n"
+    }
+  },
+  {
+    "id": "rec8blpXb6gLSZ4aW",
+    "createdTime": "2026-01-20T18:45:05.000Z",
+    "fields": {
+      "Ray Notes": "finding size of robots and energy (need to figure out new display tho)\n",
+      "Project": [
+        "Break",
+        "AI 2030 Globe",
+        "AI 2030 Graphs"
+      ],
+      "Rating": 50,
+      "Datetime": "2026-01-20T20:30:00.000Z",
+      "???": [
+        "Confused about Design"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:30:00.000Z",
+      "Date": "01/20/2026",
+      "Mabel Notes": "ui fiddling\n"
+    }
+  },
+  {
+    "id": "recsrLbsmfcioiILp",
+    "createdTime": "2026-01-20T18:45:04.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Globe"
+      ],
+      "Datetime": "2026-01-20T20:45:00.000Z",
+      "???": [
+        "Confused about Design"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:45:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "reczCCE72Cm85E2cu",
+    "createdTime": "2026-01-20T18:45:05.000Z",
+    "fields": {
+      "Project": [
+        "Lunch"
+      ],
+      "Datetime": "2026-01-20T21:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:00:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recb6ikm5qZhYsB5A",
+    "createdTime": "2026-01-20T18:45:04.000Z",
+    "fields": {
+      "Project": [
+        "Lunch",
+        "LW Review"
+      ],
+      "Datetime": "2026-01-20T21:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:15:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recDJF8Ta4IFkKW0E",
+    "createdTime": "2026-01-20T18:45:04.000Z",
+    "fields": {
+      "Ray Notes": "\n",
+      "Project": [
+        "AI 2030 Globe"
+      ],
+      "Rating": 50,
+      "Datetime": "2026-01-20T21:30:00.000Z",
+      "???": [
+        "Waiting for Agent"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T21:30:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recwMTGOXo9JGQFIb",
+    "createdTime": "2026-01-20T18:45:06.000Z",
+    "fields": {
+      "Ray Notes": "state outlines\nd\n",
+      "Project": [
+        "LW Supermod"
+      ],
+      "Rating": 30,
+      "Datetime": "2026-01-20T21:45:00.000Z",
+      "???": [
+        "Waiting for Agent",
+        "Vibecode Bug"
+      ],
+      "Tried": [
+        "recDCs0uirvGvNTs7"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T21:45:00.000Z",
+      "Date": "01/20/2026",
+      "Mabel Notes": "ui fiddling / comparing options\nlooks tense\n",
+      "Name (from Techniques)": [
+        "Talk to Robert"
+      ]
+    }
+  },
+  {
+    "id": "rec738vo57qNpIypQ",
+    "createdTime": "2026-01-20T18:45:05.000Z",
+    "fields": {
+      "Ray Notes": "Unsure rating\n",
+      "Project": [
+        "AI 2030 Globe"
+      ],
+      "Datetime": "2026-01-20T22:00:00.000Z",
+      "Tried": [
+        "recA3n9t45Tsd5co1"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:00:00.000Z",
+      "Date": "01/20/2026",
+      "Mabel Notes": "internet troubles mostly\nseems fine now, at least\n",
+      "Name (from Techniques)": [
+        "Rebuild/simplify Vibecode"
+      ]
+    }
+  },
+  {
+    "id": "rec7AIi2K7Q9m3slj",
+    "createdTime": "2026-01-20T18:45:03.000Z",
+    "fields": {
+      "Ray Notes": "[⚖ In 2 days, after simplifying globe, I won't have experienced more globe vibecode bugs (Raymond Arnold: 40%)](https://fatebook.io/q/in-2-days-after-simplifying-globe-i--cmkn5q2xr0000llv1smquwcps?ext=1)\n\nChecked which commit introduced bug, found it, it was due to the other merged in branch but only because it was rendering too many boxes\n\n",
+      "Project": [
+        "LW Supermod",
+        "AI 2030 Globe"
+      ],
+      "Rating": 25,
+      "Datetime": "2026-01-20T22:15:00.000Z",
+      "???": [
+        "Checking Slack",
+        "Vibecode Bug"
+      ],
+      "Tried": [
+        "recA3n9t45Tsd5co1"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:15:00.000Z",
+      "Date": "01/20/2026",
+      "Mabel Notes": "switched apps and probably tasks\n",
+      "Name (from Techniques)": [
+        "Rebuild/simplify Vibecode"
+      ]
+    }
+  },
+  {
+    "id": "recHB2VhAOYGstWnZ",
+    "createdTime": "2026-01-20T18:45:07.000Z",
+    "fields": {
+      "Ray Notes": "The page slowed to a crawl after merging in the economy changes. This was because it was trying to render\n",
+      "Project": [
+        "AI 2030 Globe"
+      ],
+      "Rating": 40,
+      "Datetime": "2026-01-20T22:30:00.000Z",
+      "???": [
+        "Vibecode Bug",
+        "Debugging",
+        "Checking Slack"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:30:00.000Z",
+      "Date": "01/20/2026",
+      "Mabel Notes": "switching? no, break\n"
+    }
+  },
+  {
+    "id": "recg6OsFXUPvgaCTS",
+    "createdTime": "2026-01-20T18:45:03.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Graphs"
+      ],
+      "Rating": 30,
+      "Datetime": "2026-01-20T22:45:00.000Z",
+      "???": [
+        "Debugging"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:45:00.000Z",
+      "Date": "01/20/2026",
+      "Mabel Notes": "ui fiddling\nlooks vaguely tense\n"
+    }
+  },
+  {
+    "id": "recQmOX7TxRQqZiiK",
+    "createdTime": "2026-01-20T18:45:07.000Z",
+    "fields": {
+      "Ray Notes": "<https://fatebook.io/q/after-napping-i-ll-resolve-the-boxes-but--cmkn7dsuv0000y98fhdlp3oi1?ext=1>\n",
+      "Datetime": "2026-01-20T23:00:00.000Z",
+      "???": [
+        "Tired"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:00:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recMoLv7T8PHn8TjK",
+    "createdTime": "2026-01-20T18:45:05.000Z",
+    "fields": {
+      "Ray Notes": "Only got like a 20 min nap but was out for like \n",
+      "Datetime": "2026-01-20T23:15:00.000Z",
+      "???": [
+        "Tired"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:15:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recKdVYYQmDAvjxtU",
+    "createdTime": "2026-01-20T18:45:02.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T23:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:30:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "rec1nDzUCHX7m6BXK",
+    "createdTime": "2026-01-20T18:45:05.000Z",
+    "fields": {
+      "Datetime": "2026-01-20T23:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:45:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "rec7kX0gtj2iSoJ69",
+    "createdTime": "2026-01-20T18:45:05.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T00:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:00:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recmDH6rdwjjV9af4",
+    "createdTime": "2026-01-21T00:51:29.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T00:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:15:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recSgJBtPZkeSeaWe",
+    "createdTime": "2026-01-21T00:52:57.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T00:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:30:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recGFMAjwJbTjjMrp",
+    "createdTime": "2026-01-21T00:55:22.000Z",
+    "fields": {
+      "Ray Notes": "Solved it by fiddling with numbers\n\n",
+      "Project": [
+        "AI 2030 Graphs"
+      ],
+      "Rating": 55,
+      "Datetime": "2026-01-21T00:45:00.000Z",
+      "Tried": [
+        "recdDUdmRgjVawYRL"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T00:45:00.000Z",
+      "Date": "01/20/2026",
+      "Name (from Techniques)": [
+        "UI Fiddling"
+      ]
+    }
+  },
+  {
+    "id": "recOC1dl5lsa4KPTW",
+    "createdTime": "2026-01-21T00:56:03.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Globe"
+      ],
+      "Rating": 35,
+      "Datetime": "2026-01-21T01:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:00:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recN9a6pVDsWBJ6q7",
+    "createdTime": "2026-01-21T00:56:13.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Globe"
+      ],
+      "Rating": 50,
+      "Datetime": "2026-01-21T01:15:00.000Z",
+      "???": [
+        "Confused"
+      ],
+      "Tried": [
+        "recdDUdmRgjVawYRL"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T01:15:00.000Z",
+      "Date": "01/20/2026",
+      "Name (from Techniques)": [
+        "UI Fiddling"
+      ]
+    }
+  },
+  {
+    "id": "recpBVWLJZMYGjD6Y",
+    "createdTime": "2026-01-21T00:55:40.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Globe"
+      ],
+      "Datetime": "2026-01-21T01:30:00.000Z",
+      "???": [
+        "Confused",
+        "Tired"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T01:30:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "reczE7C5n7dBFGw6I",
+    "createdTime": "2026-01-21T00:55:44.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Globe",
+        "AI 2030 Graphs"
+      ],
+      "Rating": 40,
+      "Datetime": "2026-01-21T01:45:00.000Z",
+      "???": [
+        "Tired"
+      ],
+      "Tried": [
+        "recdDUdmRgjVawYRL"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T01:45:00.000Z",
+      "Date": "01/20/2026",
+      "Name (from Techniques)": [
+        "UI Fiddling"
+      ],
+      "Useful": [
+        "recdDUdmRgjVawYRL"
+      ]
+    }
+  },
+  {
+    "id": "recxnWYYCCjq46Tkc",
+    "createdTime": "2026-01-21T00:55:47.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T02:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:00:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recG8Wx6QOSUUYM18",
+    "createdTime": "2026-01-21T00:55:50.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T02:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:15:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "reciw1kyp7f37on3j",
+    "createdTime": "2026-01-21T00:55:25.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T02:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:30:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recyj0qQOJ6xNVTCv",
+    "createdTime": "2026-01-21T00:55:28.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T02:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:45:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "recai8gmoAdoMObLP",
+    "createdTime": "2026-01-21T00:55:30.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T03:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T03:00:00.000Z",
+      "Date": "01/20/2026"
+    }
+  },
+  {
+    "id": "rec3vu7Dngdo0Q7EV",
+    "createdTime": "2026-01-21T19:59:19.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T18:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:30:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "rec6tbEbXCO9YWhN8",
+    "createdTime": "2026-01-21T19:59:51.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T18:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:45:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recbbmHAbvJmZjgWE",
+    "createdTime": "2026-01-21T20:00:08.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T19:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:00:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recLmwGkFersTeg5B",
+    "createdTime": "2026-01-21T20:00:21.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T19:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:15:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recsYDOW6mTYEYgT5",
+    "createdTime": "2026-01-21T20:00:29.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T19:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:30:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recbuzuG23VRoOfww",
+    "createdTime": "2026-01-21T20:00:37.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T19:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:30:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recB6NjErYGMdAdbF",
+    "createdTime": "2026-01-21T20:00:47.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T19:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:45:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recjHrRGUENmLV38T",
+    "createdTime": "2026-01-21T20:00:55.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T20:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:00:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recmeDA9PBBOUWJCY",
+    "createdTime": "2026-01-21T20:01:16.000Z",
+    "fields": {
+      "Project": [
+        "CAST Sideproject",
+        "LW Review",
+        "AI 2030",
+        "Ray Infra",
+        "Orienting"
+      ],
+      "Datetime": "2026-01-21T20:15:00.000Z",
+      "???": [
+        "Confused",
+        "Bouncing"
+      ],
+      "Tried": [
+        "reclTX6gutOUmlIG4"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:15:00.000Z",
+      "Date": "01/21/2026",
+      "Name (from Techniques)": [
+        "Remove Dead Code"
+      ]
+    }
+  },
+  {
+    "id": "recVkMbigYrKLHLrA",
+    "createdTime": "2026-01-21T20:01:23.000Z",
+    "fields": {
+      "Ray Notes": "\n",
+      "Project": [
+        "Orienting",
+        "Ray Infra"
+      ],
+      "Rating": 55,
+      "Datetime": "2026-01-21T20:30:00.000Z",
+      "Tried": [
+        "recdDUdmRgjVawYRL",
+        "rec3Xlyb18f9E6f1z"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:30:00.000Z",
+      "Date": "01/21/2026",
+      "Mabel Notes": "trying to get a hold on downlift\nlooks tense\n",
+      "Name (from Techniques)": [
+        "UI Fiddling",
+        "Review Yesterday"
+      ]
+    }
+  },
+  {
+    "id": "recRdKQcEDfuV7mNC",
+    "createdTime": "2026-01-21T20:01:37.000Z",
+    "fields": {
+      "Ray Notes": "[⚖ If I spend another 15 min thinking through Review Yesterday I'll identify a useful understanding that will later generate a life lesson (Raymond Arnold: 30% yes)](https://fatebook.io/q/if-i-spend-another-15-min-thinking--cmkohu43p00006wz7e9ckkclb?ext=1)\n\n",
+      "Project": [
+        "Orienting"
+      ],
+      "Datetime": "2026-01-21T20:45:00.000Z",
+      "Tried": [
+        "rec3Xlyb18f9E6f1z"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:45:00.000Z",
+      "Date": "01/21/2026",
+      "Mabel Notes": "debugging ai2030\ntrying to distill life lessons still?\n",
+      "Name (from Techniques)": [
+        "Review Yesterday"
+      ]
+    }
+  },
+  {
+    "id": "recbeYHwsTWwmgQP7",
+    "createdTime": "2026-01-21T20:01:48.000Z",
+    "fields": {
+      "Ray Notes": "[⚖ Global subdivisions will work within an hour (Raymond Arnold: 80% yes)](https://fatebook.io/q/global-subdivisions-will-work-within-an--cmkoircc50000iffcwu7qffq5?ext=1) \n\n[⚖ I'll mark \"understand code\" as being useful in the airtable for the globe subdivision (Raymond Arnold: 40%)](https://fatebook.io/q/i-ll-mark-understand-code-as-being--cmkoitzmf0000uf27sblrrill?ext=1) \n",
+      "Project": [
+        "AI 2030"
+      ],
+      "Datetime": "2026-01-21T21:00:00.000Z",
+      "Tried": [
+        "recHKodc0PQesn2Z7",
+        "recDjCJTsea1KGvjI"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T21:00:00.000Z",
+      "Date": "01/21/2026",
+      "Mabel Notes": "Still reviewing, it seems",
+      "Name (from Techniques)": [
+        "Understand Complex Vibecode",
+        "\"What's my Goal?\""
+      ]
+    }
+  },
+  {
+    "id": "recUJG8uM4ekQOl8V",
+    "createdTime": "2026-01-21T20:01:59.000Z",
+    "fields": {
+      "Ray Notes": "Testing vibecode understanding\nbeginning to polish\n\n",
+      "Project": [
+        "AI 2030",
+        "AI 2030 Globe"
+      ],
+      "Datetime": "2026-01-21T21:15:00.000Z",
+      "Tried": [
+        "recHKodc0PQesn2Z7",
+        "recAGMHLOshg7ude4"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T21:15:00.000Z",
+      "Date": "01/21/2026",
+      "Mabel Notes": "Back to switching between the globe and its code\nLooks tense\nlooks confused\nback to tracking\ntalking to agent\norienting",
+      "Name (from Techniques)": [
+        "Understand Complex Vibecode",
+        "Ask AI to improve it's code"
+      ]
+    }
+  },
+  {
+    "id": "recfrLNNrPtjKGHFB",
+    "createdTime": "2026-01-21T20:02:10.000Z",
+    "fields": {
+      "Ray Notes": "is it worth continuing to understand the subdivision?\ndifficulty understanding code while simplifying it – keep track of what it did with each pass (which things already existed)\n\n",
+      "Datetime": "2026-01-21T21:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:30:00.000Z",
+      "Date": "01/21/2026",
+      "Mabel Notes": "vibecode commit\nlooks tense\norienting\nvibecode\ntrying to parse vibecode\nswitched to orienting while vibecode runs\nearbuds died, leaving to get headphones\n"
+    }
+  },
+  {
+    "id": "recIZRNNd1C3RflcL",
+    "createdTime": "2026-01-21T20:02:19.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T21:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:45:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recqQdQlk4qcDwRLS",
+    "createdTime": "2026-01-21T20:02:28.000Z",
+    "fields": {
+      "Project": [
+        "Ray Infra",
+        "Break"
+      ],
+      "Datetime": "2026-01-21T22:00:00.000Z",
+      "Tried": [
+        "recHKodc0PQesn2Z7"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:00:00.000Z",
+      "Date": "01/21/2026",
+      "Name (from Techniques)": [
+        "Understand Complex Vibecode"
+      ]
+    }
+  },
+  {
+    "id": "recD5DoioMgdj7J0O",
+    "createdTime": "2026-01-21T20:02:38.000Z",
+    "fields": {
+      "Ray Notes": "increase resolution\nstart on state wakeup levels\nit did some confused stuff trying to make FXAA(sp?) that didn't work, then expensively reverted it itself.\n\n",
+      "Project": [
+        "AI 2030"
+      ],
+      "Datetime": "2026-01-21T22:15:00.000Z",
+      "???": [
+        "Checking Slack"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:15:00.000Z",
+      "Date": "01/21/2026",
+      "Mabel Notes": "testing globecode\nvibecoding aa\nmomentary bounce to slack\noff-task switch to lw\nback to vibecoding\ndebugging vibecode\n"
+    }
+  },
+  {
+    "id": "recBygaztaVE5KBBH",
+    "createdTime": "2026-01-21T20:02:57.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Globe",
+        "AI 2030 Graphs"
+      ],
+      "Datetime": "2026-01-21T22:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:30:00.000Z",
+      "Date": "01/21/2026",
+      "Mabel Notes": "tracking\nback to cursor\n"
+    }
+  },
+  {
+    "id": "rec3ON5zxXbY9oBJO",
+    "createdTime": "2026-01-21T20:03:11.000Z",
+    "fields": {
+      "Ray Notes": "animation code is having bugs\n\n\n",
+      "Project": [
+        "AI 2030 Globe",
+        "AI 2030 Graphs"
+      ],
+      "Datetime": "2026-01-21T22:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:45:00.000Z",
+      "Date": "01/21/2026",
+      "Mabel Notes": "vibecoding\ndebugging vibecode\nlooks tense"
+    }
+  },
+  {
+    "id": "recSQjuY4osSyIWL7",
+    "createdTime": "2026-01-21T20:03:19.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Graphs",
+        "AI 2030 Globe",
+        "AI 2030 Changelog"
+      ],
+      "Datetime": "2026-01-21T23:00:00.000Z",
+      "???": [
+        "Bug in Fresh Vibecode"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:00:00.000Z",
+      "Date": "01/21/2026",
+      "Mabel Notes": "vibecode\ntracking\nslack\nreviewing commits\nslack\n"
+    }
+  },
+  {
+    "id": "recC9PTxgE6RNjFV9",
+    "createdTime": "2026-01-21T20:03:30.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T23:15:00.000Z",
+      "Tried": [
+        "recAGMHLOshg7ude4",
+        "recHKodc0PQesn2Z7"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:15:00.000Z",
+      "Date": "01/21/2026",
+      "Mabel Notes": "tracking\nvibecode/debugging\n",
+      "Name (from Techniques)": [
+        "Ask AI to improve it's code",
+        "Understand Complex Vibecode"
+      ],
+      "Useful": [
+        "recAGMHLOshg7ude4"
+      ]
+    }
+  },
+  {
+    "id": "recSalOgpg64bbM4X",
+    "createdTime": "2026-01-21T20:03:38.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Rating": 35,
+      "Datetime": "2026-01-21T23:30:00.000Z",
+      "???": [
+        "Vibecode Bug"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:30:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "rec4exPCpfftXqvxN",
+    "createdTime": "2026-01-21T20:03:50.000Z",
+    "fields": {
+      "Datetime": "2026-01-21T23:45:00.000Z",
+      "???": [
+        "Bouncing"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:45:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recGHAeSlFg6vHVL4",
+    "createdTime": "2026-01-21T20:03:58.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T00:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:00:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "rec0aKnWdn5E554V8",
+    "createdTime": "2026-01-21T20:04:07.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T00:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:15:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "rechmG1hecyumSSeB",
+    "createdTime": "2026-01-21T20:04:28.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T00:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:30:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recy8sZZdf63xfN7m",
+    "createdTime": "2026-01-21T20:04:37.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T00:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:45:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recfYVlYiynOMVlcr",
+    "createdTime": "2026-01-21T20:04:46.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T01:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:00:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recoeJTWX7ObDI0P3",
+    "createdTime": "2026-01-21T20:05:16.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T01:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:15:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recLRaPyCNKHSVdsK",
+    "createdTime": "2026-01-21T20:05:25.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T01:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:30:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recDA9n0skMZUMLUA",
+    "createdTime": "2026-01-21T20:05:31.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Datetime": "2026-01-22T01:45:00.000Z",
+      "Tried": [
+        "rec4keac1ay4Zc8qP"
+      ],
+      "Today’s Time from Datetime": "2026-01-27T01:45:00.000Z",
+      "Date": "01/21/2026",
+      "Name (from Techniques)": [
+        "UI Infra"
+      ]
+    }
+  },
+  {
+    "id": "recizYyiHWHf8dpEv",
+    "createdTime": "2026-01-21T20:05:38.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T02:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:00:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recoIrRh9jFfnaG2f",
+    "createdTime": "2026-01-21T20:05:44.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T02:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:15:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "rec6mFvcGZP0GKNYS",
+    "createdTime": "2026-01-21T20:05:59.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T02:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:30:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recmc3ryj51mGNyO2",
+    "createdTime": "2026-01-21T20:06:07.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T02:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:45:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "rec517Jt3cYhHL3rT",
+    "createdTime": "2026-01-21T20:06:15.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T03:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T03:00:00.000Z",
+      "Date": "01/21/2026"
+    }
+  },
+  {
+    "id": "recPcc8dn8Ld3arIR",
+    "createdTime": "2026-01-22T18:30:08.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T18:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:15:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recwGfxY1XPIXyfjt",
+    "createdTime": "2026-01-22T18:30:07.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T18:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:30:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recit8KtLPpdw3X0F",
+    "createdTime": "2026-01-22T18:30:08.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T18:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:45:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recX0CmybMGxaeQRp",
+    "createdTime": "2026-01-22T18:30:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T19:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:00:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recPVwoam6U1PdYkI",
+    "createdTime": "2026-01-22T18:30:06.000Z",
+    "fields": {
+      "Project": [
+        "Orienting",
+        "AI 2030",
+        "Rationality.Training"
+      ],
+      "Rating": 50,
+      "Datetime": "2026-01-22T19:15:00.000Z",
+      "???": [
+        "Checking Slack"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T19:15:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recrVVAsvsO8H3KzG",
+    "createdTime": "2026-01-22T18:30:03.000Z",
+    "fields": {
+      "Project": [
+        "Orienting",
+        "Ray Infra"
+      ],
+      "Datetime": "2026-01-22T19:30:00.000Z",
+      "???": [
+        "Ops"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T19:30:00.000Z",
+      "Date": "01/22/2026",
+      "Mabel Notes": "ordering something (coffee?)\norienting doc\nswitching to calendar briefly\nback to tracking doc to resolve predictions\nlooks tired\nswitched to thought logger\nswitching between tracking and orienting\nmodifying tracking sheet\nlooking at / fixing globe options\nback to orienting"
+    }
+  },
+  {
+    "id": "recOFebvZHg9e6ACN",
+    "createdTime": "2026-01-22T18:30:05.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030"
+      ],
+      "Rating": 50,
+      "Datetime": "2026-01-22T19:45:00.000Z",
+      "Tried": [
+        "recHKodc0PQesn2Z7"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T19:45:00.000Z",
+      "Date": "01/22/2026",
+      "Mabel Notes": "orienting\ncursor code-wrangling\npondering orbs\nvibecoding\nadjusting globe options\n",
+      "Name (from Techniques)": [
+        "Understand Complex Vibecode"
+      ]
+    }
+  },
+  {
+    "id": "recwjZL0f8z1m7aIk",
+    "createdTime": "2026-01-22T18:30:04.000Z",
+    "fields": {
+      "Ray Notes": "[⚖ By end of Friday I'll think the Globe Editor fairly obviously helped. (Raymond Arnold: 50% yes)](https://fatebook.io/q/by-end-of-friday-i-ll-think-the-globe--cmkpvwo9q0000cfu544kad6qc?ext=1)\n",
+      "Project": [
+        "AI 2030 Globe"
+      ],
+      "Datetime": "2026-01-22T20:00:00.000Z",
+      "Tried": [
+        "rec0wR0ImrAORXC5t"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:00:00.000Z",
+      "Date": "01/22/2026",
+      "Mabel Notes": "orienting\nvibecoding\ntracking/prediction\nvibecoding\nglobe tweaking\n",
+      "Name (from Techniques)": [
+        "Code Review"
+      ]
+    }
+  },
+  {
+    "id": "recqPoPG28iT9t6lh",
+    "createdTime": "2026-01-22T18:30:07.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Plan B"
+      ],
+      "Datetime": "2026-01-22T20:15:00.000Z",
+      "???": [
+        "Checking Slack"
+      ],
+      "Tried": [
+        "recDjCJTsea1KGvjI"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:15:00.000Z",
+      "Date": "01/22/2026",
+      "Mabel Notes": "tracking\nplan b\norienting on goal\ntracking\nvibecode\nslack - bouncing?",
+      "Name (from Techniques)": [
+        "\"What's my Goal?\""
+      ]
+    }
+  },
+  {
+    "id": "recWcRnfgrGw0n2Bh",
+    "createdTime": "2026-01-22T18:30:05.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Globe"
+      ],
+      "Datetime": "2026-01-22T20:30:00.000Z",
+      "Tried": [
+        "rec4keac1ay4Zc8qP"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:30:00.000Z",
+      "Date": "01/22/2026",
+      "Mabel Notes": "globe tweaking\nvibecoding\n",
+      "Name (from Techniques)": [
+        "UI Infra"
+      ]
+    }
+  },
+  {
+    "id": "recO17PV8emceC41l",
+    "createdTime": "2026-01-22T18:30:03.000Z",
+    "fields": {
+      "Ray Notes": "Need way to operationalize if all this infra is worth it\n\n",
+      "Project": [
+        "AI 2030 Globe",
+        "Globe Infra"
+      ],
+      "Datetime": "2026-01-22T20:45:00.000Z",
+      "Tried": [
+        "rec4keac1ay4Zc8qP"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:45:00.000Z",
+      "Date": "01/22/2026",
+      "Mabel Notes": "globe-ing\nwhat's your goal?\n",
+      "Name (from Techniques)": [
+        "UI Infra"
+      ]
+    }
+  },
+  {
+    "id": "recdTkJn9hDtmsniJ",
+    "createdTime": "2026-01-22T18:30:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T21:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:00:00.000Z",
+      "Date": "01/22/2026",
+      "Mabel Notes": "tracking/orienting\nbreak"
+    }
+  },
+  {
+    "id": "recBCo9re2hPXiq46",
+    "createdTime": "2026-01-22T18:30:08.000Z",
+    "fields": {
+      "Project": [
+        "Break"
+      ],
+      "Datetime": "2026-01-22T21:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:15:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recDhH3xK64AqbWnW",
+    "createdTime": "2026-01-22T18:30:03.000Z",
+    "fields": {
+      "Project": [
+        "LW Writing",
+        "Bet Operationalization"
+      ],
+      "Datetime": "2026-01-22T21:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:30:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recj4K4DxlNpofdqn",
+    "createdTime": "2026-01-22T18:30:04.000Z",
+    "fields": {
+      "Project": [
+        "LW Writing",
+        "Bet Operationalization"
+      ],
+      "Datetime": "2026-01-22T21:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:45:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "rec7UeOacNbNBRUYW",
+    "createdTime": "2026-01-22T18:30:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T22:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:00:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recsxwHTD8W2VcGxB",
+    "createdTime": "2026-01-22T18:30:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T22:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:15:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recB9HRGflfp8yBf9",
+    "createdTime": "2026-01-22T18:30:03.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030",
+        "Globe Infra",
+        "LW Review",
+        "LW Review Highlight Test"
+      ],
+      "Datetime": "2026-01-22T22:30:00.000Z",
+      "???": [
+        "Vibecode Bug",
+        "Waiting for Agent"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:30:00.000Z",
+      "Date": "01/22/2026",
+      "Mabel Notes": "tracking\nreview-related coding\norb-pondering\nbriefly switching to lw?\n"
+    }
+  },
+  {
+    "id": "recgPLNGcTesg3iOt",
+    "createdTime": "2026-01-22T18:30:06.000Z",
+    "fields": {
+      "Ray Notes": "Ideas for color ideating\n- pick one color, experiment with different ways of interpolating it\n- \n",
+      "Project": [
+        "Globe Infra",
+        "LW Review Highlight Test"
+      ],
+      "Datetime": "2026-01-22T22:45:00.000Z",
+      "???": [
+        "Waiting for Agent",
+        "Vibecode Bug"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:45:00.000Z",
+      "Date": "01/22/2026",
+      "Mabel Notes": "tracking/orienting\nlooks tense: should mention when he has a moment\ncolor brainstorming\nvibecode\n"
+    }
+  },
+  {
+    "id": "recmEJsstNFLGZlS3",
+    "createdTime": "2026-01-22T18:30:08.000Z",
+    "fields": {
+      "Ray Notes": "problem is that editing the globe is too slow.\n",
+      "Project": [
+        "Globe Infra",
+        "LW Review Highlight Test",
+        "LW Review",
+        "AI 2030"
+      ],
+      "Datetime": "2026-01-22T23:00:00.000Z",
+      "Tried": [
+        "recwa8H82mMpTp8Cb"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:00:00.000Z",
+      "Date": "01/22/2026",
+      "Mabel Notes": "tracking\nvibecode\nglobe tweaking\n",
+      "Name (from Techniques)": [
+        "What's hard about this?"
+      ]
+    }
+  },
+  {
+    "id": "rec2laEmDws0kjhzm",
+    "createdTime": "2026-01-22T18:30:06.000Z",
+    "fields": {
+      "Ray Notes": "dropping balls?\nslack message was during lunch\n\n",
+      "Project": [
+        "Globe Infra",
+        "Orienting"
+      ],
+      "Datetime": "2026-01-22T23:15:00.000Z",
+      "???": [
+        "Missed a slack message"
+      ],
+      "Tried": [
+        "recQOVm1NGkooG19X"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:15:00.000Z",
+      "Date": "01/22/2026",
+      "Mabel Notes": "more vibe code\ntracking\nslack",
+      "Name (from Techniques)": [
+        "Refactor code into pieces"
+      ]
+    }
+  },
+  {
+    "id": "recAis0Q2WJ3UvYif",
+    "createdTime": "2026-01-22T18:30:05.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T23:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:30:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recQ7LWqsfz7jXBpw",
+    "createdTime": "2026-01-22T18:30:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-22T23:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:45:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recNrXfIncVgjw6V5",
+    "createdTime": "2026-01-22T18:30:07.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T00:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:00:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "rec6JFQYOu9U9TmKO",
+    "createdTime": "2026-01-22T18:30:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T00:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:15:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recn67FunGgxhgH5o",
+    "createdTime": "2026-01-22T18:30:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T00:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:30:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recHN9mmbI3Edx5TW",
+    "createdTime": "2026-01-22T18:30:07.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T00:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:45:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recoTU1hYZAZVnX33",
+    "createdTime": "2026-01-22T18:30:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T01:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:00:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "rec7dVMFhHMEMxnhY",
+    "createdTime": "2026-01-22T18:30:05.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T01:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:15:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "reciWQOxrtAIaqsPo",
+    "createdTime": "2026-01-22T18:30:08.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T01:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:30:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recu0szcICbM67Y8N",
+    "createdTime": "2026-01-22T18:30:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T01:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:45:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "rec3ZmAp1JLb3D4hq",
+    "createdTime": "2026-01-22T18:30:08.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T02:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:00:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recB2bZQAirLQYQYR",
+    "createdTime": "2026-01-22T18:30:05.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T02:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:15:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recaVYhySK0qXov7H",
+    "createdTime": "2026-01-22T18:30:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T02:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:30:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recdnIe7rN0kSEl5x",
+    "createdTime": "2026-01-22T18:30:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T02:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:45:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recVfSaFukQQrCYdf",
+    "createdTime": "2026-01-22T18:30:07.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T03:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T03:00:00.000Z",
+      "Date": "01/22/2026"
+    }
+  },
+  {
+    "id": "recllXVTlWEWeSBPw",
+    "createdTime": "2026-01-23T18:32:38.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T18:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:15:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recZlKG3RVsEOvPJn",
+    "createdTime": "2026-01-23T18:32:38.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T18:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:30:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recJ7vGXe7Auar2Ds",
+    "createdTime": "2026-01-23T18:32:43.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T18:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:45:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recsAaOWEpXXnchLB",
+    "createdTime": "2026-01-23T18:32:42.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T19:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:00:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "planning coworking\ntalking to someone else about something else\ninternet dead again\nrandom crap\n"
+    }
+  },
+  {
+    "id": "recqurUbj0K4Rrmxl",
+    "createdTime": "2026-01-23T18:32:39.000Z",
+    "fields": {
+      "Ray Notes": "Talk to Oli today about SSS\n\n",
+      "Project": [
+        "Orienting"
+      ],
+      "Datetime": "2026-01-23T19:15:00.000Z",
+      "Tried": [
+        "reco4b4rH0OfIRuke",
+        "rec32MFR7justN9Gt",
+        "recDjCJTsea1KGvjI"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T19:15:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "random crap\norienting\nmessaging elizabeth\norienting wrt globe\n",
+      "Name (from Techniques)": [
+        "3 Plans",
+        "Find Cruxes",
+        "\"What's my Goal?\""
+      ]
+    }
+  },
+  {
+    "id": "recZ9JG3SGZJCdEOT",
+    "createdTime": "2026-01-23T18:32:38.000Z",
+    "fields": {
+      "Ray Notes": "[⚖ Plan B redesign will change whether it was worth doing the globe (Raymond Arnold: 10%)](https://fatebook.io/q/plan-b-redesign-will-change-whether-it--cmkr9q97i0000uhcg42v2o1yw?ext=1)\n\n[⚖ I'll find a globe that looks cool asking LLM (Raymond Arnold: 50% yes)](https://fatebook.io/q/i-ll-find-a-globe-that-looks-cool-asking--cmkra0e830000563mqep8rz4x?ext=1)\n\n[⚖ I'll find a useful design inspiration (Raymond Arnold: 50%)](https://fatebook.io/q/i-ll-find-a-useful-design-inspiration--cmkra1s7g0007563mexp71elq?ext=1)\n",
+      "Project": [
+        "AI 2030 Globe"
+      ],
+      "Datetime": "2026-01-23T19:30:00.000Z",
+      "???": [
+        "Waiting for Agent"
+      ],
+      "Tried": [
+        "recxBfahet8ZBTdgP"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T19:30:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "globe-ing\nsearching for new globe options / inspo?\n",
+      "Name (from Techniques)": [
+        "Ask LLM"
+      ]
+    }
+  },
+  {
+    "id": "recWZXAkQp9pIx6ly",
+    "createdTime": "2026-01-23T18:32:40.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T19:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:45:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "looking at/for globes\nlooks tired"
+    }
+  },
+  {
+    "id": "recVydJobRgrnFtJV",
+    "createdTime": "2026-01-23T18:32:42.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T20:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:00:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "tracking\nvibecoding\nbouncing to lw\nvibecode\norb pondering\n"
+    }
+  },
+  {
+    "id": "recWtbeNA485LU5yF",
+    "createdTime": "2026-01-23T18:32:41.000Z",
+    "fields": {
+      "Ray Notes": "[⚖ I'll be able to explain something about what CAST is based on the summary based on the current that (Raymond Arnold: 35%)](https://fatebook.io/q/i-ll-be-able-to-explain-something-about--cmkrcgrm90000geu241leoy3u?ext=1)\n",
+      "Project": [
+        "CAST Sideproject",
+        "Blockquote Hypothesis"
+      ],
+      "Datetime": "2026-01-23T20:15:00.000Z",
+      "Tried": [
+        "rec4N0J1kxhNfbano"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T20:15:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "vibecode\ntracking\n",
+      "Name (from Techniques)": [
+        "AI Extraction Summaries"
+      ]
+    }
+  },
+  {
+    "id": "rec5jtEgggAY38LAK",
+    "createdTime": "2026-01-23T18:32:42.000Z",
+    "fields": {
+      "Ray Notes": "Hex scaling for globes\n[⚖ We'll use hexscaling for globes (Raymond Arnold: 60%)](https://fatebook.io/q/we-ll-use-hexscaling-for-globes--cmkrcp2fv000c563mhcvwzyxu?ext=1)\n",
+      "Project": [
+        "Globe Infra",
+        "AI 2030 Globe"
+      ],
+      "Datetime": "2026-01-23T20:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:30:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "tracking\nsummary generation\nslack\nglobe-ing\nvibecode\n"
+    }
+  },
+  {
+    "id": "recgWizP6LPZWiLYZ",
+    "createdTime": "2026-01-23T18:32:38.000Z",
+    "fields": {
+      "Ray Notes": "\n",
+      "Project": [
+        "Globe Infra",
+        "AI 2030 Globe"
+      ],
+      "Datetime": "2026-01-23T20:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:45:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "globe-ing\nsummaries\n"
+    }
+  },
+  {
+    "id": "rech88pJgLiEU2jT9",
+    "createdTime": "2026-01-23T18:32:42.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T21:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:00:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "tracking\nglobe\nsummaries\nslack\nglobe\n"
+    }
+  },
+  {
+    "id": "recgS1Yx8vYAACURb",
+    "createdTime": "2026-01-23T18:32:40.000Z",
+    "fields": {
+      "Project": [
+        "Wedding Venues",
+        "AI Research Meta",
+        "Globe Infra",
+        "AI 2030 Globe",
+        "Globe variable hexes"
+      ],
+      "Datetime": "2026-01-23T21:15:00.000Z",
+      "???": [
+        "Debugging"
+      ],
+      "Tried": [
+        "rec4keac1ay4Zc8qP"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T21:15:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "globe debug\norient\ntracking\n",
+      "Name (from Techniques)": [
+        "UI Infra"
+      ]
+    }
+  },
+  {
+    "id": "rec84Pu2zmB0fkGYm",
+    "createdTime": "2026-01-23T18:32:40.000Z",
+    "fields": {
+      "Project": [
+        "Wedding Venues"
+      ],
+      "Datetime": "2026-01-23T21:30:00.000Z",
+      "???": [
+        "Vibecode Bug"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T21:30:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "debugging\nlooks tense\n"
+    }
+  },
+  {
+    "id": "reczga8rnO4TRUWgo",
+    "createdTime": "2026-01-23T18:32:40.000Z",
+    "fields": {
+      "Project": [
+        "Wedding Venues"
+      ],
+      "Datetime": "2026-01-23T21:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:45:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "lunch?\n"
+    }
+  },
+  {
+    "id": "recQcNDPw8bfEIpQn",
+    "createdTime": "2026-01-23T18:32:43.000Z",
+    "fields": {
+      "Project": [
+        "Wedding Venues"
+      ],
+      "Datetime": "2026-01-23T22:00:00.000Z",
+      "Tried": [
+        "rec0N46dt4RBcx5mZ"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:00:00.000Z",
+      "Date": "01/23/2026",
+      "Name (from Techniques)": [
+        "Dubious Vibecoding"
+      ]
+    }
+  },
+  {
+    "id": "reclf4xIhn4QVgDZX",
+    "createdTime": "2026-01-23T18:32:39.000Z",
+    "fields": {
+      "Project": [
+        "Wedding Venues"
+      ],
+      "Datetime": "2026-01-23T22:15:00.000Z",
+      "Tried": [
+        "rec0N46dt4RBcx5mZ"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:15:00.000Z",
+      "Date": "01/23/2026",
+      "Name (from Techniques)": [
+        "Dubious Vibecoding"
+      ]
+    }
+  },
+  {
+    "id": "recr95WK3fPoadabc",
+    "createdTime": "2026-01-23T18:32:40.000Z",
+    "fields": {
+      "Project": [
+        "Wedding Venues"
+      ],
+      "Datetime": "2026-01-23T22:30:00.000Z",
+      "Tried": [
+        "rec0N46dt4RBcx5mZ"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T22:30:00.000Z",
+      "Date": "01/23/2026",
+      "Name (from Techniques)": [
+        "Dubious Vibecoding"
+      ]
+    }
+  },
+  {
+    "id": "recngB7TykQUQglE0",
+    "createdTime": "2026-01-23T18:32:40.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Globe"
+      ],
+      "Datetime": "2026-01-23T22:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:45:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "tracking\nvibecode\nglobing\nvibecode\n"
+    }
+  },
+  {
+    "id": "rectD6EqC93SazYGA",
+    "createdTime": "2026-01-23T18:32:39.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T23:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:00:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "vibecode\n"
+    }
+  },
+  {
+    "id": "rec8srQNFIaPuVF1Z",
+    "createdTime": "2026-01-23T18:32:43.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T23:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:15:00.000Z",
+      "Date": "01/23/2026",
+      "Mabel Notes": "tracking\nglobes"
+    }
+  },
+  {
+    "id": "recg9eq9XfF4V9JCq",
+    "createdTime": "2026-01-23T18:32:39.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T23:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:30:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recJOzR6FLqTTkbWJ",
+    "createdTime": "2026-01-23T18:32:38.000Z",
+    "fields": {
+      "Datetime": "2026-01-23T23:45:00.000Z",
+      "Tried": [
+        "recQOVm1NGkooG19X"
+      ],
+      "Today’s Time from Datetime": "2026-01-26T23:45:00.000Z",
+      "Date": "01/23/2026",
+      "Name (from Techniques)": [
+        "Refactor code into pieces"
+      ]
+    }
+  },
+  {
+    "id": "recmikqQ99kZxZ6HM",
+    "createdTime": "2026-01-23T18:32:38.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T00:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:00:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "rec83wjVlE4TXb6z8",
+    "createdTime": "2026-01-23T18:32:39.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T00:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:15:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recxOqTVRpvhxAldj",
+    "createdTime": "2026-01-23T18:32:42.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T00:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:30:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recSEgY08mj96YBEd",
+    "createdTime": "2026-01-23T18:32:41.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T00:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:45:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recLWvUx6fMrmtWnt",
+    "createdTime": "2026-01-23T18:32:41.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T01:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:00:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "rec9honNCRn4qGtbU",
+    "createdTime": "2026-01-23T18:32:41.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T01:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:15:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recxOaPfcC18C0M24",
+    "createdTime": "2026-01-23T18:32:39.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T01:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:30:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "reciGO1GOo1SgOGwY",
+    "createdTime": "2026-01-23T18:32:42.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T01:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:45:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recjvn8Hgvi33AUHp",
+    "createdTime": "2026-01-23T18:32:43.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T02:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:00:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recOaJb75C74mzsyN",
+    "createdTime": "2026-01-23T18:32:41.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T02:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:15:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "rec1b0gANxO15RHGy",
+    "createdTime": "2026-01-23T18:32:43.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T02:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:30:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recZm2OeuJUPV0qUj",
+    "createdTime": "2026-01-23T18:32:39.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T02:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:45:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "receflx6jfH4COJoV",
+    "createdTime": "2026-01-23T18:32:42.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T03:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T03:00:00.000Z",
+      "Date": "01/23/2026"
+    }
+  },
+  {
+    "id": "recd30A9zYEIn9Dxd",
+    "createdTime": "2026-01-24T18:32:02.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T18:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:15:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recRvXAYMDDTm8YNY",
+    "createdTime": "2026-01-24T18:32:00.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T18:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:30:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "reczSFcFkmOGd7CdY",
+    "createdTime": "2026-01-24T18:31:57.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T18:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:45:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recN1UUBG1TLyFSWH",
+    "createdTime": "2026-01-24T18:32:01.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T19:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:00:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "rec5g5taYr3xFHQCK",
+    "createdTime": "2026-01-24T18:31:56.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T19:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:15:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recq8z0ET33XD5mdN",
+    "createdTime": "2026-01-24T18:31:56.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T19:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:30:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recud6EBPFKGw01ld",
+    "createdTime": "2026-01-24T18:32:01.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T19:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:45:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recNnBM2eDHInU89M",
+    "createdTime": "2026-01-24T18:32:03.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T20:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:00:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "rectM49LXY0711WJK",
+    "createdTime": "2026-01-24T18:31:56.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T20:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:15:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recogdlmhS7A7HNAr",
+    "createdTime": "2026-01-24T18:31:59.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T20:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:30:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recEIiLRh8vqvZs5m",
+    "createdTime": "2026-01-24T18:31:59.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T20:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:45:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recNu71jz5xigCu7P",
+    "createdTime": "2026-01-24T18:31:57.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T21:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:00:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recRPMmIUYHzd8Zaj",
+    "createdTime": "2026-01-24T18:32:02.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T21:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:15:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recZszt9PxCEaHsot",
+    "createdTime": "2026-01-24T18:31:59.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T21:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:30:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recutPyZBteO9msKG",
+    "createdTime": "2026-01-24T18:32:03.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T21:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:45:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "rec9GM3MT9FwP6Y3c",
+    "createdTime": "2026-01-24T18:31:58.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T22:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:00:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recRecDmQv5bWvOLB",
+    "createdTime": "2026-01-24T18:31:56.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T22:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:15:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "rec4lJE8eWbJn3xZU",
+    "createdTime": "2026-01-24T18:32:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T22:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:30:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recHxWi37PkW4F2RZ",
+    "createdTime": "2026-01-24T18:31:58.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T22:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:45:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recANUKJKBiUpdL96",
+    "createdTime": "2026-01-24T18:32:01.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T23:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:00:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recQLCkttpiCOQxJl",
+    "createdTime": "2026-01-24T18:32:02.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T23:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:15:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recpcR8FTOvs4zw1T",
+    "createdTime": "2026-01-24T18:32:00.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T23:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:30:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "rec2J6I4VLuPIIN0D",
+    "createdTime": "2026-01-24T18:32:03.000Z",
+    "fields": {
+      "Datetime": "2026-01-24T23:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:45:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recfXzvgUnPWWwTVL",
+    "createdTime": "2026-01-24T18:31:59.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T00:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:00:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recQJRbBjdVOZnm3b",
+    "createdTime": "2026-01-24T18:32:05.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T00:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:15:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recdTvbxnWhuqLCG7",
+    "createdTime": "2026-01-24T18:31:56.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T00:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:30:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recFxa0uZXWKgJKVL",
+    "createdTime": "2026-01-24T18:32:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T00:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:45:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recANYD6t048gULkq",
+    "createdTime": "2026-01-24T18:31:59.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T01:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:00:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recZyEYAPf6ogoqLz",
+    "createdTime": "2026-01-24T18:32:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T01:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:15:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recHptGk1wJwbNO7U",
+    "createdTime": "2026-01-24T18:31:57.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T01:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:30:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recCcCIdBh4GbOayV",
+    "createdTime": "2026-01-24T18:32:00.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T01:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:45:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recxUwmwfuoIim85R",
+    "createdTime": "2026-01-24T18:31:58.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T02:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:00:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "rectIcJWfjqGiXoab",
+    "createdTime": "2026-01-24T18:31:55.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T02:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:15:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recMGxkmyJlOKNXof",
+    "createdTime": "2026-01-24T18:31:57.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T02:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:30:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recm3J2x6wJAbNSGn",
+    "createdTime": "2026-01-24T18:32:00.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T02:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:45:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "recUzJ0MHU6rotZ5X",
+    "createdTime": "2026-01-24T18:32:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T03:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T03:00:00.000Z",
+      "Date": "01/24/2026"
+    }
+  },
+  {
+    "id": "rec2xF8mcfkQBPkMr",
+    "createdTime": "2026-01-25T18:31:31.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T18:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:15:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "rec2brLwHZlnj2abH",
+    "createdTime": "2026-01-25T18:31:40.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T18:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:30:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recC3hTWQfKLQOJTq",
+    "createdTime": "2026-01-25T18:31:36.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T18:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:45:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recKUDkHRopBNZX7O",
+    "createdTime": "2026-01-25T18:31:31.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T19:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:00:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recrxJu7MN7hqZIS6",
+    "createdTime": "2026-01-25T18:31:41.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T19:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:15:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recey3jwI0wxa5BLo",
+    "createdTime": "2026-01-25T18:31:32.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T19:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:30:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recbD34KXHoE2LLlP",
+    "createdTime": "2026-01-25T18:31:38.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T19:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:45:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "rectja8uOVmRhG1g7",
+    "createdTime": "2026-01-25T18:31:39.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T20:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:00:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recCRpPKx9v7aEPsG",
+    "createdTime": "2026-01-25T18:31:33.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T20:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:15:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "reckHegc9mWI27IRW",
+    "createdTime": "2026-01-25T18:31:32.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T20:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:30:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recpAJgwrzJ2kMPS8",
+    "createdTime": "2026-01-25T18:31:34.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T20:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:45:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recuXlVbkIlYbKt4e",
+    "createdTime": "2026-01-25T18:31:33.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T21:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:00:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recFZge2n6RS8h4ez",
+    "createdTime": "2026-01-25T18:31:34.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T21:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:15:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recMER0PlCPRUcPaI",
+    "createdTime": "2026-01-25T18:31:35.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T21:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:30:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recENjB9i7PIGfDNa",
+    "createdTime": "2026-01-25T18:31:41.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T21:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:45:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "rec00q0ZtZKtXyxqU",
+    "createdTime": "2026-01-25T18:31:34.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T22:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:00:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "rec3TDBZNW9Zzk56a",
+    "createdTime": "2026-01-25T18:31:32.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T22:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:15:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recGCYGGtkIpejafl",
+    "createdTime": "2026-01-25T18:31:40.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T22:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:30:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "rec7h97K2nNa6OOzl",
+    "createdTime": "2026-01-25T18:31:38.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T22:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:45:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "rec0pyDN4krE4ODoT",
+    "createdTime": "2026-01-25T18:31:36.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T23:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:00:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recQDawK0A2AoHdZ0",
+    "createdTime": "2026-01-25T18:31:35.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T23:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:15:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recVKvwGzeEfkdpD7",
+    "createdTime": "2026-01-25T18:31:38.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T23:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:30:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recqkER4OpVZ4lYZa",
+    "createdTime": "2026-01-25T18:31:31.000Z",
+    "fields": {
+      "Datetime": "2026-01-25T23:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:45:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recFSEndbm4wXTB1S",
+    "createdTime": "2026-01-25T18:31:32.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T00:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:00:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "rec0se2ghwMr3PQoX",
+    "createdTime": "2026-01-25T18:31:34.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T00:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:15:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recvbRtNC0nDU60cg",
+    "createdTime": "2026-01-25T18:31:35.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T00:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:30:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recAEEC6312O9L3FZ",
+    "createdTime": "2026-01-25T18:31:39.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T00:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:45:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "rec4BRPx6hmZAwG4Q",
+    "createdTime": "2026-01-25T18:31:33.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T01:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:00:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recDQNWSeHv83hEiZ",
+    "createdTime": "2026-01-25T18:31:33.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T01:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:15:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "rec0T5OlZxEiorOlX",
+    "createdTime": "2026-01-25T18:31:39.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T01:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:30:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "rec46Vq0pRVHodMge",
+    "createdTime": "2026-01-25T18:31:32.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T01:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:45:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "rec9Jo7hkPIazThmo",
+    "createdTime": "2026-01-25T18:31:37.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T02:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:00:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recGkvTliWiuQ8Xzy",
+    "createdTime": "2026-01-25T18:31:37.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T02:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:15:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recbKlx7FAh8fq4Ow",
+    "createdTime": "2026-01-25T18:31:40.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T02:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:30:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recKQqrN5LBEGURic",
+    "createdTime": "2026-01-25T18:31:36.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T02:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:45:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recnBOn883MEBPi8s",
+    "createdTime": "2026-01-25T18:31:37.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T03:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T03:00:00.000Z",
+      "Date": "01/25/2026"
+    }
+  },
+  {
+    "id": "recc6WS99oISsXGBA",
+    "createdTime": "2026-01-26T18:33:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T18:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:15:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recGpdYcY4P6IHbR4",
+    "createdTime": "2026-01-26T18:33:02.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T18:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:30:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recevuJTbd0Ko4Gxq",
+    "createdTime": "2026-01-26T18:33:05.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T18:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T18:45:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recjp7EzpcrMnbFt1",
+    "createdTime": "2026-01-26T18:32:59.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T19:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:00:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recE6CfVBMShJG4mF",
+    "createdTime": "2026-01-26T18:33:03.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T19:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:15:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recZJOOKzDDdNB4qL",
+    "createdTime": "2026-01-26T18:33:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T19:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:30:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recQjbw11JpZnMHj2",
+    "createdTime": "2026-01-26T18:32:58.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T19:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T19:45:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recs2LMZ4q4ufUzgl",
+    "createdTime": "2026-01-26T18:33:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T20:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:00:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "reclZqODLiLlFI3GT",
+    "createdTime": "2026-01-26T18:33:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T20:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:15:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recOMNKytdcamAmoE",
+    "createdTime": "2026-01-26T18:33:00.000Z",
+    "fields": {
+      "Ray Notes": "[⚖ I will spend less than 2 blocks iterating on the vibetagsite (Raymond Arnold: 50%)](https://fatebook.io/q/i-will-spend-less-than-2-blocks--cmkvmqsi50005f25xycm1rvg3?ext=1)\n\n[⚖ I'll spend <8 timeblocks this week iterating on vibecodeTags (Raymond Arnold: 80%)](https://fatebook.io/q/i-ll-spend-8-timeblocks-this-week--cmkvnc4ku00006tzzk7n51aq0?ext=1) \n\n",
+      "Project": [
+        "TimerTags",
+        "Ray Infra"
+      ],
+      "Datetime": "2026-01-26T20:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:30:00.000Z",
+      "Date": "01/26/2026",
+      "Mabel Notes": "vibecoding a replacement for this table?\n"
+    }
+  },
+  {
+    "id": "reclWYDN4iouWwnxA",
+    "createdTime": "2026-01-26T18:32:59.000Z",
+    "fields": {
+      "Project": [
+        "TimerTags",
+        "Ray Infra"
+      ],
+      "Datetime": "2026-01-26T20:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T20:45:00.000Z",
+      "Date": "01/26/2026",
+      "Mabel Notes": "tracking\nvibecode\n"
+    }
+  },
+  {
+    "id": "recytLxTe3VX9aCNp",
+    "createdTime": "2026-01-26T18:33:00.000Z",
+    "fields": {
+      "Project": [
+        "TimerrTag",
+        "Ray Infra",
+        "AI 2030",
+        "AI 2030 Globe"
+      ],
+      "Datetime": "2026-01-26T21:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:00:00.000Z",
+      "Date": "01/26/2026",
+      "Mabel Notes": "ui tweaking\nglobe pondering\n"
+    }
+  },
+  {
+    "id": "recB53vWbGU0RkS0N",
+    "createdTime": "2026-01-26T18:33:08.000Z",
+    "fields": {
+      "Project": [
+        "AI 2030 Globe",
+        "Globe Infra"
+      ],
+      "Datetime": "2026-01-26T21:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:15:00.000Z",
+      "Date": "01/26/2026",
+      "Mabel Notes": "tracking\nairtable replacement vibecode\ntalking to someone"
+    }
+  },
+  {
+    "id": "recGmYGZzI2HvHpiN",
+    "createdTime": "2026-01-26T18:33:02.000Z",
+    "fields": {
+      "Project": [
+        "Ray Infra",
+        "Globe Infra"
+      ],
+      "Datetime": "2026-01-26T21:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:30:00.000Z",
+      "Date": "01/26/2026",
+      "Mabel Notes": "rayfra vibecode\nafk talking to people\n"
+    }
+  },
+  {
+    "id": "recadAoQIqwnkls7j",
+    "createdTime": "2026-01-26T18:32:58.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T21:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T21:45:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recAw606CILXrZfPb",
+    "createdTime": "2026-01-26T18:33:07.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T22:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:00:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "reckGtuWFQfDR6Cfg",
+    "createdTime": "2026-01-26T18:33:04.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T22:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:15:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recSB1GiaqlrokidV",
+    "createdTime": "2026-01-26T18:33:01.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T22:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:30:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "rece4mhu8py28YN7F",
+    "createdTime": "2026-01-26T18:33:02.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T22:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T22:45:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recbsXstMypvHbRej",
+    "createdTime": "2026-01-26T18:33:03.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T23:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:00:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "rec9ZXr3F3IhiAup9",
+    "createdTime": "2026-01-26T18:33:05.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T23:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:15:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "rec8U2D6QVFfoHjOP",
+    "createdTime": "2026-01-26T18:32:58.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T23:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:30:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recJKF8w1MoqgEZLk",
+    "createdTime": "2026-01-26T18:33:05.000Z",
+    "fields": {
+      "Datetime": "2026-01-26T23:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-26T23:45:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recmGfo1QhaprNQhS",
+    "createdTime": "2026-01-26T18:33:00.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T00:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:00:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recob5Mv93oFgthm8",
+    "createdTime": "2026-01-26T18:33:07.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T00:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:15:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recszzScocWBKCTTI",
+    "createdTime": "2026-01-26T18:33:03.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T00:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:30:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recN5LaHCTHJBmuk0",
+    "createdTime": "2026-01-26T18:32:59.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T00:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T00:45:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "rec0NoeaKMOtiaWO5",
+    "createdTime": "2026-01-26T18:33:07.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T01:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:00:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "reczSGJFZiNcw2Ztl",
+    "createdTime": "2026-01-26T18:33:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T01:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:15:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recZTBTHuoWIqdSuR",
+    "createdTime": "2026-01-26T18:33:01.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T01:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:30:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recEtmVsHAuzFzJyu",
+    "createdTime": "2026-01-26T18:33:05.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T01:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T01:45:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recGElLBQkWDEx2db",
+    "createdTime": "2026-01-26T18:33:08.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T02:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:00:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recHCPtya1xsgKzjC",
+    "createdTime": "2026-01-26T18:33:00.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T02:15:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:15:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recE5ebG61rKlfPz0",
+    "createdTime": "2026-01-26T18:33:06.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T02:30:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:30:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "recY1rn14yEddqlvt",
+    "createdTime": "2026-01-26T18:33:01.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T02:45:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T02:45:00.000Z",
+      "Date": "01/26/2026"
+    }
+  },
+  {
+    "id": "rect2k7ypglMudmHn",
+    "createdTime": "2026-01-26T18:32:59.000Z",
+    "fields": {
+      "Datetime": "2026-01-27T03:00:00.000Z",
+      "Today’s Time from Datetime": "2026-01-27T03:00:00.000Z",
+      "Date": "01/26/2026"
+    }
+  }
+]

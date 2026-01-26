@@ -19,20 +19,21 @@ const makeSlotsForDay = ({ day, startMinutes=9*60+30, endMinutes=20*60+30 }:{ da
   return slots
 }
 
-const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tags, tagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTag, onCreateTagInstance, onDeleteTagInstance }:{
+const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tags, tagInstances, showOnlyWithContent, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTag, onCreateTagInstance, onDeleteTagInstance }:{
   day: Date,
   isCollapsed: boolean,
   onToggleCollapsed: () => void,
   timeblocks: Timeblock[],
   tags: Tag[],
   tagInstances: TagInstance[],
+  showOnlyWithContent: boolean,
   onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null }) => Promise<Timeblock>,
   onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, debounceMs?: number }) => void,
   onCreateTag: (args: { name: string, type: string }) => Promise<Tag>,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
-  const tagTypes = useMemo(() => Array.from(new Set(tags.map(t => t.type))).sort(), [tags])
+  const tagTypes = useMemo(() => ['Techniques', 'Projects'].filter(t => tags.some(tag => tag.type === t)), [tags])
   const slots = useMemo(() => makeSlotsForDay({ day }), [day])
   const dayStart = useMemo(() => new Date(dayStartIso(day)), [day])
   const dayEnd = useMemo(() => new Date(dayStart.getTime() + 24 * 60 * 60 * 1000), [dayStart])
@@ -68,37 +69,62 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tags, tag
     return map
   }, [dayTagInstances, tags])
 
+  const slotsToShow = useMemo(() => {
+    if (!showOnlyWithContent) return slots
+    return slots.filter(slotStart => {
+      const slotMs = slotStart.getTime()
+      const tb = slotToTimeblock.get(slotMs)
+      const hasNotes = tb && ((tb.rayNotes && tb.rayNotes.trim() !== '') || (tb.assistantNotes && tb.assistantNotes.trim() !== ''))
+      const hasTags = tagTypes.some(type => {
+        const key = `${slotMs}:${type}`
+        const instances = slotKeyToTagInstances.get(key) || []
+        return instances.length > 0
+      })
+      return hasNotes || hasTags
+    })
+  }, [slots, showOnlyWithContent, slotToTimeblock, tagTypes, slotKeyToTagInstances])
+
   return (
     <div className="mb-3">
       <button className="text-left w-full" onClick={onToggleCollapsed}>
         <div className="font-semibold">{isCollapsed ? '▶' : '▼'} {formatDayLabel(day)}</div>
       </button>
       {!isCollapsed && (
-        <div className="mt-2 flex flex-col gap-1">
-          {slots.map(slotStart => {
-            const slotMs = slotStart.getTime()
-            const tb = slotToTimeblock.get(slotMs)
-            return (
-              <TimeBlockRow
-                key={slotMs}
-                slotStart={slotStart}
-                timeLabel={formatHm(slotStart)}
-                timeblock={tb}
-                tagTypes={tagTypes}
-                tags={tags}
-                tagInstancesByType={Object.fromEntries(tagTypes.map(type => {
-                  const key = `${slotMs}:${type}`
-                  return [type, slotKeyToTagInstances.get(key) || []]
-                }))}
-                onCreateTimeblock={onCreateTimeblock}
-                onPatchTimeblockDebounced={onPatchTimeblockDebounced}
-                onCreateTag={onCreateTag}
-                onCreateTagInstance={onCreateTagInstance}
-                onDeleteTagInstance={onDeleteTagInstance}
-              />
-            )
-          })}
-        </div>
+        <table className="mt-2 w-full">
+          <thead>
+            <tr className="text-gray-400 text-sm">
+              <th className="text-left px-2 py-2" style={{ width: '10%' }}>Time</th>
+              <th className="text-left px-2 py-2" style={{ width: '15%' }}>Notes</th>
+              <th className="text-left px-2 py-2" style={{ width: '15%' }}>Asst</th>
+              {tagTypes.map(type => <th key={type} className="text-left px-2 py-2" style={{ width: `${60 / (tagTypes.length || 1)}%` }}>{type}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {slotsToShow.map(slotStart => {
+              const slotMs = slotStart.getTime()
+              const tb = slotToTimeblock.get(slotMs)
+              return (
+                <TimeBlockRow
+                  key={slotMs}
+                  slotStart={slotStart}
+                  timeLabel={formatHm(slotStart)}
+                  timeblock={tb}
+                  tagTypes={tagTypes}
+                  tags={tags}
+                  tagInstancesByType={Object.fromEntries(tagTypes.map(type => {
+                    const key = `${slotMs}:${type}`
+                    return [type, slotKeyToTagInstances.get(key) || []]
+                  }))}
+                  onCreateTimeblock={onCreateTimeblock}
+                  onPatchTimeblockDebounced={onPatchTimeblockDebounced}
+                  onCreateTag={onCreateTag}
+                  onCreateTagInstance={onCreateTagInstance}
+                  onDeleteTagInstance={onDeleteTagInstance}
+                />
+              )
+            })}
+          </tbody>
+        </table>
       )}
     </div>
   )

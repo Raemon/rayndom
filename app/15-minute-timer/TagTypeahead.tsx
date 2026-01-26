@@ -1,9 +1,10 @@
 'use client'
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useRef, useEffect } from 'react'
 import type { Tag } from './types'
 
 const TagTypeahead = ({ tags, placeholder, onSelectTag, onCreateTag }:{ tags: Tag[], placeholder: string, onSelectTag: (tag: Tag) => void, onCreateTag: (name: string) => Promise<Tag> }) => {
   const [query, setQuery] = useState('')
+  const containerRef = useRef<HTMLDivElement>(null)
   const matches = useMemo(() => {
     const q = query.trim().toLowerCase()
     if (!q) return tags.slice(0, 8)
@@ -16,10 +17,22 @@ const TagTypeahead = ({ tags, placeholder, onSelectTag, onCreateTag }:{ tags: Ta
     return tags.find(t => t.name.toLowerCase() === q) || null
   }, [query, tags])
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setQuery('')
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
   return (
-    <div className="relative">
+    <div className="relative" ref={containerRef}>
       <input
-        className="px-2 py-1 bg-gray-100 outline-none w-40"
+        className="px-2 py-1 bg-gray-900 outline-none w-40"
         placeholder={placeholder}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
@@ -39,7 +52,7 @@ const TagTypeahead = ({ tags, placeholder, onSelectTag, onCreateTag }:{ tags: Ta
         }}
       />
       {(query.trim() || matches.length > 0) && (
-        <div className="absolute z-10 mt-1 bg-white text-sm">
+        <div className="absolute z-10 mt-1 bg-gray-900 text-white text-sm">
           {matches.map(t => (
             <button key={t.id} className="block text-left px-2 py-1 w-full" onMouseDown={(e) => { e.preventDefault(); onSelectTag(t); setQuery('') }}>
               {t.name}

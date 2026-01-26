@@ -23,39 +23,42 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tags, tagInst
   }
 
   return (
-    <div className="flex items-center gap-2">
-      <div className="w-14 text-gray-300 whitespace-nowrap w-20">{timeLabel}</div>
-      <NotesInput
-        placeholder="Notes"
-        value={timeblock?.rayNotes || ''}
-        onStartTyping={ensureTimeblock}
-        onDebouncedChange={async (next: string) => {
-          const tb = await ensureTimeblock()
-          onPatchTimeblockDebounced({ id: tb.id, rayNotes: next })
-        }}
-      />
-      <NotesInput
-        placeholder="Asst"
-        value={timeblock?.assistantNotes || ''}
-        onStartTyping={ensureTimeblock}
-        onDebouncedChange={async (next: string) => {
-          const tb = await ensureTimeblock()
-          onPatchTimeblockDebounced({ id: tb.id, assistantNotes: next })
-        }}
-      />
-      {tagTypes.map(type => (
-        <TagCell
-          key={type}
-          type={type}
-          tags={tags.filter(t => t.type === type)}
-          tagInstances={tagInstancesByType[type] || []}
-          datetime={slotStart.toISOString()}
-          onCreateTag={onCreateTag}
-          onCreateTagInstance={onCreateTagInstance}
-          onDeleteTagInstance={onDeleteTagInstance}
+    <tr>
+      <td className="text-gray-300 whitespace-nowrap px-2 py-2" style={{ width: '10%' }}>{timeLabel}</td>
+      <td style={{ width: '15%', height: '100%' }} className="px-2 py-2">
+        <NotesInput
+          placeholder="Notes"
+          value={timeblock?.rayNotes || ''}
+          onSave={async (content) => {
+            const tb = await ensureTimeblock()
+            onPatchTimeblockDebounced({ id: tb.id, rayNotes: content, debounceMs: 0 })
+          }}
         />
+      </td>
+      <td style={{ width: '15%', height: '100%' }} className="px-2 py-2">
+        <NotesInput
+          placeholder="Asst"
+          value={timeblock?.assistantNotes || ''}
+          onSave={async (content) => {
+            const tb = await ensureTimeblock()
+            onPatchTimeblockDebounced({ id: tb.id, assistantNotes: content, debounceMs: 0 })
+          }}
+        />
+      </td>
+      {tagTypes.map(type => (
+        <td key={type} className="px-2 py-2" style={{ width: `${60 / (tagTypes.length || 1)}%` }}>
+          <TagCell
+            type={type}
+            tags={tags.filter(t => t.type === type)}
+            tagInstances={tagInstancesByType[type] || []}
+            datetime={slotStart.toISOString()}
+            onCreateTag={onCreateTag}
+            onCreateTagInstance={onCreateTagInstance}
+            onDeleteTagInstance={onDeleteTagInstance}
+          />
+        </td>
       ))}
-    </div>
+    </tr>
   )
 }
 

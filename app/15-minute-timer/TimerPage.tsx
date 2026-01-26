@@ -71,6 +71,7 @@ const TimerPage = ({}:{}) => {
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default')
   const [isAlarming, setIsAlarming] = useState(false)
   const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
+  const [showOnlyWithContent, setShowOnlyWithContent] = useState(true)
   const audioContextRef = useRef<AudioContext | null>(null)
   const selectedSoundIndexRef = useRef(0)
   const prevSecondsRef = useRef<number | null>(null)
@@ -260,7 +261,7 @@ const TimerPage = ({}:{}) => {
         <div className="text-2xl font-bold mb-2">
           {formatTime(secondsRemaining)}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 mb-2">
           <label>Alarm Sound:</label>
           <select
             value={selectedSoundIndex}
@@ -281,6 +282,17 @@ const TimerPage = ({}:{}) => {
           {notificationPermission === 'granted' && <span className="text-green-600">Notifications on</span>}
           {notificationPermission === 'denied' && <span className="text-red-600">Notifications blocked</span>}
         </div>
+        <div className="flex items-center gap-2">
+          <label>
+            <input
+              type="checkbox"
+              checked={showOnlyWithContent}
+              onChange={(e) => setShowOnlyWithContent(e.target.checked)}
+              className="mr-1"
+            />
+            Show only timeblocks with content
+          </label>
+        </div>
       </div>
       <div className="flex gap-6">
         <div className="flex-1 min-w-0">
@@ -299,6 +311,7 @@ const TimerPage = ({}:{}) => {
                 timeblocks={timeblocks}
                 tags={tags}
                 tagInstances={tagInstances}
+                showOnlyWithContent={showOnlyWithContent}
                 onCreateTimeblock={async (args) => {
                   const tb = await createTimeblock(args)
                   return tb as Timeblock
@@ -314,12 +327,9 @@ const TimerPage = ({}:{}) => {
         <div className="w-96">
           <TagSidebar
             tags={tags}
-            tagInstances={tagInstances}
             onUpdateTag={updateTag}
             onDeleteTag={deleteTag}
-            onDeleteTagInstance={deleteTagInstance}
             onCreateTag={createTag}
-            onCreateTagInstance={createTagInstance}
           />
         </div>
       </div>
@@ -334,14 +344,14 @@ const TimerPage = ({}:{}) => {
             className="px-2 py-1 bg-gray-100 outline-none flex-1"
             placeholder="Add checklist item"
           />
-          <button onClick={addChecklistItem} className="px-2 py-1 bg-gray-200">Add</button>
+          <button onClick={addChecklistItem} className="px-2 py-1 bg-gray-600">Add</button>
         </div>
         <div className="flex flex-col gap-1">
           {checklistItems.map((item) => (
             <div key={item.id} className="flex items-center gap-2 cursor-pointer" onClick={() => toggleChecked(item.id)}>
               <input type="checkbox" checked={item.completed} onChange={() => {}} />
               <span className="flex-1">{item.title}</span>
-              <button onClick={(e) => { e.stopPropagation(); removeChecklistItem(item.id) }} className="px-2 py-1 bg-gray-200">Remove</button>
+              <button onClick={(e) => { e.stopPropagation(); removeChecklistItem(item.id) }} className="px-2 py-1 bg-gray-600">Remove</button>
             </div>
           ))}
           {checklistItems.length === 0 && <div className="text-gray-600">No items</div>}
