@@ -24,21 +24,21 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tags, tagInst
 
   return (
     <tr>
-      <td className="text-gray-300 whitespace-nowrap px-2 py-2" style={{ width: '10%' }}>{timeLabel}</td>
-      <td style={{ width: '15%', height: '100%' }} className="px-2 py-2">
+      <td className="text-gray-300 whitespace-nowrap px-2 py-2" style={{ width: '10%', verticalAlign: 'top' }}>{timeLabel}</td>
+      <td style={{ width: '15%', verticalAlign: 'top' }} className="px-2 py-2">
         <NotesInput
           placeholder="Notes"
-          value={timeblock?.rayNotes || ''}
+          initialValue={timeblock?.rayNotes || ''}
           onSave={async (content) => {
             const tb = await ensureTimeblock()
             onPatchTimeblockDebounced({ id: tb.id, rayNotes: content, debounceMs: 0 })
           }}
         />
       </td>
-      <td style={{ width: '15%', height: '100%' }} className="px-2 py-2">
+      <td style={{ width: '15%', verticalAlign: 'top' }} className="px-2 py-2">
         <NotesInput
           placeholder="Asst"
-          value={timeblock?.assistantNotes || ''}
+          initialValue={timeblock?.assistantNotes || ''}
           onSave={async (content) => {
             const tb = await ensureTimeblock()
             onPatchTimeblockDebounced({ id: tb.id, assistantNotes: content, debounceMs: 0 })
@@ -46,7 +46,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tags, tagInst
         />
       </td>
       {tagTypes.map(type => (
-        <td key={type} className="px-2 py-2" style={{ width: `${60 / (tagTypes.length || 1)}%` }}>
+        <td key={type} className="px-2 py-2" style={{ width: `${60 / (tagTypes.length || 1)}%`, verticalAlign: 'top' }}>
           <TagCell
             type={type}
             tags={tags.filter(t => t.type === type)}

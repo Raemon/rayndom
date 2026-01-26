@@ -5,9 +5,10 @@ import { BubbleMenu } from '@tiptap/react/menus'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
 
-const NotesInput = ({ value, placeholder, onSave }:{ value: string, placeholder: string, onSave?: (content: string) => void }) => {
+const NotesInput = ({ initialValue, placeholder, onSave }:{ initialValue: string, placeholder: string, onSave?: (content: string) => void }) => {
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
-  const lastSavedRef = useRef<string>(value || '')
+  const lastSavedRef = useRef<string>(initialValue || '')
+  const initializedRef = useRef(false)
   const saveContent = useCallback((content: string) => {
     if (onSave && content !== lastSavedRef.current) {
       lastSavedRef.current = content
@@ -19,12 +20,12 @@ const NotesInput = ({ value, placeholder, onSave }:{ value: string, placeholder:
       StarterKit.configure({ heading: { levels: [1, 2, 3] } }),
       Placeholder.configure({ placeholder })
     ],
-    content: value || '',
+    content: initialValue || '',
     immediatelyRender: false,
     editorProps: {
       attributes: {
         class: 'px-2 py-1 outline-none',
-        style: 'height: 100%; min-height: 100%;'
+        style: 'min-height: 100px;'
       }
     },
     onUpdate: ({ editor }) => {
@@ -44,16 +45,17 @@ const NotesInput = ({ value, placeholder, onSave }:{ value: string, placeholder:
     }
   }, [])
   useEffect(() => {
-    if (editor && editor.getHTML() !== value) {
-      editor.commands.setContent(value || '')
-      lastSavedRef.current = value || ''
+    if (editor && !initializedRef.current && initialValue) {
+      editor.commands.setContent(initialValue)
+      lastSavedRef.current = initialValue
+      initializedRef.current = true
     }
-  }, [value, editor])
+  }, [initialValue, editor])
 
   if (!editor) return null
 
   return (
-    <div className="flex-1 min-w-0 bg-gray-100 h-full" style={{ height: '100%' }}>
+    <div className="flex-1 min-w-0 bg-gray-100" style={{ minHeight: '100px' }}>
       <BubbleMenu editor={editor}>
         <div className="flex gap-1 bg-gray-800 text-black px-1 py-0.5 text-xs">
           <button onClick={() => editor.chain().focus().toggleBold().run()} className={`px-1 ${editor.isActive('bold') ? 'bg-gray-600' : ''}`} title="Bold (Cmd+B)">B</button>
@@ -61,7 +63,7 @@ const NotesInput = ({ value, placeholder, onSave }:{ value: string, placeholder:
           <button onClick={() => editor.chain().focus().toggleStrike().run()} className={`px-1 ${editor.isActive('strike') ? 'bg-gray-600' : ''}`} title="Strikethrough">S</button>
         </div>
       </BubbleMenu>
-      <EditorContent editor={editor} style={{ height: '100%' }} />
+      <EditorContent editor={editor} style={{ minHeight: '100px' }} />
     </div>
   )
 }

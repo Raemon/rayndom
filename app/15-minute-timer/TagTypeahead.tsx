@@ -4,6 +4,7 @@ import type { Tag } from './types'
 
 const TagTypeahead = ({ tags, placeholder, onSelectTag, onCreateTag }:{ tags: Tag[], placeholder: string, onSelectTag: (tag: Tag) => void, onCreateTag: (name: string) => Promise<Tag> }) => {
   const [query, setQuery] = useState('')
+  const [isEditing, setIsEditing] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const matches = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -32,10 +33,11 @@ const TagTypeahead = ({ tags, placeholder, onSelectTag, onCreateTag }:{ tags: Ta
   return (
     <div className="relative" ref={containerRef}>
       <input
-        className="px-2 py-1 bg-gray-900 outline-none w-40"
-        placeholder={placeholder}
+        className="px-2 py-1 outline-none w-40"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onFocus={() => setIsEditing(true)}
+        onBlur={() => setIsEditing(false)}
         onKeyDown={async (e) => {
           if (e.key === 'Enter') {
             e.preventDefault()
@@ -48,13 +50,15 @@ const TagTypeahead = ({ tags, placeholder, onSelectTag, onCreateTag }:{ tags: Ta
           }
           if (e.key === 'Escape') {
             setQuery('')
+            setIsEditing(false)
+            ;(e.target as HTMLInputElement).blur()
           }
         }}
       />
-      {(query.trim() || matches.length > 0) && (
+      {isEditing && (query.trim() || matches.length > 0) && (
         <div className="absolute z-10 mt-1 bg-gray-900 text-white text-sm">
           {matches.map(t => (
-            <button key={t.id} className="block text-left px-2 py-1 w-full" onMouseDown={(e) => { e.preventDefault(); onSelectTag(t); setQuery('') }}>
+            <button key={t.id} className="block text-left px-2 py-1 w-full bg-gray-500 rounded-xs" onMouseDown={(e) => { e.preventDefault(); onSelectTag(t); setQuery('') }}>
               {t.name}
             </button>
           ))}

@@ -19,27 +19,24 @@ const TagCell = ({ type, tags, tagInstances, datetime, onCreateTag, onCreateTagI
       {tagInstances.map(ti => {
         const name = ti.tag?.name || tags.find(t => t.id === ti.tagId)?.name || ''
         return (
-          <span key={ti.id} className="inline-flex items-center px-2 py-0.5 bg-gray-600 text-sm">
+          <span key={ti.id} className="inline-flex items-center px-2 py-0.5 bg-gray-500 text-sm">
             {name}
             <button className="ml-1 text-gray-500 bg-transparent" onClick={() => onDeleteTagInstance({ id: ti.id })}>×</button>
           </span>
         )
       })}
-      <button className="px-2 py-0.5 bg-gray-100 text-gray-500 bg-transparent" onClick={() => setIsEditing(v => !v)} title={`Add ${type}`}>+</button>
-      {isEditing && (
-        <TagTypeahead
-          tags={tags}
-          placeholder={type}
-          onSelectTag={async (tag) => {
-            await onCreateTagInstance({ tagId: tag.id, datetime })
-            setIsEditing(false)
-          }}
-          onCreateTag={async (name) => {
-            const created = await onCreateTag({ name, type })
-            return created
-          }}
-        />
-      )}
+      <TagTypeahead
+        tags={tags}
+        placeholder={type}
+        onSelectTag={async (tag) => {
+          await onCreateTagInstance({ tagId: tag.id, datetime })
+          setIsEditing(false)
+        }}
+        onCreateTag={async (name) => {
+          const created = await onCreateTag({ name, type })
+          return created
+        }}
+      />
     </div>
   )
 }

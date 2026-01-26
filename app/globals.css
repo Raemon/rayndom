@@ -37,7 +37,7 @@ pre code {
   border-radius: 4px;
 }
 input, select, textarea, [contenteditable="true"], .tiptap {
-  background-color: #6e6363 !important;
+  background-color: #3b3c45;
   color: white;
   font-size: 16px;
 }

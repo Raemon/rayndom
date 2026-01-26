@@ -33,7 +33,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tags, tag
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
-  const tagTypes = useMemo(() => ['Techniques', 'Projects'].filter(t => tags.some(tag => tag.type === t)), [tags])
+  const tagTypes = useMemo(() => ['Techniques', 'Projects', '???'].filter(t => tags.some(tag => tag.type === t)), [tags])
   const slots = useMemo(() => makeSlotsForDay({ day }), [day])
   const dayStart = useMemo(() => new Date(dayStartIso(day)), [day])
   const dayEnd = useMemo(() => new Date(dayStart.getTime() + 24 * 60 * 60 * 1000), [dayStart])
