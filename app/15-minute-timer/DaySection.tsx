@@ -96,7 +96,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tags, tag
       </button>
       {!isCollapsed && (
         <table className="mt-2 w-full">
-          <thead>
+          <thead className="sticky top-0 bg-gray-900 z-10">
             <tr className="text-gray-400 text-sm">
               <th className="text-left px-2 py-2" style={{ width: '10%' }}>Time</th>
               <th className="text-left px-2 py-2" style={{ width: '15%' }}>Notes</th>
