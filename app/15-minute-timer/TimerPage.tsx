@@ -127,6 +127,9 @@ const TimerPage = ({}:{}) => {
   }
 
   const startAlarming = () => {
+    if (flashIntervalRef.current) {
+      clearInterval(flashIntervalRef.current)
+    }
     setIsAlarming(true)
     let flashState = true
     flashIntervalRef.current = setInterval(() => {
