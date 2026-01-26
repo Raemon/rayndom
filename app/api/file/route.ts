@@ -7,10 +7,14 @@ export async function GET(request: NextRequest) {
   const topic = searchParams.get('topic')
   const domain = searchParams.get('domain')
   const file = searchParams.get('file')
+  const source = searchParams.get('source') || 'downloads'
   if (!topic || !domain || !file) {
     return NextResponse.json({ error: 'Missing topic, domain or file parameter' }, { status: 400 })
   }
-  const filePath = path.join(process.cwd(), 'downloads', topic, domain, file)
+  const basePath = source === 'outputs' ? 'outputs' : 'downloads'
+  const filePath = domain === '__outputs__' 
+    ? path.join(process.cwd(), basePath, topic, file)
+    : path.join(process.cwd(), basePath, topic, domain, file)
   if (!fs.existsSync(filePath)) {
     return NextResponse.json({ error: 'File not found' }, { status: 404 })
   }

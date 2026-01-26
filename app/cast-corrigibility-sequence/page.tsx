@@ -15,7 +15,15 @@ export function getDomainsFromDownloads(topic: string): DomainInfo[] {
   })
 }
 
+export function getOutputFiles(topic: string): string[] {
+  const outputsPath = path.join(process.cwd(), `outputs/${topic}`)
+  if (!fs.existsSync(outputsPath)) return []
+  return fs.readdirSync(outputsPath)
+    .filter(f => !f.startsWith('.') && f.endsWith('.csv'))
+}
+
 export default function Page() {
   const domains = getDomainsFromDownloads('cast-corrigibility-sequence')
-  return <ConversationTopicPage domains={domains} topic="cast-corrigibility-sequence" title="CAST: Corrigibility as Singular Target" />
+  const outputFiles = getOutputFiles('cast-corrigibility-sequence')
+  return <ConversationTopicPage domains={domains} topic="cast-corrigibility-sequence" title="CAST: Corrigibility as Singular Target" outputFiles={outputFiles} />
 }

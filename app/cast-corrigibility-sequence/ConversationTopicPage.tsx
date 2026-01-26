@@ -24,6 +24,7 @@ type Props = {
   domains: DomainInfo[]
   topic: string
   title?: string
+  outputFiles?: string[]
 }
 
 const parseCsvLine = (line: string): string[] => {
@@ -62,8 +63,11 @@ const parseCsvToRows = (csv: string): {columns: string[], rows: Record<string, s
   return {columns, rows}
 }
 
-const ConversationTopicPage = ({ domains, topic, title }: Props) => {
+const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Props) => {
   const [selectedFile, setSelectedFile] = useState<SelectedFile | null>(() => {
+    if (outputFiles.length > 0) {
+      return { domain: '__outputs__', file: outputFiles[0] }
+    }
     if (domains.length > 0 && domains[0].files.length > 0) {
       return { domain: domains[0].domain, file: domains[0].files[0] }
     }
@@ -82,8 +86,9 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
       return
     }
     const ext = selectedFile.file.split('.').pop()?.toLowerCase()
+    const source = selectedFile.domain === '__outputs__' ? 'outputs' : 'downloads'
     if (ext === 'md') {
-      fetch(`/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(selectedFile.domain)}&file=${encodeURIComponent(selectedFile.file)}`)
+      fetch(`/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(selectedFile.domain)}&file=${encodeURIComponent(selectedFile.file)}&source=${source}`)
         .then(res => res.json())
         .then(data => {
           if (data.type === 'markdown') {
@@ -96,7 +101,7 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
         })
         .catch(() => setContent(''))
     } else if (ext === 'csv') {
-      fetch(`/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(selectedFile.domain)}&file=${encodeURIComponent(selectedFile.file)}`)
+      fetch(`/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(selectedFile.domain)}&file=${encodeURIComponent(selectedFile.file)}&source=${source}`)
         .then(res => res.json())
         .then(data => {
           if (data.type === 'csv') {
@@ -120,7 +125,8 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
   }
 
   const getFileUrl = (domain: string, file: string) => {
-    return `/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(domain)}&file=${encodeURIComponent(file)}`
+    const source = domain === '__outputs__' ? 'outputs' : 'downloads'
+    return `/api/file?topic=${encodeURIComponent(topic)}&domain=${encodeURIComponent(domain)}&file=${encodeURIComponent(file)}&source=${source}`
   }
   const csvColumnDefs = useMemo<ColDef[]>(() => {
     if (!csvData) return []
@@ -148,6 +154,26 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
     <div className="p-5 flex gap-5">
       <div className="w-[300px] flex-shrink-0 max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {title && <h1 className="text-lg m-0 mb-3">{title}</h1>}
+        {outputFiles.length > 0 && (
+          <div className="mb-4">
+            <h2 className="text-sm font-bold m-0 mb-2">Outputs</h2>
+            <ul className="m-0 pl-0 text-xs list-none">
+              {outputFiles.map(file => {
+                const isSelected = selectedFile?.domain === '__outputs__' && selectedFile?.file === file
+                return (
+                  <li key={file} className="mb-0.5">
+                    <span
+                      onClick={() => handleSelectFile({ domain: '__outputs__', file })}
+                      className={`cursor-pointer ${isSelected ? 'text-white font-bold underline' : 'text-gray-400'}`}
+                    >
+                      {file}
+                    </span>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        )}
         <div>
           {domains.map((domainInfo, index) => (
             <ConversationTopicSiteItem
@@ -160,11 +186,11 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
           ))}
         </div>
       </div>
-      <div className="flex-1 max-w-3xl max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <div className={`flex-1 max-h-[90vh] overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${selectedFile && getFileType(selectedFile.file) === 'csv' ? '' : 'max-w-3xl'}`}>
         {selectedFile && (
           <div>
             <div className="mb-2 text-xs text-gray-600">
-              {selectedFile.domain}/{selectedFile.file}
+              {selectedFile.domain === '__outputs__' ? 'outputs' : selectedFile.domain}/{selectedFile.file}
               <button onClick={() => handleSelectFile(null)} className="ml-2 cursor-pointer">×</button>
             </div>
             {isLoading && <div>Loading...</div>}
@@ -179,14 +205,15 @@ const ConversationTopicPage = ({ domains, topic, title }: Props) => {
             )}
             {!isLoading && getFileType(selectedFile.file) === 'csv' && csvData && (
               <div>
-                <div className="h-[60vh]">
+                <div className="h-[60vh] text-xs">
                   <AgGridReact
                     rowData={csvData.rows}
                     columnDefs={csvColumnDefs}
                     defaultColDef={csvDefaultColDef}
                     pagination={true}
                     paginationPageSize={50}
-                    headerHeight={40}
+                    headerHeight={28}
+                    rowHeight={24}
                     animateRows={true}
                   />
                 </div>
