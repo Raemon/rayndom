@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useCallback, useState } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
 import { BubbleMenu } from '@tiptap/react/menus'
 import StarterKit from '@tiptap/starter-kit'
@@ -11,6 +11,7 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave 
   const lastSavedRef = useRef<string>(initialValue || '')
   const initializedRef = useRef(false)
   const isFocusedRef = useRef(false)
+  const [isFocused, setIsFocused] = useState(false)
   const { registerFocus, unregisterFocus } = useFocusedNotes()
   const saveContent = useCallback((content: string) => {
     if (onSave && content !== lastSavedRef.current) {
@@ -39,10 +40,12 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave 
     },
     onFocus: () => {
       isFocusedRef.current = true
+      setIsFocused(true)
       if (noteKey) registerFocus(noteKey)
     },
     onBlur: ({ editor }) => {
       isFocusedRef.current = false
+      setIsFocused(false)
       if (noteKey) unregisterFocus(noteKey)
       if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current)
       saveContent(editor.getHTML())
@@ -75,7 +78,15 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave 
   if (!editor) return null
 
   return (
-    <div className="flex-1 min-w-0 bg-gray-100 text-xs" style={{ minHeight: '100px' }}>
+    <div 
+      className={`bg-gray-100 text-xs transition-all duration-200 ease-in-out relative ${isFocused ? 'z-50 shadow-lg' : ''}`}
+      style={{ 
+        minHeight: isFocused ? '50px' : '50px',
+        maxHeight: isFocused ? 'none' : '250px',
+        width: isFocused ? 'calc(100% + 200px)' : '100%',
+        overflow: isFocused ? 'visible' : 'hidden'
+      }}
+    >
       <BubbleMenu editor={editor}>
         <div className="flex gap-1 bg-gray-800 text-black px-1 py-0.5 text-xs">
           <button onClick={() => editor.chain().focus().toggleBold().run()} className={`px-1 ${editor.isActive('bold') ? 'bg-gray-600' : ''}`} title="Bold (Cmd+B)">B</button>
@@ -83,7 +94,7 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave 
           <button onClick={() => editor.chain().focus().toggleStrike().run()} className={`px-1 ${editor.isActive('strike') ? 'bg-gray-600' : ''}`} title="Strikethrough">S</button>
         </div>
       </BubbleMenu>
-      <EditorContent editor={editor} style={{ minHeight: '100px' }} />
+      <EditorContent editor={editor} style={{ minHeight: isFocused ? '200px' : '100px', transition: 'min-height 200ms ease-in-out' }} />
     </div>
   )
 }

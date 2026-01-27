@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import OpenAI from 'openai'
+import { getAiNotesPrompt } from './aiNotesPrompt'
+import { marked } from 'marked'
 
 const getRequiredEnv = (key: string) => {
   const value = process.env[key]
@@ -157,7 +159,28 @@ Your response must be valid JSON and nothing else.`
       createdInstances.push(tagInstance)
     }
     console.log('[predict-tags] Done. Created', createdInstances.length, 'tag instances')
-    return NextResponse.json({ predictions, createdInstances, keylogCount: keylogs.length })
+    let aiNotes: string | null = null
+    try {
+      console.log('[predict-tags] Sending request to LLM for aiNotes (anthropic/claude-opus-4.5)...')
+      const aiNotesCompletion = await client.chat.completions.create({
+        model: 'anthropic/claude-opus-4.5',
+        messages: [{ role: 'user', content: getAiNotesPrompt({ keylogText }) }],
+        max_tokens: 800,
+      })
+      const aiNotesMarkdown = aiNotesCompletion.choices[0]?.message?.content || null
+      aiNotes = aiNotesMarkdown ? (marked.parse(aiNotesMarkdown) as string) : null
+      if (aiNotes !== null) {
+        const existingTimeblock = await prisma.timeblock.findFirst({ where: { datetime: blockDatetime } })
+        if (existingTimeblock) {
+          await prisma.timeblock.update({ where: { id: existingTimeblock.id }, data: { aiNotes } })
+        } else {
+          await prisma.timeblock.create({ data: { datetime: blockDatetime, rayNotes: null, assistantNotes: null, aiNotes } })
+        }
+      }
+    } catch (e) {
+      console.error('[predict-tags] Failed to generate aiNotes:', e)
+    }
+    return NextResponse.json({ predictions, createdInstances, keylogCount: keylogs.length, aiNotes })
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error'
     console.error('[predict-tags] Unhandled error:', error)

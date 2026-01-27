@@ -12,8 +12,8 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
   tagInstancesByType: Record<string, TagInstance[]>,
   allTagInstances: TagInstance[],
   isCurrent?: boolean,
-  onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null }) => Promise<Timeblock>,
-  onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, debounceMs?: number }) => void,
+  onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => Promise<Timeblock>,
+  onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => void,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
   onApproveTagInstance: (args: { id: number }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
@@ -21,7 +21,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
   const { tags } = useTags()
   const ensureTimeblock = async () => {
     if (timeblock) return timeblock
-    const created = await onCreateTimeblock({ datetime: slotStart.toISOString(), rayNotes: null, assistantNotes: null })
+    const created = await onCreateTimeblock({ datetime: slotStart.toISOString(), rayNotes: null, assistantNotes: null, aiNotes: null })
     return created
   }
 
@@ -52,8 +52,20 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
           }}
         />
       </td>
+      <td style={{ width: '15%', verticalAlign: 'top' }} className="px-2 py-2">
+        <NotesInput
+          noteKey={timeblock ? `${timeblock.id}:aiNotes` : undefined}
+          placeholder="AI"
+          initialValue={timeblock?.aiNotes || ''}
+          externalValue={timeblock?.aiNotes || ''}
+          onSave={async (content) => {
+            const tb = await ensureTimeblock()
+            onPatchTimeblockDebounced({ id: tb.id, aiNotes: content, debounceMs: 0 })
+          }}
+        />
+      </td>
       {tagTypes.map(type => (
-        <td key={type} className="px-2 py-2" style={{ width: `${60 / (tagTypes.length || 1)}%`, verticalAlign: 'top' }}>
+        <td key={type} className="px-2 py-2" style={{ width: `${45 / (tagTypes.length || 1)}%`, verticalAlign: 'top' }}>
           <TagCell
             type={type}
             tagInstances={tagInstancesByType[type] || []}

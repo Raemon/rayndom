@@ -6,6 +6,7 @@ import { useTimeblocks } from './hooks/useTimeblocks'
 import { useTagInstances } from './hooks/useTagInstances'
 import { FocusedNotesProvider, useFocusedNotes } from './FocusedNotesContext'
 import { TagsProvider } from './TagsContext'
+import NotesInput from './NotesInput'
 import type { Timeblock } from './types'
 import Checklist, { type ChecklistRef } from './Checklist'
 
@@ -100,6 +101,13 @@ const TimerPageInner = () => {
     } finally {
       setIsPredicting(false)
     }
+  }
+  const currentBlockDatetime = floorTo15(new Date()).toISOString()
+  const currentTimeblock = timeblocks.find(tb => new Date(tb.datetime).toISOString() === currentBlockDatetime)
+  const ensureCurrentTimeblock = async () => {
+    if (currentTimeblock) return currentTimeblock
+    const created = await createTimeblock({ datetime: currentBlockDatetime, rayNotes: null, assistantNotes: null, aiNotes: null })
+    return created as Timeblock
   }
 
   // Poll database every 5 seconds to refresh unfocused notes, tag instances, and checklist
@@ -282,6 +290,16 @@ const TimerPageInner = () => {
             {isPredicting ? 'Predicting...' : 'Predict Tags'}
           </button>
         </div>
+        <NotesInput
+          noteKey={currentTimeblock ? `${currentTimeblock.id}:aiNotes` : undefined}
+          placeholder="AI Notes"
+          initialValue={currentTimeblock?.aiNotes || ''}
+          externalValue={currentTimeblock?.aiNotes || ''}
+          onSave={async (content) => {
+            const tb = await ensureCurrentTimeblock()
+            patchTimeblockDebounced({ id: tb.id, aiNotes: content, debounceMs: 0 })
+          }}
+        />
       </div>
       <div className="flex gap-6">
         <div className="flex-1 min-w-0">

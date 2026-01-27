@@ -28,8 +28,8 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
   onToggleCollapsed: () => void,
   timeblocks: Timeblock[],
   tagInstances: TagInstance[],
-  onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null }) => Promise<Timeblock>,
-  onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, debounceMs?: number }) => void,
+  onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => Promise<Timeblock>,
+  onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => void,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
   onApproveTagInstance: (args: { id: number }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
@@ -50,7 +50,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
     const hardcodedSlots = makeSlotsForDay({ day })
     const hardcodedMs = new Set(hardcodedSlots.map(s => s.getTime()))
     const extraSlotMs = new Set<number>()
-    const timeblocksWithNotes = dayTimeblocks.filter(tb => tb.rayNotes || tb.assistantNotes)
+    const timeblocksWithNotes = dayTimeblocks.filter(tb => tb.rayNotes || tb.assistantNotes || tb.aiNotes)
     for (const tb of timeblocksWithNotes) {
       const slotMs = floorTo15(new Date(tb.datetime)).getTime()
       if (!hardcodedMs.has(slotMs)) extraSlotMs.add(slotMs)
@@ -134,7 +134,8 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
               <th className="text-left px-2 py-2" style={{ width: '10%' }}>Time</th>
               <th className="text-left px-2 py-2" style={{ width: '15%' }}>Notes</th>
               <th className="text-left px-2 py-2" style={{ width: '15%' }}>Asst</th>
-              {tagTypes.map(type => <th key={type} className="text-left px-2 py-2" style={{ width: `${60 / (tagTypes.length || 1)}%` }}>{type}</th>)}
+              <th className="text-left px-2 py-2" style={{ width: '15%' }}>AI</th>
+              {tagTypes.map(type => <th key={type} className="text-left px-2 py-2" style={{ width: `${45 / (tagTypes.length || 1)}%` }}>{type}</th>)}
             </tr>
           </thead>
           <tbody>
