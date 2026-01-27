@@ -54,7 +54,8 @@ const TagTypeahead = ({ tags, allTagInstances, placeholder, onSelectTag, onCreat
   return (
     <div className="relative" ref={containerRef}>
       <input
-        className="px-2 py-1 outline-none w-40"
+        className="px-2 py-1 outline-none w-40 bg-transparent! hover:bg-white/10! w-full"
+        placeholder={"+"}
         value={query}
         onChange={(e) => { setQuery(e.target.value); setSelectedIndex(0) }}
         onFocus={() => setIsEditing(true)}

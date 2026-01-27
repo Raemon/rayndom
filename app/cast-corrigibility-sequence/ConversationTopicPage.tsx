@@ -185,8 +185,8 @@ const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Prop
             {!isLoading && getFileType(selectedFile.file) === 'image' && (
               <img src={getFileUrl(selectedFile.domain, selectedFile.file)} alt={selectedFile.file} className="max-w-full" />
             )}
-            {!isLoading && getFileType(selectedFile.file) === 'pdf' && (
-              <iframe src={getFileUrl(selectedFile.domain, selectedFile.file)} className="w-full h-[80vh] border-none" />
+            {getFileType(selectedFile.file) === 'pdf' && (
+              <iframe src={`${getFileUrl(selectedFile.domain, selectedFile.file)}#navpanes=0&zoom=93`} className="w-full h-[80vh] border-none" />
             )}
             {!isLoading && getFileType(selectedFile.file) === 'csv' && csvData && (
               <div>

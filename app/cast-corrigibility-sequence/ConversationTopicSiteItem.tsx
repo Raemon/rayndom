@@ -12,7 +12,7 @@ const ConversationTopicSiteItem = ({domainInfo, selectedFile, onSelectFile, init
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded)
   const isSupported = (file: string) => {
     const ext = file.split('.').pop()?.toLowerCase()
-    return ext === 'md' || ext === 'pdf' || ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'].includes(ext || '')
+    return ext === 'md' || ext === 'pdf' || ext === 'csv' || ['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'].includes(ext || '')
   }
 
   return (

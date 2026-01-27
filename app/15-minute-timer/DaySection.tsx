@@ -1,6 +1,8 @@
 'use client'
 import { useMemo, useState, useEffect } from 'react'
+import { countBy, orderBy } from 'lodash'
 import TimeBlockRow from './TimeBlockRow'
+import TagListItem from './TagListItem'
 import { useTags } from './TagsContext'
 import type { Tag, TagInstance, Timeblock } from './types'
 
@@ -48,6 +50,22 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
     return d >= dayStart && d < dayEnd
   }), [tagInstances, dayStart, dayEnd])
 
+  const tagCountsByType = useMemo(() => {
+    const counts = countBy(dayTagInstances, ti => ti.tagId)
+    const tagCountPairs = Object.entries(counts).map(([tagId, count]) => {
+      const tag = tags.find(t => t.id === Number(tagId))
+      return { tag, count }
+    }).filter((pair): pair is { tag: Tag, count: number } => pair.tag !== undefined)
+    const sorted = orderBy(tagCountPairs, ['count'], ['desc'])
+    const byType: Record<string, { tag: Tag, count: number }[]> = {}
+    for (const type of tagTypes) byType[type] = []
+    for (const pair of sorted) {
+      const type = pair.tag.type
+      if (byType[type]) byType[type].push(pair)
+    }
+    return byType
+  }, [dayTagInstances, tags, tagTypes])
+
   const slotToTimeblock = useMemo(() => {
     const map = new Map<number, Timeblock>()
     const sorted = [...dayTimeblocks].sort((a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime())
@@ -91,9 +109,24 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
 
   return (
     <div className="mb-3">
-      <button className="text-left w-full" onClick={onToggleCollapsed}>
-        <div className="font-semibold">{isCollapsed ? '▶' : '▼'} {formatDayLabel(day)}</div>
-      </button>
+      {isCollapsed ? (
+        <div className="flex gap-4 items-start">
+          <button className="text-left font-semibold shrink-0 whitespace-nowrap" style={{ width: '40%' }} onClick={onToggleCollapsed}>
+            ▶ {formatDayLabel(day)}
+          </button>
+          {tagTypes.map(type => (
+            <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-0 overflow-hidden">
+              {tagCountsByType[type]?.map(({ tag, count }) => (
+                <TagListItem key={tag.id} tag={tag} instanceCount={count} />
+              ))}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <button className="text-left w-full" onClick={onToggleCollapsed}>
+          <div className="font-semibold">▼ {formatDayLabel(day)}</div>
+        </button>
+      )}
       {!isCollapsed && (
         <table className="mt-2 w-full">
           <thead className="sticky top-0 bg-gray-900 z-10">
