@@ -22,7 +22,7 @@ const makeSlotsForDay = ({ day, startMinutes=9*60+30, endMinutes=20*60+30 }:{ da
   return slots
 }
 
-const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onDeleteTagInstance }:{
+const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onDeleteTagInstance }:{
   day: Date,
   isCollapsed: boolean,
   onToggleCollapsed: () => void,
@@ -31,23 +31,38 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
   onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null }) => Promise<Timeblock>,
   onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, debounceMs?: number }) => void,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
+  onApproveTagInstance: (args: { id: number }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
   const { tags } = useTags()
   const tagTypes = useMemo(() => ['Projects', '???','Techniques'].filter(t => tags.some(tag => tag.type === t)), [tags])
-  const slots = useMemo(() => makeSlotsForDay({ day }), [day])
   const dayStart = useMemo(() => new Date(dayStartIso(day)), [day])
   const dayEnd = useMemo(() => new Date(dayStart.getTime() + 24 * 60 * 60 * 1000), [dayStart])
-
   const dayTimeblocks = useMemo(() => timeblocks.filter(tb => {
     const d = new Date(tb.datetime)
     return d >= dayStart && d < dayEnd
   }), [timeblocks, dayStart, dayEnd])
-
   const dayTagInstances = useMemo(() => tagInstances.filter(ti => {
     const d = new Date(ti.datetime)
     return d >= dayStart && d < dayEnd
   }), [tagInstances, dayStart, dayEnd])
+  const slots = useMemo(() => {
+    const hardcodedSlots = makeSlotsForDay({ day })
+    const hardcodedMs = new Set(hardcodedSlots.map(s => s.getTime()))
+    const extraSlotMs = new Set<number>()
+    const timeblocksWithNotes = dayTimeblocks.filter(tb => tb.rayNotes || tb.assistantNotes)
+    for (const tb of timeblocksWithNotes) {
+      const slotMs = floorTo15(new Date(tb.datetime)).getTime()
+      if (!hardcodedMs.has(slotMs)) extraSlotMs.add(slotMs)
+    }
+    for (const ti of dayTagInstances) {
+      const slotMs = floorTo15(new Date(ti.datetime)).getTime()
+      if (!hardcodedMs.has(slotMs)) extraSlotMs.add(slotMs)
+    }
+    const allSlots = [...hardcodedSlots, ...Array.from(extraSlotMs).map(ms => new Date(ms))]
+    allSlots.sort((a, b) => a.getTime() - b.getTime())
+    return allSlots
+  }, [day, dayTimeblocks, dayTagInstances])
 
   const tagCountsByType = useMemo(() => {
     const counts = countBy(dayTagInstances, ti => ti.tagId)
@@ -142,6 +157,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
                   onCreateTimeblock={onCreateTimeblock}
                   onPatchTimeblockDebounced={onPatchTimeblockDebounced}
                   onCreateTagInstance={onCreateTagInstance}
+                  onApproveTagInstance={onApproveTagInstance}
                   onDeleteTagInstance={onDeleteTagInstance}
                 />
               )

@@ -14,8 +14,18 @@ export async function POST(request: NextRequest) {
   const body = await request.json()
   const tagId = body?.tagId
   const datetime = body?.datetime
+  const llmPredicted = body?.llmPredicted ?? false
+  const approved = body?.approved ?? true
   if (!tagId || !datetime) return NextResponse.json({ error: 'Missing tagId or datetime' }, { status: 400 })
-  const tagInstance = await prisma.tagInstance.create({ data: { tagId: Number(tagId), datetime: new Date(datetime) }, include: { tag: true } })
+  const tagInstance = await prisma.tagInstance.create({ data: { tagId: Number(tagId), datetime: new Date(datetime), llmPredicted, approved }, include: { tag: true } })
+  return NextResponse.json({ tagInstance })
+}
+
+export async function PATCH(request: NextRequest) {
+  const body = await request.json()
+  const id = body?.id
+  if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 })
+  const tagInstance = await prisma.tagInstance.update({ where: { id: Number(id) }, data: { approved: body?.approved ?? undefined }, include: { tag: true } })
   return NextResponse.json({ tagInstance })
 }
 

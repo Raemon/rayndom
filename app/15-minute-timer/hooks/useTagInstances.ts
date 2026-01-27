@@ -13,13 +13,20 @@ export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, e
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { if (autoLoad) load() }, [start, end])
 
-  const createTagInstance = async ({ tagId, datetime }:{ tagId: number, datetime: string }) => {
-    const optimistic: TagInstance = { id: -Date.now(), tagId, datetime }
+  const createTagInstance = async ({ tagId, datetime, llmPredicted=false, approved=true }:{ tagId: number, datetime: string, llmPredicted?: boolean, approved?: boolean }) => {
+    const optimistic: TagInstance = { id: -Date.now(), tagId, datetime, llmPredicted, approved }
     setTagInstances(prev => [...prev, optimistic])
-    const res = await fetch('/api/timer/tag-instances', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tagId, datetime }) })
+    const res = await fetch('/api/timer/tag-instances', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tagId, datetime, llmPredicted, approved }) })
     const json = await res.json()
     if (json.tagInstance) setTagInstances(prev => prev.map(ti => ti.id === optimistic.id ? json.tagInstance : ti))
     return json.tagInstance as TagInstance
+  }
+
+  const approveTagInstance = async ({ id }:{ id: number }) => {
+    setTagInstances(prev => prev.map(ti => ti.id === id ? { ...ti, approved: true } : ti))
+    const res = await fetch('/api/timer/tag-instances', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, approved: true }) })
+    const json = await res.json()
+    if (json.tagInstance) setTagInstances(prev => prev.map(ti => ti.id === id ? json.tagInstance : ti))
   }
 
   const deleteTagInstance = async ({ id }:{ id: number }) => {
@@ -27,5 +34,5 @@ export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, e
     await fetch(`/api/timer/tag-instances?id=${id}`, { method: 'DELETE' })
   }
 
-  return { tagInstances, setTagInstances, load, createTagInstance, deleteTagInstance }
+  return { tagInstances, setTagInstances, load, createTagInstance, approveTagInstance, deleteTagInstance }
 }

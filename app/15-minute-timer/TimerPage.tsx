@@ -68,6 +68,7 @@ const TimerPageInner = () => {
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default')
   const [isAlarming, setIsAlarming] = useState(false)
   const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
+  const [isPredicting, setIsPredicting] = useState(false)
   const audioContextRef = useRef<AudioContext | null>(null)
   const selectedSoundIndexRef = useRef(0)
   const prevSecondsRef = useRef<number | null>(null)
@@ -82,7 +83,24 @@ const TimerPageInner = () => {
   const startIso = startDate.toISOString()
   const endIso = endDate.toISOString()
   const { timeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused } = useTimeblocks({ start: startIso, end: endIso })
-  const { tagInstances, load: loadTagInstances, createTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
+  const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
+
+  const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
+
+  const predictTagsForCurrentBlock = async () => {
+    setIsPredicting(true)
+    try {
+      const currentBlockDatetime = floorTo15(new Date()).toISOString()
+      const res = await fetch('/api/timer/predict-tags', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ datetime: currentBlockDatetime }) })
+      const json = await res.json()
+      if (json.createdInstances?.length > 0) loadTagInstances()
+      console.log('Prediction result:', json)
+    } catch (e) {
+      console.error('Prediction failed:', e)
+    } finally {
+      setIsPredicting(false)
+    }
+  }
 
   // Poll database every 5 seconds to refresh unfocused notes, tag instances, and checklist
   useEffect(() => {
@@ -257,6 +275,9 @@ const TimerPageInner = () => {
           )}
           {notificationPermission === 'granted' && <span className="text-green-600">Notifications on</span>}
           {notificationPermission === 'denied' && <span className="text-red-600">Notifications blocked</span>}
+          <button onClick={predictTagsForCurrentBlock} disabled={isPredicting} className="px-2 py-1 bg-purple-100 disabled:opacity-50">
+            {isPredicting ? 'Predicting...' : 'Predict Tags'}
+          </button>
         </div>
       </div>
       <div className="flex gap-6">
@@ -281,6 +302,7 @@ const TimerPageInner = () => {
                 }}
                 onPatchTimeblockDebounced={patchTimeblockDebounced}
                 onCreateTagInstance={createTagInstance}
+                onApproveTagInstance={approveTagInstance}
                 onDeleteTagInstance={deleteTagInstance}
               />
             )

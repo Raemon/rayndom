@@ -18,12 +18,13 @@ export const getTagColor = (name: string): string => {
   return `hsl(${Math.floor(hue)}, 50%, 35%)`
 }
 
-const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagInstance, onDeleteTagInstance }:{
+const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagInstance, onApproveTagInstance, onDeleteTagInstance }:{
   type: string,
   tagInstances: TagInstance[],
   allTagInstances: TagInstance[],
   datetime: string,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
+  onApproveTagInstance?: (args: { id: number }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
   const { tags, createTag } = useTags()
@@ -34,10 +35,17 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
     <div className="flex items-center gap-1 min-w-0 flex-wrap">
       {tagInstances.map(ti => {
         const name = ti.tag?.name || typeTags.find(t => t.id === ti.tagId)?.name || ''
+        const isUnapproved = ti.approved === false
         return (
-          <span key={ti.id} className="inline-flex items-center px-2 pt-0.5 pb-0 rounded-xs text-sm text-white" style={{ backgroundColor: getTagColor(name) }}>
+          <span
+            key={ti.id}
+            className="inline-flex items-center px-2 pt-0.5 pb-0 rounded-xs text-sm text-white"
+            style={{ backgroundColor: getTagColor(name), opacity: isUnapproved ? 0.5 : 1, cursor: isUnapproved ? 'pointer' : 'default' }}
+            onClick={isUnapproved && onApproveTagInstance ? () => onApproveTagInstance({ id: ti.id }) : undefined}
+            title={isUnapproved ? 'Click to approve' : undefined}
+          >
             {name}
-            <button className="ml-2 opacity-50 cursor-pointer hover:opacity-100 text-white/60 hover:text-white bg-transparent" onClick={() => onDeleteTagInstance({ id: ti.id })}>×</button>
+            <button className="ml-2 opacity-50 cursor-pointer hover:opacity-100 text-white/60 hover:text-white bg-transparent" onClick={(e) => { e.stopPropagation(); onDeleteTagInstance({ id: ti.id }) }}>×</button>
           </span>
         )
       })}

@@ -4,7 +4,7 @@ import TagCell from './TagCell'
 import { useTags } from './TagsContext'
 import type { TagInstance, Timeblock } from './types'
 
-const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesByType, allTagInstances, isCurrent, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onDeleteTagInstance }:{
+const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesByType, allTagInstances, isCurrent, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onDeleteTagInstance }:{
   slotStart: Date,
   timeLabel: string,
   timeblock?: Timeblock,
@@ -15,6 +15,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
   onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null }) => Promise<Timeblock>,
   onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, debounceMs?: number }) => void,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
+  onApproveTagInstance: (args: { id: number }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
   const { tags } = useTags()
@@ -59,6 +60,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
             allTagInstances={allTagInstances}
             datetime={slotStart.toISOString()}
             onCreateTagInstance={onCreateTagInstance}
+            onApproveTagInstance={onApproveTagInstance}
             onDeleteTagInstance={onDeleteTagInstance}
           />
         </td>

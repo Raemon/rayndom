@@ -40,11 +40,14 @@ model Tag {
 }
 
 model TagInstance {
-  id        Int      @id @default(autoincrement())
-  tagId     Int      @map("tag_id")
-  tag       Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
-  datetime  DateTime @db.Timestamptz
-  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  id           Int      @id @default(autoincrement())
+  tagId        Int      @map("tag_id")
+  tag          Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  datetime     DateTime @db.Timestamptz
+  llmPredicted Boolean  @default(false) @map("llm_predicted")
+  approved     Boolean  @default(true)
+  llmReason    String?  @map("llm_reason")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
 
   @@map("tag_instances")
 }

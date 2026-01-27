@@ -32,7 +32,7 @@ const TagSidebar = ({ tagInstances }:{ tagInstances: TagInstance[] }) => {
   const typeNames = Object.keys(tagsByType).sort()
 
   return (
-    <div className="text-sm flex flex-col gap-2">
+    <div className="text-sm flex flex-col gap-2 opacity-25 hover:opacity-100 saturate-0 hover:saturate-100 transition-all duration-100">
       <div className="font-semibold mb-1">Tags</div>
       {typeNames.map((typeName, idx) => (
         <div key={typeName} className={idx > 0 ? 'mt-3' : ''}>
