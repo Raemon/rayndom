@@ -227,6 +227,8 @@ const TimerPageInner = () => {
         startAlarming()
         // Reset all items to unchecked
         checklistRef.current?.resetAllItems()
+        // Automatically predict tags for the just-completed block
+        predictTagsForCurrentBlock()
         // Play alarm multiple times to be more noticeable
         setTimeout(playAlarm, 500)
         setTimeout(playAlarm, 1000)
@@ -237,6 +239,7 @@ const TimerPageInner = () => {
       setSecondsRemaining(remaining)
     }, 1000)
     return () => clearInterval(interval)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
