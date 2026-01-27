@@ -80,5 +80,5 @@ label {
   text-decoration: line-through;
 }
 .notes-input-editor .tiptap {
-  background-color: transparent;
+    background-color: var(--background);
 }
