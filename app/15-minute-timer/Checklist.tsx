@@ -5,6 +5,7 @@ type ChecklistItem = { id: number; title: string; completed: boolean }
 
 export type ChecklistRef = {
   resetAllItems: () => void
+  refreshItems: () => void
 }
 
 const Checklist = forwardRef<ChecklistRef, object>((_, ref) => {
@@ -20,6 +21,12 @@ const Checklist = forwardRef<ChecklistRef, object>((_, ref) => {
     checklistItemsRef.current = checklistItems
   }, [checklistItems])
 
+  const refreshItems = async () => {
+    const res = await fetch('/api/checklist')
+    const items = await res.json()
+    setChecklistItems(items)
+  }
+
   useImperativeHandle(ref, () => ({
     resetAllItems: () => {
       checklistItemsRef.current.forEach(item => {
@@ -28,7 +35,8 @@ const Checklist = forwardRef<ChecklistRef, object>((_, ref) => {
         }
       })
       setChecklistItems(items => items.map(item => ({ ...item, completed: false })))
-    }
+    },
+    refreshItems
   }))
 
   const addChecklistItem = async () => {

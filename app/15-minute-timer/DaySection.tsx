@@ -100,7 +100,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
             ▶ {formatDayLabel(day)}
           </button>
           {tagTypes.map(type => (
-            <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-0 overflow-hidden">
+            <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-1 overflow-hidden">
               {tagCountsByType[type]?.map(({ tag, count }) => (
                 <TagListItem key={tag.id} tag={tag} instanceCount={count} readonly />
               ))}

@@ -82,15 +82,17 @@ const TimerPageInner = () => {
   const startIso = startDate.toISOString()
   const endIso = endDate.toISOString()
   const { timeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused } = useTimeblocks({ start: startIso, end: endIso })
-  const { tagInstances, createTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
+  const { tagInstances, load: loadTagInstances, createTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
 
-  // Poll database every 5 seconds to refresh unfocused notes
+  // Poll database every 5 seconds to refresh unfocused notes, tag instances, and checklist
   useEffect(() => {
     const interval = setInterval(() => {
       refreshUnfocused(focusedNoteKeys)
+      loadTagInstances()
+      checklistRef.current?.refreshItems()
     }, 5000)
     return () => clearInterval(interval)
-  }, [refreshUnfocused, focusedNoteKeys])
+  }, [refreshUnfocused, focusedNoteKeys, loadTagInstances])
 
   const getNext15MinuteMark = () => {
     const now = new Date()

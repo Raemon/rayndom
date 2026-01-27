@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import type { TagInstance } from '../types'
 
 export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, end: string, autoLoad?: boolean }) => {
   const [tagInstances, setTagInstances] = useState<TagInstance[]>([])
 
-  const load = async () => {
+  const load = useCallback(async () => {
     const res = await fetch(`/api/timer/tag-instances?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}`)
     const json = await res.json()
     setTagInstances(json.tagInstances || [])
-  }
+  }, [start, end])
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { if (autoLoad) load() }, [start, end])

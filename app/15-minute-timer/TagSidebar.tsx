@@ -32,11 +32,11 @@ const TagSidebar = ({ tagInstances }:{ tagInstances: TagInstance[] }) => {
   const typeNames = Object.keys(tagsByType).sort()
 
   return (
-    <div className="text-sm">
+    <div className="text-sm flex flex-col gap-2">
       <div className="font-semibold mb-1">Tags</div>
       {typeNames.map((typeName, idx) => (
         <div key={typeName} className={idx > 0 ? 'mt-3' : ''}>
-          <div className="text-lg text-gray-500 mb-1">{typeName}</div>
+          <div className="text-lg text-white mb-1">{typeName}</div>
           <div className="flex flex-col gap-1">
             {tagsByType[typeName].map(tag => (
               <TagListItem key={tag.id} tag={tag} instanceCount={instanceCountByTagId[tag.id] || 0} />
