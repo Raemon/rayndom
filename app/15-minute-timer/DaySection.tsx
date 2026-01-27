@@ -22,13 +22,12 @@ const makeSlotsForDay = ({ day, startMinutes=9*60+30, endMinutes=20*60+30 }:{ da
   return slots
 }
 
-const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstances, showOnlyWithContent, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onDeleteTagInstance }:{
+const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onDeleteTagInstance }:{
   day: Date,
   isCollapsed: boolean,
   onToggleCollapsed: () => void,
   timeblocks: Timeblock[],
   tagInstances: TagInstance[],
-  showOnlyWithContent: boolean,
   onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null }) => Promise<Timeblock>,
   onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, debounceMs?: number }) => void,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
@@ -87,20 +86,6 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
     return map
   }, [dayTagInstances, tags])
 
-  const slotsToShow = useMemo(() => {
-    if (!showOnlyWithContent) return slots
-    return slots.filter(slotStart => {
-      const slotMs = slotStart.getTime()
-      const tb = slotToTimeblock.get(slotMs)
-      const hasNotes = tb && ((tb.rayNotes && tb.rayNotes.trim() !== '') || (tb.assistantNotes && tb.assistantNotes.trim() !== ''))
-      const hasTags = tagTypes.some(type => {
-        const key = `${slotMs}:${type}`
-        const instances = slotKeyToTagInstances.get(key) || []
-        return instances.length > 0
-      })
-      return hasNotes || hasTags
-    })
-  }, [slots, showOnlyWithContent, slotToTimeblock, tagTypes, slotKeyToTagInstances])
   const [currentSlotMs, setCurrentSlotMs] = useState(() => floorTo15(new Date()).getTime())
   useEffect(() => {
     const interval = setInterval(() => setCurrentSlotMs(floorTo15(new Date()).getTime()), 10000)
@@ -108,7 +93,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
   }, [])
 
   return (
-    <div className="mb-3">
+    <div className="mb-3 border-b border-gray-700 pb-3">
       {isCollapsed ? (
         <div className="flex gap-4 items-start">
           <button className="text-left font-semibold shrink-0 whitespace-nowrap" style={{ width: '40%' }} onClick={onToggleCollapsed}>
@@ -117,7 +102,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
           {tagTypes.map(type => (
             <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-0 overflow-hidden">
               {tagCountsByType[type]?.map(({ tag, count }) => (
-                <TagListItem key={tag.id} tag={tag} instanceCount={count} />
+                <TagListItem key={tag.id} tag={tag} instanceCount={count} readonly />
               ))}
             </div>
           ))}
@@ -138,7 +123,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
             </tr>
           </thead>
           <tbody>
-            {slotsToShow.map(slotStart => {
+            {slots.map(slotStart => {
               const slotMs = slotStart.getTime()
               const tb = slotToTimeblock.get(slotMs)
               return (

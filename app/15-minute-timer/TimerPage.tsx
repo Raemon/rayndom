@@ -68,7 +68,6 @@ const TimerPageInner = () => {
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default')
   const [isAlarming, setIsAlarming] = useState(false)
   const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
-  const [showOnlyWithContent, setShowOnlyWithContent] = useState(false)
   const audioContextRef = useRef<AudioContext | null>(null)
   const selectedSoundIndexRef = useRef(0)
   const prevSecondsRef = useRef<number | null>(null)
@@ -172,6 +171,7 @@ const TimerPageInner = () => {
       clearInterval(flashIntervalRef.current)
       flashIntervalRef.current = null
     }
+    document.title = formatTime(getNext15MinuteMark())
   }
 
   const playAlarm = () => {
@@ -196,11 +196,12 @@ const TimerPageInner = () => {
     const interval = setInterval(() => {
       const remaining = getNext15MinuteMark()
       const prev = prevSecondsRef.current
-      // Detect when we've crossed the 15-minute mark (remaining jumped back up from a low value)
-      // or when remaining is very low (0-2 seconds) and prev was higher
-      const crossedMark = prev !== null && prev <= 5 && remaining > 60
-      const hitZero = remaining <= 1 && prev !== null && prev > remaining
-      if (crossedMark || hitZero) {
+      // Detect when we've crossed the 15-minute mark:
+      // - remaining === 0: we just hit the mark
+      // - prev <= 5 && remaining > 60: we jumped over (e.g. tab was backgrounded)
+      // Require prev > 0 to prevent re-triggering after hitting 0
+      const shouldAlarm = prev !== null && prev > 0 && (remaining === 0 || (prev <= 5 && remaining > 60))
+      if (shouldAlarm) {
         playAlarm()
         showNotification()
         startAlarming()
@@ -255,17 +256,6 @@ const TimerPageInner = () => {
           {notificationPermission === 'granted' && <span className="text-green-600">Notifications on</span>}
           {notificationPermission === 'denied' && <span className="text-red-600">Notifications blocked</span>}
         </div>
-        <div className="flex items-center gap-2">
-          <label>
-            <input
-              type="checkbox"
-              checked={showOnlyWithContent}
-              onChange={(e) => setShowOnlyWithContent(e.target.checked)}
-              className="mr-1"
-            />
-            Show only timeblocks with content
-          </label>
-        </div>
       </div>
       <div className="flex gap-6">
         <div className="flex-1 min-w-0">
@@ -283,7 +273,6 @@ const TimerPageInner = () => {
                 onToggleCollapsed={() => setCollapsedDays(prev => ({ ...prev, [key]: !(prev[key] ?? (i !== 0)) }))}
                 timeblocks={timeblocks}
                 tagInstances={tagInstances}
-                showOnlyWithContent={showOnlyWithContent}
                 onCreateTimeblock={async (args) => {
                   const tb = await createTimeblock(args)
                   return tb as Timeblock

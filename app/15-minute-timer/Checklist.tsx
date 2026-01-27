@@ -72,7 +72,7 @@ const Checklist = forwardRef<ChecklistRef, object>((_, ref) => {
           <div key={item.id} className="flex items-center gap-2 cursor-pointer" onClick={() => toggleChecked(item.id)}>
             <input type="checkbox" checked={item.completed} onChange={() => {}} />
             <span className="flex-1">{item.title}</span>
-            <button onClick={(e) => { e.stopPropagation(); removeChecklistItem(item.id) }} className="px-2 py-1 bg-gray-600">Remove</button>
+            <button onClick={(e) => { e.stopPropagation(); removeChecklistItem(item.id) }} className="px-2 py-1 text-white cursor-pointer opacity-50 hover:opacity-100">x</button>
           </div>
         ))}
         {checklistItems.length === 0 && <div className="text-gray-600">No items</div>}
