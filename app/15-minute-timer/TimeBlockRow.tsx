@@ -1,22 +1,23 @@
 'use client'
 import NotesInput from './NotesInput'
 import TagCell from './TagCell'
-import type { Tag, TagInstance, Timeblock } from './types'
+import { useTags } from './TagsContext'
+import type { TagInstance, Timeblock } from './types'
 
-const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tags, tagInstancesByType, isCurrent, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTag, onCreateTagInstance, onDeleteTagInstance }:{
+const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesByType, allTagInstances, isCurrent, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onDeleteTagInstance }:{
   slotStart: Date,
   timeLabel: string,
   timeblock?: Timeblock,
   tagTypes: string[],
-  tags: Tag[],
   tagInstancesByType: Record<string, TagInstance[]>,
+  allTagInstances: TagInstance[],
   isCurrent?: boolean,
   onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null }) => Promise<Timeblock>,
   onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, debounceMs?: number }) => void,
-  onCreateTag: (args: { name: string, type: string }) => Promise<Tag>,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
+  const { tags } = useTags()
   const ensureTimeblock = async () => {
     if (timeblock) return timeblock
     const created = await onCreateTimeblock({ datetime: slotStart.toISOString(), rayNotes: null, assistantNotes: null })
@@ -54,10 +55,9 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tags, tagInst
         <td key={type} className="px-2 py-2" style={{ width: `${60 / (tagTypes.length || 1)}%`, verticalAlign: 'top' }}>
           <TagCell
             type={type}
-            tags={tags.filter(t => t.type === type)}
             tagInstances={tagInstancesByType[type] || []}
+            allTagInstances={allTagInstances}
             datetime={slotStart.toISOString()}
-            onCreateTag={onCreateTag}
             onCreateTagInstance={onCreateTagInstance}
             onDeleteTagInstance={onDeleteTagInstance}
           />

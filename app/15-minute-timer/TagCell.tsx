@@ -1,39 +1,56 @@
 'use client'
 import { useState } from 'react'
 import TagTypeahead from './TagTypeahead'
-import type { Tag, TagInstance } from './types'
+import { useTags } from './TagsContext'
+import type { TagInstance } from './types'
 
-const TagCell = ({ type, tags, tagInstances, datetime, onCreateTag, onCreateTagInstance, onDeleteTagInstance }:{
+export const getTagColor = (name: string): string => {
+  const lower = name.toLowerCase()
+  let hue = 0
+  let range = 360
+  const charCount = Math.min(lower.length, 4)
+  for (let i = 0; i < charCount; i++) {
+    const code = lower.charCodeAt(i)
+    const position = code >= 97 && code <= 122 ? (code - 97) / 26 : (code % 26) / 26
+    hue += position * range
+    range /= 26
+  }
+  return `hsl(${Math.floor(hue)}, 50%, 35%)`
+}
+
+const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagInstance, onDeleteTagInstance }:{
   type: string,
-  tags: Tag[],
   tagInstances: TagInstance[],
+  allTagInstances: TagInstance[],
   datetime: string,
-  onCreateTag: (args: { name: string, type: string }) => Promise<Tag>,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
+  const { tags, createTag } = useTags()
   const [isEditing, setIsEditing] = useState(false)
+  const typeTags = tags.filter(t => t.type === type)
 
   return (
     <div className="flex items-center gap-1 min-w-0 flex-wrap">
       {tagInstances.map(ti => {
-        const name = ti.tag?.name || tags.find(t => t.id === ti.tagId)?.name || ''
+        const name = ti.tag?.name || typeTags.find(t => t.id === ti.tagId)?.name || ''
         return (
-          <span key={ti.id} className="inline-flex items-center px-2 py-0.5 bg-gray-500 text-sm">
+          <span key={ti.id} className="inline-flex items-center px-2 pt-0.5 pb-0 rounded-xs text-sm text-white" style={{ backgroundColor: getTagColor(name) }}>
             {name}
-            <button className="ml-1 text-gray-500 bg-transparent" onClick={() => onDeleteTagInstance({ id: ti.id })}>×</button>
+            <button className="ml-2 opacity-50 cursor-pointer hover:opacity-100 text-white/60 hover:text-white bg-transparent" onClick={() => onDeleteTagInstance({ id: ti.id })}>×</button>
           </span>
         )
       })}
       <TagTypeahead
-        tags={tags}
+        tags={typeTags}
+        allTagInstances={allTagInstances}
         placeholder={type}
         onSelectTag={async (tag) => {
           await onCreateTagInstance({ tagId: tag.id, datetime })
           setIsEditing(false)
         }}
         onCreateTag={async (name) => {
-          const created = await onCreateTag({ name, type })
+          const created = await createTag({ name, type })
           return created
         }}
       />

@@ -1,17 +1,34 @@
 'use client'
 import { useMemo, useState, useRef, useEffect } from 'react'
-import type { Tag } from './types'
+import type { Tag, TagInstance } from './types'
+import { getTagColor } from './TagCell'
 
-const TagTypeahead = ({ tags, placeholder, onSelectTag, onCreateTag }:{ tags: Tag[], placeholder: string, onSelectTag: (tag: Tag) => void, onCreateTag: (name: string) => Promise<Tag> }) => {
+const TagTypeahead = ({ tags, allTagInstances, placeholder, onSelectTag, onCreateTag }:{ tags: Tag[], allTagInstances: TagInstance[], placeholder: string, onSelectTag: (tag: Tag) => void, onCreateTag: (name: string) => Promise<Tag> }) => {
   const [query, setQuery] = useState('')
   const [isEditing, setIsEditing] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
+  const tagToLatestInstance = useMemo(() => {
+    const map = new Map<number, TagInstance>()
+    for (const ti of allTagInstances) {
+      const existing = map.get(ti.tagId)
+      if (!existing || new Date(ti.datetime) > new Date(existing.datetime)) map.set(ti.tagId, ti)
+    }
+    return map
+  }, [allTagInstances])
   const matches = useMemo(() => {
     const q = query.trim().toLowerCase()
-    if (!q) return tags.slice(0, 8)
-    return tags.filter(t => t.name.toLowerCase().includes(q)).slice(0, 8)
-  }, [query, tags])
+    const filtered = q ? tags.filter(t => t.name.toLowerCase().includes(q)) : tags
+    const sorted = [...filtered].sort((a, b) => {
+      const aLatest = tagToLatestInstance.get(a.id)
+      const bLatest = tagToLatestInstance.get(b.id)
+      if (!aLatest && !bLatest) return 0
+      if (!aLatest) return 1
+      if (!bLatest) return -1
+      return new Date(bLatest.datetime).getTime() - new Date(aLatest.datetime).getTime()
+    })
+    return sorted.slice(0, 8)
+  }, [query, tags, tagToLatestInstance])
 
   const exactMatch = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -71,11 +88,13 @@ const TagTypeahead = ({ tags, placeholder, onSelectTag, onCreateTag }:{ tags: Ta
         }}
       />
       {isEditing && (query.trim() || matches.length > 0) && (
-        <div className="absolute z-10 mt-1 bg-gray-900 text-white text-sm">
+        <div className="absolute z-10 mt-1 bg-gray-900 text-white text-xs">
           {matches.map((t, i) => (
-            <button key={t.id} className={`block text-left px-2 py-1 w-full rounded-xs ${selectedIndex === i ? 'bg-blue-600' : 'bg-gray-700'}`} onMouseDown={(e) => { e.preventDefault(); onSelectTag(t); setQuery('') }}>
-              {t.name}
-            </button>
+            <div key={t.id} className={`flex items-center gap-2 text-left px-2 py-1 w-full text-xs! rounded-xs ${selectedIndex === i ? 'bg-white/40!' : 'bg-gray-700!'}`} onMouseDown={(e) => { e.preventDefault(); onSelectTag(t); setQuery('') }}>
+              <span className="px-1 rounded-xs text-white" style={{ backgroundColor: getTagColor(t.name) }}>
+               {t.name}
+              </span>
+            </div>
           ))}
           {showCreateOption && (
             <button className={`block text-left px-2 py-1 w-full ${selectedIndex === matches.length ? 'bg-blue-600 text-white' : 'bg-gray-700 text-gray-400'}`} onMouseDown={async (e) => {

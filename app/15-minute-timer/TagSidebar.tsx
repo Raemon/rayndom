@@ -2,16 +2,17 @@
 import { useState } from 'react'
 import groupBy from 'lodash/groupBy'
 import countBy from 'lodash/countBy'
-import TagEditor from './TagEditor'
 import TagListItem from './TagListItem'
+import { useTags } from './TagsContext'
 import type { Tag, TagInstance } from './types'
 
-const NewTagForm = ({ onCreateTag }:{ onCreateTag: (args: { name: string, type: string }) => Promise<Tag> }) => {
+const NewTagForm = () => {
+  const { createTag } = useTags()
   const [name, setName] = useState('')
   const [type, setType] = useState('')
   const handleSubmit = async () => {
     if (!name.trim() || !type.trim()) return
-    await onCreateTag({ name: name.trim(), type: type.trim() })
+    await createTag({ name: name.trim(), type: type.trim() })
     setName('')
     setType('')
   }
@@ -24,15 +25,8 @@ const NewTagForm = ({ onCreateTag }:{ onCreateTag: (args: { name: string, type: 
   )
 }
 
-const TagSidebar = ({ tags, tagInstances, onUpdateTag, onDeleteTag, onCreateTag }:{
-  tags: Tag[],
-  tagInstances: TagInstance[],
-  onUpdateTag: (args: { id: number, name?: string, type?: string }) => Promise<void> | void,
-  onDeleteTag: (args: { id: number }) => Promise<void> | void,
-  onCreateTag: (args: { name: string, type: string }) => Promise<Tag>,
-}) => {
-  const [editingTagId, setEditingTagId] = useState<number | null>(null)
-
+const TagSidebar = ({ tagInstances }:{ tagInstances: TagInstance[] }) => {
+  const { tags } = useTags()
   const tagsByType: Record<string, Tag[]> = groupBy(tags, 'type')
   const instanceCountByTagId: Record<string, number> = countBy(tagInstances, 'tagId')
   const typeNames = Object.keys(tagsByType).sort()
@@ -43,24 +37,14 @@ const TagSidebar = ({ tags, tagInstances, onUpdateTag, onDeleteTag, onCreateTag 
       {typeNames.map((typeName, idx) => (
         <div key={typeName} className={idx > 0 ? 'mt-3' : ''}>
           <div className="text-lg text-gray-500 mb-1">{typeName}</div>
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-1">
             {tagsByType[typeName].map(tag => (
-              <div key={tag.id}>
-                {editingTagId === tag.id ? (
-                  <TagEditor
-                    tag={tag}
-                    onSave={async ({ id, name, type }) => { await onUpdateTag({ id, name, type }); setEditingTagId(null) }}
-                    onDelete={async ({ id }) => { await onDeleteTag({ id }); setEditingTagId(null) }}
-                  />
-                ) : (
-                  <TagListItem tag={tag} instanceCount={instanceCountByTagId[tag.id] || 0} onClick={() => setEditingTagId(tag.id)} />
-                )}
-              </div>
+              <TagListItem key={tag.id} tag={tag} instanceCount={instanceCountByTagId[tag.id] || 0} />
             ))}
           </div>
         </div>
       ))}
-      <NewTagForm onCreateTag={onCreateTag} />
+      <NewTagForm />
     </div>
   )
 }

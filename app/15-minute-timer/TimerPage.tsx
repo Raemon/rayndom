@@ -2,10 +2,10 @@
 import { useEffect, useState, useRef } from 'react'
 import DaySection from './DaySection'
 import TagSidebar from './TagSidebar'
-import { useTags } from './hooks/useTags'
 import { useTimeblocks } from './hooks/useTimeblocks'
 import { useTagInstances } from './hooks/useTagInstances'
 import { FocusedNotesProvider, useFocusedNotes } from './FocusedNotesContext'
+import { TagsProvider } from './TagsContext'
 import type { Timeblock } from './types'
 import Checklist, { type ChecklistRef } from './Checklist'
 
@@ -82,7 +82,6 @@ const TimerPageInner = () => {
   endDate.setHours(0, 0, 0, 0)
   const startIso = startDate.toISOString()
   const endIso = endDate.toISOString()
-  const { tags, createTag, updateTag, deleteTag } = useTags()
   const { timeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused } = useTimeblocks({ start: startIso, end: endIso })
   const { tagInstances, createTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
 
@@ -283,7 +282,6 @@ const TimerPageInner = () => {
                 isCollapsed={isCollapsed}
                 onToggleCollapsed={() => setCollapsedDays(prev => ({ ...prev, [key]: !(prev[key] ?? (i !== 0)) }))}
                 timeblocks={timeblocks}
-                tags={tags}
                 tagInstances={tagInstances}
                 showOnlyWithContent={showOnlyWithContent}
                 onCreateTimeblock={async (args) => {
@@ -291,21 +289,14 @@ const TimerPageInner = () => {
                   return tb as Timeblock
                 }}
                 onPatchTimeblockDebounced={patchTimeblockDebounced}
-                onCreateTag={createTag}
                 onCreateTagInstance={createTagInstance}
                 onDeleteTagInstance={deleteTagInstance}
               />
             )
           })}
         </div>
-        <div className="w-96">
-          <TagSidebar
-            tags={tags}
-            tagInstances={tagInstances}
-            onUpdateTag={updateTag}
-            onDeleteTag={deleteTag}
-            onCreateTag={createTag}
-          />
+        <div className="w-72">
+          <TagSidebar tagInstances={tagInstances} />
         </div>
       </div>
       <Checklist ref={checklistRef} />
@@ -316,7 +307,9 @@ const TimerPageInner = () => {
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 const TimerPage = ({}:{}) => (
   <FocusedNotesProvider>
-    <TimerPageInner />
+    <TagsProvider>
+      <TimerPageInner />
+    </TagsProvider>
   </FocusedNotesProvider>
 )
 
