@@ -73,6 +73,7 @@ const TimerPageInner = () => {
   const audioContextRef = useRef<AudioContext | null>(null)
   const selectedSoundIndexRef = useRef(0)
   const prevSecondsRef = useRef<number | null>(null)
+  const hasPredictedForBlockRef = useRef(false)
   const flashIntervalRef = useRef<NodeJS.Timeout | null>(null)
   const checklistRef = useRef<ChecklistRef>(null)
   const { focusedNoteKeys } = useFocusedNotes()
@@ -229,14 +230,20 @@ const TimerPageInner = () => {
       // - prev <= 5 && remaining > 60: we jumped over (e.g. tab was backgrounded)
       // Require prev > 0 to prevent re-triggering after hitting 0
       const shouldAlarm = prev !== null && prev > 0 && (remaining === 0 || (prev <= 5 && remaining > 60))
+      // Trigger tag prediction 2 minutes before the 15-minute mark (when 120 seconds remain)
+      const shouldPredict = prev !== null && prev > 120 && remaining <= 120 && !hasPredictedForBlockRef.current
+      if (shouldPredict) {
+        hasPredictedForBlockRef.current = true
+        predictTagsForCurrentBlock()
+      }
       if (shouldAlarm) {
+        // Reset prediction flag for the new block
+        hasPredictedForBlockRef.current = false
         playAlarm()
         showNotification()
         startAlarming()
         // Reset all items to unchecked
         checklistRef.current?.resetAllItems()
-        // Automatically predict tags for the just-completed block
-        predictTagsForCurrentBlock()
         // Play alarm multiple times to be more noticeable
         setTimeout(playAlarm, 500)
         setTimeout(playAlarm, 1000)
