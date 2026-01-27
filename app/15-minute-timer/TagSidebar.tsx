@@ -3,6 +3,7 @@ import { useState } from 'react'
 import groupBy from 'lodash/groupBy'
 import countBy from 'lodash/countBy'
 import TagEditor from './TagEditor'
+import TagListItem from './TagListItem'
 import type { Tag, TagInstance } from './types'
 
 const NewTagForm = ({ onCreateTag }:{ onCreateTag: (args: { name: string, type: string }) => Promise<Tag> }) => {
@@ -52,10 +53,7 @@ const TagSidebar = ({ tags, tagInstances, onUpdateTag, onDeleteTag, onCreateTag 
                     onDelete={async ({ id }) => { await onDeleteTag({ id }); setEditingTagId(null) }}
                   />
                 ) : (
-                  <button className="text-left w-full bg-transparent flex justify-between" onClick={() => setEditingTagId(tag.id)}>
-                    <span>{tag.name}</span>
-                    <span className="text-gray-500">{instanceCountByTagId[tag.id] || 0}</span>
-                  </button>
+                  <TagListItem tag={tag} instanceCount={instanceCountByTagId[tag.id] || 0} onClick={() => setEditingTagId(tag.id)} />
                 )}
               </div>
             ))}

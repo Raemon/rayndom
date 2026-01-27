@@ -75,7 +75,7 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave 
   if (!editor) return null
 
   return (
-    <div className="flex-1 min-w-0 bg-gray-100" style={{ minHeight: '100px' }}>
+    <div className="flex-1 min-w-0 bg-gray-100 text-xs" style={{ minHeight: '100px' }}>
       <BubbleMenu editor={editor}>
         <div className="flex gap-1 bg-gray-800 text-black px-1 py-0.5 text-xs">
           <button onClick={() => editor.chain().focus().toggleBold().run()} className={`px-1 ${editor.isActive('bold') ? 'bg-gray-600' : ''}`} title="Bold (Cmd+B)">B</button>

@@ -7,6 +7,7 @@ import { useTimeblocks } from './hooks/useTimeblocks'
 import { useTagInstances } from './hooks/useTagInstances'
 import { FocusedNotesProvider, useFocusedNotes } from './FocusedNotesContext'
 import type { Timeblock } from './types'
+import Checklist, { type ChecklistRef } from './Checklist'
 
 type AlarmSound = {
   name: string
@@ -61,13 +62,9 @@ const ALARM_SOUNDS: AlarmSound[] = [
   { name: 'Beep', play: playBeep },
 ]
 
-type ChecklistItem = { id: number; title: string; completed: boolean }
-
 const TimerPageInner = () => {
   const [secondsRemaining, setSecondsRemaining] = useState(0)
   const [selectedSoundIndex, setSelectedSoundIndex] = useState(0)
-  const [checklistItems, setChecklistItems] = useState<ChecklistItem[]>([])
-  const [newItem, setNewItem] = useState('')
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default')
   const [isAlarming, setIsAlarming] = useState(false)
   const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
@@ -76,7 +73,7 @@ const TimerPageInner = () => {
   const selectedSoundIndexRef = useRef(0)
   const prevSecondsRef = useRef<number | null>(null)
   const flashIntervalRef = useRef<NodeJS.Timeout | null>(null)
-  const checklistItemsRef = useRef<ChecklistItem[]>([])
+  const checklistRef = useRef<ChecklistRef>(null)
   const { focusedNoteKeys } = useFocusedNotes()
 
   const endDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
@@ -130,7 +127,6 @@ const TimerPageInner = () => {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setNotificationPermission(Notification.permission)
     }
-    fetch('/api/checklist').then(r => r.json()).then(setChecklistItems)
     return () => {
       if (audioContextRef.current) {
         audioContextRef.current.close()
@@ -194,10 +190,6 @@ const TimerPageInner = () => {
   }, [selectedSoundIndex])
 
   useEffect(() => {
-    checklistItemsRef.current = checklistItems
-  }, [checklistItems])
-
-  useEffect(() => {
     const initial = getNext15MinuteMark()
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setSecondsRemaining(initial)
@@ -214,12 +206,7 @@ const TimerPageInner = () => {
         showNotification()
         startAlarming()
         // Reset all items to unchecked
-        checklistItemsRef.current.forEach(item => {
-          if (item.completed) {
-            fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: item.id, completed: false }) })
-          }
-        })
-        setChecklistItems(items => items.map(item => ({ ...item, completed: false })))
+        checklistRef.current?.resetAllItems()
         // Play alarm multiple times to be more noticeable
         setTimeout(playAlarm, 500)
         setTimeout(playAlarm, 1000)
@@ -241,28 +228,6 @@ const TimerPageInner = () => {
   useEffect(() => {
     playAlarm()
   }, [selectedSoundIndex])
-
-  const addChecklistItem = async () => {
-    if (newItem.trim()) {
-      const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title: newItem.trim() }) })
-      const item = await res.json()
-      setChecklistItems([...checklistItems, item])
-      setNewItem('')
-    }
-  }
-
-  const removeChecklistItem = async (id: number) => {
-    await fetch('/api/checklist', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
-    setChecklistItems(checklistItems.filter(item => item.id !== id))
-  }
-
-  const toggleChecked = async (id: number) => {
-    const item = checklistItems.find(i => i.id === id)
-    if (!item) return
-    const completed = !item.completed
-    await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, completed }) })
-    setChecklistItems(checklistItems.map(i => i.id === id ? { ...i, completed } : i))
-  }
 
   return (
     <div className="p-4 text-sm" onClick={isAlarming ? stopAlarming : undefined}>
@@ -343,30 +308,7 @@ const TimerPageInner = () => {
           />
         </div>
       </div>
-      <div className="mt-4" style={{ width: '300px' }}>
-        <div className="mb-2 font-semibold">Checklist:</div>
-        <div className="flex gap-2 mb-2">
-          <input
-            type="text"
-            value={newItem}
-            onChange={(e) => setNewItem(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && addChecklistItem()}
-            className="px-2 py-1 bg-gray-100 outline-none flex-1"
-            placeholder="Add checklist item"
-          />
-          <button onClick={addChecklistItem} className="px-2 py-1 bg-gray-600">Add</button>
-        </div>
-        <div className="flex flex-col gap-1">
-          {checklistItems.map((item) => (
-            <div key={item.id} className="flex items-center gap-2 cursor-pointer" onClick={() => toggleChecked(item.id)}>
-              <input type="checkbox" checked={item.completed} onChange={() => {}} />
-              <span className="flex-1">{item.title}</span>
-              <button onClick={(e) => { e.stopPropagation(); removeChecklistItem(item.id) }} className="px-2 py-1 bg-gray-600">Remove</button>
-            </div>
-          ))}
-          {checklistItems.length === 0 && <div className="text-gray-600">No items</div>}
-        </div>
-      </div>
+      <Checklist ref={checklistRef} />
     </div>
   )
 }
