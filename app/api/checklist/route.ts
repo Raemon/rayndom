@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET(request: NextRequest) {
   const orientingOnly = request.nextUrl.searchParams.get('orientingOnly') === 'true'
-  const where = orientingOnly ? { orientingBlock: true } : {}
+  const where = orientingOnly ? { orientingBlock: true } : { orientingBlock: false }
   const items = await prisma.checklistItem.findMany({ where, orderBy: [{ sortOrder: 'asc' }, { id: 'asc' }] })
   return NextResponse.json(items)
 }
