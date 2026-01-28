@@ -2,6 +2,42 @@ import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
+const escapeCsvValue = (value: string): string => {
+  if (value.includes(',') || value.includes('"') || value.includes('\n')) {
+    return `"${value.replace(/"/g, '""')}"`
+  }
+  return value
+}
+
+const rowsToCsv = (columns: string[], rows: Record<string, string>[]): string => {
+  const header = columns.map(escapeCsvValue).join(',')
+  const dataLines = rows.map(row => columns.map(col => escapeCsvValue(row[col] || '')).join(','))
+  return [header, ...dataLines].join('\n')
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+    const { topic, domain, file, source, columns, rows } = body
+    if (!topic || !domain || !file || !columns || !rows) {
+      return NextResponse.json({ error: 'Missing required parameters' }, { status: 400 })
+    }
+    const basePath = source === 'outputs' ? 'outputs' : 'downloads'
+    const filePath = domain === '__outputs__'
+      ? path.join(process.cwd(), basePath, topic, file)
+      : path.join(process.cwd(), basePath, topic, domain, file)
+    const ext = path.extname(file).toLowerCase()
+    if (ext !== '.csv') {
+      return NextResponse.json({ error: 'Only CSV files can be updated' }, { status: 400 })
+    }
+    const csvContent = rowsToCsv(columns, rows)
+    fs.writeFileSync(filePath, csvContent, 'utf-8')
+    return NextResponse.json({ success: true })
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to save file' }, { status: 500 })
+  }
+}
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
   const topic = searchParams.get('topic')

@@ -61,6 +61,7 @@ const parseCsvToRows = (csv: string): {columns: string[], rows: Record<string, s
 }
 
 const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Props) => {
+  const [leftColumnCollapsed, setLeftColumnCollapsed] = useState(false)
   const [selectedFile, setSelectedFile] = useState<SelectedFile | null>(() => {
     if (outputFiles.length > 0) {
       return { domain: '__outputs__', file: outputFiles[0] }
@@ -137,9 +138,12 @@ const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Prop
 
   return (
     <div className="p-5 flex gap-5">
-      <div className="w-[300px] flex-shrink-0 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-        {title && <h1 className="text-lg m-0 mb-3">{title}</h1>}
-        {outputFiles.length > 0 && (
+      <div className={`flex-shrink-0 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${leftColumnCollapsed ? 'w-6' : 'w-[300px]'}`}>
+        <button onClick={() => setLeftColumnCollapsed(!leftColumnCollapsed)} className="cursor-pointer text-gray-400 hover:text-white mb-2">
+          {leftColumnCollapsed ? '▶' : '◀'}
+        </button>
+        {!leftColumnCollapsed && title && <h1 className="text-lg m-0 mb-3">{title}</h1>}
+        {!leftColumnCollapsed && outputFiles.length > 0 && (
           <div className="mb-4">
             <h2 className="text-sm font-bold m-0 mb-2">Outputs</h2>
             <ul className="m-0 pl-0 text-xs list-none">
@@ -159,17 +163,19 @@ const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Prop
             </ul>
           </div>
         )}
-        <div>
-          {domains.map((domainInfo, index) => (
-            <ConversationTopicSiteItem
-              key={domainInfo.domain}
-              domainInfo={domainInfo}
-              selectedFile={selectedFile}
-              onSelectFile={handleSelectFile}
-              initiallyExpanded={index === 0}
-            />
-          ))}
-        </div>
+        {!leftColumnCollapsed && (
+          <div>
+            {domains.map((domainInfo, index) => (
+              <ConversationTopicSiteItem
+                key={domainInfo.domain}
+                domainInfo={domainInfo}
+                selectedFile={selectedFile}
+                onSelectFile={handleSelectFile}
+                initiallyExpanded={index === 0}
+              />
+            ))}
+          </div>
+        )}
       </div>
       <div className={`flex-1 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${selectedFile && getFileType(selectedFile.file) === 'csv' ? '' : 'max-w-3xl'}`}>
         {selectedFile && (
@@ -191,7 +197,8 @@ const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Prop
             {!isLoading && getFileType(selectedFile.file) === 'csv' && csvData && (
               <div>
                 <div className="text-xs">
-                  <CsvDataGrid key={`${selectedFile.domain}/${selectedFile.file}`} columns={csvData.columns} rows={csvData.rows} />
+                  <CsvDataGrid key={`${selectedFile.domain}/${selectedFile.file}`} columns={csvData.columns} rows={csvData.rows} fileInfo={{ topic, domain: selectedFile.domain, file: selectedFile.file, source: selectedFile.domain === '__outputs__' ? 'outputs' : 'downloads' }} onDataChange={(cols, rows) => setCsvData({ columns: cols, rows })} />
+                  <DetailRowList rows={csvData.rows} columns={csvData.columns} rowNameKey={csvRowNameKey} />
                 </div>
                 {/* {csvRowNameKey && <DetailRowList rows={csvData.rows} columns={csvData.columns} rowNameKey={csvRowNameKey} />} */}
               </div>

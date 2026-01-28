@@ -29,7 +29,7 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave 
     editorProps: {
       attributes: {
         class: 'px-2 py-1 outline-none',
-        style: 'min-height: 100px;'
+        style: 'min-height: 25px;'
       }
     },
     onUpdate: ({ editor }) => {
@@ -81,7 +81,7 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave 
     <div 
       className={`text-xs transition-all duration-200 ease-in-out relative ${isFocused ? 'z-50 shadow-lg' : ''}`}
       style={{ 
-        minHeight: isFocused ? '50px' : '50px',
+        minHeight: 25,
         maxHeight: isFocused ? 'none' : '250px',
         width: isFocused ? 'calc(100% + 200px)' : '100%',
         overflow: isFocused ? 'visible' : 'hidden'
@@ -94,7 +94,7 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave 
           <button onClick={() => editor.chain().focus().toggleStrike().run()} className={`px-1 ${editor.isActive('strike') ? 'bg-gray-600' : ''}`} title="Strikethrough">S</button>
         </div>
       </BubbleMenu>
-      <EditorContent editor={editor} className="notes-input-editor" style={{ minHeight: isFocused ? '200px' : '100px', transition: 'min-height 200ms ease-in-out' }} />
+      <EditorContent editor={editor} className="notes-input-editor" style={{ minHeight: '25px', transition: 'min-height 200ms ease-in-out' }} />
     </div>
   )
 }

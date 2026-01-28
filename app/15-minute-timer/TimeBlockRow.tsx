@@ -26,7 +26,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
   }
 
   return (
-    <tr className={isCurrent ? 'bg-orange-500/5' : ''}>
+    <tr className={isCurrent ? 'bg-orange-500/5 border-b border-white/10' : 'border-b border-white/10'}>
       <td className="text-gray-300 whitespace-nowrap px-2 py-2" style={{ width: '10%', verticalAlign: 'top' }}>{timeLabel}</td>
       <td style={{ width: '15%', verticalAlign: 'top' }} className="px-2 py-2">
         <NotesInput

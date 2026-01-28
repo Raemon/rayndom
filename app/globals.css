@@ -81,4 +81,11 @@ label {
 }
 .notes-input-editor .tiptap {
     background-color: var(--background);
+    filter: brightness(1.1);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+a {
+  color: #8bc3ff;
 }

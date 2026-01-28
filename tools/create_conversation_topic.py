@@ -36,12 +36,13 @@ def create_conversation_topic(topic_name: str):
     
     os.makedirs(target_dir, exist_ok=True)
     
-    page_content = f'''import ConversationTopicPage from '../example/ConversationTopicPage'
-import {{ getDomainsFromDownloads }} from '../example/page'
+    page_content = f'''import ConversationTopicPage from '../cast-corrigibility-sequence/ConversationTopicPage'
+import {{ getDomainsFromDownloads, getOutputFiles }} from '../cast-corrigibility-sequence/page'
 
 export default function Page() {{
   const domains = getDomainsFromDownloads('{folder_name}')
-  return <ConversationTopicPage domains={{domains}} topic="{folder_name}" title="{title}" />
+  const outputFiles = getOutputFiles('{folder_name}')
+  return <ConversationTopicPage domains={{domains}} topic="{folder_name}" title="{title}" outputFiles={{outputFiles}} />
 }}
 '''
     
