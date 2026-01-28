@@ -66,6 +66,13 @@ label {
 .tiptap ul, .tiptap ol {
   padding-left: 1.5em;
   margin: 0.25em 0;
+  list-style-position: outside;
+}
+.tiptap ul {
+  list-style-type: disc;
+}
+.tiptap ol {
+  list-style-type: decimal;
 }
 .tiptap ul[data-type="taskList"] {
   list-style: none;
@@ -107,4 +114,15 @@ label {
 
 a {
   color: #8bc3ff;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+}
+
+li {
+  padding: 0.25em 0;
+}
+.tiptap li::marker {
+  color: var(--foreground);
 }

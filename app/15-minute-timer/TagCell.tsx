@@ -36,13 +36,14 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
       {tagInstances.map(ti => {
         const name = ti.tag?.name || typeTags.find(t => t.id === ti.tagId)?.name || ''
         const isUnapproved = ti.approved === false
+        const tooltipText = ti.llmReason || (isUnapproved ? 'Click to approve' : undefined)
         return (
           <span
             key={ti.id}
             className="inline-flex items-center px-2 pt-0.5 pb-0 rounded-xs text-sm text-white"
             style={{ backgroundColor: getTagColor(name), opacity: isUnapproved ? 0.5 : 1, cursor: isUnapproved ? 'pointer' : 'default' }}
             onClick={isUnapproved && onApproveTagInstance ? () => onApproveTagInstance({ id: ti.id }) : undefined}
-            title={isUnapproved ? 'Click to approve' : undefined}
+            title={tooltipText}
           >
             {name}
             <button className="ml-2 opacity-50 cursor-pointer hover:opacity-100 text-white/60 hover:text-white bg-transparent" onClick={(e) => { e.stopPropagation(); onDeleteTagInstance({ id: ti.id }) }}>×</button>
