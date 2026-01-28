@@ -101,12 +101,13 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
     return map
   }, [dayTagInstances, tags])
 
-  const [currentSlotMs, setCurrentSlotMs] = useState(() => floorTo15(new Date()).getTime())
+  const [currentSlotMs, setCurrentSlotMs] = useState<number | null>(null)
   useEffect(() => {
-    setCurrentSlotMs(floorTo15(new Date()).getTime())
-    const interval = setInterval(() => setCurrentSlotMs(floorTo15(new Date()).getTime()), 10000)
-    return () => clearInterval(interval)
-  }, [])
+    const updateTime = () => setCurrentSlotMs(floorTo15(new Date()).getTime())
+    const timeoutId = setTimeout(updateTime, 0)
+    const interval = setInterval(updateTime, 10000)
+    return () => { clearTimeout(timeoutId); clearInterval(interval) }
+  }, [currentSlotMs])
 
   return (
     <div className="mb-3 border-b border-gray-700 pb-3">
