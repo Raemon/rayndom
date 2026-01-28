@@ -19,7 +19,12 @@ const SANITIZE_CONFIG = {
   ALLOWED_TAGS: ['a', 'b', 'strong', 'i', 'em', 'u', 'code', 'pre', 'p', 'br', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'hr', 'span', 'div'],
   ALLOWED_ATTR: ['href', 'target', 'rel', 'title', 'class'],
 }
-const sanitize = (html: string) => DOMPurify.sanitize(html, SANITIZE_CONFIG)
+const sanitize = (html: string) => {
+  if (typeof window !== 'undefined' && DOMPurify && DOMPurify.sanitize) {
+    return DOMPurify.sanitize(html, SANITIZE_CONFIG)
+  }
+  return html
+}
 const isHtml = (text: string) => HTML_TAG_REGEX.test(text)
 const isMarkdown = (text: string) => MARKDOWN_PATTERNS.some(pattern => pattern.test(text))
 const renderContent = (value: string): string => {
