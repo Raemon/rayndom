@@ -109,21 +109,24 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
       {isOrientingBlock && (
         <tr className={isCurrent ? 'bg-orange-500/5 border-b border-white/10' : 'border-b border-white/10'} onClick={handleClick}>
           <td colSpan={totalCols} className="px-2 py-2">
-            <div className="flex gap-4">
-              <div style={{ width: '800px' }}>
+            <div className="flex gap-4" style={{ maxWidth: '100%' }}>
+              <div style={{ width: '800px', flexShrink: 0 }}>
                 <NotesInput
                   noteKey={timeblock ? `${timeblock.id}:rayNotes` : undefined}
                   placeholder="Notes"
                   initialValue={timeblock?.rayNotes || ''}
                   externalValue={timeblock?.rayNotes || ''}
                   minHeight={800}
+                  noExpand
                   onSave={async (content) => {
                     const tb = await ensureTimeblock()
                     onPatchTimeblockDebounced({ id: tb.id, rayNotes: content, debounceMs: 0 })
                   }}
                 />
               </div>
-              <Checklist orientingOnly inline />
+              <div style={{ flex: '1 1 auto', minWidth: 0, maxWidth: '400px' }}>
+                <Checklist orientingOnly inline />
+              </div>
             </div>
           </td>
         </tr>

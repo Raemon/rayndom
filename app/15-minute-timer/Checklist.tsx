@@ -86,8 +86,10 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
   const checkboxSize = allCompleted ? 'w-4 h-4' : 'w-6 h-6'
 
   const positionClass = inline ? '' : 'fixed bottom-4 right-4'
+  const bgClass = inline ? '' : 'bg-gray-900'
+  const inlineStyle = inline ? { width: '100%', maxWidth: width, height } : { width, height }
   return (
-    <div className={`${positionClass} bg-gray-900 ${padding}`} style={{ width, height }}>
+    <div className={`${positionClass} ${bgClass} ${padding}`} style={inlineStyle}>
       <div className={`mb-2 font-semibold ${textSize}`}>Checklist:</div>
       <div className={`flex ${gap} mb-2`}>
         <input

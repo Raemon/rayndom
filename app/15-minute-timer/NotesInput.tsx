@@ -8,7 +8,7 @@ import TaskList from '@tiptap/extension-task-list'
 import TaskItem from '@tiptap/extension-task-item'
 import { useFocusedNotes } from './FocusedNotesContext'
 
-const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25 }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number }) => {
+const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25, noExpand=false }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number, noExpand?: boolean }) => {
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
   const lastSavedRef = useRef<string>(initialValue || '')
   const initializedRef = useRef(false)
@@ -83,12 +83,12 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave,
 
   return (
     <div 
-      className={`text-xs transition-all duration-200 ease-in-out relative ${isFocused ? 'z-50 shadow-lg' : ''}`}
+      className={`text-xs transition-all duration-200 ease-in-out relative ${isFocused && !noExpand ? 'z-50 shadow-lg' : ''}`}
       style={{ 
         minHeight,
-        maxHeight: isFocused ? 'none' : '250px',
-        width: isFocused ? 'calc(100% + 200px)' : '100%',
-        overflow: isFocused ? 'visible' : 'hidden'
+        maxHeight: isFocused && !noExpand ? 'none' : '250px',
+        width: isFocused && !noExpand ? 'calc(100% + 200px)' : '100%',
+        overflow: isFocused && !noExpand ? 'visible' : 'hidden'
       }}
     >
       <BubbleMenu editor={editor}>
