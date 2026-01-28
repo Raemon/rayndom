@@ -646,10 +646,10 @@
     postcss "^8.4.41"
     tailwindcss "4.1.18"
 
-"@tiptap/core@^3.17.1":
-  version "3.17.1"
-  resolved "https://registry.npmjs.org/@tiptap/core/-/core-3.17.1.tgz"
-  integrity sha512-f8hB9MzXqsuXoF9qXEDEH5Fb3VgwhEFMBMfk9EKN88l5adri6oM8mt2XOWVxVVssjpEW0177zXSLPKWzoS/vrw==
+"@tiptap/core@^3.17.1", "@tiptap/core@^3.18.0":
+  version "3.18.0"
+  resolved "https://registry.npmjs.org/@tiptap/core/-/core-3.18.0.tgz"
+  integrity sha512-Gczd4GbK1DNgy/QUPElMVozoa0GW9mW8E31VIi7Q4a9PHHz8PcrxPmuWwtJ2q0PF8MWpOSLuBXoQTWaXZRPRnQ==
 
 "@tiptap/extension-blockquote@^3.17.1":
   version "3.17.1"
@@ -740,10 +740,10 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-list-keymap/-/extension-list-keymap-3.17.1.tgz"
   integrity sha512-zRidxbkJNe/j3nZpOGLnPeVdyciUM8MM+NHhxcjVKoNDA+/zEBfjXJ1dKC4UBsnSr4AS/3SCWBYHGXOoSqdUaA==
 
-"@tiptap/extension-list@^3.17.1":
-  version "3.17.1"
-  resolved "https://registry.npmjs.org/@tiptap/extension-list/-/extension-list-3.17.1.tgz"
-  integrity sha512-LHKIxmXe5Me+vJZKhiwMBGHlApaBIAduNMRUpm5mkY7ER/m96zKR0VqrJd4LjVVH2iDvck5h1Ka4396MHWlKNg==
+"@tiptap/extension-list@^3.17.1", "@tiptap/extension-list@^3.18.0":
+  version "3.18.0"
+  resolved "https://registry.npmjs.org/@tiptap/extension-list/-/extension-list-3.18.0.tgz"
+  integrity sha512-9lQBo45HNqIFcLEHAk+CY3W51eMMxIJjWbthm2CwEWr4PB3+922YELlvq8JcLH1nVFkBVpmBFmQe/GxgnCkzwQ==
 
 "@tiptap/extension-ordered-list@^3.17.1":
   version "3.17.1"
@@ -765,6 +765,16 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-strike/-/extension-strike-3.17.1.tgz"
   integrity sha512-c6fS6YIhxoU55etlJgM0Xqker+jn7I1KC7GVu6ljmda8I00K3/lOLZgvFUNPmgp8EJWtyTctj+3D3D+PaZaFAA==
 
+"@tiptap/extension-task-item@^3.18.0":
+  version "3.18.0"
+  resolved "https://registry.npmjs.org/@tiptap/extension-task-item/-/extension-task-item-3.18.0.tgz"
+  integrity sha512-XWrprk9YN2sc6coDypLxFGnFN51ZW+nKwz+9CHefINK6ndmUOeG1QNDGkQBnU5IB1fZBSEpyJga/shmJ7RfOAg==
+
+"@tiptap/extension-task-list@^3.18.0":
+  version "3.18.0"
+  resolved "https://registry.npmjs.org/@tiptap/extension-task-list/-/extension-task-list-3.18.0.tgz"
+  integrity sha512-/znJ9/B4dBa4PizWtKFbVyuR7ROnlQA2HngL9Z5IvZQUlru1djpVfU4nuUImOkRWg4H7CRV5i2xL21JkcS57UA==
+
 "@tiptap/extension-text@^3.17.1":
   version "3.17.1"
   resolved "https://registry.npmjs.org/@tiptap/extension-text/-/extension-text-3.17.1.tgz"
@@ -780,10 +790,10 @@
   resolved "https://registry.npmjs.org/@tiptap/extensions/-/extensions-3.17.1.tgz"
   integrity sha512-aQ4WA5bdRpv9yPQ6rRdiqwlMZ1eJw1HyEaNPQhOr2HVhQ0EqSDIOEXF4ymCveGAHxXbxNvtQ+4t1ymQEikGfXA==
 
-"@tiptap/pm@^3.17.1":
-  version "3.17.1"
-  resolved "https://registry.npmjs.org/@tiptap/pm/-/pm-3.17.1.tgz"
-  integrity sha512-UyVLkN8axV/zop6Se2DCBJRu5DM21X0XEQvwEC5P/vk8eC9OcQZ3FLtxeYy2ZjpAZUzBGLw0/BGsmEip/n7olw==
+"@tiptap/pm@^3.17.1", "@tiptap/pm@^3.18.0":
+  version "3.18.0"
+  resolved "https://registry.npmjs.org/@tiptap/pm/-/pm-3.18.0.tgz"
+  integrity sha512-8RoI5gW0xBVCsuxahpK8vx7onAw6k2/uR3hbGBBnH+HocDMaAZKot3nTyY546ij8ospIC1mnQ7k4BhVUZesZDQ==
   dependencies:
     prosemirror-changeset "^2.3.0"
     prosemirror-collab "^1.3.1"

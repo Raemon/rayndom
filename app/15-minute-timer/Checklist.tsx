@@ -61,29 +61,39 @@ const Checklist = forwardRef<ChecklistRef, object>((_, ref) => {
     setChecklistItems(checklistItems.map(i => i.id === id ? { ...i, completed } : i))
   }
 
+  const allCompleted = checklistItems.length > 0 && checklistItems.every(item => item.completed)
+  const width = allCompleted ? '400px' : '800px'
+  const height = allCompleted ? 'auto' : '600px'
+  const textSize = allCompleted ? 'text-sm' : 'text-2xl'
+  const padding = allCompleted ? 'p-3' : 'p-6'
+  const gap = allCompleted ? 'gap-2' : 'gap-4'
+  const itemGap = allCompleted ? 'gap-1' : 'gap-3'
+  const inputPadding = allCompleted ? 'px-2 py-1' : 'px-4 py-3'
+  const checkboxSize = allCompleted ? 'w-4 h-4' : 'w-6 h-6'
+
   return (
-    <div className="fixed bottom-4 right-4 bg-gray-900 p-3" style={{ width: '400px' }}>
-      <div className="mb-2 font-semibold">Checklist:</div>
-      <div className="flex gap-2 mb-2">
+    <div className={`fixed bottom-4 right-4 bg-gray-900 ${padding}`} style={{ width, height }}>
+      <div className={`mb-2 font-semibold ${textSize}`}>Checklist:</div>
+      <div className={`flex ${gap} mb-2`}>
         <input
           type="text"
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && addChecklistItem()}
-          className="px-2 py-1 bg-gray-100 outline-none flex-1"
+          className={`${inputPadding} bg-gray-100 outline-none flex-1 ${textSize}`}
           placeholder="Add checklist item"
         />
-        <button onClick={addChecklistItem} className="px-2 py-1 bg-gray-600">Add</button>
+        <button onClick={addChecklistItem} className={`${inputPadding} bg-gray-600 ${textSize}`}>Add</button>
       </div>
-      <div className="flex flex-col gap-1">
+      <div className={`flex flex-col ${itemGap}`}>
         {checklistItems.map((item) => (
-          <div key={item.id} className="flex items-center gap-2 cursor-pointer" onClick={() => toggleChecked(item.id)}>
-            <input type="checkbox" checked={item.completed} onChange={() => {}} />
-            <span className="flex-1">{item.title}</span>
-            <button onClick={(e) => { e.stopPropagation(); removeChecklistItem(item.id) }} className="px-2 py-1 text-white cursor-pointer opacity-50 hover:opacity-100">x</button>
+          <div key={item.id} className={`flex items-center ${gap} cursor-pointer`} onClick={() => toggleChecked(item.id)}>
+            <input type="checkbox" checked={item.completed} onChange={() => {}} className={checkboxSize} style={{ accentColor: 'black' }} />
+            <span className={`flex-1 ${textSize}`}>{item.title}</span>
+            <button onClick={(e) => { e.stopPropagation(); removeChecklistItem(item.id) }} className={`${inputPadding} text-white cursor-pointer opacity-50 hover:opacity-100 ${textSize}`}>x</button>
           </div>
         ))}
-        {checklistItems.length === 0 && <div className="text-gray-600">No items</div>}
+        {checklistItems.length === 0 && <div className={`text-gray-600 ${textSize}`}>No items</div>}
       </div>
     </div>
   )

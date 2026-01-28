@@ -3,15 +3,9 @@ export const getAiNotesPrompt = ({ keylogText }:{ keylogText: string }) => `You 
 Here are the keylogs:
 ${keylogText}
 
-Please write a concise summary in this format:
+Please think to yourself (but do not say) what you think my goal is write now.
 
-Goals:
-- (2-3 bullets)
+Then, think to yourself (but do not say) 10 ideas for empirical questions I could ask that'd help me achieve my goal.
 
-Confusions:
-- (2-3 bullets)
-
-Useful questions:
-- (3-6 bullets; these can be psychological, strategic, or about tools/concepts I might not know that could be relevant)
-
-Keep it grounded in evidence from the keylogs when possible, but it is okay to speculate as long as you clearly mark it as speculation.`
+Then, rank those questions from most to least likely to be useful. Then return them in order from most to least useful.
+`

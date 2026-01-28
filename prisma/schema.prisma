@@ -22,6 +22,7 @@ model Timeblock {
   rayNotes       String?  @map("ray_notes")
   assistantNotes String?  @map("assistant_notes")
   aiNotes        String?  @map("ai_notes")
+  orientingBlock Boolean  @default(false) @map("orienting_block")
   datetime       DateTime @db.Timestamptz
   createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
   updatedAt      DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz

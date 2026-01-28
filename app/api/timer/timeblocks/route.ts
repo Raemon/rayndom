@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json()
   const datetime = body?.datetime
   if (!datetime) return NextResponse.json({ error: 'Missing datetime' }, { status: 400 })
-  const timeblock = await prisma.timeblock.create({ data: { datetime: new Date(datetime), rayNotes: body?.rayNotes ?? null, assistantNotes: body?.assistantNotes ?? null, aiNotes: body?.aiNotes ?? null } })
+  const timeblock = await prisma.timeblock.create({ data: { datetime: new Date(datetime), rayNotes: body?.rayNotes ?? null, assistantNotes: body?.assistantNotes ?? null, aiNotes: body?.aiNotes ?? null, orientingBlock: body?.orientingBlock ?? false } })
   return NextResponse.json({ timeblock })
 }
 
@@ -22,6 +22,6 @@ export async function PATCH(request: NextRequest) {
   const body = await request.json()
   const id = body?.id
   if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 })
-  const timeblock = await prisma.timeblock.update({ where: { id: Number(id) }, data: { rayNotes: body?.rayNotes ?? undefined, assistantNotes: body?.assistantNotes ?? undefined, aiNotes: body?.aiNotes ?? undefined } })
+  const timeblock = await prisma.timeblock.update({ where: { id: Number(id) }, data: { rayNotes: body?.rayNotes ?? undefined, assistantNotes: body?.assistantNotes ?? undefined, aiNotes: body?.aiNotes ?? undefined, orientingBlock: body?.orientingBlock ?? undefined } })
   return NextResponse.json({ timeblock })
 }

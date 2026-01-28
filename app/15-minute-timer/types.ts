@@ -1,4 +1,4 @@
-export type Timeblock = { id: number, rayNotes: string | null, assistantNotes: string | null, aiNotes: string | null, datetime: string }
+export type Timeblock = { id: number, rayNotes: string | null, assistantNotes: string | null, aiNotes: string | null, orientingBlock: boolean, datetime: string }
 
 export type Tag = { id: number, name: string, type: string }
 

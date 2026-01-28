@@ -4,9 +4,11 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import { BubbleMenu } from '@tiptap/react/menus'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
+import TaskList from '@tiptap/extension-task-list'
+import TaskItem from '@tiptap/extension-task-item'
 import { useFocusedNotes } from './FocusedNotesContext'
 
-const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void }) => {
+const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25 }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number }) => {
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
   const lastSavedRef = useRef<string>(initialValue || '')
   const initializedRef = useRef(false)
@@ -22,14 +24,16 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave 
   const editor = useEditor({
     extensions: [
       StarterKit.configure({ heading: { levels: [1, 2, 3] } }),
-      Placeholder.configure({ placeholder })
+      Placeholder.configure({ placeholder }),
+      TaskList,
+      TaskItem.configure({ nested: true })
     ],
     content: initialValue || '',
     immediatelyRender: false,
     editorProps: {
       attributes: {
         class: 'px-2 py-1 outline-none',
-        style: 'min-height: 25px;'
+        style: `min-height: ${minHeight}px;`
       }
     },
     onUpdate: ({ editor }) => {
@@ -81,7 +85,7 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave 
     <div 
       className={`text-xs transition-all duration-200 ease-in-out relative ${isFocused ? 'z-50 shadow-lg' : ''}`}
       style={{ 
-        minHeight: 25,
+        minHeight,
         maxHeight: isFocused ? 'none' : '250px',
         width: isFocused ? 'calc(100% + 200px)' : '100%',
         overflow: isFocused ? 'visible' : 'hidden'
@@ -92,9 +96,10 @@ const NotesInput = ({ noteKey, initialValue, externalValue, placeholder, onSave 
           <button onClick={() => editor.chain().focus().toggleBold().run()} className={`px-1 ${editor.isActive('bold') ? 'bg-gray-600' : ''}`} title="Bold (Cmd+B)">B</button>
           <button onClick={() => editor.chain().focus().toggleItalic().run()} className={`px-1 ${editor.isActive('italic') ? 'bg-gray-600' : ''}`} title="Italic (Cmd+I)">I</button>
           <button onClick={() => editor.chain().focus().toggleStrike().run()} className={`px-1 ${editor.isActive('strike') ? 'bg-gray-600' : ''}`} title="Strikethrough">S</button>
+          <button onClick={() => editor.chain().focus().toggleTaskList().run()} className={`px-1 ${editor.isActive('taskList') ? 'bg-gray-600' : ''}`} title="Task List (Cmd+Shift+9)">☑</button>
         </div>
       </BubbleMenu>
-      <EditorContent editor={editor} className="notes-input-editor" style={{ minHeight: '25px', transition: 'min-height 200ms ease-in-out' }} />
+      <EditorContent editor={editor} className="notes-input-editor" style={{ minHeight: `${minHeight}px`, transition: 'min-height 200ms ease-in-out' }} />
     </div>
   )
 }
