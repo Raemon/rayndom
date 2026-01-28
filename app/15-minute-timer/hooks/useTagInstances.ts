@@ -15,7 +15,7 @@ export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, e
     })
   }, [start, end])
 
-  // eslint-disable-next-line react-hooks/set-state-in-effect
+  // eslint-disable-next-line react-hooks/set-state-in-effect 
   useEffect(() => { if (autoLoad) load() }, [start, end])
 
   const createTagInstance = async ({ tagId, datetime, llmPredicted=false, approved=true }:{ tagId: number, datetime: string, llmPredicted?: boolean, approved?: boolean }) => {
