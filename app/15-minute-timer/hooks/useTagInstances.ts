@@ -7,7 +7,12 @@ export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, e
   const load = useCallback(async () => {
     const res = await fetch(`/api/timer/tag-instances?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}`)
     const json = await res.json()
-    setTagInstances(json.tagInstances || [])
+    const serverInstances = json.tagInstances || []
+    // Preserve optimistic entries (negative IDs) that haven't been resolved yet
+    setTagInstances(prev => {
+      const pendingOptimistic = prev.filter(ti => ti.id < 0)
+      return [...serverInstances, ...pendingOptimistic]
+    })
   }, [start, end])
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
