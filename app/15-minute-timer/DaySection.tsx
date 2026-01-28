@@ -103,6 +103,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
 
   const [currentSlotMs, setCurrentSlotMs] = useState(() => floorTo15(new Date()).getTime())
   useEffect(() => {
+    setCurrentSlotMs(floorTo15(new Date()).getTime())
     const interval = setInterval(() => setCurrentSlotMs(floorTo15(new Date()).getTime()), 10000)
     return () => clearInterval(interval)
   }, [])
