@@ -1,7 +1,7 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import type { Tag } from './types'
-import { getTagColor } from './TagCell'
+import { getTagColor, wouldCreateCycle, getParentTag } from './tagUtils'
 import TagEditor from './TagEditor'
 import { useTags } from './TagsContext'
 
@@ -10,7 +10,9 @@ const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount:
   const [isEditing, setIsEditing] = useState(false)
   const [dragOver, setDragOver] = useState(false)
   const [justDropped, setJustDropped] = useState(false)
-  const parentTag = tag.parentTag || (tag.parentTagId ? tags.find(t => t.id === tag.parentTagId) : null)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  useEffect(() => { return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current) } }, [])
+  const parentTag = getParentTag(tag, tags)
   if (isEditing && !readonly) {
     return (
       <TagEditor
@@ -41,10 +43,10 @@ const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount:
     setDragOver(false)
     setJustDropped(true)
     const draggedTagId = parseInt(e.dataTransfer.getData('text/plain'))
-    if (draggedTagId && draggedTagId !== tag.id) {
+    if (draggedTagId && draggedTagId !== tag.id && !wouldCreateCycle(tags, draggedTagId, tag.id)) {
       await updateTag({ id: draggedTagId, parentTagId: tag.id })
     }
-    setTimeout(() => setJustDropped(false), 100)
+    timeoutRef.current = setTimeout(() => setJustDropped(false), 100)
   }
   const handleClick = () => {
     if (readonly || justDropped) return
@@ -62,7 +64,7 @@ const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount:
     >
       <span className="text-gray-400 mr-1 w-8 text-center text-xs">{instanceCount}</span>
       <div className="flex flex-col" style={{ backgroundColor: getTagColor(tag.name) }}>
-        <span className="px-1 rounded-xs text-white text-sm rounded-xs" >{tag.name}</span>
+        <span className="px-1 rounded-xs text-white text-sm">{tag.name}</span>
         {parentTag && <div className="text-[9px] opacity-100 px-1 flex items-center gap-1">{parentTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, parentTagId: null }) }}>×</button></div>}
       </div>
     </div>

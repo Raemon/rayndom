@@ -78,7 +78,7 @@ const MyTooltip = ({
       {children}
       <div
         className={`
-          absolute z-[10000000000] invisible ${visibilityClasses}
+          absolute z-50 invisible ${visibilityClasses}
           ${positionClasses}
           ${alignClasses}
           ${gapClasses}

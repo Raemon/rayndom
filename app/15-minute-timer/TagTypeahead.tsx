@@ -1,7 +1,7 @@
 'use client'
 import { useMemo, useState, useRef, useEffect } from 'react'
 import type { Tag, TagInstance } from './types'
-import { getTagColor } from './TagCell'
+import { getTagColor } from './tagUtils'
 
 const TagTypeahead = ({ tags, allTagInstances, placeholder, onSelectTag, onCreateTag }:{ tags: Tag[], allTagInstances: TagInstance[], placeholder: string, onSelectTag: (tag: Tag) => void, onCreateTag: (name: string) => Promise<Tag> }) => {
   const [query, setQuery] = useState('')
