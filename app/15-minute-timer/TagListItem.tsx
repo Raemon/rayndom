@@ -6,8 +6,11 @@ import TagEditor from './TagEditor'
 import { useTags } from './TagsContext'
 
 const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount: number, readonly?: boolean }) => {
-  const { updateTag, deleteTag } = useTags()
+  const { updateTag, deleteTag, tags } = useTags()
   const [isEditing, setIsEditing] = useState(false)
+  const [dragOver, setDragOver] = useState(false)
+  const [justDropped, setJustDropped] = useState(false)
+  const parentTag = tag.parentTag || (tag.parentTagId ? tags.find(t => t.id === tag.parentTagId) : null)
   if (isEditing && !readonly) {
     return (
       <TagEditor
@@ -17,10 +20,51 @@ const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount:
       />
     )
   }
+  const handleDragStart = (e: React.DragEvent) => {
+    if (readonly) return
+    e.dataTransfer.effectAllowed = 'move'
+    e.dataTransfer.setData('text/plain', tag.id.toString())
+  }
+  const handleDragOver = (e: React.DragEvent) => {
+    if (readonly) return
+    e.preventDefault()
+    e.dataTransfer.dropEffect = 'move'
+    setDragOver(true)
+  }
+  const handleDragLeave = () => {
+    setDragOver(false)
+  }
+  const handleDrop = async (e: React.DragEvent) => {
+    if (readonly) return
+    e.preventDefault()
+    e.stopPropagation()
+    setDragOver(false)
+    setJustDropped(true)
+    const draggedTagId = parseInt(e.dataTransfer.getData('text/plain'))
+    if (draggedTagId && draggedTagId !== tag.id) {
+      await updateTag({ id: draggedTagId, parentTagId: tag.id })
+    }
+    setTimeout(() => setJustDropped(false), 100)
+  }
+  const handleClick = () => {
+    if (readonly || justDropped) return
+    setIsEditing(true)
+  }
   return (
-    <div className="text-left w-full bg-transparent flex items-center" onClick={readonly ? undefined : () => setIsEditing(true)}>
+    <div
+      className={`text-left w-full bg-transparent flex items-center ${dragOver ? 'bg-white/10' : ''}`}
+      onClick={handleClick}
+      draggable={!readonly}
+      onDragStart={handleDragStart}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+    >
       <span className="text-gray-400 mr-1 w-8 text-center text-xs">{instanceCount}</span>
-      <span className="px-1 rounded-xs text-white text-sm" style={{ backgroundColor: getTagColor(tag.name) }}>{tag.name}</span>
+      <div className="flex flex-col" style={{ backgroundColor: getTagColor(tag.name) }}>
+        <span className="px-1 rounded-xs text-white text-sm rounded-xs" >{tag.name}</span>
+        {parentTag && <div className="text-[9px] opacity-100 px-1 flex items-center gap-1">{parentTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, parentTagId: null }) }}>×</button></div>}
+      </div>
     </div>
   )
 }

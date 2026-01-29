@@ -35,7 +35,14 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
   const { tags } = useTags()
-  const tagTypes = useMemo(() => ['Projects', '???','Techniques'].filter(t => tags.some(tag => tag.type === t)), [tags])
+  const tagTypes = useMemo(() => {
+    const availableTypes = ['Projects', '???','Techniques']
+    const filtered = availableTypes.filter(t => tags.some(tag => tag.type === t))
+    if (tags.length > 0 && filtered.length === 0) {
+      console.warn('No tags match expected types. Available tag types:', [...new Set(tags.map(t => t.type))])
+    }
+    return filtered
+  }, [tags])
   const dayStart = useMemo(() => new Date(dayStartIso(day)), [day])
   const dayEnd = useMemo(() => new Date(dayStart.getTime() + 24 * 60 * 60 * 1000), [dayStart])
   const dayTimeblocks = useMemo(() => timeblocks.filter(tb => {

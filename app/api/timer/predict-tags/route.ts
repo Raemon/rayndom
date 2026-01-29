@@ -153,7 +153,7 @@ Your response must be valid JSON and nothing else.`
       }
       const tagInstance = await prisma.tagInstance.create({
         data: { tagId: tag.id, datetime: blockDatetime, llmPredicted: true, approved: false, llmReason: pred.reason || null },
-        include: { tag: true }
+        include: { tag: { include: { parentTag: true } } }
       })
       console.log('[predict-tags] Created tag instance:', pred.type, pred.name, '(id:', tagInstance.id, ')')
       createdInstances.push(tagInstance)

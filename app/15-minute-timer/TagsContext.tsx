@@ -7,7 +7,7 @@ type TagsContextType = {
   setTags: React.Dispatch<React.SetStateAction<Tag[]>>
   load: () => Promise<void>
   createTag: (args: { name: string, type: string }) => Promise<Tag>
-  updateTag: (args: { id: number, name?: string, type?: string }) => Promise<void>
+  updateTag: (args: { id: number, name?: string, type?: string, parentTagId?: number | null }) => Promise<void>
   deleteTag: (args: { id: number }) => Promise<void>
 }
 
@@ -17,9 +17,14 @@ export const TagsProvider = ({ children }:{ children: ReactNode }) => {
   const [tags, setTags] = useState<Tag[]>([])
 
   const load = useCallback(async () => {
-    const res = await fetch('/api/timer/tags')
-    const json = await res.json()
-    setTags(json.tags || [])
+    try {
+      const res = await fetch('/api/timer/tags')
+      const json = await res.json()
+      setTags(json.tags || [])
+    } catch (error) {
+      console.error('Failed to load tags:', error)
+      setTags([])
+    }
   }, [])
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -34,9 +39,9 @@ export const TagsProvider = ({ children }:{ children: ReactNode }) => {
     return json.tag as Tag
   }, [])
 
-  const updateTag = useCallback(async ({ id, name, type }:{ id: number, name?: string, type?: string }) => {
-    setTags(prev => prev.map(t => t.id === id ? { ...t, name: name ?? t.name, type: type ?? t.type } : t))
-    const res = await fetch('/api/timer/tags', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, name, type }) })
+  const updateTag = useCallback(async ({ id, name, type, parentTagId }:{ id: number, name?: string, type?: string, parentTagId?: number | null }) => {
+    setTags(prev => prev.map(t => t.id === id ? { ...t, name: name ?? t.name, type: type ?? t.type, parentTagId: parentTagId !== undefined ? parentTagId : t.parentTagId } : t))
+    const res = await fetch('/api/timer/tags', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, name, type, parentTagId }) })
     const json = await res.json()
     if (json.tag) setTags(prev => prev.map(t => t.id === id ? json.tag : t))
   }, [])
