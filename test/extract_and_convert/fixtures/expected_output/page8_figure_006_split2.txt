@@ -1,0 +1,10 @@
+Figure extracted from: 10.3390_cells8101139.pdf
+Page: 8
+Image dimensions: 584x375
+Split 2 of 2 from original image
+
+============================================================
+CONTEXT:
+============================================================
+
+Figure 2. Ketamine increased cell proliferation of human iPSC-derived IMR90 NPCs.
