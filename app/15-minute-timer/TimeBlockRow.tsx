@@ -5,7 +5,7 @@ import TagCell from './TagCell'
 import Checklist from './Checklist'
 import type { TagInstance, Timeblock } from './types'
 
-const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesByType, allTagInstances, isCurrent, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onDeleteTagInstance }:{
+const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesByType, allTagInstances, isCurrent, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
   slotStart: Date,
   timeLabel: string,
   timeblock?: Timeblock,
@@ -17,6 +17,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
   onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => void,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
   onApproveTagInstance: (args: { id: number }) => Promise<void> | void,
+  onPatchTagInstance: (args: { id: number, useful?: boolean, antiUseful?: boolean }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -107,6 +108,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
               datetime={slotStart.toISOString()}
               onCreateTagInstance={onCreateTagInstance}
               onApproveTagInstance={onApproveTagInstance}
+              onPatchTagInstance={onPatchTagInstance}
               onDeleteTagInstance={onDeleteTagInstance}
             />
           </td>

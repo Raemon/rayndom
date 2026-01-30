@@ -54,6 +54,8 @@ model TagInstance {
   llmPredicted Boolean  @default(false) @map("llm_predicted")
   approved     Boolean  @default(true)
   llmReason    String?  @map("llm_reason")
+  useful       Boolean  @default(false)
+  antiUseful   Boolean  @default(false) @map("anti_useful")
   createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
 
   @@map("tag_instances")

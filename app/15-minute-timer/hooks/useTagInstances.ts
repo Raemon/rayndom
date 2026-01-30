@@ -34,10 +34,17 @@ export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, e
     if (json.tagInstance) setTagInstances(prev => prev.map(ti => ti.id === id ? json.tagInstance : ti))
   }
 
+  const patchTagInstance = async ({ id, useful, antiUseful }:{ id: number, useful?: boolean, antiUseful?: boolean }) => {
+    setTagInstances(prev => prev.map(ti => ti.id === id ? { ...ti, useful: useful ?? ti.useful, antiUseful: antiUseful ?? ti.antiUseful } : ti))
+    const res = await fetch('/api/timer/tag-instances', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, useful, antiUseful }) })
+    const json = await res.json()
+    if (json.tagInstance) setTagInstances(prev => prev.map(ti => ti.id === id ? json.tagInstance : ti))
+  }
+
   const deleteTagInstance = async ({ id }:{ id: number }) => {
     setTagInstances(prev => prev.filter(ti => ti.id !== id))
     await fetch(`/api/timer/tag-instances?id=${id}`, { method: 'DELETE' })
   }
 
-  return { tagInstances, setTagInstances, load, createTagInstance, approveTagInstance, deleteTagInstance }
+  return { tagInstances, setTagInstances, load, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance }
 }

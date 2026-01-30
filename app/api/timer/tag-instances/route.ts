@@ -25,7 +25,7 @@ export async function PATCH(request: NextRequest) {
   const body = await request.json()
   const id = body?.id
   if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 })
-  const tagInstance = await prisma.tagInstance.update({ where: { id: Number(id) }, data: { approved: body?.approved ?? undefined }, include: { tag: { include: { parentTag: true } } } })
+  const tagInstance = await prisma.tagInstance.update({ where: { id: Number(id) }, data: { approved: body?.approved ?? undefined, useful: body?.useful ?? undefined, antiUseful: body?.antiUseful ?? undefined }, include: { tag: { include: { parentTag: true } } } })
   return NextResponse.json({ tagInstance })
 }
 

@@ -22,7 +22,7 @@ const makeSlotsForDay = ({ day, startMinutes=10*60+30, endMinutes=20*60 }:{ day:
   return slots
 }
 
-const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onDeleteTagInstance }:{
+const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
   day: Date,
   isCollapsed: boolean,
   onToggleCollapsed: () => void,
@@ -32,6 +32,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
   onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => void,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
   onApproveTagInstance: (args: { id: number }) => Promise<void> | void,
+  onPatchTagInstance: (args: { id: number, useful?: boolean, antiUseful?: boolean }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
   const { tags } = useTags()
@@ -216,6 +217,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
                       onPatchTimeblockDebounced={onPatchTimeblockDebounced}
                       onCreateTagInstance={onCreateTagInstance}
                       onApproveTagInstance={onApproveTagInstance}
+                      onPatchTagInstance={onPatchTagInstance}
                       onDeleteTagInstance={onDeleteTagInstance}
                     />
                   )

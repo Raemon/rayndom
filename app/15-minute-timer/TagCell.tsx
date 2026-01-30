@@ -6,13 +6,14 @@ import type { TagInstance } from './types'
 import DraggableTag from './DraggableTag'
 import { wouldCreateCycle, getParentTag, getAllAncestorTagIds } from './tagUtils'
 
-const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagInstance, onApproveTagInstance, onDeleteTagInstance }:{
+const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
   type: string,
   tagInstances: TagInstance[],
   allTagInstances: TagInstance[],
   datetime: string,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
   onApproveTagInstance?: (args: { id: number }) => Promise<void> | void,
+  onPatchTagInstance: (args: { id: number, useful?: boolean, antiUseful?: boolean }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
   const { tags, createTag, updateTag } = useTags()
@@ -45,6 +46,7 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
             parentTag={parentTag}
             ti={ti}
             onApproveTagInstance={onApproveTagInstance}
+            onPatchTagInstance={onPatchTagInstance}
             onDeleteTagInstance={onDeleteTagInstance}
             onSetParent={handleSetParent}
           />

@@ -26,7 +26,7 @@ const TimerPageInner = () => {
   const startIso = startDate.toISOString()
   const endIso = endDate.toISOString()
   const { timeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused, load: loadTimeblocks } = useTimeblocks({ start: startIso, end: endIso })
-  const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
+  const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
 
   const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
   const currentBlockDatetime = floorTo15(new Date()).toISOString()
@@ -93,6 +93,7 @@ const TimerPageInner = () => {
                 onPatchTimeblockDebounced={patchTimeblockDebounced}
                 onCreateTagInstance={createTagInstance}
                 onApproveTagInstance={approveTagInstance}
+                onPatchTagInstance={patchTagInstance}
                 onDeleteTagInstance={deleteTagInstance}
               />
             )
