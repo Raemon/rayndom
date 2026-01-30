@@ -809,6 +809,88 @@ def merge_image_group(image_group: List[Dict[str, Any]]) -> Optional[Dict[str, A
         return image_group[0]
 
 
+def _merge_adjacent_images(images_data: List[Dict[str, Any]], tolerance: float = 5.0) -> List[List[Dict[str, Any]]]:
+    """
+    Pre-group images that should be merged together.
+    
+    This handles cases where a single figure is split across multiple image files
+    in the PDF. Images are grouped if they meet ANY of these conditions:
+    1. Vertically adjacent: One image's y1 equals another's y0 (within tolerance)
+       and they have the same x-coordinates
+    2. Overlapping/same position: Images have the same y0 and y1 (within tolerance)
+       indicating they're at the same vertical position
+    
+    Args:
+        images_data: List of image data dicts with 'rect' containing position info
+        tolerance: Maximum gap in pixels to consider images adjacent (default 5.0)
+    
+    Returns:
+        List of groups, where each group contains images that should be merged.
+    """
+    if not images_data or len(images_data) < 2:
+        return [[img] for img in images_data] if images_data else []
+    
+    # Sort images by y-position (top to bottom)
+    sorted_images = sorted(images_data, key=lambda x: x.get("rect").y0 if x.get("rect") else 0)
+    
+    # Use union-find to group images
+    n = len(sorted_images)
+    parent = list(range(n))
+    
+    def find(x):
+        if parent[x] != x:
+            parent[x] = find(parent[x])
+        return parent[x]
+    
+    def union(x, y):
+        px, py = find(x), find(y)
+        if px != py:
+            parent[px] = py
+    
+    # Check all pairs of images for adjacency or overlap
+    for i in range(n):
+        rect_i = sorted_images[i].get("rect")
+        if not rect_i:
+            continue
+        
+        for j in range(i + 1, n):
+            rect_j = sorted_images[j].get("rect")
+            if not rect_j:
+                continue
+            
+            # Check horizontal alignment
+            x_aligned = abs(rect_i.x0 - rect_j.x0) < tolerance and abs(rect_i.x1 - rect_j.x1) < tolerance
+            
+            if not x_aligned:
+                continue
+            
+            # Check for vertical adjacency (touching)
+            # Image i's bottom touches image j's top
+            vertically_adjacent = abs(rect_j.y0 - rect_i.y1) <= tolerance
+            
+            # Check for overlapping/same position
+            # Both images have the same vertical bounds
+            same_position = (abs(rect_i.y0 - rect_j.y0) <= tolerance and 
+                           abs(rect_i.y1 - rect_j.y1) <= tolerance)
+            
+            if vertically_adjacent or same_position:
+                union(i, j)
+    
+    # Build groups from union-find structure
+    group_map = {}
+    for i in range(n):
+        root = find(i)
+        if root not in group_map:
+            group_map[root] = []
+        group_map[root].append(sorted_images[i])
+    
+    # Sort groups by the y-position of their first image
+    groups = list(group_map.values())
+    groups.sort(key=lambda g: g[0].get("rect").y0 if g[0].get("rect") else 0)
+    
+    return groups
+
+
 def group_images_by_figure(
     images_data: List[Dict[str, Any]],
     page_num: int,
@@ -818,110 +900,115 @@ def group_images_by_figure(
     """
     Group images that belong to the same conceptual figure.
     
+    Processing order:
+    1. First, merge images that are directly vertically adjacent (split in PDF)
+    2. Then, apply label-based or proximity-based grouping
+    
     Returns a list of groups, where each group is a list of image dicts that belong together.
     """
     if not images_data:
         return []
     
+    # Step 1: Pre-merge vertically adjacent images (handles PDF-split figures)
+    # This catches cases where a single figure is stored as multiple adjacent images
+    pre_merged_groups = _merge_adjacent_images(images_data)
+    
+    # Step 2: Apply additional grouping based on proximity
+    # Pre-merged groups already handle vertically adjacent images
+    # Now check if any pre-merged groups should be further combined based on proximity
+    
     # Find figure labels and their positions
     figure_labels = find_figure_labels_with_positions(page_num, page)
     
-    # If no figure labels found, try to group by spatial proximity
-    if not figure_labels:
-        # Group images that are close together vertically (within 100 pixels)
-        groups = []
-        used_indices = set()
-        
-        for i, img1 in enumerate(images_data):
-            if i in used_indices:
-                continue
-            
-            group = [img1]
-            used_indices.add(i)
-            
-            rect1 = img1.get("rect")
-            if not rect1:
-                continue
-            
-            y1_center = (rect1.y0 + rect1.y1) / 2
-            
-            # Find other images on the same page that are close vertically
-            for j, img2 in enumerate(images_data[i+1:], start=i+1):
-                if j in used_indices:
-                    continue
-                
-                rect2 = img2.get("rect")
-                if not rect2:
-                    continue
-                
-                y2_center = (rect2.y0 + rect2.y1) / 2
-                
-                # If images are close vertically (within 150 pixels) and horizontally overlapping
-                vertical_distance = abs(y1_center - y2_center)
-                horizontal_overlap = not (rect1.x1 < rect2.x0 or rect2.x1 < rect1.x0)
-                
-                if vertical_distance < 150 and horizontal_overlap:
-                    group.append(img2)
-                    used_indices.add(j)
-            
-            groups.append(group)
-        
-        return groups if groups else [[img] for img in images_data]
+    # If only one pre-merged group or no labels, return pre-merged groups
+    if len(pre_merged_groups) == 1:
+        return pre_merged_groups
     
-    # Group images by their proximity to figure labels
-    # Sort labels by y-position (top to bottom)
+    # For now, return pre-merged groups directly
+    # The pre-merging already handles the most important case: vertically adjacent images
+    # that are parts of the same figure split in the PDF
+    #
+    # The old label-based grouping was causing issues by incorrectly separating
+    # images that should be merged. If additional grouping is needed in the future,
+    # we can add proximity-based grouping between pre-merged groups.
+    
+    # Optional: Further group pre-merged groups that are spatially close
+    # This handles cases where multiple distinct images should form one figure
+    if not figure_labels:
+        # No labels - just return pre-merged groups
+        return pre_merged_groups
+    
+    # With labels present, try to group pre-merged groups by their proximity to labels
+    # But be careful not to separate adjacent images that were pre-merged
+    
+    # For each pre-merged group, use the bounding box of all images in the group
+    def get_group_bounds(group):
+        """Get the bounding box of a group of images."""
+        min_y0 = float('inf')
+        max_y1 = float('-inf')
+        min_x0 = float('inf')
+        max_x1 = float('-inf')
+        
+        for img in group:
+            rect = img.get("rect")
+            if rect:
+                min_y0 = min(min_y0, rect.y0)
+                max_y1 = max(max_y1, rect.y1)
+                min_x0 = min(min_x0, rect.x0)
+                max_x1 = max(max_x1, rect.x1)
+        
+        return min_x0, min_y0, max_x1, max_y1
+    
+    # Sort labels by y-position
     figure_labels.sort(key=lambda x: x["y_pos"])
     
-    groups = []
-    used_indices = set()
+    final_groups = []
+    used_group_indices = set()
     
     for label_idx, label in enumerate(figure_labels):
         label_y = label["y_pos"]
-        group = []
+        combined_group = []
         
-        # Find the next label below this one (if any) to establish boundaries
+        # Find the next label to establish boundaries
         next_label_y = None
         if label_idx + 1 < len(figure_labels):
             next_label_y = figure_labels[label_idx + 1]["y_pos"]
         
-        # Find images that are near this label (within 500 pixels below it)
-        for i, img in enumerate(images_data):
-            if i in used_indices:
+        # Find pre-merged groups near this label
+        for i, group in enumerate(pre_merged_groups):
+            if i in used_group_indices:
                 continue
             
-            rect = img.get("rect")
-            if not rect:
+            x0, y0, x1, y1 = get_group_bounds(group)
+            if y0 == float('inf'):
                 continue
             
-            img_y_center = (rect.y0 + rect.y1) / 2
+            group_y_center = (y0 + y1) / 2
             
-            # Image should be below the label but not too far
-            # More conservative: reduce range from 800 to 500 pixels
-            # Also, if there's a next label, don't group images that are closer to the next label
+            # Check if this group is closest to the current label
             max_distance = 500
             if next_label_y:
-                # Don't group if image is closer to next label than current label
-                distance_to_current = abs(img_y_center - label_y)
-                distance_to_next = abs(img_y_center - next_label_y)
+                distance_to_current = abs(group_y_center - label_y)
+                distance_to_next = abs(group_y_center - next_label_y)
                 if distance_to_next < distance_to_current:
                     continue
-                # Also limit range to halfway point between labels
                 halfway = (label_y + next_label_y) / 2
                 max_distance = min(500, halfway - label_y)
             
-            if img_y_center > label_y - 100 and img_y_center < label_y + max_distance:
-                group.append(img)
-                used_indices.add(i)
+            if group_y_center > label_y - 100 and group_y_center < label_y + max_distance:
+                # Add all images from this pre-merged group
+                combined_group.extend(group)
+                used_group_indices.add(i)
         
-        if group:
-            groups.append(group)
+        if combined_group:
+            final_groups.append(combined_group)
     
-    # Add any ungrouped images as individual groups
-    for i, img in enumerate(images_data):
-        if i not in used_indices:
-            groups.append([img])
+    # Add any ungrouped pre-merged groups
+    for i, group in enumerate(pre_merged_groups):
+        if i not in used_group_indices:
+            final_groups.append(group)
     
-    return groups if groups else [[img] for img in images_data]
+    return final_groups if final_groups else pre_merged_groups
 
 
 def is_logo_or_banner(
