@@ -114,8 +114,10 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
       </tr>
       {isOrientingBlock && (
         <tr className={isCurrent ? 'bg-orange-500/5 border-b border-white/10' : 'border-b border-white/10'}>
-          <td colSpan={totalCols} className="px-2 py-2 relative">
-            <div style={{ position: 'absolute', bottom: 0, right: 0, maxWidth: '400px' }}>
+          <td></td>
+          <td colSpan={3}></td>
+          <td colSpan={tagTypes.length} className="px-2 py-2 relative" style={{ height: '1px' }}>
+            <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', maxWidth: '400px', width: '100%' }}>
               <Checklist orientingOnly inline />
             </div>
           </td>
