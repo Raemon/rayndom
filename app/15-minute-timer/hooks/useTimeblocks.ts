@@ -31,7 +31,6 @@ export const useTimeblocks = ({ start, end, autoLoad=true }:{ start: string, end
           rayNotes: rayNotesFocused ? tb.rayNotes : fresh.rayNotes,
           assistantNotes: assistantNotesFocused ? tb.assistantNotes : fresh.assistantNotes,
           aiNotes: aiNotesFocused ? tb.aiNotes : fresh.aiNotes,
-          orientingBlock: fresh.orientingBlock,
         }
       })
       // Add any new timeblocks that weren't in prev
@@ -43,25 +42,25 @@ export const useTimeblocks = ({ start, end, autoLoad=true }:{ start: string, end
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { if (autoLoad) load() }, [start, end])
 
-  const createTimeblock = async ({ datetime, rayNotes=null, assistantNotes=null, aiNotes=null, orientingBlock=false }:{ datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, orientingBlock?: boolean }) => {
-    const optimistic: Timeblock = { id: -Date.now(), datetime, rayNotes, assistantNotes, aiNotes, orientingBlock }
+  const createTimeblock = async ({ datetime, rayNotes=null, assistantNotes=null, aiNotes=null }:{ datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => {
+    const optimistic: Timeblock = { id: -Date.now(), datetime, rayNotes, assistantNotes, aiNotes }
     setTimeblocks(prev => [...prev, optimistic])
-    const res = await fetch('/api/timer/timeblocks', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ datetime, rayNotes, assistantNotes, aiNotes, orientingBlock }) })
+    const res = await fetch('/api/timer/timeblocks', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ datetime, rayNotes, assistantNotes, aiNotes }) })
     const json = await res.json()
     if (json.timeblock) setTimeblocks(prev => prev.map(tb => tb.id === optimistic.id ? json.timeblock : tb))
     return json.timeblock as Timeblock
   }
 
-  const patchTimeblock = async ({ id, rayNotes, assistantNotes, aiNotes, orientingBlock }:{ id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, orientingBlock?: boolean }) => {
-    setTimeblocks(prev => prev.map(tb => tb.id === id ? { ...tb, rayNotes: rayNotes ?? tb.rayNotes, assistantNotes: assistantNotes ?? tb.assistantNotes, aiNotes: aiNotes ?? tb.aiNotes, orientingBlock: orientingBlock ?? tb.orientingBlock } : tb))
-    const res = await fetch('/api/timer/timeblocks', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, rayNotes, assistantNotes, aiNotes, orientingBlock }) })
+  const patchTimeblock = async ({ id, rayNotes, assistantNotes, aiNotes }:{ id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => {
+    setTimeblocks(prev => prev.map(tb => tb.id === id ? { ...tb, rayNotes: rayNotes ?? tb.rayNotes, assistantNotes: assistantNotes ?? tb.assistantNotes, aiNotes: aiNotes ?? tb.aiNotes } : tb))
+    const res = await fetch('/api/timer/timeblocks', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, rayNotes, assistantNotes, aiNotes }) })
     const json = await res.json()
     if (json.timeblock) setTimeblocks(prev => prev.map(tb => tb.id === id ? json.timeblock : tb))
   }
 
-  const patchTimeblockDebounced = ({ id, rayNotes, assistantNotes, aiNotes, orientingBlock, debounceMs=500 }:{ id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, orientingBlock?: boolean, debounceMs?: number }) => {
+  const patchTimeblockDebounced = ({ id, rayNotes, assistantNotes, aiNotes, debounceMs=500 }:{ id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => {
     if (debouncersRef.current[id]) clearTimeout(debouncersRef.current[id])
-    debouncersRef.current[id] = setTimeout(() => patchTimeblock({ id, rayNotes, assistantNotes, aiNotes, orientingBlock }), debounceMs)
+    debouncersRef.current[id] = setTimeout(() => patchTimeblock({ id, rayNotes, assistantNotes, aiNotes }), debounceMs)
   }
 
   return { timeblocks, setTimeblocks, load, refreshUnfocused, createTimeblock, patchTimeblock, patchTimeblockDebounced }

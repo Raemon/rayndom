@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import NotesInput from './NotesInput'
 import TagCell from './TagCell'
 import Checklist from './Checklist'
@@ -12,25 +13,25 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
   tagInstancesByType: Record<string, TagInstance[]>,
   allTagInstances: TagInstance[],
   isCurrent?: boolean,
-  onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, orientingBlock?: boolean }) => Promise<Timeblock>,
-  onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, orientingBlock?: boolean, debounceMs?: number }) => void,
+  onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => Promise<Timeblock>,
+  onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => void,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
   onApproveTagInstance: (args: { id: number }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
 }) => {
+  const [isExpanded, setIsExpanded] = useState(false)
+
   const ensureTimeblock = async () => {
     if (timeblock) return timeblock
     const created = await onCreateTimeblock({ datetime: slotStart.toISOString(), rayNotes: null, assistantNotes: null, aiNotes: null })
     return created
   }
 
-  const handleToggleOrient = async () => {
-    const tb = await ensureTimeblock()
-    const newOrientingBlock = !(tb.orientingBlock ?? false)
-    onPatchTimeblockDebounced({ id: tb.id, orientingBlock: newOrientingBlock, debounceMs: 0 })
+  const handleToggleOrient = () => {
+    setIsExpanded(prev => !prev)
   }
 
-  const isOrientingBlock = timeblock?.orientingBlock ?? false
+  const isOrientingBlock = isExpanded
   const totalCols = 1 + 3 + tagTypes.length
   return (
     <>
@@ -113,8 +114,8 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
       </tr>
       {isOrientingBlock && (
         <tr className={isCurrent ? 'bg-orange-500/5 border-b border-white/10' : 'border-b border-white/10'}>
-          <td colSpan={totalCols} className="px-2 py-2">
-            <div style={{ maxWidth: '400px' }}>
+          <td colSpan={totalCols} className="px-2 py-2 relative">
+            <div style={{ position: 'absolute', bottom: 0, right: 0, maxWidth: '400px' }}>
               <Checklist orientingOnly inline />
             </div>
           </td>
