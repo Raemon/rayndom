@@ -30,3 +30,17 @@ export const wouldCreateCycle = (tags: Tag[], childId: number, newParentId: numb
 export const getParentTag = (tag: Tag, tags: Tag[]): Tag | null => {
   return tag.parentTag || (tag.parentTagId ? tags.find(t => t.id === tag.parentTagId) : null) || null
 }
+
+export const getAllAncestorTagIds = (tag: Tag, tags: Tag[]): number[] => {
+  const ancestorIds: number[] = []
+  const visited = new Set<number>()
+  let currentId: number | null | undefined = tag.parentTagId
+  while (currentId) {
+    if (visited.has(currentId)) break
+    visited.add(currentId)
+    ancestorIds.push(currentId)
+    const parentTag = tags.find(t => t.id === currentId)
+    currentId = parentTag?.parentTagId
+  }
+  return ancestorIds
+}

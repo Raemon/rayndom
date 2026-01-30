@@ -4,7 +4,7 @@ import TagTypeahead from './TagTypeahead'
 import { useTags } from './TagsContext'
 import type { TagInstance } from './types'
 import DraggableTag from './DraggableTag'
-import { wouldCreateCycle, getParentTag } from './tagUtils'
+import { wouldCreateCycle, getParentTag, getAllAncestorTagIds } from './tagUtils'
 
 const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagInstance, onApproveTagInstance, onDeleteTagInstance }:{
   type: string,
@@ -55,10 +55,11 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
         allTagInstances={allTagInstances}
         placeholder={type}
         onSelectTag={async (tag) => {
-          if (tag.parentTagId) {
-            const parentAlreadyExists = tagInstances.some(ti => ti.tagId === tag.parentTagId)
-            if (!parentAlreadyExists) {
-              await onCreateTagInstance({ tagId: tag.parentTagId, datetime })
+          const ancestorIds = getAllAncestorTagIds(tag, tags)
+          for (const ancestorId of ancestorIds.reverse()) {
+            const ancestorAlreadyExists = tagInstances.some(ti => ti.tagId === ancestorId)
+            if (!ancestorAlreadyExists) {
+              await onCreateTagInstance({ tagId: ancestorId, datetime })
             }
           }
           await onCreateTagInstance({ tagId: tag.id, datetime })
