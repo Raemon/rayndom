@@ -25,9 +25,6 @@ Usage:
 Example:
     python extract_and_convert_figures.py downloads/ketamine-in-vitro-safety/10.3390_cells8101139.pdf downloads/ketamine-in-vitro-safety/figures --convert-to-tables --max-workers 10
     
-    # Extract only without conversion (for testing):
-    python extract_and_convert_figures.py paper.pdf figures/ --extract-only
-    
     # Disable OpenCV and use only AI-based detection:
     python extract_and_convert_figures.py paper.pdf figures/ --no-opencv
     
@@ -125,52 +122,80 @@ def extract_page_text(page_num: int, page) -> Tuple[int, str]:
         return (page_num, "")
 
 
+def _try_extract_base_image(doc, xref: int) -> Optional[Dict[str, Any]]:
+    """Extract base image data from document by xref. Returns None if extraction fails."""
+    try:
+        return doc.extract_image(xref)
+    except Exception:
+        return None
+
+
+def _is_valid_image_size(base_image: Dict[str, Any], min_size: int) -> bool:
+    """Check if image meets minimum size requirements."""
+    width = base_image.get("width", 0)
+    height = base_image.get("height", 0)
+    return width >= min_size and height >= min_size
+
+
+def _build_image_data(
+    page_num: int,
+    img_index: int,
+    xref: int,
+    base_image: Dict[str, Any],
+    image_rects: List[Any]
+) -> Dict[str, Any]:
+    """Construct the image data dictionary from extracted components."""
+    return {
+        "page_num": page_num,
+        "img_index": img_index,
+        "xref": xref,
+        "image_bytes": base_image["image"],
+        "image_ext": base_image.get("ext", "png"),
+        "width": base_image.get("width", 0),
+        "height": base_image.get("height", 0),
+        "rect": image_rects[0] if image_rects else None,
+        "all_rects": image_rects,
+    }
+
+
+def _process_single_image(
+    page_num: int,
+    img_index: int,
+    xref: int,
+    doc,
+    page,
+    min_size: int
+) -> Optional[Dict[str, Any]]:
+    """
+    Process a single image: extract, validate size, get rectangles, build data.
+    Returns None if image should be skipped.
+    """
+    base_image = _try_extract_base_image(doc, xref)
+    if not base_image:
+        return None
+    
+    if not _is_valid_image_size(base_image, min_size):
+        return None
+    
+    image_rects = page.get_image_rects(xref)
+    return _build_image_data(page_num, img_index, xref, base_image, image_rects)
+
+
 def extract_page_images(page_num: int, page, doc, min_size: int = 50) -> List[Dict[str, Any]]:
     """Extract images from a single page (for parallel processing)."""
-    images_data = []
     images = page.get_images(full=True)
     
+    results = []
     for img_index, img in enumerate(images):
         xref = img[0]
-        
         try:
-            # Extract image data
-            base_image = doc.extract_image(xref)
-            if not base_image:
-                continue
-            
-            image_bytes = base_image["image"]
-            image_ext = base_image.get("ext", "png")
-            
-            # Skip very small images (likely icons or artifacts)
-            width = base_image.get("width", 0)
-            height = base_image.get("height", 0)
-            if width < min_size or height < min_size:
-                continue
-            
-            # Get the bounding rectangles where this image appears on the page
-            # An image can appear multiple times, so we get all rectangles
-            image_rects = page.get_image_rects(xref)
-            
-            # Use the first/largest rectangle as the primary position
-            primary_rect = image_rects[0] if image_rects else None
-            
-            images_data.append({
-                "page_num": page_num,
-                "img_index": img_index,
-                "xref": xref,
-                "image_bytes": image_bytes,
-                "image_ext": image_ext,
-                "width": width,
-                "height": height,
-                "rect": primary_rect,  # Bounding box on page: (x0, y0, x1, y1)
-                "all_rects": image_rects,  # All rectangles where image appears
-            })
-            
+            image_data = _process_single_image(page_num, img_index, xref, doc, page, min_size)
+            if image_data:
+                results.append(image_data)
         except Exception as e:
             print(f"  Error extracting image from page {page_num + 1}, image {img_index}: {e}")
     
-    return images_data
+    return results
 
 
 def find_figure_labels_with_positions(page_num: int, page) -> List[Dict[str, Any]]:
@@ -1102,21 +1127,13 @@ class FigureExtractor:
         
         os.makedirs(output_dir, exist_ok=True)
     
-    def extract_all(self, min_size: int = 50) -> List[Dict[str, Any]]:
-        """Extract all figures from the PDF using parallel processing."""
-        if not HAS_PYMUPDF:
-            print("Error: PyMuPDF (fitz) is required for image extraction.")
-            print("Install it with: pip install PyMuPDF")
-            return []
-        
-        doc = fitz.open(self.pdf_path)
+    # =========================================================================
+    # EXTRACTION PIPELINE METHODS
+    # =========================================================================
+    
+    def _extract_page_texts(self, doc) -> List[str]:
+        """Extract text from all pages in parallel."""
         num_pages = len(doc)
-        
-        print(f"Opened PDF with {num_pages} pages")
-        print(f"Using {self.max_workers} worker threads for parallel processing")
-        
-        # Extract text from all pages in parallel
-        print("Extracting text from pages...")
         page_texts = [""] * num_pages
         
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
@@ -1129,19 +1146,23 @@ class FigureExtractor:
                 page_num, text = future.result()
                 page_texts[page_num] = text
         
-        # Build full text for context matching
+        return page_texts
+    
+    def _build_full_text(self, page_texts: List[str]) -> str:
+        """Build full document text for context matching."""
         full_text = ""
         for page_num, text in enumerate(page_texts):
             full_text += f"\n--- Page {page_num + 1} ---\n{text}"
-        
-        # Extract images from all pages in parallel
-        print("Extracting images from pages...")
+        return full_text
+    
+    def _extract_all_images(self, doc, min_size: int) -> List[Dict[str, Any]]:
+        """Extract images from all pages in parallel."""
         all_images_data = []
         
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             image_futures = {
                 executor.submit(extract_page_images, page_num, doc[page_num], doc, min_size): page_num
-                for page_num in range(num_pages)
+                for page_num in range(len(doc))
             }
             
             for future in as_completed(image_futures):
@@ -1150,58 +1171,55 @@ class FigureExtractor:
         
         # Sort images by page number and index to maintain order
         all_images_data.sort(key=lambda x: (x["page_num"], x["img_index"]))
-        
-        # Deduplicate images based on xref (same image can appear multiple times on same page)
-        # Note: Same xref on different pages are kept as separate images
-        print("Deduplicating images...")
+        return all_images_data
+    
+    def _deduplicate_images_by_xref(self, all_images_data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """
+        Deduplicate images based on xref (same image can appear multiple times on same page).
+        Note: Same xref on different pages are kept as separate images.
+        """
         seen_xrefs_by_page = {}  # {page_num: {xref: img}}
-        images_without_xref = []  # Images without xref (keep all, can't deduplicate)
+        images_without_xref = []
         
         for img in all_images_data:
             xref = img.get("xref")
             page_num = img.get("page_num")
             
             if xref is None:
-                # If no xref, keep it (can't deduplicate without xref)
                 images_without_xref.append(img)
                 continue
             
             if page_num not in seen_xrefs_by_page:
                 seen_xrefs_by_page[page_num] = {}
             
-            # Calculate image area for comparison
             area = img.get("width", 0) * img.get("height", 0)
             
             if xref not in seen_xrefs_by_page[page_num]:
-                # First time seeing this xref on this page, keep it
                 seen_xrefs_by_page[page_num][xref] = img
             else:
-                # We've seen this xref on this page before, keep the one with larger area
+                # Keep the one with larger area
                 existing_img = seen_xrefs_by_page[page_num][xref]
                 existing_area = existing_img.get("width", 0) * existing_img.get("height", 0)
-                
                 if area > existing_area:
-                    # Replace with larger version
                     seen_xrefs_by_page[page_num][xref] = img
-                # Otherwise, skip this duplicate
         
         # Create deduplicated list, preserving order by page and index
         deduplicated_images = []
         for page_num in sorted(seen_xrefs_by_page.keys()):
             page_images = list(seen_xrefs_by_page[page_num].values())
-            # Sort by original img_index to maintain order
             page_images.sort(key=lambda x: x.get("img_index", 0))
             deduplicated_images.extend(page_images)
         
-        # Add images without xref (they should be rare)
         deduplicated_images.extend(images_without_xref)
-        
-        print(f"Deduplicated {len(all_images_data)} images to {len(deduplicated_images)} unique images")
-        all_images_data = deduplicated_images
-        
-        # Group images by page, then by figure
-        print("Grouping images by figure...")
-        grouped_images = []
+        return deduplicated_images
+    
+    def _group_images_into_figures(
+        self,
+        all_images_data: List[Dict[str, Any]],
+        doc,
+        page_texts: List[str]
+    ) -> List[List[Dict[str, Any]]]:
+        """Group images by page, then by figure proximity."""
         images_by_page = {}
         for img in all_images_data:
             page_num = img["page_num"]
@@ -1209,294 +1227,354 @@ class FigureExtractor:
                 images_by_page[page_num] = []
             images_by_page[page_num].append(img)
         
-        # Group images on each page
+        grouped_images = []
         for page_num, page_images in images_by_page.items():
             page = doc[page_num]
             page_text = page_texts[page_num]
             groups = group_images_by_figure(page_images, page_num, page, page_text)
             grouped_images.extend(groups)
         
+        return grouped_images
+    
+    # =========================================================================
+    # IMAGE SAVING METHODS
+    # =========================================================================
+    
+    def _generate_figure_name(
+        self,
+        page_num: int,
+        image_counter: int,
+        is_labeled: bool,
+        merged_count: int = 1,
+        split_index: int = None,
+        total_splits: int = None
+    ) -> str:
+        """Generate a figure filename (without extension)."""
+        prefix = "figure" if is_labeled else "ignore_figure"
+        base = f"page{page_num + 1}_{prefix}_{image_counter:03d}"
+        
+        if split_index is not None and total_splits is not None:
+            return f"{base}_split{split_index + 1}"
+        elif merged_count > 1:
+            return f"{base}_merged{merged_count}"
+        return base
+    
+    def _save_image_file(self, image_bytes: bytes, image_path: str) -> bool:
+        """Save image bytes to disk. Returns True on success."""
+        try:
+            with open(image_path, "wb") as f:
+                f.write(image_bytes)
+            return True
+        except Exception as e:
+            print(f"  Error saving image {image_path}: {e}")
+            return False
+    
+    def _save_context_file(
+        self,
+        context_path: str,
+        page_num: int,
+        width: int,
+        height: int,
+        context: str,
+        merged_count: int = 1,
+        split_index: int = None,
+        total_splits: int = None
+    ) -> bool:
+        """Save context text to disk. Returns True on success."""
+        try:
+            with open(context_path, "w", encoding="utf-8") as f:
+                f.write(f"Figure extracted from: {os.path.basename(self.pdf_path)}\n")
+                f.write(f"Page: {page_num + 1}\n")
+                f.write(f"Image dimensions: {width}x{height}\n")
+                
+                if split_index is not None and total_splits is not None:
+                    f.write(f"Split {split_index + 1} of {total_splits} from original image\n")
+                    if merged_count > 1:
+                        f.write(f"Original image was merged from {merged_count} separate image files\n")
+                elif merged_count > 1:
+                    f.write(f"Merged from {merged_count} separate image files\n")
+                
+                f.write(f"\n{'='*60}\n")
+                f.write("CONTEXT:\n")
+                f.write(f"{'='*60}\n\n")
+                f.write(context)
+            return True
+        except Exception as e:
+            print(f"  Error saving context for {context_path}: {e}")
+            return False
+    
+    def _build_figure_result(
+        self,
+        image_counter: int,
+        page_num: int,
+        image_filename: str,
+        image_path: str,
+        width: int,
+        height: int,
+        image_ext: str,
+        is_labeled: bool,
+        merged_count: int = 1,
+        context: str = "",
+        context_path: str = None,
+        split_index: int = None,
+        total_splits: int = None,
+        original_image_indices: List[int] = None
+    ) -> Dict[str, Any]:
+        """Build a figure result dictionary."""
+        result = {
+            "index": image_counter,
+            "page": page_num + 1,
+            "filename": image_filename,
+            "image_path": image_path,
+            "context_path": context_path,
+            "width": width,
+            "height": height,
+            "format": image_ext,
+            "context": context,
+            "is_labeled": is_labeled,
+            "merged_count": merged_count
+        }
+        
+        if split_index is not None:
+            result["split_index"] = split_index
+            result["split_from"] = True
+            result["total_splits"] = total_splits
+        
+        if original_image_indices:
+            result["original_image_indices"] = original_image_indices
+        
+        return result
+    
+    # =========================================================================
+    # IMAGE GROUP PROCESSING METHODS
+    # =========================================================================
+    
+    def _save_split_figure(
+        self,
+        split_img_data: Dict[str, Any],
+        split_idx: int,
+        total_splits: int,
+        merged_count: int,
+        doc,
+        page_texts: List[str],
+        full_text: str,
+        image_counter: int
+    ) -> Optional[Dict[str, Any]]:
+        """Save a single split figure and return its result dict."""
+        page_num = split_img_data["page_num"]
+        image_bytes = split_img_data["image_bytes"]
+        image_ext = split_img_data["image_ext"]
+        width = split_img_data["width"]
+        height = split_img_data["height"]
+        
+        page = doc[page_num]
+        is_labeled = is_labeled_figure_or_table(page_num, page_texts, 0, split_img_data, page)
+        
+        fig_name = self._generate_figure_name(
+            page_num, image_counter, is_labeled, merged_count, split_idx, total_splits
+        )
+        image_filename = f"{fig_name}.{image_ext}"
+        image_path = os.path.join(self.output_dir, image_filename)
+        
+        if not self._save_image_file(image_bytes, image_path):
+            return None
+        
+        context = ""
+        context_path = None
+        
+        if is_labeled:
+            print(f"  Extracted (split {split_idx + 1}/{total_splits}): {image_filename} ({width}x{height})")
+            context = find_figure_context(page_num, page_texts, full_text, image_counter)
+            context_path = os.path.join(self.output_dir, f"{fig_name}.txt")
+            self._save_context_file(
+                context_path, page_num, width, height, context,
+                merged_count, split_idx, total_splits
+            )
+        else:
+            print(f"  Ignored (not labeled, split {split_idx + 1}/{total_splits}): {image_filename} ({width}x{height})")
+        
+        return self._build_figure_result(
+            image_counter, page_num, image_filename, image_path,
+            width, height, image_ext, is_labeled, merged_count,
+            context, context_path, split_idx, total_splits
+        )
+    
+    def _save_single_figure(
+        self,
+        img_data: Dict[str, Any],
+        merged_count: int,
+        doc,
+        page_texts: List[str],
+        full_text: str,
+        image_counter: int
+    ) -> Optional[Dict[str, Any]]:
+        """Save a single (non-split) figure and return its result dict."""
+        page_num = img_data["page_num"]
+        img_index = img_data.get("img_index", 0)
+        image_bytes = img_data["image_bytes"]
+        image_ext = img_data["image_ext"]
+        width = img_data["width"]
+        height = img_data["height"]
+        
+        page = doc[page_num]
+        is_labeled = is_labeled_figure_or_table(page_num, page_texts, img_index, img_data, page)
+        
+        fig_name = self._generate_figure_name(page_num, image_counter, is_labeled, merged_count)
+        image_filename = f"{fig_name}.{image_ext}"
+        image_path = os.path.join(self.output_dir, image_filename)
+        
+        if not self._save_image_file(image_bytes, image_path):
+            return None
+        
+        # Log extraction status
+        if is_labeled:
+            merge_info = f" (merged {merged_count} images)" if merged_count > 1 else ""
+            print(f"  Extracted{merge_info}: {image_filename} ({width}x{height})")
+        else:
+            merge_info = f" (not labeled, merged {merged_count})" if merged_count > 1 else " (not labeled)"
+            print(f"  Ignored{merge_info}: {image_filename} ({width}x{height})")
+        
+        context = ""
+        context_path = None
+        
+        if is_labeled:
+            context = find_figure_context(page_num, page_texts, full_text, image_counter)
+            context_path = os.path.join(self.output_dir, f"{fig_name}.txt")
+            self._save_context_file(context_path, page_num, width, height, context, merged_count)
+        
+        return self._build_figure_result(
+            image_counter, page_num, image_filename, image_path,
+            width, height, image_ext, is_labeled, merged_count,
+            context, context_path,
+            original_image_indices=img_data.get("original_images") if merged_count > 1 else None
+        )
+    
+    def _process_image_group(
+        self,
+        image_group: List[Dict[str, Any]],
+        doc,
+        page_texts: List[str],
+        full_text: str,
+        api_key: str,
+        image_counter_start: int
+    ) -> Tuple[List[Dict[str, Any]], int]:
+        """
+        Process a group of images: merge if needed, split if needed, save to disk.
+        
+        Processing order:
+        1. MERGE first - multiple image files may contain parts of same graphic
+        2. SPLIT after merge - merged/single image may contain multiple distinct figures
+        
+        Returns:
+            Tuple of (list of figure results, final image counter value)
+        """
+        if not image_group:
+            return [], image_counter_start
+        
+        image_counter = image_counter_start
+        results = []
+        
+        # Step 1: Merge images if group has multiple
+        if len(image_group) > 1:
+            img_data = merge_image_group(image_group)
+            if not img_data:
+                return [], image_counter
+            merged_count = len(image_group)
+        else:
+            img_data = image_group[0]
+            merged_count = 1
+        
+        # Step 2: Check if image contains multiple distinct figures and split if needed
+        split_images = detect_and_split_multiple_figures(
+            img_data,
+            api_key=api_key,
+            use_opencv=self.use_opencv,
+            opencv_min_area=self.opencv_min_area,
+            recursive=self.recursive_split,
+            max_depth=self.max_split_depth
+        )
+        
+        # Process splits or single image
+        if split_images and len(split_images) > 1:
+            print(f"  Detected {len(split_images)} figures in single image, splitting...")
+            for split_idx, split_img_data in enumerate(split_images):
+                image_counter += 1
+                result = self._save_split_figure(
+                    split_img_data, split_idx, len(split_images), merged_count,
+                    doc, page_texts, full_text, image_counter
+                )
+                if result:
+                    results.append(result)
+        else:
+            image_counter += 1
+            result = self._save_single_figure(
+                img_data, merged_count, doc, page_texts, full_text, image_counter
+            )
+            if result:
+                results.append(result)
+        
+        return results, image_counter
+    
+    # =========================================================================
+    # MAIN EXTRACTION METHOD
+    # =========================================================================
+    
+    def extract_all(self, min_size: int = 50) -> List[Dict[str, Any]]:
+        """
+        Extract all figures from the PDF using parallel processing.
+        
+        Pipeline:
+        1. Extract text from all pages (parallel)
+        2. Extract images from all pages (parallel)
+        3. Deduplicate images by xref
+        4. Group images into figures
+        5. Process each group: merge parts, split distinct figures, save
+        6. Deduplicate final figures by content hash
+        """
+        if not HAS_PYMUPDF:
+            print("Error: PyMuPDF (fitz) is required for image extraction.")
+            print("Install it with: pip install PyMuPDF")
+            return []
+        
+        doc = fitz.open(self.pdf_path)
+        print(f"Opened PDF with {len(doc)} pages")
+        print(f"Using {self.max_workers} worker threads for parallel processing")
+        
+        # Step 1: Extract text from all pages
+        print("Extracting text from pages...")
+        page_texts = self._extract_page_texts(doc)
+        full_text = self._build_full_text(page_texts)
+        
+        # Step 2: Extract images from all pages
+        print("Extracting images from pages...")
+        all_images_data = self._extract_all_images(doc, min_size)
+        
+        # Step 3: Deduplicate images by xref
+        print("Deduplicating images...")
+        original_count = len(all_images_data)
+        all_images_data = self._deduplicate_images_by_xref(all_images_data)
+        print(f"Deduplicated {original_count} images to {len(all_images_data)} unique images")
+        
+        # Step 4: Group images into figures
+        print("Grouping images by figure...")
+        grouped_images = self._group_images_into_figures(all_images_data, doc, page_texts)
         print(f"Grouped {len(all_images_data)} images into {len(grouped_images)} figure groups")
         
-        # Process image groups and save them
+        # Step 5: Process each group (merge, split, save)
         print(f"Processing {len(grouped_images)} figure groups...")
+        api_key = get_openrouter_api_key()
         image_counter = 0
         
-        # Get API key for AI-based split detection (optional)
-        api_key = get_openrouter_api_key()
-        
-        # Capture parameters for the nested function
-        use_opencv = self.use_opencv
-        opencv_min_area = self.opencv_min_area
-        recursive_split = self.recursive_split
-        max_split_depth = self.max_split_depth
-        
-        def process_and_save_image_group(image_group: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-            """
-            Process a group of images.
-            
-            IMPORTANT: Order of operations:
-            1. FIRST: Merge images if group has multiple images (multiple image files may contain parts of same graphic)
-            2. THEN: Check if merged/single image contains multiple distinct figures and split if needed
-               (merged image may contain both related graphics AND unrelated graphics)
-            
-            This ensures that:
-            - Parts of the same graphic across multiple files are merged first
-            - After merging, unrelated graphics in the same image are detected and split
-            """
-            nonlocal image_counter
-            
-            results = []
-            
-            if not image_group:
-                return results
-            
-            # STEP 1: MERGE FIRST - Multiple image files may contain parts of the same graphic
-            # Merge images if group has multiple images
-            if len(image_group) > 1:
-                img_data = merge_image_group(image_group)
-                if not img_data:
-                    return results
-                merged_count = len(image_group)
-            else:
-                img_data = image_group[0]
-                merged_count = 1
-            
-            # STEP 2: SPLIT AFTER MERGE - Check if merged/single image contains multiple distinct figures
-            # The merged image may contain both related graphics (that should stay together)
-            # AND unrelated graphics (that should be split apart)
-            # Uses OpenCV if available, otherwise falls back to AI-based detection
-            # Recursive splitting will check if each split also contains multiple figures
-            split_images = detect_and_split_multiple_figures(
-                img_data,
-                api_key=api_key,
-                use_opencv=use_opencv,
-                opencv_min_area=opencv_min_area,
-                recursive=recursive_split,
-                max_depth=max_split_depth
+        for image_group in grouped_images:
+            results, image_counter = self._process_image_group(
+                image_group, doc, page_texts, full_text, api_key, image_counter
             )
-            
-            # If splits detected, process each split separately
-            if split_images and len(split_images) > 1:
-                print(f"  Detected {len(split_images)} figures in single image, splitting...")
-                for split_idx, split_img_data in enumerate(split_images):
-                    image_counter += 1
-                    page_num = split_img_data["page_num"]
-                    img_index = split_img_data.get("img_index", image_group[0]["img_index"])
-                    image_bytes = split_img_data["image_bytes"]
-                    image_ext = split_img_data["image_ext"]
-                    width = split_img_data["width"]
-                    height = split_img_data["height"]
-                    
-                    # Get page object for logo detection
-                    page = doc[page_num]
-                    page_text = page_texts[page_num] if page_num < len(page_texts) else ""
-                    
-                    # Check if this split is a labeled Figure or Table
-                    is_labeled = is_labeled_figure_or_table(page_num, page_texts, img_index, split_img_data, page)
-                    
-                    # Generate filename
-                    if is_labeled:
-                        fig_name = f"page{page_num + 1}_figure_{image_counter:03d}_split{split_idx + 1}"
-                    else:
-                        fig_name = f"page{page_num + 1}_ignore_figure_{image_counter:03d}_split{split_idx + 1}"
-                    
-                    image_filename = f"{fig_name}.{image_ext}"
-                    image_path = os.path.join(self.output_dir, image_filename)
-                    
-                    # Save split image
-                    try:
-                        with open(image_path, "wb") as f:
-                            f.write(image_bytes)
-                    except Exception as e:
-                        print(f"  Error saving split image {image_filename}: {e}")
-                        continue
-                    
-                    if is_labeled:
-                        print(f"  Extracted (split {split_idx + 1}/{len(split_images)}): {image_filename} ({width}x{height})")
-                        
-                        # Find context for this split
-                        context = find_figure_context(
-                            page_num, page_texts, full_text, image_counter
-                        )
-                        
-                        # Save context to text file
-                        context_path = os.path.join(self.output_dir, f"{fig_name}.txt")
-                        try:
-                            with open(context_path, "w", encoding="utf-8") as f:
-                                f.write(f"Figure extracted from: {os.path.basename(self.pdf_path)}\n")
-                                f.write(f"Page: {page_num + 1}\n")
-                                f.write(f"Image dimensions: {width}x{height}\n")
-                                f.write(f"Split {split_idx + 1} of {len(split_images)} from original image\n")
-                                if merged_count > 1:
-                                    f.write(f"Original image was merged from {merged_count} separate image files\n")
-                                f.write(f"\n{'='*60}\n")
-                                f.write("CONTEXT:\n")
-                                f.write(f"{'='*60}\n\n")
-                                f.write(context)
-                        except Exception as e:
-                            print(f"  Error saving context for {image_filename}: {e}")
-                        
-                        result = {
-                            "index": image_counter,
-                            "page": page_num + 1,
-                            "filename": image_filename,
-                            "image_path": image_path,
-                            "context_path": context_path,
-                            "width": width,
-                            "height": height,
-                            "format": image_ext,
-                            "context": context,
-                            "is_labeled": True,
-                            "merged_count": merged_count,
-                            "split_index": split_idx,
-                            "split_from": True,
-                            "total_splits": len(split_images)
-                        }
-                        results.append(result)
-                    else:
-                        print(f"  Ignored (not labeled, split {split_idx + 1}/{len(split_images)}): {image_filename} ({width}x{height})")
-                        results.append({
-                            "index": image_counter,
-                            "page": page_num + 1,
-                            "filename": image_filename,
-                            "image_path": image_path,
-                            "context_path": None,
-                            "width": width,
-                            "height": height,
-                            "format": image_ext,
-                            "context": "",
-                            "is_labeled": False,
-                            "merged_count": merged_count,
-                            "split_index": split_idx,
-                            "split_from": True,
-                            "total_splits": len(split_images)
-                        })
-                
-                return results
-            
-            # No splits detected, process as single image
-            image_counter += 1
-            page_num = img_data["page_num"]
-            img_index = img_data.get("img_index", image_group[0]["img_index"])
-            image_bytes = img_data["image_bytes"]
-            image_ext = img_data["image_ext"]
-            width = img_data["width"]
-            height = img_data["height"]
-            
-            # Get page object for logo detection
-            page = doc[page_num]
-            page_text = page_texts[page_num] if page_num < len(page_texts) else ""
-            
-            # Check if this image/group is a labeled Figure or Table
-            is_labeled = is_labeled_figure_or_table(page_num, page_texts, img_index, img_data, page)
-            
-            # Generate filename (prepend "ignore_" if not a labeled figure/table)
-            if is_labeled:
-                if merged_count > 1:
-                    fig_name = f"page{page_num + 1}_figure_{image_counter:03d}_merged{merged_count}"
-                else:
-                    fig_name = f"page{page_num + 1}_figure_{image_counter:03d}"
-            else:
-                if merged_count > 1:
-                    fig_name = f"page{page_num + 1}_ignore_figure_{image_counter:03d}_merged{merged_count}"
-                else:
-                    fig_name = f"page{page_num + 1}_ignore_figure_{image_counter:03d}"
-            
-            image_filename = f"{fig_name}.{image_ext}"
-            image_path = os.path.join(self.output_dir, image_filename)
-            
-            # Save image
-            try:
-                with open(image_path, "wb") as f:
-                    f.write(image_bytes)
-            except Exception as e:
-                print(f"  Error saving image {image_filename}: {e}")
-                return results
-            
-            if is_labeled:
-                if merged_count > 1:
-                    print(f"  Extracted (merged {merged_count} images): {image_filename} ({width}x{height})")
-                else:
-                    print(f"  Extracted: {image_filename} ({width}x{height})")
-            else:
-                if merged_count > 1:
-                    print(f"  Ignored (not labeled, merged {merged_count}): {image_filename} ({width}x{height})")
-                else:
-                    print(f"  Ignored (not labeled): {image_filename} ({width}x{height})")
-                # Return early for non-labeled images - don't process further
-                results.append({
-                    "index": image_counter,
-                    "page": page_num + 1,
-                    "filename": image_filename,
-                    "image_path": image_path,
-                    "context_path": None,
-                    "width": width,
-                    "height": height,
-                    "format": image_ext,
-                    "context": "",
-                    "is_labeled": False,
-                    "merged_count": merged_count
-                })
-                return results
-            
-            # Find context for this image (only for labeled figures/tables)
-            context = find_figure_context(
-                page_num, page_texts, full_text, image_counter
-            )
-            
-            # Save context to text file
-            context_path = os.path.join(self.output_dir, f"{fig_name}.txt")
-            try:
-                with open(context_path, "w", encoding="utf-8") as f:
-                    f.write(f"Figure extracted from: {os.path.basename(self.pdf_path)}\n")
-                    f.write(f"Page: {page_num + 1}\n")
-                    f.write(f"Image dimensions: {width}x{height}\n")
-                    if merged_count > 1:
-                        f.write(f"Merged from {merged_count} separate image files\n")
-                    f.write(f"\n{'='*60}\n")
-                    f.write("CONTEXT:\n")
-                    f.write(f"{'='*60}\n\n")
-                    f.write(context)
-            except Exception as e:
-                print(f"  Error saving context for {image_filename}: {e}")
-            
-            result = {
-                "index": image_counter,
-                "page": page_num + 1,
-                "filename": image_filename,
-                "image_path": image_path,
-                "context_path": context_path,
-                "width": width,
-                "height": height,
-                "format": image_ext,
-                "context": context,
-                "is_labeled": True,
-                "merged_count": merged_count
-            }
-            
-            if merged_count > 1:
-                result["original_image_indices"] = img_data.get("original_images", [])
-            
-            results.append(result)
-            return results
-        
-        # Process image groups in parallel (file I/O can benefit from parallelization)
-        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            figure_futures = [
-                executor.submit(process_and_save_image_group, image_group)
-                for image_group in grouped_images
-            ]
-            
-            for future in as_completed(figure_futures):
-                figures = future.result()
-                if figures:
-                    self.figures.extend(figures)
+            self.figures.extend(results)
         
         # Sort figures by index to maintain order
         self.figures.sort(key=lambda x: x["index"])
         
-        # Deduplicate figures based on image content
+        # Step 6: Deduplicate figures by content hash
         print("Deduplicating extracted figures by content...")
         self.figures = self._deduplicate_figures_by_content(self.figures)
         
@@ -1628,12 +1706,6 @@ def main():
         default=3,
         help='Maximum recursion depth for figure splitting (default: 3)'
     )
-    parser.add_argument(
-        '--extract-only',
-        action='store_true',
-        help='Only extract figures without converting to tables (useful for testing)'
-    )
-    
     args = parser.parse_args()
     
     # Validate input
@@ -1694,8 +1766,8 @@ def main():
         json.dump(figures, f, indent=2, ensure_ascii=False)
     print(f"\nSaved metadata to: {metadata_path}")
     
-    # Convert to tables if requested (unless --extract-only is set)
-    if not args.extract_only and (args.convert_to_tables or args.use_separate_converter):
+    # Convert to tables if requested
+    if args.convert_to_tables or args.use_separate_converter:
         print("\n" + "="*60)
         print("CONVERTING IMAGES TO TABLES")
         print("="*60)
