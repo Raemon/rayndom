@@ -19,8 +19,17 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
   const [isEditing, setIsEditing] = useState(false)
   const typeTags = tags.filter(t => t.type === type)
   const handleSetParent = (childId: number, parentId: number) => {
-    if (wouldCreateCycle(tags, childId, parentId)) return
-    updateTag({ id: childId, parentTagId: parentId })
+    const childTag = tags.find(t => t.id === childId)
+    const parentTag = tags.find(t => t.id === parentId)
+    if (!childTag || !parentTag) return
+    if (childTag.type === parentTag.type) {
+      if (wouldCreateCycle(tags, childId, parentId)) return
+      updateTag({ id: childId, parentTagId: parentId })
+      return
+    }
+    const existingSuggestedTagIds = Array.isArray(parentTag.suggestedTagIds) ? parentTag.suggestedTagIds : []
+    if (existingSuggestedTagIds.includes(childId)) return
+    updateTag({ id: parentId, suggestedTagIds: [...existingSuggestedTagIds, childId] })
   }
 
   return (

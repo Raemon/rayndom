@@ -32,23 +32,64 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
 
   const isOrientingBlock = timeblock?.orientingBlock ?? false
   const totalCols = 1 + 3 + tagTypes.length
-
   return (
     <>
-      <tr className={`${isCurrent ? 'bg-orange-500/5' : ''} ${!isOrientingBlock ? 'border-b border-white/10' : ''}`}>
+      <tr className={`${isCurrent ? 'bg-black/50' : ''} ${!isOrientingBlock ? 'border-b border-white/10' : ''}`}>
         <td className="text-gray-300 whitespace-nowrap px-2 py-2" style={{ width: '10%', verticalAlign: 'top' }}>
-          <span className="flex items-center gap-1">
-            <button onClick={handleToggleOrient} className="text-[10px] text-white/20 hover:text-white leading-none" title="Toggle orient block">{isOrientingBlock ? '▼' : '▶'}</button>
+          <span className="flex items-center gap-1 cursor-pointer" onClick={handleToggleOrient}>
             {timeLabel}
+            <button className="text-[10px]! text-white/20 ml-2 hover:text-white leading-none" title="Toggle orient block">{isOrientingBlock ? '▼' : '▶'}</button>
           </span>
         </td>
         {!isOrientingBlock && (
-          <td style={{ width: '15%', verticalAlign: 'top' }} className="px-2 py-2">
+          <>
+            <td style={{ width: '15%', verticalAlign: 'top' }} className="px-2 py-2">
+              <NotesInput
+                noteKey={timeblock ? `${timeblock.id}:rayNotes` : undefined}
+                placeholder="Notes"
+                initialValue={timeblock?.rayNotes || ''}
+                externalValue={timeblock?.rayNotes || ''}
+                onSave={async (content) => {
+                  const tb = await ensureTimeblock()
+                  onPatchTimeblockDebounced({ id: tb.id, rayNotes: content, debounceMs: 0 })
+                }}
+              />
+            </td>
+            <td style={{ width: '15%', verticalAlign: 'top' }} className="px-2 py-2">
+              <NotesInput
+                noteKey={timeblock ? `${timeblock.id}:assistantNotes` : undefined}
+                placeholder="Asst"
+                initialValue={timeblock?.assistantNotes || ''}
+                externalValue={timeblock?.assistantNotes || ''}
+                onSave={async (content) => {
+                  const tb = await ensureTimeblock()
+                  onPatchTimeblockDebounced({ id: tb.id, assistantNotes: content, debounceMs: 0 })
+                }}
+              />
+            </td>
+            <td style={{ width: '15%', verticalAlign: 'top' }} className="px-2 py-2">
+              <NotesInput
+                noteKey={timeblock ? `${timeblock.id}:aiNotes` : undefined}
+                placeholder="AI"
+                initialValue={timeblock?.aiNotes || ''}
+                externalValue={timeblock?.aiNotes || ''}
+                onSave={async (content) => {
+                  const tb = await ensureTimeblock()
+                  onPatchTimeblockDebounced({ id: tb.id, aiNotes: content, debounceMs: 0 })
+                }}
+              />
+            </td>
+          </>
+        )}
+        {isOrientingBlock && (
+          <td colSpan={3} style={{ width: '45%', verticalAlign: 'top' }} className="px-2 py-2">
             <NotesInput
               noteKey={timeblock ? `${timeblock.id}:rayNotes` : undefined}
               placeholder="Notes"
               initialValue={timeblock?.rayNotes || ''}
               externalValue={timeblock?.rayNotes || ''}
+              minHeight={800}
+              noExpand
               onSave={async (content) => {
                 const tb = await ensureTimeblock()
                 onPatchTimeblockDebounced({ id: tb.id, rayNotes: content, debounceMs: 0 })
@@ -56,31 +97,6 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
             />
           </td>
         )}
-        {isOrientingBlock && <td style={{ width: '15%', verticalAlign: 'top' }} className="px-2 py-2"></td>}
-        <td style={{ width: '15%', verticalAlign: 'top' }} className="px-2 py-2">
-          <NotesInput
-            noteKey={timeblock ? `${timeblock.id}:assistantNotes` : undefined}
-            placeholder="Asst"
-            initialValue={timeblock?.assistantNotes || ''}
-            externalValue={timeblock?.assistantNotes || ''}
-            onSave={async (content) => {
-              const tb = await ensureTimeblock()
-              onPatchTimeblockDebounced({ id: tb.id, assistantNotes: content, debounceMs: 0 })
-            }}
-          />
-        </td>
-        <td style={{ width: '15%', verticalAlign: 'top' }} className="px-2 py-2">
-          <NotesInput
-            noteKey={timeblock ? `${timeblock.id}:aiNotes` : undefined}
-            placeholder="AI"
-            initialValue={timeblock?.aiNotes || ''}
-            externalValue={timeblock?.aiNotes || ''}
-            onSave={async (content) => {
-              const tb = await ensureTimeblock()
-              onPatchTimeblockDebounced({ id: tb.id, aiNotes: content, debounceMs: 0 })
-            }}
-          />
-        </td>
         {tagTypes.map(type => (
           <td key={type} className="px-2 py-2" style={{ width: `${45 / (tagTypes.length || 1)}%`, verticalAlign: 'top' }}>
             <TagCell
@@ -98,24 +114,8 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
       {isOrientingBlock && (
         <tr className={isCurrent ? 'bg-orange-500/5 border-b border-white/10' : 'border-b border-white/10'}>
           <td colSpan={totalCols} className="px-2 py-2">
-            <div className="flex gap-4" style={{ maxWidth: '100%' }}>
-              <div style={{ width: '800px', flexShrink: 0 }}>
-                <NotesInput
-                  noteKey={timeblock ? `${timeblock.id}:rayNotes` : undefined}
-                  placeholder="Notes"
-                  initialValue={timeblock?.rayNotes || ''}
-                  externalValue={timeblock?.rayNotes || ''}
-                  minHeight={800}
-                  noExpand
-                  onSave={async (content) => {
-                    const tb = await ensureTimeblock()
-                    onPatchTimeblockDebounced({ id: tb.id, rayNotes: content, debounceMs: 0 })
-                  }}
-                />
-              </div>
-              <div style={{ flex: '1 1 auto', minWidth: 0, maxWidth: '400px' }}>
-                <Checklist orientingOnly inline />
-              </div>
+            <div style={{ maxWidth: '400px' }}>
+              <Checklist orientingOnly inline />
             </div>
           </td>
         </tr>

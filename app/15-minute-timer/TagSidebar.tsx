@@ -36,7 +36,7 @@ const TagSidebar = ({ tagInstances }:{ tagInstances: TagInstance[] }) => {
       <div className="font-semibold mb-1">Tags</div>
       {typeNames.map((typeName, idx) => (
         <div key={typeName} className={idx > 0 ? 'mt-3' : ''}>
-          <div className="text-lg text-white mb-1">{typeName}</div>
+          <button className="text-lg text-white mb-1 text-left" onClick={() => window.open('/15-minute-timer/tags', '_blank')}>{typeName}</button>
           <div className="flex flex-col gap-1">
             {tagsByType[typeName].map(tag => (
               <TagListItem key={tag.id} tag={tag} instanceCount={instanceCountByTagId[tag.id] || 0} />

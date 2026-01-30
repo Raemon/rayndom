@@ -14,7 +14,7 @@ const dayStartIso = (day: Date) => new Date(day.getFullYear(), day.getMonth(), d
 
 const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
 
-const makeSlotsForDay = ({ day, startMinutes=9*60+30, endMinutes=20*60+30 }:{ day: Date, startMinutes?: number, endMinutes?: number }) => {
+const makeSlotsForDay = ({ day, startMinutes=10*60+30, endMinutes=20*60 }:{ day: Date, startMinutes?: number, endMinutes?: number }) => {
   const slots: Date[] = []
   for (let minutes = startMinutes; minutes <= endMinutes; minutes += 15) {
     slots.push(new Date(day.getFullYear(), day.getMonth(), day.getDate(), 0, minutes, 0, 0))
@@ -36,7 +36,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
 }) => {
   const { tags } = useTags()
   const tagTypes = useMemo(() => {
-    const availableTypes = ['Projects', '???','Techniques']
+    const availableTypes = ['Projects', 'Triggers','Techniques']
     const filtered = availableTypes.filter(t => tags.some(tag => tag.type === t))
     if (tags.length > 0 && filtered.length === 0) {
       console.warn('No tags match expected types. Available tag types:', [...new Set(tags.map(t => t.type))])
@@ -53,23 +53,6 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
     const d = new Date(ti.datetime)
     return d >= dayStart && d < dayEnd
   }), [tagInstances, dayStart, dayEnd])
-  const slots = useMemo(() => {
-    const hardcodedSlots = makeSlotsForDay({ day })
-    const hardcodedMs = new Set(hardcodedSlots.map(s => s.getTime()))
-    const extraSlotMs = new Set<number>()
-    const timeblocksWithNotes = dayTimeblocks.filter(tb => tb.rayNotes || tb.assistantNotes || tb.aiNotes)
-    for (const tb of timeblocksWithNotes) {
-      const slotMs = floorTo15(new Date(tb.datetime)).getTime()
-      if (!hardcodedMs.has(slotMs)) extraSlotMs.add(slotMs)
-    }
-    for (const ti of dayTagInstances) {
-      const slotMs = floorTo15(new Date(ti.datetime)).getTime()
-      if (!hardcodedMs.has(slotMs)) extraSlotMs.add(slotMs)
-    }
-    const allSlots = [...hardcodedSlots, ...Array.from(extraSlotMs).map(ms => new Date(ms))]
-    allSlots.sort((a, b) => a.getTime() - b.getTime())
-    return allSlots
-  }, [day, dayTimeblocks, dayTagInstances])
 
   const tagCountsByType = useMemo(() => {
     const counts = countBy(dayTagInstances, ti => ti.tagId)
@@ -109,19 +92,69 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
   }, [dayTagInstances, tags])
 
   const [currentSlotMs, setCurrentSlotMs] = useState<number | null>(null)
+  const [sectionOverrides, setSectionOverrides] = useState<Record<string, boolean>>({})
   useEffect(() => {
     const updateTime = () => setCurrentSlotMs(floorTo15(new Date()).getTime())
     const timeoutId = setTimeout(updateTime, 0)
     const interval = setInterval(updateTime, 10000)
     return () => { clearTimeout(timeoutId); clearInterval(interval) }
   }, [currentSlotMs])
+  const slots = useMemo(() => {
+    const hardcodedSlots = makeSlotsForDay({ day })
+    const hardcodedMs = new Set(hardcodedSlots.map(s => s.getTime()))
+    const extraSlotMs = new Set<number>()
+    const timeblocksWithNotes = dayTimeblocks.filter(tb => tb.rayNotes || tb.assistantNotes || tb.aiNotes)
+    for (const tb of timeblocksWithNotes) {
+      const slotMs = floorTo15(new Date(tb.datetime)).getTime()
+      if (!hardcodedMs.has(slotMs)) extraSlotMs.add(slotMs)
+    }
+    for (const ti of dayTagInstances) {
+      const slotMs = floorTo15(new Date(ti.datetime)).getTime()
+      if (!hardcodedMs.has(slotMs)) extraSlotMs.add(slotMs)
+    }
+    if (currentSlotMs !== null) {
+      const currentSlotDate = new Date(currentSlotMs)
+      if (currentSlotDate >= dayStart && currentSlotDate < dayEnd) {
+        if (!hardcodedMs.has(currentSlotMs)) extraSlotMs.add(currentSlotMs)
+        const previousSlotMs = currentSlotMs - 15 * 60 * 1000
+        const previousSlotDate = new Date(previousSlotMs)
+        if (previousSlotDate >= dayStart && previousSlotDate < dayEnd && !hardcodedMs.has(previousSlotMs)) {
+          extraSlotMs.add(previousSlotMs)
+        }
+      }
+    }
+    const allSlots = [...hardcodedSlots, ...Array.from(extraSlotMs).map(ms => new Date(ms))]
+    allSlots.sort((a, b) => a.getTime() - b.getTime())
+    return allSlots
+  }, [day, dayTimeblocks, dayTagInstances, currentSlotMs, dayStart, dayEnd])
+  const sections = useMemo(() => ([
+    { key: 'morning', label: 'Morning', startMinutes: 10 * 60 + 30, endMinutes: 13 * 60 },
+    { key: 'afternoon', label: 'Afternoon', startMinutes: 13 * 60, endMinutes: 16 * 60 },
+    { key: 'evening', label: 'Evening', startMinutes: 16 * 60, endMinutes: 20 * 60 },
+  ]), [])
+  const visibleSlots = useMemo(() => slots.filter(slotStart => {
+    const slotMinutes = slotStart.getHours() * 60 + slotStart.getMinutes()
+    return slotMinutes >= 10 * 60 + 30 && slotMinutes <= 20 * 60
+  }), [slots])
+  const sectionAutoCollapsed = useMemo(() => {
+    const nowMs = currentSlotMs ?? new Date().getTime()
+    const autoCollapsed: Record<string, boolean> = {}
+    for (const section of sections) {
+      const startMs = dayStart.getTime() + section.startMinutes * 60 * 1000
+      const endMs = dayStart.getTime() + section.endMinutes * 60 * 1000
+      const isBeforeStart = nowMs < startMs
+      const isOverForHour = nowMs >= endMs + 60 * 60 * 1000
+      autoCollapsed[section.key] = isBeforeStart || isOverForHour
+    }
+    return autoCollapsed
+  }, [sections, dayStart, currentSlotMs])
 
   return (
-    <div className="mb-3 border-b border-gray-700 pb-3">
+    <div className={`border-b border-gray-200 px-4 pb-3 ${isCollapsed ? 'bg-white/10' : ''}`}>
       {isCollapsed ? (
-        <div className="flex gap-4 items-start">
+        <div className="flex gap-4 items-start py-4">
           <button className="text-left font-semibold shrink-0 whitespace-nowrap" style={{ width: '40%' }} onClick={onToggleCollapsed}>
-            ▶ {formatDayLabel(day)}
+            ▶ <span className="text-2xl">{formatDayLabel(day)}</span>
           </button>
           {tagTypes.map(type => (
             <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-1 overflow-hidden">
@@ -133,7 +166,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
         </div>
       ) : (
         <button className="text-left w-full" onClick={onToggleCollapsed}>
-          <div className="font-semibold">▼ {formatDayLabel(day)}</div>
+          <div className="font-semibold">▼ <span className="text-2xl">{formatDayLabel(day)}</span></div>
         </button>
       )}
       {!isCollapsed && (
@@ -147,32 +180,49 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
               {tagTypes.map(type => <th key={type} className="text-left px-2 py-2" style={{ width: `${45 / (tagTypes.length || 1)}%` }}>{type}</th>)}
             </tr>
           </thead>
-          <tbody>
-            {slots.map(slotStart => {
-              const slotMs = slotStart.getTime()
-              const tb = slotToTimeblock.get(slotMs)
-              return (
-                <TimeBlockRow
-                  key={slotMs}
-                  slotStart={slotStart}
-                  timeLabel={formatHm(slotStart)}
-                  timeblock={tb}
-                  tagTypes={tagTypes}
-                  tagInstancesByType={Object.fromEntries(tagTypes.map(type => {
-                    const key = `${slotMs}:${type}`
-                    return [type, slotKeyToTagInstances.get(key) || []]
-                  }))}
-                  allTagInstances={tagInstances}
-                  isCurrent={slotMs === currentSlotMs}
-                  onCreateTimeblock={onCreateTimeblock}
-                  onPatchTimeblockDebounced={onPatchTimeblockDebounced}
-                  onCreateTagInstance={onCreateTagInstance}
-                  onApproveTagInstance={onApproveTagInstance}
-                  onDeleteTagInstance={onDeleteTagInstance}
-                />
-              )
-            })}
-          </tbody>
+          {sections.map(section => {
+            const slotsInSection = visibleSlots.filter(slotStart => {
+              const slotMinutes = slotStart.getHours() * 60 + slotStart.getMinutes()
+              return slotMinutes >= section.startMinutes && slotMinutes <= section.endMinutes
+            })
+            const autoCollapsed = sectionAutoCollapsed[section.key]
+            const isSectionCollapsed = sectionOverrides[section.key] ?? autoCollapsed
+            return (
+              <tbody key={section.key}>
+                <tr>
+                  <td colSpan={4 + tagTypes.length} className="px-2 py-2">
+                    <button className="text-left font-semibold" onClick={() => setSectionOverrides(prev => ({ ...prev, [section.key]: !isSectionCollapsed }))}>
+                      {isSectionCollapsed ? '▶' : '▼'} {section.label}
+                    </button>
+                  </td>
+                </tr>
+                {!isSectionCollapsed && slotsInSection.map(slotStart => {
+                  const slotMs = slotStart.getTime()
+                  const tb = slotToTimeblock.get(slotMs)
+                  return (
+                    <TimeBlockRow
+                      key={slotMs}
+                      slotStart={slotStart}
+                      timeLabel={formatHm(slotStart)}
+                      timeblock={tb}
+                      tagTypes={tagTypes}
+                      tagInstancesByType={Object.fromEntries(tagTypes.map(type => {
+                        const key = `${slotMs}:${type}`
+                        return [type, slotKeyToTagInstances.get(key) || []]
+                      }))}
+                      allTagInstances={tagInstances}
+                      isCurrent={slotMs === currentSlotMs}
+                      onCreateTimeblock={onCreateTimeblock}
+                      onPatchTimeblockDebounced={onPatchTimeblockDebounced}
+                      onCreateTagInstance={onCreateTagInstance}
+                      onApproveTagInstance={onApproveTagInstance}
+                      onDeleteTagInstance={onDeleteTagInstance}
+                    />
+                  )
+                })}
+              </tbody>
+            )
+          })}
         </table>
       )}
     </div>

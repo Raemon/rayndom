@@ -33,14 +33,15 @@ model Timeblock {
 }
 
 model Tag {
-  id          Int           @id @default(autoincrement())
-  name        String
-  type        String
-  parentTagId Int?          @map("parent_tag_id")
-  parentTag   Tag?          @relation("TagParent", fields: [parentTagId], references: [id], onDelete: SetNull)
-  childTags   Tag[]         @relation("TagParent")
-  instances   TagInstance[]
-  createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  id            Int           @id @default(autoincrement())
+  name          String
+  type          String
+  parentTagId   Int?          @map("parent_tag_id")
+  parentTag     Tag?          @relation("TagParent", fields: [parentTagId], references: [id], onDelete: SetNull)
+  childTags     Tag[]         @relation("TagParent")
+  suggestedTagIds Json?         @map("suggested_tag_ids")
+  instances     TagInstance[]
+  createdAt     DateTime      @default(now()) @map("created_at") @db.Timestamptz
 
   @@unique([name, type])
   @@map("tags")

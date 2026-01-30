@@ -11,7 +11,7 @@ type AirtableRecord = {
 
 const TAG_TYPE_FIELDS: Record<string, string> = {
   'Project': 'Projects',
-  '???': '???',
+  '???': 'Triggers',
   'Name (from Techniques)': 'Techniques',
 }
 

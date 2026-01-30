@@ -13,6 +13,7 @@ const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount:
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   useEffect(() => { return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current) } }, [])
   const parentTag = getParentTag(tag, tags)
+  const suggestedTags = (tag.suggestedTagIds || []).map(id => tags.find(t => t.id === id)).filter((t): t is Tag => t !== undefined)
   if (isEditing && !readonly) {
     return (
       <TagEditor
@@ -23,12 +24,10 @@ const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount:
     )
   }
   const handleDragStart = (e: React.DragEvent) => {
-    if (readonly) return
     e.dataTransfer.effectAllowed = 'move'
     e.dataTransfer.setData('text/plain', tag.id.toString())
   }
   const handleDragOver = (e: React.DragEvent) => {
-    if (readonly) return
     e.preventDefault()
     e.dataTransfer.dropEffect = 'move'
     setDragOver(true)
@@ -37,14 +36,23 @@ const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount:
     setDragOver(false)
   }
   const handleDrop = async (e: React.DragEvent) => {
-    if (readonly) return
     e.preventDefault()
     e.stopPropagation()
     setDragOver(false)
     setJustDropped(true)
     const draggedTagId = parseInt(e.dataTransfer.getData('text/plain'))
-    if (draggedTagId && draggedTagId !== tag.id && !wouldCreateCycle(tags, draggedTagId, tag.id)) {
-      await updateTag({ id: draggedTagId, parentTagId: tag.id })
+    const draggedTag = tags.find(t => t.id === draggedTagId)
+    if (draggedTag && draggedTagId !== tag.id) {
+      if (draggedTag.type === tag.type) {
+        if (!wouldCreateCycle(tags, draggedTagId, tag.id)) {
+          await updateTag({ id: draggedTagId, parentTagId: tag.id })
+        }
+        return
+      }
+      const existingSuggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
+      if (!existingSuggestedTagIds.includes(draggedTagId)) {
+        await updateTag({ id: tag.id, suggestedTagIds: [...existingSuggestedTagIds, draggedTagId] })
+      }
     }
     timeoutRef.current = setTimeout(() => setJustDropped(false), 100)
   }
@@ -56,7 +64,7 @@ const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount:
     <div
       className={`text-left w-full bg-transparent flex items-center ${dragOver ? 'bg-white/10' : ''}`}
       onClick={handleClick}
-      draggable={!readonly}
+      draggable
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
@@ -65,7 +73,11 @@ const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount:
       <span className="text-gray-400 mr-1 w-8 text-center text-xs">{instanceCount}</span>
       <div className="flex flex-col" style={{ backgroundColor: getTagColor(tag.name) }}>
         <span className="px-1 rounded-xs text-white text-sm">{tag.name}</span>
-        {parentTag && <div className="text-[9px] opacity-100 px-1 flex items-center gap-1">{parentTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, parentTagId: null }) }}>×</button></div>}
+        {parentTag && <div className="text-[9px] opacity-100 px-1 flex items-center gap-1"><span>└</span>{parentTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, parentTagId: null }) }}>×</button></div>}
+        {suggestedTags.map(suggestedTag => {
+          const existingSuggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
+          return <div key={suggestedTag.id} className="text-[9px] opacity-100 px-1 flex items-center gap-1"><span>→</span>{suggestedTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, suggestedTagIds: existingSuggestedTagIds.filter(id => id !== suggestedTag.id) }) }}>×</button></div>
+        })}
       </div>
     </div>
   )

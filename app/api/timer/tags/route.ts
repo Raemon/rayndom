@@ -24,7 +24,10 @@ export async function PATCH(request: NextRequest) {
   const body = await request.json()
   const id = body?.id
   if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 })
-  const tag = await prisma.tag.update({ where: { id: Number(id) }, data: { name: body?.name ?? undefined, type: body?.type ?? undefined, parentTagId: body?.parentTagId !== undefined ? (body?.parentTagId === null ? null : Number(body?.parentTagId)) : undefined }, include: { parentTag: true } })
+  const suggestedTagIds = body?.suggestedTagIds
+  const updateData: any = { name: body?.name ?? undefined, type: body?.type ?? undefined, parentTagId: body?.parentTagId !== undefined ? (body?.parentTagId === null ? null : Number(body?.parentTagId)) : undefined }
+  if (suggestedTagIds !== undefined) updateData.suggestedTagIds = suggestedTagIds === null ? null : suggestedTagIds
+  const tag = await prisma.tag.update({ where: { id: Number(id) }, data: updateData, include: { parentTag: true } })
   return NextResponse.json({ tag })
 }
 
