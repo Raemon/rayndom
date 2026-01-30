@@ -262,7 +262,7 @@ def mock_doc(mock_page):
 
 @pytest.fixture(scope="session")
 def test_output_base_dir():
-    """Create a single test output directory at downloads/test/ketamine[timestamp] for the entire test session."""
+    """Create a single test output directory at test_output/ketamine[timestamp] for the entire test session."""
     # Get project root (3 levels up from test/extract_and_convert/conftest.py)
     project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     
@@ -270,7 +270,7 @@ def test_output_base_dir():
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     
     # Create output directory path
-    output_dir = os.path.join(project_root, "downloads", "test", f"ketamine{timestamp}")
+    output_dir = os.path.join(project_root, "test_output", f"ketamine{timestamp}")
     
     # Create directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
