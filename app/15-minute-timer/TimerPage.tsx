@@ -33,7 +33,7 @@ const TimerPageInner = () => {
   const currentTimeblock = timeblocks.find(tb => new Date(tb.datetime).toISOString() === currentBlockDatetime)
   const ensureCurrentTimeblock = async () => {
     if (currentTimeblock) return currentTimeblock
-    const created = await createTimeblock({ datetime: currentBlockDatetime, rayNotes: null, assistantNotes: null, aiNotes: null, orientingBlock: false })
+    const created = await createTimeblock({ datetime: currentBlockDatetime, rayNotes: null, assistantNotes: null, aiNotes: null })
     return created as Timeblock
   }
 

@@ -28,8 +28,8 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
   onToggleCollapsed: () => void,
   timeblocks: Timeblock[],
   tagInstances: TagInstance[],
-  onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, orientingBlock?: boolean }) => Promise<Timeblock>,
-  onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, orientingBlock?: boolean, debounceMs?: number }) => void,
+  onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => Promise<Timeblock>,
+  onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => void,
   onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
   onApproveTagInstance: (args: { id: number }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
@@ -128,7 +128,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
     return allSlots
   }, [day, dayTimeblocks, dayTagInstances, currentSlotMs, dayStart, dayEnd])
   const sections = useMemo(() => ([
-    { key: 'morning', label: 'Morning', startMinutes: 10 * 60 + 30, endMinutes: 13 * 60 },
+    { key: 'morning', label: 'Morning', startMinutes: 10 * 60 + 30, endMinutes: 12 * 60 + 45 },
     { key: 'afternoon', label: 'Afternoon', startMinutes: 13 * 60, endMinutes: 16 * 60 },
     { key: 'evening', label: 'Evening', startMinutes: 16 * 60, endMinutes: 20 * 60 },
   ]), [])
