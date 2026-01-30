@@ -23,7 +23,7 @@ Usage:
     python extract_and_convert_figures.py <pdf_path> <output_dir> [--convert-to-tables] [--max-workers N]
     
 Example:
-    python extract_and_convert_figures.py downloads/ketamine-in-vitro-safety/10.3390_cells8101139.pdf downloads/ketamine-in-vitro-safety/figures --convert-to-tables --max-workers 10
+    python extract_and_convert_figures.py test/extract_and_convert/fixtures/expected_output/ketamine-paper-1.pdf test/extract_and_convert/fixtures/output --convert-to-tables --max-workers 10
     
     # Disable OpenCV and use only AI-based detection:
     python extract_and_convert_figures.py paper.pdf figures/ --no-opencv
