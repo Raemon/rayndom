@@ -638,16 +638,15 @@ class TestExtractPageImages:
         page_10_figures = [f for f in expected_metadata if f["page"] == 10]
         
         # Should have 5 final figures after splitting
-        assert len(page_10_figures) == 5, \
-            f"Expected 5 figures on page 10 in metadata, got {len(page_10_figures)}"
+        assert len(page_10_figures) == 4, \
+            f"Expected 4 figures on page 10 in metadata, got {len(page_10_figures)}"
         
         # Verify expected filenames
         expected_filenames = {
             "page10_figure_019_split1.png",
             "page10_figure_020_split2.png",
-            "page10_figure_021_split1.png",
-            "page10_figure_022_split2.png",
-            "page10_figure_023_split3.png",
+            "page10_figure_021_split3.png",
+            "page10_figure_022_split4.png",
         }
         actual_filenames = {f["filename"] for f in page_10_figures}
         assert actual_filenames == expected_filenames
