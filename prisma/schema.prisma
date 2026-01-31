@@ -25,6 +25,7 @@ model Timeblock {
   assistantNotes String?  @map("assistant_notes")
   aiNotes        String?  @map("ai_notes")
   datetime       DateTime @db.Timestamptz
+  duration       Int      @default(15)
   createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
   updatedAt      DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
 
