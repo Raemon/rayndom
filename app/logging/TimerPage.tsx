@@ -18,7 +18,14 @@ const TimerPageInner = () => {
   const checklistRef = useRef<ChecklistRef>(null)
   const predictTagsButtonRef = useRef<PredictTagsButtonRef>(null)
   const handleTimerComplete = useCallback(() => {}, [])
-  const handlePredictTags = useCallback(() => predictTagsButtonRef.current?.predictTags(), [])
+  const handlePredictTags = useCallback(() => {
+    if (!predictTagsButtonRef.current) {
+      console.warn('[TimerPage] handlePredictTags called but predictTagsButtonRef.current is null')
+      return
+    }
+    console.log('[TimerPage] handlePredictTags calling predictTags')
+    predictTagsButtonRef.current.predictTags()
+  }, [])
   const { focusedNoteKeys } = useFocusedNotes()
 
   const endDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
