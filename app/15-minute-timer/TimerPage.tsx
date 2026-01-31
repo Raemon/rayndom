@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import DaySection from './DaySection'
 import TagSidebar from './TagSidebar'
 import { useTimeblocks } from './hooks/useTimeblocks'
@@ -17,6 +17,8 @@ const TimerPageInner = () => {
   const [isPredicting, setIsPredicting] = useState(false)
   const checklistRef = useRef<ChecklistRef>(null)
   const predictTagsButtonRef = useRef<PredictTagsButtonRef>(null)
+  const handleTimerComplete = useCallback(() => {}, [])
+  const handlePredictTags = useCallback(() => predictTagsButtonRef.current?.predictTags(), [])
   const { focusedNoteKeys } = useFocusedNotes()
 
   const endDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
@@ -51,8 +53,8 @@ const TimerPageInner = () => {
     <div className="p-4 text-sm">
       <div className="mb-4">
         <Timer
-          onTimerComplete={() => {}}
-          onPredictTags={() => predictTagsButtonRef.current?.predictTags()}
+          onTimerComplete={handleTimerComplete}
+          onPredictTags={handlePredictTags}
           checklistRef={checklistRef}
           isPredicting={isPredicting}
         />

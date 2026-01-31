@@ -70,7 +70,7 @@ const Timer = ({ onTimerComplete, onPredictTags, checklistRef, isPredicting }: T
   const audioContextRef = useRef<AudioContext | null>(null)
   const selectedSoundIndexRef = useRef(0)
   const prevSecondsRef = useRef<number | null>(null)
-  const hasPredictedForBlockRef = useRef(false)
+  const lastPredictedBlockRef = useRef<string | null>(null)
   const flashIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
   const getNext15MinuteMark = () => {
@@ -182,15 +182,17 @@ const Timer = ({ onTimerComplete, onPredictTags, checklistRef, isPredicting }: T
       // - prev <= 5 && remaining > 60: we jumped over (e.g. tab was backgrounded)
       // Require prev > 0 to prevent re-triggering after hitting 0
       const shouldAlarm = prev !== null && prev > 0 && (remaining === 0 || (prev <= 5 && remaining > 60))
-      // Trigger tag prediction 2 minutes before the 15-minute mark (when 120 seconds remain)
-      const shouldPredict = prev !== null && prev > 120 && remaining <= 120 && !hasPredictedForBlockRef.current
+      // Trigger tag prediction 90 seconds before the timer completes
+      // Calculate which block we're about to enter (the next 15-minute mark)
+      const now = new Date()
+      const nextBlockTime = new Date(now.getTime() + remaining * 1000)
+      const nextBlockKey = nextBlockTime.toISOString()
+      const shouldPredict = remaining <= 90 && remaining > 0 && lastPredictedBlockRef.current !== nextBlockKey
       if (shouldPredict) {
-        hasPredictedForBlockRef.current = true
+        lastPredictedBlockRef.current = nextBlockKey
         onPredictTags()
       }
       if (shouldAlarm) {
-        // Reset prediction flag for the new block
-        hasPredictedForBlockRef.current = false
         playAlarm()
         showNotification()
         startAlarming()
