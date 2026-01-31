@@ -130,7 +130,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
   }, [day, dayTimeblocks, dayTagInstances, currentSlotMs, dayStart, dayEnd])
   const sections = useMemo(() => ([
     { key: 'morning', label: 'Morning', startMinutes: 10 * 60 + 30, endMinutes: 12 * 60 + 45 },
-    { key: 'afternoon', label: 'Afternoon', startMinutes: 13 * 60, endMinutes: 16 * 60 },
+    { key: 'afternoon', label: 'Afternoon', startMinutes: 13 * 60, endMinutes: 15 * 60 + 45 },
     { key: 'evening', label: 'Evening', startMinutes: 16 * 60, endMinutes: 20 * 60 },
   ]), [])
   const visibleSlots = useMemo(() => slots.filter(slotStart => {
