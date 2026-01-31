@@ -1,7 +1,7 @@
 Figure extracted from: ketamine-paper-1.pdf
 Page: 10
-Image dimensions: 258x822
-Split 1 of 4 from original image
+Image dimensions: 369x390
+Split 4 of 4 from original image
 Original image was merged from 2 separate image files
 
 ============================================================

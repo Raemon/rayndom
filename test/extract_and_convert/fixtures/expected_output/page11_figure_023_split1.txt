@@ -1,11 +1,11 @@
 Figure extracted from: ketamine-paper-1.pdf
-Page: 7
-Image dimensions: 644x742
+Page: 11
+Image dimensions: 425x408
 Split 1 of 3 from original image
+Original image was merged from 2 separate image files
 
 ============================================================
 CONTEXT:
 ============================================================
 
-Figure 1. Characterization of human induced pluripotent stem cell-derived NPCs.
-[From page 8] Figure 2.
+Figure 6. NPC cell proliferation is reduced after IGF2 knockdown.
