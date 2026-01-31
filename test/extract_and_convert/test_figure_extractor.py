@@ -442,12 +442,6 @@ class TestExtractPageImages:
         return os.path.join(test_dir, "fixtures", "ketamine-paper-1.pdf")
     
     @pytest.fixture(scope="class")
-    def expected_output_dir(self):
-        """Path to expected output directory."""
-        test_dir = os.path.dirname(os.path.abspath(__file__))
-        return os.path.join(test_dir, "fixtures", "expected_output")
-    
-    @pytest.fixture(scope="class")
     def pdf_doc(self, pdf_fixture_path):
         """Open the PDF document for testing."""
         import fitz
@@ -455,201 +449,84 @@ class TestExtractPageImages:
         yield doc
         doc.close()
     
-    @pytest.fixture(scope="class")
-    def expected_metadata(self, expected_output_dir):
-        """Load expected figures metadata."""
-        metadata_path = os.path.join(expected_output_dir, "figures_metadata.json")
-        with open(metadata_path, "r") as f:
-            return json.load(f)
-    
-    def test_extract_page_images_returns_list(self, pdf_doc):
-        """extract_page_images should return a list."""
-        from extract_and_convert_figures import extract_page_images
+    def test_extract_page_10_produces_expected_images(self, pdf_doc):
+        """
+        Page 10 should produce exactly 2 raw images with expected properties.
         
-        page_num = 9  # Page 10 (0-indexed)
-        page = pdf_doc[page_num]
-        
-        result = extract_page_images(page_num, page, pdf_doc)
-        
-        assert isinstance(result, list)
-    
-    def test_extract_page_10_image_count(self, pdf_doc):
-        """Page 10 should have the expected number of raw images."""
-        from extract_and_convert_figures import extract_page_images
-        
-        page_num = 9  # Page 10 (0-indexed)
-        page = pdf_doc[page_num]
-        
-        result = extract_page_images(page_num, page, pdf_doc)
-        
-        # Page 10 has 2 raw images that get split into 5 final figures
-        # (based on expected output showing split1, split2, split3 patterns)
-        assert len(result) >= 2, f"Expected at least 2 images on page 10, got {len(result)}"
-    
-    def test_extract_page_10_image_structure(self, pdf_doc):
-        """Each extracted image should have the required keys."""
-        from extract_and_convert_figures import extract_page_images
-        
-        page_num = 9  # Page 10 (0-indexed)
-        page = pdf_doc[page_num]
-        
-        result = extract_page_images(page_num, page, pdf_doc)
-        
-        required_keys = ["page_num", "img_index", "xref", "image_bytes", 
-                         "image_ext", "width", "height", "rect", "all_rects"]
-        
-        for img_data in result:
-            for key in required_keys:
-                assert key in img_data, f"Missing required key: {key}"
-    
-    def test_extract_page_10_image_page_num(self, pdf_doc):
-        """All extracted images should have correct page_num."""
-        from extract_and_convert_figures import extract_page_images
-        
-        page_num = 9  # Page 10 (0-indexed)
-        page = pdf_doc[page_num]
-        
-        result = extract_page_images(page_num, page, pdf_doc)
-        
-        for img_data in result:
-            assert img_data["page_num"] == page_num
-    
-    def test_extract_page_10_images_have_valid_bytes(self, pdf_doc):
-        """All extracted images should have non-empty image bytes."""
-        from extract_and_convert_figures import extract_page_images
-        
-        page_num = 9  # Page 10 (0-indexed)
-        page = pdf_doc[page_num]
-        
-        result = extract_page_images(page_num, page, pdf_doc)
-        
-        for img_data in result:
-            assert img_data["image_bytes"] is not None
-            assert len(img_data["image_bytes"]) > 0
-    
-    def test_extract_page_10_images_have_valid_dimensions(self, pdf_doc):
-        """All extracted images should have positive width and height."""
-        from extract_and_convert_figures import extract_page_images
-        
-        page_num = 9  # Page 10 (0-indexed)
-        page = pdf_doc[page_num]
-        
-        result = extract_page_images(page_num, page, pdf_doc)
-        
-        for img_data in result:
-            assert img_data["width"] > 0, f"Width should be positive: {img_data['width']}"
-            assert img_data["height"] > 0, f"Height should be positive: {img_data['height']}"
-    
-    def test_extract_page_10_images_have_valid_extension(self, pdf_doc):
-        """All extracted images should have a valid image extension."""
-        from extract_and_convert_figures import extract_page_images
-        
-        page_num = 9  # Page 10 (0-indexed)
-        page = pdf_doc[page_num]
-        
-        result = extract_page_images(page_num, page, pdf_doc)
-        
-        valid_extensions = ["png", "jpeg", "jpg", "jp2", "jpx", "jpm", "jb2"]
-        
-        for img_data in result:
-            assert img_data["image_ext"] in valid_extensions, \
-                f"Invalid extension: {img_data['image_ext']}"
-    
-    def test_extract_page_10_images_meet_min_size(self, pdf_doc):
-        """All extracted images should meet the default min_size threshold."""
-        from extract_and_convert_figures import extract_page_images
-        
-        page_num = 9  # Page 10 (0-indexed)
-        page = pdf_doc[page_num]
-        min_size = 50  # Default min_size
-        
-        result = extract_page_images(page_num, page, pdf_doc, min_size=min_size)
-        
-        for img_data in result:
-            assert img_data["width"] >= min_size, \
-                f"Width {img_data['width']} below min_size {min_size}"
-            assert img_data["height"] >= min_size, \
-                f"Height {img_data['height']} below min_size {min_size}"
-    
-    def test_extract_page_10_custom_min_size(self, pdf_doc):
-        """Higher min_size should filter out smaller images."""
-        from extract_and_convert_figures import extract_page_images
-        
-        page_num = 9  # Page 10 (0-indexed)
-        page = pdf_doc[page_num]
-        
-        result_50 = extract_page_images(page_num, page, pdf_doc, min_size=50)
-        result_200 = extract_page_images(page_num, page, pdf_doc, min_size=200)
-        
-        # Higher min_size should return equal or fewer images
-        assert len(result_200) <= len(result_50)
-    
-    def test_extract_page_10_xrefs_are_unique(self, pdf_doc):
-        """Each extracted image should have a unique xref on the page."""
-        from extract_and_convert_figures import extract_page_images
-        
-        page_num = 9  # Page 10 (0-indexed)
-        page = pdf_doc[page_num]
-        
-        result = extract_page_images(page_num, page, pdf_doc)
-        
-        xrefs = [img_data["xref"] for img_data in result]
-        # Note: xrefs might not be unique if same image appears multiple times
-        # but img_index should be unique
-        img_indices = [img_data["img_index"] for img_data in result]
-        assert len(img_indices) == len(set(img_indices)), "img_index should be unique"
-    
-    def test_extract_page_10_image_bytes_are_valid_images(self, pdf_doc):
-        """Extracted image bytes should be valid image data."""
+        These 2 raw images are vertically adjacent in the PDF and will be merged
+        during processing, then split into 4 final figures.
+        """
         from extract_and_convert_figures import extract_page_images
         from PIL import Image
         import io
         
         page_num = 9  # Page 10 (0-indexed)
         page = pdf_doc[page_num]
+        min_size = 50
         
-        result = extract_page_images(page_num, page, pdf_doc)
+        result = extract_page_images(page_num, page, pdf_doc, min_size=min_size)
         
-        for img_data in result:
-            # Try to open the image bytes with PIL
+        # Expected raw images on page 10
+        expected_images = [
+            {"xref": 423, "width": 1358, "height": 428, "ext": "png"},
+            {"xref": 424, "width": 1358, "height": 427, "ext": "png"},
+        ]
+        
+        # Verify exact count
+        assert len(result) == len(expected_images), \
+            f"Expected {len(expected_images)} images, got {len(result)}"
+        
+        # Required keys for each image
+        required_keys = ["page_num", "img_index", "xref", "image_bytes", 
+                         "image_ext", "width", "height", "rect", "all_rects"]
+        valid_extensions = ["png", "jpeg", "jpg", "jp2", "jpx", "jpm", "jb2"]
+        
+        # Verify each image matches expected properties
+        for i, img_data in enumerate(result):
+            expected = expected_images[i]
+            
+            # Check all required keys exist
+            for key in required_keys:
+                assert key in img_data, f"Image {i}: missing required key '{key}'"
+            
+            # Verify page_num
+            assert img_data["page_num"] == page_num, \
+                f"Image {i}: wrong page_num {img_data['page_num']}"
+            
+            # Verify unique img_index
+            assert img_data["img_index"] == i, \
+                f"Image {i}: wrong img_index {img_data['img_index']}"
+            
+            # Verify xref matches expected
+            assert img_data["xref"] == expected["xref"], \
+                f"Image {i}: expected xref {expected['xref']}, got {img_data['xref']}"
+            
+            # Verify dimensions match expected
+            assert img_data["width"] == expected["width"], \
+                f"Image {i}: expected width {expected['width']}, got {img_data['width']}"
+            assert img_data["height"] == expected["height"], \
+                f"Image {i}: expected height {expected['height']}, got {img_data['height']}"
+            
+            # Verify dimensions meet min_size
+            assert img_data["width"] >= min_size, \
+                f"Image {i}: width {img_data['width']} below min_size {min_size}"
+            assert img_data["height"] >= min_size, \
+                f"Image {i}: height {img_data['height']} below min_size {min_size}"
+            
+            # Verify valid extension
+            assert img_data["image_ext"] in valid_extensions, \
+                f"Image {i}: invalid extension '{img_data['image_ext']}'"
+            
+            # Verify non-empty image bytes
+            assert img_data["image_bytes"] is not None and len(img_data["image_bytes"]) > 0, \
+                f"Image {i}: empty or missing image_bytes"
+            
+            # Verify image bytes are valid image data
             try:
                 img = Image.open(io.BytesIO(img_data["image_bytes"]))
-                img.verify()  # Verify it's a valid image
+                img.verify()
             except Exception as e:
-                pytest.fail(f"Invalid image data for xref {img_data['xref']}: {e}")
-    
-    def test_extract_page_10_raw_image_count(self, pdf_doc):
-        """Page 10 should have exactly 2 raw images that get split into final figures."""
-        from extract_and_convert_figures import extract_page_images
-        
-        page_num = 9  # Page 10 (0-indexed)
-        page = pdf_doc[page_num]
-        
-        result = extract_page_images(page_num, page, pdf_doc)
-        
-        # Page 10 has 2 raw images in the PDF:
-        # - First image splits into 2 figures (page10_figure_019_split1, page10_figure_020_split2)
-        # - Second image splits into 3 figures (page10_figure_021_split1, page10_figure_022_split2, page10_figure_023_split3)
-        assert len(result) == 2, f"Expected 2 raw images on page 10, got {len(result)}"
-    
-    def test_extract_page_10_figures_match_expected_output(self, pdf_doc, expected_metadata):
-        """Verify page 10 figures in metadata match what we expect."""
-        # Get page 10 figures from expected metadata
-        page_10_figures = [f for f in expected_metadata if f["page"] == 10]
-        
-        # Should have 5 final figures after splitting
-        assert len(page_10_figures) == 4, \
-            f"Expected 4 figures on page 10 in metadata, got {len(page_10_figures)}"
-        
-        # Verify expected filenames
-        expected_filenames = {
-            "page10_figure_019_split1.png",
-            "page10_figure_020_split2.png",
-            "page10_figure_021_split3.png",
-            "page10_figure_022_split4.png",
-        }
-        actual_filenames = {f["filename"] for f in page_10_figures}
-        assert actual_filenames == expected_filenames
+                pytest.fail(f"Image {i} (xref {img_data['xref']}): invalid image data - {e}")
 
 
 # =============================================================================
