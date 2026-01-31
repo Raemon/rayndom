@@ -14,7 +14,7 @@ const dayStartIso = (day: Date) => new Date(day.getFullYear(), day.getMonth(), d
 
 const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
 
-const makeSlotsForDay = ({ day, startMinutes=10*60+30, endMinutes=20*60 }:{ day: Date, startMinutes?: number, endMinutes?: number }) => {
+const makeSlotsForDay = ({ day, startMinutes=10*60+30, endMinutes=23*60+45 }:{ day: Date, startMinutes?: number, endMinutes?: number }) => {
   const slots: Date[] = []
   for (let minutes = startMinutes; minutes <= endMinutes; minutes += 15) {
     slots.push(new Date(day.getFullYear(), day.getMonth(), day.getDate(), 0, minutes, 0, 0))
@@ -131,11 +131,12 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
   const sections = useMemo(() => ([
     { key: 'morning', label: 'Morning', startMinutes: 10 * 60 + 30, endMinutes: 12 * 60 + 45 },
     { key: 'afternoon', label: 'Afternoon', startMinutes: 13 * 60, endMinutes: 15 * 60 + 45 },
-    { key: 'evening', label: 'Evening', startMinutes: 16 * 60, endMinutes: 20 * 60 },
+    { key: 'evening', label: 'Evening', startMinutes: 16 * 60, endMinutes: 19 * 60 + 45 },
+    { key: 'night', label: 'Night', startMinutes: 20 * 60, endMinutes: 23 * 60 + 45 },
   ]), [])
   const visibleSlots = useMemo(() => slots.filter(slotStart => {
     const slotMinutes = slotStart.getHours() * 60 + slotStart.getMinutes()
-    return slotMinutes >= 10 * 60 + 30 && slotMinutes <= 20 * 60
+    return slotMinutes >= 10 * 60 + 30 && slotMinutes <= 23 * 60 + 45
   }), [slots])
   const sectionAutoCollapsed = useMemo(() => {
     const nowMs = currentSlotMs ?? new Date().getTime()

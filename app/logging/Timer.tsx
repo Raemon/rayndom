@@ -186,9 +186,16 @@ const Timer = ({ onTimerComplete, onPredictTags, checklistRef, isPredicting }: T
       // Calculate which block we're about to enter (the next 15-minute mark)
       const now = new Date()
       const nextBlockTime = new Date(now.getTime() + remaining * 1000)
+      // CRITICAL: Round to seconds to prevent millisecond drift creating different keys each tick
+      nextBlockTime.setMilliseconds(0)
       const nextBlockKey = nextBlockTime.toISOString()
-      const shouldPredict = remaining <= 90 && remaining > 0 && lastPredictedBlockRef.current !== nextBlockKey
+      // Also handle jumps over the 90-second threshold (e.g., from tab backgrounding)
+      const jumpedInto90SecondWindow = prev !== null && prev > 90 && remaining <= 90 && remaining > 0
+      const isIn90SecondWindow = remaining <= 90 && remaining > 0
+      const notYetPredictedForThisBlock = lastPredictedBlockRef.current !== nextBlockKey
+      const shouldPredict = (isIn90SecondWindow || jumpedInto90SecondWindow) && notYetPredictedForThisBlock
       if (shouldPredict) {
+        console.log('[Timer] Triggering prediction for block:', nextBlockKey, 'remaining:', remaining, 'prev:', prev)
         lastPredictedBlockRef.current = nextBlockKey
         onPredictTags()
       }
