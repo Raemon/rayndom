@@ -1,5 +1,5 @@
-import ConversationTopicPage from '../cast-corrigibility-sequence/ConversationTopicPage'
-import { getDomainsFromDownloads, getOutputFiles } from '../cast-corrigibility-sequence/page'
+import ConversationTopicPage from '../common/ConversationTopicPage'
+import { getDomainsFromDownloads, getOutputFiles } from '../example/page'
 
 export default function Page() {
   const domains = getDomainsFromDownloads('bay-area-theaters')

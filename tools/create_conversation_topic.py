@@ -36,8 +36,8 @@ def create_conversation_topic(topic_name: str):
     
     os.makedirs(target_dir, exist_ok=True)
     
-    page_content = f'''import ConversationTopicPage from '../cast-corrigibility-sequence/ConversationTopicPage'
-import {{ getDomainsFromDownloads, getOutputFiles }} from '../cast-corrigibility-sequence/page'
+    page_content = f'''import ConversationTopicPage from '../common/ConversationTopicPage'
+import {{ getDomainsFromDownloads, getOutputFiles }} from '../example/page'
 
 export default function Page() {{
   const domains = getDomainsFromDownloads('{folder_name}')

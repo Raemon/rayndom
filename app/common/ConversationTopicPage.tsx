@@ -4,7 +4,7 @@ import { marked } from 'marked'
 import ConversationTopicSiteItem from './ConversationTopicSiteItem'
 import MarkdownContent from './MarkdownContent'
 import DetailRowList from '../berkeley-wedding-venues/DetailRowList'
-import CsvDataGrid from '../common/CsvDataGrid'
+import CsvDataGrid from './CsvDataGrid'
 
 export type DomainInfo = {
   domain: string

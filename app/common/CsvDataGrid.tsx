@@ -1,44 +1,9 @@
 'use client'
 import { useMemo, useState, useRef, useEffect, useCallback } from 'react'
-import { marked } from 'marked'
-import DOMPurify from 'dompurify'
 import OptionsMenu from './OptionsMenu'
-
-const HTML_TAG_REGEX = /<\/?[a-z][\s\S]*?>/i
-const MARKDOWN_PATTERNS = [
-  /\*\*[^*]+\*\*/,  // bold
-  /\*[^*]+\*/,      // italic
-  /__[^_]+__/,      // bold underscore
-  /_[^_]+_/,        // italic underscore
-  /\[[^\]]+\]\([^)]+\)/, // links
-  /^#{1,6}\s/m,     // headings
-  /^\s*[-*+]\s/m,   // unordered lists
-  /^\s*\d+\.\s/m,   // ordered lists
-  /`[^`]+`/,        // inline code
-]
-const SANITIZE_CONFIG = {
-  ALLOWED_TAGS: ['a', 'b', 'strong', 'i', 'em', 'u', 'code', 'pre', 'p', 'br', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'hr', 'span', 'div'],
-  ALLOWED_ATTR: ['href', 'target', 'rel', 'title', 'class'],
-}
-const sanitize = (html: string) => DOMPurify.sanitize(html, SANITIZE_CONFIG)
-const isHtml = (text: string) => HTML_TAG_REGEX.test(text)
-const isMarkdown = (text: string) => MARKDOWN_PATTERNS.some(pattern => pattern.test(text))
-const IMAGE_URL_PATTERN = /^https?:\/\/[^\s]+\.(jpg|jpeg|png|gif|webp)(\?[^\s]*)?$/i
-const isImageUrl = (value: string) => IMAGE_URL_PATTERN.test(value)
-const renderCellContent = (value: string, column: string): { html: string } | { text: string } | { image: string } => {
-  if (!value) return { text: '' }
-  if (column.toLowerCase() === 'image' || isImageUrl(value)) {
-    return { image: value }
-  }
-  if (isHtml(value)) {
-    return { html: sanitize(value) }
-  }
-  if (isMarkdown(value)) {
-    const html = marked.parse(value, { async: false }) as string
-    return { html: sanitize(html) }
-  }
-  return { text: value }
-}
+import ImageGalleryModal from './ImageGalleryModal'
+import CellContent from './CellContent'
+import { getCellContent, extractAllImages } from './cellRenderers'
 
 type EditingCell = { rowIndex: number; column: string; isHeader?: boolean } | null
 type SortConfig = { column: string; direction: 'asc' | 'desc' } | null
@@ -125,6 +90,14 @@ const CsvDataGrid = ({columns: initialColumns, rows: initialRows, fileInfo, onDa
   const [hiddenColumns, setHiddenColumns] = useState<Set<string>>(() => new Set())
   const [maxLines, setMaxLines] = useState<number | null>(null)
   const [pageIndex, setPageIndex] = useState(0)
+  const [galleryOpen, setGalleryOpen] = useState(false)
+  const [galleryIndex, setGalleryIndex] = useState(0)
+  const allImages = useMemo(() => extractAllImages(rows, columns), [rows, columns])
+  const handleImageClick = (imageUrl: string) => {
+    const idx = allImages.indexOf(imageUrl)
+    setGalleryIndex(idx >= 0 ? idx : 0)
+    setGalleryOpen(true)
+  }
   const pageSize = 50
   const visibleColumns = useMemo(() => columns.filter((column) => !hiddenColumns.has(column)), [columns, hiddenColumns])
   const pageCount = useMemo(() => Math.max(1, Math.ceil(sortedRows.length / pageSize)), [sortedRows.length])
@@ -189,17 +162,13 @@ const CsvDataGrid = ({columns: initialColumns, rows: initialRows, fileInfo, onDa
                 <tr key={pageRowIndex}>
                   {visibleColumns.map((column) => {
                     const isEditing = editingCell && !editingCell.isHeader && editingCell.rowIndex === actualRowIndex && editingCell.column === column
-                    const content = renderCellContent(row[column] || '', column)
+                    const content = getCellContent(row[column] || '', column)
                     return (
                       <td key={column} className="p-2 border-b border-gray-600 align-top" onDoubleClick={() => handleDoubleClick(actualRowIndex, column)}>
                         {isEditing ? (
                           <input ref={inputRef} type="text" value={editValue} onChange={e => setEditValue(e.target.value)} onKeyDown={handleKeyDown} onBlur={() => setEditingCell(null)} className="bg-transparent border-b border-white outline-none w-full" />
-                        ) : 'image' in content ? (
-                          <img src={content.image} alt="" className="max-w-[120px] max-h-[80px] object-cover" />
-                        ) : 'html' in content ? (
-                          <div className="whitespace-pre-wrap break-words cursor-text" style={cellClampStyle} dangerouslySetInnerHTML={{__html: content.html}} />
                         ) : (
-                          <div className="whitespace-pre-wrap break-words cursor-text" style={cellClampStyle}>{content.text}</div>
+                          <CellContent content={content} cellClampStyle={cellClampStyle} onImageClick={handleImageClick} />
                         )}
                       </td>
                     )
@@ -210,6 +179,7 @@ const CsvDataGrid = ({columns: initialColumns, rows: initialRows, fileInfo, onDa
           </tbody>
         </table>
       </div>
+      {galleryOpen && <ImageGalleryModal images={allImages} initialIndex={galleryIndex} onClose={() => setGalleryOpen(false)} />}
     </div>
   )
 }
