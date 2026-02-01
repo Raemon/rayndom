@@ -1,0 +1,6 @@
+{
+  "crons": [{
+    "path": "/api/cron/reset-orienting",
+    "schedule": "0 15 * * *"
+  }]
+}

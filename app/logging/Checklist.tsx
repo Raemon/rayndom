@@ -1,8 +1,9 @@
 'use client'
 import { useState, useEffect, useRef, useImperativeHandle, forwardRef } from 'react'
 import DragDropList from '@/app/components/DragDropList'
+import AddChecklistItem from './AddChecklistItem'
 
-type ChecklistItem = { id: number; title: string; completed: boolean; sortOrder: number; orientingBlock: boolean }
+type ChecklistItem = { id: number; title: string; completed: boolean; sortOrder: number; orientingBlock: boolean; section: string | null }
 
 export type ChecklistRef = {
   resetAllItems: () => void
@@ -12,24 +13,24 @@ export type ChecklistRef = {
 export type ChecklistProps = {
   orientingOnly?: boolean
   inline?: boolean
+  section?: string
 }
 
-const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = false, inline = false }, ref) => {
+const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = false, inline = false, section }, ref) => {
   const [checklistItems, setChecklistItems] = useState<ChecklistItem[]>([])
-  const [newItem, setNewItem] = useState('')
   const checklistItemsRef = useRef<ChecklistItem[]>([])
 
   useEffect(() => {
-    const url = orientingOnly ? '/api/checklist?orientingOnly=true' : '/api/checklist'
+    const url = `/api/checklist${orientingOnly ? '?orientingOnly=true' : ''}${section ? `${orientingOnly ? '&' : '?'}section=${encodeURIComponent(section)}` : ''}`
     fetch(url).then(r => r.json()).then(setChecklistItems)
-  }, [orientingOnly])
+  }, [orientingOnly, section])
 
   useEffect(() => {
     checklistItemsRef.current = checklistItems
   }, [checklistItems])
 
   const refreshItems = async () => {
-    const url = orientingOnly ? '/api/checklist?orientingOnly=true' : '/api/checklist'
+    const url = `/api/checklist${orientingOnly ? '?orientingOnly=true' : ''}${section ? `${orientingOnly ? '&' : '?'}section=${encodeURIComponent(section)}` : ''}`
     const res = await fetch(url)
     const items = await res.json()
     setChecklistItems(items)
@@ -37,6 +38,7 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
 
   useImperativeHandle(ref, () => ({
     resetAllItems: () => {
+      if (orientingOnly) return
       checklistItemsRef.current.forEach(item => {
         if (item.completed) {
           fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: item.id, completed: false }) })
@@ -47,13 +49,10 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
     refreshItems
   }))
 
-  const addChecklistItem = async () => {
-    if (newItem.trim()) {
-      const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title: newItem.trim(), orientingBlock: orientingOnly }) })
-      const item = await res.json()
-      setChecklistItems([...checklistItems, item])
-      setNewItem('')
-    }
+  const addChecklistItem = async (title: string) => {
+    const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title, orientingBlock: orientingOnly, section }) })
+    const item = await res.json()
+    setChecklistItems([...checklistItems, item])
   }
 
   const removeChecklistItem = async (id: number) => {
@@ -91,16 +90,8 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
   return (
     <div className={`${positionClass} ${bgClass} ${padding}`} style={inlineStyle}>
       <div className={`mb-2 font-semibold ${textSize}`}>Checklist:</div>
-      <div className={`flex ${gap} mb-2`}>
-        <input
-          type="text"
-          value={newItem}
-          onChange={(e) => setNewItem(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && addChecklistItem()}
-          className={`${inputPadding} bg-gray-100 outline-none flex-1 ${textSize}`}
-          placeholder="Add checklist item"
-        />
-        <button onClick={addChecklistItem} className={`${inputPadding} bg-gray-600 ${textSize}`}>Add</button>
+      <div className={`mb-2`}>
+        <AddChecklistItem onAdd={addChecklistItem} placeholder="Add checklist item" textSize={textSize} inputPadding={inputPadding} />
       </div>
       <div className={`flex flex-col ${itemGap}`}>
         <DragDropList

@@ -13,6 +13,7 @@ model ChecklistItem {
   completed      Boolean  @default(false)
   sortOrder      Int      @default(0) @map("sort_order")
   orientingBlock Boolean  @default(false) @map("orienting_block")
+  section        String?
   createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
   updatedAt      DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
 

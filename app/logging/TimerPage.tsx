@@ -28,6 +28,20 @@ const TimerPageInner = () => {
   }, [])
   const { focusedNoteKeys } = useFocusedNotes()
 
+  const getCurrentSection = () => {
+    const now = new Date()
+    const totalMinutes = now.getHours() * 60 + now.getMinutes()
+    if (totalMinutes < 13 * 60) return 'morning'
+    if (totalMinutes < 16 * 60) return 'afternoon'
+    if (totalMinutes < 20 * 60) return 'evening'
+    return 'night'
+  }
+  const [currentSection, setCurrentSection] = useState(getCurrentSection())
+  useEffect(() => {
+    const interval = setInterval(() => setCurrentSection(getCurrentSection()), 30000)
+    return () => clearInterval(interval)
+  }, [])
+
   const endDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
   const startDate = new Date(new Date().getTime() - 14 * 24 * 60 * 60 * 1000)
   startDate.setHours(0, 0, 0, 0)
@@ -112,7 +126,7 @@ const TimerPageInner = () => {
           <TagSidebar tagInstances={tagInstances} />
         </div>
       </div>
-      <Checklist ref={checklistRef} />
+      <Checklist ref={checklistRef} section={currentSection} />
     </div>
   )
 }

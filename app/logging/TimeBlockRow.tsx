@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import NotesInput from './NotesInput'
 import TagCell from './TagCell'
-import Checklist from './Checklist'
+import OrientingChecklist from './OrientingChecklist'
 import type { TagInstance, Timeblock } from './types'
 
 const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesByType, allTagInstances, isCurrent, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
@@ -33,7 +33,6 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
   }
 
   const isOrientingBlock = isExpanded
-  const totalCols = 1 + 3 + tagTypes.length
   return (
     <>
       <tr className={`${isCurrent ? 'bg-black/50' : ''} ${!isOrientingBlock ? 'border-b border-white/10' : ''}`}>
@@ -120,7 +119,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
           <td colSpan={3}></td>
           <td colSpan={tagTypes.length} className="px-2 py-2 relative" style={{ height: '1px' }}>
             <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', maxWidth: '400px', width: '100%' }}>
-              <Checklist orientingOnly inline />
+              <OrientingChecklist maxWidth={400} />
             </div>
           </td>
         </tr>
