@@ -1,15 +1,9 @@
 'use client'
 import { useEffect, useMemo, useState, type DragEvent } from 'react'
-import AddChecklistItem from './AddChecklistItem'
-
-type ChecklistItem = { id: number; title: string; completed: boolean; sortOrder: number; orientingBlock: boolean; section: string | null }
-
-type SectionKey = 'morning' | 'afternoon' | 'evening' | 'night'
-
-const coerceSection = (section: string | null): SectionKey => {
-  if (section === 'afternoon' || section === 'evening' || section === 'night') return section
-  return 'morning'
-}
+import type { ChecklistItem, SectionKey } from './types'
+import { getCurrentSection, coerceSection, SECTION_DEFINITIONS_SIMPLE } from './sectionUtils'
+import { beginDrag, parseDrag } from './useOrientingChecklistDrag'
+import OrientingChecklistSection from './OrientingChecklistSection'
 
 const moveInArray = <T,>(array: T[], fromIndex: number, toIndex: number) => {
   const next = [...array]
@@ -20,6 +14,12 @@ const moveInArray = <T,>(array: T[], fromIndex: number, toIndex: number) => {
 
 const OrientingChecklist = ({ maxWidth=600 }:{ maxWidth?: number }) => {
   const [itemsBySection, setItemsBySection] = useState<Record<SectionKey, ChecklistItem[]>>({ morning: [], afternoon: [], evening: [], night: [] })
+  const [currentSection, setCurrentSection] = useState<SectionKey>(getCurrentSection())
+  const [collapsedOverrides, setCollapsedOverrides] = useState<Partial<Record<SectionKey, boolean>>>({})
+  useEffect(() => {
+    const interval = setInterval(() => setCurrentSection(getCurrentSection()), 30000)
+    return () => clearInterval(interval)
+  }, [])
 
   const refreshItems = async () => {
     const res = await fetch('/api/checklist?orientingOnly=true')
@@ -60,22 +60,6 @@ const OrientingChecklist = ({ maxWidth=600 }:{ maxWidth?: number }) => {
     setItemsBySection(prev => ({ ...prev, [section]: [...prev[section], item] }))
   }
 
-  const beginDrag = (e: DragEvent, id: number, section: SectionKey) => {
-    e.dataTransfer.effectAllowed = 'move'
-    e.dataTransfer.setData('text/plain', JSON.stringify({ id, section }))
-  }
-
-  const parseDrag = (e: DragEvent): { id: number, section: SectionKey } | null => {
-    try {
-      const raw = e.dataTransfer.getData('text/plain')
-      const parsed = JSON.parse(raw)
-      if (typeof parsed?.id !== 'number') return null
-      if (parsed?.section !== 'morning' && parsed?.section !== 'afternoon' && parsed?.section !== 'evening' && parsed?.section !== 'night') return null
-      return parsed
-    } catch {
-      return null
-    }
-  }
 
   const moveItemToSectionEnd = async (fromSection: SectionKey, id: number, toSection: SectionKey) => {
     if (fromSection === toSection) return
@@ -113,54 +97,37 @@ const OrientingChecklist = ({ maxWidth=600 }:{ maxWidth?: number }) => {
     await persistOrder(targetSection, nextTo)
   }
 
-  const sections = useMemo(() => ([
-    { key: 'morning' as const, label: 'Morning' },
-    { key: 'afternoon' as const, label: 'Afternoon' },
-    { key: 'evening' as const, label: 'Evening' },
-    { key: 'night' as const, label: 'Night' },
-  ]), [])
+  const sections = useMemo(() => SECTION_DEFINITIONS_SIMPLE, [])
 
   return (
     <div style={{ width: '100%', maxWidth }}>
       <div className="p-2 bg-black/20">
         <div className="flex flex-col gap-3">
-        {sections.map(section => (
-          <div
-            key={section.key}
-            onDragOver={(e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move' }}
-            onDrop={(e) => {
-              e.preventDefault()
-              const dragged = parseDrag(e)
-              if (!dragged) return
-              moveItemToSectionEnd(dragged.section, dragged.id, section.key)
-            }}
-          >
-            <div className="mb-2 flex items-center gap-2">
-              <div className="font-semibold text-gray-300">{section.label}</div>
-              <div className="flex-1"></div>
-              <AddChecklistItem onAdd={(title) => addChecklistItem(section.key, title)} placeholder="Add item" textSize="text-sm" inputPadding="px-2 py-1" />
-            </div>
-            <div className="flex flex-col gap-1">
-              {itemsBySection[section.key].map((item, index) => (
-                <div
-                  key={item.id}
-                  draggable
-                  onDragStart={(e) => beginDrag(e, item.id, section.key)}
-                  onDragOver={(e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move' }}
-                  onDrop={(e) => handleDropOnItem(section.key, index, e)}
-                  className="flex items-center gap-2 cursor-pointer"
-                  onClick={() => toggleChecked(section.key, item.id)}
-                >
-                  <span className="cursor-grab opacity-50 hover:opacity-100">⋮⋮</span>
-                  <input type="checkbox" checked={item.completed} onChange={() => {}} className="w-4 h-4" style={{ accentColor: 'black' }} />
-                  <span className="flex-1 text-sm">{item.title}</span>
-                  <button onClick={(e) => { e.stopPropagation(); removeChecklistItem(section.key, item.id) }} className="text-white cursor-pointer opacity-50 hover:opacity-100 text-sm">x</button>
-                </div>
-              ))}
-              {itemsBySection[section.key].length === 0 && <div className="text-gray-600 text-sm">No items</div>}
-            </div>
-          </div>
-        ))}
+        {sections.map(section => {
+          const isCollapsed = collapsedOverrides[section.key] ?? (section.key !== currentSection)
+          return (
+            <OrientingChecklistSection
+              key={section.key}
+              sectionKey={section.key}
+              sectionLabel={section.label}
+              items={itemsBySection[section.key]}
+              isCollapsed={isCollapsed}
+              onToggleCollapsed={() => setCollapsedOverrides(prev => ({ ...prev, [section.key]: !(prev[section.key] ?? (section.key !== currentSection)) }))}
+              onToggleChecked={(id) => toggleChecked(section.key, id)}
+              onRemoveItem={(id) => removeChecklistItem(section.key, id)}
+              onAddItem={(title) => addChecklistItem(section.key, title)}
+              onBeginDrag={(e, id) => beginDrag(e, id, section.key)}
+              onDropOnItem={(targetIndex, e) => handleDropOnItem(section.key, targetIndex, e)}
+              onDropOnSection={(e) => {
+                e.preventDefault()
+                const dragged = parseDrag(e)
+                if (!dragged) return
+                moveItemToSectionEnd(dragged.section, dragged.id, section.key)
+              }}
+              parseDrag={parseDrag}
+            />
+          )
+        })}
         </div>
       </div>
     </div>

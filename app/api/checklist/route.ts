@@ -4,8 +4,10 @@ import { prisma } from '@/lib/prisma'
 export async function GET(request: NextRequest) {
   const orientingOnly = request.nextUrl.searchParams.get('orientingOnly') === 'true'
   const section = request.nextUrl.searchParams.get('section')
-  const where: { orientingBlock: boolean, OR?: { section: string | null }[] } = { orientingBlock: orientingOnly }
-  if (section) where.OR = [{ section }, { section: null }]
+  const where: { orientingBlock: boolean; OR?: Array<{ section: string | null }> } = { orientingBlock: orientingOnly }
+  if (section) {
+    where.OR = [{ section }, { section: null }]
+  }
   const items = await prisma.checklistItem.findMany({ where, orderBy: [{ sortOrder: 'asc' }, { id: 'asc' }] })
   return NextResponse.json(items)
 }
@@ -15,12 +17,21 @@ export async function POST(request: NextRequest) {
   if (!title?.trim()) {
     return NextResponse.json({ error: 'Title is required' }, { status: 400 })
   }
-  const where = { orientingBlock: orientingBlock ?? false }
-  if (section) (where as { section?: string }).section = section
+  const orientingBlockValue = orientingBlock ?? false
+  const where: { orientingBlock: boolean; section?: string } = { orientingBlock: orientingBlockValue }
+  if (section) {
+    where.section = section
+  }
   const maxOrder = await prisma.checklistItem.aggregate({ _max: { sortOrder: true }, where })
   const nextOrder = (maxOrder._max?.sortOrder ?? -1) + 1
-  const data = { title: title.trim(), sortOrder: nextOrder, orientingBlock: orientingBlock ?? false }
-  if (section !== undefined) (data as { section?: string | null }).section = section ?? null
+  const data: { title: string; sortOrder: number; orientingBlock: boolean; section?: string | null } = {
+    title: title.trim(),
+    sortOrder: nextOrder,
+    orientingBlock: orientingBlockValue,
+  }
+  if (section !== undefined) {
+    data.section = section ?? null
+  }
   const item = await prisma.checklistItem.create({ data })
   return NextResponse.json(item)
 }
@@ -41,12 +52,13 @@ export async function PATCH(request: NextRequest) {
   if (typeof section === 'string') {
     const existing = await prisma.checklistItem.findUnique({ where: { id } })
     if (!existing) return NextResponse.json({ error: 'Item not found' }, { status: 404 })
-    const where = { orientingBlock: existing.orientingBlock }
-    if (section) (where as { section?: string }).section = section
+    const where: { orientingBlock: boolean; section?: string } = { orientingBlock: existing.orientingBlock }
+    if (section) {
+      where.section = section
+    }
     const maxOrder = await prisma.checklistItem.aggregate({ _max: { sortOrder: true }, where })
     const nextOrder = (maxOrder._max?.sortOrder ?? -1) + 1
-    const data = { sortOrder: nextOrder }
-    ;(data as { section?: string }).section = section
+    const data: { sortOrder: number; section: string } = { sortOrder: nextOrder, section }
     const item = await prisma.checklistItem.update({ where: { id }, data })
     return NextResponse.json(item)
   }

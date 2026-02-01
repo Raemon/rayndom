@@ -11,6 +11,7 @@ import type { Timeblock } from './types'
 import Checklist, { type ChecklistRef } from './Checklist'
 import Timer from './Timer'
 import PredictTagsButton, { type PredictTagsButtonRef } from './PredictTagsButton'
+import { getCurrentSection } from './sectionUtils'
 
 const TimerPageInner = () => {
   const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
@@ -28,14 +29,6 @@ const TimerPageInner = () => {
   }, [])
   const { focusedNoteKeys } = useFocusedNotes()
 
-  const getCurrentSection = () => {
-    const now = new Date()
-    const totalMinutes = now.getHours() * 60 + now.getMinutes()
-    if (totalMinutes < 13 * 60) return 'morning'
-    if (totalMinutes < 16 * 60) return 'afternoon'
-    if (totalMinutes < 20 * 60) return 'evening'
-    return 'night'
-  }
   const [currentSection, setCurrentSection] = useState(getCurrentSection())
   useEffect(() => {
     const interval = setInterval(() => setCurrentSection(getCurrentSection()), 30000)

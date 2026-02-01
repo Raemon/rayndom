@@ -5,6 +5,7 @@ import TimeBlockRow from './TimeBlockRow'
 import TagListItem from './TagListItem'
 import { useTags } from './TagsContext'
 import type { Tag, TagInstance, Timeblock } from './types'
+import { SECTION_DEFINITIONS } from './sectionUtils'
 
 const formatDayLabel = (day: Date) => day.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })
 
@@ -128,12 +129,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
     allSlots.sort((a, b) => a.getTime() - b.getTime())
     return allSlots
   }, [day, dayTimeblocks, dayTagInstances, currentSlotMs, dayStart, dayEnd])
-  const sections = useMemo(() => ([
-    { key: 'morning', label: 'Morning', startMinutes: 10 * 60 + 30, endMinutes: 12 * 60 + 15 },
-    { key: 'afternoon', label: 'Afternoon', startMinutes: 12 * 60 + 30, endMinutes: 15 * 60 + 45 },
-    { key: 'evening', label: 'Evening', startMinutes: 16 * 60, endMinutes: 19 * 60 + 45 },
-    { key: 'night', label: 'Night', startMinutes: 20 * 60, endMinutes: 23 * 60 + 45 },
-  ]), [])
+  const sections = useMemo(() => SECTION_DEFINITIONS, [])
   const visibleSlots = useMemo(() => slots.filter(slotStart => {
     const slotMinutes = slotStart.getHours() * 60 + slotStart.getMinutes()
     return slotMinutes >= 10 * 60 + 30 && slotMinutes <= 23 * 60 + 45

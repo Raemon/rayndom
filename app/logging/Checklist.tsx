@@ -2,8 +2,8 @@
 import { useState, useEffect, useRef, useImperativeHandle, forwardRef } from 'react'
 import DragDropList from '@/app/components/DragDropList'
 import AddChecklistItem from './AddChecklistItem'
-
-type ChecklistItem = { id: number; title: string; completed: boolean; sortOrder: number; orientingBlock: boolean; section: string | null }
+import type { ChecklistItem } from './types'
+import { buildChecklistUrl } from './checklistApi'
 
 export type ChecklistRef = {
   resetAllItems: () => void
@@ -21,7 +21,7 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
   const checklistItemsRef = useRef<ChecklistItem[]>([])
 
   useEffect(() => {
-    const url = `/api/checklist${orientingOnly ? '?orientingOnly=true' : ''}${section ? `${orientingOnly ? '&' : '?'}section=${encodeURIComponent(section)}` : ''}`
+    const url = buildChecklistUrl(orientingOnly, section)
     fetch(url).then(r => r.json()).then(setChecklistItems)
   }, [orientingOnly, section])
 
@@ -30,7 +30,7 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
   }, [checklistItems])
 
   const refreshItems = async () => {
-    const url = `/api/checklist${orientingOnly ? '?orientingOnly=true' : ''}${section ? `${orientingOnly ? '&' : '?'}section=${encodeURIComponent(section)}` : ''}`
+    const url = buildChecklistUrl(orientingOnly, section)
     const res = await fetch(url)
     const items = await res.json()
     setChecklistItems(items)
