@@ -1,4 +1,4 @@
-import type { SectionKey } from './types'
+import type { SectionKey } from '../types'
 
 export const getCurrentSection = (): SectionKey => {
   const now = new Date()

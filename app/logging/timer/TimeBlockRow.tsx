@@ -1,9 +1,9 @@
 'use client'
 import { useState } from 'react'
-import NotesInput from './NotesInput'
-import TagCell from './TagCell'
-import OrientingChecklist from './OrientingChecklist'
-import type { TagInstance, Timeblock } from './types'
+import NotesInput from '../editor/NotesInput'
+import TagCell from '../tags/TagCell'
+import OrientingChecklist from '../checklist/OrientingChecklist'
+import type { TagInstance, Timeblock } from '../types'
 
 const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesByType, allTagInstances, isCurrent, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
   slotStart: Date,

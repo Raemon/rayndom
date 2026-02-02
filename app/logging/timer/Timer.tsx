@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
-import type { ChecklistRef } from './Checklist'
+import type { ChecklistRef } from '../checklist/Checklist'
 
 type AlarmSound = {
   name: string

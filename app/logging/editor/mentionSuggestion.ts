@@ -1,9 +1,9 @@
 import type { MentionNodeAttrs } from '@tiptap/extension-mention'
 import type { SuggestionProps, SuggestionKeyDownProps } from '@tiptap/suggestion'
 import type { MentionItem } from './editorConstants'
-import type { Tag } from './types'
-import { getTagColor } from './tagUtils'
-import { getTagUsageTimestamps } from './tagUsageTracker'
+import type { Tag } from '../types'
+import { getTagColor } from '../tags/tagUtils'
+import { getTagUsageTimestamps } from '../tags/tagUsageTracker'
 
 let cachedMentionTags: Tag[] = []
 export const updateCachedMentionTags = (tags: Tag[]) => { cachedMentionTags = tags }

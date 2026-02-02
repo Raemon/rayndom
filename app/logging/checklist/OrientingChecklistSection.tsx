@@ -1,7 +1,7 @@
 'use client'
 import { type DragEvent } from 'react'
 import AddChecklistItem from './AddChecklistItem'
-import type { ChecklistItem, SectionKey } from './types'
+import type { ChecklistItem, SectionKey } from '../types'
 
 const OrientingChecklistSection = ({
   sectionKey,

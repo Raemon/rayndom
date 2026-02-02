@@ -2,10 +2,10 @@
 import { useMemo, useState, useEffect } from 'react'
 import { countBy, orderBy } from 'lodash'
 import TimeBlockRow from './TimeBlockRow'
-import TagListItem from './TagListItem'
-import { useTags } from './TagsContext'
-import type { Tag, TagInstance, Timeblock } from './types'
-import { SECTION_DEFINITIONS } from './sectionUtils'
+import TagListItem from '../tags/TagListItem'
+import { useTags } from '../tags/TagsContext'
+import type { Tag, TagInstance, Timeblock } from '../types'
+import { SECTION_DEFINITIONS } from '../checklist/sectionUtils'
 
 const formatDayLabel = (day: Date) => day.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })
 

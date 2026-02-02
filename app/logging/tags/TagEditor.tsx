@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import type { Tag } from './types'
+import type { Tag } from '../types'
 
 const TagEditor = ({ tag, onSave, onDelete }:{ tag: Tag, onSave: (args: { id: number, name: string, type: string }) => Promise<void> | void, onDelete: (args: { id: number }) => Promise<void> | void }) => {
   const [name, setName] = useState(tag.name)

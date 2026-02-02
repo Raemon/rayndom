@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef, useImperativeHandle, forwardRef } from 'react'
 import DragDropList from '@/app/components/DragDropList'
 import AddChecklistItem from './AddChecklistItem'
-import type { ChecklistItem } from './types'
+import type { ChecklistItem } from '../types'
 import { buildChecklistUrl } from './checklistApi'
 
 export type ChecklistRef = {

@@ -3,9 +3,9 @@ import { useMemo } from 'react'
 import groupBy from 'lodash/groupBy'
 import countBy from 'lodash/countBy'
 import orderBy from 'lodash/orderBy'
-import TagListItem from '../TagListItem'
+import TagListItem from './TagListItem'
 import { useTagInstances } from '../hooks/useTagInstances'
-import { TagsProvider, useTags } from '../TagsContext'
+import { TagsProvider, useTags } from './TagsContext'
 import type { Tag } from '../types'
 
 const TagPageInner = ({}:{}) => {

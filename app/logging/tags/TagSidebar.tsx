@@ -4,7 +4,7 @@ import groupBy from 'lodash/groupBy'
 import countBy from 'lodash/countBy'
 import TagListItem from './TagListItem'
 import { useTags } from './TagsContext'
-import type { Tag, TagInstance } from './types'
+import type { Tag, TagInstance } from '../types'
 
 const NewTagForm = () => {
   const { createTag } = useTags()

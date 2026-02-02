@@ -1,5 +1,5 @@
 import { type DragEvent } from 'react'
-import type { SectionKey } from './types'
+import type { SectionKey } from '../types'
 
 export const beginDrag = (e: DragEvent, id: number, section: SectionKey) => {
   e.dataTransfer.effectAllowed = 'move'

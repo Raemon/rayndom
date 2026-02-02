@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import type { Tag, TagInstance } from './types'
+import type { Tag, TagInstance } from '../types'
 import { getTagColor } from './tagUtils'
 import Tooltip from '@/app/common/Tooltip'
 

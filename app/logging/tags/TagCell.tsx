@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import TagTypeahead from './TagTypeahead'
 import { useTags } from './TagsContext'
-import type { TagInstance } from './types'
+import type { TagInstance } from '../types'
 import DraggableTag from './DraggableTag'
 import { wouldCreateCycle, getParentTag, getAllAncestorTagIds } from './tagUtils'
 

@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useMemo, useState, type DragEvent } from 'react'
-import type { ChecklistItem, SectionKey } from './types'
+import type { ChecklistItem, SectionKey } from '../types'
 import { getCurrentSection, coerceSection, SECTION_DEFINITIONS_SIMPLE } from './sectionUtils'
 import { beginDrag, parseDrag } from './useOrientingChecklistDrag'
 import OrientingChecklistSection from './OrientingChecklistSection'

@@ -1,6 +1,6 @@
 'use client'
 import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react'
-import type { Tag } from './types'
+import type { Tag } from '../types'
 
 type TagsContextType = {
   tags: Tag[]

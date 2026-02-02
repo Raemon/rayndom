@@ -1,6 +1,6 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
-import type { Tag } from './types'
+import type { Tag } from '../types'
 import { getTagColor, wouldCreateCycle, getParentTag } from './tagUtils'
 import TagEditor from './TagEditor'
 import { useTags } from './TagsContext'
