@@ -4,7 +4,6 @@ import { useTimeblocks } from '../hooks/useTimeblocks'
 import { FocusedNotesProvider, useFocusedNotes } from '../context/FocusedNotesContext'
 import { TagsProvider } from '../tags/TagsContext'
 import NotesInput from '../editor/NotesInput'
-import ZenRow from '../zen/ZenRow'
 import type { Timeblock } from '../types'
 
 const LoggingZenInner = () => {
@@ -41,19 +40,21 @@ const LoggingZenInner = () => {
     return () => clearInterval(interval)
   }, [refreshUnfocused, focusedNoteKeys])
 
-  const currentTime = new Date(currentBlockDatetime)
-  const currentTimeStr = currentTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
-
   return (
-    <div className="flex flex-col">
-      <ZenRow
-        timeblock={currentTimeblock}
-        timeLabel={currentTimeStr}
-        ensureTimeblock={ensureCurrentTimeblock}
-        onPatchTimeblockDebounced={patchTimeblockDebounced}
-        onAIComplete={() => refreshUnfocused(new Set())}
-        minHeight="calc(100vh - 32px)"
-      />
+    <div className="p-4 flex flex-col items-center">
+      <div style={{ width: 640, height: '90vh' }}>
+        <NotesInput
+          noteKey={currentTimeblock ? `${currentTimeblock.id}:rayNotes` : undefined}
+          placeholder="Current block..."
+          initialValue={currentTimeblock?.rayNotes || ''}
+          externalValue={currentTimeblock?.rayNotes || ''}
+          minHeight={window?.innerHeight ? window.innerHeight * 0.9 - 32 : 600}
+          onSave={async (content) => {
+            const tb = await ensureCurrentTimeblock()
+            patchTimeblockDebounced({ id: tb.id, rayNotes: content, debounceMs: 300 })
+          }}
+        />
+      </div>
       {earlierBlocksWithContent.map(tb => {
         const time = new Date(tb.datetime)
         const timeStr = time.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })

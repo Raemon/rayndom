@@ -13,12 +13,13 @@ import { createCommandSuggestion } from './commandSuggestion'
 import { getThinkItFasterHtml } from './editorConstants'
 import BubbleMenuToolbar from './BubbleMenuToolbar'
 
-const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25, noExpand=false }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number, noExpand?: boolean }) => {
+const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25, noExpand=false, expandable=true }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number | string, noExpand?: boolean, expandable?: boolean }) => {
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
   const lastSavedRef = useRef<string>(initialValue || '')
   const initializedRef = useRef(false)
   const isFocusedRef = useRef(false)
   const [isFocused, setIsFocused] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
   const { registerFocus, unregisterFocus } = useFocusedNotes()
   const { tags } = useTags()
   useEffect(() => { updateCachedMentionTags(tags) }, [tags])
@@ -54,7 +55,7 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
     editorProps: {
       attributes: {
         class: 'px-2 py-1 outline-none',
-        style: `min-height: ${minHeight}px;`
+        style: `min-height: ${typeof minHeight === 'number' ? `${minHeight}px` : minHeight};`
       }
     },
     onUpdate: ({ editor }) => {
@@ -102,18 +103,27 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
 
   if (!editor) return null
 
+  const shouldExpand = isExpanded && expandable && !noExpand
+  const handleClick = () => {
+    if (expandable && !noExpand) {
+      setIsExpanded(!isExpanded)
+    }
+  }
+
   return (
     <div 
-      className={`text-xs transition-all duration-200 ease-in-out relative ${isFocused && !noExpand ? 'z-50 shadow-lg' : ''}`}
+      className={`text-xs transition-all duration-200 ease-in-out relative ${shouldExpand ? 'z-50 shadow-lg' : ''}`}
+      onClick={handleClick}
       style={{ 
         minHeight,
-        maxHeight: isFocused && !noExpand ? 'none' : '250px',
-        width: isFocused && !noExpand ? 'calc(100% + 200px)' : '100%',
-        overflow: isFocused && !noExpand ? 'visible' : 'hidden'
+        maxHeight: shouldExpand ? 'none' : '250px',
+        width: shouldExpand ? 'calc(100% + 200px)' : '100%',
+        overflow: shouldExpand ? 'visible' : 'hidden',
+        cursor: expandable && !noExpand ? 'pointer' : 'default'
       }}
     >
       <BubbleMenuToolbar editor={editor} />
-      <EditorContent editor={editor} className="notes-input-editor" style={{ minHeight: `${minHeight}px`, transition: 'min-height 200ms ease-in-out' }} />
+      <EditorContent editor={editor} className="notes-input-editor" style={{ minHeight: typeof minHeight === 'number' ? `${minHeight}px` : minHeight, transition: 'min-height 200ms ease-in-out' }} />
     </div>
   )
 }
