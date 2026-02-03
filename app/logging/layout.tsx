@@ -13,9 +13,9 @@ export default function LoggingLayout({ children }: { children: React.ReactNode 
   const pathname = usePathname()
   return (
     <div>
-      <nav className="flex gap-4 p-2 text-sm">
+      <nav className="flex gap-4 p-2 text-xs absolute top-0 right-0">
         {navLinks.map(({ href, label }) => (
-          <Link key={href} href={href} className={pathname === href ? 'font-bold' : 'text-gray-500 hover:text-gray-700'}>
+          <Link key={href} href={href} className={pathname === href ? 'font-bold text-white!' : 'text-gray-500! hover:text-white!'}>
             {label}
           </Link>
         ))}
