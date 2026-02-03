@@ -22,9 +22,7 @@ export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylog
   const fifteenMinutesAgo = new Date(blockDatetime.getTime() - 15 * 60 * 1000)
   let keylogs: KeylogEntry[] = []
   try {
-    const now = new Date()
-    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
-    const keylogRes = await fetch(`http://localhost:8765/${today}`)
+    const keylogRes = await fetch('http://localhost:8765/today')
     if (!keylogRes.ok) {
       return { error: `Keylog server returned ${keylogRes.status}` }
     }

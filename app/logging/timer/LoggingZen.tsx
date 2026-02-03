@@ -52,7 +52,7 @@ const LoggingZenInner = () => {
 
   return (
     <div className="flex" style={{ height: '100vh', overflow: 'hidden' }}>
-      <div style={{ flex: 1, overflow: 'auto' }} className="p-2">
+      <div style={{ flex: 1, overflow: 'auto' }} className="p-2 text-sm">
         <RunAIButton ensureTimeblock={ensureCurrentTimeblock} onComplete={() => refreshUnfocused(new Set())} />
         <MarkdownContent html={currentTimeblock?.aiNotes || ''} />
       </div>

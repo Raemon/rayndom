@@ -2,6 +2,16 @@
 import { useState } from 'react'
 import type { Timeblock } from '../types'
 
+const defaultPrompt = `You are analyzing keylogs from the past 15 minutes.
+
+Here are the keylogs:
+{{keylogText}}
+
+Please think to yourself (but do not say) what you think my goal is write now.
+
+Then, think to yourself (but do not say) 10 very useful things I might benefit from knowing. Then, tell me the most useful seeming one of them. Render the rest as a collapsed detail section.
+`
+
 const RunAIButton = ({ ensureTimeblock, onComplete }: {
   ensureTimeblock: () => Promise<Timeblock>,
   onComplete?: () => void,
@@ -9,6 +19,8 @@ const RunAIButton = ({ ensureTimeblock, onComplete }: {
   const [loadingTags, setLoadingTags] = useState(false)
   const [loadingQuestions, setLoadingQuestions] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [prompt, setPrompt] = useState(defaultPrompt)
+  const [showPrompt, setShowPrompt] = useState(false)
   const handleRunAI = async () => {
     setError(null)
     const tb = await ensureTimeblock()
@@ -30,7 +42,7 @@ const RunAIButton = ({ ensureTimeblock, onComplete }: {
     const questionsPromise = fetch('/api/timer/check-questions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ datetime }),
+      body: JSON.stringify({ datetime, prompt }),
     }).then(async (res) => {
       setLoadingQuestions(false)
       return res.json()
@@ -58,6 +70,12 @@ const RunAIButton = ({ ensureTimeblock, onComplete }: {
       >
         {isLoading ? 'running...' : 'run AI'}
       </button>
+      <button
+        onClick={() => setShowPrompt(!showPrompt)}
+        className="ml-2 text-xs px-2 py-1 bg-gray-100 hover:bg-gray-200"
+      >
+        edit
+      </button>
       {isLoading && (
         <span className="ml-2 text-xs text-gray-500">
           {loadingTags && 'tags'}
@@ -66,6 +84,14 @@ const RunAIButton = ({ ensureTimeblock, onComplete }: {
         </span>
       )}
       {error && <span className="ml-2 text-xs text-red-500">{error}</span>}
+      {showPrompt && (
+        <textarea
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          rows={6}
+          className="mt-1 w-full text-xs px-2 py-1 bg-gray-50"
+        />
+      )}
     </div>
   )
 }

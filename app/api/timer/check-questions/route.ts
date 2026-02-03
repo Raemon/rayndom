@@ -27,10 +27,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: keylogResult.error, aiNotes: null }, { status: 200 })
     }
     const { keylogText } = keylogResult
+    const promptTemplate = body?.prompt
+    const prompt = promptTemplate ? promptTemplate.replace('{{keylogText}}', keylogText) : getAiNotesPrompt({ keylogText })
     const client = getOpenRouterClient()
     const aiNotesCompletion = await client.chat.completions.create({
       model: 'anthropic/claude-opus-4.5',
-      messages: [{ role: 'user', content: getAiNotesPrompt({ keylogText }) }],
+      messages: [{ role: 'user', content: prompt }],
       max_tokens: 800,
     })
     const aiNotesMarkdown = aiNotesCompletion.choices[0]?.message?.content || null
