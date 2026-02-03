@@ -3,8 +3,10 @@ import { useEffect } from 'react'
 import { useTimeblocks } from '../hooks/useTimeblocks'
 import { FocusedNotesProvider, useFocusedNotes } from '../context/FocusedNotesContext'
 import { TagsProvider } from '../tags/TagsContext'
-import NotesInput from '../editor/NotesInput'
+import MarkdownContent from '../../common/MarkdownContent'
+import Checklist from '../checklist/Checklist'
 import ZenRow from '../zen/ZenRow'
+import RunAIButton from '../zen/RunAIButton'
 import type { Timeblock } from '../types'
 
 const LoggingZenInner = () => {
@@ -25,11 +27,15 @@ const LoggingZenInner = () => {
     return created as Timeblock
   }
 
-  // Earlier timeblocks today with content
-  const earlierBlocksWithContent = timeblocks
+  // Previous timestamp (15 min before current)
+  const prevBlockDatetime = new Date(new Date(currentBlockDatetime).getTime() - 15 * 60 * 1000).toISOString()
+  const previousTimeblock = timeblocks.find(tb => new Date(tb.datetime).toISOString() === prevBlockDatetime)
+
+  // All other earlier timeblocks today with notes (excluding the previous one)
+  const otherBlocksWithNotes = timeblocks
     .filter(tb => {
       const tbTime = new Date(tb.datetime).toISOString()
-      return tbTime < currentBlockDatetime && (tb.rayNotes || tb.assistantNotes || tb.aiNotes)
+      return tbTime < currentBlockDatetime && tbTime !== prevBlockDatetime && (tb.rayNotes || tb.assistantNotes || tb.aiNotes)
     })
     .sort((a, b) => new Date(b.datetime).getTime() - new Date(a.datetime).getTime())
 
@@ -45,33 +51,44 @@ const LoggingZenInner = () => {
   const currentTimeStr = currentTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
 
   return (
-    <div className="flex flex-col">
-      <ZenRow
-        timeblock={currentTimeblock}
-        timeLabel={currentTimeStr}
-        ensureTimeblock={ensureCurrentTimeblock}
-        onPatchTimeblockDebounced={patchTimeblockDebounced}
-        onAIComplete={() => refreshUnfocused(new Set())}
-        minHeight="calc(100vh - 32px)"
-      />
-      {earlierBlocksWithContent.map(tb => {
-        const time = new Date(tb.datetime)
-        const timeStr = time.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
-        return (
-          <div key={tb.id} style={{ width: 640 }} className="mt-4">
-            <div className="text-xs text-gray-500 mb-1">{timeStr}</div>
-            <NotesInput
-              noteKey={`${tb.id}:rayNotes`}
-              placeholder=""
-              initialValue={tb.rayNotes || ''}
-              externalValue={tb.rayNotes || ''}
-              onSave={(content) => {
-                patchTimeblockDebounced({ id: tb.id, rayNotes: content, debounceMs: 300 })
-              }}
+    <div className="flex" style={{ height: '100vh', overflow: 'hidden' }}>
+      <div style={{ flex: 1, overflow: 'auto' }} className="p-2">
+        <RunAIButton ensureTimeblock={ensureCurrentTimeblock} onComplete={() => refreshUnfocused(new Set())} />
+        <MarkdownContent html={currentTimeblock?.aiNotes || ''} />
+      </div>
+      <div style={{ flex: 1, overflow: 'auto' }} className="p-2">
+        <ZenRow
+          timeblock={currentTimeblock}
+          timeLabel={currentTimeStr}
+          ensureTimeblock={ensureCurrentTimeblock}
+          onPatchTimeblockDebounced={patchTimeblockDebounced}
+          minHeight="calc(100vh - 32px)"
+        />
+        {previousTimeblock && (
+          <ZenRow
+            timeblock={previousTimeblock}
+            timeLabel={new Date(prevBlockDatetime).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+            ensureTimeblock={async () => previousTimeblock}
+            onPatchTimeblockDebounced={patchTimeblockDebounced}
+          />
+        )}
+        {otherBlocksWithNotes.map(tb => {
+          const time = new Date(tb.datetime)
+          const timeStr = time.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+          return (
+            <ZenRow
+              key={tb.id}
+              timeblock={tb}
+              timeLabel={timeStr}
+              ensureTimeblock={async () => tb}
+              onPatchTimeblockDebounced={patchTimeblockDebounced}
             />
-          </div>
-        )
-      })}
+          )
+        })}
+      </div>
+      <div style={{ flex: 1, overflow: 'auto' }} className="p-2">
+        <Checklist inline />
+      </div>
     </div>
   )
 }

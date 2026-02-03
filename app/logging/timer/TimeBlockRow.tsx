@@ -50,6 +50,9 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
                 placeholder="Notes"
                 initialValue={timeblock?.rayNotes || ''}
                 externalValue={timeblock?.rayNotes || ''}
+                datetime={slotStart.toISOString()}
+                onCreateTagInstance={onCreateTagInstance}
+                onDeleteTagInstance={onDeleteTagInstance}
                 onSave={async (content) => {
                   const tb = await ensureTimeblock()
                   onPatchTimeblockDebounced({ id: tb.id, rayNotes: content, debounceMs: 0 })
@@ -62,6 +65,9 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
                 placeholder="Asst"
                 initialValue={timeblock?.assistantNotes || ''}
                 externalValue={timeblock?.assistantNotes || ''}
+                datetime={slotStart.toISOString()}
+                onCreateTagInstance={onCreateTagInstance}
+                onDeleteTagInstance={onDeleteTagInstance}
                 onSave={async (content) => {
                   const tb = await ensureTimeblock()
                   onPatchTimeblockDebounced({ id: tb.id, assistantNotes: content, debounceMs: 0 })
@@ -74,6 +80,9 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
                 placeholder="AI"
                 initialValue={timeblock?.aiNotes || ''}
                 externalValue={timeblock?.aiNotes || ''}
+                datetime={slotStart.toISOString()}
+                onCreateTagInstance={onCreateTagInstance}
+                onDeleteTagInstance={onDeleteTagInstance}
                 onSave={async (content) => {
                   const tb = await ensureTimeblock()
                   onPatchTimeblockDebounced({ id: tb.id, aiNotes: content, debounceMs: 0 })
@@ -91,6 +100,9 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
               externalValue={timeblock?.rayNotes || ''}
               minHeight={800}
               noExpand
+              datetime={slotStart.toISOString()}
+              onCreateTagInstance={onCreateTagInstance}
+              onDeleteTagInstance={onDeleteTagInstance}
               onSave={async (content) => {
                 const tb = await ensureTimeblock()
                 onPatchTimeblockDebounced({ id: tb.id, rayNotes: content, debounceMs: 0 })

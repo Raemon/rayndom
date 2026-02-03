@@ -4,6 +4,8 @@ export type Tag = { id: number, name: string, type: string, parentTagId?: number
 
 export type TagInstance = { id: number, tagId: number, datetime: string, llmPredicted: boolean, approved: boolean, llmReason?: string | null, useful?: boolean, antiUseful?: boolean, tag?: Tag }
 
+export type Command = { id: number, name: string, html: string }
+
 export type TimerAllData = { timeblocks: Timeblock[], tags: Tag[], tagInstances: TagInstance[] }
 
 export type SectionKey = 'morning' | 'afternoon' | 'evening' | 'night'

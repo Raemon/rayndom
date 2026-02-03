@@ -62,3 +62,13 @@ model TagInstance {
 
   @@map("tag_instances")
 }
+
+model Command {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  html      String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("commands")
+}

@@ -1,13 +1,17 @@
 import type { MentionNodeAttrs } from '@tiptap/extension-mention'
 import type { SuggestionProps, SuggestionKeyDownProps } from '@tiptap/suggestion'
 import type { CommandItem } from './editorConstants'
-import { COMMAND_ITEMS } from './editorConstants'
+
+let cachedCommands: { id: number, name: string, html: string }[] = []
+export const updateCachedCommands = (commands: { id: number, name: string, html: string }[]) => { cachedCommands = commands }
+export const getCachedCommands = () => cachedCommands
 
 export const createCommandSuggestion = () => ({
   items: ({ query }:{ query: string }) => {
     const normalizedQuery = query.trim().toLowerCase()
-    const commandItems = normalizedQuery ? COMMAND_ITEMS.filter(item => item.label.toLowerCase().includes(normalizedQuery)) : COMMAND_ITEMS
-    return commandItems
+    const commandItems: CommandItem[] = cachedCommands.map(command => ({ id: command.id.toString(), label: command.name }))
+    const filteredItems = normalizedQuery ? commandItems.filter(item => item.label.toLowerCase().includes(normalizedQuery)) : commandItems
+    return filteredItems.slice(0, 8)
   },
   render: () => {
     let container: HTMLDivElement | null = null

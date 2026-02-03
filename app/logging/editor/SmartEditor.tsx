@@ -9,11 +9,23 @@ import Mention from '@tiptap/extension-mention'
 import { useFocusedNotes } from '../context/FocusedNotesContext'
 import { useTags } from '../tags/TagsContext'
 import { createMentionSuggestion, updateCachedMentionTags } from './mentionSuggestion'
-import { createCommandSuggestion } from './commandSuggestion'
-import { getThinkItFasterHtml } from './editorConstants'
+import { createCommandSuggestion, updateCachedCommands, getCachedCommands } from './commandSuggestion'
 import BubbleMenuToolbar from './BubbleMenuToolbar'
+import { TagInstanceExtension, type TagInstanceCallbacks, getEditorTagInstanceState, setEditorCallbacks } from './TagInstanceExtension'
+import { useCommands } from '../hooks/useCommands'
 
-const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25, noExpand=false, expandable=true }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number | string, noExpand?: boolean, expandable?: boolean }) => {
+const extractTagInstanceIdsFromEditor = (editorInstance: ReturnType<typeof useEditor>) => {
+  const ids = new Set<number>()
+  if (!editorInstance) return ids
+  editorInstance.state.doc.descendants((node) => {
+    if (node.type.name === 'tagInstance' && node.attrs.tagInstanceId) {
+      ids.add(parseInt(node.attrs.tagInstanceId))
+    }
+  })
+  return ids
+}
+
+const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25, noExpand=false, expandable=true, datetime, onCreateTagInstance, onDeleteTagInstance }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number | string, noExpand?: boolean, expandable?: boolean } & TagInstanceCallbacks) => {
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
   const lastSavedRef = useRef<string>(initialValue || '')
   const initializedRef = useRef(false)
@@ -22,6 +34,8 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
   const [isExpanded, setIsExpanded] = useState(false)
   const { registerFocus, unregisterFocus } = useFocusedNotes()
   const { tags } = useTags()
+  const { commands } = useCommands()
+  useEffect(() => { updateCachedCommands(commands) }, [commands])
   useEffect(() => { updateCachedMentionTags(tags) }, [tags])
   const mentionSuggestion = useMemo(() => createMentionSuggestion(), [])
   const commandSuggestion = useMemo(() => createCommandSuggestion(), [])
@@ -37,15 +51,35 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
       Placeholder.configure({ placeholder }),
       TaskList,
       TaskItem.configure({ nested: true }),
+      TagInstanceExtension,
       Mention.configure({
         HTMLAttributes: { class: 'mention' },
         renderLabel({ node }) { return `@${node.attrs.label || node.attrs.id}` },
         suggestions: [
-          { ...mentionSuggestion, char: '@' },
-          { ...commandSuggestion, char: '/', command: ({ editor, range, props }) => {
-            if (props.id === 'think-it-faster') {
-              editor.chain().focus().insertContentAt(range, getThinkItFasterHtml()).run()
+          { ...mentionSuggestion, char: '@', command: async ({ editor, range, props }) => {
+            const state = getEditorTagInstanceState(editor)
+            const { datetime: dt, onCreateTagInstance: createTi } = state.callbacks
+            if (dt && createTi && props.id) {
+              const tagId = parseInt(props.id)
+              const ti = await createTi({ tagId, datetime: dt })
+              editor.chain().focus().deleteRange(range).insertContent({
+                type: 'tagInstance',
+                attrs: { id: props.id, label: props.label, tagInstanceId: ti.id.toString() }
+              }).run()
+              state.trackedIds.add(ti.id)
+            } else {
+              editor.chain().focus().deleteRange(range).insertContent({
+                type: 'tagInstance',
+                attrs: { id: props.id || '', label: props.label }
+              }).run()
             }
+          } },
+          { ...commandSuggestion, char: '/', command: ({ editor, range, props }) => {
+            const commandId = props.id ? parseInt(props.id) : NaN
+            if (!Number.isFinite(commandId)) return
+            const command = getCachedCommands().find(c => c.id === commandId)
+            if (!command?.html) return
+            editor.chain().focus().insertContentAt(range, command.html).run()
           } }
         ]
       })
@@ -59,6 +93,18 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
       }
     },
     onUpdate: ({ editor }) => {
+      // Check for deleted tag instances
+      const currentIds = extractTagInstanceIdsFromEditor(editor)
+      const state = getEditorTagInstanceState(editor)
+      const { onDeleteTagInstance: deleteTi } = state.callbacks
+      if (deleteTi) {
+        for (const id of state.trackedIds) {
+          if (!currentIds.has(id)) {
+            deleteTi({ id })
+          }
+        }
+      }
+      state.trackedIds = currentIds
       if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current)
       debounceTimerRef.current = setTimeout(() => {
         saveContent(editor.getHTML())
@@ -87,6 +133,7 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
     if (editor && !initializedRef.current && initialValue) {
       editor.commands.setContent(initialValue)
       lastSavedRef.current = initialValue
+      getEditorTagInstanceState(editor).trackedIds = extractTagInstanceIdsFromEditor(editor)
       initializedRef.current = true
     }
   }, [initialValue, editor])
@@ -100,6 +147,12 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
       }
     }
   }, [externalValue, editor])
+  // Store tag instance callbacks on editor for access in command handlers
+  useEffect(() => {
+    if (editor) {
+      setEditorCallbacks(editor, { datetime, onCreateTagInstance, onDeleteTagInstance })
+    }
+  }, [editor, datetime, onCreateTagInstance, onDeleteTagInstance])
 
   if (!editor) return null
 
