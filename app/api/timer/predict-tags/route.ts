@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import OpenAI from 'openai'
 import { getAiNotesPrompt } from './aiNotesPrompt'
+import { getKeylogsForTimeblock } from '../shared/keylogUtils'
+import { parseScreenshotSummaries } from '../shared/keylogUtils'
 import { marked } from 'marked'
 
 const getRequiredEnv = (key: string) => {
@@ -15,27 +17,6 @@ const getOpenRouterClient = () => {
   return new OpenAI({ apiKey, baseURL: 'https://openrouter.ai/api/v1' })
 }
 
-type KeylogEntry = { timestamp: string, text: string, app?: string }
-
-const parseKeylogText = (text: string): KeylogEntry[] => {
-  // Format: "2026-01-27 00.01.00: AppName\ntext content\n\n"
-  const entries: KeylogEntry[] = []
-  const blocks = text.split(/\n\n+/)
-  for (const block of blocks) {
-    if (!block.trim()) continue
-    const lines = block.split('\n')
-    const headerMatch = lines[0]?.match(/^(\d{4}-\d{2}-\d{2} \d{2}\.\d{2}\.\d{2}):\s*(.*)$/)
-    if (headerMatch) {
-      const [, timestampStr, app] = headerMatch
-      // Convert "2026-01-27 00.01.00" to ISO format (local time, no Z suffix)
-      const isoTimestamp = timestampStr.replace(/ /, 'T').replace(/\./g, ':')
-      const textContent = lines.slice(1).join('\n').trim()
-      entries.push({ timestamp: isoTimestamp, text: textContent, app: app || undefined })
-    }
-  }
-  return entries
-}
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
@@ -43,41 +24,32 @@ export async function POST(request: NextRequest) {
     console.log('[predict-tags] Request received for datetime:', datetime)
     if (!datetime) return NextResponse.json({ error: 'Missing datetime' }, { status: 400 })
     const blockDatetime = new Date(datetime)
-    const fifteenMinutesAgo = new Date(blockDatetime.getTime() - 15 * 60 * 1000)
-    console.log('[predict-tags] Time window:', fifteenMinutesAgo.toISOString(), 'to', blockDatetime.toISOString())
-    // 1. Get keylogs from localhost:8765
-    let keylogs: KeylogEntry[] = []
-    try {
-      console.log('[predict-tags] Fetching keylogs from localhost:8765...')
-      const keylogRes = await fetch('http://localhost:8765/today')
-      if (!keylogRes.ok) {
-        console.error('[predict-tags] Keylog server returned error:', keylogRes.status, keylogRes.statusText)
-        return NextResponse.json({ error: `Keylog server returned ${keylogRes.status}`, predictions: [] }, { status: 200 })
-      }
-      const responseText = await keylogRes.text()
-      if (!responseText.trim()) {
-        return NextResponse.json({ error: 'Keylog server returned empty response', predictions: [] }, { status: 200 })
-      }
-      // Parse plain text format: "2026-01-27 00.01.00: AppName\ntext\n\n"
-      const allKeylogs = parseKeylogText(responseText)
-      console.log('[predict-tags] Total keylogs from server:', allKeylogs.length)
-      if (allKeylogs.length > 0) {
-        console.log('[predict-tags] First keylog timestamp:', allKeylogs[0].timestamp, '-> Date:', new Date(allKeylogs[0].timestamp).toISOString())
-        console.log('[predict-tags] Last keylog timestamp:', allKeylogs[allKeylogs.length - 1].timestamp, '-> Date:', new Date(allKeylogs[allKeylogs.length - 1].timestamp).toISOString())
-      }
-      console.log('[predict-tags] blockDatetime:', blockDatetime.toISOString(), 'fifteenMinutesAgo:', fifteenMinutesAgo.toISOString())
-      keylogs = allKeylogs.filter((entry: KeylogEntry) => {
-        const entryTime = new Date(entry.timestamp)
-        return entryTime >= fifteenMinutesAgo && entryTime <= blockDatetime
-      })
-      console.log('[predict-tags] Keylogs in time window:', keylogs.length)
-    } catch (e) {
-      console.error('[predict-tags] Failed to fetch keylogs:', e)
-      return NextResponse.json({ error: 'Keylog server not reachable at localhost:8765', predictions: [] }, { status: 200 })
+    const keylogResult = await getKeylogsForTimeblock(datetime)
+    const keylogs = 'error' in keylogResult ? [] : keylogResult.keylogs
+    const keylogText = 'error' in keylogResult ? '' : keylogResult.keylogText
+    if ('error' in keylogResult) {
+      console.log('[predict-tags] No keylogs found for the past 15 minutes, continuing with screenshot summaries only')
     }
-    if (keylogs.length === 0) {
-      console.log('[predict-tags] No keylogs found for the past 15 minutes')
-      return NextResponse.json({ error: 'No keylogs found for the past 15 minutes', predictions: [] }, { status: 200 })
+    const now = new Date()
+    const fifteenMinutesAgo = new Date(now.getTime() - 15 * 60 * 1000)
+    let screenshotSummariesText = ''
+    try {
+      const screenshotsRes = await fetch('http://localhost:8765/today/screenshots/summaries')
+      if (screenshotsRes.ok) {
+        const responseText = await screenshotsRes.text()
+        if (responseText.trim()) {
+          const allSummaries = parseScreenshotSummaries(responseText)
+          const recentSummaries = allSummaries.filter((entry) => {
+            const entryTime = new Date(entry.timestamp)
+            return entryTime >= fifteenMinutesAgo && entryTime <= now
+          })
+          if (recentSummaries.length > 0) {
+            screenshotSummariesText = recentSummaries.map(s => `[${s.timestamp}] ${s.summary}`).join('\n')
+          }
+        }
+      }
+    } catch {
+      // Screenshot summaries are optional, continue without them
     }
     // 2. Get all tags
     console.log('[predict-tags] Fetching tags from database...')
@@ -92,7 +64,6 @@ export async function POST(request: NextRequest) {
     }
     console.log('[predict-tags] Tag types:', Object.keys(tagsByType).join(', '))
     // 3. Make request to Claude Opus 4.5 via OpenRouter
-    const keylogText = keylogs.map(k => `[${k.timestamp}]${k.app ? ` (${k.app})` : ''} ${k.text}`).join('\n')
     const tagTypesDescription = Object.entries(tagsByType).map(([type, tagList]) => {
       const names = tagList.map(t => t.name).join(', ')
       return `- ${type}: ${names}`
@@ -101,7 +72,7 @@ export async function POST(request: NextRequest) {
 
 Here are the keylogs:
 ${keylogText}
-
+${screenshotSummariesText ? `\nHere are screenshot summaries:\n${screenshotSummariesText}\n` : ''}
 Here are the available tag types and their possible values:
 ${tagTypesDescription}
 
@@ -164,7 +135,7 @@ Your response must be valid JSON and nothing else.`
       console.log('[predict-tags] Sending request to LLM for aiNotes (anthropic/claude-opus-4.5)...')
       const aiNotesCompletion = await client.chat.completions.create({
         model: 'anthropic/claude-opus-4.5',
-        messages: [{ role: 'user', content: getAiNotesPrompt({ keylogText }) }],
+        messages: [{ role: 'user', content: getAiNotesPrompt({ keylogText, screenshotSummariesText }) }],
         max_tokens: 800,
       })
       const aiNotesMarkdown = aiNotesCompletion.choices[0]?.message?.content || null

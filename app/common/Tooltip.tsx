@@ -1,6 +1,7 @@
 "use client"
 
-import { ReactElement } from "react"
+import { ReactElement, useEffect, useLayoutEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
 
 type Placement =
   | 'top'
@@ -37,62 +38,108 @@ const MyTooltip = ({
   noMargin?: boolean;
   inlineBlock?: boolean;
 }) => {
+  const wrapperRef = useRef<HTMLSpanElement | null>(null)
+  const tooltipRef = useRef<HTMLDivElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+  const [position, setPosition] = useState<{ top: number, left: number }>({ top: 0, left: 0 })
+  const handleMouseEnter = () => setIsVisible(true)
+  const handleMouseLeave = (e: React.MouseEvent) => {
+    if (interactive && tooltipRef.current && e.relatedTarget instanceof Node && tooltipRef.current.contains(e.relatedTarget)) return
+    setIsVisible(false)
+  }
+  const handleTooltipMouseLeave = (e: React.MouseEvent) => {
+    if (interactive && wrapperRef.current && e.relatedTarget instanceof Node && wrapperRef.current.contains(e.relatedTarget)) return
+    setIsVisible(false)
+  }
 
-  const positionClasses = placement.includes('top')
-    ? 'bottom-full'
-    : placement.includes('bottom')
-      ? 'top-full'
-      : placement.includes('left')
-        ? 'right-full top-1/2 -translate-y-1/2'
-        : placement.includes('right')
-          ? 'left-full top-1/2 -translate-y-1/2'
-          : ''
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
-  const alignClasses = placement.includes('start')
-    ? 'left-0'
-    : placement.includes('end')
-      ? 'right-0'
-      : placement.includes('left') || placement.includes('right')
-        ? ''
-        : 'left-1/2 -translate-x-1/2'
-
-  const gapClasses = noMargin
-    ? ''
-    : placement.includes('top')
-      ? 'mb-2'
-      : placement.includes('bottom')
-        ? 'mt-2'
-        : placement.includes('left')
-          ? 'mr-2'
-          : placement.includes('right')
-            ? 'ml-2'
-            : ''
-
-  const visibilityClasses = interactive ? 'group-hover:visible group-focus-visible:visible' : 'group-hover:visible'
+  useLayoutEffect(() => {
+    if (!isVisible) return
+    const wrapper = wrapperRef.current
+    const tooltip = tooltipRef.current
+    if (!wrapper || !tooltip) return
+    const rect = wrapper.getBoundingClientRect()
+    const tipRect = tooltip.getBoundingClientRect()
+    const margin = noMargin ? 0 : 8
+    let top = 0
+    let left = 0
+    if (placement === 'top') {
+      top = rect.top - tipRect.height - margin
+      left = rect.left + rect.width / 2 - tipRect.width / 2
+    } else if (placement === 'top-start') {
+      top = rect.top - tipRect.height - margin
+      left = rect.left
+    } else if (placement === 'top-end') {
+      top = rect.top - tipRect.height - margin
+      left = rect.right - tipRect.width
+    } else if (placement === 'bottom') {
+      top = rect.bottom + margin
+      left = rect.left + rect.width / 2 - tipRect.width / 2
+    } else if (placement === 'bottom-start') {
+      top = rect.bottom + margin
+      left = rect.left
+    } else if (placement === 'bottom-end') {
+      top = rect.bottom + margin
+      left = rect.right - tipRect.width
+    } else if (placement === 'left') {
+      top = rect.top + rect.height / 2 - tipRect.height / 2
+      left = rect.left - tipRect.width - margin
+    } else if (placement === 'left-start') {
+      top = rect.top
+      left = rect.left - tipRect.width - margin
+    } else if (placement === 'left-end') {
+      top = rect.bottom - tipRect.height
+      left = rect.left - tipRect.width - margin
+    } else if (placement === 'right') {
+      top = rect.top + rect.height / 2 - tipRect.height / 2
+      left = rect.right + margin
+    } else if (placement === 'right-start') {
+      top = rect.top
+      left = rect.right + margin
+    } else if (placement === 'right-end') {
+      top = rect.bottom - tipRect.height
+      left = rect.right + margin
+    }
+    setPosition({ top, left })
+  }, [isVisible, placement, noMargin, content, maxWidth])
 
   return (
     <span
       className={`relative ${inlineBlock ? 'inline-block' : 'inline'} group focus:outline-none ${wrapperClassName}`}
       tabIndex={0}
+      ref={wrapperRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocus={() => setIsVisible(true)}
+      onBlur={() => setIsVisible(false)}
     >
       {children}
-      <div
-        className={`
-          absolute z-50 invisible ${visibilityClasses}
-          ${positionClasses}
-          ${alignClasses}
-          ${gapClasses}
-          ${noBox ? 'bg-transparent' : 'bg-black/65 text-white rounded-lg p-2'}
-          text-sm
-          ${interactive ? '' : 'pointer-events-none'}
-        `}
-        style={{
-          maxWidth: maxWidth,
-          width: 'max-content'
-        }}
-      >
-        {content}
-      </div>
+      {isMounted && isVisible ? createPortal(
+        <div
+          ref={tooltipRef}
+          onMouseEnter={interactive ? handleMouseEnter : undefined}
+          onMouseLeave={interactive ? handleTooltipMouseLeave : undefined}
+          className={`
+            fixed z-50
+            ${noBox ? 'bg-transparent' : 'bg-black/65 text-white rounded-lg p-2'}
+            text-sm
+            ${interactive ? '' : 'pointer-events-none'}
+          `}
+          style={{
+            maxWidth: maxWidth,
+            width: 'max-content',
+            top: position.top,
+            left: position.left
+          }}
+        >
+          {content}
+        </div>,
+        document.body
+      ) : null}
     </span>
   )
 }

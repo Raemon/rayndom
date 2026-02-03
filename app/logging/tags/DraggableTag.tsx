@@ -69,7 +69,7 @@ const DraggableTag = ({ tag, parentTag, ti, onApproveTagInstance, onPatchTagInst
     </span>
   )
   if (tooltipContent) {
-    return <Tooltip content={tooltipContent} placement="top-start">{tagElement}</Tooltip>
+    return <Tooltip content={tooltipContent} placement="bottom-start">{tagElement}</Tooltip>
   }
   return tagElement
 }

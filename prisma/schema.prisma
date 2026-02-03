@@ -60,6 +60,7 @@ model TagInstance {
   antiUseful   Boolean  @default(false) @map("anti_useful")
   createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
 
+  @@unique([tagId, datetime])
   @@map("tag_instances")
 }
 

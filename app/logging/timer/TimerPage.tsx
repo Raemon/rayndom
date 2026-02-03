@@ -10,23 +10,14 @@ import NotesInput from '../editor/NotesInput'
 import type { Timeblock } from '../types'
 import Checklist, { type ChecklistRef } from '../checklist/Checklist'
 import Timer from './Timer'
-import PredictTagsButton, { type PredictTagsButtonRef } from '../tags/PredictTagsButton'
 import { getCurrentSection } from '../checklist/sectionUtils'
+import RunAiCommandButton from '../zen/RunAiCommandButton'
+import { runAiCommand, defaultRunAiPrompt } from '../shared/runAiCommand'
 
 const TimerPageInner = () => {
   const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
-  const [isPredicting, setIsPredicting] = useState(false)
   const checklistRef = useRef<ChecklistRef>(null)
-  const predictTagsButtonRef = useRef<PredictTagsButtonRef>(null)
   const handleTimerComplete = useCallback(() => {}, [])
-  const handlePredictTags = useCallback(() => {
-    if (!predictTagsButtonRef.current) {
-      console.warn('[TimerPage] handlePredictTags called but predictTagsButtonRef.current is null')
-      return
-    }
-    console.log('[TimerPage] handlePredictTags calling predictTags')
-    predictTagsButtonRef.current.predictTags()
-  }, [])
   const { focusedNoteKeys } = useFocusedNotes()
 
   const [currentSection, setCurrentSection] = useState(getCurrentSection())
@@ -43,6 +34,11 @@ const TimerPageInner = () => {
   const endIso = endDate.toISOString()
   const { timeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused, load: loadTimeblocks } = useTimeblocks({ start: startIso, end: endIso })
   const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
+  const handleRunAiCommand = useCallback(async (datetime: string) => {
+    const { tagsResult, questionsResult } = await runAiCommand({ datetime, prompt: defaultRunAiPrompt })
+    if (tagsResult?.createdInstances && tagsResult.createdInstances.length > 0) loadTagInstances()
+    if (questionsResult?.aiNotes !== undefined) loadTimeblocks()
+  }, [loadTagInstances, loadTimeblocks])
 
   const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
   const currentBlockDatetime = floorTo15(new Date()).toISOString()
@@ -68,12 +64,12 @@ const TimerPageInner = () => {
       <div className="mb-4">
         <Timer
           onTimerComplete={handleTimerComplete}
-          onPredictTags={handlePredictTags}
+          onRunAiCommand={handleRunAiCommand}
           checklistRef={checklistRef}
-          isPredicting={isPredicting}
+          isPredicting={false}
         />
         <div className="flex items-center gap-2 mb-2">
-          <PredictTagsButton ref={predictTagsButtonRef} loadTagInstances={loadTagInstances} loadTimeblocks={loadTimeblocks} onIsPredictingChange={setIsPredicting} />
+          <RunAiCommandButton datetime={currentBlockDatetime} onComplete={() => { loadTagInstances(); loadTimeblocks() }} />
         </div>
         <NotesInput
           noteKey={currentTimeblock ? `${currentTimeblock.id}:aiNotes` : undefined}

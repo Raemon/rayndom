@@ -1,258 +1,108 @@
 'use client'
-import { useEffect, useState, useRef } from 'react'
-import type { ChecklistRef } from '../checklist/Checklist'
-
-type AlarmSound = {
-  name: string
-  play: (audioContext: AudioContext) => void
-}
-
-const playBell = (audioContext: AudioContext) => {
-  const oscillator = audioContext.createOscillator()
-  const gainNode = audioContext.createGain()
-  oscillator.connect(gainNode)
-  gainNode.connect(audioContext.destination)
-  oscillator.frequency.value = 800
-  oscillator.type = 'sine'
-  gainNode.gain.setValueAtTime(0.3, audioContext.currentTime)
-  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5)
-  oscillator.start(audioContext.currentTime)
-  oscillator.stop(audioContext.currentTime + 0.5)
-}
-
-const playChime = (audioContext: AudioContext) => {
-  const frequencies = [523.25, 659.25, 783.99]
-  frequencies.forEach((freq, index) => {
-    const oscillator = audioContext.createOscillator()
-    const gainNode = audioContext.createGain()
-    oscillator.connect(gainNode)
-    gainNode.connect(audioContext.destination)
-    oscillator.frequency.value = freq
-    oscillator.type = 'sine'
-    gainNode.gain.setValueAtTime(0.2, audioContext.currentTime + index * 0.1)
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + index * 0.1 + 0.6)
-    oscillator.start(audioContext.currentTime + index * 0.1)
-    oscillator.stop(audioContext.currentTime + index * 0.1 + 0.6)
-  })
-}
-
-const playBeep = (audioContext: AudioContext) => {
-  const oscillator = audioContext.createOscillator()
-  const gainNode = audioContext.createGain()
-  oscillator.connect(gainNode)
-  gainNode.connect(audioContext.destination)
-  oscillator.frequency.value = 1000
-  oscillator.type = 'square'
-  gainNode.gain.setValueAtTime(0.3, audioContext.currentTime)
-  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3)
-  oscillator.start(audioContext.currentTime)
-  oscillator.stop(audioContext.currentTime + 0.3)
-}
-
-const ALARM_SOUNDS: AlarmSound[] = [
-  { name: 'Bell', play: playBell },
-  { name: 'Chime', play: playChime },
-  { name: 'Beep', play: playBeep },
-]
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 type TimerProps = {
-  onTimerComplete: () => void
-  onPredictTags: () => void
-  checklistRef: React.RefObject<ChecklistRef | null>
+  onTimerComplete?: () => void
+  onPredictTags?: () => void
+  onRunAiCommand?: (datetime: string) => Promise<void>
+  checklistRef: { current: { resetAllItems: () => void, refreshItems: () => void } | null }
   isPredicting: boolean
 }
 
-const Timer = ({ onTimerComplete, onPredictTags, checklistRef, isPredicting }: TimerProps) => {
-  const [secondsRemaining, setSecondsRemaining] = useState(0)
-  const [selectedSoundIndex, setSelectedSoundIndex] = useState(0)
-  const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default')
-  const [isAlarming, setIsAlarming] = useState(false)
-  const audioContextRef = useRef<AudioContext | null>(null)
-  const selectedSoundIndexRef = useRef(0)
-  const prevSecondsRef = useRef<number | null>(null)
-  const lastPredictedBlockRef = useRef<string | null>(null)
-  const flashIntervalRef = useRef<NodeJS.Timeout | null>(null)
+const getNextQuarterHourMs = (now: Date) => {
+  const nextQuarterMinutes = Math.floor(now.getMinutes() / 15) * 15 + 15
+  const next = new Date(now)
+  if (nextQuarterMinutes >= 60) {
+    next.setHours(now.getHours() + 1, 0, 0, 0)
+  } else {
+    next.setMinutes(nextQuarterMinutes, 0, 0)
+  }
+  return next.getTime()
+}
 
-  const getNext15MinuteMark = () => {
-    const now = new Date()
-    const minutes = now.getMinutes()
-    const seconds = now.getSeconds()
-    const milliseconds = now.getMilliseconds()
-    const totalSecondsIntoHour = minutes * 60 + seconds + milliseconds / 1000 + 0.001
-    const nextMarkMinutes = Math.ceil(totalSecondsIntoHour / 900) * 15
-    const nextMark = new Date(now)
-    if (nextMarkMinutes >= 60) {
-      nextMark.setHours(nextMark.getHours() + 1)
-      nextMark.setMinutes(0)
-    } else {
-      nextMark.setMinutes(nextMarkMinutes)
+const formatRemaining = (remainingMs: number) => {
+  const totalSeconds = Math.max(0, Math.ceil(remainingMs / 1000))
+  const minutes = Math.floor(totalSeconds / 60).toString().padStart(2, '0')
+  const seconds = (totalSeconds % 60).toString().padStart(2, '0')
+  return `${minutes}:${seconds}`
+}
+
+const playBing = () => {
+  try {
+    const AudioContextClass = window.AudioContext || (window as typeof window & { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+    const context = new AudioContextClass()
+    const oscillator = context.createOscillator()
+    const gainNode = context.createGain()
+    oscillator.type = 'sine'
+    oscillator.frequency.value = 880
+    gainNode.gain.setValueAtTime(0.0001, context.currentTime)
+    gainNode.gain.exponentialRampToValueAtTime(0.25, context.currentTime + 0.01)
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.3)
+    oscillator.connect(gainNode)
+    gainNode.connect(context.destination)
+    oscillator.start()
+    oscillator.stop(context.currentTime + 0.35)
+    oscillator.onended = () => context.close()
+  } catch (e) {
+    console.warn('[Timer] Failed to play bing:', e)
+  }
+}
+
+const Timer = (props: TimerProps) => {
+  const { onTimerComplete, isPredicting, onRunAiCommand } = props
+  const [remainingMs, setRemainingMs] = useState(0)
+  const nextMarkMsRef = useRef<number | null>(null)
+  const predictMarkMsRef = useRef<number | null>(null)
+  const lastPredictMarkRef = useRef<number | null>(null)
+  const lastBingMarkRef = useRef<number | null>(null)
+  const isRunningRef = useRef(false)
+
+  const runAiCommand = useCallback(async (datetime: string) => {
+    if (isPredicting) return
+    if (!onRunAiCommand) return
+    if (isRunningRef.current) return
+    isRunningRef.current = true
+    try {
+      await onRunAiCommand(datetime)
+    } catch (e) {
+      console.error('[Timer] Failed to run AI command:', e)
+    } finally {
+      isRunningRef.current = false
     }
-    nextMark.setSeconds(0)
-    nextMark.setMilliseconds(0)
-    const diffMs = nextMark.getTime() - now.getTime()
-    return Math.max(0, Math.floor(diffMs / 1000))
-  }
-
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return `${mins}:${secs.toString().padStart(2, '0')}`
-  }
+  }, [isPredicting, onRunAiCommand])
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
-    if ('Notification' in window) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setNotificationPermission(Notification.permission)
-    }
-    return () => {
-      if (audioContextRef.current) {
-        audioContextRef.current.close()
+    const tick = () => {
+      const nowMs = Date.now()
+      if (!nextMarkMsRef.current || nowMs >= nextMarkMsRef.current) {
+        const nextMarkMs = getNextQuarterHourMs(new Date(nowMs))
+        nextMarkMsRef.current = nextMarkMs
+        predictMarkMsRef.current = nextMarkMs - 90 * 1000
       }
-    }
-  }, [])
-
-  const requestNotificationPermission = async () => {
-    if ('Notification' in window && Notification.permission === 'default') {
-      const permission = await Notification.requestPermission()
-      setNotificationPermission(permission)
-    }
-  }
-
-  const showNotification = () => {
-    if ('Notification' in window && Notification.permission === 'granted') {
-      const notification = new Notification('15-Minute Timer', {
-        body: 'Time is up!',
-        requireInteraction: true,
-      })
-      notification.onclick = () => {
-        window.focus()
-        notification.close()
-        stopAlarming()
+      const nextMarkMs = nextMarkMsRef.current as number
+      const predictMarkMs = predictMarkMsRef.current as number
+      if (nowMs >= predictMarkMs && lastPredictMarkRef.current !== nextMarkMs) {
+        lastPredictMarkRef.current = nextMarkMs
+        runAiCommand(new Date(nextMarkMs).toISOString())
       }
-    }
-  }
-
-  const startAlarming = () => {
-    if (flashIntervalRef.current) {
-      clearInterval(flashIntervalRef.current)
-    }
-    setIsAlarming(true)
-    let flashState = true
-    flashIntervalRef.current = setInterval(() => {
-      document.title = flashState ? '⏰ TIME UP!' : '⏰ -------'
-      flashState = !flashState
-    }, 500)
-  }
-
-  const stopAlarming = () => {
-    setIsAlarming(false)
-    if (flashIntervalRef.current) {
-      clearInterval(flashIntervalRef.current)
-      flashIntervalRef.current = null
-    }
-    document.title = formatTime(getNext15MinuteMark())
-  }
-
-  const playAlarm = () => {
-    if (audioContextRef.current) {
-      const context = audioContextRef.current
-      if (context.state === 'suspended') {
-        context.resume()
+      if (nowMs >= nextMarkMs && lastBingMarkRef.current !== nextMarkMs) {
+        lastBingMarkRef.current = nextMarkMs
+        playBing()
+        onTimerComplete?.()
+        const nextNextMarkMs = getNextQuarterHourMs(new Date(nowMs + 1000))
+        nextMarkMsRef.current = nextNextMarkMs
+        predictMarkMsRef.current = nextNextMarkMs - 90 * 1000
       }
-      ALARM_SOUNDS[selectedSoundIndexRef.current].play(context)
+      setRemainingMs(Math.max(0, (nextMarkMsRef.current as number) - nowMs))
     }
-  }
-
-  useEffect(() => {
-    selectedSoundIndexRef.current = selectedSoundIndex
-  }, [selectedSoundIndex])
-
-  useEffect(() => {
-    const initial = getNext15MinuteMark()
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setSecondsRemaining(initial)
-    prevSecondsRef.current = initial
-    const interval = setInterval(() => {
-      const remaining = getNext15MinuteMark()
-      const prev = prevSecondsRef.current
-      // Detect when we've crossed the 15-minute mark:
-      // - remaining === 0: we just hit the mark
-      // - prev <= 5 && remaining > 60: we jumped over (e.g. tab was backgrounded)
-      // Require prev > 0 to prevent re-triggering after hitting 0
-      const shouldAlarm = prev !== null && prev > 0 && (remaining === 0 || (prev <= 5 && remaining > 60))
-      // Trigger tag prediction 90 seconds before the timer completes
-      // Calculate which block we're about to enter (the next 15-minute mark)
-      const now = new Date()
-      const nextBlockTime = new Date(now.getTime() + remaining * 1000)
-      // CRITICAL: Round to seconds to prevent millisecond drift creating different keys each tick
-      nextBlockTime.setMilliseconds(0)
-      const nextBlockKey = nextBlockTime.toISOString()
-      // Also handle jumps over the 90-second threshold (e.g., from tab backgrounding)
-      const jumpedInto90SecondWindow = prev !== null && prev > 90 && remaining <= 90 && remaining > 0
-      const isIn90SecondWindow = remaining <= 90 && remaining > 0
-      const notYetPredictedForThisBlock = lastPredictedBlockRef.current !== nextBlockKey
-      const shouldPredict = (isIn90SecondWindow || jumpedInto90SecondWindow) && notYetPredictedForThisBlock
-      if (shouldPredict) {
-        console.log('[Timer] Triggering prediction for block:', nextBlockKey, 'remaining:', remaining, 'prev:', prev)
-        lastPredictedBlockRef.current = nextBlockKey
-        onPredictTags()
-      }
-      if (shouldAlarm) {
-        playAlarm()
-        showNotification()
-        startAlarming()
-        // Reset all items to unchecked
-        checklistRef.current?.resetAllItems()
-        // Play alarm multiple times to be more noticeable
-        setTimeout(playAlarm, 500)
-        setTimeout(playAlarm, 1000)
-        setTimeout(playAlarm, 2000)
-        setTimeout(playAlarm, 3000)
-        onTimerComplete()
-      }
-      prevSecondsRef.current = remaining
-      setSecondsRemaining(remaining)
-    }, 1000)
+    tick()
+    const interval = setInterval(tick, 500)
     return () => clearInterval(interval)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onPredictTags, onTimerComplete])
-
-  useEffect(() => {
-    if (!isAlarming) {
-      document.title = formatTime(secondsRemaining)
-    }
-  }, [secondsRemaining, isAlarming])
-
-  useEffect(() => {
-    playAlarm()
-  }, [selectedSoundIndex])
+  }, [onTimerComplete, runAiCommand])
 
   return (
-    <div className="mb-4 flex items-center gap-8" onClick={isAlarming ? stopAlarming : undefined}>
-      <div className="text-2xl font-bold mb-2">
-        {formatTime(secondsRemaining)}
-      </div>
-      <div className="flex items-center gap-2 mb-2">
-        <select
-          value={selectedSoundIndex}
-          onChange={(e) => setSelectedSoundIndex(Number(e.target.value))}
-          className="px-2 py-1 bg-transparent! outline-none text-gray-400!"
-        >
-          {ALARM_SOUNDS.map((sound, index) => (
-            <option key={index} value={index} className="bg-transparent!">
-              {sound.name}
-            </option>
-          ))}
-        </select>
-        {notificationPermission === 'default' && (
-          <button onClick={requestNotificationPermission} className="px-2 py-1 bg-blue-100">
-            Enable Notifications
-          </button>
-        )}
-        {notificationPermission === 'denied' && <span className="text-red-600">Notifications blocked</span>}
-      </div>
+    <div className="text-xs text-gray-600">
+      Next mark in {formatRemaining(remainingMs)}
     </div>
   )
 }

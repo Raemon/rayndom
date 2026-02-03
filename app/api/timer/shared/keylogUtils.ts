@@ -1,4 +1,19 @@
 type KeylogEntry = { timestamp: string, text: string, app?: string }
+export type ScreenshotSummary = { timestamp: string, summary: string }
+
+export const parseScreenshotSummaries = (text: string): ScreenshotSummary[] => {
+  const entries: ScreenshotSummary[] = []
+  const lines = text.split('\n')
+  for (const line of lines) {
+    if (!line.trim()) continue
+    const match = line.match(/^\[(\d{4}-\d{2}-\d{2}[T ]\d{2}[:.]\d{2}[:.]\d{2})\]\s*(.*)$/)
+    if (match) {
+      const [, timestamp, summary] = match
+      entries.push({ timestamp: timestamp.replace(/ /, 'T').replace(/\./g, ':'), summary })
+    }
+  }
+  return entries
+}
 
 export const parseKeylogText = (text: string): KeylogEntry[] => {
   const entries: KeylogEntry[] = []
@@ -19,7 +34,17 @@ export const parseKeylogText = (text: string): KeylogEntry[] => {
 
 export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylogs: KeylogEntry[], keylogText: string } | { error: string }> => {
   const blockDatetime = new Date(datetime)
-  const fifteenMinutesAgo = new Date(blockDatetime.getTime() - 15 * 60 * 1000)
+  const getEntryTime = (timestamp: string) => {
+    const match = timestamp.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/)
+    if (match) {
+      const [, year, month, day, hour, minute, second] = match
+      return new Date(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute), Number(second))
+    }
+    return new Date(timestamp)
+  }
+  const now = new Date()
+  const effectiveEndDatetime = now
+  const fifteenMinutesAgo = new Date(now.getTime() - 15 * 60 * 1000)
   let keylogs: KeylogEntry[] = []
   try {
     const keylogRes = await fetch('http://localhost:8765/today')
@@ -28,18 +53,18 @@ export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylog
     }
     const responseText = await keylogRes.text()
     if (!responseText.trim()) {
-      return { error: 'Keylog server returned empty response' }
+      return { keylogs: [], keylogText: '' }
     }
     const allKeylogs = parseKeylogText(responseText)
     keylogs = allKeylogs.filter((entry: KeylogEntry) => {
-      const entryTime = new Date(entry.timestamp)
-      return entryTime >= fifteenMinutesAgo && entryTime <= blockDatetime
+      const entryTime = getEntryTime(entry.timestamp)
+      return entryTime >= fifteenMinutesAgo && entryTime <= effectiveEndDatetime
     })
   } catch (e) {
     return { error: 'Keylog server not reachable at localhost:8765' }
   }
   if (keylogs.length === 0) {
-    return { error: 'No keylogs found for the past 15 minutes' }
+    return { keylogs: [], keylogText: '' }
   }
   const keylogText = keylogs.map(k => `[${k.timestamp}]${k.app ? ` (${k.app})` : ''} ${k.text}`).join('\n')
   return { keylogs, keylogText }
