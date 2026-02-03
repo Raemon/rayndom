@@ -69,3 +69,27 @@ export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylog
   const keylogText = keylogs.map(k => `[${k.timestamp}]${k.app ? ` (${k.app})` : ''} ${k.text}`).join('\n')
   return { keylogs, keylogText }
 }
+
+export const getScreenshotSummariesForTimeblock = async (datetime: string): Promise<string> => {
+  const now = new Date()
+  const fifteenMinutesAgo = new Date(now.getTime() - 15 * 60 * 1000)
+  try {
+    const screenshotsRes = await fetch('http://localhost:8765/today/screenshots/summaries')
+    if (screenshotsRes.ok) {
+      const responseText = await screenshotsRes.text()
+      if (responseText.trim()) {
+        const allSummaries = parseScreenshotSummaries(responseText)
+        const recentSummaries = allSummaries.filter((entry) => {
+          const entryTime = new Date(entry.timestamp)
+          return entryTime >= fifteenMinutesAgo && entryTime <= now
+        })
+        if (recentSummaries.length > 0) {
+          return recentSummaries.map(s => `[${s.timestamp}] ${s.summary}`).join('\n')
+        }
+      }
+    }
+  } catch {
+    // Screenshot summaries are optional, continue without them
+  }
+  return ''
+}

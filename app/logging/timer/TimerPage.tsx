@@ -17,7 +17,9 @@ import { runAiCommand, defaultRunAiPrompt } from '../shared/runAiCommand'
 const TimerPageInner = () => {
   const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
   const checklistRef = useRef<ChecklistRef>(null)
-  const handleTimerComplete = useCallback(() => {}, [])
+  const handleTimerComplete = useCallback(() => {
+    checklistRef.current?.resetAllItems()
+  }, [])
   const { focusedNoteKeys } = useFocusedNotes()
 
   const [currentSection, setCurrentSection] = useState(getCurrentSection())

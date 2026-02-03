@@ -40,11 +40,11 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
     resetAllItems: () => {
       if (orientingOnly) return
       checklistItemsRef.current.forEach(item => {
-        if (item.completed) {
+        if (!item.orientingBlock && item.completed) {
           fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: item.id, completed: false }) })
         }
       })
-      setChecklistItems(items => items.map(item => ({ ...item, completed: false })))
+      setChecklistItems(items => items.map(item => (!item.orientingBlock ? { ...item, completed: false } : item)))
     },
     refreshItems
   }))

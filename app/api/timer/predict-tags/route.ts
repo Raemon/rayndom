@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import OpenAI from 'openai'
 import { getAiNotesPrompt } from './aiNotesPrompt'
-import { getKeylogsForTimeblock } from '../shared/keylogUtils'
-import { parseScreenshotSummaries } from '../shared/keylogUtils'
+import { getKeylogsForTimeblock, getScreenshotSummariesForTimeblock } from '../shared/keylogUtils'
 import { marked } from 'marked'
 
 const getRequiredEnv = (key: string) => {
@@ -30,27 +29,7 @@ export async function POST(request: NextRequest) {
     if ('error' in keylogResult) {
       console.log('[predict-tags] No keylogs found for the past 15 minutes, continuing with screenshot summaries only')
     }
-    const now = new Date()
-    const fifteenMinutesAgo = new Date(now.getTime() - 15 * 60 * 1000)
-    let screenshotSummariesText = ''
-    try {
-      const screenshotsRes = await fetch('http://localhost:8765/today/screenshots/summaries')
-      if (screenshotsRes.ok) {
-        const responseText = await screenshotsRes.text()
-        if (responseText.trim()) {
-          const allSummaries = parseScreenshotSummaries(responseText)
-          const recentSummaries = allSummaries.filter((entry) => {
-            const entryTime = new Date(entry.timestamp)
-            return entryTime >= fifteenMinutesAgo && entryTime <= now
-          })
-          if (recentSummaries.length > 0) {
-            screenshotSummariesText = recentSummaries.map(s => `[${s.timestamp}] ${s.summary}`).join('\n')
-          }
-        }
-      }
-    } catch {
-      // Screenshot summaries are optional, continue without them
-    }
+    const screenshotSummariesText = await getScreenshotSummariesForTimeblock(datetime)
     // 2. Get all tags
     console.log('[predict-tags] Fetching tags from database...')
     const tags = await prisma.tag.findMany({ orderBy: [{ type: 'asc' }, { name: 'asc' }] })
