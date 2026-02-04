@@ -1,5 +1,5 @@
 'use client'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import groupBy from 'lodash/groupBy'
 import countBy from 'lodash/countBy'
 import orderBy from 'lodash/orderBy'
@@ -10,6 +10,7 @@ import type { Tag } from '../types'
 
 const TagPageInner = ({}:{}) => {
   const { tags } = useTags()
+  const [showDescriptions, setShowDescriptions] = useState(false)
   const startIso = new Date(2000, 0, 1).toISOString()
   const endIso = new Date(2100, 0, 1).toISOString()
   const { tagInstances } = useTagInstances({ start: startIso, end: endIso })
@@ -25,13 +26,17 @@ const TagPageInner = ({}:{}) => {
 
   return (
     <div className="p-4 text-sm">
+      <label className="flex items-center gap-2 mb-4 text-white/70 text-xs cursor-pointer">
+        <input type="checkbox" checked={showDescriptions} onChange={(e) => setShowDescriptions(e.target.checked)} />
+        Show descriptions
+      </label>
       <div className="flex gap-6 items-start">
         {typeNames.map(typeName => (
           <div key={typeName} className="flex-1 min-w-0">
             <div className="text-lg text-white mb-2">{typeName}</div>
             <div className="flex flex-col gap-1">
               {sortedTagsByType[typeName]?.map(({ tag, count }:{ tag: Tag, count: number }) => (
-                <TagListItem key={tag.id} tag={tag} instanceCount={count} readonly />
+                <TagListItem key={tag.id} tag={tag} instanceCount={count} showDescription={showDescriptions} />
               ))}
             </div>
           </div>

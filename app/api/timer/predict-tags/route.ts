@@ -43,16 +43,16 @@ export async function POST(request: NextRequest) {
     console.log('[predict-tags] Found', tags.length, 'tags')
     if (tags.length === 0) return NextResponse.json({ error: 'No tags defined', predictions: [] }, { status: 200 })
     // Group tags by type
-    const tagsByType: Record<string, { id: number, name: string }[]> = {}
+    const tagsByType: Record<string, { id: number, name: string, description: string | null }[]> = {}
     for (const tag of tags) {
       if (!tagsByType[tag.type]) tagsByType[tag.type] = []
-      tagsByType[tag.type].push({ id: tag.id, name: tag.name })
+      tagsByType[tag.type].push({ id: tag.id, name: tag.name, description: tag.description })
     }
     console.log('[predict-tags] Tag types:', Object.keys(tagsByType).join(', '))
     // 3. Make request to Claude Opus 4.5 via OpenRouter
     const tagTypesDescription = Object.entries(tagsByType).map(([type, tagList]) => {
-      const names = tagList.map(t => t.name).join(', ')
-      return `- ${type}: ${names}`
+      const tagDescriptions = tagList.map(t => t.description ? `${t.name} (${t.description})` : t.name).join(', ')
+      return `- ${type}: ${tagDescriptions}`
     }).join('\n')
     const prompt = getPredictTagsPrompt({ keylogText, screenshotSummariesText, tagTypesDescription })
 

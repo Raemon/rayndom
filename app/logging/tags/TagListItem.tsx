@@ -5,7 +5,7 @@ import { getTagColor, wouldCreateCycle, getParentTag } from './tagUtils'
 import TagEditor from './TagEditor'
 import { useTags } from './TagsContext'
 
-const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount: number, readonly?: boolean }) => {
+const TagListItem = ({ tag, instanceCount, readonly, showDescription }:{ tag: Tag, instanceCount: number, readonly?: boolean, showDescription?: boolean }) => {
   const { updateTag, deleteTag, tags } = useTags()
   const [isEditing, setIsEditing] = useState(false)
   const [dragOver, setDragOver] = useState(false)
@@ -18,8 +18,9 @@ const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount:
     return (
       <TagEditor
         tag={tag}
-        onSave={async ({ id, name, type }) => { await updateTag({ id, name, type }); setIsEditing(false) }}
-        onDelete={async ({ id }) => { await deleteTag({ id }); setIsEditing(false) }}
+        onSave={({ id, name, type, description }) => { setIsEditing(false); updateTag({ id, name, type, description }) }}
+        onDelete={({ id }) => { setIsEditing(false); deleteTag({ id }) }}
+        onCancel={() => setIsEditing(false)}
       />
     )
   }
@@ -78,6 +79,7 @@ const TagListItem = ({ tag, instanceCount, readonly }:{ tag: Tag, instanceCount:
           const existingSuggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
           return <div key={suggestedTag.id} className="text-[9px] opacity-100 px-1 flex items-center gap-1"><span>→</span>{suggestedTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, suggestedTagIds: existingSuggestedTagIds.filter(id => id !== suggestedTag.id) }) }}>×</button></div>
         })}
+        {showDescription && tag.description && <div className="text-[11px] opacity-70 px-1 text-white max-w-48">{tag.description}</div>}
       </div>
     </div>
   )
