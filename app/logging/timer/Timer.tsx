@@ -74,21 +74,26 @@ const Timer = (props: TimerProps) => {
   useEffect(() => {
     const tick = () => {
       const nowMs = Date.now()
-      if (!nextMarkMsRef.current || nowMs >= nextMarkMsRef.current) {
-        const nextMarkMs = getNextQuarterHourMs(new Date(nowMs))
-        nextMarkMsRef.current = nextMarkMs
-        predictMarkMsRef.current = nextMarkMs - 90 * 1000
+      // Initialize refs if not set
+      if (!nextMarkMsRef.current) {
+        nextMarkMsRef.current = getNextQuarterHourMs(new Date(nowMs))
+        predictMarkMsRef.current = nextMarkMsRef.current - 90 * 1000
       }
       const nextMarkMs = nextMarkMsRef.current as number
       const predictMarkMs = predictMarkMsRef.current as number
+      // Check predict trigger (90s before quarter hour)
       if (nowMs >= predictMarkMs && lastPredictMarkRef.current !== nextMarkMs) {
         lastPredictMarkRef.current = nextMarkMs
         runAiCommand(new Date(nextMarkMs).toISOString())
       }
+      // Check bing trigger (at quarter hour)
       if (nowMs >= nextMarkMs && lastBingMarkRef.current !== nextMarkMs) {
         lastBingMarkRef.current = nextMarkMs
         playBing()
         onTimerComplete?.()
+      }
+      // Advance to next quarter hour if we've passed the current one
+      if (nowMs >= nextMarkMs) {
         const nextNextMarkMs = getNextQuarterHourMs(new Date(nowMs + 1000))
         nextMarkMsRef.current = nextNextMarkMs
         predictMarkMsRef.current = nextNextMarkMs - 90 * 1000
@@ -97,7 +102,15 @@ const Timer = (props: TimerProps) => {
     }
     tick()
     const interval = setInterval(tick, 500)
-    return () => clearInterval(interval)
+    // When tab becomes visible again, immediately tick to catch up on any missed timers
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') tick()
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+    return () => {
+      clearInterval(interval)
+      document.removeEventListener('visibilitychange', handleVisibility)
+    }
   }, [onTimerComplete, runAiCommand])
 
   return (
