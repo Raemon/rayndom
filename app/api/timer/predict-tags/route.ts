@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     if ('error' in keylogResult) {
       console.log('[predict-tags] No keylogs found for the past 15 minutes, continuing with screenshot summaries only')
     }
-    const screenshotSummariesText = await getScreenshotSummariesForTimeblock(datetime)
+    const screenshotSummariesText = await getScreenshotSummariesForTimeblock()
     // 2. Get all tags
     console.log('[predict-tags] Fetching tags from database...')
     const tags = await prisma.tag.findMany({ orderBy: [{ type: 'asc' }, { name: 'asc' }] })
@@ -47,10 +47,9 @@ export async function POST(request: NextRequest) {
       const names = tagList.map(t => t.name).join(', ')
       return `- ${type}: ${names}`
     }).join('\n')
-    const prompt = `You are analyzing keylogs from the past 15 minutes to determine which tags apply to this time period.
+    const prompt = `You are analyzing keylogs and/or screenshot summaries from the past 15 minutes to determine which tags apply to this time period.
 
-Here are the keylogs:
-${keylogText}
+${keylogText ? `\nHere are keylogs:\n${keylogText}\n` : ''}
 ${screenshotSummariesText ? `\nHere are screenshot summaries:\n${screenshotSummariesText}\n` : ''}
 Here are the available tag types and their possible values:
 ${tagTypesDescription}

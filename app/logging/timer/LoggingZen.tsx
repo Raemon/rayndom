@@ -10,9 +10,10 @@ import ZenRow from '../zen/ZenRow'
 import type { Timeblock } from '../types'
 import Timer from './Timer'
 import RunAiCommandButton from '../zen/RunAiCommandButton'
-import { runAiCommand, defaultRunAiPrompt } from '../shared/runAiCommand'
+import { useAiTags } from '../hooks/useAiTags'
 
 const LoggingZenInner = () => {
+  const { isPredicting, predictTags } = useAiTags()
   const { focusedNoteKeys } = useFocusedNotes()
   const checklistRef = useRef<ChecklistRef>(null)
   const today = new Date()
@@ -78,14 +79,14 @@ const LoggingZenInner = () => {
   const currentTime = new Date(currentBlockDatetime)
   const currentTimeStr = currentTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
   const handleRunAiCommand = async (datetime: string) => {
-    await runAiCommand({ datetime, prompt: defaultRunAiPrompt })
+    await predictTags({ datetime })
     refreshUnfocused(new Set())
   }
 
   return (
     <div className="flex" style={{ height: '100vh', overflow: 'hidden' }}>
       <div style={{ flex: 1, overflow: 'auto' }} className="p-2 text-sm">
-        <Timer checklistRef={checklistRef} isPredicting={false} onRunAiCommand={handleRunAiCommand} />
+        <Timer checklistRef={checklistRef} isPredicting={isPredicting} onRunAiCommand={handleRunAiCommand} />
         <RunAiCommandButton datetime={currentBlockDatetime} onComplete={() => refreshUnfocused(new Set())} />
         <MarkdownContent html={currentTimeblock?.aiNotes || ''} />
       </div>

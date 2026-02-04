@@ -3,16 +3,30 @@ export type ScreenshotSummary = { timestamp: string, summary: string }
 
 export const parseScreenshotSummaries = (text: string): ScreenshotSummary[] => {
   const entries: ScreenshotSummary[] = []
-  const lines = text.split('\n')
-  for (const line of lines) {
-    if (!line.trim()) continue
-    const match = line.match(/^\[(\d{4}-\d{2}-\d{2}[T ]\d{2}[:.]\d{2}[:.]\d{2})\]\s*(.*)$/)
-    if (match) {
-      const [, timestamp, summary] = match
-      entries.push({ timestamp: timestamp.replace(/ /, 'T').replace(/\./g, ':'), summary })
+  // Match file path with timestamp, followed by JSON object
+  // Format: /path/2026-02-03 01_53_25.AppName.title.json:\n{...}
+  const entryRegex = /([^\n]*?(\d{4}-\d{2}-\d{2})\s+(\d{2})_(\d{2})_(\d{2})[^\n]*\.json):\s*\n?(\{[\s\S]*?\n\}(?=\n\n|\n\/|$))/g
+  let match
+  while ((match = entryRegex.exec(text)) !== null) {
+    const [, , date, hour, minute, second, jsonStr] = match
+    const timestamp = `${date}T${hour}:${minute}:${second}`
+    try {
+      const obj = JSON.parse(jsonStr)
+      if (obj.windows && Array.isArray(obj.windows)) {
+        const summaryParts: string[] = []
+        for (const win of obj.windows.slice(0, 2)) {
+          if (win.applicationName) summaryParts.push(win.applicationName)
+          if (win.title && win.title !== win.applicationName) summaryParts.push(win.title.slice(0, 50))
+        }
+        if (summaryParts.length > 0) {
+          entries.push({ timestamp, summary: summaryParts.join(' - ') })
+        }
+      }
+    } catch (e) {
+      // Skip invalid JSON
     }
   }
-  return entries
+  return entries.slice(-3)
 }
 
 export const parseKeylogText = (text: string): KeylogEntry[] => {
@@ -29,7 +43,12 @@ export const parseKeylogText = (text: string): KeylogEntry[] => {
       entries.push({ timestamp: isoTimestamp, text: textContent, app: app || undefined })
     }
   }
-  return entries
+  const sortedEntries = entries.sort((a, b) => {
+    const timeA = new Date(a.timestamp).getTime()
+    const timeB = new Date(b.timestamp).getTime()
+    return timeB - timeA
+  })
+  return sortedEntries.slice(0, 3)
 }
 
 export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylogs: KeylogEntry[], keylogText: string } | { error: string }> => {
@@ -47,7 +66,9 @@ export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylog
   const fifteenMinutesAgo = new Date(now.getTime() - 15 * 60 * 1000)
   let keylogs: KeylogEntry[] = []
   try {
+    console.log('[keylogUtils] Fetching keylogs from localhost:8765/today...')
     const keylogRes = await fetch('http://localhost:8765/today')
+    console.log('[keylogUtils] Keylog response status:', keylogRes.status)
     if (!keylogRes.ok) {
       return { error: `Keylog server returned ${keylogRes.status}` }
     }
@@ -61,6 +82,7 @@ export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylog
       return entryTime >= fifteenMinutesAgo && entryTime <= effectiveEndDatetime
     })
   } catch (e) {
+    console.error('[keylogUtils] Failed to fetch keylogs:', e)
     return { error: 'Keylog server not reachable at localhost:8765' }
   }
   if (keylogs.length === 0) {
@@ -70,11 +92,13 @@ export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylog
   return { keylogs, keylogText }
 }
 
-export const getScreenshotSummariesForTimeblock = async (datetime: string): Promise<string> => {
+export const getScreenshotSummariesForTimeblock = async (): Promise<string> => {
   const now = new Date()
   const fifteenMinutesAgo = new Date(now.getTime() - 15 * 60 * 1000)
   try {
+    console.log('[keylogUtils] Fetching screenshot summaries from localhost:8765...')
     const screenshotsRes = await fetch('http://localhost:8765/today/screenshots/summaries')
+    console.log('[keylogUtils] Screenshot summaries response status:', screenshotsRes.status)
     if (screenshotsRes.ok) {
       const responseText = await screenshotsRes.text()
       if (responseText.trim()) {
@@ -88,7 +112,8 @@ export const getScreenshotSummariesForTimeblock = async (datetime: string): Prom
         }
       }
     }
-  } catch {
+  } catch (e) {
+    console.error('[keylogUtils] Failed to fetch screenshot summaries:', e)
     // Screenshot summaries are optional, continue without them
   }
   return ''

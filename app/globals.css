@@ -39,20 +39,17 @@ body {
   font-size: 20px;
 }
 
-code {
+code, pre code {
   background-color: #444;
+  color: white;
   padding: 2px 4px;
   border-radius: 4px;
 }
 
 pre {
   background-color: #444;
+  color: white;
   padding: 10px;
-  border-radius: 4px;
-}
-pre code {
-  background-color: #444;
-  padding: 2px 4px;
   border-radius: 4px;
 }
 input, select, textarea, [contenteditable="true"], .tiptap {

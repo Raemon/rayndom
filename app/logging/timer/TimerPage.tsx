@@ -12,9 +12,10 @@ import Checklist, { type ChecklistRef } from '../checklist/Checklist'
 import Timer from './Timer'
 import { getCurrentSection } from '../checklist/sectionUtils'
 import RunAiCommandButton from '../zen/RunAiCommandButton'
-import { runAiCommand, defaultRunAiPrompt } from '../shared/runAiCommand'
+import { useAiTags } from '../hooks/useAiTags'
 
 const TimerPageInner = () => {
+  const { isPredicting, predictTags } = useAiTags()
   const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
   const checklistRef = useRef<ChecklistRef>(null)
   const handleTimerComplete = useCallback(() => {
@@ -37,10 +38,10 @@ const TimerPageInner = () => {
   const { timeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused, load: loadTimeblocks } = useTimeblocks({ start: startIso, end: endIso })
   const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
   const handleRunAiCommand = useCallback(async (datetime: string) => {
-    const { tagsResult, questionsResult } = await runAiCommand({ datetime, prompt: defaultRunAiPrompt })
-    if (tagsResult?.createdInstances && tagsResult.createdInstances.length > 0) loadTagInstances()
-    if (questionsResult?.aiNotes !== undefined) loadTimeblocks()
-  }, [loadTagInstances, loadTimeblocks])
+    const result = await predictTags({ datetime })
+    if (result?.createdInstances && result.createdInstances.length > 0) loadTagInstances()
+    if (result?.aiNotes !== undefined) loadTimeblocks()
+  }, [predictTags, loadTagInstances, loadTimeblocks])
 
   const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
   const currentBlockDatetime = floorTo15(new Date()).toISOString()
@@ -68,7 +69,7 @@ const TimerPageInner = () => {
           onTimerComplete={handleTimerComplete}
           onRunAiCommand={handleRunAiCommand}
           checklistRef={checklistRef}
-          isPredicting={false}
+          isPredicting={isPredicting}
         />
         <div className="flex items-center gap-2 mb-2">
           <RunAiCommandButton datetime={currentBlockDatetime} onComplete={() => { loadTagInstances(); loadTimeblocks() }} />
