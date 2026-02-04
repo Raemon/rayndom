@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import OpenAI from 'openai'
-import { getAiNotesPrompt } from './aiNotesPrompt'
+import { getAiNotesPrompt, getPredictTagsPrompt } from './aiNotesPrompt'
 import { getKeylogsForTimeblock, getScreenshotSummariesForTimeblock } from '../shared/keylogUtils'
 import { marked } from 'marked'
 
@@ -23,6 +23,9 @@ export async function POST(request: NextRequest) {
     console.log('[predict-tags] Request received for datetime:', datetime)
     if (!datetime) return NextResponse.json({ error: 'Missing datetime' }, { status: 400 })
     const blockDatetime = new Date(datetime)
+    // Apply tags to the previous timeblock (15 minutes before)
+    const prevBlockDatetime = new Date(blockDatetime.getTime() - 15 * 60 * 1000)
+    console.log('[predict-tags] Will apply tags to previous block:', prevBlockDatetime.toISOString())
     const keylogResult = await getKeylogsForTimeblock(datetime)
     const keylogs = 'error' in keylogResult ? [] : keylogResult.keylogs
     const keylogText = 'error' in keylogResult ? '' : keylogResult.keylogText
@@ -51,23 +54,7 @@ export async function POST(request: NextRequest) {
       const names = tagList.map(t => t.name).join(', ')
       return `- ${type}: ${names}`
     }).join('\n')
-    const prompt = `You are analyzing keylogs and/or screenshot summaries from the past hour to determine which tags apply to this time period.
-
-${keylogText ? `\nHere are keylogs:\n${keylogText}\n` : ''}
-${screenshotSummariesText ? `\nHere are screenshot summaries:\n${screenshotSummariesText}\n` : ''}
-Here are the available tag types and their possible values:
-${tagTypesDescription}
-
-For each tag type, select the ONE tag that best describes what was happening during this time period. If no tag from a type applies, don't include that type in your response.
-
-For each tag, provide a brief reason explaining why you chose it. The reason should be 1-2 sentences and must end with your confidence level in parentheses: (high confidence), (medium confidence), or (low confidence).
-
-Respond with ONLY a JSON array of objects with the format:
-[{"type": "tagType", "name": "tagName", "reason": "Brief explanation of why this tag applies. (high confidence)"}, ...]
-
-Example: [{"type": "activity", "name": "coding", "reason": "User was writing TypeScript code in VS Code based on keylog patterns. (high confidence)"}, {"type": "project", "name": "timer-app", "reason": "References to timer-related files suggest work on the timer project. (medium confidence)"}]
-
-Your response must be valid JSON and nothing else.`
+    const prompt = getPredictTagsPrompt({ keylogText, screenshotSummariesText, tagTypesDescription })
 
     const client = getOpenRouterClient()
     console.log('[predict-tags] Sending request to LLM (anthropic/claude-sonnet-4)...')
@@ -98,14 +85,14 @@ Your response must be valid JSON and nothing else.`
         console.log('[predict-tags] Tag not found:', pred.type, pred.name)
         continue
       }
-      // Check if this tag already exists for this datetime
-      const existing = await prisma.tagInstance.findFirst({ where: { tagId: tag.id, datetime: blockDatetime } })
+      // Check if this tag already exists for the previous timeblock
+      const existing = await prisma.tagInstance.findFirst({ where: { tagId: tag.id, datetime: prevBlockDatetime } })
       if (existing) {
         console.log('[predict-tags] Tag instance already exists:', pred.type, pred.name)
         continue
       }
       const tagInstance = await prisma.tagInstance.create({
-        data: { tagId: tag.id, datetime: blockDatetime, llmPredicted: true, approved: false, llmReason: pred.reason || null },
+        data: { tagId: tag.id, datetime: prevBlockDatetime, llmPredicted: true, approved: false, llmReason: pred.reason || null },
         include: { tag: { include: { parentTag: true } } }
       })
       console.log('[predict-tags] Created tag instance:', pred.type, pred.name, '(id:', tagInstance.id, ')')
@@ -123,11 +110,11 @@ Your response must be valid JSON and nothing else.`
       const aiNotesMarkdown = aiNotesCompletion.choices[0]?.message?.content || null
       aiNotes = aiNotesMarkdown ? (marked.parse(aiNotesMarkdown) as string) : null
       if (aiNotes !== null) {
-        const existingTimeblock = await prisma.timeblock.findFirst({ where: { datetime: blockDatetime } })
+        const existingTimeblock = await prisma.timeblock.findFirst({ where: { datetime: prevBlockDatetime } })
         if (existingTimeblock) {
           await prisma.timeblock.update({ where: { id: existingTimeblock.id }, data: { aiNotes } })
         } else {
-          await prisma.timeblock.create({ data: { datetime: blockDatetime, rayNotes: null, assistantNotes: null, aiNotes } })
+          await prisma.timeblock.create({ data: { datetime: prevBlockDatetime, rayNotes: null, assistantNotes: null, aiNotes } })
         }
       }
     } catch (e) {
