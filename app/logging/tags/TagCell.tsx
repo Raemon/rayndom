@@ -35,7 +35,7 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
 
   return (
     <div className="flex items-center gap-1 min-w-0 flex-wrap">
-      {tagInstances.map(ti => {
+      {[...tagInstances].sort((a, b) => a.id - b.id).map(ti => {
         const tag = ti.tag || typeTags.find(t => t.id === ti.tagId)
         if (!tag) return null
         const parentTag = getParentTag(tag, tags)

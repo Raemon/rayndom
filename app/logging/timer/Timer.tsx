@@ -20,22 +20,31 @@ const getNextQuarterHourMs = (now: Date) => {
   return next.getTime()
 }
 
+const playSingleBing = (context: AudioContext, startTime: number) => {
+  const oscillator = context.createOscillator()
+  const gainNode = context.createGain()
+  oscillator.type = 'sine'
+  oscillator.frequency.value = 880
+  gainNode.gain.setValueAtTime(0.0001, startTime)
+  gainNode.gain.exponentialRampToValueAtTime(0.7, startTime + 0.01)
+  gainNode.gain.exponentialRampToValueAtTime(0.0001, startTime + 0.3)
+  oscillator.connect(gainNode)
+  gainNode.connect(context.destination)
+  oscillator.start(startTime)
+  oscillator.stop(startTime + 0.35)
+  return oscillator
+}
+
 const playBing = () => {
   try {
     const AudioContextClass = window.AudioContext || (window as typeof window & { webkitAudioContext: typeof AudioContext }).webkitAudioContext
     const context = new AudioContextClass()
-    const oscillator = context.createOscillator()
-    const gainNode = context.createGain()
-    oscillator.type = 'sine'
-    oscillator.frequency.value = 880
-    gainNode.gain.setValueAtTime(0.0001, context.currentTime)
-    gainNode.gain.exponentialRampToValueAtTime(0.25, context.currentTime + 0.01)
-    gainNode.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.3)
-    oscillator.connect(gainNode)
-    gainNode.connect(context.destination)
-    oscillator.start()
-    oscillator.stop(context.currentTime + 0.35)
-    oscillator.onended = () => context.close()
+    const bingInterval = 0.5
+    let lastOscillator: OscillatorNode | null = null
+    for (let i = 0; i < 3; i++) {
+      lastOscillator = playSingleBing(context, context.currentTime + i * bingInterval)
+    }
+    if (lastOscillator) lastOscillator.onended = () => context.close()
   } catch (e) {
     console.warn('[Timer] Failed to play bing:', e)
   }
