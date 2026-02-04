@@ -101,8 +101,8 @@ const Timer = (props: TimerProps) => {
   }, [onTimerComplete, runAiCommand])
 
   return (
-    <div className="text-xs text-gray-600">
-      Next mark in {formatRemaining(remainingMs)}
+    <div className="text-xl font-bold text-white mb-4">
+      {formatRemaining(remainingMs)}
     </div>
   )
 }
