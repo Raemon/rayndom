@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 type TimerProps = {
   onTimerComplete?: () => void
@@ -18,13 +18,6 @@ const getNextQuarterHourMs = (now: Date) => {
     next.setMinutes(nextQuarterMinutes, 0, 0)
   }
   return next.getTime()
-}
-
-const formatRemaining = (remainingMs: number) => {
-  const totalSeconds = Math.max(0, Math.ceil(remainingMs / 1000))
-  const minutes = Math.floor(totalSeconds / 60).toString().padStart(2, '0')
-  const seconds = (totalSeconds % 60).toString().padStart(2, '0')
-  return `${minutes}:${seconds}`
 }
 
 const playBing = () => {
@@ -50,7 +43,6 @@ const playBing = () => {
 
 const Timer = (props: TimerProps) => {
   const { onTimerComplete, isPredicting, onRunAiCommand } = props
-  const [remainingMs, setRemainingMs] = useState(0)
   const nextMarkMsRef = useRef<number | null>(null)
   const predictMarkMsRef = useRef<number | null>(null)
   const lastPredictMarkRef = useRef<number | null>(null)
@@ -98,7 +90,6 @@ const Timer = (props: TimerProps) => {
         nextMarkMsRef.current = nextNextMarkMs
         predictMarkMsRef.current = nextNextMarkMs - 90 * 1000
       }
-      setRemainingMs(Math.max(0, (nextMarkMsRef.current as number) - nowMs))
     }
     tick()
     const interval = setInterval(tick, 500)
@@ -113,11 +104,7 @@ const Timer = (props: TimerProps) => {
     }
   }, [onTimerComplete, runAiCommand])
 
-  return (
-    <div className="text-xl font-bold text-white mb-4">
-      {formatRemaining(remainingMs)}
-    </div>
-  )
+  return null
 }
 
 export default Timer

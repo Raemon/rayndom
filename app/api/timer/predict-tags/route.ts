@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     const keylogs = 'error' in keylogResult ? [] : keylogResult.keylogs
     const keylogText = 'error' in keylogResult ? '' : keylogResult.keylogText
     if ('error' in keylogResult) {
-      console.log('[predict-tags] No keylogs found for the past 15 minutes, continuing with screenshot summaries only')
+      console.log('[predict-tags] No keylogs found for the past hour, continuing with screenshot summaries only')
     }
     const screenshotSummariesText = await getScreenshotSummariesForTimeblock()
     if (!screenshotSummariesText) {
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
       const names = tagList.map(t => t.name).join(', ')
       return `- ${type}: ${names}`
     }).join('\n')
-    const prompt = `You are analyzing keylogs and/or screenshot summaries from the past 15 minutes to determine which tags apply to this time period.
+    const prompt = `You are analyzing keylogs and/or screenshot summaries from the past hour to determine which tags apply to this time period.
 
 ${keylogText ? `\nHere are keylogs:\n${keylogText}\n` : ''}
 ${screenshotSummariesText ? `\nHere are screenshot summaries:\n${screenshotSummariesText}\n` : ''}

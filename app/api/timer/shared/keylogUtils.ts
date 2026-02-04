@@ -26,7 +26,7 @@ export const parseScreenshotSummaries = (text: string): ScreenshotSummary[] => {
       // Skip invalid JSON
     }
   }
-  return entries.slice(-3)
+  return entries.slice(-6)
 }
 
 export const parseKeylogText = (text: string): KeylogEntry[] => {
@@ -48,7 +48,7 @@ export const parseKeylogText = (text: string): KeylogEntry[] => {
     const timeB = new Date(b.timestamp).getTime()
     return timeB - timeA
   })
-  return sortedEntries.slice(0, 3)
+  return sortedEntries.slice(0, 6)
 }
 
 export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylogs: KeylogEntry[], keylogText: string } | { error: string }> => {
@@ -63,7 +63,7 @@ export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylog
   }
   const now = new Date()
   const effectiveEndDatetime = now
-  const fifteenMinutesAgo = new Date(now.getTime() - 15 * 60 * 1000)
+  const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000)
   let keylogs: KeylogEntry[] = []
   try {
     console.log('[keylogUtils] Fetching keylogs from localhost:8765/today...')
@@ -79,7 +79,7 @@ export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylog
     const allKeylogs = parseKeylogText(responseText)
     keylogs = allKeylogs.filter((entry: KeylogEntry) => {
       const entryTime = getEntryTime(entry.timestamp)
-      return entryTime >= fifteenMinutesAgo && entryTime <= effectiveEndDatetime
+      return entryTime >= oneHourAgo && entryTime <= effectiveEndDatetime
     })
   } catch (e) {
     console.error('[keylogUtils] Failed to fetch keylogs:', e)
@@ -94,7 +94,7 @@ export const getKeylogsForTimeblock = async (datetime: string): Promise<{ keylog
 
 export const getScreenshotSummariesForTimeblock = async (): Promise<string> => {
   const now = new Date()
-  const fifteenMinutesAgo = new Date(now.getTime() - 15 * 60 * 1000)
+  const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000)
   try {
     console.log('[keylogUtils] Fetching screenshot summaries from localhost:8765...')
     const screenshotsRes = await fetch('http://localhost:8765/today/screenshots/summaries')
@@ -105,7 +105,7 @@ export const getScreenshotSummariesForTimeblock = async (): Promise<string> => {
         const allSummaries = parseScreenshotSummaries(responseText)
         const recentSummaries = allSummaries.filter((entry) => {
           const entryTime = new Date(entry.timestamp)
-          return entryTime >= fifteenMinutesAgo && entryTime <= now
+          return entryTime >= oneHourAgo && entryTime <= now
         })
         if (recentSummaries.length > 0) {
           return recentSummaries.map(s => `[${s.timestamp}] ${s.summary}`).join('\n')
