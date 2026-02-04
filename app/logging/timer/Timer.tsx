@@ -5,7 +5,7 @@ type TimerProps = {
   onTimerComplete?: () => void
   onPredictTags?: () => void
   onRunAiCommand?: (datetime: string) => Promise<void>
-  checklistRef: { current: { resetAllItems: () => void, refreshItems: () => void } | null }
+  checklistRef?: { current: { resetAllItems: () => void, refreshItems: () => void } | null }
   isPredicting: boolean
 }
 

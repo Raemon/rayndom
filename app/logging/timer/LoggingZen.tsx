@@ -1,11 +1,11 @@
 'use client'
-import { useEffect, useRef, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useTimeblocks } from '../hooks/useTimeblocks'
 import { useTagInstances } from '../hooks/useTagInstances'
 import { FocusedNotesProvider, useFocusedNotes } from '../context/FocusedNotesContext'
 import { TagsProvider, useTags } from '../tags/TagsContext'
 import MarkdownContent from '../../common/MarkdownContent'
-import Checklist, { type ChecklistRef } from '../checklist/Checklist'
+import OrientingChecklist from '../checklist/OrientingChecklist'
 import ZenRow from '../zen/ZenRow'
 import type { Timeblock } from '../types'
 import Timer from './Timer'
@@ -15,7 +15,6 @@ import { useAiTags } from '../hooks/useAiTags'
 const LoggingZenInner = () => {
   const { isPredicting, predictTags } = useAiTags()
   const { focusedNoteKeys } = useFocusedNotes()
-  const checklistRef = useRef<ChecklistRef>(null)
   const today = new Date()
   today.setHours(0, 0, 0, 0)
   const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000)
@@ -86,7 +85,7 @@ const LoggingZenInner = () => {
   return (
     <div className="flex" style={{ height: '100vh', overflow: 'hidden' }}>
       <div style={{ flex: 1, overflow: 'auto' }} className="p-2 text-sm">
-        <Timer checklistRef={checklistRef} isPredicting={isPredicting} onRunAiCommand={handleRunAiCommand} />
+        <Timer isPredicting={isPredicting} onRunAiCommand={handleRunAiCommand} />
         <RunAiCommandButton datetime={currentBlockDatetime} onComplete={() => refreshUnfocused(new Set())} />
         <MarkdownContent html={currentTimeblock?.aiNotes || ''} />
       </div>
@@ -145,7 +144,7 @@ const LoggingZenInner = () => {
         })}
       </div>
       <div style={{ flex: 1, overflow: 'auto' }} className="p-2">
-        <Checklist ref={checklistRef} inline />
+        <OrientingChecklist />
       </div>
     </div>
   )

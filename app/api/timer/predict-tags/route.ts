@@ -30,6 +30,10 @@ export async function POST(request: NextRequest) {
       console.log('[predict-tags] No keylogs found for the past 15 minutes, continuing with screenshot summaries only')
     }
     const screenshotSummariesText = await getScreenshotSummariesForTimeblock()
+    if (!screenshotSummariesText) {
+      console.log('[predict-tags] No screenshots available, skipping prediction')
+      return NextResponse.json({ error: 'No screenshots available', predictions: [], createdInstances: [], keylogCount: keylogs.length, aiNotes: null }, { status: 200 })
+    }
     // 2. Get all tags
     console.log('[predict-tags] Fetching tags from database...')
     const tags = await prisma.tag.findMany({ orderBy: [{ type: 'asc' }, { name: 'asc' }] })
