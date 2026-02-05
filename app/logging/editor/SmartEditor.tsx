@@ -25,13 +25,12 @@ const extractTagInstanceIdsFromEditor = (editorInstance: ReturnType<typeof useEd
   return ids
 }
 
-const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25, noExpand=false, expandable=true, datetime, onCreateTagInstance, onDeleteTagInstance }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number | string, noExpand?: boolean, expandable?: boolean } & TagInstanceCallbacks) => {
+const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25,  expandable=true, datetime, onCreateTagInstance, onDeleteTagInstance }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number | string, expandable?: boolean } & TagInstanceCallbacks) => {
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
   const lastSavedRef = useRef<string>(initialValue || '')
   const initializedRef = useRef(false)
   const isFocusedRef = useRef(false)
   const [isFocused, setIsFocused] = useState(false)
-  const [isExpanded, setIsExpanded] = useState(false)
   const { registerFocus, unregisterFocus } = useFocusedNotes()
   const { tags } = useTags()
   const { commands } = useCommands()
@@ -153,30 +152,41 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
       setEditorCallbacks(editor, { datetime, onCreateTagInstance, onDeleteTagInstance })
     }
   }, [editor, datetime, onCreateTagInstance, onDeleteTagInstance])
+  const shouldExpand = isFocused && expandable
+  // Update editor min-height when focus state changes
+  useEffect(() => {
+    if (editor) {
+      const height = shouldExpand ? '800px' : (typeof minHeight === 'number' ? `${minHeight}px` : minHeight)
+      editor.setOptions({
+        editorProps: {
+          attributes: {
+            class: 'px-2 py-1 outline-none',
+            style: `min-height: ${height};`
+          }
+        }
+      })
+    }
+  }, [editor, shouldExpand, minHeight])
 
   if (!editor) return null
 
-  const shouldExpand = isExpanded && expandable && !noExpand
-  const handleClick = () => {
-    if (expandable && !noExpand) {
-      setIsExpanded(!isExpanded)
-    }
-  }
-
   return (
-    <div 
-      className={`text-xs transition-all duration-200 ease-in-out relative ${shouldExpand ? 'z-50 shadow-lg' : ''}`}
-      onClick={handleClick}
-      style={{ 
-        minHeight,
-        maxHeight: shouldExpand ? 'none' : '250px',
-        width: shouldExpand ? 'calc(100% + 200px)' : '100%',
-        overflow: shouldExpand ? 'visible' : 'hidden',
-        cursor: expandable && !noExpand ? 'pointer' : 'default'
-      }}
-    >
-      <BubbleMenuToolbar editor={editor} />
-      <EditorContent editor={editor} className="notes-input-editor" style={{ minHeight: typeof minHeight === 'number' ? `${minHeight}px` : minHeight, transition: 'min-height 200ms ease-in-out' }} />
+    <div className="relative" style={{ minHeight }}>
+      <div 
+        className={`text-xs transition-all duration-200 ease-in-out ${shouldExpand ? 'z-50 shadow-lg bg-gray-900' : ''}`}
+        style={{ 
+          position: shouldExpand ? 'absolute' : 'relative',
+          top: 0,
+          left: 0,
+          minHeight,
+          maxHeight: shouldExpand ? 'none' : '250px',
+          width: shouldExpand ? '640px' : '100%',
+          overflow: shouldExpand ? 'visible' : 'hidden'
+        }}
+      >
+        <BubbleMenuToolbar editor={editor} />
+        <EditorContent editor={editor} className="notes-input-editor" />
+      </div>
     </div>
   )
 }

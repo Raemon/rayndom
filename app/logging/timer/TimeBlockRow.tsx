@@ -99,7 +99,6 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
               initialValue={timeblock?.rayNotes || ''}
               externalValue={timeblock?.rayNotes || ''}
               minHeight={800}
-              noExpand
               datetime={slotStart.toISOString()}
               onCreateTagInstance={onCreateTagInstance}
               onDeleteTagInstance={onDeleteTagInstance}

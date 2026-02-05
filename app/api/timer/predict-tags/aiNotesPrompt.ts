@@ -23,9 +23,13 @@ ${screenshotSummariesText ? `\nHere are screenshot summaries:\n${screenshotSumma
 
 Please think to yourself (but do not say) what you think my goal is write now. (Use the entire keylog and screenshot summaries to determine the goal, then the last 15 minutes worth to determine the specific task I'm working on.) 
 
-Then, think to yourself (but do not say) 10 useful facts I might want to know that are relevant to my goals, that are non-obvious, non-101 level. Then say the fact you think is most useful. If you cannot find any useful facts that are not obvious, preface the fact with "No useful facts found, but best guess is: " and then say the fact. If it looks like I solved the problem that the fact was meant to help with, preface the fact with "Probably already solved, but: " and then say the fact.
+Then, think to yourself (but do not say) 3 useful facts I might want to know that are relevant to my goals, that are non-obvious, non-101 level. Then, think about 3 useful facts _related to any of the first facts_, not directly related to my goal (i.e. 1-2 steps out away from directly relevant).
+
+Then say the fact you think is most useful. If you cannot find any useful facts that are not obvious, preface the fact with "No useful facts found, but best guess is: " and then say the fact. If it looks like I solved the problem that the fact was meant to help with, preface the fact with "Probably already solved, but: " and then say the fact. (err on the side of giving the preface if you're not sure if the fact is useful.)
+
+Focus on hard science facts or empirical results or specific tools, not vague concepts or arguments.
 
 Do not give any preamble to the fact.
 
-After the fact, list in bullet points an overview of what specific tasks I seemed to be doing in the last 15 minutes (limit this to the last 15 min worth of keylogs and screenshot summaries).
+After the fact, list one short bullet for each of the 15 minutes describing what I did that minute.
 `
