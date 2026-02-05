@@ -6,7 +6,7 @@ import type { TagInstance } from '../types'
 
 export type TagInstanceCallbacks = {
   datetime?: string,
-  onCreateTagInstance?: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
+  onCreateTagInstance?: (args: { tagId: number, datetime: string, approved?: boolean }) => Promise<TagInstance>,
   onDeleteTagInstance?: (args: { id: number }) => Promise<void> | void,
 }
 

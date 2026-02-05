@@ -15,7 +15,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
   isCurrent?: boolean,
   onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => Promise<Timeblock>,
   onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => void,
-  onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
+  onCreateTagInstance: (args: { tagId: number, datetime: string, approved?: boolean }) => Promise<TagInstance>,
   onApproveTagInstance: (args: { id: number }) => Promise<void> | void,
   onPatchTagInstance: (args: { id: number, useful?: boolean, antiUseful?: boolean }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,

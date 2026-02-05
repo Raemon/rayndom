@@ -13,7 +13,7 @@ const ZenRow = ({ timeblock, timeLabel, ensureTimeblock, onPatchTimeblockDebounc
   tagTypes: string[],
   tagInstancesByType: Record<string, TagInstance[]>,
   allTagInstances: TagInstance[],
-  onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
+  onCreateTagInstance: (args: { tagId: number, datetime: string, approved?: boolean }) => Promise<TagInstance>,
   onApproveTagInstance: (args: { id: number }) => Promise<void> | void,
   onPatchTagInstance: (args: { id: number, useful?: boolean, antiUseful?: boolean }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,

@@ -11,7 +11,7 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
   tagInstances: TagInstance[],
   allTagInstances: TagInstance[],
   datetime: string,
-  onCreateTagInstance: (args: { tagId: number, datetime: string }) => Promise<TagInstance>,
+  onCreateTagInstance: (args: { tagId: number, datetime: string, approved?: boolean }) => Promise<TagInstance>,
   onApproveTagInstance?: (args: { id: number }) => Promise<void> | void,
   onPatchTagInstance: (args: { id: number, useful?: boolean, antiUseful?: boolean }) => Promise<void> | void,
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
@@ -65,6 +65,13 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
             }
           }
           await onCreateTagInstance({ tagId: tag.id, datetime })
+          const suggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
+          for (const suggestedTagId of suggestedTagIds) {
+            const suggestedAlreadyExists = allTagInstances.some(ti => ti.tagId === suggestedTagId && ti.datetime === datetime)
+            if (!suggestedAlreadyExists) {
+              await onCreateTagInstance({ tagId: suggestedTagId, datetime, approved: false })
+            }
+          }
           setIsEditing(false)
         }}
         onCreateTag={async (name) => {
