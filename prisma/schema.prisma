@@ -7,6 +7,32 @@ datasource db {
   provider = "postgresql"
 }
 
+model User {
+  id             Int             @id @default(autoincrement())
+  email          String          @unique
+  passwordHash   String          @map("password_hash")
+  createdAt      DateTime        @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt      DateTime        @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+  sessions       Session[]
+  checklistItems ChecklistItem[]
+  timeblocks     Timeblock[]
+  tags           Tag[]
+  tagInstances   TagInstance[]
+  commands       Command[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    Int      @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime @map("expires_at") @db.Timestamptz
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("sessions")
+}
+
 model ChecklistItem {
   id             Int      @id @default(autoincrement())
   title          String
@@ -14,6 +40,8 @@ model ChecklistItem {
   sortOrder      Int      @default(0) @map("sort_order")
   orientingBlock Boolean  @default(false) @map("orienting_block")
   section        String?
+  userId         Int?     @map("user_id")
+  user           User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
   updatedAt      DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
 
@@ -27,6 +55,8 @@ model Timeblock {
   aiNotes        String?  @map("ai_notes")
   datetime       DateTime @db.Timestamptz
   duration       Int      @default(15)
+  userId         Int?     @map("user_id")
+  user           User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
   updatedAt      DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
 
@@ -42,6 +72,8 @@ model Tag {
   parentTag     Tag?          @relation("TagParent", fields: [parentTagId], references: [id], onDelete: SetNull)
   childTags     Tag[]         @relation("TagParent")
   suggestedTagIds Json?         @map("suggested_tag_ids")
+  userId        Int?          @map("user_id")
+  user          User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
   instances     TagInstance[]
   createdAt     DateTime      @default(now()) @map("created_at") @db.Timestamptz
 
@@ -59,6 +91,8 @@ model TagInstance {
   llmReason    String?  @map("llm_reason")
   useful       Boolean  @default(false)
   antiUseful   Boolean  @default(false) @map("anti_useful")
+  userId       Int?     @map("user_id")
+  user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
 
   @@map("tag_instances")
@@ -68,6 +102,8 @@ model Command {
   id        Int      @id @default(autoincrement())
   name      String   @unique
   html      String
+  userId    Int?     @map("user_id")
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
 
