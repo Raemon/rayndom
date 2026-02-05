@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
+import { requireUserPrisma } from '@/lib/userPrisma'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const auth = await requireUserPrisma(request)
+  if ('error' in auth) return auth.error
+  const { prisma } = auth
   try {
     const commands = await prisma.command.findMany({ orderBy: [{ name: 'asc' }] })
     return NextResponse.json({ commands })
@@ -12,6 +15,9 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  const auth = await requireUserPrisma(request)
+  if ('error' in auth) return auth.error
+  const { prisma } = auth
   const body = await request.json()
   const name = body?.name
   const html = body?.html
@@ -28,6 +34,9 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PATCH(request: NextRequest) {
+  const auth = await requireUserPrisma(request)
+  if ('error' in auth) return auth.error
+  const { prisma } = auth
   const body = await request.json()
   const id = body?.id
   if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 })
@@ -44,6 +53,9 @@ export async function PATCH(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
+  const auth = await requireUserPrisma(request)
+  if ('error' in auth) return auth.error
+  const { prisma } = auth
   const searchParams = request.nextUrl.searchParams
   const id = searchParams.get('id')
   if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 })

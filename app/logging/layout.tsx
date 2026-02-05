@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import HeaderTimer from './HeaderTimer'
 import { AuthProvider } from './auth/AuthContext'
 import AuthHeader from './auth/AuthHeader'
+import AuthGate from './auth/AuthGate'
 
 const navLinks = [
   { href: '/logging', label: 'Timer' },
@@ -18,6 +19,7 @@ export default function LoggingLayout({ children }: { children: React.ReactNode 
     <AuthProvider>
       <div>
         <header className="fixed top-0 left-0 right-0 z-50 bg-black flex items-center justify-between p-2">
+          LoggerApp
           <HeaderTimer />
           <div className="flex items-center gap-4">
             <nav className="flex gap-4 text-xs">
@@ -30,9 +32,11 @@ export default function LoggingLayout({ children }: { children: React.ReactNode 
             <AuthHeader />
           </div>
         </header>
-        <div className="pt-12">
-          {children}
-        </div>
+        <AuthGate>
+          <div className="pt-12">
+            {children}
+          </div>
+        </AuthGate>
       </div>
     </AuthProvider>
   )

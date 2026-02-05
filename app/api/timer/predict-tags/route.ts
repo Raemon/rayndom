@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
+import { requireUserPrisma } from '@/lib/userPrisma'
 import OpenAI from 'openai'
 import { getAiNotesPrompt, getPredictTagsPrompt } from './aiNotesPrompt'
 import { getKeylogsForTimeblock, getScreenshotSummariesForTimeblock } from '../shared/keylogUtils'
@@ -17,6 +17,9 @@ const getOpenRouterClient = () => {
 }
 
 export async function POST(request: NextRequest) {
+  const auth = await requireUserPrisma(request)
+  if ('error' in auth) return auth.error
+  const { prisma } = auth
   try {
     const body = await request.json()
     const datetime = body?.datetime // The datetime for the timeblock we're predicting tags for

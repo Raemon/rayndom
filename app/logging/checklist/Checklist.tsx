@@ -22,7 +22,7 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
 
   useEffect(() => {
     const url = buildChecklistUrl(orientingOnly, section)
-    fetch(url).then(r => r.json()).then(setChecklistItems)
+    fetch(url).then(r => r.json()).then(data => { if (Array.isArray(data)) setChecklistItems(data) })
   }, [orientingOnly, section])
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
     const url = buildChecklistUrl(orientingOnly, section)
     const res = await fetch(url)
     const items = await res.json()
-    setChecklistItems(items)
+    if (Array.isArray(items)) setChecklistItems(items)
   }
 
   useImperativeHandle(ref, () => ({

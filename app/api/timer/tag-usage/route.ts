@@ -1,7 +1,10 @@
-import { NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
+import { NextRequest, NextResponse } from 'next/server'
+import { requireUserPrisma } from '@/lib/userPrisma'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const auth = await requireUserPrisma(request)
+  if ('error' in auth) return auth.error
+  const { prisma } = auth
   const tagInstances = await prisma.tagInstance.findMany({
     select: {
       tagId: true,

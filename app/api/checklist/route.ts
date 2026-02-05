@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
+import { requireUserPrisma } from '@/lib/userPrisma'
 
 export async function GET(request: NextRequest) {
+  const auth = await requireUserPrisma(request)
+  if ('error' in auth) return auth.error
+  const { prisma } = auth
   const orientingOnly = request.nextUrl.searchParams.get('orientingOnly') === 'true'
   const section = request.nextUrl.searchParams.get('section')
   const where: { orientingBlock: boolean; OR?: Array<{ section: string | null }> } = { orientingBlock: orientingOnly }
@@ -13,6 +16,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const auth = await requireUserPrisma(request)
+  if ('error' in auth) return auth.error
+  const { prisma } = auth
   const { title, orientingBlock, section } = await request.json()
   if (!title?.trim()) {
     return NextResponse.json({ error: 'Title is required' }, { status: 400 })
@@ -37,20 +43,21 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PATCH(request: NextRequest) {
+  const auth = await requireUserPrisma(request)
+  if ('error' in auth) return auth.error
+  const { prisma } = auth
   const { id, completed, orderedIds, section } = await request.json()
   if (orderedIds && Array.isArray(orderedIds)) {
-    await prisma.$transaction(
-      orderedIds.map((itemId: number, index: number) =>
-        prisma.checklistItem.update({ where: { id: itemId }, data: { sortOrder: index } })
-      )
-    )
+    for (const [index, itemId] of orderedIds.entries()) {
+      await prisma.checklistItem.update({ where: { id: itemId }, data: { sortOrder: index } })
+    }
     return NextResponse.json({ success: true })
   }
   if (typeof id !== 'number') {
     return NextResponse.json({ error: 'ID is required' }, { status: 400 })
   }
   if (typeof section === 'string') {
-    const existing = await prisma.checklistItem.findUnique({ where: { id } })
+    const existing = await prisma.checklistItem.findFirst({ where: { id } })
     if (!existing) return NextResponse.json({ error: 'Item not found' }, { status: 404 })
     const where: { orientingBlock: boolean; section?: string } = { orientingBlock: existing.orientingBlock }
     if (section) {
@@ -67,6 +74,9 @@ export async function PATCH(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
+  const auth = await requireUserPrisma(request)
+  if ('error' in auth) return auth.error
+  const { prisma } = auth
   const { id } = await request.json()
   if (typeof id !== 'number') {
     return NextResponse.json({ error: 'ID is required' }, { status: 400 })

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
+import { requireUserPrisma } from '@/lib/userPrisma'
 
 const AIRTABLE_API_BASE = 'https://api.airtable.com/v0'
 
@@ -32,6 +32,9 @@ const fetchAllAirtableRecords = async ({ baseId, tableId, viewId, apiKey }:{ bas
 const isStringArray = (v: unknown): v is string[] => Array.isArray(v) && v.every(x => typeof x === 'string')
 
 export async function POST(request: NextRequest) {
+  const auth = await requireUserPrisma(request)
+  if ('error' in auth) return auth.error
+  const { prisma } = auth
   const body = await request.json().catch(() => ({}))
   const baseId = body?.baseId || 'appMDZoMR5OR3ugxH'
   const tableId = body?.tableId || 'tblFuIbKR4Zfhgxsw'
