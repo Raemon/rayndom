@@ -153,20 +153,6 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
     }
   }, [editor, datetime, onCreateTagInstance, onDeleteTagInstance])
   const shouldExpand = isFocused && expandable
-  // Update editor min-height when focus state changes
-  useEffect(() => {
-    if (editor) {
-      const height = shouldExpand ? '800px' : (typeof minHeight === 'number' ? `${minHeight}px` : minHeight)
-      editor.setOptions({
-        editorProps: {
-          attributes: {
-            class: 'px-2 py-1 outline-none',
-            style: `min-height: ${height};`
-          }
-        }
-      })
-    }
-  }, [editor, shouldExpand, minHeight])
 
   if (!editor) return null
 
@@ -185,7 +171,7 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
         }}
       >
         <BubbleMenuToolbar editor={editor} />
-        <EditorContent editor={editor} className="notes-input-editor" />
+        <EditorContent editor={editor} className={`notes-input-editor ${shouldExpand ? 'notes-input-expanded' : ''}`} />
       </div>
     </div>
   )

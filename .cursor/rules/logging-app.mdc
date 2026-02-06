@@ -5,3 +5,8 @@ alwaysApply: false
 ---
 
 When adding interactive elements that create or edit DB calls, always use optimistic repsonse.
+
+After editing the Prisma schema (prisma/schema.prisma):
+1. Run `npx prisma generate` to regenerate the Prisma client
+2. Run `npx prisma db push` to sync the database with the schema
+3. Restart the dev server so it picks up the new client

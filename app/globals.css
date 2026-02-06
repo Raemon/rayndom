@@ -66,6 +66,9 @@ label {
 .tiptap {
   min-height: 30px;
 }
+.notes-input-expanded .tiptap {
+  min-height: 800px !important;
+}
 .tiptap p.is-editor-empty:first-child::before {
   color: #4a4a4a;
   content: attr(data-placeholder);
