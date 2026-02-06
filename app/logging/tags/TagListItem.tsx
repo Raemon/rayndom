@@ -5,7 +5,7 @@ import { getTagColor, wouldCreateCycle, getParentTag } from './tagUtils'
 import TagEditor from './TagEditor'
 import { useTags } from './TagsContext'
 
-const TagListItem = ({ tag, instanceCount, readonly, showDescription }:{ tag: Tag, instanceCount: number, readonly?: boolean, showDescription?: boolean }) => {
+const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonly, showDescription }:{ tag: Tag, instanceCount: number, usefulCount?: number, antiUsefulCount?: number, readonly?: boolean, showDescription?: boolean }) => {
   const { updateTag, deleteTag, tags } = useTags()
   const [isEditing, setIsEditing] = useState(false)
   const [dragOver, setDragOver] = useState(false)
@@ -71,8 +71,12 @@ const TagListItem = ({ tag, instanceCount, readonly, showDescription }:{ tag: Ta
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-      <span className="text-gray-400 mr-1 w-8 text-center text-xs">{instanceCount}</span>
-      <div className="flex flex-col" style={{ backgroundColor: getTagColor(tag.name) }}>
+      <span className="text-gray-400 mr-2  w-8 text-center text-xs flex items-center gap-1 justify-end">
+        {instanceCount}
+        {usefulCount ? <span className="text-green-400">+{usefulCount}</span> : null}
+        {antiUsefulCount ? <span className="text-red-400">-{antiUsefulCount}</span> : null}
+      </span>
+      <div className="flex flex-col" style={{ backgroundColor: getTagColor(tag.name), ...(usefulCount && antiUsefulCount ? { borderTop: '2px solid white', borderLeft: '2px solid white', borderBottom: '2px solid red', borderRight: '2px solid red' } : usefulCount ? { border: '2px solid white' } : antiUsefulCount ? { border: '2px solid red' } : {}) }}>
         <span className="px-1 rounded-xs text-white text-sm">{tag.name}</span>
         {parentTag && <div className="text-[9px] opacity-100 px-1 flex items-center gap-1"><span>└</span>{parentTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, parentTagId: null }) }}>×</button></div>}
         {suggestedTags.map(suggestedTag => {

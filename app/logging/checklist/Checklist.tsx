@@ -4,6 +4,7 @@ import DragDropList from '@/app/components/DragDropList'
 import AddChecklistItem from './AddChecklistItem'
 import type { ChecklistItem } from '../types'
 import { buildChecklistUrl } from './checklistApi'
+import OrientingChecklist from './OrientingChecklist'
 
 export type ChecklistRef = {
   resetAllItems: () => void
@@ -75,8 +76,8 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
   }
 
   const allCompleted = checklistItems.length > 0 && checklistItems.every(item => item.completed)
-  const width = allCompleted ? '400px' : '800px'
-  const height = allCompleted ? 'auto' : '600px'
+  const width = allCompleted ? '200px' : '600px'
+  const height = allCompleted ? 'auto' : 'auto'
   const textSize = allCompleted ? 'text-sm' : 'text-2xl'
   const padding = allCompleted ? 'p-3' : 'p-6'
   const gap = allCompleted ? 'gap-2' : 'gap-4'
@@ -89,10 +90,12 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
   const bgClass = inline ? '' : 'bg-gray-900'
   const inlineStyle = inline ? { width: '100%', maxWidth: width, height } : { width, height }
   return (
-    <div className={`${positionClass} ${bgClass} ${padding} ${justifySelfClass}`} style={inlineStyle}>
-      <div className={`mb-2 font-semibold ${textSize}`}>Checklist:</div>
-      <div className={`mb-2`}>
-        <AddChecklistItem onAdd={addChecklistItem} placeholder="Add checklist item" textSize={textSize} inputPadding={inputPadding} />
+    <div className={`${positionClass} ${bgClass} ${padding} ${justifySelfClass} overflow-y-auto`} style={inlineStyle}>
+      <div className="flex items-center justify-between">
+        <div className={`mb-2 font-semibold ${textSize}`}>Checklist:</div>
+        <div className={`mb-2`}>
+          <AddChecklistItem onAdd={addChecklistItem} placeholder="Add checklist item" textSize={textSize} inputPadding={inputPadding} />
+        </div>
       </div>
       <div className={`flex flex-col ${itemGap}`}>
         <DragDropList
@@ -109,6 +112,9 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
           )}
         />
         {checklistItems.length === 0 && <div className={`text-gray-600 ${textSize}`}>No items</div>}
+      </div>
+      <div className="mt-4">
+        <OrientingChecklist maxWidth={parseInt(width)} />
       </div>
     </div>
   )

@@ -8,6 +8,7 @@ const OrientingChecklistSection = ({
   sectionLabel,
   items,
   isCollapsed,
+  hasUnchecked,
   onToggleCollapsed,
   onToggleChecked,
   onRemoveItem,
@@ -21,6 +22,7 @@ const OrientingChecklistSection = ({
   sectionLabel: string
   items: ChecklistItem[]
   isCollapsed: boolean
+  hasUnchecked: boolean
   onToggleCollapsed: () => void
   onToggleChecked: (id: number) => void
   onRemoveItem: (id: number) => void
@@ -30,20 +32,25 @@ const OrientingChecklistSection = ({
   onDropOnSection: (e: DragEvent) => void
   parseDrag: (e: DragEvent) => { id: number; section: SectionKey } | null
 }) => {
+  const textSize = hasUnchecked ? 'text-2xl' : 'text-sm'
+  const checkboxSize = hasUnchecked ? 'w-6 h-6' : 'w-4 h-4'
+  const itemGap = hasUnchecked ? 'gap-3' : 'gap-1'
+  const gap = hasUnchecked ? 'gap-4' : 'gap-2'
+  const inputPadding = hasUnchecked ? 'px-4 py-3' : 'px-2 py-1'
   return (
     <div
       onDragOver={(e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move' }}
       onDrop={onDropOnSection}
     >
       <div className="mb-2 flex items-center gap-2">
-        <button className="text-left font-semibold text-gray-300" onClick={onToggleCollapsed}>
+        <button className={`text-left font-semibold text-gray-300 ${textSize}`} onClick={onToggleCollapsed}>
           {isCollapsed ? '▶' : '▼'} {sectionLabel}
         </button>
         <div className="flex-1"></div>
         <AddChecklistItem onAdd={onAddItem} placeholder="Add item" textSize="text-sm" inputPadding="px-2 py-1" />
       </div>
       {!isCollapsed && (
-        <div className="flex flex-col gap-1">
+        <div className={`flex flex-col ${itemGap}`}>
           {items.map((item, index) => (
             <div
               key={item.id}
@@ -51,16 +58,16 @@ const OrientingChecklistSection = ({
               onDragStart={(e) => onBeginDrag(e, item.id)}
               onDragOver={(e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move' }}
               onDrop={(e) => onDropOnItem(index, e)}
-              className="flex items-center gap-2 cursor-pointer"
+              className={`flex items-center ${gap} cursor-pointer`}
               onClick={() => onToggleChecked(item.id)}
             >
               <span className="cursor-grab opacity-50 hover:opacity-100">⋮⋮</span>
-              <input type="checkbox" checked={item.completed} onChange={() => {}} className="w-4 h-4" style={{ accentColor: 'black' }} />
-              <span className="flex-1 text-sm">{item.title}</span>
-              <button onClick={(e) => { e.stopPropagation(); onRemoveItem(item.id) }} className="text-white cursor-pointer opacity-50 hover:opacity-100 text-sm">x</button>
+              <input type="checkbox" checked={item.completed} onChange={() => {}} className={checkboxSize} style={{ accentColor: 'black' }} />
+              <span className={`flex-1 ${textSize}`}>{item.title}</span>
+              <button onClick={(e) => { e.stopPropagation(); onRemoveItem(item.id) }} className={`${inputPadding} text-white cursor-pointer opacity-50 hover:opacity-100 ${textSize}`}>x</button>
             </div>
           ))}
-          {items.length === 0 && <div className="text-gray-600 text-sm">No items</div>}
+          {items.length === 0 && <div className={`text-gray-600 ${textSize}`}>No items</div>}
         </div>
       )}
     </div>

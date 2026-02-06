@@ -104,7 +104,9 @@ const OrientingChecklist = ({ maxWidth=600 }:{ maxWidth?: number }) => {
       <div className="p-2 bg-black/20">
         <div className="flex flex-col gap-3">
         {sections.map(section => {
-          const isCollapsed = collapsedOverrides[section.key] ?? (section.key !== currentSection)
+          const hasUnchecked = itemsBySection[section.key].some(i => !i.completed)
+          const defaultCollapsed = !hasUnchecked && section.key !== currentSection
+          const isCollapsed = collapsedOverrides[section.key] ?? defaultCollapsed
           return (
             <OrientingChecklistSection
               key={section.key}
@@ -112,7 +114,8 @@ const OrientingChecklist = ({ maxWidth=600 }:{ maxWidth?: number }) => {
               sectionLabel={section.label}
               items={itemsBySection[section.key]}
               isCollapsed={isCollapsed}
-              onToggleCollapsed={() => setCollapsedOverrides(prev => ({ ...prev, [section.key]: !(prev[section.key] ?? (section.key !== currentSection)) }))}
+              hasUnchecked={hasUnchecked}
+              onToggleCollapsed={() => setCollapsedOverrides(prev => ({ ...prev, [section.key]: !(prev[section.key] ?? defaultCollapsed) }))}
               onToggleChecked={(id) => toggleChecked(section.key, id)}
               onRemoveItem={(id) => removeChecklistItem(section.key, id)}
               onAddItem={(title) => addChecklistItem(section.key, title)}

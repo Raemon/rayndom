@@ -58,12 +58,14 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
 
   const tagCountsByType = useMemo(() => {
     const counts = countBy(dayTagInstances, ti => ti.tagId)
+    const usefulCounts = countBy(dayTagInstances.filter(ti => ti.useful), ti => ti.tagId)
+    const antiUsefulCounts = countBy(dayTagInstances.filter(ti => ti.antiUseful), ti => ti.tagId)
     const tagCountPairs = Object.entries(counts).map(([tagId, count]) => {
       const tag = tags.find(t => t.id === Number(tagId))
-      return { tag, count }
-    }).filter((pair): pair is { tag: Tag, count: number } => pair.tag !== undefined)
-    const sorted = orderBy(tagCountPairs, ['count'], ['desc'])
-    const byType: Record<string, { tag: Tag, count: number }[]> = {}
+      return { tag, count, usefulCount: usefulCounts[tagId] || 0, antiUsefulCount: antiUsefulCounts[tagId] || 0 }
+    }).filter((pair): pair is { tag: Tag, count: number, usefulCount: number, antiUsefulCount: number } => pair.tag !== undefined)
+    const sorted = orderBy(tagCountPairs, [p => p.usefulCount > 0 ? 2 : p.antiUsefulCount > 0 ? 1 : 0, 'count'], ['desc', 'desc'])
+    const byType: Record<string, { tag: Tag, count: number, usefulCount: number, antiUsefulCount: number }[]> = {}
     for (const type of tagTypes) byType[type] = []
     for (const pair of sorted) {
       const type = pair.tag.type
@@ -156,8 +158,8 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
           </button>
           {tagTypes.map(type => (
             <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-1 overflow-hidden">
-              {tagCountsByType[type]?.map(({ tag, count }) => (
-                <TagListItem key={tag.id} tag={tag} instanceCount={count} readonly />
+              {tagCountsByType[type]?.map(({ tag, count, usefulCount, antiUsefulCount }) => (
+                <TagListItem key={tag.id} tag={tag} instanceCount={count} usefulCount={usefulCount} antiUsefulCount={antiUsefulCount} readonly />
               ))}
             </div>
           ))}
