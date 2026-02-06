@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useMemo, useState, type DragEvent } from 'react'
 import type { ChecklistItem, SectionKey } from '../types'
-import { getCurrentSection, coerceSection, SECTION_DEFINITIONS_SIMPLE } from './sectionUtils'
+import { getCurrentSection, coerceSection, SECTION_DEFINITIONS_SIMPLE, SECTION_ORDER } from './sectionUtils'
 import { beginDrag, parseDrag } from './useOrientingChecklistDrag'
 import OrientingChecklistSection from './OrientingChecklistSection'
 
@@ -12,7 +12,7 @@ const moveInArray = <T,>(array: T[], fromIndex: number, toIndex: number) => {
   return next
 }
 
-const OrientingChecklist = ({ maxWidth=600 }:{ maxWidth?: number }) => {
+const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?: number, onHasRelevantUnchecked?: (hasUnchecked: boolean) => void }) => {
   const [itemsBySection, setItemsBySection] = useState<Record<SectionKey, ChecklistItem[]>>({ morning: [], afternoon: [], evening: [], night: [] })
   const [currentSection, setCurrentSection] = useState<SectionKey>(getCurrentSection())
   const [collapsedOverrides, setCollapsedOverrides] = useState<Partial<Record<SectionKey, boolean>>>({})
@@ -99,13 +99,21 @@ const OrientingChecklist = ({ maxWidth=600 }:{ maxWidth?: number }) => {
 
   const sections = useMemo(() => SECTION_DEFINITIONS_SIMPLE, [])
 
+  useEffect(() => {
+    if (!onHasRelevantUnchecked) return
+    const currentIdx = SECTION_ORDER[currentSection]
+    const hasRelevant = sections.some((s, i) => i <= currentIdx && itemsBySection[s.key].some(item => !item.completed))
+    onHasRelevantUnchecked(hasRelevant)
+  }, [itemsBySection, currentSection, onHasRelevantUnchecked, sections])
+
   return (
     <div style={{ width: '100%', maxWidth }}>
       <div className="p-2 bg-black/20">
         <div className="flex flex-col gap-3">
-        {sections.map(section => {
+        {sections.map((section, sectionIndex) => {
           const hasUnchecked = itemsBySection[section.key].some(i => !i.completed)
-          const defaultCollapsed = !hasUnchecked && section.key !== currentSection
+          const isReached = sectionIndex <= SECTION_ORDER[currentSection]
+          const defaultCollapsed = !(section.key === currentSection || (hasUnchecked && isReached))
           const isCollapsed = collapsedOverrides[section.key] ?? defaultCollapsed
           return (
             <OrientingChecklistSection

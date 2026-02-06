@@ -75,16 +75,18 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
     await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ orderedIds }) })
   }
 
+  const [hasRelevantUnchecked, setHasRelevantUnchecked] = useState(false)
   const allCompleted = checklistItems.length > 0 && checklistItems.every(item => item.completed)
-  const width = allCompleted ? '200px' : '600px'
-  const height = allCompleted ? 'auto' : 'auto'
-  const textSize = allCompleted ? 'text-sm' : 'text-2xl'
-  const padding = allCompleted ? 'p-3' : 'p-6'
-  const gap = allCompleted ? 'gap-2' : 'gap-4'
-  const itemGap = allCompleted ? 'gap-1' : 'gap-3'
-  const inputPadding = allCompleted ? 'px-2 py-1' : 'px-4 py-3'
-  const checkboxSize = allCompleted ? 'w-4 h-4' : 'w-6 h-6'
-  const justifySelfClass = allCompleted ? 'justify-self-end' : 'justify-self-center'
+  const shouldExpand = !allCompleted || hasRelevantUnchecked
+  const width = shouldExpand ? '600px' : '200px'
+  const height = shouldExpand ? 'auto' : 'auto'
+  const textSize = shouldExpand ? 'text-2xl' : 'text-sm'
+  const padding = shouldExpand ? 'p-6' : 'p-3'
+  const gap = shouldExpand ? 'gap-4' : 'gap-2'
+  const itemGap = shouldExpand ? 'gap-3' : 'gap-1'
+  const inputPadding = shouldExpand ? 'px-4 py-3' : 'px-2 py-1'
+  const checkboxSize = shouldExpand ? 'w-6 h-6' : 'w-4 h-4'
+  const justifySelfClass = shouldExpand ? 'justify-self-center' : 'justify-self-end'
 
   const positionClass = inline ? '' : 'fixed bottom-4 right-4'
   const bgClass = inline ? '' : 'bg-gray-900'
@@ -114,7 +116,7 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
         {checklistItems.length === 0 && <div className={`text-gray-600 ${textSize}`}>No items</div>}
       </div>
       <div className="mt-4">
-        <OrientingChecklist maxWidth={parseInt(width)} />
+        <OrientingChecklist maxWidth={parseInt(width)} onHasRelevantUnchecked={setHasRelevantUnchecked} />
       </div>
     </div>
   )

@@ -21,6 +21,8 @@ export const SECTION_DEFINITIONS = [
   { key: 'night' as const, label: 'Night', startMinutes: 20 * 60, endMinutes: 23 * 60 + 45 },
 ] as const
 
+export const SECTION_ORDER: Record<SectionKey, number> = { morning: 0, afternoon: 1, evening: 2, night: 3 }
+
 export const SECTION_DEFINITIONS_SIMPLE = [
   { key: 'morning' as const, label: 'Morning' },
   { key: 'afternoon' as const, label: 'Afternoon' },
