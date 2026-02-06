@@ -3,6 +3,9 @@ import { useState } from 'react'
 import type { Tag, TagInstance } from '../types'
 import { getTagColor } from './tagUtils'
 import Tooltip from '@/app/common/Tooltip'
+import TagMenu from './TagMenu'
+import TagEditModal from './TagEditModal'
+import { useTags } from './TagsContext'
 
 const DraggableTag = ({ tag, parentTag, ti, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance, onSetParent }:{
   tag: Tag,
@@ -13,7 +16,10 @@ const DraggableTag = ({ tag, parentTag, ti, onApproveTagInstance, onPatchTagInst
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void,
   onSetParent: (childId: number, parentId: number) => void,
 }) => {
+  const { updateTag, deleteTag } = useTags()
   const [dragOver, setDragOver] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [menuPosition, setMenuPosition] = useState<{ x: number, y: number } | null>(null)
   const isUnapproved = ti.approved === false
   const tooltipParts = [parentTag?.name, ti.llmReason].filter(Boolean)
   const tooltipContent = tooltipParts.length > 0 ? tooltipParts.join(' - ') : (isUnapproved ? 'Click to approve' : null)
@@ -53,11 +59,16 @@ const DraggableTag = ({ tag, parentTag, ti, onApproveTagInstance, onPatchTagInst
     if (ti.antiUseful) return '2px solid red'
     return undefined
   }
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setMenuPosition({ x: e.clientX, y: e.clientY })
+  }
   const tagElement = (
     <span
       className="inline-flex items-center px-2 pt-0.5 pb-0 rounded-xs text-sm text-white"
       style={{ backgroundColor: getTagColor(tag.name), opacity: isUnapproved ? 0.5 : 1, cursor: 'grab', outline: getBorderStyle() }}
       onClick={handleClick}
+      onContextMenu={handleContextMenu}
       draggable
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
@@ -68,10 +79,16 @@ const DraggableTag = ({ tag, parentTag, ti, onApproveTagInstance, onPatchTagInst
       <button className="ml-2 opacity-50 cursor-pointer hover:opacity-100 text-white/60 hover:text-white bg-transparent" onClick={(e) => { e.stopPropagation(); onDeleteTagInstance({ id: ti.id }) }}>×</button>
     </span>
   )
-  if (tooltipContent) {
-    return <Tooltip content={tooltipContent} placement="bottom-start">{tagElement}</Tooltip>
-  }
-  return tagElement
+  const wrappedElement = tooltipContent
+    ? <Tooltip content={tooltipContent} placement="bottom-start">{tagElement}</Tooltip>
+    : tagElement
+  return (
+    <>
+      {wrappedElement}
+      {menuPosition && <TagMenu tag={tag} position={menuPosition} onEdit={() => setShowModal(true)} onClose={() => setMenuPosition(null)} />}
+      {showModal && <TagEditModal tag={tag} onSave={({ id, name, type, description }) => updateTag({ id, name, type, description })} onDelete={({ id }) => deleteTag({ id })} onClose={() => setShowModal(false)} />}
+    </>
+  )
 }
 
 export default DraggableTag
