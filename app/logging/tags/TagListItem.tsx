@@ -5,7 +5,7 @@ import { getTagColor, wouldCreateCycle, getParentTag } from './tagUtils'
 import TagEditor from './TagEditor'
 import { useTags } from './TagsContext'
 
-const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonly, showDescription }:{ tag: Tag, instanceCount: number, usefulCount?: number, antiUsefulCount?: number, readonly?: boolean, showDescription?: boolean }) => {
+const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonly, showDescription, hideRelations }:{ tag: Tag, instanceCount: number, usefulCount?: number, antiUsefulCount?: number, readonly?: boolean, showDescription?: boolean, hideRelations?: boolean }) => {
   const { updateTag, deleteTag, tags } = useTags()
   const [isEditing, setIsEditing] = useState(false)
   const [dragOver, setDragOver] = useState(false)
@@ -78,8 +78,8 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
       </span>
       <div className="flex flex-col" style={{ backgroundColor: getTagColor(tag.name), ...(usefulCount && antiUsefulCount ? { borderTop: '2px solid white', borderLeft: '2px solid white', borderBottom: '2px solid red', borderRight: '2px solid red' } : usefulCount ? { border: '2px solid white' } : antiUsefulCount ? { border: '2px solid red' } : {}) }}>
         <span className="px-1 rounded-xs text-white text-sm">{tag.name}</span>
-        {parentTag && <div className="text-[9px] opacity-100 px-1 flex items-center gap-1"><span>└</span>{parentTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, parentTagId: null }) }}>×</button></div>}
-        {suggestedTags.map(suggestedTag => {
+        {!hideRelations && parentTag && <div className="text-[9px] opacity-100 px-1 flex items-center gap-1"><span>└</span>{parentTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, parentTagId: null }) }}>×</button></div>}
+        {!hideRelations && suggestedTags.map(suggestedTag => {
           const existingSuggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
           return <div key={suggestedTag.id} className="text-[9px] opacity-100 px-1 flex items-center gap-1"><span>→</span>{suggestedTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, suggestedTagIds: existingSuggestedTagIds.filter(id => id !== suggestedTag.id) }) }}>×</button></div>
         })}

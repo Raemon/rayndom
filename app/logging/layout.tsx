@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/logging/zen', label: 'Zen' },
   { href: '/logging/tags', label: 'Tags' },
   { href: '/logging/commands', label: 'Commands' },
+  { href: '/logging/memory', label: 'Memory' },
 ]
 
 export default function LoggingLayout({ children }: { children: React.ReactNode }) {

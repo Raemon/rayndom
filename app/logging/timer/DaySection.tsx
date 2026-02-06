@@ -159,7 +159,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
           {tagTypes.map(type => (
             <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-1 overflow-hidden">
               {tagCountsByType[type]?.map(({ tag, count, usefulCount, antiUsefulCount }) => (
-                <TagListItem key={tag.id} tag={tag} instanceCount={count} usefulCount={usefulCount} antiUsefulCount={antiUsefulCount} readonly />
+                <TagListItem key={tag.id} tag={tag} instanceCount={count} usefulCount={usefulCount} antiUsefulCount={antiUsefulCount} readonly hideRelations />
               ))}
             </div>
           ))}

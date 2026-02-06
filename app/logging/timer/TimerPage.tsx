@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import DaySection from './DaySection'
+import MonthSection from './MonthSection'
 import TagSidebar from '../tags/TagSidebar'
 import { useTimeblocks } from '../hooks/useTimeblocks'
 import { useTagInstances } from '../hooks/useTagInstances'
@@ -17,6 +18,8 @@ import { useAiTags } from '../hooks/useAiTags'
 const TimerPageInner = () => {
   const { isPredicting, predictTags } = useAiTags()
   const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
+  const [collapsedWeeks, setCollapsedWeeks] = useState<Record<string, boolean>>({})
+  const [collapsedMonths, setCollapsedMonths] = useState<Record<string, boolean>>({})
   const checklistRef = useRef<ChecklistRef>(null)
   const handleTimerComplete = useCallback(() => {
     checklistRef.current?.resetAllItems()
@@ -87,32 +90,98 @@ const TimerPageInner = () => {
       </div>
       <div className="flex gap-6">
         <div className="flex-1 min-w-0">
-          {Array.from({ length: 14 }).map((_, i) => {
-            const day = new Date()
-            day.setDate(day.getDate() - i)
-            day.setHours(0, 0, 0, 0)
-            const key = day.toISOString().slice(0, 10)
-            const isCollapsed = collapsedDays[key] ?? (i !== 0)
+          {(() => {
+            const getMonday = (date: Date) => {
+              const d = new Date(date)
+              const dow = d.getDay()
+              d.setDate(d.getDate() - dow + (dow === 0 ? -6 : 1))
+              d.setHours(0, 0, 0, 0)
+              return d
+            }
+            const today = new Date()
+            today.setHours(0, 0, 0, 0)
+            const currentMonday = getMonday(today)
+            const allDays: Date[] = []
+            for (let i = 0; i < 14; i++) {
+              const day = new Date()
+              day.setDate(day.getDate() - i)
+              day.setHours(0, 0, 0, 0)
+              allDays.push(day)
+            }
+            const currentWeekDays = allDays.filter(d => d >= currentMonday)
+            const previousDays = allDays.filter(d => d < currentMonday)
+            const weekGroupsMap = new Map<string, { monday: Date, days: Date[] }>()
+            for (const day of previousDays) {
+              const mon = getMonday(day)
+              const key = mon.toISOString().slice(0, 10)
+              if (!weekGroupsMap.has(key)) weekGroupsMap.set(key, { monday: mon, days: [] })
+              weekGroupsMap.get(key)!.days.push(day)
+            }
+            const previousWeeks = [...weekGroupsMap.values()].sort((a, b) => b.monday.getTime() - a.monday.getTime())
+            const monthGroupsMap = new Map<string, { month: Date, weeks: { monday: Date, days: Date[] }[] }>()
+            for (const week of previousWeeks) {
+              const monthKey = `${week.monday.getFullYear()}-${String(week.monday.getMonth() + 1).padStart(2, '0')}`
+              if (!monthGroupsMap.has(monthKey)) monthGroupsMap.set(monthKey, { month: new Date(week.monday.getFullYear(), week.monday.getMonth(), 1), weeks: [] })
+              monthGroupsMap.get(monthKey)!.weeks.push(week)
+            }
+            const previousMonths = [...monthGroupsMap.values()].sort((a, b) => b.month.getTime() - a.month.getTime())
             return (
-              <DaySection
-                key={key}
-                day={day}
-                isCollapsed={isCollapsed}
-                onToggleCollapsed={() => setCollapsedDays(prev => ({ ...prev, [key]: !(prev[key] ?? (i !== 0)) }))}
-                timeblocks={timeblocks}
-                tagInstances={tagInstances}
-                onCreateTimeblock={async (args) => {
-                  const tb = await createTimeblock(args)
-                  return tb as Timeblock
-                }}
-                onPatchTimeblockDebounced={patchTimeblockDebounced}
-                onCreateTagInstance={createTagInstance}
-                onApproveTagInstance={approveTagInstance}
-                onPatchTagInstance={patchTagInstance}
-                onDeleteTagInstance={deleteTagInstance}
-              />
+              <>
+                {currentWeekDays.map(day => {
+                  const key = day.toISOString().slice(0, 10)
+                  const isToday = day.getTime() === today.getTime()
+                  const isCollapsed = collapsedDays[key] ?? !isToday
+                  return (
+                    <DaySection
+                      key={key}
+                      day={day}
+                      isCollapsed={isCollapsed}
+                      onToggleCollapsed={() => setCollapsedDays(prev => ({ ...prev, [key]: !(prev[key] ?? !isToday) }))}
+                      timeblocks={timeblocks}
+                      tagInstances={tagInstances}
+                      onCreateTimeblock={async (args) => {
+                        const tb = await createTimeblock(args)
+                        return tb as Timeblock
+                      }}
+                      onPatchTimeblockDebounced={patchTimeblockDebounced}
+                      onCreateTagInstance={createTagInstance}
+                      onApproveTagInstance={approveTagInstance}
+                      onPatchTagInstance={patchTagInstance}
+                      onDeleteTagInstance={deleteTagInstance}
+                    />
+                  )
+                })}
+                {previousMonths.map(({ month, weeks }) => {
+                  const monthKey = `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, '0')}`
+                  const isMonthCollapsed = collapsedMonths[monthKey] ?? true
+                  return (
+                    <MonthSection
+                      key={monthKey}
+                      month={month}
+                      weeks={weeks}
+                      isCollapsed={isMonthCollapsed}
+                      onToggleCollapsed={() => setCollapsedMonths(prev => ({ ...prev, [monthKey]: !(prev[monthKey] ?? true) }))}
+                      collapsedWeeks={collapsedWeeks}
+                      onToggleWeekCollapsed={(weekKey) => setCollapsedWeeks(prev => ({ ...prev, [weekKey]: !(prev[weekKey] ?? true) }))}
+                      collapsedDays={collapsedDays}
+                      onToggleDayCollapsed={(dayKey) => setCollapsedDays(prev => ({ ...prev, [dayKey]: !(prev[dayKey] ?? true) }))}
+                      timeblocks={timeblocks}
+                      tagInstances={tagInstances}
+                      onCreateTimeblock={async (args) => {
+                        const tb = await createTimeblock(args)
+                        return tb as Timeblock
+                      }}
+                      onPatchTimeblockDebounced={patchTimeblockDebounced}
+                      onCreateTagInstance={createTagInstance}
+                      onApproveTagInstance={approveTagInstance}
+                      onPatchTagInstance={patchTagInstance}
+                      onDeleteTagInstance={deleteTagInstance}
+                    />
+                  )
+                })}
+              </>
             )
-          })}
+          })()}
         </div>
         <div className="w-72">
           <TagSidebar tagInstances={tagInstances} />
