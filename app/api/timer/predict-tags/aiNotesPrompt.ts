@@ -4,6 +4,8 @@ ${tagTypesDescription}
 
 For each tag, decide whether it doesn't apply at all, _might_ apply (low confidence), probably applies, or highly likely applies. Be fairly liberal with _might_ apply, but extremely conservative with "highly likely applies".
 
+Use the tag description to heavily inform your decision. If it specifies rules, follow them.
+
 Consider whether a given tag is the _best_ tag for the time period, or if there are other tags that might apply more appropriately. 
 
 For each tag, provide a brief reason explaining why you chose it. The reason should be 1-2 sentences and must end with your confidence level in parentheses: (high confidence), (medium confidence), or (low confidence).

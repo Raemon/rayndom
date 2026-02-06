@@ -1,0 +1,7 @@
+---
+description: Architecture and conventions for the /logging app
+globs: app/logging/**,app/api/timer/**
+alwaysApply: false
+---
+
+When adding interactive elements that create or edit DB calls, always use optimistic repsonse.

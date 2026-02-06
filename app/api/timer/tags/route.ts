@@ -36,6 +36,7 @@ export async function PATCH(request: NextRequest) {
   const suggestedTagIds = body?.suggestedTagIds
   const updateData: Record<string, unknown> = { name: body?.name ?? undefined, type: body?.type ?? undefined, description: body?.description !== undefined ? body?.description : undefined, parentTagId: body?.parentTagId !== undefined ? (body?.parentTagId === null ? null : Number(body?.parentTagId)) : undefined }
   if (suggestedTagIds !== undefined) updateData.suggestedTagIds = suggestedTagIds === null ? null : suggestedTagIds
+  if (body?.noAiSuggest !== undefined) updateData.noAiSuggest = body.noAiSuggest
   const tag = await prisma.tag.update({ where: { id: Number(id) }, data: updateData, include: { parentTag: true } })
   return NextResponse.json({ tag })
 }

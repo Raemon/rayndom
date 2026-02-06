@@ -72,6 +72,7 @@ model Tag {
   parentTag     Tag?          @relation("TagParent", fields: [parentTagId], references: [id], onDelete: SetNull)
   childTags     Tag[]         @relation("TagParent")
   suggestedTagIds Json?         @map("suggested_tag_ids")
+  noAiSuggest   Boolean       @default(false) @map("no_ai_suggest")
   userId        Int?          @map("user_id")
   user          User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
   instances     TagInstance[]

@@ -7,7 +7,7 @@ type TagsContextType = {
   setTags: React.Dispatch<React.SetStateAction<Tag[]>>
   load: () => Promise<void>
   createTag: (args: { name: string, type: string }) => Promise<Tag>
-  updateTag: (args: { id: number, name?: string, type?: string, description?: string | null, parentTagId?: number | null, suggestedTagIds?: number[] | null }) => Promise<void>
+  updateTag: (args: { id: number, name?: string, type?: string, description?: string | null, parentTagId?: number | null, suggestedTagIds?: number[] | null, noAiSuggest?: boolean }) => Promise<void>
   deleteTag: (args: { id: number }) => Promise<void>
 }
 
@@ -39,9 +39,9 @@ export const TagsProvider = ({ children }:{ children: ReactNode }) => {
     return json.tag as Tag
   }, [])
 
-  const updateTag = useCallback(async ({ id, name, type, description, parentTagId, suggestedTagIds }:{ id: number, name?: string, type?: string, description?: string | null, parentTagId?: number | null, suggestedTagIds?: number[] | null }) => {
-    setTags(prev => prev.map(t => t.id === id ? { ...t, name: name ?? t.name, type: type ?? t.type, description: description !== undefined ? description : t.description, parentTagId: parentTagId !== undefined ? parentTagId : t.parentTagId, suggestedTagIds: suggestedTagIds !== undefined ? suggestedTagIds : t.suggestedTagIds } : t))
-    const res = await fetch('/api/timer/tags', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, name, type, description, parentTagId, suggestedTagIds }) })
+  const updateTag = useCallback(async ({ id, name, type, description, parentTagId, suggestedTagIds, noAiSuggest }:{ id: number, name?: string, type?: string, description?: string | null, parentTagId?: number | null, suggestedTagIds?: number[] | null, noAiSuggest?: boolean }) => {
+    setTags(prev => prev.map(t => t.id === id ? { ...t, name: name ?? t.name, type: type ?? t.type, description: description !== undefined ? description : t.description, parentTagId: parentTagId !== undefined ? parentTagId : t.parentTagId, suggestedTagIds: suggestedTagIds !== undefined ? suggestedTagIds : t.suggestedTagIds, noAiSuggest: noAiSuggest !== undefined ? noAiSuggest : t.noAiSuggest } : t))
+    const res = await fetch('/api/timer/tags', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, name, type, description, parentTagId, suggestedTagIds, noAiSuggest }) })
     const json = await res.json()
     if (json.tag) setTags(prev => prev.map(t => t.id === id ? json.tag : t))
   }, [])

@@ -67,6 +67,10 @@ const TagEditModal = ({ tag: initialTag, onSave, onDelete, onClose }:{ tag: Tag,
           onCancel={onClose}
         />
         <div className="mt-3 flex flex-col gap-2">
+          <label className="flex items-center gap-1.5 text-xs text-white/60 cursor-pointer">
+            <input type="checkbox" checked={tag.noAiSuggest || false} onChange={e => updateTag({ id: tag.id, noAiSuggest: e.target.checked })} />
+            No AI suggest
+          </label>
           <div>
             <div className="text-white/50 text-[10px] mb-1">Parent tag</div>
             {parentTag ? (

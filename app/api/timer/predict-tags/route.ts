@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     }
     // 2. Get all tags
     console.log('[predict-tags] Fetching tags from database...')
-    const tags = await prisma.tag.findMany({ orderBy: [{ type: 'asc' }, { name: 'asc' }] })
+    const tags = await prisma.tag.findMany({ where: { noAiSuggest: false }, orderBy: [{ type: 'asc' }, { name: 'asc' }] })
     console.log('[predict-tags] Found', tags.length, 'tags')
     if (tags.length === 0) return NextResponse.json({ error: 'No tags defined', predictions: [] }, { status: 200 })
     // Group tags by type
