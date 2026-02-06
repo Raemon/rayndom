@@ -64,7 +64,7 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
   return (
     <div
       className={`text-left w-full bg-transparent flex items-center ${dragOver ? 'bg-white/10' : ''}`}
-      onClick={handleClick}
+      onDoubleClick={handleClick}
       draggable
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}

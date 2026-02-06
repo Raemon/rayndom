@@ -45,4 +45,7 @@ next-env.d.ts
 **/downloads/
 downloads/
 
+# observatory data
+/data/observatory/
+
 /lib/generated/prisma

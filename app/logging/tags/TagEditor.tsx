@@ -17,7 +17,7 @@ const TagEditor = ({ tag, onSave, onDelete, onCancel }:{ tag: Tag, onSave: (args
       <textarea className="px-2 py-1 bg-gray-100 outline-none w-full text-xs! resize-none" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description (for AI tag prediction)" rows={2} />
       <div className="flex gap-2">
         <button className="px-2 py-1 border border-gray-600 text-xs!" onClick={() => onSave({ id: tag.id, name, type, description: description || null })}>Save</button>
-        <button className="px-2 py-1 border border-gray-600 text-xs!" onClick={() => onDelete({ id: tag.id })}>Delete</button>
+        <button className="px-2 py-1 border border-gray-600 text-xs!" onClick={() => { if (window.confirm(`Delete tag "${tag.name}"?`)) onDelete({ id: tag.id }) }}>Delete</button>
       </div>
     </div>
   )
