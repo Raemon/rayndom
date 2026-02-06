@@ -3,7 +3,6 @@ import { useState } from 'react'
 import type { Tag, TagInstance } from '../types'
 import { getTagColor } from './tagUtils'
 import Tooltip from '@/app/common/Tooltip'
-import TagMenu from './TagMenu'
 import TagEditModal from './TagEditModal'
 import { useTags } from './TagsContext'
 
@@ -19,7 +18,6 @@ const DraggableTag = ({ tag, parentTag, ti, onApproveTagInstance, onPatchTagInst
   const { updateTag, deleteTag } = useTags()
   const [dragOver, setDragOver] = useState(false)
   const [showModal, setShowModal] = useState(false)
-  const [menuPosition, setMenuPosition] = useState<{ x: number, y: number } | null>(null)
   const isUnapproved = ti.approved === false
   const tooltipParts = [parentTag?.name, ti.llmReason].filter(Boolean)
   const tooltipContent = tooltipParts.length > 0 ? tooltipParts.join(' - ') : (isUnapproved ? 'Click to approve' : null)
@@ -61,7 +59,7 @@ const DraggableTag = ({ tag, parentTag, ti, onApproveTagInstance, onPatchTagInst
   }
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault()
-    setMenuPosition({ x: e.clientX, y: e.clientY })
+    setShowModal(true)
   }
   const tagElement = (
     <span
@@ -85,7 +83,6 @@ const DraggableTag = ({ tag, parentTag, ti, onApproveTagInstance, onPatchTagInst
   return (
     <>
       {wrappedElement}
-      {menuPosition && <TagMenu tag={tag} position={menuPosition} onEdit={() => setShowModal(true)} onClose={() => setMenuPosition(null)} />}
       {showModal && <TagEditModal tag={tag} onSave={({ id, name, type, description }) => updateTag({ id, name, type, description })} onDelete={({ id }) => deleteTag({ id })} onClose={() => setShowModal(false)} />}
     </>
   )

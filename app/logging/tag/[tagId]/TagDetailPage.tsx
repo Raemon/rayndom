@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation'
 import groupBy from 'lodash/groupBy'
 import TimeBlockRow from '../../timer/TimeBlockRow'
 import { TagsProvider, useTags } from '../../tags/TagsContext'
+import { FocusedNotesProvider } from '../../context/FocusedNotesContext'
 import { getTagColor } from '../../tags/tagUtils'
 import type { Tag, TagInstance, Timeblock } from '../../types'
 
@@ -147,7 +148,9 @@ const TagDetailPageInner = () => {
 
 const TagDetailPage = () => (
   <TagsProvider>
-    <TagDetailPageInner />
+    <FocusedNotesProvider>
+      <TagDetailPageInner />
+    </FocusedNotesProvider>
   </TagsProvider>
 )
 

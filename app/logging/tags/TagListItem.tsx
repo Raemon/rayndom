@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from 'react'
 import type { Tag } from '../types'
 import { getTagColor, wouldCreateCycle, getParentTag } from './tagUtils'
 import TagEditor from './TagEditor'
-import TagMenu from './TagMenu'
 import TagEditModal from './TagEditModal'
 import { useTags } from './TagsContext'
 
@@ -11,7 +10,6 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
   const { updateTag, deleteTag, tags } = useTags()
   const [isEditing, setIsEditing] = useState(false)
   const [showModal, setShowModal] = useState(false)
-  const [menuPosition, setMenuPosition] = useState<{ x: number, y: number } | null>(null)
   const [dragOver, setDragOver] = useState(false)
   const [justDropped, setJustDropped] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -67,7 +65,7 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
   }
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault()
-    setMenuPosition({ x: e.clientX, y: e.clientY })
+    setShowModal(true)
   }
   return (
     <>
@@ -96,7 +94,6 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
           {showDescription && tag.description && <div className="text-[11px] opacity-70 px-1 text-white max-w-48">{tag.description}</div>}
         </div>
       </div>
-      {menuPosition && <TagMenu tag={tag} position={menuPosition} onEdit={() => setShowModal(true)} onClose={() => setMenuPosition(null)} />}
       {showModal && !readonly && <TagEditModal tag={tag} onSave={({ id, name, type, description }) => updateTag({ id, name, type, description })} onDelete={({ id }) => deleteTag({ id })} onClose={() => setShowModal(false)} />}
     </>
   )
