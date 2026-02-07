@@ -6,6 +6,7 @@ import TagListItem from '../tags/TagListItem'
 import { useTags } from '../tags/TagsContext'
 import type { Tag, TagInstance, Timeblock } from '../types'
 import { SECTION_DEFINITIONS } from '../checklist/sectionUtils'
+import CollapsedNotesSummary from './CollapsedNotesSummary'
 
 const formatDayLabel = (day: Date) => day.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })
 
@@ -153,9 +154,12 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
     <div className={`border-b border-gray-200 px-4 pb-3 ${isCollapsed ? 'bg-white/10' : ''}`}>
       {isCollapsed ? (
         <div className="flex gap-4 items-start py-4">
-          <button className="text-left font-semibold shrink-0 whitespace-nowrap" style={{ width: '40%' }} onClick={onToggleCollapsed}>
-            ▶ <span className="text-2xl">{formatDayLabel(day)}</span>
-          </button>
+          <div className="shrink-0" style={{ width: '40%' }}>
+            <button className="text-left font-semibold whitespace-nowrap" onClick={onToggleCollapsed}>
+              ▶ <span className="text-2xl">{formatDayLabel(day)}</span>
+            </button>
+            <CollapsedNotesSummary timeblocks={dayTimeblocks} onPatchTimeblockDebounced={onPatchTimeblockDebounced} />
+          </div>
           {tagTypes.map(type => (
             <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-1 overflow-hidden">
               {tagCountsByType[type]?.map(({ tag, count, usefulCount, antiUsefulCount }) => (

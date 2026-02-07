@@ -5,6 +5,7 @@ import WeekSection from './WeekSection'
 import TagListItem from '../tags/TagListItem'
 import { useTags } from '../tags/TagsContext'
 import type { Tag, TagInstance, Timeblock } from '../types'
+import CollapsedNotesSummary from './CollapsedNotesSummary'
 
 const formatMonthLabel = (date: Date) => date.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })
 
@@ -33,6 +34,10 @@ const MonthSection = ({ month, weeks, isCollapsed, onToggleCollapsed, collapsedW
   }, [tags])
   const monthStart = useMemo(() => new Date(month.getFullYear(), month.getMonth(), 1, 0, 0, 0, 0), [month])
   const monthEnd = useMemo(() => new Date(month.getFullYear(), month.getMonth() + 1, 1, 0, 0, 0, 0), [month])
+  const monthTimeblocks = useMemo(() => timeblocks.filter(tb => {
+    const d = new Date(tb.datetime)
+    return d >= monthStart && d < monthEnd
+  }), [timeblocks, monthStart, monthEnd])
   const monthTagInstances = useMemo(() => tagInstances.filter(ti => {
     const d = new Date(ti.datetime)
     return d >= monthStart && d < monthEnd
@@ -58,9 +63,18 @@ const MonthSection = ({ month, weeks, isCollapsed, onToggleCollapsed, collapsedW
   return (
     <div className="border-b border-gray-200 px-4 pb-3">
       <div className="flex gap-4 items-start py-4">
-        <button className="text-left font-semibold shrink-0 whitespace-nowrap" style={{ width: isCollapsed ? '40%' : undefined }} onClick={onToggleCollapsed}>
-          {isCollapsed ? '▶' : '▼'} <span className="text-4xl">{formatMonthLabel(month)}</span>
-        </button>
+        {isCollapsed ? (
+          <div className="shrink-0" style={{ width: '40%' }}>
+            <button className="text-left font-semibold whitespace-nowrap" onClick={onToggleCollapsed}>
+              ▶ <span className="text-4xl">{formatMonthLabel(month)}</span>
+            </button>
+            <CollapsedNotesSummary timeblocks={monthTimeblocks} onPatchTimeblockDebounced={onPatchTimeblockDebounced} />
+          </div>
+        ) : (
+          <button className="text-left font-semibold shrink-0 whitespace-nowrap" onClick={onToggleCollapsed}>
+            ▼ <span className="text-4xl">{formatMonthLabel(month)}</span>
+          </button>
+        )}
         {isCollapsed && tagTypes.map(type => (
           <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-1 overflow-hidden">
             {tagCountsByType[type]?.map(({ tag, count, usefulCount, antiUsefulCount }) => (

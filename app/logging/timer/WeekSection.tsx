@@ -5,6 +5,7 @@ import DaySection from './DaySection'
 import TagListItem from '../tags/TagListItem'
 import { useTags } from '../tags/TagsContext'
 import type { Tag, TagInstance, Timeblock } from '../types'
+import CollapsedNotesSummary from './CollapsedNotesSummary'
 
 const formatWeekLabel = (monday: Date) => {
   const sunday = new Date(monday)
@@ -36,6 +37,10 @@ const WeekSection = ({ monday, days, isCollapsed, onToggleCollapsed, collapsedDa
   }, [tags])
   const weekStart = useMemo(() => new Date(monday.getFullYear(), monday.getMonth(), monday.getDate(), 0, 0, 0, 0), [monday])
   const weekEnd = useMemo(() => new Date(weekStart.getTime() + 7 * 24 * 60 * 60 * 1000), [weekStart])
+  const weekTimeblocks = useMemo(() => timeblocks.filter(tb => {
+    const d = new Date(tb.datetime)
+    return d >= weekStart && d < weekEnd
+  }), [timeblocks, weekStart, weekEnd])
   const weekTagInstances = useMemo(() => tagInstances.filter(ti => {
     const d = new Date(ti.datetime)
     return d >= weekStart && d < weekEnd
@@ -61,9 +66,18 @@ const WeekSection = ({ monday, days, isCollapsed, onToggleCollapsed, collapsedDa
   return (
     <div className="border-b border-gray-200 px-4 pb-3">
       <div className="flex gap-4 items-start py-4">
-        <button className="text-left font-semibold shrink-0 whitespace-nowrap" style={{ width: isCollapsed ? '40%' : undefined }} onClick={onToggleCollapsed}>
-          {isCollapsed ? '▶' : '▼'} <span className="text-3xl">{formatWeekLabel(monday)}</span>
-        </button>
+        {isCollapsed ? (
+          <div className="shrink-0" style={{ width: '40%' }}>
+            <button className="text-left font-semibold whitespace-nowrap" onClick={onToggleCollapsed}>
+              ▶ <span className="text-3xl">{formatWeekLabel(monday)}</span>
+            </button>
+            <CollapsedNotesSummary timeblocks={weekTimeblocks} onPatchTimeblockDebounced={onPatchTimeblockDebounced} />
+          </div>
+        ) : (
+          <button className="text-left font-semibold shrink-0 whitespace-nowrap" onClick={onToggleCollapsed}>
+            ▼ <span className="text-3xl">{formatWeekLabel(monday)}</span>
+          </button>
+        )}
         {isCollapsed && tagTypes.map(type => (
           <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-1 overflow-hidden">
             {tagCountsByType[type]?.map(({ tag, count, usefulCount, antiUsefulCount }) => (
