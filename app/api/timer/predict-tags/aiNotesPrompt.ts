@@ -1,21 +1,30 @@
-export const getPredictTagsPrompt = ({ keylogText, screenshotSummariesText, tagTypesDescription }:{ keylogText?: string, screenshotSummariesText?: string, tagTypesDescription: string }) => `You are analyzing keylogs and/or screenshot summaries from the past hour to determine which tags apply to this time period.
-${keylogText ? `\nHere are keylogs:\n${keylogText}\n` : ''}${screenshotSummariesText ? `\nHere are screenshot summaries:\n${screenshotSummariesText}\n` : ''}Here are the available tag types and their possible values (with descriptions where available):
-${tagTypesDescription}
+export const getPredictSingleTagPrompt = ({ keylogText, screenshotSummariesText, tagType, tagName, tagDescription, allTags }:{ keylogText?: string, screenshotSummariesText?: string, tagType: string, tagName: string, tagDescription: string | null, allTags: { type: string, name: string, description: string | null }[] }) => `You are analyzing keylogs and/or screenshot summaries from the past hour to determine if a specific tag applies to this time period.
+${keylogText ? `\nHere are keylogs:\n${keylogText}\n` : ''}${screenshotSummariesText ? `\nHere are screenshot summaries:\n${screenshotSummariesText}\n` : ''}
+Tag type: ${tagType}
+Tag name: ${tagName}
+${tagDescription && `\nTag description: ${tagDescription}`}
 
-For each tag, decide whether it doesn't apply at all, _might_ apply (low confidence), probably applies, or highly likely applies. Be fairly liberal with _might_ apply, but extremely conservative with "highly likely applies".
+List of all other tags and their descriptions:
+${allTags.filter(t => !(t.type === tagType && t.name === tagName)).map(t => `- [${t.type}] ${t.name}${t.description ? `: ${t.description}` : ''}`).join('\n')}
 
-Use the tag description to heavily inform your decision. If it specifies rules, follow them.
 
-Consider whether a given tag is the _best_ tag for the time period, or if there are other tags that might apply more appropriately. 
+This tag was designed to capture a particular project, habit-trigger, or technique. Your goal is to figure out what the user was overall doing during the last 15 minutes. Then, figure out whether this tag applies. Most tags do not apply – they were designed to mean a very specific thing.
 
-For each tag, provide a brief reason explaining why you chose it. The reason should be 1-2 sentences and must end with your confidence level in parentheses: (high confidence), (medium confidence), or (low confidence).
+Write your guess for what this specific tag means. How would you distinguish whether this tag applies, compared to all the other tags of the same type?
 
-Respond with ONLY a JSON array of objects with the format:
-[{"type": "tagType", "name": "tagName", "reason": "Brief explanation of why this tag applies. (high confidence)"}, ...]
+Then, review the keylogs and screenshot summaries and write your guess for an overall story of what the user was doing during the last 15 minutes.
 
-Example: [{"type": "activity", "name": "coding", "reason": "User was writing TypeScript code in VS Code based on keylog patterns. (high confidence)"}, {"type": "project", "name": "timer-app", "reason": "References to timer-related files suggest work on the timer project. (medium confidence)"}]
+Then, answer the question: was the user in one of the rare situations where this tag applies?
 
-Your response must be valid JSON and nothing else.`
+Respond with ONLY a JSON object:
+{
+"howDistinguish": "write exactly what this tag is for and how you would distinguish it from similar tags or situations".
+"overallStory": "write your guess for an overall story of what the user was doing during the last 15 minutes."
+"whyItMightApply": "explain why this tag might apply."
+"whyItMightNotApply": "explain why this tag might not apply."
+"confidence": "how confident are you in your answer? (low confidence), (medium confidence), or (high confidence)."
+"decision": boolean value indicating whether this tag applies.
+}`
 
 export const getAiNotesPrompt = ({ keylogText, screenshotSummariesText = '' }:{ keylogText: string, screenshotSummariesText?: string }) => `You are analyzing recent keylogs and screenshot summaries.
 

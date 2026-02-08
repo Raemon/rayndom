@@ -89,7 +89,6 @@ const CsvDataGrid = ({columns: initialColumns, rows: initialRows, fileInfo, onDa
   }, [rows, sortConfig])
   const [hiddenColumns, setHiddenColumns] = useState<Set<string>>(() => new Set())
   const [maxLines, setMaxLines] = useState<number | null>(null)
-  const [pageIndex, setPageIndex] = useState(0)
   const [galleryOpen, setGalleryOpen] = useState(false)
   const [galleryIndex, setGalleryIndex] = useState(0)
   const allImages = useMemo(() => extractAllImages(rows, columns), [rows, columns])
@@ -98,16 +97,7 @@ const CsvDataGrid = ({columns: initialColumns, rows: initialRows, fileInfo, onDa
     setGalleryIndex(idx >= 0 ? idx : 0)
     setGalleryOpen(true)
   }
-  const pageSize = 50
   const visibleColumns = useMemo(() => columns.filter((column) => !hiddenColumns.has(column)), [columns, hiddenColumns])
-  const pageCount = useMemo(() => Math.max(1, Math.ceil(sortedRows.length / pageSize)), [sortedRows.length])
-  const clampedPageIndex = Math.min(pageIndex, pageCount - 1)
-  const pageRows = useMemo(() => {
-    const start = clampedPageIndex * pageSize
-    const end = start + pageSize
-    return sortedRows.slice(start, end)
-  }, [sortedRows, clampedPageIndex])
-  const getActualRowIndex = (pageRowIndex: number) => clampedPageIndex * pageSize + pageRowIndex
   const toggleColumn = (column: string) => {
     setHiddenColumns((prev) => {
       const next = new Set(prev)
@@ -125,13 +115,6 @@ const CsvDataGrid = ({columns: initialColumns, rows: initialRows, fileInfo, onDa
       <div className="flex items-center justify-between mb-1">
         <div className="text-[var(--foreground)] opacity-70">
           {rows.length} rows
-          {pageCount > 1 && (
-            <>
-              <button onClick={() => setPageIndex(Math.max(0, clampedPageIndex - 1))} disabled={clampedPageIndex === 0} className="ml-2 cursor-pointer disabled:opacity-40">‹</button>
-              <span className="mx-1">{clampedPageIndex + 1}/{pageCount}</span>
-              <button onClick={() => setPageIndex(Math.min(pageCount - 1, clampedPageIndex + 1))} disabled={clampedPageIndex === pageCount - 1} className="cursor-pointer disabled:opacity-40">›</button>
-            </>
-          )}
         </div>
         <OptionsMenu columns={columns} hiddenColumns={hiddenColumns} onToggleColumn={toggleColumn} maxLines={maxLines} onSetMaxLines={setMaxLines} />
       </div>
@@ -156,15 +139,14 @@ const CsvDataGrid = ({columns: initialColumns, rows: initialRows, fileInfo, onDa
             </tr>
           </thead>
           <tbody>
-            {pageRows.map((row, pageRowIndex) => {
-              const actualRowIndex = getActualRowIndex(pageRowIndex)
+            {sortedRows.map((row, rowIndex) => {
               return (
-                <tr key={pageRowIndex}>
+                <tr key={rowIndex}>
                   {visibleColumns.map((column) => {
-                    const isEditing = editingCell && !editingCell.isHeader && editingCell.rowIndex === actualRowIndex && editingCell.column === column
+                    const isEditing = editingCell && !editingCell.isHeader && editingCell.rowIndex === rowIndex && editingCell.column === column
                     const content = getCellContent(row[column] || '', column)
                     return (
-                      <td key={column} className="p-2 border-b border-gray-600 align-top" onDoubleClick={() => handleDoubleClick(actualRowIndex, column)}>
+                      <td key={column} className="p-2 border-b border-gray-600 align-top" onDoubleClick={() => handleDoubleClick(rowIndex, column)}>
                         {isEditing ? (
                           <input ref={inputRef} type="text" value={editValue} onChange={e => setEditValue(e.target.value)} onKeyDown={handleKeyDown} onBlur={() => setEditingCell(null)} className="bg-transparent border-b border-white outline-none w-full" />
                         ) : (

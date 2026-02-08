@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireUserPrisma } from '@/lib/userPrisma'
 import OpenAI from 'openai'
-import { getAiNotesPrompt, getPredictTagsPrompt } from './aiNotesPrompt'
+import { getAiNotesPrompt, getPredictSingleTagPrompt } from './aiNotesPrompt'
 import { getKeylogsForTimeblock, getScreenshotSummariesForTimeblock } from '../shared/keylogUtils'
 import { marked } from 'marked'
+import fs from 'fs'
+import path from 'path'
 
 const getRequiredEnv = (key: string) => {
   const value = process.env[key]
@@ -52,33 +54,45 @@ export async function POST(request: NextRequest) {
       tagsByType[tag.type].push({ id: tag.id, name: tag.name, description: tag.description })
     }
     console.log('[predict-tags] Tag types:', Object.keys(tagsByType).join(', '))
-    // 3. Make request to Claude Opus 4.5 via OpenRouter
-    const tagTypesDescription = Object.entries(tagsByType).map(([type, tagList]) => {
-      const tagDescriptions = tagList.map(t => t.description ? `${t.name} (${t.description})` : t.name).join(', ')
-      return `- ${type}: ${tagDescriptions}`
-    }).join('\n')
-    const prompt = getPredictTagsPrompt({ keylogText, screenshotSummariesText, tagTypesDescription })
-
+    // 3. Run a separate Claude Haiku query for each tag in parallel
     const client = getOpenRouterClient()
-    console.log('[predict-tags] Sending request to LLM (anthropic/claude-sonnet-4)...')
-    console.log('[predict-tags] Prompt length:', prompt.length, 'chars')
-    const completion = await client.chat.completions.create({
-      model: 'anthropic/claude-sonnet-4',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 500,
+    console.log(`[predict-tags] Sending ${tags.length} individual Haiku requests...`)
+    const tagPromises = tags.map(async (tag) => {
+      const prompt = getPredictSingleTagPrompt({ keylogText, screenshotSummariesText, tagType: tag.type, tagName: tag.name, tagDescription: tag.description, allTags: tags.map(t => ({ type: t.type, name: t.name, description: t.description })) })
+      try {
+        const completion = await client.chat.completions.create({
+          model: 'anthropic/claude-haiku-4.5',
+          messages: [{ role: 'user', content: prompt }],
+          max_tokens: 500,
+        })
+        const responseText = completion.choices[0]?.message?.content || '{}'
+        const jsonMatch = responseText.match(/\{[\s\S]*\}/)
+        if (!jsonMatch) return { type: tag.type, name: tag.name, decision: false, reason: 'No JSON in response' }
+        const result = JSON.parse(jsonMatch[0])
+        const reason = [result.howDistinguish, result.overallStory, result.whyItMightApply, result.whyItMightNotApply, result.confidence].filter(Boolean).join('\n\n')
+        if (result.decision) {
+          console.log(`[predict-tags] Tag ${tag.type}/${tag.name}: applies - ${reason}`)
+        } else {
+          console.log(`[predict-tags] Tag ${tag.type}/${tag.name}: does not apply`)
+        }
+        return { type: tag.type, name: tag.name, decision: !!result.decision, reason }
+      } catch (e) {
+        console.error(`[predict-tags] Failed for tag ${tag.type}/${tag.name}:`, e)
+        return { type: tag.type, name: tag.name, decision: false, reason: `Error: ${e instanceof Error ? e.message : 'Unknown'}` }
+      }
     })
-    const responseText = completion.choices[0]?.message?.content || '[]'
-    console.log('[predict-tags] LLM response:', responseText)
-    // Parse the response
-    let predictions: { type: string, name: string, reason?: string }[] = []
-    try {
-      const jsonMatch = responseText.match(/\[[\s\S]*\]/)
-      if (jsonMatch) predictions = JSON.parse(jsonMatch[0])
-      console.log('[predict-tags] Parsed predictions:', JSON.stringify(predictions))
-    } catch (e) {
-      console.error('[predict-tags] Failed to parse LLM response:', responseText, e)
-      return NextResponse.json({ error: 'Failed to parse LLM response', raw: responseText }, { status: 500 })
+    const allResults = await Promise.all(tagPromises)
+    // Save all tag decision results as md files
+    const tagReasonsDir = path.join(process.cwd(), 'downloads', 'tag-reasons', prevBlockDatetime.toISOString().replace(/:/g, '-').replace(/\.\d+Z$/, ''))
+    fs.mkdirSync(tagReasonsDir, { recursive: true })
+    for (const result of allResults) {
+      const filename = `${result.type}--${result.name}.md`
+      const md = `# ${result.type} / ${result.name}\n\n**Decision:** ${result.decision ? 'APPLIES' : 'Does not apply'}\n\n${result.reason}`
+      fs.writeFileSync(path.join(tagReasonsDir, filename), md)
     }
+    console.log(`[predict-tags] Saved ${allResults.length} tag reason files to ${tagReasonsDir}`)
+    const predictions = allResults.filter(r => r.decision)
+    console.log('[predict-tags] Predictions:', JSON.stringify(predictions))
     // 4. Create tag instances for each prediction
     console.log('[predict-tags] Processing', predictions.length, 'predictions...')
     const createdInstances = []
