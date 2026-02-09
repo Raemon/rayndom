@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import ConversationTopicPage, { DomainInfo } from '../common/ConversationTopicPage'
+import ConversationTopicPage, { DomainInfo } from '../../common/ConversationTopicPage'
 
 export function getDomainsFromDownloads(topic: string): DomainInfo[] {
   const domains: DomainInfo[] = []
@@ -15,7 +15,7 @@ export function getDomainsFromDownloads(topic: string): DomainInfo[] {
       domains.push({ domain: folder.name, files })
     }
   }
-  const appOutputPath = path.join(process.cwd(), `app/${topic}/output`)
+  const appOutputPath = path.join(process.cwd(), `app/research/${topic}/output`)
   if (fs.existsSync(appOutputPath)) {
     const entries = fs.readdirSync(appOutputPath, { withFileTypes: true })
     const domainFolders = entries.filter(e => e.isDirectory() && !e.name.startsWith('.'))
@@ -37,7 +37,7 @@ export function getOutputFiles(topic: string): string[] {
       .filter(f => !f.startsWith('.') && f.endsWith('.csv'))
     files.push(...outputFiles)
   }
-  const appOutputPath = path.join(process.cwd(), `app/${topic}/output`)
+  const appOutputPath = path.join(process.cwd(), `app/research/${topic}/output`)
   if (fs.existsSync(appOutputPath)) {
     const appOutputFiles = fs.readdirSync(appOutputPath)
       .filter(f => !f.startsWith('.') && f.endsWith('.csv'))

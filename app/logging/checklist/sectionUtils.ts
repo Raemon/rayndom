@@ -15,6 +15,7 @@ export const coerceSection = (section: string | null): SectionKey => {
 }
 
 export const SECTION_DEFINITIONS = [
+  { key: 'weeHours' as const, label: 'Wee Hours', startMinutes: 0, endMinutes: 10 * 60 + 15 },
   { key: 'morning' as const, label: 'Morning', startMinutes: 10 * 60 + 30, endMinutes: 12 * 60 + 15 },
   { key: 'afternoon' as const, label: 'Afternoon', startMinutes: 12 * 60 + 30, endMinutes: 15 * 60 + 45 },
   { key: 'evening' as const, label: 'Evening', startMinutes: 16 * 60, endMinutes: 19 * 60 + 45 },

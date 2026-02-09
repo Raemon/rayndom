@@ -1,4 +1,4 @@
-import ConversationTopicPage from '../common/ConversationTopicPage'
+import ConversationTopicPage from '../../common/ConversationTopicPage'
 import { getDomainsFromDownloads, getOutputFiles } from '../example/page'
 
 export default function Page() {
