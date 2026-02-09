@@ -10,7 +10,7 @@ import type { Tag } from '../types'
 
 const TagPageInner = ({}:{}) => {
   const { tags } = useTags()
-  const [showDescriptions, setShowDescriptions] = useState(false)
+  const [showDescriptions, setShowDescriptions] = useState(true)
   const startIso = new Date(2000, 0, 1).toISOString()
   const endIso = new Date(2100, 0, 1).toISOString()
   const { tagInstances } = useTagInstances({ start: startIso, end: endIso })
@@ -32,7 +32,7 @@ const TagPageInner = ({}:{}) => {
       </label>
       <div className="flex gap-6 items-start">
         {typeNames.map(typeName => (
-          <div key={typeName} className="flex-1 min-w-0">
+          <div key={typeName} className="w-1/3 min-w-0">
             <div className="text-lg text-white mb-2">{typeName}</div>
             <div className="flex flex-col gap-1">
               {sortedTagsByType[typeName]?.map(({ tag, count }:{ tag: Tag, count: number }) => (

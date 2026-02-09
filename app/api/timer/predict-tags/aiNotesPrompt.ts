@@ -1,29 +1,70 @@
-export const getPredictSingleTagPrompt = ({ keylogText, screenshotSummariesText, tagType, tagName, tagDescription, allTags }:{ keylogText?: string, screenshotSummariesText?: string, tagType: string, tagName: string, tagDescription: string | null, allTags: { type: string, name: string, description: string | null }[] }) => `You are analyzing keylogs and/or screenshot summaries from the past hour to determine if a specific tag applies to this time period.
+export const getOverallStoryPrompt = ({ keylogText, screenshotSummariesText }:{ keylogText?: string, screenshotSummariesText?: string }) => `You are analyzing keylogs and/or screenshot summaries from the past hour to determine what the user was overall doing during the last 15 minutes.
 ${keylogText ? `\nHere are keylogs:\n${keylogText}\n` : ''}${screenshotSummariesText ? `\nHere are screenshot summaries:\n${screenshotSummariesText}\n` : ''}
-Tag type: ${tagType}
-Tag name: ${tagName}
-${tagDescription && `\nTag description: ${tagDescription}`}
 
-List of all other tags and their descriptions:
-${allTags.filter(t => !(t.type === tagType && t.name === tagName)).map(t => `- [${t.type}] ${t.name}${t.description ? `: ${t.description}` : ''}`).join('\n')}
-
-
-This tag was designed to capture a particular project, habit-trigger, or technique. Your goal is to figure out what the user was overall doing during the last 15 minutes. Then, figure out whether this tag applies. Most tags do not apply – they were designed to mean a very specific thing.
-
-Write your guess for what this specific tag means. How would you distinguish whether this tag applies, compared to all the other tags of the same type?
-
-Then, review the keylogs and screenshot summaries and write your guess for an overall story of what the user was doing during the last 15 minutes.
-
-Then, answer the question: was the user in one of the rare situations where this tag applies?
+Review the keylogs and screenshot summaries and write your guess for an overall story of what the user was doing during the last 15 minutes.
 
 Respond with ONLY a JSON object:
 {
-"howDistinguish": "write exactly what this tag is for and how you would distinguish it from similar tags or situations".
 "overallStory": "write your guess for an overall story of what the user was doing during the last 15 minutes."
-"whyItMightApply": "explain why this tag might apply."
-"whyItMightNotApply": "explain why this tag might not apply."
+}`
+
+type PredictSingleTagResult = {
+  whyItMightApply: string
+  whyItMightNotApply: string
+  confidence: 'low' | 'medium' | 'high'
+  decision: boolean
+}
+
+type PredictSingleTagPrompt = {
+  overallStory: string
+  tagType: string
+  tagName: string
+  tagDescription: string | null
+  allTags: { type: string, name: string, description: string | null }[]
+}
+
+export const getPredictSingleTagPrompt = ({ overallStory, tagType, tagName, tagDescription, allTags }: PredictSingleTagPrompt): string => `You are analyzing whether a specific tag applies to a time period.
+
+Overall story of what the user was doing during the last 15 minutes:
+${overallStory}
+
+Tag type: ${tagType}
+Tag name: ${tagName}
+${tagDescription ? `\nTag description: ${tagDescription}` : ''}
+
+This tag was designed to capture a particular project, habit-trigger, or technique. Your goal is to figure out whether this tag applies. Most tags do not apply – they were designed to mean a very specific thing.
+
+Look at the tag description and the overall story to determine whether this tag applies. Return the following json:
+
+Respond with ONLY a JSON object:
+{
+"whyItMightApply": "explain why this tag might apply (broken into multiple paragraphs for readability)."
+"whyItMightNotApply": "explain why this tag might not apply (broken into multiple paragraphs for readability)."
 "confidence": "how confident are you in your answer? (low confidence), (medium confidence), or (high confidence)."
 "decision": boolean value indicating whether this tag applies.
+}`
+
+type PredictTagsByTypePrompt = {
+  overallStory: string
+  tagType: string
+  tags: { name: string, description: string | null }[]
+}
+
+export const getPredictTagsByTypePrompt = ({ overallStory, tagType, tags }: PredictTagsByTypePrompt): string => `You are analyzing whether tags of type "${tagType}" apply to a time period.
+
+Overall story of what the user was doing during the last 15 minutes:
+${overallStory}
+
+Here are the tags of type "${tagType}". For each tag, decide whether it applies based on the tag's description and the overall story. Most tags will NOT apply – they were designed to mean a very specific thing.
+
+Tags:
+${tags.map(t => `- "${t.name}"${t.description ? `\n  Description: ${t.description}` : ''}`).join('\n')}
+
+For each tag, consider its description carefully. If the description specifies particular conditions, use those as the deciding criteria. If a tag has no description, use the tag name and type to make your best guess.
+
+Respond with ONLY a JSON object where keys are the exact tag names and values are objects with "applies" (boolean) and "reason" (string explaining why):
+{
+${tags.map(t => `  "${t.name}": { "applies": false, "reason": "..." }`).join(',\n')}
 }`
 
 export const getAiNotesPrompt = ({ keylogText, screenshotSummariesText = '' }:{ keylogText: string, screenshotSummariesText?: string }) => `You are analyzing recent keylogs and screenshot summaries.

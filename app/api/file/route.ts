@@ -15,6 +15,24 @@ const rowsToCsv = (columns: string[], rows: Record<string, string>[]): string =>
   return [header, ...dataLines].join('\n')
 }
 
+function getFileCandidatePaths({ topic, domain, file, source }: { topic: string, domain: string, file: string, source: string }): string[] {
+  if (source === 'outputs' && domain === '__outputs__') {
+    return [
+      path.join(process.cwd(), 'outputs', topic, file),
+      path.join(process.cwd(), 'app', topic, 'output', file),
+    ]
+  }
+  const basePath = source === 'outputs' ? 'outputs' : 'downloads'
+  const primaryPath = domain === '__outputs__'
+    ? path.join(process.cwd(), basePath, topic, file)
+    : path.join(process.cwd(), basePath, topic, domain, file)
+  const candidates = [primaryPath]
+  if (source === 'downloads' && domain !== '__outputs__') {
+    candidates.push(path.join(process.cwd(), 'app', topic, 'output', domain, file))
+  }
+  return candidates
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
@@ -22,15 +40,14 @@ export async function POST(request: NextRequest) {
     if (!topic || !domain || !file || !columns || !rows) {
       return NextResponse.json({ error: 'Missing required parameters' }, { status: 400 })
     }
-    const basePath = source === 'outputs' ? 'outputs' : 'downloads'
-    const filePath = domain === '__outputs__'
-      ? path.join(process.cwd(), basePath, topic, file)
-      : path.join(process.cwd(), basePath, topic, domain, file)
+    const candidates = getFileCandidatePaths({ topic, domain, file, source })
+    const filePath = candidates.find(p => fs.existsSync(p)) || candidates[candidates.length - 1]
     const ext = path.extname(file).toLowerCase()
     if (ext !== '.csv') {
       return NextResponse.json({ error: 'Only CSV files can be updated' }, { status: 400 })
     }
     const csvContent = rowsToCsv(columns, rows)
+    fs.mkdirSync(path.dirname(filePath), { recursive: true })
     fs.writeFileSync(filePath, csvContent, 'utf-8')
     return NextResponse.json({ success: true })
   } catch (error) {
@@ -47,11 +64,9 @@ export async function GET(request: NextRequest) {
   if (!topic || !domain || !file) {
     return NextResponse.json({ error: 'Missing topic, domain or file parameter' }, { status: 400 })
   }
-  const basePath = source === 'outputs' ? 'outputs' : 'downloads'
-  const filePath = domain === '__outputs__' 
-    ? path.join(process.cwd(), basePath, topic, file)
-    : path.join(process.cwd(), basePath, topic, domain, file)
-  if (!fs.existsSync(filePath)) {
+  const candidates = getFileCandidatePaths({ topic, domain, file, source })
+  const filePath = candidates.find(p => fs.existsSync(p))
+  if (!filePath) {
     return NextResponse.json({ error: 'File not found' }, { status: 404 })
   }
   const ext = path.extname(file).toLowerCase()

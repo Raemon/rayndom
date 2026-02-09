@@ -6,16 +6,28 @@ import TagEditor from './TagEditor'
 import TagEditModal from './TagEditModal'
 import { useTags } from './TagsContext'
 
-const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonly, showDescription, hideRelations }:{ tag: Tag, instanceCount: number, usefulCount?: number, antiUsefulCount?: number, readonly?: boolean, showDescription?: boolean, hideRelations?: boolean }) => {
+type TagListItemProps = {
+  tag: Tag
+  instanceCount: number
+  usefulCount?: number
+  antiUsefulCount?: number
+  readonly?: boolean
+  showDescription?: boolean
+  hideRelations?: boolean
+}
+
+const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonly, showDescription, hideRelations }: TagListItemProps) => {
   const { updateTag, deleteTag, tags } = useTags()
   const [isEditing, setIsEditing] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [dragOver, setDragOver] = useState(false)
   const [justDropped, setJustDropped] = useState(false)
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   useEffect(() => { return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current) } }, [])
   const parentTag = getParentTag(tag, tags)
-  const suggestedTags = (tag.suggestedTagIds || []).map(id => tags.find(t => t.id === id)).filter((t): t is Tag => t !== undefined)
+  const tagSuggestedTagIds = tag.suggestedTagIds || []
+  const suggestedTags = tagSuggestedTagIds.map(id => tags.find(t => t.id === id)).filter((t): t is Tag => t !== undefined)
   if (isEditing && !readonly) {
     return (
       <TagEditor
@@ -45,17 +57,25 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
     setJustDropped(true)
     const draggedTagId = parseInt(e.dataTransfer.getData('text/plain'))
     const draggedTag = tags.find(t => t.id === draggedTagId)
-    if (draggedTag && draggedTagId !== tag.id) {
-      if (draggedTag.type === tag.type) {
-        if (!wouldCreateCycle(tags, draggedTagId, tag.id)) {
-          await updateTag({ id: draggedTagId, parentTagId: tag.id })
-        }
-        return
+    const isSameTag = draggedTagId === tag.id
+    const isValidDrop = draggedTag && !isSameTag
+    if (!isValidDrop) {
+      timeoutRef.current = setTimeout(() => setJustDropped(false), 100)
+      return
+    }
+    const isSameType = draggedTag.type === tag.type
+    if (isSameType) {
+      const wouldCycle = wouldCreateCycle(tags, draggedTagId, tag.id)
+      if (!wouldCycle) {
+        await updateTag({ id: draggedTagId, parentTagId: tag.id })
       }
-      const existingSuggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
-      if (!existingSuggestedTagIds.includes(draggedTagId)) {
-        await updateTag({ id: tag.id, suggestedTagIds: [...existingSuggestedTagIds, draggedTagId] })
-      }
+      timeoutRef.current = setTimeout(() => setJustDropped(false), 100)
+      return
+    }
+    const existingSuggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
+    const isAlreadySuggested = existingSuggestedTagIds.includes(draggedTagId)
+    if (!isAlreadySuggested) {
+      await updateTag({ id: tag.id, suggestedTagIds: [...existingSuggestedTagIds, draggedTagId] })
     }
     timeoutRef.current = setTimeout(() => setJustDropped(false), 100)
   }
@@ -66,6 +86,26 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault()
     setShowModal(true)
+  }
+  const getBorderClasses = () => {
+    const hasBoth = usefulCount && antiUsefulCount
+    const hasUseful = usefulCount && !antiUsefulCount
+    const hasAntiUseful = antiUsefulCount && !usefulCount
+    if (hasBoth) return 'border-t-2 border-t-white border-r-2 border-r-red-500 border-b-2 border-b-red-500'
+    if (hasUseful) return 'border-t-2 border-r-2 border-b-2 border-t-white border-r-white border-b-white'
+    if (hasAntiUseful) return 'border-t-2 border-r-2 border-b-2 border-t-red-500 border-r-red-500 border-b-red-500'
+    return ''
+  }
+  const borderClasses = getBorderClasses()
+  const handleRemoveParent = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    updateTag({ id: tag.id, parentTagId: null })
+  }
+  const handleRemoveSuggestedTag = (suggestedTagId: number) => (e: React.MouseEvent) => {
+    e.stopPropagation()
+    const existingSuggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
+    const updatedSuggestedTagIds = existingSuggestedTagIds.filter(id => id !== suggestedTagId)
+    updateTag({ id: tag.id, suggestedTagIds: updatedSuggestedTagIds })
   }
   return (
     <>
@@ -84,17 +124,39 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
           {usefulCount ? <span className="text-green-400">+{usefulCount}</span> : null}
           {antiUsefulCount ? <span className="text-red-400">-{antiUsefulCount}</span> : null}
         </span>
-        <div className="flex flex-col" style={{ backgroundColor: getTagColor(tag.name), ...(usefulCount && antiUsefulCount ? { borderTop: '2px solid white', borderLeft: '2px solid white', borderBottom: '2px solid red', borderRight: '2px solid red' } : usefulCount ? { border: '2px solid white' } : antiUsefulCount ? { border: '2px solid red' } : {}) }}>
+        <div className={`flex flex-col p-2 border-b-[1px] border-b-white/20 border-l-[10px] ${borderClasses}`} style={{ borderLeftColor: getTagColor(tag.name) }}>
           <span className="px-1 rounded-xs text-white text-sm">{tag.name}</span>
-          {!hideRelations && parentTag && <div className="text-[9px] opacity-100 px-1 flex items-center gap-1"><span>└</span>{parentTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, parentTagId: null }) }}>×</button></div>}
+          {!hideRelations && parentTag && (
+            <div className="text-[12px] opacity-100 px-1 flex items-center gap-1">
+              <span>└</span>
+              {parentTag.name}
+              <button className="ml-0.5 hover:opacity-100 opacity-60" onClick={handleRemoveParent}>×</button>
+            </div>
+          )}
           {!hideRelations && suggestedTags.map(suggestedTag => {
-            const existingSuggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
-            return <div key={suggestedTag.id} className="text-[9px] opacity-100 px-1 flex items-center gap-1"><span>→</span>{suggestedTag.name}<button className="ml-0.5 hover:opacity-100 opacity-60" onClick={(e) => { e.stopPropagation(); updateTag({ id: tag.id, suggestedTagIds: existingSuggestedTagIds.filter(id => id !== suggestedTag.id) }) }}>×</button></div>
+            return (
+              <div key={suggestedTag.id} className="text-[12px] opacity-100 px-1 flex items-center gap-1">
+                <span>→</span>
+                {suggestedTag.name}
+                <button className="ml-0.5 hover:opacity-100 opacity-60" onClick={handleRemoveSuggestedTag(suggestedTag.id)}>×</button>
+              </div>
+            )
           })}
-          {showDescription && tag.description && <div className="text-[11px] opacity-70 px-1 text-white max-w-48">{tag.description}</div>}
+          {!hideRelations && showDescription && tag.description && (
+            <div className="px-1">
+              <div className={`text-[12px] opacity-70 text-white ${isDescriptionExpanded ? '' : 'line-clamp-4'}`} onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}>{tag.description}</div>
+            </div>
+          )}
         </div>
       </div>
-      {showModal && !readonly && <TagEditModal tag={tag} onSave={({ id, name, type, description }) => updateTag({ id, name, type, description })} onDelete={({ id }) => deleteTag({ id })} onClose={() => setShowModal(false)} />}
+      {showModal && !readonly && (
+        <TagEditModal
+          tag={tag}
+          onSave={({ id, name, type, description }) => updateTag({ id, name, type, description })}
+          onDelete={({ id }) => deleteTag({ id })}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </>
   )
 }

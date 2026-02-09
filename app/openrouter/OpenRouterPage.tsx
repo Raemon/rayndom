@@ -144,16 +144,16 @@ const OpenRouterPage = () => {
       {credits?.data && (
         <div className="mb-6">
           <div className="mb-2">
-            <span className="text-gray-400">Total Credits: </span>
+            <span className="text-white/80">Total Credits: </span>
             <span>{credits.data.total_credits?.toFixed(2) || 'N/A'}</span>
           </div>
           <div className="mb-2">
-            <span className="text-gray-400">Total Usage: </span>
+            <span className="text-white/80">Total Usage: </span>
             <span>{credits.data.total_usage?.toFixed(2) || 'N/A'}</span>
           </div>
           {remainingCredits !== null && (
             <div className="mb-2">
-              <span className="text-gray-400">Remaining Credits: </span>
+              <span className="text-white/80">Remaining Credits: </span>
               <span className={remainingCredits < 10 ? 'text-red-400' : ''}>{remainingCredits.toFixed(2)}</span>
             </div>
           )}
@@ -167,11 +167,11 @@ const OpenRouterPage = () => {
             {dailyBreakdown.map(day => (
               <div key={day.date} className="text-xs">
                 <div className="mb-1">
-                  <span className="text-gray-400">{day.date.split('-')[2]}</span>
+                  <span className="text-white">{day.date.split('T')[0]}</span>
                   <span className="ml-2">${day.totalCost.toFixed(2)}</span>
                 </div>
                 {day.models.map(model => (
-                  <div key={model.model} className="ml-4 mb-1 text-gray-500">
+                  <div key={model.model} className="ml-4 mb-1 text-white/80">
                     <span>{model.model}</span>
                     {model.provider_name && <span className="ml-1">({model.provider_name})</span>}
                     <span className="ml-2">${model.cost.toFixed(2)}</span>
@@ -188,7 +188,7 @@ const OpenRouterPage = () => {
         </div>
       )}
       {!activityError && !loading && dailyBreakdown.length === 0 && activity && (
-        <div className="text-gray-400 text-xs">No spending data available for the last 30 days.</div>
+        <div className="text-white/80 text-xs">No spending data available for the last 30 days.</div>
       )}
     </div>
   )

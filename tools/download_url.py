@@ -301,10 +301,10 @@ def run_in_background(conversation_topic, urls, subtopic=None, include_files=Fal
         cmd.append('--auto')
     if recurse_one:
         cmd.append('--recurse-one')
-    cmd.append(conversation_topic)
     if subtopic:
         cmd.append('--subtopic')
         cmd.append(subtopic)
+    cmd.append(conversation_topic)
     cmd.extend(urls)
     if os.name == 'nt':  # Windows
         subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireUserPrisma } from '@/lib/userPrisma'
+import { generateAndSaveTagDescription } from './generateTagDescription'
 
 export async function GET(request: NextRequest) {
   const auth = await requireUserPrisma(request)
@@ -22,7 +23,12 @@ export async function POST(request: NextRequest) {
   const name = body?.name
   const type = body?.type
   if (!name || !type) return NextResponse.json({ error: 'Missing name or type' }, { status: 400 })
+  const existing = await prisma.tag.findFirst({ where: { name, type } })
   const tag = await prisma.tag.upsert({ where: { name_type: { name, type } }, create: { name, type }, update: {}, include: { parentTag: true } })
+  if (!existing) {
+    // Fire-and-forget: generate description for newly created tag
+    generateAndSaveTagDescription({ tagId: tag.id, prisma, doNotRunAgain: true }).catch(e => console.error('[tags] Failed to generate description for new tag:', e))
+  }
   return NextResponse.json({ tag })
 }
 

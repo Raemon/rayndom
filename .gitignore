@@ -49,3 +49,6 @@ downloads/
 /data/observatory/
 
 /lib/generated/prisma
+
+# generated output files
+**/output/
