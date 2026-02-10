@@ -5,7 +5,7 @@ import { useTagInstances } from '../hooks/useTagInstances'
 import { FocusedNotesProvider, useFocusedNotes } from '../context/FocusedNotesContext'
 import { TagsProvider, useTags } from '../tags/TagsContext'
 import MarkdownContent from '../../common/MarkdownContent'
-import OrientingChecklist from '../checklist/OrientingChecklist'
+import Checklist from '../checklist/Checklist'
 import ZenRow from '../zen/ZenRow'
 import type { Timeblock } from '../types'
 import Timer from './Timer'
@@ -144,7 +144,7 @@ const LoggingZenInner = () => {
         })}
       </div>
       <div style={{ flex: 1, overflow: 'auto' }} className="p-2">
-        <OrientingChecklist />
+        <Checklist inline />
       </div>
     </div>
   )

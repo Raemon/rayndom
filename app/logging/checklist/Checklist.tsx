@@ -5,6 +5,7 @@ import AddChecklistItem from './AddChecklistItem'
 import type { ChecklistItem } from '../types'
 import { buildChecklistUrl } from './checklistApi'
 import OrientingChecklist from './OrientingChecklist'
+import TodayNotesChecklistSection from './TodayNotesChecklistSection'
 
 export type ChecklistRef = {
   resetAllItems: () => void
@@ -118,6 +119,7 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
       <div className="mt-4">
         <OrientingChecklist maxWidth={parseInt(width)} onHasRelevantUnchecked={setHasRelevantUnchecked} />
       </div>
+      <TodayNotesChecklistSection textSize={textSize} />
     </div>
   )
 })
