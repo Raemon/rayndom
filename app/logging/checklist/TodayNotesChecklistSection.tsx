@@ -46,7 +46,7 @@ const TodayNotesChecklistSection = ({ textSize='text-sm' }:{ textSize?: string }
     await fetch('/api/timer/timeblocks', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: task.timeblockId, rayNotes: newHtml }) })
   }
 
-  if (!loading && loadedOnce && !hasTasks) return null
+  if (loadedOnce && !hasTasks) return null
 
   return (
     <div className="mt-4">
