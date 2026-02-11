@@ -3,6 +3,9 @@ import { requireUserPrisma } from '@/lib/userPrisma'
 import OpenAI from 'openai'
 import { getAiNotesPrompt, getPredictSingleTagPrompt, getPredictTagsByTypePrompt, getOverallStoryPrompt } from './aiNotesPrompt'
 import { getKeylogsForTimeblock, getScreenshotSummariesForTimeblock } from '../shared/keylogUtils'
+import { buildTriggerRuleSet, decideTriggerTag } from '../shared/triggerRules'
+import { fetchScreenshotEvidenceForDate, getDateString, getEntriesInRange } from '../shared/screenshotEvidence'
+import type { TimeblockEvidence } from '../shared/historicalEvidence'
 import { marked } from 'marked'
 import fs from 'fs'
 import path from 'path'
@@ -20,6 +23,7 @@ const getOpenRouterClient = () => {
 
 type TagResult = { type: string, name: string, decision: boolean, reason: string }
 type TagRecord = { id: number, name: string, type: string, description: string | null, noAiSuggest: boolean }
+const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
 
 // Old approach: one LLM query per individual tag
 async function predictTagsIndividually({ client, tags, overallStory }: { client: OpenAI, tags: TagRecord[], overallStory: string }): Promise<TagResult[]> {
@@ -93,6 +97,48 @@ async function predictTagsByType({ client, tags, tagsByType, overallStory }: { c
   return resultsByType.flat()
 }
 
+async function runDeterministicTriggerPass({ tagsByType, prevBlockDatetime }: { tagsByType: Record<string, { id: number, name: string, description: string | null }[]>, prevBlockDatetime: Date }): Promise<TagResult[]> {
+  const deterministicResults: TagResult[] = []
+  const triggerTypeTags = tagsByType['Triggers'] || []
+  if (triggerTypeTags.length === 0) return deterministicResults
+  try {
+    // Build the exact previous 15-minute slot we want deterministic evidence for.
+    const startSlot = floorTo15(prevBlockDatetime)
+    const endSlot = new Date(startSlot.getTime() + 15 * 60 * 1000)
+    const dateStr = getDateString(startSlot)
+    const screenshotResult = await fetchScreenshotEvidenceForDate(dateStr)
+    const entries = 'error' in screenshotResult ? [] : screenshotResult.entries
+    const windowEntries = entries.length > 0 ? getEntriesInRange(entries, startSlot, endSlot) : []
+    if (windowEntries.length === 0) {
+      console.log('[predict-tags] No screenshot entries found for previous 15m window; skipping deterministic triggers')
+      return deterministicResults
+    }
+    // Convert screenshot entries into the TimeblockEvidence shape required by trigger rules.
+    const screenshotSummaryText = windowEntries.map(e => `[${e.timestamp}] ${e.summary}`).join('\n')
+    const evidenceForRules: TimeblockEvidence = { datetime: startSlot.toISOString(), durationMinutes: 15, screenshotEvidence: windowEntries, screenshotSummaryText }
+    const triggerRuleMap = buildTriggerRuleSet({ triggerTags: triggerTypeTags.map(t => ({ id: t.id, name: t.name })) })
+    const triggersForLLM: { id: number, name: string, description: string | null }[] = []
+    // Keep only high-confidence deterministic outcomes; defer uncertain ones to the LLM pass.
+    for (const triggerTag of triggerTypeTags) {
+      const decision = decideTriggerTag({ ruleMap: triggerRuleMap, tagId: triggerTag.id, evidence: evidenceForRules })
+      if (decision.confidence === 'high') {
+        deterministicResults.push({ type: 'Triggers', name: triggerTag.name, decision: decision.applies, reason: `[deterministic][high] ${decision.reason}` })
+      } else {
+        triggersForLLM.push(triggerTag)
+      }
+    }
+    if (triggersForLLM.length > 0) {
+      tagsByType['Triggers'] = triggersForLLM
+    } else {
+      delete tagsByType['Triggers']
+    }
+    console.log(`[predict-tags] Deterministic triggers: ${deterministicResults.length} (remaining for LLM: ${triggersForLLM.length})`)
+  } catch (e) {
+    console.error('[predict-tags] Deterministic trigger pass failed:', e)
+  }
+  return deterministicResults
+}
+
 export async function POST(request: NextRequest) {
   const auth = await requireUserPrisma(request)
   if ('error' in auth) return auth.error
@@ -129,6 +175,7 @@ export async function POST(request: NextRequest) {
       tagsByType[tag.type].push({ id: tag.id, name: tag.name, description: tag.description })
     }
     console.log('[predict-tags] Tag types:', Object.keys(tagsByType).join(', '))
+    const deterministicResults = await runDeterministicTriggerPass({ tagsByType, prevBlockDatetime })
     // 3. Get overall story first
     const client = getOpenRouterClient()
     console.log('[predict-tags] Getting overall story...')
@@ -154,7 +201,8 @@ export async function POST(request: NextRequest) {
       overallStory = `[Raw data - story extraction failed]\nKeylogs: ${keylogSnippet}\nScreenshots: ${screenshotSnippet}`
     }
     // 4. Run tag predictions
-    const allResults = await predictTagsByType({ client, tags, tagsByType, overallStory })
+    const llmResults = await predictTagsByType({ client, tags, tagsByType, overallStory })
+    const allResults = [...deterministicResults, ...llmResults]
     // 5. Save all tag decision results as md files
     const tagReasonsDir = path.join(process.cwd(), 'app', 'tag-reasons', 'output', prevBlockDatetime.toISOString().replace(/:/g, '-').replace(/\.\d+Z$/, ''))
     fs.mkdirSync(tagReasonsDir, { recursive: true })
