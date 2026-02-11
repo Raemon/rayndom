@@ -59,6 +59,7 @@ const DraggableTag = ({ tag, parentTag, ti, onApproveTagInstance, onPatchTagInst
   }
   const handleContextMenu = (e: React.MouseEvent) => {
     e.preventDefault()
+    e.stopPropagation()
     setShowModal(true)
   }
   const tagElement = (

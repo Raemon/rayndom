@@ -5,6 +5,7 @@ import { useTags } from './TagsContext'
 import type { TagInstance } from '../types'
 import DraggableTag from './DraggableTag'
 import { wouldCreateCycle, getParentTag, getAllAncestorTagIds } from './tagUtils'
+import SuggestedTagsModal from './SuggestedTagsModal'
 
 const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
   type: string,
@@ -18,6 +19,8 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
 }) => {
   const { tags, createTag, updateTag } = useTags()
   const [isEditing, setIsEditing] = useState(false)
+  const [showSuggestedTagsModal, setShowSuggestedTagsModal] = useState(false)
+  const [directSuggestions, setDirectSuggestions] = useState<typeof tags>([]);
   const typeTags = tags.filter(t => t.type === type)
   const handleSetParent = (childId: number, parentId: number) => {
     const childTag = tags.find(t => t.id === childId)
@@ -34,7 +37,7 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
   }
 
   return (
-    <div className="flex items-center gap-1 min-w-0 flex-wrap">
+    <div className="flex items-center gap-1 min-w-0 flex-wrap" onContextMenu={(e) => { e.preventDefault(); setShowSuggestedTagsModal(true) }}>
       {[...tagInstances].sort((a, b) => a.id - b.id).map(ti => {
         const tag = ti.tag || typeTags.find(t => t.id === ti.tagId)
         if (!tag) return null
@@ -66,11 +69,13 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
           }
           await onCreateTagInstance({ tagId: tag.id, datetime })
           const suggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
-          for (const suggestedTagId of suggestedTagIds) {
-            const suggestedAlreadyExists = allTagInstances.some(ti => ti.tagId === suggestedTagId && ti.datetime === datetime)
-            if (!suggestedAlreadyExists) {
-              await onCreateTagInstance({ tagId: suggestedTagId, datetime, approved: false })
-            }
+          const suggestedTagsToOffer = suggestedTagIds
+            .filter(id => !allTagInstances.some(ti => ti.tagId === id && ti.datetime === datetime))
+            .map(id => tags.find(t => t.id === id))
+            .filter((t): t is typeof tags[number] => t !== undefined)
+          if (suggestedTagsToOffer.length > 0) {
+            setDirectSuggestions(suggestedTagsToOffer)
+            setShowSuggestedTagsModal(true)
           }
           setIsEditing(false)
         }}
@@ -79,6 +84,10 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
           return created
         }}
       />
+      {showSuggestedTagsModal && <SuggestedTagsModal type={type} tags={tags} allTagInstances={allTagInstances} directSuggestions={directSuggestions} onAddTag={async (tag) => {
+        await onCreateTagInstance({ tagId: tag.id, datetime, approved: false })
+        setDirectSuggestions(prev => prev.filter(t => t.id !== tag.id))
+      }} onClose={() => { setShowSuggestedTagsModal(false); setDirectSuggestions([]) }} />}
     </div>
   )
 }
