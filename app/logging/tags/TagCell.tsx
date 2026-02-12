@@ -37,7 +37,7 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
   }
 
   return (
-    <div className="flex items-center gap-1 min-w-0 flex-wrap" onContextMenu={(e) => { e.preventDefault(); setShowSuggestedTagsModal(true) }}>
+    <div className="flex items-center justify-start gap-1 min-w-0 flex-wrap h-full" onContextMenu={(e) => { e.preventDefault(); setShowSuggestedTagsModal(true) }}>
       {[...tagInstances].sort((a, b) => a.id - b.id).map(ti => {
         const tag = ti.tag || typeTags.find(t => t.id === ti.tagId)
         if (!tag) return null

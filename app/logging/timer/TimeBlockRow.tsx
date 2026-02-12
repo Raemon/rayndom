@@ -110,7 +110,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
           </td>
         )}
         {tagTypes.map(type => (
-          <td key={type} className="px-2 py-2" style={{ width: `${45 / (tagTypes.length || 1)}%`, verticalAlign: 'top' }}>
+          <td key={type} className="px-2 py-2" style={{ width: `${45 / (tagTypes.length || 1)}%`, verticalAlign: 'top', height: '1px' }}>
             <TagCell
               type={type}
               tagInstances={tagInstancesByType[type] || []}
