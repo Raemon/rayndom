@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import TagTypeahead from './TagTypeahead'
 import { useTags } from './TagsContext'
 import type { Tag, TagInstance } from '../types'
@@ -38,6 +38,11 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
   }
   const visiblePendingTagInstances = pendingTagInstances.filter(pending => !tagInstances.some(existing => existing.tagId === pending.tagId))
   const visibleTagInstances = [...tagInstances, ...visiblePendingTagInstances]
+  const pendingCreateKeysRef = useRef<Set<string>>(new Set())
+  const buildPendingCreateKey = (tagId: number) => `${datetime}:${tagId}`
+  const hasPendingCreateFor = (tagId: number) => pendingCreateKeysRef.current.has(buildPendingCreateKey(tagId))
+  const addPendingCreateKey = (tagId: number) => pendingCreateKeysRef.current.add(buildPendingCreateKey(tagId))
+  const removePendingCreateKey = (tagId: number) => pendingCreateKeysRef.current.delete(buildPendingCreateKey(tagId))
 
   return (
     <div className="flex items-center justify-start gap-1 min-w-0 flex-wrap h-full" onContextMenu={(e) => { e.preventDefault(); setShowSuggestedTagsModal(true) }}>
@@ -62,16 +67,33 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
         tags={typeTags}
         allTagInstances={allTagInstances}
         placeholder={type}
-        onSelectTag={(tag) => {
+        onSelectTag={async (tag) => {
           setPendingTagInstances(prev => prev.filter(ti => ti.tag?.name !== tag.name || ti.tag?.type !== tag.type))
           const ancestorIdsInOrder = getAllAncestorTagIds(tag, tags).reverse()
           for (const ancestorId of ancestorIdsInOrder) {
-            const ancestorAlreadyExists = tagInstances.some(ti => ti.tagId === ancestorId)
+            const ancestorAlreadyExists = tagInstances.some(ti => ti.tagId === ancestorId) || hasPendingCreateFor(ancestorId)
             if (!ancestorAlreadyExists) {
-              onCreateTagInstance({ tagId: ancestorId, datetime }).catch(error => console.error('Failed to create ancestor tag instance:', error))
+              addPendingCreateKey(ancestorId)
+              try {
+                await onCreateTagInstance({ tagId: ancestorId, datetime })
+              } catch (error) {
+                console.error('Failed to create ancestor tag instance:', error)
+              } finally {
+                removePendingCreateKey(ancestorId)
+              }
             }
           }
-          onCreateTagInstance({ tagId: tag.id, datetime }).catch(error => console.error('Failed to create tag instance:', error))
+          const selectedTagAlreadyExists = tagInstances.some(ti => ti.tagId === tag.id) || hasPendingCreateFor(tag.id)
+          if (!selectedTagAlreadyExists) {
+            addPendingCreateKey(tag.id)
+            try {
+              await onCreateTagInstance({ tagId: tag.id, datetime })
+            } catch (error) {
+              console.error('Failed to create tag instance:', error)
+            } finally {
+              removePendingCreateKey(tag.id)
+            }
+          }
           const suggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
           const suggestedTagsToOffer = suggestedTagIds
             .filter(id => !allTagInstances.some(ti => ti.tagId === id && ti.datetime === datetime))

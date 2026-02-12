@@ -6,6 +6,16 @@ import type { ChecklistItem } from '../types'
 import { buildChecklistUrl } from './checklistApi'
 import OrientingChecklist from './OrientingChecklist'
 import TodayNotesChecklistSection from './TodayNotesChecklistSection'
+import { getApiErrorMessage } from '../lib/optimisticApi'
+import { runOptimisticMutation } from '../lib/optimisticMutation'
+
+const areOrderedIdsEqual = (left: ChecklistItem[], right: ChecklistItem[]) => {
+  if (left.length !== right.length) return false
+  for (let i = 0; i < left.length; i += 1) {
+    if (left[i].id !== right[i].id) return false
+  }
+  return true
+}
 
 export type ChecklistRef = {
   resetAllItems: () => void
@@ -58,24 +68,58 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
       if (existingItem.id <= nextOptimisticId) nextOptimisticId = existingItem.id - 1
     }
     const optimistic: ChecklistItem = { id: nextOptimisticId, title, completed: false, sortOrder: checklistItems.length, orientingBlock: orientingOnly, section: section ?? null }
-    setChecklistItems(prev => [...prev, optimistic])
-    try {
-      const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title, orientingBlock: orientingOnly, section }) })
-      const item = await res.json()
-      setChecklistItems(prev => prev.map(existing => existing.id === optimistic.id ? item : existing))
-    } catch {
-      setChecklistItems(prev => prev.filter(existing => existing.id !== optimistic.id))
-    }
+    await runOptimisticMutation({
+      applyOptimistic: () => {
+        setChecklistItems(prev => [...prev, optimistic])
+        return optimistic
+      },
+      request: async () => {
+        const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title, orientingBlock: orientingOnly, section }) })
+        if (!res.ok) {
+          const json = await res.json().catch(() => ({}))
+          throw new Error(getApiErrorMessage(json, `Failed to create checklist item (${res.status})`))
+        }
+        const item = await res.json()
+        return item as ChecklistItem
+      },
+      commit: (item) => {
+        setChecklistItems(prev => prev.map(existing => existing.id === optimistic.id ? item : existing))
+      },
+      rollback: () => {
+        setChecklistItems(prev => prev.filter(existing => existing.id !== optimistic.id))
+      },
+      rethrow: false,
+    })
   }
 
   const removeChecklistItem = async (id: number) => {
-    const previousChecklistItems = checklistItems
-    setChecklistItems(prev => prev.filter(item => item.id !== id))
-    try {
-      await fetch('/api/checklist', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
-    } catch {
-      setChecklistItems(previousChecklistItems)
-    }
+    const previousIndex = checklistItems.findIndex(item => item.id === id)
+    const previousChecklistItem = checklistItems.find(item => item.id === id)
+    if (!previousChecklistItem) return
+    await runOptimisticMutation({
+      applyOptimistic: () => {
+        setChecklistItems(prev => prev.filter(item => item.id !== id))
+        return { previousIndex, previousChecklistItem }
+      },
+      request: async () => {
+        const res = await fetch('/api/checklist', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
+        if (!res.ok) {
+          const json = await res.json().catch(() => ({}))
+          throw new Error(getApiErrorMessage(json, `Failed to delete checklist item (${res.status})`))
+        }
+        return true
+      },
+      rollback: ({ previousIndex, previousChecklistItem }) => {
+        setChecklistItems(prev => {
+          if (prev.some(item => item.id === previousChecklistItem.id)) return prev
+          const next = [...prev]
+          const insertIndex = previousIndex >= 0 && previousIndex <= next.length ? previousIndex : next.length
+          next.splice(insertIndex, 0, previousChecklistItem)
+          return next
+        })
+      },
+      rethrow: false,
+    })
   }
 
   const toggleChecked = async (id: number) => {
@@ -83,23 +127,49 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
     if (!item) return
     const completed = !item.completed
     const previousChecklistItems = checklistItems
-    setChecklistItems(prev => prev.map(i => i.id === id ? { ...i, completed } : i))
-    try {
-      await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, completed }) })
-    } catch {
-      setChecklistItems(previousChecklistItems)
-    }
+    await runOptimisticMutation({
+      applyOptimistic: () => {
+        setChecklistItems(prev => prev.map(i => i.id === id ? { ...i, completed } : i))
+        const previousChecklistItem = previousChecklistItems.find(i => i.id === id)
+        return previousChecklistItem
+      },
+      request: async () => {
+        const res = await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, completed }) })
+        if (!res.ok) {
+          const json = await res.json().catch(() => ({}))
+          throw new Error(getApiErrorMessage(json, `Failed to update checklist item (${res.status})`))
+        }
+        return true
+      },
+      rollback: (previousChecklistItem) => {
+        if (!previousChecklistItem) return
+        setChecklistItems(prev => prev.map(i => i.id === id ? previousChecklistItem : i))
+      },
+      rethrow: false,
+    })
   }
 
   const handleReorder = async (newItems: ChecklistItem[]) => {
     const previousChecklistItems = checklistItems
-    setChecklistItems(newItems)
     const orderedIds = newItems.map(item => item.id)
-    try {
-      await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ orderedIds }) })
-    } catch {
-      setChecklistItems(previousChecklistItems)
-    }
+    await runOptimisticMutation({
+      applyOptimistic: () => {
+        setChecklistItems(newItems)
+        return previousChecklistItems
+      },
+      request: async () => {
+        const res = await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ orderedIds }) })
+        if (!res.ok) {
+          const json = await res.json().catch(() => ({}))
+          throw new Error(getApiErrorMessage(json, `Failed to reorder checklist (${res.status})`))
+        }
+        return true
+      },
+      rollback: (previousChecklistItems) => {
+        setChecklistItems(prev => areOrderedIdsEqual(prev, newItems) ? previousChecklistItems : prev)
+      },
+      rethrow: false,
+    })
   }
 
   const [hasRelevantUnchecked, setHasRelevantUnchecked] = useState(false)

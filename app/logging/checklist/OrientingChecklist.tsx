@@ -4,6 +4,16 @@ import type { ChecklistItem, SectionKey } from '../types'
 import { getCurrentSection, coerceSection, SECTION_DEFINITIONS_SIMPLE, SECTION_ORDER } from './sectionUtils'
 import { beginDrag, parseDrag } from './useOrientingChecklistDrag'
 import OrientingChecklistSection from './OrientingChecklistSection'
+import { getApiErrorMessage } from '../lib/optimisticApi'
+import { runOptimisticMutation } from '../lib/optimisticMutation'
+
+const areOrderedIdsEqual = (left: ChecklistItem[], right: ChecklistItem[]) => {
+  if (left.length !== right.length) return false
+  for (let i = 0; i < left.length; i += 1) {
+    if (left[i].id !== right[i].id) return false
+  }
+  return true
+}
 
 const moveInArray = <T,>(array: T[], fromIndex: number, toIndex: number) => {
   const next = [...array]
@@ -38,7 +48,11 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
 
   const persistOrder = async (section: SectionKey, items: ChecklistItem[]) => {
     const orderedIds = items.map(i => i.id)
-    await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ orderedIds }) })
+    const res = await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ orderedIds }) })
+    if (!res.ok) {
+      const json = await res.json().catch(() => ({}))
+      throw new Error(getApiErrorMessage(json, `Failed to reorder checklist section (${res.status})`))
+    }
   }
 
   const toggleChecked = async (section: SectionKey, id: number) => {
@@ -46,22 +60,56 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
     if (!item) return
     const completed = !item.completed
     const previousItemsBySection = itemsBySection
-    setItemsBySection(prev => ({ ...prev, [section]: prev[section].map(i => i.id === id ? { ...i, completed } : i) }))
-    try {
-      await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, completed }) })
-    } catch {
-      setItemsBySection(previousItemsBySection)
-    }
+    await runOptimisticMutation({
+      applyOptimistic: () => {
+        setItemsBySection(prev => ({ ...prev, [section]: prev[section].map(i => i.id === id ? { ...i, completed } : i) }))
+        const previousChecklistItem = previousItemsBySection[section].find(i => i.id === id)
+        return previousChecklistItem
+      },
+      request: async () => {
+        const res = await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, completed }) })
+        if (!res.ok) {
+          const json = await res.json().catch(() => ({}))
+          throw new Error(getApiErrorMessage(json, `Failed to update checklist item (${res.status})`))
+        }
+        return true
+      },
+      rollback: (previousChecklistItem) => {
+        if (!previousChecklistItem) return
+        setItemsBySection(prev => ({ ...prev, [section]: prev[section].map(i => i.id === id ? previousChecklistItem : i) }))
+      },
+      rethrow: false,
+    })
   }
 
   const removeChecklistItem = async (section: SectionKey, id: number) => {
-    const previousItemsBySection = itemsBySection
-    setItemsBySection(prev => ({ ...prev, [section]: prev[section].filter(item => item.id !== id) }))
-    try {
-      await fetch('/api/checklist', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
-    } catch {
-      setItemsBySection(previousItemsBySection)
-    }
+    const previousItemIndex = itemsBySection[section].findIndex(item => item.id === id)
+    const previousChecklistItem = itemsBySection[section].find(item => item.id === id)
+    if (!previousChecklistItem) return
+    await runOptimisticMutation({
+      applyOptimistic: () => {
+        setItemsBySection(prev => ({ ...prev, [section]: prev[section].filter(item => item.id !== id) }))
+        return { previousItemIndex, previousChecklistItem }
+      },
+      request: async () => {
+        const res = await fetch('/api/checklist', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
+        if (!res.ok) {
+          const json = await res.json().catch(() => ({}))
+          throw new Error(getApiErrorMessage(json, `Failed to delete checklist item (${res.status})`))
+        }
+        return true
+      },
+      rollback: ({ previousItemIndex, previousChecklistItem }) => {
+        setItemsBySection(prev => {
+          if (prev[section].some(item => item.id === previousChecklistItem.id)) return prev
+          const nextItems = [...prev[section]]
+          const insertIndex = previousItemIndex >= 0 && previousItemIndex <= nextItems.length ? previousItemIndex : nextItems.length
+          nextItems.splice(insertIndex, 0, previousChecklistItem)
+          return { ...prev, [section]: nextItems }
+        })
+      },
+      rethrow: false,
+    })
   }
 
   const addChecklistItem = async (section: SectionKey, title: string) => {
@@ -71,14 +119,28 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
       if (sectionItem.id <= nextOptimisticId) nextOptimisticId = sectionItem.id - 1
     }
     const optimistic: ChecklistItem = { id: nextOptimisticId, title, completed: false, sortOrder: itemsBySection[section].length, orientingBlock: true, section }
-    setItemsBySection(prev => ({ ...prev, [section]: [...prev[section], optimistic] }))
-    try {
-      const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title, orientingBlock: true, section }) })
-      const item = await res.json()
-      setItemsBySection(prev => ({ ...prev, [section]: prev[section].map(existing => existing.id === optimistic.id ? item : existing) }))
-    } catch {
-      setItemsBySection(prev => ({ ...prev, [section]: prev[section].filter(existing => existing.id !== optimistic.id) }))
-    }
+    await runOptimisticMutation({
+      applyOptimistic: () => {
+        setItemsBySection(prev => ({ ...prev, [section]: [...prev[section], optimistic] }))
+        return optimistic
+      },
+      request: async () => {
+        const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title, orientingBlock: true, section }) })
+        if (!res.ok) {
+          const json = await res.json().catch(() => ({}))
+          throw new Error(getApiErrorMessage(json, `Failed to create checklist item (${res.status})`))
+        }
+        const item = await res.json()
+        return item as ChecklistItem
+      },
+      commit: (item) => {
+        setItemsBySection(prev => ({ ...prev, [section]: prev[section].map(existing => existing.id === optimistic.id ? item : existing) }))
+      },
+      rollback: () => {
+        setItemsBySection(prev => ({ ...prev, [section]: prev[section].filter(existing => existing.id !== optimistic.id) }))
+      },
+      rethrow: false,
+    })
   }
 
 
@@ -89,14 +151,31 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
     const nextFrom = itemsBySection[fromSection].filter(i => i.id !== id)
     const nextTo = [...itemsBySection[toSection], { ...dragged, section: toSection }]
     const previousItemsBySection = itemsBySection
-    setItemsBySection(prev => ({ ...prev, [fromSection]: nextFrom, [toSection]: nextTo }))
-    try {
-      await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, section: toSection }) })
-      await persistOrder(fromSection, nextFrom)
-      await persistOrder(toSection, nextTo)
-    } catch {
-      setItemsBySection(previousItemsBySection)
-    }
+    await runOptimisticMutation({
+      applyOptimistic: () => {
+        setItemsBySection(prev => ({ ...prev, [fromSection]: nextFrom, [toSection]: nextTo }))
+        return previousItemsBySection
+      },
+      request: async () => {
+        const res = await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, section: toSection }) })
+        if (!res.ok) {
+          const json = await res.json().catch(() => ({}))
+          throw new Error(getApiErrorMessage(json, `Failed to move checklist item (${res.status})`))
+        }
+        await persistOrder(fromSection, nextFrom)
+        await persistOrder(toSection, nextTo)
+        return true
+      },
+      rollback: (previousItemsBySection) => {
+        setItemsBySection(prev => {
+          const fromSectionUnchanged = areOrderedIdsEqual(prev[fromSection], nextFrom)
+          const toSectionUnchanged = areOrderedIdsEqual(prev[toSection], nextTo)
+          if (!fromSectionUnchanged || !toSectionUnchanged) return prev
+          return previousItemsBySection
+        })
+      },
+      rethrow: false,
+    })
   }
 
   const handleDropOnItem = async (targetSection: SectionKey, targetIndex: number, e: DragEvent) => {
@@ -108,12 +187,20 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
       if (sourceIndex === -1 || sourceIndex === targetIndex) return
       const next = moveInArray(itemsBySection[targetSection], sourceIndex, targetIndex)
       const previousItemsBySection = itemsBySection
-      setItemsBySection(prev => ({ ...prev, [targetSection]: next }))
-      try {
-        await persistOrder(targetSection, next)
-      } catch {
-        setItemsBySection(previousItemsBySection)
-      }
+      await runOptimisticMutation({
+        applyOptimistic: () => {
+          setItemsBySection(prev => ({ ...prev, [targetSection]: next }))
+          return previousItemsBySection
+        },
+        request: async () => {
+          await persistOrder(targetSection, next)
+          return true
+        },
+        rollback: (previousItemsBySection) => {
+          setItemsBySection(prev => areOrderedIdsEqual(prev[targetSection], next) ? previousItemsBySection : prev)
+        },
+        rethrow: false,
+      })
       return
     }
     const fromSection = dragged.section
@@ -123,14 +210,31 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
     const nextTo = [...itemsBySection[targetSection]]
     nextTo.splice(targetIndex, 0, { ...draggedItem, section: targetSection })
     const previousItemsBySection = itemsBySection
-    setItemsBySection(prev => ({ ...prev, [fromSection]: nextFrom, [targetSection]: nextTo }))
-    try {
-      await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: dragged.id, section: targetSection }) })
-      await persistOrder(fromSection, nextFrom)
-      await persistOrder(targetSection, nextTo)
-    } catch {
-      setItemsBySection(previousItemsBySection)
-    }
+    await runOptimisticMutation({
+      applyOptimistic: () => {
+        setItemsBySection(prev => ({ ...prev, [fromSection]: nextFrom, [targetSection]: nextTo }))
+        return previousItemsBySection
+      },
+      request: async () => {
+        const res = await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: dragged.id, section: targetSection }) })
+        if (!res.ok) {
+          const json = await res.json().catch(() => ({}))
+          throw new Error(getApiErrorMessage(json, `Failed to move checklist item (${res.status})`))
+        }
+        await persistOrder(fromSection, nextFrom)
+        await persistOrder(targetSection, nextTo)
+        return true
+      },
+      rollback: (previousItemsBySection) => {
+        setItemsBySection(prev => {
+          const fromSectionUnchanged = areOrderedIdsEqual(prev[fromSection], nextFrom)
+          const toSectionUnchanged = areOrderedIdsEqual(prev[targetSection], nextTo)
+          if (!fromSectionUnchanged || !toSectionUnchanged) return prev
+          return previousItemsBySection
+        })
+      },
+      rethrow: false,
+    })
   }
 
   const sections = useMemo(() => SECTION_DEFINITIONS_SIMPLE, [])
