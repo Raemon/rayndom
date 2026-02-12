@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import TagTypeahead from './TagTypeahead'
 import { useTags } from './TagsContext'
-import type { TagInstance } from '../types'
+import type { Tag, TagInstance } from '../types'
 import DraggableTag from './DraggableTag'
 import { wouldCreateCycle, getParentTag, getAllAncestorTagIds } from './tagUtils'
 import SuggestedTagsModal from './SuggestedTagsModal'
@@ -21,6 +21,7 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
   const [isEditing, setIsEditing] = useState(false)
   const [showSuggestedTagsModal, setShowSuggestedTagsModal] = useState(false)
   const [directSuggestions, setDirectSuggestions] = useState<typeof tags>([]);
+  const [pendingTagInstances, setPendingTagInstances] = useState<TagInstance[]>([])
   const typeTags = tags.filter(t => t.type === type)
   const handleSetParent = (childId: number, parentId: number) => {
     const childTag = tags.find(t => t.id === childId)
@@ -35,10 +36,12 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
     if (existingSuggestedTagIds.includes(childId)) return
     updateTag({ id: parentId, suggestedTagIds: [...existingSuggestedTagIds, childId] })
   }
+  const visiblePendingTagInstances = pendingTagInstances.filter(pending => !tagInstances.some(existing => existing.tagId === pending.tagId))
+  const visibleTagInstances = [...tagInstances, ...visiblePendingTagInstances]
 
   return (
     <div className="flex items-center justify-start gap-1 min-w-0 flex-wrap h-full" onContextMenu={(e) => { e.preventDefault(); setShowSuggestedTagsModal(true) }}>
-      {[...tagInstances].sort((a, b) => a.id - b.id).map(ti => {
+      {[...visibleTagInstances].sort((a, b) => a.id - b.id).map(ti => {
         const tag = ti.tag || typeTags.find(t => t.id === ti.tagId)
         if (!tag) return null
         const parentTag = getParentTag(tag, tags)
@@ -59,15 +62,16 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
         tags={typeTags}
         allTagInstances={allTagInstances}
         placeholder={type}
-        onSelectTag={async (tag) => {
-          const ancestorIds = getAllAncestorTagIds(tag, tags)
-          for (const ancestorId of ancestorIds.reverse()) {
+        onSelectTag={(tag) => {
+          setPendingTagInstances(prev => prev.filter(ti => ti.tag?.name !== tag.name || ti.tag?.type !== tag.type))
+          const ancestorIdsInOrder = getAllAncestorTagIds(tag, tags).reverse()
+          for (const ancestorId of ancestorIdsInOrder) {
             const ancestorAlreadyExists = tagInstances.some(ti => ti.tagId === ancestorId)
             if (!ancestorAlreadyExists) {
-              await onCreateTagInstance({ tagId: ancestorId, datetime })
+              onCreateTagInstance({ tagId: ancestorId, datetime }).catch(error => console.error('Failed to create ancestor tag instance:', error))
             }
           }
-          await onCreateTagInstance({ tagId: tag.id, datetime })
+          onCreateTagInstance({ tagId: tag.id, datetime }).catch(error => console.error('Failed to create tag instance:', error))
           const suggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
           const suggestedTagsToOffer = suggestedTagIds
             .filter(id => !allTagInstances.some(ti => ti.tagId === id && ti.datetime === datetime))
@@ -80,8 +84,17 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
           setIsEditing(false)
         }}
         onCreateTag={async (name) => {
-          const created = await createTag({ name, type })
-          return created
+          const pendingTag: Tag = { id: -Date.now(), name, type }
+          const pendingTagInstance: TagInstance = { id: pendingTag.id, tagId: pendingTag.id, datetime, llmPredicted: false, approved: true, tag: pendingTag }
+          setPendingTagInstances(prev => [...prev, pendingTagInstance])
+          try {
+            const created = await createTag({ name, type })
+            setPendingTagInstances(prev => prev.map(ti => ti.tagId === pendingTag.id ? { ...ti, tagId: created.id, tag: created } : ti))
+            return created
+          } catch (error) {
+            setPendingTagInstances(prev => prev.filter(ti => ti.tagId !== pendingTag.id))
+            throw error
+          }
         }}
       />
       {showSuggestedTagsModal && <SuggestedTagsModal type={type} tags={tags} allTagInstances={allTagInstances} directSuggestions={directSuggestions} onAddTag={async (tag) => {

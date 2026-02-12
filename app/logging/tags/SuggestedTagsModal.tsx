@@ -29,16 +29,15 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, directSuggestions = [
       <div className="bg-gray-800 p-4 min-w-[320px] max-w-[600px]" onClick={e => e.stopPropagation()}>
         <div className="flex items-center gap-2 mb-3">
           <div className="text-white text-sm">Suggested tags</div>
-          <div className="text-white/40 text-xs">{type}</div>
           <button className="ml-auto text-white/30 hover:text-white text-lg leading-none cursor-pointer" onClick={onClose}>×</button>
         </div>
-        <DirectSuggestionsList directSuggestions={directSuggestions} onAddTag={onAddTag} />
+        <DirectSuggestionsList directSuggestions={directSuggestions} tagIdToCounts={tagIdToCounts} onAddTag={onAddTag} />
         {suggestedTags.length === 0 && directSuggestions.length === 0 ? (
           <div className="text-white/50 text-xs">No tags with positive/negative uses yet.</div>
         ) : (
           <div className="flex flex-col gap-1 max-h-[360px] overflow-y-auto">
             {suggestedTags.map(tag => {
-              const counts = tagIdToCounts.get(tag.id) || { positive: 0, negative: 0 }
+              const counts = tagIdToCounts.get(tag.id) || { total: 0, positive: 0, negative: 0 }
               return <SuggestedTagRow key={tag.id} tag={tag} counts={counts} />
             })}
           </div>

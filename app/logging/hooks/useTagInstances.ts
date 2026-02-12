@@ -21,29 +21,52 @@ export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, e
   const createTagInstance = async ({ tagId, datetime, llmPredicted=false, approved=true }:{ tagId: number, datetime: string, llmPredicted?: boolean, approved?: boolean }) => {
     const optimistic: TagInstance = { id: -Date.now(), tagId, datetime, llmPredicted, approved }
     setTagInstances(prev => [...prev, optimistic])
-    const res = await fetch('/api/timer/tag-instances', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tagId, datetime, llmPredicted, approved }) })
-    const json = await res.json()
-    if (json.tagInstance) setTagInstances(prev => prev.map(ti => ti.id === optimistic.id ? json.tagInstance : ti))
-    return json.tagInstance as TagInstance
+    try {
+      const res = await fetch('/api/timer/tag-instances', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tagId, datetime, llmPredicted, approved }) })
+      const json = await res.json()
+      if (json.tagInstance) setTagInstances(prev => prev.map(ti => ti.id === optimistic.id ? json.tagInstance : ti))
+      return json.tagInstance as TagInstance
+    } catch {
+      setTagInstances(prev => prev.filter(ti => ti.id !== optimistic.id))
+      throw new Error('Failed to create tag instance')
+    }
   }
 
   const approveTagInstance = async ({ id }:{ id: number }) => {
+    const previousTagInstance = tagInstances.find(ti => ti.id === id)
+    if (!previousTagInstance) return
     setTagInstances(prev => prev.map(ti => ti.id === id ? { ...ti, approved: true } : ti))
-    const res = await fetch('/api/timer/tag-instances', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, approved: true }) })
-    const json = await res.json()
-    if (json.tagInstance) setTagInstances(prev => prev.map(ti => ti.id === id ? json.tagInstance : ti))
+    try {
+      const res = await fetch('/api/timer/tag-instances', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, approved: true }) })
+      const json = await res.json()
+      if (json.tagInstance) setTagInstances(prev => prev.map(ti => ti.id === id ? json.tagInstance : ti))
+    } catch {
+      setTagInstances(prev => prev.map(ti => ti.id === id ? previousTagInstance : ti))
+    }
   }
 
   const patchTagInstance = async ({ id, useful, antiUseful }:{ id: number, useful?: boolean, antiUseful?: boolean }) => {
+    const previousTagInstance = tagInstances.find(ti => ti.id === id)
+    if (!previousTagInstance) return
     setTagInstances(prev => prev.map(ti => ti.id === id ? { ...ti, useful: useful ?? ti.useful, antiUseful: antiUseful ?? ti.antiUseful } : ti))
-    const res = await fetch('/api/timer/tag-instances', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, useful, antiUseful }) })
-    const json = await res.json()
-    if (json.tagInstance) setTagInstances(prev => prev.map(ti => ti.id === id ? json.tagInstance : ti))
+    try {
+      const res = await fetch('/api/timer/tag-instances', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, useful, antiUseful }) })
+      const json = await res.json()
+      if (json.tagInstance) setTagInstances(prev => prev.map(ti => ti.id === id ? json.tagInstance : ti))
+    } catch {
+      setTagInstances(prev => prev.map(ti => ti.id === id ? previousTagInstance : ti))
+    }
   }
 
   const deleteTagInstance = async ({ id }:{ id: number }) => {
+    const previousTagInstance = tagInstances.find(ti => ti.id === id)
+    if (!previousTagInstance) return
     setTagInstances(prev => prev.filter(ti => ti.id !== id))
-    await fetch(`/api/timer/tag-instances?id=${id}`, { method: 'DELETE' })
+    try {
+      await fetch(`/api/timer/tag-instances?id=${id}`, { method: 'DELETE' })
+    } catch {
+      setTagInstances(prev => [...prev, previousTagInstance])
+    }
   }
 
   return { tagInstances, setTagInstances, load, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance }

@@ -45,17 +45,28 @@ export const useTimeblocks = ({ start, end, autoLoad=true }:{ start: string, end
   const createTimeblock = async ({ datetime, rayNotes=null, assistantNotes=null, aiNotes=null }:{ datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => {
     const optimistic: Timeblock = { id: -Date.now(), datetime, rayNotes, assistantNotes, aiNotes }
     setTimeblocks(prev => [...prev, optimistic])
-    const res = await fetch('/api/timer/timeblocks', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ datetime, rayNotes, assistantNotes, aiNotes }) })
-    const json = await res.json()
-    if (json.timeblock) setTimeblocks(prev => prev.map(tb => tb.id === optimistic.id ? json.timeblock : tb))
-    return json.timeblock as Timeblock
+    try {
+      const res = await fetch('/api/timer/timeblocks', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ datetime, rayNotes, assistantNotes, aiNotes }) })
+      const json = await res.json()
+      if (json.timeblock) setTimeblocks(prev => prev.map(tb => tb.id === optimistic.id ? json.timeblock : tb))
+      return json.timeblock as Timeblock
+    } catch {
+      setTimeblocks(prev => prev.filter(tb => tb.id !== optimistic.id))
+      throw new Error('Failed to create timeblock')
+    }
   }
 
   const patchTimeblock = async ({ id, rayNotes, assistantNotes, aiNotes }:{ id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => {
+    const previousTimeblock = timeblocks.find(tb => tb.id === id)
+    if (!previousTimeblock) return
     setTimeblocks(prev => prev.map(tb => tb.id === id ? { ...tb, rayNotes: rayNotes ?? tb.rayNotes, assistantNotes: assistantNotes ?? tb.assistantNotes, aiNotes: aiNotes ?? tb.aiNotes } : tb))
-    const res = await fetch('/api/timer/timeblocks', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, rayNotes, assistantNotes, aiNotes }) })
-    const json = await res.json()
-    if (json.timeblock) setTimeblocks(prev => prev.map(tb => tb.id === id ? json.timeblock : tb))
+    try {
+      const res = await fetch('/api/timer/timeblocks', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, rayNotes, assistantNotes, aiNotes }) })
+      const json = await res.json()
+      if (json.timeblock) setTimeblocks(prev => prev.map(tb => tb.id === id ? json.timeblock : tb))
+    } catch {
+      setTimeblocks(prev => prev.map(tb => tb.id === id ? previousTimeblock : tb))
+    }
   }
 
   const patchTimeblockDebounced = ({ id, rayNotes, assistantNotes, aiNotes, debounceMs=500 }:{ id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => {

@@ -52,28 +52,54 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
   }))
 
   const addChecklistItem = async (title: string) => {
-    const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title, orientingBlock: orientingOnly, section }) })
-    const item = await res.json()
-    setChecklistItems([...checklistItems, item])
+    const existingChecklistItems = checklistItems
+    let nextOptimisticId = -1
+    for (const existingItem of existingChecklistItems) {
+      if (existingItem.id <= nextOptimisticId) nextOptimisticId = existingItem.id - 1
+    }
+    const optimistic: ChecklistItem = { id: nextOptimisticId, title, completed: false, sortOrder: checklistItems.length, orientingBlock: orientingOnly, section: section ?? null }
+    setChecklistItems(prev => [...prev, optimistic])
+    try {
+      const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title, orientingBlock: orientingOnly, section }) })
+      const item = await res.json()
+      setChecklistItems(prev => prev.map(existing => existing.id === optimistic.id ? item : existing))
+    } catch {
+      setChecklistItems(prev => prev.filter(existing => existing.id !== optimistic.id))
+    }
   }
 
   const removeChecklistItem = async (id: number) => {
-    await fetch('/api/checklist', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
-    setChecklistItems(checklistItems.filter(item => item.id !== id))
+    const previousChecklistItems = checklistItems
+    setChecklistItems(prev => prev.filter(item => item.id !== id))
+    try {
+      await fetch('/api/checklist', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
+    } catch {
+      setChecklistItems(previousChecklistItems)
+    }
   }
 
   const toggleChecked = async (id: number) => {
     const item = checklistItems.find(i => i.id === id)
     if (!item) return
     const completed = !item.completed
-    await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, completed }) })
-    setChecklistItems(checklistItems.map(i => i.id === id ? { ...i, completed } : i))
+    const previousChecklistItems = checklistItems
+    setChecklistItems(prev => prev.map(i => i.id === id ? { ...i, completed } : i))
+    try {
+      await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, completed }) })
+    } catch {
+      setChecklistItems(previousChecklistItems)
+    }
   }
 
   const handleReorder = async (newItems: ChecklistItem[]) => {
+    const previousChecklistItems = checklistItems
     setChecklistItems(newItems)
     const orderedIds = newItems.map(item => item.id)
-    await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ orderedIds }) })
+    try {
+      await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ orderedIds }) })
+    } catch {
+      setChecklistItems(previousChecklistItems)
+    }
   }
 
   const [hasRelevantUnchecked, setHasRelevantUnchecked] = useState(false)

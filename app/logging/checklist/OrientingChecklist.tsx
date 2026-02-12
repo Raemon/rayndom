@@ -45,19 +45,40 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
     const item = itemsBySection[section].find(i => i.id === id)
     if (!item) return
     const completed = !item.completed
-    await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, completed }) })
+    const previousItemsBySection = itemsBySection
     setItemsBySection(prev => ({ ...prev, [section]: prev[section].map(i => i.id === id ? { ...i, completed } : i) }))
+    try {
+      await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, completed }) })
+    } catch {
+      setItemsBySection(previousItemsBySection)
+    }
   }
 
   const removeChecklistItem = async (section: SectionKey, id: number) => {
-    await fetch('/api/checklist', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
+    const previousItemsBySection = itemsBySection
     setItemsBySection(prev => ({ ...prev, [section]: prev[section].filter(item => item.id !== id) }))
+    try {
+      await fetch('/api/checklist', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id }) })
+    } catch {
+      setItemsBySection(previousItemsBySection)
+    }
   }
 
   const addChecklistItem = async (section: SectionKey, title: string) => {
-    const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title, orientingBlock: true, section }) })
-    const item = await res.json()
-    setItemsBySection(prev => ({ ...prev, [section]: [...prev[section], item] }))
+    const sectionItems = itemsBySection[section]
+    let nextOptimisticId = -1
+    for (const sectionItem of sectionItems) {
+      if (sectionItem.id <= nextOptimisticId) nextOptimisticId = sectionItem.id - 1
+    }
+    const optimistic: ChecklistItem = { id: nextOptimisticId, title, completed: false, sortOrder: itemsBySection[section].length, orientingBlock: true, section }
+    setItemsBySection(prev => ({ ...prev, [section]: [...prev[section], optimistic] }))
+    try {
+      const res = await fetch('/api/checklist', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ title, orientingBlock: true, section }) })
+      const item = await res.json()
+      setItemsBySection(prev => ({ ...prev, [section]: prev[section].map(existing => existing.id === optimistic.id ? item : existing) }))
+    } catch {
+      setItemsBySection(prev => ({ ...prev, [section]: prev[section].filter(existing => existing.id !== optimistic.id) }))
+    }
   }
 
 
@@ -67,10 +88,15 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
     if (!dragged) return
     const nextFrom = itemsBySection[fromSection].filter(i => i.id !== id)
     const nextTo = [...itemsBySection[toSection], { ...dragged, section: toSection }]
+    const previousItemsBySection = itemsBySection
     setItemsBySection(prev => ({ ...prev, [fromSection]: nextFrom, [toSection]: nextTo }))
-    await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, section: toSection }) })
-    await persistOrder(fromSection, nextFrom)
-    await persistOrder(toSection, nextTo)
+    try {
+      await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, section: toSection }) })
+      await persistOrder(fromSection, nextFrom)
+      await persistOrder(toSection, nextTo)
+    } catch {
+      setItemsBySection(previousItemsBySection)
+    }
   }
 
   const handleDropOnItem = async (targetSection: SectionKey, targetIndex: number, e: DragEvent) => {
@@ -81,8 +107,13 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
       const sourceIndex = itemsBySection[targetSection].findIndex(i => i.id === dragged.id)
       if (sourceIndex === -1 || sourceIndex === targetIndex) return
       const next = moveInArray(itemsBySection[targetSection], sourceIndex, targetIndex)
+      const previousItemsBySection = itemsBySection
       setItemsBySection(prev => ({ ...prev, [targetSection]: next }))
-      await persistOrder(targetSection, next)
+      try {
+        await persistOrder(targetSection, next)
+      } catch {
+        setItemsBySection(previousItemsBySection)
+      }
       return
     }
     const fromSection = dragged.section
@@ -91,10 +122,15 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
     const nextFrom = itemsBySection[fromSection].filter(i => i.id !== dragged.id)
     const nextTo = [...itemsBySection[targetSection]]
     nextTo.splice(targetIndex, 0, { ...draggedItem, section: targetSection })
+    const previousItemsBySection = itemsBySection
     setItemsBySection(prev => ({ ...prev, [fromSection]: nextFrom, [targetSection]: nextTo }))
-    await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: dragged.id, section: targetSection }) })
-    await persistOrder(fromSection, nextFrom)
-    await persistOrder(targetSection, nextTo)
+    try {
+      await fetch('/api/checklist', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: dragged.id, section: targetSection }) })
+      await persistOrder(fromSection, nextFrom)
+      await persistOrder(targetSection, nextTo)
+    } catch {
+      setItemsBySection(previousItemsBySection)
+    }
   }
 
   const sections = useMemo(() => SECTION_DEFINITIONS_SIMPLE, [])

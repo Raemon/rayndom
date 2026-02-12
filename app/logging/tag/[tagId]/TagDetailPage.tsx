@@ -69,32 +69,70 @@ const TagDetailPageInner = () => {
     return groups
   }, [slots])
   const createTimeblock = async (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => {
-    const res = await fetch('/api/timer/timeblocks', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(args) })
-    const json = await res.json()
-    if (json.timeblock) setTimeblocks(prev => [...prev, json.timeblock])
-    return json.timeblock as Timeblock
+    const optimistic: Timeblock = { id: -Date.now(), datetime: args.datetime, rayNotes: args.rayNotes ?? null, assistantNotes: args.assistantNotes ?? null, aiNotes: args.aiNotes ?? null }
+    setTimeblocks(prev => [...prev, optimistic])
+    try {
+      const res = await fetch('/api/timer/timeblocks', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(args) })
+      const json = await res.json()
+      if (json.timeblock) setTimeblocks(prev => prev.map(tb => tb.id === optimistic.id ? json.timeblock : tb))
+      return json.timeblock as Timeblock
+    } catch {
+      setTimeblocks(prev => prev.filter(tb => tb.id !== optimistic.id))
+      throw new Error('Failed to create timeblock')
+    }
   }
   const patchTimeblockDebounced = (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => {
+    const previousTimeblock = timeblocks.find(tb => tb.id === args.id)
+    if (!previousTimeblock) return
     setTimeblocks(prev => prev.map(tb => tb.id === args.id ? { ...tb, rayNotes: args.rayNotes ?? tb.rayNotes, assistantNotes: args.assistantNotes ?? tb.assistantNotes, aiNotes: args.aiNotes ?? tb.aiNotes } : tb))
-    fetch('/api/timer/timeblocks', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(args) })
+    fetch('/api/timer/timeblocks', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(args) }).then(res => res.json()).then(json => {
+      if (json.timeblock) setTimeblocks(prev => prev.map(tb => tb.id === args.id ? json.timeblock : tb))
+    }).catch(() => {
+      setTimeblocks(prev => prev.map(tb => tb.id === args.id ? previousTimeblock : tb))
+    })
   }
   const createTagInstance = async (args: { tagId: number, datetime: string, approved?: boolean }) => {
-    const res = await fetch('/api/timer/tag-instances', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(args) })
-    const json = await res.json()
-    if (json.tagInstance) setAllTagInstances(prev => [...prev, json.tagInstance])
-    return json.tagInstance as TagInstance
+    const optimistic: TagInstance = { id: -Date.now(), tagId: args.tagId, datetime: args.datetime, approved: args.approved ?? true, llmPredicted: false, tag: tags.find(t => t.id === args.tagId) }
+    setAllTagInstances(prev => [...prev, optimistic])
+    try {
+      const res = await fetch('/api/timer/tag-instances', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(args) })
+      const json = await res.json()
+      if (json.tagInstance) setAllTagInstances(prev => prev.map(ti => ti.id === optimistic.id ? json.tagInstance : ti))
+      return json.tagInstance as TagInstance
+    } catch {
+      setAllTagInstances(prev => prev.filter(ti => ti.id !== optimistic.id))
+      throw new Error('Failed to create tag instance')
+    }
   }
   const approveTagInstance = async (args: { id: number }) => {
+    const previousTagInstance = allTagInstances.find(ti => ti.id === args.id)
+    if (!previousTagInstance) return
     setAllTagInstances(prev => prev.map(ti => ti.id === args.id ? { ...ti, approved: true } : ti))
-    await fetch('/api/timer/tag-instances', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: args.id, approved: true }) })
+    try {
+      await fetch('/api/timer/tag-instances', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: args.id, approved: true }) })
+    } catch {
+      setAllTagInstances(prev => prev.map(ti => ti.id === args.id ? previousTagInstance : ti))
+    }
   }
   const patchTagInstance = async (args: { id: number, useful?: boolean, antiUseful?: boolean }) => {
+    const previousTagInstance = allTagInstances.find(ti => ti.id === args.id)
+    if (!previousTagInstance) return
     setAllTagInstances(prev => prev.map(ti => ti.id === args.id ? { ...ti, useful: args.useful ?? ti.useful, antiUseful: args.antiUseful ?? ti.antiUseful } : ti))
-    await fetch('/api/timer/tag-instances', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(args) })
+    try {
+      await fetch('/api/timer/tag-instances', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(args) })
+    } catch {
+      setAllTagInstances(prev => prev.map(ti => ti.id === args.id ? previousTagInstance : ti))
+    }
   }
   const deleteTagInstance = async (args: { id: number }) => {
+    const previousTagInstance = allTagInstances.find(ti => ti.id === args.id)
+    if (!previousTagInstance) return
     setAllTagInstances(prev => prev.filter(ti => ti.id !== args.id))
-    await fetch(`/api/timer/tag-instances?id=${args.id}`, { method: 'DELETE' })
+    try {
+      await fetch(`/api/timer/tag-instances?id=${args.id}`, { method: 'DELETE' })
+    } catch {
+      setAllTagInstances(prev => [...prev, previousTagInstance])
+    }
   }
   if (loading) return <div className="p-4 text-white/50 text-sm">Loading...</div>
   if (!tag) return <div className="p-4 text-white/50 text-sm">Tag not found</div>
