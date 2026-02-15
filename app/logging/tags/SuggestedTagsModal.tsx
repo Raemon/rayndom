@@ -35,7 +35,7 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, directSuggestions = [
         {suggestedTags.length === 0 && directSuggestions.length === 0 ? (
           <div className="text-white/50 text-xs">No tags with positive/negative uses yet.</div>
         ) : (
-          <div className="flex flex-col gap-1 max-h-[360px] overflow-y-auto">
+          <div className="flex flex-col gap-1 max-h-[90vh] overflow-y-auto">
             {suggestedTags.map(tag => {
               const counts = tagIdToCounts.get(tag.id) || { total: 0, positive: 0, negative: 0 }
               return <SuggestedTagRow key={tag.id} tag={tag} counts={counts} />

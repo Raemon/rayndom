@@ -10,7 +10,7 @@ const SuggestedTagRow = ({ tag, counts, onClick }:{
 }) => {
   return (
     <div className={`flex items-center gap-2 text-sm  ${onClick ? ' cursor-pointer hover:bg-white/10' : ''}`} onClick={onClick}>
-      <div className="flex items-center justify-end gap-2 w-12 pr-[6px]">
+      <div className="flex items-center justify-end gap-2 w-16 pr-[6px]">
         {counts?.positive ? <span className="text-green-400">+{counts.positive}</span> : null}
         {counts?.negative ? <span className="text-red-400">-{counts.negative}</span> : null}
         {counts ? <span className="text-white/40">{counts.total}</span> : null}
