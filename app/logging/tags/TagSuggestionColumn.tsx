@@ -21,7 +21,7 @@ const TagSuggestionColumn = ({ tags, tagIdToCounts, onTagClick, selectedTagIds, 
   const countsMap = tagIdToCounts ?? new Map<number, TagCounts>()
   const selectedSet = new Set(selectedTagIds ?? [])
   return (
-    <div className={`flex min-w-[320px] max-w-[90vw] pr-12 flex-col gap-1${className ? ` ${className}` : ''}`}>
+    <div className={`flex min-w-[285px] max-w-[90vw] pr-12 flex-col gap-1${className ? ` ${className}` : ''}`}>
       {Object.entries(suggestionsByType).map(([type, typedTags]) => (
         <div key={type} className="flex flex-col">
           <div className="text-sm text-white/60 my-4">{type}</div>
