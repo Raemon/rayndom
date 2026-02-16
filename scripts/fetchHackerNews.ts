@@ -23,6 +23,7 @@ type StoryCard = {
   byline: string
   snippet: string
   snippetHtml?: string
+  iframe?: boolean
 }
 
 const NITTER_INSTANCES = ['https://xcancel.com', 'https://nitter.privacydev.net', 'https://nitter.poast.org']
@@ -96,14 +97,35 @@ const fetchTwitterSnippet = async (card: StoryCard): Promise<string> => {
   console.log(`  All Nitter instances failed for ${card.url}, falling back to original`)
   return await fetchHtmlWithCurl(card.url)
 }
+const checkCanIframe = async (url: string): Promise<boolean> => {
+  try {
+    const { stdout } = await execFileAsync('curl', [
+      '-I', '-L', '--silent', '--show-error', '--max-time', '10', '--connect-timeout', '5',
+      '-A', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
+      url,
+    ], { maxBuffer: 1024 * 1024 })
+    if (/x-frame-options:\s*(deny|sameorigin)/i.test(stdout)) return false
+    const cspMatch = stdout.match(/content-security-policy:.*?frame-ancestors\s+([^;\r\n]+)/i)
+    if (cspMatch) {
+      const ancestors = cspMatch[1].trim()
+      if (!ancestors.includes('*') && !ancestors.includes('https:')) return false
+    }
+    return true
+  } catch {
+    return true
+  }
+}
 const fetchSnippetForCard = async (card: StoryCard): Promise<StoryCard> => {
   try {
-    const html = isTwitterUrl(card.url) ? await fetchTwitterSnippet(card) : await fetchHtmlWithCurl(card.url)
-    if (!html) return { ...card, snippet: FALLBACK_SNIPPET, snippetHtml: '' }
+    const [html, canIframe] = await Promise.all([
+      isTwitterUrl(card.url) ? fetchTwitterSnippet(card) : fetchHtmlWithCurl(card.url),
+      checkCanIframe(card.url),
+    ])
+    if (!html) return { ...card, snippet: FALLBACK_SNIPPET, snippetHtml: '', ...(!canIframe && { iframe: false }) }
     const extractedText = extractStoryContent(html, card.url)
     const extractedHtml = extractStoryContentHtml(html, card.url)
     const snippet = extractedText ? truncateForPreview(extractedText) : FALLBACK_SNIPPET
-    return { ...card, snippet, snippetHtml: extractedHtml || undefined }
+    return { ...card, snippet, snippetHtml: extractedHtml || undefined, ...(!canIframe && { iframe: false }) }
   } catch {
     return { ...card, snippet: FALLBACK_SNIPPET, snippetHtml: '' }
   }

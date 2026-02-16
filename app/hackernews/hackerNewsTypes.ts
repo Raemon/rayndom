@@ -6,4 +6,6 @@ export type StoryCard = {
   byline: string
   snippet: string
   snippetHtml?: string
+  reason?: string
+  iframe?: boolean
 }

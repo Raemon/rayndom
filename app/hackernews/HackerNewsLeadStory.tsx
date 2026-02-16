@@ -27,6 +27,7 @@ const HackerNewsLeadStory = ({ leadStory, isLeadOnLeft, onStoryClick }:{ leadSto
         <p className="mb-[0.8em] overflow-hidden whitespace-normal text-[27px] leading-[1.08] [display:-webkit-box] [-webkit-line-clamp:16] [-webkit-box-orient:vertical]">{leadStory.snippet}</p>
       )}
       <p className="mt-[10px] text-[12px] text-[#666]">{leadStory.byline}</p>
+      {leadStory.reason && <p className="mt-2 text-[13px] italic text-[#8a6d3b]">{leadStory.reason}</p>}
     </article>
   )
 }

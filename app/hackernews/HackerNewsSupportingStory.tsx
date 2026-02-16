@@ -16,6 +16,7 @@ const HackerNewsSupportingStory = ({ story, onStoryClick }:{ story: StoryCard, o
         <p className="mb-[0.7em] overflow-hidden whitespace-normal text-[16px] leading-[1.4] [display:-webkit-box] [-webkit-line-clamp:6] [-webkit-box-orient:vertical]">{story.snippet}</p>
       )}
       <p className="mt-2 text-[11px] text-[#747474]">{story.byline}</p>
+      {story.reason && <p className="mt-1 text-[11px] italic text-[#8a6d3b]">{story.reason}</p>}
     </article>
   )
 }

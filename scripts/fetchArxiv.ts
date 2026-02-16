@@ -1,7 +1,11 @@
 import * as fs from 'fs'
 import * as path from 'path'
+import { execFile } from 'node:child_process'
+import { promisify } from 'node:util'
 import { JSDOM } from 'jsdom'
 import { truncateForPreview } from '../app/hackernews/extractStoryContent'
+
+const execFileAsync = promisify(execFile)
 
 type StoryCard = {
   id: number
@@ -11,6 +15,7 @@ type StoryCard = {
   byline: string
   snippet: string
   snippetHtml?: string
+  iframe?: boolean
 }
 
 const ARXIV_API_URL = 'http://export.arxiv.org/api/query'
@@ -68,15 +73,37 @@ const parseArxivXml = (xml: string): StoryCard[] => {
   return cards
 }
 
+const checkCanIframe = async (url: string): Promise<boolean> => {
+  try {
+    const { stdout } = await execFileAsync('curl', [
+      '-I', '-L', '--silent', '--show-error', '--max-time', '10', '--connect-timeout', '5',
+      '-A', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
+      url,
+    ], { maxBuffer: 1024 * 1024 })
+    if (/x-frame-options:\s*(deny|sameorigin)/i.test(stdout)) return false
+    const cspMatch = stdout.match(/content-security-policy:.*?frame-ancestors\s+([^;\r\n]+)/i)
+    if (cspMatch) {
+      const ancestors = cspMatch[1].trim()
+      if (!ancestors.includes('*') && !ancestors.includes('https:')) return false
+    }
+    return true
+  } catch {
+    return true
+  }
+}
 const main = async () => {
   console.log(`Fetching top ${STORIES_TO_FETCH} arxiv papers from [${CATEGORIES.join(', ')}]...`)
   const xml = await fetchArxivEntries()
   const cards = parseArxivXml(xml)
-  console.log(`Parsed ${cards.length} papers.`)
+  console.log(`Parsed ${cards.length} papers. Checking iframe headers...`)
+  const sampleUrl = cards[0]?.url
+  const canIframe = sampleUrl ? await checkCanIframe(sampleUrl) : true
+  console.log(`arxiv.org iframe-able: ${canIframe}`)
+  const finalCards = canIframe ? cards : cards.map(card => ({ ...card, iframe: false as const }))
   const outputDir = path.dirname(OUTPUT_PATH)
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true })
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify({ fetchedAt: new Date().toISOString(), stories: cards }, null, 2))
-  console.log(`Wrote ${cards.length} cards to ${OUTPUT_PATH}`)
+  fs.writeFileSync(OUTPUT_PATH, JSON.stringify({ fetchedAt: new Date().toISOString(), stories: finalCards }, null, 2))
+  console.log(`Wrote ${finalCards.length} cards to ${OUTPUT_PATH}`)
   console.log('Done!')
 }
 

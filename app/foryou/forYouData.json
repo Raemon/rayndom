@@ -3,83 +3,143 @@
   "items": [
     {
       "tab": "hackernews",
-      "url": "https://erichlof.github.io/THREE.js-PathTracing-Renderer/"
+      "url": "https://harmonique.one/posts/i-gave-claude-access-to-my-pen-plotter",
+      "reason": "Sits at the intersection of AI agents, creative coding, and pen plotters — three core interests at once. Demonstrates practical AI-tool integration with physical creative output, which is the kind of unusual interactive project Ray gravitates toward."
     },
     {
       "tab": "hackernews",
-      "url": "https://harmonique.one/posts/i-gave-claude-access-to-my-pen-plotter"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://steipete.me/posts/2026/openclaw"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://www.latent.space/p/ainews-why-openai-should-build-slack"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://www.amplifypartners.com/blog-posts/arming-the-rebels-with-gpus-gradium-kyutai-and-audio-ai"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://www.gnu.org.ua/software/pies/"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://modern-css.com"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://davi.sh/blog/2026/02/markov-ideas/"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://github.com/TechPaula/LT6502"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://gwern.net/gwtar"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://github.com/s-macke/starflight-reverse"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://www.thesswnetwork.com/post/why-i-love-board-games-a-personal-obsession-explained-by-psychology"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://oat.ink/"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://github.com/pocketblue/pocketblue"
-    },
-    {
-      "tab": "hackernews",
-      "url": "https://github.com/gpasquero/voog"
+      "url": "https://erichlof.github.io/THREE.js-PathTracing-Renderer/",
+      "reason": "Three.js path tracing with global illumination is directly relevant to Ray's 3D globe project and WebGL debugging work. Ranked just below the pen plotter piece because this is more reference material than a novel creative insight."
     },
     {
       "tab": "arxiv",
-      "url": "https://arxiv.org/html/2602.13156v1"
+      "url": "https://arxiv.org/html/2602.12996v1",
+      "reason": "A 'Meta-Cognitive Framework for Knowledge Augmentation in LLMs' sits exactly at the intersection of Ray's rationality teaching app and AI interests. Could directly inform his 'Noticing Metacognition' lesson design. Ranked below the WebGL piece because it's more theoretical than immediately applicable to an active project."
     },
     {
       "tab": "arxiv",
-      "url": "https://arxiv.org/html/2602.12984v1"
+      "url": "https://arxiv.org/html/2602.13093v1",
+      "reason": "Consistency of reasoning models under multi-turn attacks directly addresses LLM jailbreaking research — one of Ray's active peripheral interests. Novel empirical findings on reasoning robustness rather than incremental benchmark work. Below the metacognition paper because it's less connected to Ray's teaching projects."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://modern-css.com",
+      "reason": "Immediately actionable modern CSS techniques for Ray's frontend work across all active projects. Every snippet is potentially useful today. Ranked below the arxiv papers because CSS resources are more readily available whereas the research insights above are harder to find."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://mrdoob.github.io/three-descent/",
+      "reason": "Made by mrdoob, the creator of Three.js — a classic 3D game ported to the web. Directly relevant reference for Ray's 3D visualization work and demonstrates creative web gaming techniques. Below CSS because it's more inspirational than immediately actionable."
     },
     {
       "tab": "arxiv",
-      "url": "https://arxiv.org/html/2602.12966v1"
+      "url": "https://arxiv.org/html/2602.12963v1",
+      "reason": "Information-theoretic analysis of how optimal reward maximizers build world models — fundamental AI alignment theory. Addresses the question of what agents learn to represent, which is core to alignment concerns. More theoretical than the Three.js project above, but provides deep insight into agent behavior."
     },
     {
       "tab": "arxiv",
-      "url": "https://arxiv.org/html/2602.12952v1"
+      "url": "https://arxiv.org/html/2602.13088v1",
+      "reason": "How AI-augmented 'cyborg propaganda' reshapes collective action — directly relevant to community epistemics and information ecology. Connects Ray's LessWrong moderation work with AI capability concerns. Below the alignment theory paper because it's more sociological than technical."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://dlants.me/agi-not-imminent.html",
+      "reason": "AI timelines discussion is core to Ray's interests, and contrarian takes on AGI timelines deserve careful evaluation. Likely engages with counterarguments, which Ray values. Below the propaganda paper because timeline opinion pieces are more common than empirical propaganda research."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://www.fast.ai/posts/2026-01-28-dark-flow/",
+      "reason": "Jeremy Howard's fast.ai analyzing 'vibe coding' — thoughtful analysis of AI-assisted coding from a respected practitioner. Directly relevant to Ray's daily coding workflow. Below AGI timelines because it's more about coding practice than the big-picture AI questions Ray prioritizes."
     },
     {
       "tab": "arxiv",
-      "url": "https://arxiv.org/html/2602.13035v1"
+      "url": "https://arxiv.org/html/2602.12984v1",
+      "reason": "Benchmarking multi-step scientific tool-use in LLM agents — quantifies how well AI agents handle complex tool chains. Relevant to understanding agent capabilities Ray uses in his own workflow. Below the vibe coding essay because benchmarks are less narratively engaging."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://microgpt.boratto.ca",
+      "reason": "A GPT you can visualize in the browser combines AI transparency with interactive web coding — two of Ray's domains. Demonstrates the kind of minimal, educational web project Ray appreciates. Below the agent benchmark because it's more of a demo than research."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://davi.sh/blog/2026/02/markov-ideas/",
+      "reason": "Ideas for agent-oriented programming language design — thinking about AI agents at the language level. Relevant to both Ray's coding workflow and agent architecture interests. Below the GPT visualizer because it's more speculative."
+    },
+    {
+      "tab": "arxiv",
+      "url": "https://arxiv.org/html/2602.13151v1",
+      "reason": "Quantization-robust LLM unlearning addresses making safety interventions persistent — a practical AI safety technique. Technical but directly relevant to alignment. Below the agent language ideas because it's narrower in scope."
+    },
+    {
+      "tab": "arxiv",
+      "url": "https://arxiv.org/html/2602.12966v1",
+      "reason": "Automated principled diagnosis of LLM failures — systematic approach to understanding when and why models break. Connects to epistemics of evaluating reasoning quality. Below unlearning because failure diagnosis is more incremental."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://arxiv.org/abs/2602.10177",
+      "reason": "Towards autonomous mathematics research — AI capabilities in mathematical reasoning, relevant to capabilities scaling and timelines debates. Featured on HN suggesting broad technical interest. Below LLM diagnosis because math automation is further from Ray's direct work."
+    },
+    {
+      "tab": "arxiv",
+      "url": "https://arxiv.org/html/2602.13008v1",
+      "reason": "ML classification of jhana meditation states using 7T fMRI — empirical neuroscience on advanced contemplative practice. Directly relevant to Ray's interest in metacognition and consciousness. Below math research because meditation neuroscience is more peripheral to Ray's professional work."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://gwern.net/gwtar",
+      "reason": "Gwern (rationality-adjacent thinker) on a novel static HTML format — combines web engineering with information architecture thinking. Ray values gwern's technical depth. Below meditation fMRI because it's more of a niche tool announcement."
+    },
+    {
+      "tab": "arxiv",
+      "url": "https://arxiv.org/html/2602.13194v1",
+      "reason": "Information theory applied to natural language structure and entropy — foundational understanding of why LLMs work. Interesting math that connects to how language models capture meaning. Below gwern because it's more purely theoretical."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://blog.playcanvas.com/build-gaussian-splat-experiences-with-supersplat-studio/",
+      "reason": "Gaussian splatting for 3D visualization — a cutting-edge rendering technique relevant to Ray's Three.js work. More of a tool/technique showcase than the foundational information theory above."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://www.robinsloan.com/winter-garden/magic-circle/",
+      "reason": "Robin Sloan on game design's 'magic circle' concept — intersects Ray's interests in games, creativity, and interactive media. More essay/reflection than technical, but from a writer Ray would likely appreciate."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://www.seangoedecke.com/fast-llm-inference/",
+      "reason": "Practical LLM optimization techniques explained clearly. Useful background knowledge for understanding inference costs. Below the game design essay because inference optimization is well-trodden ground."
+    },
+    {
+      "tab": "arxiv",
+      "url": "https://arxiv.org/html/2602.13035v1",
+      "reason": "Learning temperature policy from LLM internal states via hierarchical RL — interesting approach to adaptive LLM behavior. More narrowly technical than the practical inference tricks above."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://huggingface.co/blog/continuous_batching",
+      "reason": "Continuous batching for LLM serving explained from first principles. Good systems-level understanding of LLM infrastructure. Complements the inference tricks piece but is more focused on serving architecture."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://martinfowler.com/fragments/2026-02-13.html",
+      "reason": "Martin Fowler on task switching costs in AI-supervised programming — directly relevant to Ray's productivity patterns and his late-night scattered-attention work style. Below LLM infrastructure because it's shorter and lighter."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://www.thesswnetwork.com/post/why-i-love-board-games-a-personal-obsession-explained-by-psychology",
+      "reason": "Board games analyzed through psychology — a direct personal interest of Ray's. Lower ranked because it's recreational rather than professionally useful, but still a worthwhile read."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://sgom.es/posts/2026-02-13-js-heavy-approaches-are-not-compatible-with-long-term-performance-goals/",
+      "reason": "Frontend performance philosophy arguing against JS-heavy approaches. Relevant to Ray's web dev but more generic architectural advice than the specific tools and techniques ranked above."
+    },
+    {
+      "tab": "hackernews",
+      "url": "https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation",
+      "reason": "Major AI lab fundraising milestone — relevant context for AI timelines and industry dynamics. Lowest ranked because it's a corporate announcement rather than substantive technical content, but still worth noting for the industry signal."
     }
   ]
 }
