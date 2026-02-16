@@ -48,6 +48,14 @@ pre {
   padding: 10px;
   border-radius: 4px;
 }
+.light-page code, .light-page pre code {
+  background-color: #e8e8e8;
+  color: #1f1f1f;
+}
+.light-page pre {
+  background-color: #e8e8e8;
+  color: #1f1f1f;
+}
 input, select, textarea, [contenteditable="true"], .tiptap {
   background-color: #3b3c45;
   color: white;

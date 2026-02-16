@@ -159,7 +159,7 @@ const HackerNewsStoryGrid = ({ initialCards }:{ initialCards: StoryCard[] }) => 
           <div className="absolute left-0 top-0 h-full w-[5px] cursor-col-resize z-10 -translate-x-1/2" onMouseDown={handleDividerMouseDown} />
           <div className="flex items-center h-[28px] px-2 gap-1 bg-[#f5f5ec] text-[11px] font-[system-ui,sans-serif]">
             {(['iframe', 'html'] as const).map(mode => (
-              <button key={mode} onClick={() => setViewMode(mode)} className={`px-2 py-0.5 cursor-pointer border-0 bg-transparent ${viewMode === mode ? 'text-[#111] underline underline-offset-2' : 'text-[#999]'}`}>{mode}</button>
+              <button key={mode} onClick={() => setViewMode(mode)} style={{ color: viewMode === mode ? '#111' : '#999' }} className={`px-2 py-0.5 cursor-pointer border-0 bg-transparent ${viewMode === mode ? 'underline underline-offset-2' : ''}`}>{mode}</button>
             ))}
           </div>
           <div className="h-[calc(100vh-28px)]">

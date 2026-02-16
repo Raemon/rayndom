@@ -13,7 +13,7 @@ export const TABS: { key: Tab, label: string, title: string, subtitle: string }[
 const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard[] }) => {
   const currentTab = TABS.find(t => t.key === activeTab)!
   return (
-    <main className="min-h-screen bg-[#fffff8] px-3 pt-[10px] pb-3 font-[Georgia,serif] text-[#1f1f1f]">
+    <main className="light-page min-h-screen bg-[#fffff8] px-3 pt-[10px] pb-3 font-[Georgia,serif] text-[#1f1f1f]">
       <div className="max-w-[1500px] mt-[36px] pb-[36px] mb-[36px] mx-auto border-b-2 border-b-[#3f3f3f]">
         <div className="flex gap-4 mb-4">
           {TABS.map(tab => (
