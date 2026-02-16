@@ -25,6 +25,7 @@ type StoryCard = {
   snippetHtml?: string
 }
 
+const NITTER_INSTANCES = ['https://xcancel.com', 'https://nitter.privacydev.net', 'https://nitter.poast.org']
 const HN_BASE_URL = 'https://hacker-news.firebaseio.com/v0'
 const STORIES_TO_FETCH = 100
 const FALLBACK_SNIPPET = 'No readable body text found for this URL.'
@@ -55,6 +56,20 @@ const fetchStory = async (id: number): Promise<HackerNewsItem | null> => {
   return item
 }
 
+const isTwitterUrl = (url: string) => {
+  try {
+    const hostname = new URL(url).hostname.replace(/^www\./, '')
+    return hostname === 'twitter.com' || hostname === 'x.com'
+  } catch { return false }
+}
+const toNitterUrl = (url: string, instance: string) => {
+  const parsed = new URL(url)
+  return `${instance}${parsed.pathname}${parsed.search}${parsed.hash}`
+}
+const isBlockedPage = (html: string) => {
+  const blockedSignals = ['Verifying your browser', 'Just a moment', 'cf-browser-verification', 'antibot', 'pass the test', 'enable JavaScript']
+  return blockedSignals.some(s => html.includes(s))
+}
 const fetchHtmlWithCurl = async (url: string): Promise<string> => {
   const commonArgs = ['--compressed', '--silent', '--show-error', '--max-time', '14', '--connect-timeout', '6',
     '-A', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
@@ -69,9 +84,21 @@ const fetchHtmlWithCurl = async (url: string): Promise<string> => {
   return ''
 }
 
+const fetchTwitterSnippet = async (card: StoryCard): Promise<string> => {
+  for (const instance of NITTER_INSTANCES) {
+    try {
+      const nitterUrl = toNitterUrl(card.url, instance)
+      const html = await fetchHtmlWithCurl(nitterUrl)
+      if (html && !isBlockedPage(html)) return html
+      console.log(`  Nitter instance ${instance} blocked/empty, trying next...`)
+    } catch { /* try next */ }
+  }
+  console.log(`  All Nitter instances failed for ${card.url}, falling back to original`)
+  return await fetchHtmlWithCurl(card.url)
+}
 const fetchSnippetForCard = async (card: StoryCard): Promise<StoryCard> => {
   try {
-    const html = await fetchHtmlWithCurl(card.url)
+    const html = isTwitterUrl(card.url) ? await fetchTwitterSnippet(card) : await fetchHtmlWithCurl(card.url)
     if (!html) return { ...card, snippet: FALLBACK_SNIPPET, snippetHtml: '' }
     const extractedText = extractStoryContent(html, card.url)
     const extractedHtml = extractStoryContentHtml(html, card.url)
