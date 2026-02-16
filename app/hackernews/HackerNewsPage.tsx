@@ -3,7 +3,7 @@ import path from 'path'
 import HackerNewsStoryGrid from './HackerNewsStoryGrid'
 import { StoryCard } from './hackerNewsTypes'
 
-const STORIES_TO_RENDER = 18
+const STORIES_TO_RENDER = 100
 const DATA_PATH = path.join(process.cwd(), 'app/hackernews/hackerNewsData.json')
 
 const loadStories = (): StoryCard[] => {
