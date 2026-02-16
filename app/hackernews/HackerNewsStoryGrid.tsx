@@ -9,17 +9,22 @@ const FALLBACK_SNIPPET = 'No readable body text found for this URL.'
 const SNIPPET_WORKER_COUNT = 3
 const STORIES_PER_ROW = 5
 
+const snippetCache = new Map<number, { snippet: string; snippetHtml: string }>()
+
 const updateStoryCardSnippet = (cards: StoryCard[], storyId: number, snippet: string, snippetHtml: string) => {
   return cards.map(card => card.id === storyId ? { ...card, snippet, snippetHtml } : card)
 }
 
 const fetchStorySnippet = async (storyId: number) => {
+  const cached = snippetCache.get(storyId)
+  if (cached) return cached
   try {
     const response = await fetch(`/api/hackernews/story-snippet?id=${storyId}`, { method: 'GET', cache: 'no-store' })
     if (!response.ok) return { snippet: FALLBACK_SNIPPET, snippetHtml: '' }
     const payload = await response.json() as { snippet?: unknown, snippetHtml?: unknown }
     const snippet = typeof payload.snippet === 'string' && payload.snippet.trim() ? payload.snippet : FALLBACK_SNIPPET
     const snippetHtml = typeof payload.snippetHtml === 'string' ? payload.snippetHtml : ''
+    snippetCache.set(storyId, { snippet, snippetHtml })
     return { snippet, snippetHtml }
   } catch {
     return { snippet: FALLBACK_SNIPPET, snippetHtml: '' }

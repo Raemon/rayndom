@@ -7,6 +7,24 @@ const execFileAsync = promisify(execFile)
 const HN_BASE_URL = 'https://hacker-news.firebaseio.com/v0'
 const REVALIDATE_SECONDS = 900
 const FALLBACK_SNIPPET = 'No readable body text found for this URL.'
+const SNIPPET_CACHE_TTL_MS = 60 * 60 * 1000
+
+type CachedSnippet = { snippet: string; snippetHtml: string; cachedAt: number }
+const snippetCache = new Map<number, CachedSnippet>()
+
+const getCachedSnippet = (storyId: number): { snippet: string; snippetHtml: string } | null => {
+  const entry = snippetCache.get(storyId)
+  if (!entry) return null
+  if (Date.now() - entry.cachedAt > SNIPPET_CACHE_TTL_MS) {
+    snippetCache.delete(storyId)
+    return null
+  }
+  return { snippet: entry.snippet, snippetHtml: entry.snippetHtml }
+}
+
+const setCachedSnippet = (storyId: number, snippet: string, snippetHtml: string) => {
+  snippetCache.set(storyId, { snippet, snippetHtml, cachedAt: Date.now() })
+}
 
 type HackerNewsItem = {
   id: number
@@ -79,13 +97,19 @@ export async function GET(request: NextRequest) {
   if (!Number.isFinite(storyId)) {
     return NextResponse.json({ error: 'Missing or invalid id parameter.' }, { status: 400 })
   }
+  const cached = getCachedSnippet(storyId)
+  if (cached) return NextResponse.json(cached, { status: 200 })
   try {
     const story = await fetchStory(storyId)
-    if (!story?.url) return NextResponse.json({ snippet: FALLBACK_SNIPPET, snippetHtml: '' }, { status: 200 })
+    if (!story?.url) {
+      setCachedSnippet(storyId, FALLBACK_SNIPPET, '')
+      return NextResponse.json({ snippet: FALLBACK_SNIPPET, snippetHtml: '' }, { status: 200 })
+    }
     const html = await fetchWithCurl(story.url)
     const extractedText = html ? extractStoryContent(html, story.url) : ''
     const extractedHtml = html ? extractStoryContentHtml(html, story.url) : ''
     const snippet = extractedText ? truncateForPreview(extractedText) : FALLBACK_SNIPPET
+    setCachedSnippet(storyId, snippet, extractedHtml)
     return NextResponse.json({ snippet, snippetHtml: extractedHtml }, { status: 200 })
   } catch {
     return NextResponse.json({ snippet: FALLBACK_SNIPPET, snippetHtml: '' }, { status: 200 })
