@@ -1,0 +1,6 @@
+---
+description: Observatory styling defaults
+globs: ["**/*.tsx", "**/*.ts", "**/*.css"]
+---
+
+Make sure the styles here default to light mode.

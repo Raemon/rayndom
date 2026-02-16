@@ -5,10 +5,11 @@ import StarterKit from '@tiptap/starter-kit'
 import { BubbleMenu } from '@tiptap/react/menus'
 import { marked } from 'marked'
 import TurndownService from 'turndown'
+import Link from 'next/link'
 
 const turndown = new TurndownService({ headingStyle: 'atx', hr: '---', bulletListMarker: '-', codeBlockStyle: 'fenced' })
 
-const MarkdownEditorModal = ({ onClose }:{ onClose: () => void }) => {
+const InterestFilterPromptPage = () => {
   const [markdown, setMarkdown] = useState('')
   const [html, setHtml] = useState('')
   const [editing, setEditing] = useState(false)
@@ -25,22 +26,12 @@ const MarkdownEditorModal = ({ onClose }:{ onClose: () => void }) => {
       })
       .catch(() => setLoading(false))
   }, [])
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        if (editing) setEditing(false)
-        else onClose()
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [onClose, editing])
   const editor = useEditor({
     extensions: [StarterKit.configure({ heading: { levels: [1, 2, 3, 4] } })],
     content: '',
     immediatelyRender: false,
     editorProps: {
-      attributes: { class: 'outline-none px-4 py-3 min-h-[200px]' }
+      attributes: { class: 'outline-none min-h-[200px]' }
     }
   })
   const handleDoubleClick = useCallback(() => {
@@ -73,11 +64,25 @@ const MarkdownEditorModal = ({ onClose }:{ onClose: () => void }) => {
   const handleCancel = useCallback(() => {
     setEditing(false)
   }, [])
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && editing) setEditing(false)
+      if ((e.metaKey || e.ctrlKey) && e.key === 's' && editing) {
+        e.preventDefault()
+        handleSave()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [editing, handleSave])
   return (
-    <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center" onClick={onClose}>
-      <div className="bg-[#fffff8] text-[#1f1f1f] w-[800px] max-w-[90vw] max-h-[85vh] flex flex-col" onClick={e => e.stopPropagation()}>
-        <div className="flex items-center justify-between px-4 py-2 border-b border-[#ddd]">
-          <span className="text-[13px] font-medium uppercase tracking-[0.5px]">Interest Filter Prompt</span>
+    <main className="light-page min-h-screen bg-[#fffff8] px-3 pt-[10px] pb-3 text-[#1f1f1f]">
+      <div className="max-w-[800px] mx-auto mt-[36px]">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <Link href="/observatory/foryou" className="text-[12px] text-[#333] hover:text-[#1f1f1f] no-underline font-sans">← Observatory</Link>
+            <span className="text-[13px] font-medium uppercase tracking-[0.5px] font-sans">Interest Filter Prompt</span>
+          </div>
           <div className="flex items-center gap-2">
             {editing && (
               <>
@@ -85,15 +90,14 @@ const MarkdownEditorModal = ({ onClose }:{ onClose: () => void }) => {
                 <button onClick={handleSave} disabled={saving} className="text-[12px] px-2 py-0.5 text-[#1f1f1f] cursor-pointer bg-transparent border-0 hover:text-[#666]">{saving ? 'Saving...' : 'Save'}</button>
               </>
             )}
-            {!editing && <span className="text-[11px] text-[#999]">double-click to edit</span>}
-            <button onClick={onClose} className="text-[18px] cursor-pointer bg-transparent border-0 text-[#999] hover:text-[#333] leading-none">✕</button>
+            {!editing && <span className="text-[11px] text-[#999] font-sans">double-click to edit</span>}
           </div>
         </div>
-        <div className="overflow-y-auto flex-1 px-4 py-3">
+        <div>
           {loading && <div className="text-[13px] text-[#999]">Loading...</div>}
           {!loading && !editing && (
             <div ref={contentRef} onDoubleClick={handleDoubleClick}
-              className="text-[14px] leading-[1.6] font-[Georgia,serif] cursor-default
+              className="text-[14px] leading-[1.6] font-sans cursor-default
                 [&_h1]:text-[22px] [&_h1]:font-bold [&_h1]:mt-5 [&_h1]:mb-2
                 [&_h2]:text-[18px] [&_h2]:font-bold [&_h2]:mt-4 [&_h2]:mb-2
                 [&_h3]:text-[15px] [&_h3]:font-semibold [&_h3]:mt-3 [&_h3]:mb-1
@@ -111,7 +115,7 @@ const MarkdownEditorModal = ({ onClose }:{ onClose: () => void }) => {
             />
           )}
           {!loading && editing && editor && (
-            <div className="text-[14px] font-[Georgia,serif] tiptap">
+            <div className="text-[14px] font-sans tiptap">
               <BubbleMenu editor={editor}>
                 <div className="flex gap-1 bg-[#333] text-white px-1 py-0.5 text-xs">
                   <button onClick={() => editor.chain().focus().toggleBold().run()} className={`px-1 cursor-pointer border-0 bg-transparent text-white ${editor.isActive('bold') ? 'bg-[#555]' : ''}`}>B</button>
@@ -124,8 +128,8 @@ const MarkdownEditorModal = ({ onClose }:{ onClose: () => void }) => {
           )}
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 
-export default MarkdownEditorModal
+export default InterestFilterPromptPage

@@ -56,6 +56,20 @@ pre {
   background-color: #e8e8e8;
   color: #1f1f1f;
 }
+.light-page button {
+  color: #1f1f1f;
+}
+.light-page .tiptap {
+  background-color: transparent;
+  color: #1f1f1f;
+}
+.light-page input, .light-page select, .light-page textarea, .light-page [contenteditable="true"] {
+  background-color: transparent;
+  color: #1f1f1f;
+}
+.light-page a {
+  color: #333;
+}
 input, select, textarea, [contenteditable="true"], .tiptap {
   background-color: #3b3c45;
   color: white;

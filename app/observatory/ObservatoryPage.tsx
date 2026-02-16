@@ -1,14 +1,11 @@
 'use client'
-import { useState } from 'react'
 import Link from 'next/link'
 import HackerNewsStoryGrid from './HackerNewsStoryGrid'
 import { StoryCard } from './hackerNewsTypes'
-import MarkdownEditorModal from './MarkdownEditorModal'
 import { Tab, TABS } from './constants'
 
 const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard[] }) => {
   const currentTab = TABS.find(t => t.key === activeTab)!
-  const [showPrompt, setShowPrompt] = useState(false)
   return (
     <main className="light-page min-h-screen bg-[#fffff8] px-3 pt-[10px] pb-3 font-[Georgia,serif] text-[#1f1f1f]">
       <div className="max-w-[1500px] mt-[36px] pb-[36px] mb-[36px] mx-auto border-b-2 border-b-[#3f3f3f]">
@@ -21,7 +18,7 @@ const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard
             >{tab.label}</Link>
             ))}
           </div>
-          <button onClick={() => setShowPrompt(true)} className="text-[12px] text-[#999] hover:text-[#333] cursor-pointer bg-transparent border-0 whitespace-nowrap">Filter Prompt</button>
+          <Link href="/observatory/filter-prompt" className="text-[12px] text-[#333] hover:text-[#1f1f1f] no-underline whitespace-nowrap">Filter Prompt</Link>
         </div>
         <div className="text-center">
           <h1 className="m-0 uppercase text-[42px] mb-3 leading-[0.95] font-medium tracking-[0.5px]">{currentTab.title}</h1>
@@ -29,7 +26,6 @@ const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard
         </div>
       </div>
       <HackerNewsStoryGrid key={activeTab} initialCards={cards} />
-      {showPrompt && <MarkdownEditorModal onClose={() => setShowPrompt(false)} />}
     </main>
   )
 }
