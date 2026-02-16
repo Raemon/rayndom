@@ -36,6 +36,12 @@ export const getSuggestedTags = (tags: Tag[], type: string, tagIdToCounts: Map<n
   return sortTagsByCounts(filtered, tagIdToCounts)
 }
 
+export const getSuggestedTagsForTag = (tag: Tag, tags: Tag[], tagIdToCounts: Map<number, TagCounts>): Tag[] => {
+  const ids = tag.suggestedTagIds || []
+  const suggestedTags = ids.map(id => tags.find(t => t.id === id)).filter((t): t is Tag => t !== undefined)
+  return sortTagsByCounts(suggestedTags, tagIdToCounts)
+}
+
 export const getTagColor = (name: string): string => {
   const lower = name.toLowerCase()
   let hue = 0

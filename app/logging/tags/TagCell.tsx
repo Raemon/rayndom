@@ -119,10 +119,7 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
           }
         }}
       />
-      {showSuggestedTagsModal && <SuggestedTagsModal type={type} tags={tags} allTagInstances={allTagInstances} directSuggestions={directSuggestions} onAddTag={async (tag) => {
-        await onCreateTagInstance({ tagId: tag.id, datetime, approved: false })
-        setDirectSuggestions(prev => prev.filter(t => t.id !== tag.id))
-      }} onClose={() => { setShowSuggestedTagsModal(false); setDirectSuggestions([]) }} />}
+      {showSuggestedTagsModal && <SuggestedTagsModal type={type} tags={tags} allTagInstances={allTagInstances} datetime={datetime} directSuggestions={directSuggestions} onCreateTagInstance={onCreateTagInstance} onDeleteTagInstance={onDeleteTagInstance} onClose={() => { setShowSuggestedTagsModal(false); setDirectSuggestions([]) }} />}
     </div>
   )
 }
