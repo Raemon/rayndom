@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
-import { extractStoryContent, extractStoryContentHtml, truncateForPreview } from '../app/hackernews/extractStoryContent'
+import { extractStoryContent, extractStoryContentHtml, truncateForPreview } from '../app/observatory/extractStoryContent'
 
 const execFileAsync = promisify(execFile)
 
@@ -31,7 +31,7 @@ const HN_BASE_URL = 'https://hacker-news.firebaseio.com/v0'
 const STORIES_TO_FETCH = 100
 const FALLBACK_SNIPPET = 'No readable body text found for this URL.'
 const SNIPPET_CONCURRENCY = 5
-const OUTPUT_PATH = path.resolve(__dirname, '../app/hackernews/hackerNewsData.json')
+const OUTPUT_PATH = path.resolve(__dirname, '../app/observatory/hackerNewsData.json')
 
 const getStoryUrlDomain = (url: string) => {
   try {

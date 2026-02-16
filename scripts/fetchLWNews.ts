@@ -3,7 +3,7 @@ import * as path from 'path'
 import { JSDOM } from 'jsdom'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
-import { extractStoryContent, extractStoryContentHtml, truncateForPreview } from '../app/hackernews/extractStoryContent'
+import { extractStoryContent, extractStoryContentHtml, truncateForPreview } from '../app/observatory/extractStoryContent'
 
 const execFileAsync = promisify(execFile)
 
@@ -12,7 +12,7 @@ const STORIES_TO_FETCH = 50
 const POSTS_PER_PAGE = 20
 const SNIPPET_CONCURRENCY = 5
 const FALLBACK_SNIPPET = 'No readable body text found for this URL.'
-const OUTPUT_PATH = path.resolve(__dirname, '../app/lwnews/lwNewsData.json')
+const OUTPUT_PATH = path.resolve(__dirname, '../app/observatory/lwNewsData.json')
 
 type StoryCard = {
   id: number

@@ -1,6 +1,6 @@
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
-import { extractStoryContent, truncateForPreview } from '../app/hackernews/extractStoryContent'
+import { extractStoryContent, truncateForPreview } from '../app/observatory/extractStoryContent'
 
 const execFileAsync = promisify(execFile)
 const HN_BASE_URL = 'https://hacker-news.firebaseio.com/v0'

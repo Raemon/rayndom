@@ -1,10 +1,10 @@
 import fs from 'fs'
 import path from 'path'
-import HackerNewsStoryGrid from '../hackernews/HackerNewsStoryGrid'
-import { StoryCard } from '../hackernews/hackerNewsTypes'
+import HackerNewsStoryGrid from './HackerNewsStoryGrid'
+import { StoryCard } from './hackerNewsTypes'
 
 const STORIES_TO_RENDER = 50
-const DATA_PATH = path.join(process.cwd(), 'app/lwnews/lwNewsData.json')
+const DATA_PATH = path.join(process.cwd(), 'app/observatory/lwNewsData.json')
 
 const loadStories = (): StoryCard[] => {
   const raw = JSON.parse(fs.readFileSync(DATA_PATH, 'utf-8')) as { stories: StoryCard[] }

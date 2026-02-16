@@ -1,7 +1,7 @@
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { NextRequest, NextResponse } from 'next/server'
-import { extractStoryContentHtml } from '@/app/hackernews/extractStoryContent'
+import { extractStoryContentHtml } from '@/app/observatory/extractStoryContent'
 
 const execFileAsync = promisify(execFile)
 

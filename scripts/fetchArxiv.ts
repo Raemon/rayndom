@@ -3,7 +3,7 @@ import * as path from 'path'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { JSDOM } from 'jsdom'
-import { truncateForPreview } from '../app/hackernews/extractStoryContent'
+import { truncateForPreview } from '../app/observatory/extractStoryContent'
 
 const execFileAsync = promisify(execFile)
 
@@ -21,7 +21,7 @@ type StoryCard = {
 const ARXIV_API_URL = 'http://export.arxiv.org/api/query'
 const CATEGORIES = ['cs.AI', 'cs.LG', 'cs.CL']
 const STORIES_TO_FETCH = 100
-const OUTPUT_PATH = path.resolve(__dirname, '../app/arxiv/arxivData.json')
+const OUTPUT_PATH = path.resolve(__dirname, '../app/observatory/arxivData.json')
 
 const buildSearchQuery = () => {
   const categoryQueries = CATEGORIES.map(cat => `cat:${cat}`)

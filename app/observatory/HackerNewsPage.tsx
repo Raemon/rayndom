@@ -4,7 +4,7 @@ import HackerNewsStoryGrid from './HackerNewsStoryGrid'
 import { StoryCard } from './hackerNewsTypes'
 
 const STORIES_TO_RENDER = 100
-const DATA_PATH = path.join(process.cwd(), 'app/hackernews/hackerNewsData.json')
+const DATA_PATH = path.join(process.cwd(), 'app/observatory/hackerNewsData.json')
 
 const loadStories = (): StoryCard[] => {
   const raw = JSON.parse(fs.readFileSync(DATA_PATH, 'utf-8')) as { stories: StoryCard[] }

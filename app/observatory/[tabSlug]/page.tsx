@@ -1,14 +1,15 @@
 import fs from 'fs'
 import path from 'path'
 import { notFound } from 'next/navigation'
-import { StoryCard } from '../../hackernews/hackerNewsTypes'
-import ObservatoryPage, { Tab, TABS } from '../ObservatoryPage'
+import { StoryCard } from '../hackerNewsTypes'
+import ObservatoryPage from '../ObservatoryPage'
+import { Tab, TABS } from '../constants'
 
 const STORIES_TO_RENDER = 100
 const DATA_PATHS: Record<Exclude<Tab, 'foryou'>, { path: string, count: number }> = {
-  hackernews: { path: path.join(process.cwd(), 'app/hackernews/hackerNewsData.json'), count: STORIES_TO_RENDER },
-  lw: { path: path.join(process.cwd(), 'app/lwnews/lwNewsData.json'), count: 50 },
-  arxiv: { path: path.join(process.cwd(), 'app/arxiv/arxivData.json'), count: STORIES_TO_RENDER },
+  hackernews: { path: path.join(process.cwd(), 'app/observatory/hackerNewsData.json'), count: STORIES_TO_RENDER },
+  lw: { path: path.join(process.cwd(), 'app/observatory/lwNewsData.json'), count: 50 },
+  arxiv: { path: path.join(process.cwd(), 'app/observatory/arxivData.json'), count: STORIES_TO_RENDER },
 }
 
 type ForYouItem = { tab: string, url: string, reason: string }
