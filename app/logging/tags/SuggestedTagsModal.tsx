@@ -107,14 +107,12 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, directSugge
                 ) : null}
                 {selectedFlowColumns.filter(col => col.hasSuggestedTags).map(column => (
                   <div key={column.tagId} className="flex items-start flex-shrink-0">
-                    <div className="text-white/30 w-10 pt-1 text-xl flex-shrink-0 flex items-start justify-center">›</div>
                     {column.tags.length > 0
                       ? <TagSuggestionColumn tags={column.tags} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="w-[240px] flex-shrink-0" />
                       : <div className="min-w-[320px] flex-shrink-0" />}
                   </div>
                 ))}
                 <div className="flex items-start flex-shrink-0">
-                  <div className={`text-white/30 w-10 pt-1 text-xl flex-shrink-0 flex items-start justify-center${hoverShowsFlow ? '' : ' invisible'}`}>›</div>
                   {hoverPreviewTags.length > 0
                     ? <TagSuggestionColumn tags={hoverPreviewTags} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="w-[240px] flex-shrink-0" />
                     : <div className="min-w-[320px] flex-shrink-0" />}
