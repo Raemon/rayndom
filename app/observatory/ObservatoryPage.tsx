@@ -1,57 +1,34 @@
-'use client'
-import { useState, useEffect } from 'react'
-import { marked } from 'marked'
-import MarkdownContent from '../common/MarkdownContent'
+import Link from 'next/link'
+import HackerNewsStoryGrid from '../hackernews/HackerNewsStoryGrid'
+import { StoryCard } from '../hackernews/hackerNewsTypes'
 
-const ObservatoryPage = () => {
-  const [loading, setLoading] = useState(false)
-  const [document, setDocument] = useState<string | null>(null)
-  const [error, setError] = useState<string | null>(null)
-  const [subdocuments, setSubdocuments] = useState<string[]>([])
+export type Tab = 'hackernews' | 'lw' | 'arxiv'
+export const TABS: { key: Tab, label: string, title: string, subtitle: string }[] = [
+  { key: 'hackernews', label: 'Hacker News', title: 'Hacker News', subtitle: 'News for nerds. Stuff that matters.' },
+  { key: 'lw', label: 'LW', title: 'LessWrong', subtitle: 'Refining the art of human rationality.' },
+  { key: 'arxiv', label: 'arXiv', title: 'arXiv', subtitle: 'CS: AI · ML · Computation & Language' },
+]
 
-  const fetchDocument = async () => {
-    try {
-      const res = await fetch('/api/observatory')
-      const data = await res.json()
-      if (data.document) setDocument(data.document)
-      if (data.subdocuments) setSubdocuments(data.subdocuments)
-    } catch (e) {
-      // silent — no document yet
-    }
-  }
-
-  useEffect(() => { fetchDocument() }, [])
-
-  const handleUpdate = async () => {
-    setLoading(true)
-    setError(null)
-    try {
-      const res = await fetch('/api/observatory', { method: 'POST' })
-      const data = await res.json()
-      if (data.error) { setError(data.error); return }
-      if (data.document) setDocument(data.document)
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Request failed')
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const html = document ? (marked.parse(document) as string) : null
-
+const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard[] }) => {
+  const currentTab = TABS.find(t => t.key === activeTab)!
   return (
-    <div className="p-4 text-sm text-white max-w-2xl">
-      <div className="flex items-center gap-3 mb-4">
-        <h1 className="text-lg">Observatory — Life Goals</h1>
-        <button onClick={handleUpdate} disabled={loading}
-          className="px-3 py-1 bg-white/10 hover:bg-white/20 disabled:opacity-50 text-white text-sm cursor-pointer">
-          {loading ? 'Updating...' : document ? 'Update from activity' : 'Generate from activity'}
-        </button>
+    <main className="min-h-screen bg-[#fffff8] px-3 pt-[10px] pb-3 font-[Georgia,serif] text-[#1f1f1f]">
+      <div className="max-w-[1500px] mt-[36px] pb-[36px] mb-[36px] mx-auto border-b-2 border-b-[#3f3f3f]">
+        <div className="flex gap-4 mb-4">
+          {TABS.map(tab => (
+            <Link key={tab.key} href={`/observatory/${tab.key}`}
+              className="px-2 py-1 text-[13px] uppercase tracking-[0.5px] font-medium cursor-pointer bg-transparent border-0 no-underline"
+              style={{ color: activeTab === tab.key ? '#1f1f1f' : '#999', textDecoration: activeTab === tab.key ? 'underline' : 'none', textUnderlineOffset: '4px' }}
+            >{tab.label}</Link>
+          ))}
+        </div>
+        <div className="text-center">
+          <h1 className="m-0 uppercase text-[42px] mb-3 leading-[0.95] font-medium tracking-[0.5px]">{currentTab.title}</h1>
+          <h3 className="m-0 text-[14px] uppercase leading-[1.25] font-medium tracking-[0.5px]">{currentTab.subtitle}</h3>
+        </div>
       </div>
-      {error && <div className="text-red-400 mb-2">{error}</div>}
-      {html && <MarkdownContent html={html} />}
-      {!document && !loading && <div className="text-white/50">No goals document yet. Click the button to generate one from your activity data.</div>}
-    </div>
+      <HackerNewsStoryGrid key={activeTab} initialCards={cards} />
+    </main>
   )
 }
 

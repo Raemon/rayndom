@@ -1,4 +1,5 @@
-import ObservatoryPage from './ObservatoryPage'
+import { redirect } from 'next/navigation'
+
 export default function Page() {
-  return <ObservatoryPage />
+  redirect('/observatory/hackernews')
 }
