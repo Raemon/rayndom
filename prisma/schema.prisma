@@ -67,6 +67,7 @@ model Tag {
   id            Int           @id @default(autoincrement())
   name          String
   type          String
+  subtype       String?
   description   String?
   parentTagId   Int?          @map("parent_tag_id")
   parentTag     Tag?          @relation("TagParent", fields: [parentTagId], references: [id], onDelete: SetNull)

@@ -84,7 +84,7 @@ const DraggableTag = ({ tag, parentTag, ti, onApproveTagInstance, onPatchTagInst
   return (
     <>
       {wrappedElement}
-      {showModal && <TagEditModal tag={tag} onSave={({ id, name, type, description }) => updateTag({ id, name, type, description })} onDelete={({ id }) => deleteTag({ id })} onClose={() => setShowModal(false)} />}
+      {showModal && <TagEditModal tag={tag} onSave={({ id, name, type, subtype, description }) => updateTag({ id, name, type, subtype, description })} onDelete={({ id }) => deleteTag({ id })} onClose={() => setShowModal(false)} />}
     </>
   )
 }

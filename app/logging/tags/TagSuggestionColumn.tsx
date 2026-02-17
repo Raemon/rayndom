@@ -13,20 +13,27 @@ const TagSuggestionColumn = ({ tags, tagIdToCounts, onTagClick, selectedTagIds, 
   className?: string,
 }) => {
   if (tags.length === 0) return null
-  const suggestionsByType: Record<string, Tag[]> = {}
+  const suggestionsByTypeAndSubtype: Record<string, Record<string, Tag[]>> = {}
   for (const tag of tags) {
-    if (!suggestionsByType[tag.type]) suggestionsByType[tag.type] = []
-    suggestionsByType[tag.type].push(tag)
+    if (!suggestionsByTypeAndSubtype[tag.type]) suggestionsByTypeAndSubtype[tag.type] = {}
+    const subtype = tag.subtype || ''
+    if (!suggestionsByTypeAndSubtype[tag.type][subtype]) suggestionsByTypeAndSubtype[tag.type][subtype] = []
+    suggestionsByTypeAndSubtype[tag.type][subtype].push(tag)
   }
   const countsMap = tagIdToCounts ?? new Map<number, TagCounts>()
   const selectedSet = new Set(selectedTagIds ?? [])
   return (
-    <div className={`flex min-w-[285px] max-w-[90vw] pr-12 flex-col gap-1${className ? ` ${className}` : ''}`}>
-      {Object.entries(suggestionsByType).map(([type, typedTags]) => (
+    <div className={`flex min-w-[200px] max-w-[90vw] pr-12 flex-col gap-1${className ? ` ${className}` : ''}`}>
+      {Object.entries(suggestionsByTypeAndSubtype).map(([type, subtypeToTags]) => (
         <div key={type} className="flex flex-col">
-          <div className="text-sm text-white/60 my-4">{type}</div>
-          {sortTagsByCounts(typedTags, countsMap).map(tag => (
-            <SuggestedTagRow key={tag.id} tag={tag} counts={tagIdToCounts?.get(tag.id)} onClick={() => onTagClick?.(tag)} isSelected={selectedSet.has(tag.id)} onMouseEnter={() => onTagHover?.(tag.id)} onMouseLeave={() => onTagHover?.(null)} onContextMenu={() => onTagContextMenu?.(tag)} />
+          <div className="underline text-white/60 my-4">{type}</div>
+          {Object.entries(subtypeToTags).sort(([a], [b]) => (a || '').localeCompare(b || '')).map(([subtype, subtypeTags]) => (
+            <div key={`${type}-${subtype}`} className="flex flex-col">
+              {subtype ? <div className="text-xs text-white/40 my-2 ml-1">{subtype}</div> : null}
+              {sortTagsByCounts(subtypeTags, countsMap).map(tag => (
+                <SuggestedTagRow key={tag.id} tag={tag} counts={tagIdToCounts?.get(tag.id)} onClick={() => onTagClick?.(tag)} isSelected={selectedSet.has(tag.id)} onMouseEnter={() => onTagHover?.(tag.id)} onMouseLeave={() => onTagHover?.(null)} onContextMenu={() => onTagContextMenu?.(tag)} />
+              ))}
+            </div>
           ))}
         </div>
       ))}

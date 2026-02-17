@@ -22,7 +22,7 @@ const SuggestedTagRow = ({ tag, counts, onClick, isSelected, onMouseEnter, onMou
         {counts?.negative ? <span className="text-red-400 flex-shrink-0">-{counts.negative}</span> : null}
         <span className="text-white/40 w-4 flex-shrink-0 text-right">{counts?.total ?? ''}</span>
       </div>
-      <span className="px-3 py-2 my-1 text-white w-full shrink-0 flex-1 whitespace-nowrap border rounded-xs" style={{ backgroundColor: isSelected || isHovered ? color : color.replace(')', ', 0.2)').replace('hsl(', 'hsla('), borderColor: "rgba(255, 255, 255, 0.1)" }}>{tag.name}</span>
+      <span className="px-2 py-1 my-1 text-white w-full shrink-0 w-[100px] flex-1 whitespace-nowrap border rounded-xs" style={{ backgroundColor: isSelected || isHovered ? color : color.replace(')', ', 0.2)').replace('hsl(', 'hsla('), borderColor: "rgba(255, 255, 255, 0.36)" }}>{tag.name}</span>
       {isSelected && tag.suggestedTagIds?.length ? <span className="text-white/40 pointer-events-none absolute -right-8">▶</span> : null}
     </div>
   )

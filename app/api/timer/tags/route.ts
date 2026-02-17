@@ -22,9 +22,10 @@ export async function POST(request: NextRequest) {
   const body = await request.json()
   const name = body?.name
   const type = body?.type
+  const subtype = body?.subtype ?? null
   if (!name || !type) return NextResponse.json({ error: 'Missing name or type' }, { status: 400 })
   const existing = await prisma.tag.findFirst({ where: { name, type } })
-  const tag = await prisma.tag.upsert({ where: { name_type: { name, type } }, create: { name, type }, update: {}, include: { parentTag: true } })
+  const tag = await prisma.tag.upsert({ where: { name_type: { name, type } }, create: { name, type, subtype }, update: { subtype }, include: { parentTag: true } })
   if (!existing) {
     // Fire-and-forget: generate description for newly created tag
     generateAndSaveTagDescription({ tagId: tag.id, prisma, doNotRunAgain: true }).catch(e => console.error('[tags] Failed to generate description for new tag:', e))
@@ -40,7 +41,7 @@ export async function PATCH(request: NextRequest) {
   const id = body?.id
   if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 })
   const suggestedTagIds = body?.suggestedTagIds
-  const updateData: Record<string, unknown> = { name: body?.name ?? undefined, type: body?.type ?? undefined, description: body?.description !== undefined ? body?.description : undefined, parentTagId: body?.parentTagId !== undefined ? (body?.parentTagId === null ? null : Number(body?.parentTagId)) : undefined }
+  const updateData: Record<string, unknown> = { name: body?.name ?? undefined, type: body?.type ?? undefined, subtype: body?.subtype !== undefined ? body?.subtype : undefined, description: body?.description !== undefined ? body?.description : undefined, parentTagId: body?.parentTagId !== undefined ? (body?.parentTagId === null ? null : Number(body?.parentTagId)) : undefined }
   if (suggestedTagIds !== undefined) updateData.suggestedTagIds = suggestedTagIds === null ? null : suggestedTagIds
   if (body?.noAiSuggest !== undefined) updateData.noAiSuggest = body.noAiSuggest
   const tag = await prisma.tag.update({ where: { id: Number(id) }, data: updateData, include: { parentTag: true } })

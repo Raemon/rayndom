@@ -9,7 +9,7 @@ type TagsContextType = {
   setTags: React.Dispatch<React.SetStateAction<Tag[]>>
   load: () => Promise<void>
   createTag: (args: { name: string, type: string }) => Promise<Tag>
-  updateTag: (args: { id: number, name?: string, type?: string, description?: string | null, parentTagId?: number | null, suggestedTagIds?: number[] | null, noAiSuggest?: boolean }) => Promise<void>
+  updateTag: (args: { id: number, name?: string, type?: string, subtype?: string | null, description?: string | null, parentTagId?: number | null, suggestedTagIds?: number[] | null, noAiSuggest?: boolean }) => Promise<void>
   deleteTag: (args: { id: number }) => Promise<void>
 }
 
@@ -55,16 +55,16 @@ export const TagsProvider = ({ children }:{ children: ReactNode }) => {
     return tag
   }, [])
 
-  const updateTag = useCallback(async ({ id, name, type, description, parentTagId, suggestedTagIds, noAiSuggest }:{ id: number, name?: string, type?: string, description?: string | null, parentTagId?: number | null, suggestedTagIds?: number[] | null, noAiSuggest?: boolean }) => {
+  const updateTag = useCallback(async ({ id, name, type, subtype, description, parentTagId, suggestedTagIds, noAiSuggest }:{ id: number, name?: string, type?: string, subtype?: string | null, description?: string | null, parentTagId?: number | null, suggestedTagIds?: number[] | null, noAiSuggest?: boolean }) => {
     const previousTag = tags.find(t => t.id === id)
     if (!previousTag) return
     await runOptimisticMutation({
       applyOptimistic: () => {
-        setTags(prev => prev.map(t => t.id === id ? { ...t, name: name ?? t.name, type: type ?? t.type, description: description !== undefined ? description : t.description, parentTagId: parentTagId !== undefined ? parentTagId : t.parentTagId, suggestedTagIds: suggestedTagIds !== undefined ? suggestedTagIds : t.suggestedTagIds, noAiSuggest: noAiSuggest !== undefined ? noAiSuggest : t.noAiSuggest } : t))
+        setTags(prev => prev.map(t => t.id === id ? { ...t, name: name ?? t.name, type: type ?? t.type, subtype: subtype !== undefined ? subtype : t.subtype, description: description !== undefined ? description : t.description, parentTagId: parentTagId !== undefined ? parentTagId : t.parentTagId, suggestedTagIds: suggestedTagIds !== undefined ? suggestedTagIds : t.suggestedTagIds, noAiSuggest: noAiSuggest !== undefined ? noAiSuggest : t.noAiSuggest } : t))
         return previousTag
       },
       request: async () => {
-        const res = await fetch('/api/timer/tags', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, name, type, description, parentTagId, suggestedTagIds, noAiSuggest }) })
+        const res = await fetch('/api/timer/tags', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, name, type, subtype, description, parentTagId, suggestedTagIds, noAiSuggest }) })
         const json = await res.json().catch(() => ({}))
         if (!res.ok) throw new Error(getApiErrorMessage(json, `Failed to update tag (${res.status})`))
         return json as { tag?: Tag }

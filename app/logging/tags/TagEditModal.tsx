@@ -31,7 +31,7 @@ const TagPicker = ({ tags, placeholder, onSelect }:{ tags: Tag[], placeholder: s
   )
 }
 
-const TagEditModal = ({ tag: initialTag, onSave, onDelete, onClose }:{ tag: Tag, onSave: (args: { id: number, name: string, type: string, description: string | null }) => Promise<void> | void, onDelete: (args: { id: number }) => Promise<void> | void, onClose: () => void }) => {
+const TagEditModal = ({ tag: initialTag, onSave, onDelete, onClose }:{ tag: Tag, onSave: (args: { id: number, name: string, type: string, subtype: string | null, description: string | null }) => Promise<void> | void, onDelete: (args: { id: number }) => Promise<void> | void, onClose: () => void }) => {
   const { tags, updateTag } = useTags()
   const tag = tags.find(t => t.id === initialTag.id) || initialTag
   const parentTag = getParentTag(tag, tags)

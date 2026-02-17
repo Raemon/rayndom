@@ -18,7 +18,7 @@ type SuggestedTagsModalProps = {
 }
 
 const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, directSuggestions = [], onCreateTagInstance, onDeleteTagInstance, onClose }: SuggestedTagsModalProps) => {
-  const { updateTag, deleteTag } = useTags()
+  const { updateTag, deleteTag, load } = useTags()
   const tagIdToCounts = useMemo(() => buildTagIdToCounts(allTagInstances), [allTagInstances])
   const suggestedTags = useMemo(() => getSuggestedTags(tags, type, tagIdToCounts), [tagIdToCounts, tags, type])
   const existingTagIdsForDatetime = useMemo(() => new Set(allTagInstances.filter(ti => ti.datetime === datetime).map(ti => ti.tagId)), [allTagInstances, datetime])
@@ -88,12 +88,9 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, directSugge
   }, [suggestedTags, selectedTagIds, tags, tagIdToCounts, existingTagIdsForDatetime, hoveredTagId])
   return (
     <>
-      <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center" onClick={onClose}>
+      <div className="fixed inset-0 bg-black/70 z-50 flex items-center relative justify-center" onClick={onClose}>
         <div className="bg-neutral-800 min-w-[320px] max-w-[90vw] p-4" onClick={e => e.stopPropagation()}>
-          <div className="flex items-center gap-2 mb-3">
-            <div className="text-white text-sm">Suggested tags</div>
-            <button className="ml-auto text-white/30 hover:text-white text-lg leading-none cursor-pointer" onClick={onClose}>×</button>
-          </div>
+          <button className="ml-auto text-white/30 hover:text-white text-lg absolute top-4 right-4 leading-none cursor-pointer" onClick={onClose}>×</button>
           <div className="flex items-start max-h-[90vh]">
             <TagSuggestionColumn tags={directSuggestions} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="mb-3" />
             {suggestedColumnTags.length === 0 && directSuggestions.length === 0 && !selectedFlowColumns.some(col => col.hasSuggestedTags) ? (
@@ -122,7 +119,7 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, directSugge
           </div>
         </div>
       </div>
-      {editingTag ? <TagEditModal tag={editingTag} onSave={({ id, name, type, description }) => updateTag({ id, name, type, description })} onDelete={({ id }) => deleteTag({ id })} onClose={() => setEditingTag(null)} /> : null}
+      {editingTag ? <TagEditModal tag={editingTag} onSave={async ({ id, name, type, subtype, description }) => { await updateTag({ id, name, type, subtype, description }); load() }} onDelete={async ({ id }) => { await deleteTag({ id }); load() }} onClose={() => setEditingTag(null)} /> : null}
     </>
   )
 }

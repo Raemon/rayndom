@@ -32,7 +32,7 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
     return (
       <TagEditor
         tag={tag}
-        onSave={({ id, name, type, description }) => { setIsEditing(false); updateTag({ id, name, type, description }) }}
+        onSave={({ id, name, type, subtype, description }) => { setIsEditing(false); updateTag({ id, name, type, subtype, description }) }}
         onDelete={({ id }) => { setIsEditing(false); deleteTag({ id }) }}
         onCancel={() => setIsEditing(false)}
       />
@@ -152,7 +152,7 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
       {showModal && !readonly && (
         <TagEditModal
           tag={tag}
-          onSave={({ id, name, type, description }) => updateTag({ id, name, type, description })}
+          onSave={({ id, name, type, subtype, description }) => updateTag({ id, name, type, subtype, description })}
           onDelete={({ id }) => deleteTag({ id })}
           onClose={() => setShowModal(false)}
         />
