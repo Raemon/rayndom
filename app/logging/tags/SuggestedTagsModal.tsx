@@ -109,7 +109,7 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, directSugge
                       : <div className="min-w-[320px] flex-shrink-0" />}
                   </div>
                 ))}
-                <div className="flex items-start flex-shrink-0">
+                <div className="flex items-start flex-shrink-0 min-w-[320px]">
                   {hoverPreviewTags.length > 0
                     ? <TagSuggestionColumn tags={hoverPreviewTags} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="w-[240px] flex-shrink-0" />
                     : <div className="min-w-[320px] flex-shrink-0" />}

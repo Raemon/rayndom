@@ -25,11 +25,10 @@ export async function POST(request: NextRequest) {
   const subtype = body?.subtype ?? null
   if (!name || !type) return NextResponse.json({ error: 'Missing name or type' }, { status: 400 })
   const existing = await prisma.tag.findFirst({ where: { name, type } })
-  const tag = await prisma.tag.upsert({ where: { name_type: { name, type } }, create: { name, type, subtype }, update: { subtype }, include: { parentTag: true } })
-  if (!existing) {
-    // Fire-and-forget: generate description for newly created tag
-    generateAndSaveTagDescription({ tagId: tag.id, prisma, doNotRunAgain: true }).catch(e => console.error('[tags] Failed to generate description for new tag:', e))
-  }
+  if (existing) return NextResponse.json({ error: 'Tag already exists' }, { status: 409 })
+  const tag = await prisma.tag.create({ data: { name, type, subtype }, include: { parentTag: true } })
+  // Fire-and-forget: generate description for newly created tag
+  generateAndSaveTagDescription({ tagId: tag.id, prisma, doNotRunAgain: true }).catch(e => console.error('[tags] Failed to generate description for new tag:', e))
   return NextResponse.json({ tag })
 }
 
