@@ -84,5 +84,7 @@ Focus on hard science facts or empirical results or specific tools, not vague co
 Do not give any preamble to the fact.
 
 After the fact, list one short bullet for each of the 15 minutes describing what I did that minute. Don't mention the application name, instead list the project name, and what subtask I seemed to be working.
+
+Ignore any NSFW content, sensitive passwords or likely confidential information. Do not mention it or include it in analysis.
 ${openRouterBalance ? `\nOpenRouter balance remaining: ${openRouterBalance}` : ''}
 `
