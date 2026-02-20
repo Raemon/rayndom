@@ -144,8 +144,8 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
       const startMs = dayStart.getTime() + section.startMinutes * 60 * 1000
       const endMs = dayStart.getTime() + section.endMinutes * 60 * 1000
       const isBeforeStart = nowMs < startMs
-      const isOverForHour = nowMs >= endMs + 60 * 60 * 1000
-      autoCollapsed[section.key] = isBeforeStart || isOverForHour
+      const isPastEnd = nowMs > endMs
+      autoCollapsed[section.key] = isBeforeStart || isPastEnd
     }
     return autoCollapsed
   }, [sections, dayStart, currentSlotMs])

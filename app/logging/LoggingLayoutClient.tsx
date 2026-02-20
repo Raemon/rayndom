@@ -17,12 +17,11 @@ const navLinks = [
 
 const LoggingLayoutClient = ({ children }:{ children: React.ReactNode }) => {
   const pathname = usePathname()
-  const showHeaderTimer = pathname === '/logging' || pathname === '/logging/zen'
+  const showHeaderTimer = pathname === '/logging' || pathname === '/logging/zen' || pathname === '/logging/sidebar'
   return (
     <AuthProvider>
       <div>
         <header className="fixed top-0 left-0 right-0 z-50 bg-black flex items-center justify-between p-2">
-          LoggerApp
           {showHeaderTimer && <HeaderTimer />}
           <div className="flex items-center gap-4">
             <nav className="flex gap-4 text-xs">

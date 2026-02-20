@@ -1,6 +1,6 @@
 import type { Timeblock } from '../types'
 
-export type NotesTaskItem = { text: string, timeblockId: number, checked: boolean }
+export type NotesTaskItem = { text: string, timeblockId: number, checked: boolean, source: 'rayNotes' | 'assistantNotes' }
 export type FatebookLink = { url: string, text: string }
 
 const TASK_ITEM_SELECTOR = 'li[data-type="taskItem"]'
@@ -13,37 +13,40 @@ export const extractNotesTasksAndLinks = (timeblocks: Timeblock[], checkedKeys: 
   const fatebookLinks: FatebookLink[] = []
   const seenUrls = new Set<string>()
   const parser = new DOMParser()
+  const noteFields = ['rayNotes', 'assistantNotes'] as const
   for (const tb of timeblocks) {
-    if (!tb.rayNotes) continue
-    const doc = parser.parseFromString(tb.rayNotes, 'text/html')
-    const uncheckedItems = doc.querySelectorAll(UNCHECKED_TASK_SELECTOR)
-    for (let i = 0; i < uncheckedItems.length; i++) {
-      const text = uncheckedItems[i].textContent?.trim()
-      if (!text) continue
-      const key = `${tb.id}:${text}`
-      tasks.push({ text, timeblockId: tb.id, checked: checkedKeys.has(key) })
-    }
-    const checkedItems = doc.querySelectorAll(CHECKED_TASK_SELECTOR)
-    for (const item of checkedItems) {
-      const text = item.textContent?.trim()
-      if (!text) continue
-      const key = `${tb.id}:${text}`
-      if (checkedKeys.has(key)) tasks.push({ text, timeblockId: tb.id, checked: true })
-    }
-    const links = doc.querySelectorAll('a[href*="fatebook" i]')
-    for (const link of links) {
-      const url = (link as HTMLAnchorElement).href
-      if (!seenUrls.has(url)) {
-        seenUrls.add(url)
-        fatebookLinks.push({ url, text: link.textContent?.trim() || url })
+    for (const field of noteFields) {
+      if (!tb[field]) continue
+      const doc = parser.parseFromString(tb[field]!, 'text/html')
+      const uncheckedItems = doc.querySelectorAll(UNCHECKED_TASK_SELECTOR)
+      for (let i = 0; i < uncheckedItems.length; i++) {
+        const text = uncheckedItems[i].textContent?.trim()
+        if (!text) continue
+        const key = `${tb.id}:${text}`
+        tasks.push({ text, timeblockId: tb.id, checked: checkedKeys.has(key), source: field })
       }
-    }
-    const textContent = doc.body.textContent || ''
-    const urlMatches = textContent.match(/https?:\/\/(?:www\.)?fatebook\.io\/[^\s.,)]+/gi) || []
-    for (const url of urlMatches) {
-      if (!seenUrls.has(url)) {
-        seenUrls.add(url)
-        fatebookLinks.push({ url, text: url })
+      const checkedItems = doc.querySelectorAll(CHECKED_TASK_SELECTOR)
+      for (const item of checkedItems) {
+        const text = item.textContent?.trim()
+        if (!text) continue
+        const key = `${tb.id}:${text}`
+        if (checkedKeys.has(key)) tasks.push({ text, timeblockId: tb.id, checked: true, source: field })
+      }
+      const links = doc.querySelectorAll('a[href*="fatebook" i]')
+      for (const link of links) {
+        const url = (link as HTMLAnchorElement).href
+        if (!seenUrls.has(url)) {
+          seenUrls.add(url)
+          fatebookLinks.push({ url, text: link.textContent?.trim() || url })
+        }
+      }
+      const textContent = doc.body.textContent || ''
+      const urlMatches = textContent.match(/https?:\/\/(?:www\.)?fatebook\.io\/[^\s.,)]+/gi) || []
+      for (const url of urlMatches) {
+        if (!seenUrls.has(url)) {
+          seenUrls.add(url)
+          fatebookLinks.push({ url, text: url })
+        }
       }
     }
   }
@@ -54,14 +57,17 @@ export const extractOutstandingNotesTasks = (timeblocks: Timeblock[]): NotesTask
   if (typeof window === 'undefined') return []
   const tasks: NotesTaskItem[] = []
   const parser = new DOMParser()
+  const noteFields = ['rayNotes', 'assistantNotes'] as const
   for (const tb of timeblocks) {
-    if (!tb.rayNotes) continue
-    const doc = parser.parseFromString(tb.rayNotes, 'text/html')
-    const uncheckedItems = doc.querySelectorAll(UNCHECKED_TASK_SELECTOR)
-    for (let i = 0; i < uncheckedItems.length; i++) {
-      const text = uncheckedItems[i].textContent?.trim()
-      if (!text) continue
-      tasks.push({ text, timeblockId: tb.id, checked: false })
+    for (const field of noteFields) {
+      if (!tb[field]) continue
+      const doc = parser.parseFromString(tb[field]!, 'text/html')
+      const uncheckedItems = doc.querySelectorAll(UNCHECKED_TASK_SELECTOR)
+      for (let i = 0; i < uncheckedItems.length; i++) {
+        const text = uncheckedItems[i].textContent?.trim()
+        if (!text) continue
+        tasks.push({ text, timeblockId: tb.id, checked: false, source: field })
+      }
     }
   }
   return tasks

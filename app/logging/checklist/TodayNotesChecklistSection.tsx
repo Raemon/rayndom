@@ -40,10 +40,11 @@ const TodayNotesChecklistSection = ({ textSize='text-sm' }:{ textSize?: string }
   const handleToggleTask = async (task: NotesTaskItem) => {
     setTasks(prev => prev.filter(t => !(t.timeblockId === task.timeblockId && t.text === task.text)))
     const timeblock = timeblocksById[task.timeblockId]
-    if (!timeblock?.rayNotes) return
-    const newHtml = toggleTaskInHtml(timeblock.rayNotes, task.text, true)
-    setTimeblocksById(prev => ({ ...prev, [task.timeblockId]: { ...timeblock, rayNotes: newHtml } }))
-    await fetch('/api/timer/timeblocks', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: task.timeblockId, rayNotes: newHtml }) })
+    const field = task.source
+    if (!timeblock?.[field]) return
+    const newHtml = toggleTaskInHtml(timeblock[field]!, task.text, true)
+    setTimeblocksById(prev => ({ ...prev, [task.timeblockId]: { ...timeblock, [field]: newHtml } }))
+    await fetch('/api/timer/timeblocks', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: task.timeblockId, [field]: newHtml }) })
   }
 
   if (loadedOnce && !hasTasks) return null

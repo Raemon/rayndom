@@ -9,6 +9,7 @@ import Checklist from '../checklist/Checklist'
 import { getCurrentSection } from '../checklist/sectionUtils'
 import HeaderTimer from '../HeaderTimer'
 import NotesInput from '../editor/NotesInput'
+import PreviousBlockReview from './PreviousBlockReview'
 
 const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
 
@@ -57,6 +58,11 @@ const SidebarPageInner = () => {
     }
     return byType
   }, [tagInstancesForCurrentBlock, tagTypes, tags])
+  const previousSlotMs = selectedSlotMs - slotSizeMs
+  const previousTimeLabel = new Date(previousSlotMs).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+  const unapprovedPreviousTagInstances = useMemo(() =>
+    tagInstances.filter(ti => floorTo15(new Date(ti.datetime)).getTime() === previousSlotMs && ti.llmPredicted && !ti.approved),
+  [tagInstances, previousSlotMs])
   const ensureSelectedTimeblock = async () => {
     if (selectedTimeblock) return selectedTimeblock
     const created = await createTimeblock({ datetime: selectedBlockDatetime, rayNotes: null, assistantNotes: null, aiNotes: null })
@@ -75,7 +81,7 @@ const SidebarPageInner = () => {
     return () => clearInterval(interval)
   }, [refreshUnfocused, focusedNoteKeys])
   return (
-    <div className="w-full flex flex-col gap-4 overflow-y-auto p-4 text-sm md:flex-row">
+    <div className="w-full h-full flex flex-col gap-4 overflow-y-auto p-4 text-sm md:flex-row">
       <div className="hidden flex-col gap-2 md:flex md:flex-1 min-w-0">
         <div className="font-semibold">Notes for {new Date(selectedBlockDatetime).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</div>
         <div className="flex-1 min-h-0">
@@ -95,15 +101,21 @@ const SidebarPageInner = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-4 md:flex-1 min-w-0">
-        <HeaderTimer />
+      <div className="flex flex-col gap-4 md:flex-1 min-w-0 h-full">
+        <PreviousBlockReview
+          timeLabel={previousTimeLabel}
+          tagInstances={unapprovedPreviousTagInstances}
+          onApproveTagInstance={approveTagInstance}
+          onPatchTagInstance={patchTagInstance}
+          onDeleteTagInstance={deleteTagInstance}
+        />
         <div className="flex flex-col gap-2">
           <div className="font-semibold">Tags for <button type="button" className="px-1 text-white/60 hover:text-white" aria-label="Previous timeblock" onClick={() => setTimeblockOffset(o => o - 1)}>‹</button>{new Date(selectedBlockDatetime).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}<button type="button" className="px-1 text-white/60 hover:text-white" aria-label="Next timeblock" onClick={() => setTimeblockOffset(o => o + 1)}>›</button></div>
           {tagTypes.map(type => (
-            <div key={type}>
-              <div className="text-xs text-white/60 mb-1">{type}</div>
+            <div key={type} className="flex items-center gap-2">
               <TagCell
                 type={type}
+                placeholder={`Add ${type}`}
                 tagInstances={tagInstancesByType[type] || []}
                 allTagInstances={tagInstances}
                 datetime={selectedBlockDatetime}
@@ -115,7 +127,7 @@ const SidebarPageInner = () => {
             </div>
           ))}
         </div>
-        <div className="flex-1 min-h-0">
+        <div className="mt-auto min-h-0">
           <Checklist inline fullWidth section={currentSection} />
         </div>
       </div>

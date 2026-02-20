@@ -23,9 +23,10 @@ const CollapsedNotesSummary = ({ timeblocks, onPatchTimeblockDebounced }: {
       return next
     })
     const tb = timeblocks.find(t => t.id === task.timeblockId)
-    if (!tb?.rayNotes) return
-    const newHtml = toggleTaskInHtml(tb.rayNotes, task.text, newChecked)
-    onPatchTimeblockDebounced({ id: tb.id, rayNotes: newHtml, debounceMs: 0 })
+    const field = task.source
+    if (!tb?.[field]) return
+    const newHtml = toggleTaskInHtml(tb[field]!, task.text, newChecked)
+    onPatchTimeblockDebounced({ id: tb.id, [field]: newHtml, debounceMs: 0 })
   }
   
   return (
