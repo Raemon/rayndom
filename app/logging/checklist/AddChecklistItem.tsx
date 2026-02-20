@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 
-const AddChecklistItem = ({ onAdd, placeholder = 'Add checklist item', textSize = 'text-2xl', inputPadding = 'px-4 py-3' }:{
+const AddChecklistItem = ({ onAdd, placeholder = 'Add checklist item', textSize = 'text-2xl', inputPadding = 'px-4 py-3', groupHover = 'group-hover:text-white' }:{
   onAdd: (title: string) => void | Promise<void>
   placeholder?: string
   textSize?: string
@@ -22,12 +22,15 @@ const AddChecklistItem = ({ onAdd, placeholder = 'Add checklist item', textSize 
     )
   }
   return (
-    <div className={`flex gap-2`}>
+    <div className={`flex gap-2 ${groupHover}`}>
       <input
         type="text"
         value={newItem}
         onChange={(e) => setNewItem(e.target.value)}
-        onKeyPress={(e) => e.key === 'Enter' && handleAdd()}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') handleAdd()
+          if (e.key === 'Escape') { setNewItem(''); setIsExpanded(false) }
+        }}
         className={`${inputPadding} bg-gray-100 outline-none flex-1 ${textSize}`}
         placeholder={placeholder}
         autoFocus

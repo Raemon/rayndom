@@ -190,12 +190,38 @@ export async function POST(request: NextRequest) {
       createdInstances.push(tagInstance)
     }
     console.log('[predict-tags] Done. Created', createdInstances.length, 'tag instances')
+    let openRouterBalance: string | undefined
+    try {
+      const mgmtKey = process.env.OPENROUTER_MANAGEMENT_API_KEY
+      if (!mgmtKey) {
+        openRouterBalance = '(OPENROUTER_MANAGEMENT_API_KEY not set)'
+      } else {
+        const creditsRes = await fetch('https://openrouter.ai/api/v1/credits', {
+          headers: { 'Authorization': `Bearer ${mgmtKey}`, 'Content-Type': 'application/json' }
+        })
+        if (!creditsRes.ok) {
+          openRouterBalance = `(credits API returned ${creditsRes.status}: ${creditsRes.statusText})`
+        } else {
+          const creditsData = await creditsRes.json()
+          const total = creditsData?.data?.total_credits
+          const used = creditsData?.data?.total_usage
+          if (total == null || used == null) {
+            openRouterBalance = `(credits API returned unexpected shape: ${JSON.stringify(creditsData)})`
+          } else {
+            openRouterBalance = `$${(total - used).toFixed(2)}`
+          }
+        }
+      }
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e)
+      openRouterBalance = `(failed to fetch balance: ${msg})`
+    }
     let aiNotes: string | null = null
     try {
       console.log('[predict-tags] Sending request to LLM for aiNotes (anthropic/claude-opus-4.5)...')
       const aiNotesCompletion = await client.chat.completions.create({
         model: 'anthropic/claude-opus-4.5',
-        messages: [{ role: 'user', content: getAiNotesPrompt({ keylogText, screenshotSummariesText }) }],
+        messages: [{ role: 'user', content: getAiNotesPrompt({ keylogText, screenshotSummariesText, openRouterBalance }) }],
         max_tokens: 800,
       })
       const aiNotesMarkdown = aiNotesCompletion.choices[0]?.message?.content || null
@@ -210,6 +236,14 @@ export async function POST(request: NextRequest) {
       }
     } catch (e) {
       console.error('[predict-tags] Failed to generate aiNotes:', e)
+      const errorMsg = e instanceof Error ? e.message : String(e)
+      aiNotes = `<p style="color:red">aiNotes error: ${errorMsg}</p>`
+      const existingTimeblock = await prisma.timeblock.findFirst({ where: { datetime: prevBlockDatetime } })
+      if (existingTimeblock) {
+        await prisma.timeblock.update({ where: { id: existingTimeblock.id }, data: { aiNotes } })
+      } else {
+        await prisma.timeblock.create({ data: { datetime: prevBlockDatetime, rayNotes: null, assistantNotes: null, aiNotes } })
+      }
     }
     return NextResponse.json({ predictions, createdInstances, keylogCount: keylogs.length, aiNotes })
   } catch (error) {

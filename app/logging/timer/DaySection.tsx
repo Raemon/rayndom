@@ -200,7 +200,13 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
                     </button>
                   </td>
                 </tr>
-                {!isSectionCollapsed && slotsInSection.map(slotStart => {
+                {(isSectionCollapsed ? slotsInSection.filter(slotStart => {
+                  const slotMs = slotStart.getTime()
+                  const tb = slotToTimeblock.get(slotMs)
+                  const hasNotes = tb && (tb.rayNotes || tb.assistantNotes || tb.aiNotes)
+                  const hasTagInstances = tagTypes.some(type => (slotKeyToTagInstances.get(`${slotMs}:${type}`) || []).length > 0)
+                  return hasNotes || hasTagInstances
+                }) : slotsInSection).map(slotStart => {
                   const slotMs = slotStart.getTime()
                   const tb = slotToTimeblock.get(slotMs)
                   return (

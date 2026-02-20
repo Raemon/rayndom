@@ -67,7 +67,7 @@ Respond with ONLY a JSON object where keys are the exact tag names and values ar
 ${tags.map(t => `  "${t.name}": { "applies": false, "reason": "..." }`).join(',\n')}
 }`
 
-export const getAiNotesPrompt = ({ keylogText, screenshotSummariesText = '' }:{ keylogText: string, screenshotSummariesText?: string }) => `You are analyzing recent keylogs and screenshot summaries.
+export const getAiNotesPrompt = ({ keylogText, screenshotSummariesText = '', openRouterBalance }:{ keylogText: string, screenshotSummariesText?: string, openRouterBalance?: string }) => `You are analyzing recent keylogs and screenshot summaries.
 
 Here are the keylogs:
 ${keylogText}
@@ -84,4 +84,5 @@ Focus on hard science facts or empirical results or specific tools, not vague co
 Do not give any preamble to the fact.
 
 After the fact, list one short bullet for each of the 15 minutes describing what I did that minute. Don't mention the application name, instead list the project name, and what subtask I seemed to be working.
+${openRouterBalance ? `\nOpenRouter balance remaining: ${openRouterBalance}` : ''}
 `

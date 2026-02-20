@@ -5,6 +5,7 @@ import { useTagInstances } from '../hooks/useTagInstances'
 import TagCell from '../tags/TagCell'
 import Checklist from '../checklist/Checklist'
 import { getCurrentSection } from '../checklist/sectionUtils'
+import HeaderTimer from '../HeaderTimer'
 
 const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
 
@@ -50,6 +51,7 @@ const SidebarPageInner = () => {
   }, [loadTagInstances])
   return (
     <div className="w-[400px] flex flex-col gap-4 overflow-y-auto p-4 text-sm">
+      <HeaderTimer />
       <div className="flex flex-col gap-2">
         <div className="font-semibold">Tags for {new Date(currentBlockDatetime).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</div>
         {tagTypes.map(type => (

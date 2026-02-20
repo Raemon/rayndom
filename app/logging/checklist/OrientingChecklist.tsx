@@ -248,8 +248,8 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
 
   return (
     <div style={{ width: '100%', maxWidth }}>
-      <div className="p-2 bg-black/20">
-        <div className="flex flex-col gap-3">
+      <div className="p-y2">
+        <div className="flex flex-col">
         {sections.map((section, sectionIndex) => {
           const hasUnchecked = itemsBySection[section.key].some(i => !i.completed)
           const isReached = sectionIndex <= SECTION_ORDER[currentSection]

@@ -42,12 +42,12 @@ const OrientingChecklistSection = ({
       onDragOver={(e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move' }}
       onDrop={onDropOnSection}
     >
-      <div className="mb-2 flex items-center gap-2">
-        <button className={`text-left font-semibold text-gray-300 ${textSize}`} onClick={onToggleCollapsed}>
-          {isCollapsed ? '▶' : '▼'} {sectionLabel}
-        </button>
+      <div className="flex items-center gap-2 group">
+        <div className={`text-left text-xs cursor-pointer text-gray-400 group-hover:text-white ${textSize}`} onClick={onToggleCollapsed}>
+          <span className="text-xs w-4 inline-block">{isCollapsed ? '▶' : '▼'}</span> {sectionLabel}
+        </div>
         <div className="flex-1"></div>
-        <AddChecklistItem onAdd={onAddItem} placeholder="Add item" textSize="text-sm" inputPadding="px-2 py-1" />
+        <AddChecklistItem onAdd={onAddItem} placeholder="Add item" textSize="text-sm" inputPadding="px-2 py-1" groupHover="group-hover:text-white" />
       </div>
       {!isCollapsed && (
         <div className={`flex flex-col ${itemGap}`}>
