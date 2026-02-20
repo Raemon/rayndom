@@ -1,4 +1,5 @@
 import OpenAI from 'openai'
+import { IGNORE_NSFW_CONTENT } from '../predict-tags/aiNotesPrompt'
 
 const getRequiredEnv = (key: string) => {
   const value = process.env[key]
@@ -50,7 +51,9 @@ Respond with JSON only, no other text:
   "similarTags": ["name1", "name2"]
 }
 
-For similarTags, list the names of other tags (of any type) that are most similar or easily confused with this one. Return an empty array if none are particularly similar.`
+For similarTags, list the names of other tags (of any type) that are most similar or easily confused with this one. Return an empty array if none are particularly similar.
+
+${IGNORE_NSFW_CONTENT}`
 
   const completion = await client.chat.completions.create({
     model: 'anthropic/claude-sonnet-4',

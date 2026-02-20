@@ -1,3 +1,5 @@
+export const IGNORE_NSFW_CONTENT = `Ignore any NSFW content, sensitive passwords or likely confidential information. Do not mention it or include it in analysis.`
+
 export const getOverallStoryPrompt = ({ keylogText, screenshotSummariesText }:{ keylogText?: string, screenshotSummariesText?: string }) => `You are analyzing keylogs and/or screenshot summaries from the past hour to determine what the user was overall doing during the last 15 minutes.
 ${keylogText ? `\nHere are keylogs:\n${keylogText}\n` : ''}${screenshotSummariesText ? `\nHere are screenshot summaries:\n${screenshotSummariesText}\n` : ''}
 
@@ -6,7 +8,9 @@ Review the keylogs and screenshot summaries and write your guess for an overall 
 Respond with ONLY a JSON object:
 {
 "overallStory": "write your guess for an overall story of what the user was doing during the last 15 minutes."
-}`
+}
+
+${IGNORE_NSFW_CONTENT}`
 
 type PredictSingleTagResult = {
   whyItMightApply: string
@@ -42,7 +46,9 @@ Respond with ONLY a JSON object:
 "whyItMightNotApply": "explain why this tag might not apply (broken into multiple paragraphs for readability)."
 "confidence": "how confident are you in your answer? (low confidence), (medium confidence), or (high confidence)."
 "decision": boolean value indicating whether this tag applies.
-}`
+}
+
+${IGNORE_NSFW_CONTENT}`
 
 type PredictTagsByTypePrompt = {
   overallStory: string
@@ -65,7 +71,9 @@ For each tag, consider its description carefully. If the description specifies p
 Respond with ONLY a JSON object where keys are the exact tag names and values are objects with "applies" (boolean) and "reason" (string explaining why):
 {
 ${tags.map(t => `  "${t.name}": { "applies": false, "reason": "..." }`).join(',\n')}
-}`
+}
+
+${IGNORE_NSFW_CONTENT}`
 
 export const getAiNotesPrompt = ({ keylogText, screenshotSummariesText = '', openRouterBalance }:{ keylogText: string, screenshotSummariesText?: string, openRouterBalance?: string }) => `You are analyzing recent keylogs and screenshot summaries.
 
@@ -85,6 +93,6 @@ Do not give any preamble to the fact.
 
 After the fact, list one short bullet for each of the 15 minutes describing what I did that minute. Don't mention the application name, instead list the project name, and what subtask I seemed to be working.
 
-Ignore any NSFW content, sensitive passwords or likely confidential information. Do not mention it or include it in analysis.
+${IGNORE_NSFW_CONTENT}
 ${openRouterBalance ? `\nOpenRouter balance remaining: ${openRouterBalance}` : ''}
 `

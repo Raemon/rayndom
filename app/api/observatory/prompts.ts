@@ -1,3 +1,5 @@
+import { IGNORE_NSFW_CONTENT } from '../timer/predict-tags/aiNotesPrompt'
+
 type GoalsPromptParams = {
   keylogText: string
   screenshotText: string
@@ -34,5 +36,7 @@ Output ONLY the complete updated markdown document. Do not include any commentar
 Do NOT include small bits of evidence that aren't actually that useful (i.e. particular localhost ports)
 
 Do NOT include links to subdocuments that don't actually exist.
+
+${IGNORE_NSFW_CONTENT}
 `
 }
