@@ -1,5 +1,6 @@
 'use client'
 import { useCallback, useEffect, useRef } from 'react'
+import { getNextQuarterHourMs } from '../lib/timeUtils'
 
 type TimerProps = {
   onTimerComplete?: () => void
@@ -7,17 +8,6 @@ type TimerProps = {
   onRunAiCommand?: (datetime: string) => Promise<void>
   checklistRef?: { current: { resetAllItems: () => void, refreshItems: () => void } | null }
   isPredicting: boolean
-}
-
-const getNextQuarterHourMs = (now: Date) => {
-  const nextQuarterMinutes = Math.floor(now.getMinutes() / 15) * 15 + 15
-  const next = new Date(now)
-  if (nextQuarterMinutes >= 60) {
-    next.setHours(now.getHours() + 1, 0, 0, 0)
-  } else {
-    next.setMinutes(nextQuarterMinutes, 0, 0)
-  }
-  return next.getTime()
 }
 
 const playSingleBing = (context: AudioContext, startTime: number) => {
@@ -57,6 +47,15 @@ const Timer = (props: TimerProps) => {
   const lastPredictMarkRef = useRef<number | null>(null)
   const lastBingMarkRef = useRef<number | null>(null)
   const isRunningRef = useRef(false)
+  const requestFocus = useCallback(() => {
+    try {
+      if (typeof window === 'undefined') return
+      if (window.rayndom?.focusMainWindow) { window.rayndom.focusMainWindow().catch(e => console.warn('[Timer] Failed to request focus:', e)); return }
+      window.focus()
+    } catch (e) {
+      console.warn('[Timer] Failed to request focus:', e)
+    }
+  }, [])
 
   const runAiCommand = useCallback(async (datetime: string) => {
     if (isPredicting) return
@@ -91,6 +90,7 @@ const Timer = (props: TimerProps) => {
       if (nowMs >= nextMarkMs && lastBingMarkRef.current !== nextMarkMs) {
         lastBingMarkRef.current = nextMarkMs
         playBing()
+        requestFocus()
         onTimerComplete?.()
       }
       // Advance to next quarter hour if we've passed the current one
@@ -111,7 +111,7 @@ const Timer = (props: TimerProps) => {
       clearInterval(interval)
       document.removeEventListener('visibilitychange', handleVisibility)
     }
-  }, [onTimerComplete, runAiCommand])
+  }, [onTimerComplete, requestFocus, runAiCommand])
 
   return null
 }

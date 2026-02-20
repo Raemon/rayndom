@@ -1,0 +1,22 @@
+{
+  "appId": "com.rayndom.logging",
+  "productName": "RayndomLogging",
+  "directories": {
+    "output": "dist-electron/logging"
+  },
+  "files": [
+    "electron-dist/**",
+    "package.json"
+  ],
+  "extraResources": [
+    {
+      "from": "electron-resources/next",
+      "to": "next"
+    }
+  ],
+  "mac": {
+    "target": [
+      "dir"
+    ]
+  }
+}
