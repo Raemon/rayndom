@@ -25,10 +25,11 @@ export type ChecklistRef = {
 export type ChecklistProps = {
   orientingOnly?: boolean
   inline?: boolean
+  fullWidth?: boolean
   section?: string
 }
 
-const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = false, inline = false, section }, ref) => {
+const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = false, inline = false, fullWidth = false, section }, ref) => {
   const [checklistItems, setChecklistItems] = useState<ChecklistItem[]>([])
   const checklistItemsRef = useRef<ChecklistItem[]>([])
 
@@ -187,7 +188,7 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
 
   const positionClass = inline ? '' : 'fixed bottom-4 right-4'
   const bgClass = inline ? '' : 'bg-gray-900'
-  const inlineStyle = inline ? { width: '100%', maxWidth: width, height } : { width, height }
+  const inlineStyle = inline ? (fullWidth ? { width: '100%', height } : { width: '100%', maxWidth: width, height }) : { width, height }
   return (
     <div className={`${positionClass} ${bgClass} ${padding} ${justifySelfClass} overflow-y-auto`} style={inlineStyle}>
       <div className="flex items-center justify-between">
@@ -213,7 +214,7 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
         {checklistItems.length === 0 && <div className={`text-gray-600 ${textSize}`}>No items</div>}
       </div>
       <div className="mt-4">
-        <OrientingChecklist maxWidth={parseInt(width)} onHasRelevantUnchecked={setHasRelevantUnchecked} />
+        <OrientingChecklist maxWidth={fullWidth ? 9999 : parseInt(width)} onHasRelevantUnchecked={setHasRelevantUnchecked} />
       </div>
       <TodayNotesChecklistSection textSize={textSize} />
     </div>

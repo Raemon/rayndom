@@ -64,10 +64,11 @@ export const startNextServer = async ({ port, projectRoot, healthCheckPath, extr
   return { origin: `http://127.0.0.1:${port}`, childProcesses }
 }
 
-export const createAppWindow = async ({ origin, route, width, height, preloadPath, onClosed }:{ origin: string, route: string, width: number, height: number, preloadPath: string, onClosed?: () => void }) => {
+export const createAppWindow = async ({ origin, route, width, height, preloadPath, iconPath, onClosed }:{ origin: string, route: string, width: number, height: number, preloadPath: string, iconPath?: string, onClosed?: () => void }) => {
   const win = new BrowserWindow({
     width,
     height,
+    ...(iconPath ? { icon: iconPath } : {}),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,

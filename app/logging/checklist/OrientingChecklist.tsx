@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useMemo, useState, type DragEvent } from 'react'
+import { useEffect, useMemo, useRef, useState, type DragEvent } from 'react'
 import type { ChecklistItem, SectionKey } from '../types'
 import { getCurrentSection, coerceSection, SECTION_DEFINITIONS_SIMPLE, SECTION_ORDER } from './sectionUtils'
 import { beginDrag, parseDrag } from './useOrientingChecklistDrag'
@@ -26,6 +26,7 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
   const [itemsBySection, setItemsBySection] = useState<Record<SectionKey, ChecklistItem[]>>({ morning: [], afternoon: [], evening: [], night: [] })
   const [currentSection, setCurrentSection] = useState<SectionKey>(getCurrentSection())
   const [collapsedOverrides, setCollapsedOverrides] = useState<Partial<Record<SectionKey, boolean>>>({})
+  const prevAllCompleteBySectionRef = useRef<Record<SectionKey, boolean>>({ morning: false, afternoon: false, evening: false, night: false })
   useEffect(() => {
     const interval = setInterval(() => setCurrentSection(getCurrentSection()), 30000)
     return () => clearInterval(interval)
@@ -45,6 +46,30 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
     // eslint-disable-next-line react-hooks/set-state-in-effect
     refreshItems()
   }, [])
+
+  useEffect(() => {
+    const sectionKeys: SectionKey[] = ['morning', 'afternoon', 'evening', 'night']
+    const sectionsToCollapse: SectionKey[] = []
+    for (const sectionKey of sectionKeys) {
+      const items = itemsBySection[sectionKey]
+      const allComplete = items.length > 0 && items.every(i => i.completed)
+      if (allComplete && !prevAllCompleteBySectionRef.current[sectionKey]) {
+        sectionsToCollapse.push(sectionKey)
+      }
+      prevAllCompleteBySectionRef.current[sectionKey] = allComplete
+    }
+    if (sectionsToCollapse.length === 0) return
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCollapsedOverrides(prev => {
+      let next = prev
+      for (const sectionKey of sectionsToCollapse) {
+        if (next[sectionKey] === true) continue
+        if (next === prev) next = { ...prev }
+        next[sectionKey] = true
+      }
+      return next
+    })
+  }, [itemsBySection])
 
   const persistOrder = async (section: SectionKey, items: ChecklistItem[]) => {
     const orderedIds = items.map(i => i.id)
@@ -251,9 +276,10 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
       <div className="p-y2">
         <div className="flex flex-col">
         {sections.map((section, sectionIndex) => {
+          const allComplete = itemsBySection[section.key].length > 0 && itemsBySection[section.key].every(i => i.completed)
           const hasUnchecked = itemsBySection[section.key].some(i => !i.completed)
           const isReached = sectionIndex <= SECTION_ORDER[currentSection]
-          const defaultCollapsed = !(section.key === currentSection || (hasUnchecked && isReached))
+          const defaultCollapsed = allComplete || !(section.key === currentSection || (hasUnchecked && isReached))
           const isCollapsed = collapsedOverrides[section.key] ?? defaultCollapsed
           return (
             <OrientingChecklistSection

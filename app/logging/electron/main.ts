@@ -16,6 +16,7 @@ const createWindow = async () => {
     width: 1200,
     height: 900,
     preloadPath: path.resolve(__dirname, '../../../electron/preload.js'),
+    iconPath: path.resolve(projectRoot, 'build/icon.png'),
     onClosed: () => {
       for (const child of childProcesses) child.kill()
       mainWindow = null

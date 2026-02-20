@@ -34,13 +34,13 @@ export function getOutputFiles(topic: string): string[] {
   const outputsPath = path.join(process.cwd(), `outputs/${topic}`)
   if (fs.existsSync(outputsPath)) {
     const outputFiles = fs.readdirSync(outputsPath)
-      .filter(f => !f.startsWith('.') && f.endsWith('.csv'))
+      .filter(f => !f.startsWith('.') && (f.endsWith('.csv') || f.endsWith('.md')))
     files.push(...outputFiles)
   }
   const appOutputPath = path.join(process.cwd(), `app/research/${topic}/output`)
   if (fs.existsSync(appOutputPath)) {
     const appOutputFiles = fs.readdirSync(appOutputPath)
-      .filter(f => !f.startsWith('.') && f.endsWith('.csv'))
+      .filter(f => !f.startsWith('.') && (f.endsWith('.csv') || f.endsWith('.md')))
     files.push(...appOutputFiles)
   }
   return files
