@@ -23,12 +23,4 @@ To maximize efficiency, run downloads in the background while continuing to sear
 
 The key optimization: Use is_background=true when running the Python script so you can continue searching while downloads happen in parallel. Multiple instances of the script can run simultaneously for the same topic - they will all save to the same directory structure. The download_url_bg.py helper script automatically handles background execution and logging.
 
-TRADITIONAL SEQUENTIAL APPROACH (if you prefer to wait):
-1. Perform web searches to find relevant URLs
-2. Collect all URLs that are relevant to the research topic
-3. Generate a descriptive conversation topic name
-4. Run: python tools/download_url.py <topic> <url1> <url2> ...
-5. The script downloads all URLs in parallel, each crawling its domain
-6. HTML content is converted to markdown and saved as .md files; files with extensions (like .pdf, .txt) are saved with their original extension. All files can be read offline for analysis 
-
 Also run the tools/create_conversation_topic.py script to create the conversation topic folder and page components, if those don't already exist.
