@@ -37,13 +37,18 @@ const geocodeAddress = async (address: string): Promise<{ lat: number; lng: numb
   }
 }
 
-const MapContent = ({ items, addressField = 'address', nameField = 'name', latField = 'lat', lngField = 'lng', popupRenderer }: {
+const MapContent = ({ items, addressField = 'address', nameField = 'name', latField = 'lat', lngField = 'lng', popupRenderer, tooltipRenderer, onMarkerClick, selectedItem, markerImageField, height = '400px' }: {
   items: Record<string, MapItemValue>[]
   addressField?: string
   nameField?: string
   latField?: string
   lngField?: string
   popupRenderer?: (item: Record<string, MapItemValue>) => React.ReactNode
+  tooltipRenderer?: (item: Record<string, MapItemValue>) => React.ReactNode
+  onMarkerClick?: (item: Record<string, MapItemValue>) => void
+  selectedItem?: string
+  markerImageField?: string
+  height?: string
 }) => {
   const [geocodedItems, setGeocodedItems] = useState<GeocodedItem[]>([])
   const [loading, setLoading] = useState(true)
@@ -105,8 +110,20 @@ const MapContent = ({ items, addressField = 'address', nameField = 'name', latFi
       shadowSize: [41, 41]
     })
   }, [L])
-  if (!L || !ReactLeaflet) return <div style={{height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Loading map...</div>
-  const { MapContainer, TileLayer, Marker, Popup, useMap } = ReactLeaflet
+  const selectedIcon = useMemo(() => {
+    if (!L) return null
+    return L.icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+      iconRetinaUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    })
+  }, [L])
+  if (!L || !ReactLeaflet) return <div style={{height, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Loading map...</div>
+  const { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap } = ReactLeaflet
   const FitBounds = ({ bounds }: { bounds: [[number, number], [number, number]] | null }) => {
     const map = useMap()
     useEffect(() => {
@@ -117,24 +134,39 @@ const MapContent = ({ items, addressField = 'address', nameField = 'name', latFi
   return (
     <div style={{position: 'relative'}}>
       {loading && <div style={{position: 'absolute', top: 8, left: 8, zIndex: 1000, background: 'rgba(255,255,255,0.9)', padding: '4px 8px', fontSize: '12px'}}>Geocoding {items.length - geocodedItems.length} addresses...</div>}
-      <MapContainer center={[center.lat, center.lng]} zoom={12} style={{height: '400px', width: '100%'}}>
+      <MapContainer center={[center.lat, center.lng]} zoom={12} style={{height, width: '100%'}}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <FitBounds bounds={bounds} />
-        {geocodedItems.map((item, i) => (
-          <Marker key={i} position={[item.lat, item.lng]} icon={defaultIcon!}>
-            <Popup>
-              {popupRenderer ? popupRenderer(item) : (
-                <div>
-                  <strong>{item.name}</strong>
-                  {item.address && <div style={{fontSize: '12px', color: '#666'}}>{item.address}</div>}
-                </div>
-              )}
-            </Popup>
-          </Marker>
-        ))}
+        {geocodedItems.map((item, i) => {
+          const isSelected = selectedItem !== undefined && String(item[nameField] || item.name) === selectedItem
+          const imgSrc = markerImageField ? String(item[markerImageField] || '') : ''
+          const markerIcon = markerImageField && imgSrc
+            ? L.divIcon({
+                className: '',
+                html: `<div style="width:36px;height:36px;border-radius:50%;overflow:hidden;border:${isSelected ? '3px solid #e53e3e' : '2px solid white'};box-shadow:0 1px 4px rgba(0,0,0,0.4);background:#ddd"><img src="${imgSrc}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/></div>`,
+                iconSize: [36, 36],
+                iconAnchor: [18, 18],
+                popupAnchor: [0, -20],
+              })
+            : (isSelected ? selectedIcon! : defaultIcon!)
+          return (
+            <Marker key={i} position={[item.lat, item.lng]} icon={markerIcon}
+              eventHandlers={onMarkerClick ? { click: () => onMarkerClick(item) } : undefined}>
+              <Popup>
+                {popupRenderer ? popupRenderer(item) : (
+                  <div>
+                    <strong>{item.name}</strong>
+                    {item.address && <div style={{fontSize: '12px', color: '#666'}}>{item.address}</div>}
+                  </div>
+                )}
+              </Popup>
+              {tooltipRenderer && <Tooltip>{tooltipRenderer(item)}</Tooltip>}
+            </Marker>
+          )
+        })}
       </MapContainer>
       <div style={{fontSize: '12px', color: '#666', marginTop: '4px'}}>{geocodedItems.length} of {items.length} locations mapped</div>
     </div>
@@ -148,6 +180,11 @@ const CsvMap = (props: {
   latField?: string
   lngField?: string
   popupRenderer?: (item: Record<string, MapItemValue>) => React.ReactNode
+  tooltipRenderer?: (item: Record<string, MapItemValue>) => React.ReactNode
+  onMarkerClick?: (item: Record<string, MapItemValue>) => void
+  selectedItem?: string
+  markerImageField?: string
+  height?: string
 }) => {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
@@ -159,7 +196,7 @@ const CsvMap = (props: {
       document.head.appendChild(link)
     }
   }, [mounted])
-  if (!mounted) return <div style={{height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Loading map...</div>
+  if (!mounted) return <div style={{height: props.height || '400px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Loading map...</div>
   return <MapContent {...props} />
 }
 
