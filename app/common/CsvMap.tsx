@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import dynamic from 'next/dynamic'
 
 type MapItemValue = string | number | string[] | undefined
@@ -122,12 +122,16 @@ const MapContent = ({ items, addressField = 'address', nameField = 'name', latFi
       shadowSize: [41, 41]
     })
   }, [L])
+  const hasFitBoundsRef = useRef(false)
   if (!L || !ReactLeaflet) return <div style={{height, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Loading map...</div>
   const { MapContainer, TileLayer, Marker, Popup, Tooltip, useMap } = ReactLeaflet
   const FitBounds = ({ bounds }: { bounds: [[number, number], [number, number]] | null }) => {
     const map = useMap()
     useEffect(() => {
-      if (bounds) map.fitBounds(bounds, { padding: [30, 30] })
+      if (bounds && !hasFitBoundsRef.current) {
+        map.fitBounds(bounds, { padding: [30, 30] })
+        hasFitBoundsRef.current = true
+      }
     }, [bounds, map])
     return null
   }

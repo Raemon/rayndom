@@ -6,6 +6,7 @@ const AddChecklistItem = ({ onAdd, placeholder = 'Add checklist item', textSize 
   placeholder?: string
   textSize?: string
   inputPadding?: string
+  groupHover?: string
 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const [newItem, setNewItem] = useState('')
