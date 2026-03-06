@@ -17,6 +17,7 @@ export type Venue = {
   Image4: string
   Image5: string
   Image6: string
+  Price: string
 }
 
 const VenueDetailPanel = ({venue, onBack}: {venue: Venue, onBack: () => void}) => {
@@ -50,6 +51,7 @@ const VenueDetailPanel = ({venue, onBack}: {venue: Venue, onBack: () => void}) =
             {venue.Address && <tr><td className="text-gray-400 pr-2 align-top whitespace-nowrap">Address:</td><td>{venue.Address}</td></tr>}
             {venue.Type && <tr><td className="text-gray-400 pr-2 align-top whitespace-nowrap">Type:</td><td>{venue.Type}</td></tr>}
             {venue.Capacity && <tr><td className="text-gray-400 pr-2 align-top whitespace-nowrap">Capacity:</td><td>{venue.Capacity}</td></tr>}
+            {venue.Price && <tr><td className="text-gray-400 pr-2 align-top whitespace-nowrap">Price:</td><td>{venue.Price}</td></tr>}
             {venue.Contact && <tr><td className="text-gray-400 pr-2 align-top whitespace-nowrap">Contact:</td><td>{venue.Contact}</td></tr>}
           </tbody>
         </table>

@@ -37,7 +37,7 @@ const geocodeAddress = async (address: string): Promise<{ lat: number; lng: numb
   }
 }
 
-const MapContent = ({ items, addressField = 'address', nameField = 'name', latField = 'lat', lngField = 'lng', popupRenderer, tooltipRenderer, onMarkerClick, selectedItem, markerImageField, height = '400px' }: {
+const MapContent = ({ items, addressField = 'address', nameField = 'name', latField = 'lat', lngField = 'lng', popupRenderer, tooltipRenderer, onMarkerClick, selectedItem, markerImageField, markerSize = 36, markerLabelRenderer, height = '400px' }: {
   items: Record<string, MapItemValue>[]
   addressField?: string
   nameField?: string
@@ -48,6 +48,8 @@ const MapContent = ({ items, addressField = 'address', nameField = 'name', latFi
   onMarkerClick?: (item: Record<string, MapItemValue>) => void
   selectedItem?: string
   markerImageField?: string
+  markerSize?: number
+  markerLabelRenderer?: (item: Record<string, MapItemValue>) => string
   height?: string
 }) => {
   const [geocodedItems, setGeocodedItems] = useState<GeocodedItem[]>([])
@@ -147,13 +149,14 @@ const MapContent = ({ items, addressField = 'address', nameField = 'name', latFi
         {geocodedItems.map((item, i) => {
           const isSelected = selectedItem !== undefined && String(item[nameField] || item.name) === selectedItem
           const imgSrc = markerImageField ? String(item[markerImageField] || '') : ''
+          const labelHtml = markerLabelRenderer ? markerLabelRenderer(item) : ''
           const markerIcon = markerImageField && imgSrc
             ? L.divIcon({
                 className: '',
-                html: `<div style="width:36px;height:36px;border-radius:50%;overflow:hidden;border:${isSelected ? '3px solid #e53e3e' : '2px solid white'};box-shadow:0 1px 4px rgba(0,0,0,0.4);background:#ddd"><img src="${imgSrc}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/></div>`,
-                iconSize: [36, 36],
-                iconAnchor: [18, 18],
-                popupAnchor: [0, -20],
+                html: `<div style="display:flex;flex-direction:column;align-items:center"><div style="width:${markerSize}px;height:${markerSize}px;border-radius:50%;overflow:hidden;border:${isSelected ? '3px solid #e53e3e' : '2px solid white'};box-shadow:0 1px 4px rgba(0,0,0,0.4);background:#ddd"><img src="${imgSrc}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/></div>${labelHtml ? `<div style="font-size:9px;color:#333;background:rgba(255,255,255,0.85);padding:0 3px;margin-top:1px;white-space:nowrap;text-align:center;line-height:1.2">${labelHtml}</div>` : ''}</div>`,
+                iconSize: [markerSize, markerSize + (labelHtml ? 14 : 0)],
+                iconAnchor: [markerSize / 2, markerSize / 2],
+                popupAnchor: [0, -markerSize / 2],
               })
             : (isSelected ? selectedIcon! : defaultIcon!)
           return (
@@ -188,6 +191,8 @@ const CsvMap = (props: {
   onMarkerClick?: (item: Record<string, MapItemValue>) => void
   selectedItem?: string
   markerImageField?: string
+  markerSize?: number
+  markerLabelRenderer?: (item: Record<string, MapItemValue>) => string
   height?: string
 }) => {
   const [mounted, setMounted] = useState(false)
