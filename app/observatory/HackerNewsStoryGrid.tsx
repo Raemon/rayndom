@@ -18,6 +18,14 @@ const updateStoryCardSnippet = (cards: StoryCard[], storyId: number, snippet: st
   return cards.map(card => card.id === storyId ? { ...card, snippet, snippetHtml } : card)
 }
 
+const updateStoryCardFeedback = (cards: StoryCard[], storyId: number, eventType: 'saved' | 'dismissed') => {
+  return cards.map(card => {
+    if (card.id !== storyId) return card
+    if (eventType === 'saved') return { ...card, saved: true }
+    return { ...card, dismissed: true }
+  })
+}
+
 const fetchStorySnippet = async (storyId: number) => {
   const cached = snippetCache.get(storyId)
   if (cached) return cached
@@ -126,6 +134,9 @@ const HackerNewsStoryGrid = ({ initialCards }:{ initialCards: StoryCard[] }) => 
       }))
     }
   }, [filteredCards])
+  const handleFeedbackApplied = useCallback((storyId: number) => (eventType: 'saved' | 'dismissed') => {
+    setCards(currentCards => updateStoryCardFeedback(currentCards, storyId, eventType))
+  }, [])
   useEffect(() => {
     if (!iframeState) return
     const onKeyDown = (e: KeyboardEvent) => { if (e.key === 'Escape') handleCloseIframe() }
@@ -146,6 +157,7 @@ const HackerNewsStoryGrid = ({ initialCards }:{ initialCards: StoryCard[] }) => 
             rowStories={rowStories}
             rowIndex={rowIndex}
             onStoryClick={handleStoryClick(rowIndex)}
+            onFeedbackApplied={handleFeedbackApplied}
             clickedSide={iframeState?.rowIndex === rowIndex ? iframeState.side : null}
           />
         ))}

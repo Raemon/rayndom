@@ -1,6 +1,7 @@
 import { StoryCard } from './hackerNewsTypes'
+import ObservatoryFeedbackButtons from './ObservatoryFeedbackButtons'
 
-const HackerNewsLeadStory = ({ leadStory, isLeadOnLeft, onStoryClick }:{ leadStory: StoryCard, isLeadOnLeft: boolean, onStoryClick?: (url: string) => void }) => {
+const HackerNewsLeadStory = ({ leadStory, isLeadOnLeft, onStoryClick, onFeedbackApplied }:{ leadStory: StoryCard, isLeadOnLeft: boolean, onStoryClick?: (url: string) => void, onFeedbackApplied?: (eventType: 'saved' | 'dismissed') => void }) => {
   return (
     <article className={isLeadOnLeft ? 'py-[10px] pr-3' : 'py-[10px] pl-3'}>
       <style>
@@ -28,6 +29,7 @@ const HackerNewsLeadStory = ({ leadStory, isLeadOnLeft, onStoryClick }:{ leadSto
       )}
       <p className="mt-[10px] text-[12px] text-[#666]">{leadStory.byline}</p>
       {leadStory.reason && <p className="mt-2 text-[13px] italic text-[#8a6d3b]">{leadStory.reason}</p>}
+      <ObservatoryFeedbackButtons story={leadStory} onFeedbackApplied={onFeedbackApplied} />
     </article>
   )
 }

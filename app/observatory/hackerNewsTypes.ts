@@ -8,4 +8,9 @@ export type StoryCard = {
   snippetHtml?: string
   reason?: string
   iframe?: boolean
+  documentId?: number
+  recommendationItemId?: number
+  sourceType?: string
+  saved?: boolean
+  dismissed?: boolean
 }

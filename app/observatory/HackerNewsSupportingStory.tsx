@@ -1,6 +1,7 @@
 import { StoryCard } from './hackerNewsTypes'
+import ObservatoryFeedbackButtons from './ObservatoryFeedbackButtons'
 
-const HackerNewsSupportingStory = ({ story, onStoryClick }:{ story: StoryCard, onStoryClick?: (url: string) => void }) => {
+const HackerNewsSupportingStory = ({ story, onStoryClick, onFeedbackApplied }:{ story: StoryCard, onStoryClick?: (url: string) => void, onFeedbackApplied?: (eventType: 'saved' | 'dismissed') => void }) => {
   return (
     <article className="px-[10px] py-2">
       <a href={story.url} onClick={onStoryClick ? (e) => { e.preventDefault(); onStoryClick(story.url) } : undefined} target="_blank" rel="noreferrer" className="text-[#1a1a1a] no-underline cursor-pointer">
@@ -17,6 +18,7 @@ const HackerNewsSupportingStory = ({ story, onStoryClick }:{ story: StoryCard, o
       )}
       <p className="mt-2 text-[11px] text-[#747474]">{story.byline}</p>
       {story.reason && <p className="mt-1 text-[11px] italic text-[#8a6d3b]">{story.reason}</p>}
+      <ObservatoryFeedbackButtons story={story} compact onFeedbackApplied={onFeedbackApplied} />
     </article>
   )
 }

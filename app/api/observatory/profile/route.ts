@@ -1,24 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getObservatorySessionUser } from '@/lib/observatory/auth'
-import { ensureObservatoryDefaultsForUser, getProfileAndPrompt, updateTuningPrompt } from '@/lib/observatory/feed'
+import { getProfileAndPrompt } from '@/lib/observatory/feed'
 import { kickObservatoryJobs, queueProfileRefresh, queueRecommendationRefresh } from '@/lib/observatory/jobs'
 
 export async function GET(request: NextRequest) {
   const user = await getObservatorySessionUser(request)
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  await ensureObservatoryDefaultsForUser(user.id, user.email)
   const data = await getProfileAndPrompt(user.id)
-  return NextResponse.json({ content: data.prompt?.prompt || '' })
+  return NextResponse.json(data)
 }
 
 export async function POST(request: NextRequest) {
   const user = await getObservatorySessionUser(request)
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  const { content } = await request.json()
-  if (typeof content !== 'string') return NextResponse.json({ error: 'Missing content' }, { status: 400 })
-  await updateTuningPrompt(user.id, content)
+  void request
   await queueProfileRefresh(user.id)
   await queueRecommendationRefresh(user.id)
   kickObservatoryJobs(user.id, user.email)
-  return NextResponse.json({ success: true })
+  return NextResponse.json({ queued: true })
 }
