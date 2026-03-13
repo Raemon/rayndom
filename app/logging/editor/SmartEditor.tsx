@@ -25,7 +25,7 @@ const extractTagInstanceIdsFromEditor = (editorInstance: ReturnType<typeof useEd
   return ids
 }
 
-const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25,  expandable=true, datetime, onCreateTagInstance, onDeleteTagInstance }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number | string, expandable?: boolean } & TagInstanceCallbacks) => {
+const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25,  expandable=true, alwaysExpanded=false, datetime, onCreateTagInstance, onDeleteTagInstance }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number | string, expandable?: boolean, alwaysExpanded?: boolean } & TagInstanceCallbacks) => {
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
   const lastSavedRef = useRef<string>(initialValue || '')
   const initializedRef = useRef(false)
@@ -152,7 +152,7 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
       setEditorCallbacks(editor, { datetime, onCreateTagInstance, onDeleteTagInstance })
     }
   }, [editor, datetime, onCreateTagInstance, onDeleteTagInstance])
-  const shouldExpand = isFocused && expandable
+  const shouldExpand = alwaysExpanded || (isFocused && expandable)
 
   if (!editor) return null
 

@@ -11,6 +11,7 @@ import type { Timeblock } from '../types'
 import Timer from './Timer'
 import RunAiCommandButton from '../zen/RunAiCommandButton'
 import { useAiTags } from '../hooks/useAiTags'
+import { allTagInstancesStartIso, allTagInstancesEndIso } from '../tagInstanceConstants'
 
 const LoggingZenInner = () => {
   const { isPredicting, predictTags } = useAiTags()
@@ -21,7 +22,7 @@ const LoggingZenInner = () => {
   const startIso = today.toISOString()
   const endIso = tomorrow.toISOString()
   const { timeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused } = useTimeblocks({ start: startIso, end: endIso })
-  const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
+  const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: allTagInstancesStartIso, end: allTagInstancesEndIso })
   const { tags } = useTags()
   const tagTypes = useMemo(() => {
     const availableTypes = ['Projects', 'Triggers','Techniques']
@@ -89,7 +90,7 @@ const LoggingZenInner = () => {
         <RunAiCommandButton datetime={currentBlockDatetime} onComplete={() => refreshUnfocused(new Set())} />
         <MarkdownContent html={currentTimeblock?.aiNotes || ''} />
       </div>
-      <div style={{ flex: 1, overflow: 'auto' }} className="p-2">
+      <div style={{ flex: '0 0 640px', minWidth: 640, overflow: 'auto' }} className="p-2">
         <ZenRow
           timeblock={currentTimeblock}
           timeLabel={currentTimeStr}

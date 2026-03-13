@@ -9,7 +9,7 @@ export const getCachedCommands = () => cachedCommands
 export const createCommandSuggestion = () => ({
   items: ({ query }:{ query: string }) => {
     const normalizedQuery = query.trim().toLowerCase()
-    const commandItems: CommandItem[] = cachedCommands.map(command => ({ id: command.id.toString(), label: command.name }))
+    const commandItems: CommandItem[] = cachedCommands.map(command => ({ id: command.id.toString(), label: command.name, html: command.html }))
     const filteredItems = normalizedQuery ? commandItems.filter(item => item.label.toLowerCase().includes(normalizedQuery)) : commandItems
     return filteredItems.slice(0, 8)
   },
@@ -35,11 +35,15 @@ export const createCommandSuggestion = () => ({
         container.appendChild(empty)
         return
       }
+      const wrapper = document.createElement('div')
+      wrapper.className = 'flex'
+      const leftCol = document.createElement('div')
+      leftCol.className = 'min-w-32'
       const commandItems = items
       for (let i = 0; i < commandItems.length; i++) {
         const item = commandItems[i]
         const row = document.createElement('div')
-        row.className = `flex items-center gap-2 px-2 py-1 text-xs ${i === selectedIndex ? 'bg-white/10' : ''}`
+        row.className = `px-2 py-1 text-xs cursor-pointer ${i === selectedIndex ? 'bg-white/10' : ''}`
         const label = document.createElement('span')
         label.className = 'text-white'
         label.textContent = item.label
@@ -48,8 +52,19 @@ export const createCommandSuggestion = () => ({
           event.preventDefault()
           command({ id: item.id, label: item.label })
         })
-        container.appendChild(row)
+        leftCol.appendChild(row)
       }
+      wrapper.appendChild(leftCol)
+      const rightCol = document.createElement('div')
+      rightCol.className = 'px-2 py-1 !text-xs text-gray-400 bg-gray-800 min-w-48 max-w-64 cursor-pointer max-h-32 overflow-y-auto tiptap [&_*]:!text-xs'
+      const selectedItem = items[selectedIndex]
+      rightCol.innerHTML = selectedItem?.html || ''
+      rightCol.addEventListener('mousedown', (event) => {
+        event.preventDefault()
+        if (selectedItem && currentCommand) currentCommand({ id: selectedItem.id, label: selectedItem.label })
+      })
+      wrapper.appendChild(rightCol)
+      container.appendChild(wrapper)
     }
     return {
       onStart: (props: SuggestionProps<CommandItem, MentionNodeAttrs>) => {
@@ -59,7 +74,7 @@ export const createCommandSuggestion = () => ({
         container.className = 'bg-gray-900 text-white text-xs'
         container.style.position = 'fixed'
         container.style.zIndex = '50'
-        container.style.minWidth = '140px'
+        container.style.minWidth = '280px'
         container.style.pointerEvents = 'auto'
         document.body.appendChild(container)
         renderItems(props.items as CommandItem[], props.command)
