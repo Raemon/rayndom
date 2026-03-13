@@ -14,6 +14,7 @@ import Timer from './Timer'
 import { getCurrentSection } from '../checklist/sectionUtils'
 import RunAiCommandButton from '../zen/RunAiCommandButton'
 import { useAiTags } from '../hooks/useAiTags'
+import { allTagInstancesStartIso, allTagInstancesEndIso } from '../tagInstanceConstants'
 
 const TimerPageInner = () => {
   const { isPredicting, predictTags } = useAiTags()
@@ -39,7 +40,7 @@ const TimerPageInner = () => {
   const startIso = startDate.toISOString()
   const endIso = endDate.toISOString()
   const { timeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused, load: loadTimeblocks } = useTimeblocks({ start: startIso, end: endIso })
-  const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
+  const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: allTagInstancesStartIso, end: allTagInstancesEndIso })
   const handleRunAiCommand = useCallback(async (datetime: string) => {
     const result = await predictTags({ datetime })
     if (result?.createdInstances && result.createdInstances.length > 0) loadTagInstances()

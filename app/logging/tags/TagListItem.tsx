@@ -11,12 +11,13 @@ type TagListItemProps = {
   instanceCount: number
   usefulCount?: number
   antiUsefulCount?: number
+  showZeroFeedbackCounts?: boolean
   readonly?: boolean
   showDescription?: boolean
   hideRelations?: boolean
 }
 
-const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonly, showDescription, hideRelations }: TagListItemProps) => {
+const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, showZeroFeedbackCounts, readonly, showDescription, hideRelations }: TagListItemProps) => {
   const { updateTag, deleteTag, tags } = useTags()
   const [isEditing, setIsEditing] = useState(false)
   const [showModal, setShowModal] = useState(false)
@@ -88,15 +89,17 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
     setShowModal(true)
   }
   const getBorderClasses = () => {
-    const hasBoth = usefulCount && antiUsefulCount
-    const hasUseful = usefulCount && !antiUsefulCount
-    const hasAntiUseful = antiUsefulCount && !usefulCount
+    const hasBoth = (usefulCount || 0) > 0 && (antiUsefulCount || 0) > 0
+    const hasUseful = (usefulCount || 0) > 0 && (antiUsefulCount || 0) === 0
+    const hasAntiUseful = (antiUsefulCount || 0) > 0 && (usefulCount || 0) === 0
     if (hasBoth) return 'border-t-2 border-t-white border-r-2 border-r-red-500 border-b-2 border-b-red-500'
     if (hasUseful) return 'border-t-2 border-r-2 border-b-2 border-t-white border-r-white border-b-white'
     if (hasAntiUseful) return 'border-t-2 border-r-2 border-b-2 border-t-red-500 border-r-red-500 border-b-red-500'
     return ''
   }
   const borderClasses = getBorderClasses()
+  const showUsefulCount = showZeroFeedbackCounts || !!usefulCount
+  const showAntiUsefulCount = showZeroFeedbackCounts || !!antiUsefulCount
   const handleRemoveParent = (e: React.MouseEvent) => {
     e.stopPropagation()
     updateTag({ id: tag.id, parentTagId: null })
@@ -119,10 +122,10 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, readonl
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        <span className="text-gray-400 mr-2  w-8 text-center text-xs flex items-center gap-1 justify-end">
+        <span className={`text-gray-400 mr-2 text-center text-xs flex items-center gap-1 justify-end ${showZeroFeedbackCounts ? 'min-w-[72px]' : 'w-8'}`}>
           {instanceCount}
-          {usefulCount ? <span className="text-green-400">+{usefulCount}</span> : null}
-          {antiUsefulCount ? <span className="text-red-400">-{antiUsefulCount}</span> : null}
+          {showUsefulCount ? <span className={usefulCount ? 'text-green-400' : 'text-white/35'}>+{usefulCount || 0}</span> : null}
+          {showAntiUsefulCount ? <span className={antiUsefulCount ? 'text-red-400' : 'text-white/35'}>-{antiUsefulCount || 0}</span> : null}
         </span>
         <div className={`flex flex-col p-2 border-b-[1px] border-b-white/20 border-l-[10px] ${borderClasses}`} style={{ borderLeftColor: getTagColor(tag.name) }}>
           <span className="px-1 rounded-xs text-white text-sm">{tag.name}</span>

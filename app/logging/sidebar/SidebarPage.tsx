@@ -10,6 +10,7 @@ import { getCurrentSection } from '../checklist/sectionUtils'
 import HeaderTimer from '../HeaderTimer'
 import NotesInput from '../editor/NotesInput'
 import PreviousBlockReview from './PreviousBlockReview'
+import { allTagInstancesStartIso, allTagInstancesEndIso } from '../tagInstanceConstants'
 
 const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
 
@@ -22,7 +23,7 @@ const SidebarPageInner = () => {
   endDate.setHours(0, 0, 0, 0)
   const startIso = startDate.toISOString()
   const endIso = endDate.toISOString()
-  const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso })
+  const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: allTagInstancesStartIso, end: allTagInstancesEndIso })
   const { focusedNoteKeys } = useFocusedNotes()
   const { timeblocks, refreshUnfocused, createTimeblock, patchTimeblockDebounced } = useTimeblocks({ start: startIso, end: endIso })
   const { tags } = useTags()
