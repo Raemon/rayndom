@@ -7,8 +7,9 @@ import DraggableTag from './DraggableTag'
 import { wouldCreateCycle, getParentTag, getAllAncestorTagIds } from './tagUtils'
 import SuggestedTagsModal from './SuggestedTagsModal'
 
-const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
+const TagCell = ({ type, placeholder='+', tagInstances, allTagInstances, datetime, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
   type: string,
+  placeholder?: string,
   tagInstances: TagInstance[],
   allTagInstances: TagInstance[],
   datetime: string,
@@ -66,7 +67,7 @@ const TagCell = ({ type, tagInstances, allTagInstances, datetime, onCreateTagIns
       <TagTypeahead
         tags={typeTags}
         allTagInstances={allTagInstances}
-        placeholder={type}
+        placeholder={placeholder}
         onSelectTag={async (tag) => {
           setPendingTagInstances(prev => prev.filter(ti => ti.tag?.name !== tag.name || ti.tag?.type !== tag.type))
           const ancestorIdsInOrder = getAllAncestorTagIds(tag, tags).reverse()
