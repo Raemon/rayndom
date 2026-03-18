@@ -65,12 +65,6 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
             const { datetime: dt, onCreateTagInstance: createTi } = state.callbacks
             if (dt && createTi && props.id) {
               const tagId = parseInt(props.id)
-              const ti = await createTi({ tagId, datetime: dt })
-              editor.chain().focus().deleteRange(range).insertContent({
-                type: 'tagInstance',
-                attrs: { id: props.id, label: props.label, tagInstanceId: ti.id.toString() }
-              }).run()
-              state.trackedIds.add(ti.id)
               const mentionedTag = getCachedMentionTags().find(t => t.id === tagId)
               if (mentionedTag) {
                 const suggestedTagIds = Array.isArray(mentionedTag.suggestedTagIds) ? mentionedTag.suggestedTagIds : []
@@ -80,6 +74,12 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
                   .filter((t): t is Tag => t !== undefined)
                 if (suggestedTagsToOffer.length > 0) state.onSuggestTags?.(suggestedTagsToOffer, mentionedTag.type)
               }
+              const ti = await createTi({ tagId, datetime: dt })
+              editor.chain().focus().deleteRange(range).insertContent({
+                type: 'tagInstance',
+                attrs: { id: props.id, label: props.label, tagInstanceId: ti.id.toString() }
+              }).run()
+              state.trackedIds.add(ti.id)
             } else {
               editor.chain().focus().deleteRange(range).insertContent({
                 type: 'tagInstance',

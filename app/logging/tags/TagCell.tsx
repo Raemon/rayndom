@@ -70,6 +70,15 @@ const TagCell = ({ type, placeholder='+', tagInstances, allTagInstances, datetim
         placeholder={placeholder}
         onSelectTag={async (tag) => {
           setPendingTagInstances(prev => prev.filter(ti => ti.tag?.name !== tag.name || ti.tag?.type !== tag.type))
+          const suggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
+          const suggestedTagsToOffer = suggestedTagIds
+            .filter(id => !allTagInstances.some(ti => ti.tagId === id && ti.datetime === datetime))
+            .map(id => tags.find(t => t.id === id))
+            .filter((t): t is typeof tags[number] => t !== undefined)
+          if (suggestedTagsToOffer.length > 0) {
+            setDirectSuggestions(suggestedTagsToOffer)
+            setShowSuggestedTagsModal(true)
+          }
           const ancestorIdsInOrder = getAllAncestorTagIds(tag, tags).reverse()
           for (const ancestorId of ancestorIdsInOrder) {
             const ancestorAlreadyExists = tagInstances.some(ti => ti.tagId === ancestorId) || hasPendingCreateFor(ancestorId)
@@ -94,15 +103,6 @@ const TagCell = ({ type, placeholder='+', tagInstances, allTagInstances, datetim
             } finally {
               removePendingCreateKey(tag.id)
             }
-          }
-          const suggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []
-          const suggestedTagsToOffer = suggestedTagIds
-            .filter(id => !allTagInstances.some(ti => ti.tagId === id && ti.datetime === datetime))
-            .map(id => tags.find(t => t.id === id))
-            .filter((t): t is typeof tags[number] => t !== undefined)
-          if (suggestedTagsToOffer.length > 0) {
-            setDirectSuggestions(suggestedTagsToOffer)
-            setShowSuggestedTagsModal(true)
           }
           setIsEditing(false)
         }}
