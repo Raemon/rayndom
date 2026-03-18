@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Command } from '../types'
 import { getApiErrorMessage } from '../lib/optimisticApi'
 import { runOptimisticMutation } from '../lib/optimisticMutation'
 
 export const useCommands = ({ autoLoad=true }:{ autoLoad?: boolean } = {}) => {
   const [commands, setCommands] = useState<Command[]>([])
+  const commandsRef = useRef<Command[]>([])
+  const latestUpdateRequestIdRef = useRef<Record<number, number>>({})
 
   const load = async () => {
     const res = await fetch('/api/timer/commands')
@@ -14,6 +16,9 @@ export const useCommands = ({ autoLoad=true }:{ autoLoad?: boolean } = {}) => {
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { if (autoLoad) load() }, [])
+  useEffect(() => {
+    commandsRef.current = commands
+  }, [commands])
 
   const createCommand = async ({ name, html }:{ name: string, html: string }) => {
     const optimistic: Command = { id: -Date.now(), name, html }
@@ -39,10 +44,12 @@ export const useCommands = ({ autoLoad=true }:{ autoLoad?: boolean } = {}) => {
   }
 
   const updateCommand = async ({ id, name, html }:{ id: number, name?: string, html?: string }) => {
-    const previousCommand = commands.find(c => c.id === id)
-    if (!previousCommand) return
+    const previousCommand = commandsRef.current.find(c => c.id === id)
+    if (!previousCommand) return false
+    const requestId = (latestUpdateRequestIdRef.current[id] || 0) + 1
+    latestUpdateRequestIdRef.current[id] = requestId
     const optimisticCommand = { ...previousCommand, name: name ?? previousCommand.name, html: html ?? previousCommand.html }
-    await runOptimisticMutation({
+    const result = await runOptimisticMutation({
       applyOptimistic: () => {
         setCommands(prev => prev.map(c => c.id === id ? optimisticCommand : c))
         return previousCommand
@@ -54,13 +61,16 @@ export const useCommands = ({ autoLoad=true }:{ autoLoad?: boolean } = {}) => {
         return json as { command?: Command }
       },
       commit: (json) => {
+        if (latestUpdateRequestIdRef.current[id] !== requestId) return
         if (json.command) setCommands(prev => prev.map(c => c.id === id ? json.command as Command : c))
       },
       rollback: (previous) => {
+        if (latestUpdateRequestIdRef.current[id] !== requestId) return
         setCommands(prev => prev.map(c => c.id === id ? previous : c))
       },
       rethrow: false,
     })
+    return !!result
   }
 
   const deleteCommand = async ({ id }:{ id: number }) => {

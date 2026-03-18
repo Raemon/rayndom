@@ -88,8 +88,8 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, directSugge
   }, [suggestedTags, selectedTagIds, tags, tagIdToCounts, existingTagIdsForDatetime, hoveredTagId])
   return (
     <>
-      <div className="fixed inset-0 bg-black/70 z-50 flex items-center relative justify-center" onClick={onClose}>
-        <div className="bg-neutral-800 min-w-[320px] max-w-[90vw] p-4" onClick={e => e.stopPropagation()}>
+      <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center" onClick={onClose}>
+        <div className="relative bg-neutral-800 min-w-[320px] max-w-[90vw] p-4" onClick={e => e.stopPropagation()}>
           <button className="ml-auto text-white/30 hover:text-white text-lg absolute top-4 right-4 leading-none cursor-pointer" onClick={onClose}>×</button>
           <div className="flex items-start max-h-[90vh]">
             <TagSuggestionColumn tags={directSuggestions} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="mb-3" />
