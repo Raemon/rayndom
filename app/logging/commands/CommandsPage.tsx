@@ -34,10 +34,10 @@ const CommandRow = ({ command, updateCommand, deleteCommand }:{ command: Command
     return true
   }
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2">
+    <div className="flex items-start gap-2">
+      <div className="flex items-center gap-1 w-1/3 shrink-0">
         <input
-          className="px-2 py-1 bg-gray-900 text-white text-xs flex-1"
+          className="px-1 py-0.5 bg-transparent text-white text-xs font-semibold flex-1 focus:bg-gray-900"
           value={draftName}
           onFocus={() => { setIsEditingName(true) }}
           onBlur={async () => {
@@ -54,9 +54,11 @@ const CommandRow = ({ command, updateCommand, deleteCommand }:{ command: Command
             }, 300)
           }}
         />
-        <button className="px-2 py-1 bg-gray-800 text-white text-xs" onClick={() => deleteCommand({ id: command.id })}>Delete</button>
+        <button className="px-1 py-0.5 text-gray-500 hover:text-white text-xs" onClick={() => deleteCommand({ id: command.id })}>×</button>
       </div>
-      <CommandHtmlEditor value={command.html} onChange={html => updateCommand({ id: command.id, html })} />
+      <div className="flex-1 min-w-0">
+        <CommandHtmlEditor value={command.html} onChange={html => updateCommand({ id: command.id, html })} />
+      </div>
     </div>
   )
 }
@@ -75,7 +77,7 @@ const CommandsPage = () => {
     setNewHtml('')
   }
   return (
-    <div className="p-4 text-sm">
+    <div className="p-4 text-sm max-w-[1400px] mx-auto">
       <div className="text-lg text-white mb-2">Commands</div>
       <div className="flex items-center gap-2 mb-2">
         <input className="px-2 py-1 bg-gray-900 text-white text-xs flex-1" value={newName} onChange={e => setNewName(e.target.value)} placeholder="Name" />
@@ -84,7 +86,7 @@ const CommandsPage = () => {
       <div className="mb-4">
         <CommandHtmlEditor value={newHtml} onChange={setNewHtml} placeholder="HTML content to insert..." />
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-2">
         {sortedCommands.map(command => (
           <CommandRow key={command.id} command={command} updateCommand={updateCommand} deleteCommand={deleteCommand} />
         ))}
