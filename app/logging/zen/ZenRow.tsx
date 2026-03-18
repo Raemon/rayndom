@@ -44,6 +44,10 @@ const ZenRow = ({ timeblock, timeLabel, ensureTimeblock, onPatchTimeblockDebounc
         externalValue={timeblock?.rayNotes || ''}
         minHeight={minHeight}
         alwaysExpanded
+        datetime={datetime}
+        allTagInstances={allTagInstances}
+        onCreateTagInstance={onCreateTagInstance}
+        onDeleteTagInstance={onDeleteTagInstance}
         onSave={async (content) => {
           const tb = await ensureTimeblock()
           onPatchTimeblockDebounced({ id: tb.id, rayNotes: content, debounceMs: 300 })

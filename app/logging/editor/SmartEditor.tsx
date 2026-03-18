@@ -36,10 +36,6 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
   const [showSuggestedTagsModal, setShowSuggestedTagsModal] = useState(false)
   const [directSuggestions, setDirectSuggestions] = useState<Tag[]>([])
   const [suggestedTagType, setSuggestedTagType] = useState('')
-  const allTagInstancesRef = useRef<TagInstance[]>([])
-  allTagInstancesRef.current = allTagInstances || []
-  const suggestTagsRef = useRef<(suggestions: Tag[], type: string) => void>()
-  suggestTagsRef.current = (suggestions, type) => { setDirectSuggestions(suggestions); setSuggestedTagType(type); setShowSuggestedTagsModal(true) }
   const { registerFocus, unregisterFocus } = useFocusedNotes()
   const { tags } = useTags()
   const { commands } = useCommands()
@@ -78,12 +74,11 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
               const mentionedTag = getCachedMentionTags().find(t => t.id === tagId)
               if (mentionedTag) {
                 const suggestedTagIds = Array.isArray(mentionedTag.suggestedTagIds) ? mentionedTag.suggestedTagIds : []
-                const currentAllTIs = allTagInstancesRef.current
                 const suggestedTagsToOffer = suggestedTagIds
-                  .filter(id => !currentAllTIs.some(ati => ati.tagId === id && ati.datetime === dt))
+                  .filter(id => !state.allTagInstances.some(ati => ati.tagId === id && ati.datetime === dt))
                   .map(id => getCachedMentionTags().find(t => t.id === id))
                   .filter((t): t is Tag => t !== undefined)
-                if (suggestedTagsToOffer.length > 0) suggestTagsRef.current?.(suggestedTagsToOffer, mentionedTag.type)
+                if (suggestedTagsToOffer.length > 0) state.onSuggestTags?.(suggestedTagsToOffer, mentionedTag.type)
               }
             } else {
               editor.chain().focus().deleteRange(range).insertContent({
@@ -169,8 +164,11 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
   useEffect(() => {
     if (editor) {
       setEditorCallbacks(editor, { datetime, onCreateTagInstance, onDeleteTagInstance })
+      const editorState = getEditorTagInstanceState(editor)
+      editorState.allTagInstances = allTagInstances || []
+      editorState.onSuggestTags = (suggestions, type) => { setDirectSuggestions(suggestions); setSuggestedTagType(type); setShowSuggestedTagsModal(true) }
     }
-  }, [editor, datetime, onCreateTagInstance, onDeleteTagInstance])
+  }, [editor, datetime, allTagInstances, onCreateTagInstance, onDeleteTagInstance])
   const shouldExpand = alwaysExpanded || (isFocused && expandable)
   const isFloating = shouldExpand && !alwaysExpanded
 

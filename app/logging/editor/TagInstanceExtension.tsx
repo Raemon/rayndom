@@ -13,6 +13,8 @@ export type TagInstanceCallbacks = {
 type EditorTagInstanceState = {
   callbacks: TagInstanceCallbacks,
   trackedIds: Set<number>,
+  allTagInstances: TagInstance[],
+  onSuggestTags?: (suggestions: Tag[], type: string) => void,
 }
 
 // WeakMap to store per-editor state without modifying the editor object
@@ -21,7 +23,7 @@ const editorStateMap = new WeakMap<Editor, EditorTagInstanceState>()
 export const getEditorTagInstanceState = (editor: Editor): EditorTagInstanceState => {
   let state = editorStateMap.get(editor)
   if (!state) {
-    state = { callbacks: {}, trackedIds: new Set() }
+    state = { callbacks: {}, trackedIds: new Set(), allTagInstances: [] }
     editorStateMap.set(editor, state)
   }
   return state
