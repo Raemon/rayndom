@@ -21,7 +21,8 @@ export const useCommands = ({ autoLoad=true }:{ autoLoad?: boolean } = {}) => {
   }, [commands])
 
   const createCommand = async ({ name, html }:{ name: string, html: string }) => {
-    const optimistic: Command = { id: -Date.now(), name, html }
+    const maxOrder = commandsRef.current.reduce((max, c) => Math.max(max, c.order), -1)
+    const optimistic: Command = { id: -Date.now(), name, html, order: maxOrder + 1 }
     const command = await runOptimisticMutation({
       applyOptimistic: () => {
         setCommands(prev => [optimistic, ...prev])
@@ -103,5 +104,32 @@ export const useCommands = ({ autoLoad=true }:{ autoLoad?: boolean } = {}) => {
     })
   }
 
-  return { commands, setCommands, load, createCommand, updateCommand, deleteCommand }
+  const reorderCommands = async (orderedIds: number[]) => {
+    const previousCommands = [...commandsRef.current]
+    const reordered = orderedIds.map((id, index) => {
+      const cmd = previousCommands.find(c => c.id === id)!
+      return { ...cmd, order: index }
+    })
+    await runOptimisticMutation({
+      applyOptimistic: () => {
+        setCommands(reordered)
+        return previousCommands
+      },
+      request: async () => {
+        const res = await fetch('/api/timer/commands', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ orderedIds }) })
+        const json = await res.json().catch(() => ({}))
+        if (!res.ok) throw new Error(getApiErrorMessage(json, `Failed to reorder commands (${res.status})`))
+        return json as { commands: Command[] }
+      },
+      commit: (json) => {
+        if (json.commands) setCommands(json.commands)
+      },
+      rollback: (previous) => {
+        setCommands(previous)
+      },
+      rethrow: false,
+    })
+  }
+
+  return { commands, setCommands, load, createCommand, updateCommand, deleteCommand, reorderCommands }
 }

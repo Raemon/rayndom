@@ -2,8 +2,8 @@ import type { MentionNodeAttrs } from '@tiptap/extension-mention'
 import type { SuggestionProps, SuggestionKeyDownProps } from '@tiptap/suggestion'
 import type { CommandItem } from './editorConstants'
 
-let cachedCommands: { id: number, name: string, html: string }[] = []
-export const updateCachedCommands = (commands: { id: number, name: string, html: string }[]) => { cachedCommands = commands }
+let cachedCommands: { id: number, name: string, html: string, order: number }[] = []
+export const updateCachedCommands = (commands: { id: number, name: string, html: string, order: number }[]) => { cachedCommands = commands }
 export const getCachedCommands = () => cachedCommands
 
 export const createCommandSuggestion = () => ({

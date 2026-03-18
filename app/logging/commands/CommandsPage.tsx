@@ -4,7 +4,7 @@ import type { Command } from '../types'
 import { useCommands } from '../hooks/useCommands'
 import CommandHtmlEditor from './CommandHtmlEditor'
 
-const CommandRow = ({ command, updateCommand, deleteCommand }:{ command: Command, updateCommand: ({ id, name, html }:{ id: number, name?: string, html?: string }) => Promise<boolean>, deleteCommand: ({ id }:{ id: number }) => Promise<void> }) => {
+const CommandRow = ({ command, updateCommand, deleteCommand, onDragStart, onDragOver, onDrop, onDragEnd, isDragOver }:{ command: Command, updateCommand: ({ id, name, html }:{ id: number, name?: string, html?: string }) => Promise<boolean>, deleteCommand: ({ id }:{ id: number }) => Promise<void>, onDragStart: () => void, onDragOver: (e: React.DragEvent) => void, onDrop: (e: React.DragEvent) => void, onDragEnd: () => void, isDragOver: boolean }) => {
   const [draftName, setDraftName] = useState(command.name)
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
   const [isEditingName, setIsEditingName] = useState(false)
@@ -34,8 +34,9 @@ const CommandRow = ({ command, updateCommand, deleteCommand }:{ command: Command
     return true
   }
   return (
-    <div className="flex items-start gap-2">
+    <div className={`flex items-start gap-2 ${isDragOver ? 'border-t border-blue-500' : ''}`} onDragOver={onDragOver} onDrop={onDrop}>
       <div className="flex items-center gap-1 w-1/3 shrink-0">
+        <span className="cursor-grab text-gray-600 hover:text-gray-400 text-xs select-none" draggable onDragStart={onDragStart} onDragEnd={onDragEnd}>::</span>
         <input
           className="px-1 py-0.5 bg-transparent text-white text-xs font-semibold flex-1 focus:bg-gray-900"
           value={draftName}
@@ -64,10 +65,12 @@ const CommandRow = ({ command, updateCommand, deleteCommand }:{ command: Command
 }
 
 const CommandsPage = () => {
-  const { commands, createCommand, updateCommand, deleteCommand } = useCommands()
+  const { commands, createCommand, updateCommand, deleteCommand, reorderCommands } = useCommands()
   const [newName, setNewName] = useState('')
   const [newHtml, setNewHtml] = useState('')
-  const sortedCommands = useMemo(() => [...commands].sort((a, b) => a.name.localeCompare(b.name)), [commands])
+  const [dragIndex, setDragIndex] = useState<number | null>(null)
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
+  const sortedCommands = useMemo(() => [...commands].sort((a, b) => a.order - b.order || a.name.localeCompare(b.name)), [commands])
   const handleCreate = async () => {
     const name = newName.trim()
     const html = newHtml
@@ -75,6 +78,15 @@ const CommandsPage = () => {
     await createCommand({ name, html })
     setNewName('')
     setNewHtml('')
+  }
+  const handleDrop = (dropIndex: number) => {
+    if (dragIndex === null || dragIndex === dropIndex) return
+    const reordered = [...sortedCommands]
+    const [moved] = reordered.splice(dragIndex, 1)
+    reordered.splice(dropIndex, 0, moved)
+    reorderCommands(reordered.map(c => c.id))
+    setDragIndex(null)
+    setDragOverIndex(null)
   }
   return (
     <div className="p-4 text-sm max-w-[1400px] mx-auto">
@@ -87,8 +99,8 @@ const CommandsPage = () => {
         <CommandHtmlEditor value={newHtml} onChange={setNewHtml} placeholder="HTML content to insert..." />
       </div>
       <div className="flex flex-col gap-2">
-        {sortedCommands.map(command => (
-          <CommandRow key={command.id} command={command} updateCommand={updateCommand} deleteCommand={deleteCommand} />
+        {sortedCommands.map((command, index) => (
+          <CommandRow key={command.id} command={command} updateCommand={updateCommand} deleteCommand={deleteCommand} isDragOver={dragOverIndex === index} onDragStart={() => setDragIndex(index)} onDragOver={e => { e.preventDefault(); setDragOverIndex(index) }} onDrop={e => { e.preventDefault(); handleDrop(index) }} onDragEnd={() => { setDragIndex(null); setDragOverIndex(null) }} />
         ))}
       </div>
     </div>

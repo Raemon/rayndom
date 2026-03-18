@@ -104,6 +104,7 @@ model Command {
   id        Int      @id @default(autoincrement())
   name      String   @unique
   html      String
+  order     Int      @default(0)
   userId    Int?     @map("user_id")
   user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
