@@ -23,8 +23,8 @@ export async function POST(request: NextRequest) {
   const html = body?.html
   if (!name || !html) return NextResponse.json({ error: 'Missing name or html' }, { status: 400 })
   try {
-    const maxOrder = await prisma.command.aggregate({ _max: { order: true } })
-    const nextOrder = (maxOrder._max.order ?? -1) + 1
+    const lastCommand = await prisma.command.findFirst({ orderBy: { order: 'desc' }, select: { order: true } })
+    const nextOrder = (lastCommand?.order ?? -1) + 1
     const command = await prisma.command.create({ data: { name, html, order: nextOrder } })
     return NextResponse.json({ command })
   } catch (error) {

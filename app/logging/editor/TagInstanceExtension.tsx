@@ -2,7 +2,7 @@
 import { Node, mergeAttributes, type Editor } from '@tiptap/core'
 import { ReactNodeViewRenderer, NodeViewWrapper, type NodeViewProps } from '@tiptap/react'
 import { getTagColor } from '../tags/tagUtils'
-import type { TagInstance } from '../types'
+import type { Tag, TagInstance } from '../types'
 
 export type TagInstanceCallbacks = {
   datetime?: string,

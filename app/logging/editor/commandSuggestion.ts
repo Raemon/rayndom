@@ -66,7 +66,9 @@ export const createCommandSuggestion = () => ({
       }
       wrapper.appendChild(leftCol)
       const rightCol = document.createElement('div')
-      rightCol.className = 'px-2 py-1 !text-xs text-gray-400 bg-gray-800 min-w-48 max-w-64 cursor-pointer max-h-32 overflow-y-auto tiptap [&_*]:!text-xs'
+      rightCol.className = 'px-2 py-1 bg-gray-800 min-w-48 max-w-96 cursor-pointer max-h-48 overflow-y-auto tiptap'
+      rightCol.style.fontSize = '15px'
+      rightCol.style.lineHeight = '1.5'
       const selectedItem = items[selectedIndex]
       rightCol.innerHTML = selectedItem?.html || ''
       rightCol.addEventListener('mousedown', (event) => {

@@ -3,7 +3,7 @@ import NotesInput from '../editor/NotesInput'
 import TagCell from '../tags/TagCell'
 import type { TagInstance, Timeblock } from '../types'
 
-const ZenRow = ({ timeblock, timeLabel, ensureTimeblock, onPatchTimeblockDebounced, minHeight, datetime, tagTypes, tagInstancesByType, allTagInstances, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
+const ZenRow = ({ timeblock, timeLabel, ensureTimeblock, onPatchTimeblockDebounced, minHeight=100, datetime, tagTypes, tagInstancesByType, allTagInstances, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
   timeblock?: Timeblock,
   timeLabel: string,
   ensureTimeblock: () => Promise<Timeblock>,

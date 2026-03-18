@@ -42,6 +42,11 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
     checklistItemsRef.current = checklistItems
   }, [checklistItems])
 
+  useEffect(() => {
+    const interval = setInterval(refreshItems, 2000)
+    return () => clearInterval(interval)
+  }, [orientingOnly, section])
+
   const refreshItems = async () => {
     const url = buildChecklistUrl(orientingOnly, section)
     const res = await fetch(url)

@@ -8,11 +8,13 @@ import TaskItem from '@tiptap/extension-task-item'
 import Mention from '@tiptap/extension-mention'
 import { useFocusedNotes } from '../context/FocusedNotesContext'
 import { useTags } from '../tags/TagsContext'
-import { createMentionSuggestion, updateCachedMentionTags } from './mentionSuggestion'
+import { createMentionSuggestion, updateCachedMentionTags, getCachedMentionTags } from './mentionSuggestion'
 import { createCommandSuggestion, updateCachedCommands, getCachedCommands } from './commandSuggestion'
 import BubbleMenuToolbar from './BubbleMenuToolbar'
 import { TagInstanceExtension, type TagInstanceCallbacks, getEditorTagInstanceState, setEditorCallbacks } from './TagInstanceExtension'
 import { useCommands } from '../hooks/useCommands'
+import SuggestedTagsModal from '../tags/SuggestedTagsModal'
+import type { Tag, TagInstance } from '../types'
 
 const extractTagInstanceIdsFromEditor = (editorInstance: ReturnType<typeof useEditor>) => {
   const ids = new Set<number>()
@@ -25,12 +27,19 @@ const extractTagInstanceIdsFromEditor = (editorInstance: ReturnType<typeof useEd
   return ids
 }
 
-const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25,  expandable=true, alwaysExpanded=false, datetime, onCreateTagInstance, onDeleteTagInstance }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number | string, expandable?: boolean, alwaysExpanded?: boolean } & TagInstanceCallbacks) => {
+const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave, minHeight=25,  expandable=true, alwaysExpanded=false, datetime, allTagInstances, onCreateTagInstance, onDeleteTagInstance }:{ noteKey?: string, initialValue: string, externalValue?: string, placeholder: string, onSave?: (content: string) => void, minHeight?: number | string, expandable?: boolean, alwaysExpanded?: boolean, allTagInstances?: TagInstance[] } & TagInstanceCallbacks) => {
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
   const lastSavedRef = useRef<string>(initialValue || '')
   const initializedRef = useRef(false)
   const isFocusedRef = useRef(false)
   const [isFocused, setIsFocused] = useState(false)
+  const [showSuggestedTagsModal, setShowSuggestedTagsModal] = useState(false)
+  const [directSuggestions, setDirectSuggestions] = useState<Tag[]>([])
+  const [suggestedTagType, setSuggestedTagType] = useState('')
+  const allTagInstancesRef = useRef<TagInstance[]>([])
+  allTagInstancesRef.current = allTagInstances || []
+  const suggestTagsRef = useRef<(suggestions: Tag[], type: string) => void>()
+  suggestTagsRef.current = (suggestions, type) => { setDirectSuggestions(suggestions); setSuggestedTagType(type); setShowSuggestedTagsModal(true) }
   const { registerFocus, unregisterFocus } = useFocusedNotes()
   const { tags } = useTags()
   const { commands } = useCommands()
@@ -66,6 +75,16 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
                 attrs: { id: props.id, label: props.label, tagInstanceId: ti.id.toString() }
               }).run()
               state.trackedIds.add(ti.id)
+              const mentionedTag = getCachedMentionTags().find(t => t.id === tagId)
+              if (mentionedTag) {
+                const suggestedTagIds = Array.isArray(mentionedTag.suggestedTagIds) ? mentionedTag.suggestedTagIds : []
+                const currentAllTIs = allTagInstancesRef.current
+                const suggestedTagsToOffer = suggestedTagIds
+                  .filter(id => !currentAllTIs.some(ati => ati.tagId === id && ati.datetime === dt))
+                  .map(id => getCachedMentionTags().find(t => t.id === id))
+                  .filter((t): t is Tag => t !== undefined)
+                if (suggestedTagsToOffer.length > 0) suggestTagsRef.current?.(suggestedTagsToOffer, mentionedTag.type)
+              }
             } else {
               editor.chain().focus().deleteRange(range).insertContent({
                 type: 'tagInstance',
@@ -153,26 +172,30 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
     }
   }, [editor, datetime, onCreateTagInstance, onDeleteTagInstance])
   const shouldExpand = alwaysExpanded || (isFocused && expandable)
+  const isFloating = shouldExpand && !alwaysExpanded
 
   if (!editor) return null
 
   return (
     <div className="relative" style={{ minHeight }}>
       <div 
-        className={`text-xs transition-all duration-200 ease-in-out ${shouldExpand ? 'z-50 shadow-lg bg-gray-900' : ''}`}
+        className={`text-xs transition-all duration-200 ease-in-out ${isFloating ? 'z-50 shadow-lg bg-gray-900' : ''} ${alwaysExpanded ? 'bg-gray-900' : ''}`}
         style={{ 
-          position: shouldExpand ? 'absolute' : 'relative',
+          position: isFloating ? 'absolute' : 'relative',
           top: 0,
           left: 0,
           minHeight,
           maxHeight: shouldExpand ? 'none' : '250px',
-          width: shouldExpand ? '640px' : '100%',
+          width: isFloating ? '640px' : '100%',
           overflow: shouldExpand ? 'visible' : 'hidden'
         }}
       >
         <BubbleMenuToolbar editor={editor} />
-        <EditorContent editor={editor} className={`notes-input-editor ${shouldExpand ? 'notes-input-expanded' : ''}`} />
+        <EditorContent editor={editor} className={`notes-input-editor ${isFloating ? 'notes-input-expanded' : ''}`} />
       </div>
+      {showSuggestedTagsModal && onCreateTagInstance && onDeleteTagInstance && datetime && (
+        <SuggestedTagsModal type={suggestedTagType} tags={tags} allTagInstances={allTagInstances || []} datetime={datetime} directSuggestions={directSuggestions} onCreateTagInstance={onCreateTagInstance} onDeleteTagInstance={onDeleteTagInstance} onClose={() => { setShowSuggestedTagsModal(false); setDirectSuggestions([]) }} />
+      )}
     </div>
   )
 }

@@ -51,6 +51,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
                 initialValue={timeblock?.rayNotes || ''}
                 externalValue={timeblock?.rayNotes || ''}
                 datetime={slotStart.toISOString()}
+                allTagInstances={allTagInstances}
                 onCreateTagInstance={onCreateTagInstance}
                 onDeleteTagInstance={onDeleteTagInstance}
                 onSave={async (content) => {
@@ -66,6 +67,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
                 initialValue={timeblock?.assistantNotes || ''}
                 externalValue={timeblock?.assistantNotes || ''}
                 datetime={slotStart.toISOString()}
+                allTagInstances={allTagInstances}
                 onCreateTagInstance={onCreateTagInstance}
                 onDeleteTagInstance={onDeleteTagInstance}
                 onSave={async (content) => {
@@ -81,6 +83,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
                 initialValue={timeblock?.aiNotes || ''}
                 externalValue={timeblock?.aiNotes || ''}
                 datetime={slotStart.toISOString()}
+                allTagInstances={allTagInstances}
                 onCreateTagInstance={onCreateTagInstance}
                 onDeleteTagInstance={onDeleteTagInstance}
                 onSave={async (content) => {
@@ -100,6 +103,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
               externalValue={timeblock?.rayNotes || ''}
               minHeight={800}
               datetime={slotStart.toISOString()}
+              allTagInstances={allTagInstances}
               onCreateTagInstance={onCreateTagInstance}
               onDeleteTagInstance={onDeleteTagInstance}
               onSave={async (content) => {

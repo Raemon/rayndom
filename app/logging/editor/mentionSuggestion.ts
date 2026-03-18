@@ -7,6 +7,7 @@ import { getTagUsageTimestamps } from '../tags/tagUsageTracker'
 
 let cachedMentionTags: Tag[] = []
 export const updateCachedMentionTags = (tags: Tag[]) => { cachedMentionTags = tags }
+export const getCachedMentionTags = () => cachedMentionTags
 export const createMentionSuggestion = () => ({
   items: async ({ query }:{ query: string }) => {
     const normalizedQuery = query.trim().toLowerCase()
