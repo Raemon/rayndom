@@ -1,0 +1,17 @@
+{
+  "hourlyLog": {
+    "00:00": "Playing Slay the Spire and reading the webcomic Dumbing of Age strips late at night.",
+    "01:00": "Continued reading Dumbing of Age webcomic strips; also browsed Grok's image generation tool.",
+    "10:00": "On a Zoom call with Mabel Schaefer while reviewing a Superhuman email thread about Solstice money/community issues with Claire, and reading LessWrong posts about Anthropic's Responsible Scaling Policy.",
+    "11:00": "Continued Zoom call with Mabel Schaefer with screen sharing; worked on the 'ifanyonebuilds.it' website in VSCode, debugging build errors and working on localization/FAQ pages.",
+    "12:00": "Continued Zoom meeting; worked further on the ifanyonebuilds.it site in VSCode/Cursor, reviewed the live site, and monitored Discord (Duncord).",
+    "13:00": "Continued Zoom call with Mabel Schaefer with screen sharing; did LessWrong moderation inbox review; checked personal zen/logging dashboard with outstanding tasks noted.",
+    "14:00": "Continued Zoom call while researching wedding venue options — searched for cliffside/bluff locations in coastal California, looked at Google Maps, ChatGPT for trail/location info, and drafted an inquiry email to Seal Cove Inn about wedding packages. Also filled out an Application for Special Park Uses (Form 10-930) for Golden Gate National Recreation Area.",
+    "15:00": "Reviewed the Special Park Use permit application; also looked at Google Maps for venues around Pacifica/Mussel Rock area.",
+    "16:00": "Browsed LessWrong, reading posts including 'We do not live by course alone' and checking the EA Forum post about marketing case studies. Also checked LessWrong moderation inbox.",
+    "17:00": "Worked on LessWrong/ForumMagnum codebase in VSCode — specifically on a 'fix-quick-take-section' branch, running yarn generate and working on ProfilePageQuickTakesTab component. Also browsed LessWrong and the EA Forum.",
+    "18:00": "Continued work on the ForumMagnum codebase (fix-quick-take-section branch), dealing with a git merge conflict; also browsed LessWrong including an AI 2027 scenario article."
+  },
+  "medical": "- **Medications**: Checklist reminder noted to \"Take Meds\" in the afternoon (seen on zen/logging dashboard around 1:45 PM and 2:00 PM)\n- **Stretching**: Checklist reminder to \"Stretch\" in the afternoon\n- **Seating/tension**: Recurring checklist item to \"adjust seating until not tense\"\n- **Sleep**: Was active at least until ~1:14 AM; no sleep start time recorded\n- **Food/drink**: Checklist reminder to \"Order Lunch\" in the afternoon; no specific food or drink consumption recorded\n- No other specific health symptoms, exercise, or medications recorded.",
+  "commitments": "- **Call about a venue** — listed as an outstanding task in the daily notes (seen on zen/logging dashboard)\n- **Think through Daniel's metrics** — listed as an outstanding task in the daily notes\n- **Mabel checks tags** — listed as a checklist item, implying a commitment to have Mabel review tags during the workday\n- **Inquiry to Seal Cove Inn** — drafted an email asking about wedding venue packages, private rooms/halls, buyout pricing, and bluff ceremony options\n- **Special Park Use permit application** — began filling out Form 10-930 for Golden Gate National Recreation Area, implying intent to submit\n- **Write a post called 'Fluent Cruxfinding'** — noted as a TODO in a LessWrong comment by Raemon"
+}
