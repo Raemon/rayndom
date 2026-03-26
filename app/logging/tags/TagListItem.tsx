@@ -14,10 +14,11 @@ type TagListItemProps = {
   showZeroFeedbackCounts?: boolean
   readonly?: boolean
   showDescription?: boolean
+  showSuggestedTags?: boolean
   hideRelations?: boolean
 }
 
-const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, showZeroFeedbackCounts, readonly, showDescription, hideRelations }: TagListItemProps) => {
+const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, showZeroFeedbackCounts, readonly, showDescription, showSuggestedTags, hideRelations }: TagListItemProps) => {
   const { updateTag, deleteTag, tags } = useTags()
   const [isEditing, setIsEditing] = useState(false)
   const [showModal, setShowModal] = useState(false)
@@ -122,13 +123,15 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, showZer
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        <span className={`text-gray-400 mr-2 text-center text-xs flex items-center gap-1 justify-end ${showZeroFeedbackCounts ? 'min-w-[72px]' : 'w-8'}`}>
-          {instanceCount}
-          {showUsefulCount ? <span className={usefulCount ? 'text-green-400' : 'text-white/35'}>+{usefulCount || 0}</span> : null}
-          {showAntiUsefulCount ? <span className={antiUsefulCount ? 'text-red-400' : 'text-white/35'}>-{antiUsefulCount || 0}</span> : null}
-        </span>
-        <div className={`flex flex-col p-2 border-b-[1px] border-b-white/20 border-l-[10px] ${borderClasses}`} style={{ borderLeftColor: getTagColor(tag.name) }}>
-          <span className="px-1 rounded-xs text-white text-sm">{tag.name}</span>
+        <div className={`flex-1 min-w-0 flex flex-col p-2 border-b-[1px] border-b-white/20 border-l-[10px] ${borderClasses}`} style={{ borderLeftColor: getTagColor(tag.name) }}>
+          <div className="flex items-center justify-between gap-2">
+            <span className="px-1 rounded-xs text-white text-sm">{tag.name}</span>
+            <span className={`text-gray-400 text-xs flex items-center gap-1 shrink-0`}>
+              {instanceCount}
+              {showUsefulCount ? <span className={usefulCount ? 'text-green-400' : 'text-white/35'}>+{usefulCount || 0}</span> : null}
+              {showAntiUsefulCount ? <span className={antiUsefulCount ? 'text-red-400' : 'text-white/35'}>-{antiUsefulCount || 0}</span> : null}
+            </span>
+          </div>
           {!hideRelations && parentTag && (
             <div className="text-[12px] opacity-100 px-1 flex items-center gap-1">
               <span>└</span>
@@ -136,7 +139,7 @@ const TagListItem = ({ tag, instanceCount, usefulCount, antiUsefulCount, showZer
               <button className="ml-0.5 hover:opacity-100 opacity-60" onClick={handleRemoveParent}>×</button>
             </div>
           )}
-          {!hideRelations && suggestedTags.map(suggestedTag => {
+          {!hideRelations && showSuggestedTags && suggestedTags.map(suggestedTag => {
             return (
               <div key={suggestedTag.id} className="text-[12px] opacity-100 px-1 flex items-center gap-1">
                 <span>→</span>

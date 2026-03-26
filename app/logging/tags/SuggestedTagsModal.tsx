@@ -97,7 +97,7 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, directSugge
               <div className="text-white/50 text-xs">No tags with positive/negative uses yet.</div>
             ) : (
               <div className="flex items-start max-h-[90vh] overflow-x-auto overflow-y-auto">
-                {suggestedColumnTags.length > 0 ? (
+                {suggestedColumnTags.length > 0 && directSuggestions.length === 0 ? (
                   <div className="flex items-start flex-shrink-0">
                     <TagSuggestionColumn tags={suggestedColumnTags} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="w-[240px] flex-shrink-0" />
                   </div>

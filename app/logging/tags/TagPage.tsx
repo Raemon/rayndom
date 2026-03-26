@@ -15,7 +15,8 @@ type SortOption = typeof sortOptions[number]
 
 const TagPageInner = ({}:{}) => {
   const { tags } = useTags()
-  const [showDescriptions, setShowDescriptions] = useState(true)
+  const [showDescriptions, setShowDescriptions] = useState(false)
+  const [showSuggestedTags, setShowSuggestedTags] = useState(false)
   const [sortByByType, setSortByByType] = useState<Record<string, SortOption>>(() => Object.fromEntries(typeNames.map(typeName => [typeName, 'useful'])) as Record<string, SortOption>)
   const { tagInstances } = useTagInstances({ start: allTagInstancesStartIso, end: allTagInstancesEndIso })
   const instanceCountByTagId = useMemo(() => countBy(tagInstances, 'tagId'), [tagInstances])
@@ -36,10 +37,16 @@ const TagPageInner = ({}:{}) => {
 
   return (
     <div className="p-4 text-sm">
-      <label className="flex items-center gap-2 mb-4 text-white/70 text-xs cursor-pointer">
-        <input type="checkbox" checked={showDescriptions} onChange={(e) => setShowDescriptions(e.target.checked)} />
-        Show descriptions
-      </label>
+      <div className="flex gap-4 mb-4">
+        <label className="flex items-center gap-2 text-white/70 text-xs cursor-pointer">
+          <input type="checkbox" checked={showDescriptions} onChange={(e) => setShowDescriptions(e.target.checked)} />
+          Show descriptions
+        </label>
+        <label className="flex items-center gap-2 text-white/70 text-xs cursor-pointer">
+          <input type="checkbox" checked={showSuggestedTags} onChange={(e) => setShowSuggestedTags(e.target.checked)} />
+          Show suggested tags
+        </label>
+      </div>
       <div className="flex gap-6 items-start">
         {typeNames.map(typeName => (
           <div key={typeName} className="w-1/3 min-w-0">
@@ -58,7 +65,7 @@ const TagPageInner = ({}:{}) => {
             </div>
             <div className="flex flex-col gap-1">
               {sortedTagsByType[typeName]?.map(({ tag, count, usefulCount, antiUsefulCount }:{ tag: Tag, count: number, usefulCount: number, antiUsefulCount: number }) => (
-                <TagListItem key={tag.id} tag={tag} instanceCount={count} usefulCount={usefulCount} antiUsefulCount={antiUsefulCount} showZeroFeedbackCounts showDescription={showDescriptions} />
+                <TagListItem key={tag.id} tag={tag} instanceCount={count} usefulCount={usefulCount} antiUsefulCount={antiUsefulCount} showZeroFeedbackCounts showDescription={showDescriptions} showSuggestedTags={showSuggestedTags} />
               ))}
             </div>
           </div>
