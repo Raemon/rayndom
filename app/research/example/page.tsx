@@ -11,7 +11,7 @@ export function getDomainsFromDownloads(topic: string): DomainInfo[] {
     for (const folder of domainFolders) {
       const domainPath = path.join(downloadsPath, folder.name)
       const files = fs.readdirSync(domainPath, { recursive: true })
-        .filter((f): f is string => typeof f === 'string' && !f.startsWith('.'))
+        .filter((f): f is string => typeof f === 'string' && !f.startsWith('.')).sort()
       domains.push({ domain: folder.name, files })
     }
   }
@@ -22,7 +22,7 @@ export function getDomainsFromDownloads(topic: string): DomainInfo[] {
     for (const folder of domainFolders) {
       const domainPath = path.join(appOutputPath, folder.name)
       const files = fs.readdirSync(domainPath, { recursive: true })
-        .filter((f): f is string => typeof f === 'string' && !f.startsWith('.'))
+        .filter((f): f is string => typeof f === 'string' && !f.startsWith('.')).sort()
       domains.push({ domain: folder.name, files })
     }
   }
@@ -43,7 +43,7 @@ export function getOutputFiles(topic: string): string[] {
       .filter(f => !f.startsWith('.') && (f.endsWith('.csv') || f.endsWith('.md')))
     files.push(...appOutputFiles)
   }
-  return files
+  return files.sort()
 }
 
 export default function Page() {

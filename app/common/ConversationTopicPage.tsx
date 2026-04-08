@@ -90,9 +90,7 @@ const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Prop
         .then(res => res.json())
         .then(data => {
           if (data.type === 'markdown') {
-            const renderer = new marked.Renderer()
-            renderer.image = () => ''
-            setContent(marked.parse(data.content, { renderer }) as string)
+            setContent(marked.parse(data.content) as string)
           } else {
             setContent('')
           }
@@ -177,7 +175,7 @@ const ConversationTopicPage = ({ domains, topic, title, outputFiles = [] }: Prop
           </div>
         )}
       </div>
-      <div className={`flex-1 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${selectedFile && getFileType(selectedFile.file) === 'csv' ? '' : 'max-w-3xl'}`}>
+      <div className={`flex-1 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${selectedFile && getFileType(selectedFile.file) === 'csv' ? '' : 'max-w-2xl'}`}>
         {selectedFile && (
           <div>
             <div className="mb-2 text-gray-200">

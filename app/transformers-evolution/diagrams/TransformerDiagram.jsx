@@ -1,0 +1,7 @@
+import { C } from '../colors';
+import { getDiagramHelpers, arr, lbl, defs, ss } from './helpers';
+
+export function TransformerDiagram({ onTip }) {
+  const { t, box } = getDiagramHelpers(onTip);
+  return (<svg viewBox="0 0 210 140" style={ss} xmlns="http://www.w3.org/2000/svg">{defs}{lbl(105,10,"Transformer Block")}{box(55,16,100,16,C.token,"Tokens + Pos Encoding","Embeddings SUMMED with positional encodings. Replaces recurrence — position injected as a signal.",7)}{arr(105,32,105,38)}{box(30,40,150,22,C.novel,"Multi-Head Self-Attention (Q, K, V)","THE KEY INNOVATION: Each token creates Q, K, V vectors. Attention = softmax(QKᵀ/√d)V. Multi-head = h parallel attention functions. ALL positions computed in PARALLEL.",7)}{arr(105,62,105,68)}{box(55,70,100,14,C.dim,"Add & LayerNorm","Residual connection + normalization. Residual lets gradients flow; LayerNorm stabilizes.",6.5)}{arr(105,84,105,90)}{box(55,92,100,18,C.ffn,"Feed-Forward Network","FFN(x) = W₂·ReLU(W₁x+b₁)+b₂. Applied per position. Where the model stores 'knowledge' — most parameters live here.")}{arr(105,110,105,116)}{box(55,118,100,14,C.dim,"Add & LayerNorm","Second residual + norm. Output feeds into the next identical block. Original: 6 encoder + 6 decoder blocks.",6.5)}<path d="M28,48 L20,48 L20,77 L53,77" fill="none" stroke={C.dim} strokeWidth={0.8} strokeDasharray="2,2" markerEnd="url(#ah)"/><path d="M28,101 L20,101 L20,125 L53,125" fill="none" stroke={C.dim} strokeWidth={0.8} strokeDasharray="2,2" markerEnd="url(#ah)"/>{lbl(14,63,"skip",5.5)}{lbl(14,115,"skip",5.5)}</svg>);
+}
