@@ -4,10 +4,12 @@ import { C } from './colors';
 import { data } from './data';
 import { Diagram } from './diagrams';
 import { JargonText } from './JargonText';
+import GlossarySidebar from './GlossarySidebar';
 
 export default function TransformerLineage() {
   const [collapsed, setCollapsed] = useState(false);
   const [tip, setTip] = useState(null);
+  const [selectedPostId, setSelectedPostId] = useState(null);
   const onTip = useCallback((t) => setTip(t), []);
 
   const Cell = ({ text, collapsed: c }) => {
@@ -36,8 +38,10 @@ export default function TransformerLineage() {
   const widths = ["4%", "9%", "17%", "27%", "24%", "13%"];
 
   return (
+    <div style={{ display: 'flex', height: '100vh', fontFamily: "var(--font-cormorant-garamond), Georgia, serif" }}>
+      <GlossarySidebar onSelectPost={setSelectedPostId} />
     <div style={{
-      fontFamily: "var(--font-cormorant-garamond), Georgia, serif",
+      flex: 1,
       background: C.bg, color: C.textPrimary,
       height: "100vh", overflow: "auto", position: "relative",
     }}>
@@ -142,6 +146,7 @@ export default function TransformerLineage() {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 }

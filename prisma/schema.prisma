@@ -19,6 +19,7 @@ model User {
   tags           Tag[]
   tagInstances   TagInstance[]
   commands       Command[]
+  posts          Post[]
 
   @@map("users")
 }
@@ -111,4 +112,16 @@ model Command {
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
 
   @@map("commands")
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  userId    Int?     @map("user_id")
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("posts")
 }
