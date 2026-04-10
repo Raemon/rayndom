@@ -4,7 +4,11 @@ This folder is an essay-with-diagrams/widgets that is meant to help me think abo
 
 1. Are LLMs missing some kind of "special sauce" that is loadbearing for them to reach a form of relentless, creative resourcefulness that would make them a threat to humanity? (see: [https://www.lesswrong.com/posts/8fg2mv9rj4GykfZHf/intelligence-greater-than-relentless-creative](Intelligence -> Relentless, Creative Resourcefulness))
 
-2. Why are LLMs sometimes still fairly dumb, in ways that seem like they have the skills to avoid if they just remembered to use those skills.
+2. Why are LLMs sometimes still often metacognitively dumb, in ways that seem like they have the skills to avoid if they just remembered to use those skills. Specifically they:
+
+- sometimes waste lots of tokens on very simple questions
+- if they don't figure something out quickly, they start trying random stuff that builds on top of their existing spaghetti code solution instead of stepping back and thinking from scratch (despite having the skill to think from scratch if they're directed to. Why isn't this reinforced during RL training?)
+- they still aren't that good at openended creativity.
 
 3. Which LLM innovations required conceptual breakthroughs.
 

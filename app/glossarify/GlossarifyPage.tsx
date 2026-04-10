@@ -50,7 +50,7 @@ const GlossarifyPage = () => {
         <span style={{ color: '#666' }}>or</span>
         <form onSubmit={handleUrlSubmit} style={{ display: 'flex', gap: '6px', flex: 1 }}>
           <input type="text" value={url} onChange={e => setUrl(e.target.value)} placeholder="Paste PDF URL" style={{ flex: 1, padding: '4px 8px', background: '#444', color: '#ddd', border: '1px solid #555', fontFamily: 'var(--font-geist-sans)' }} />
-          <button type="submit" disabled={loading || !url.trim()} style={{ padding: '4px 12px', background: '#555', color: '#ddd', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-geist-sans)' }}>Go</button>
+        <button type="submit" disabled={loading || !url.trim()} style={{ padding: '4px 12px', background: '#555', color: '#ddd', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-geist-sans)' }}>Go</button>
         </form>
       </div>
       {loading && <div style={{ color: '#aaa' }}>Converting {source}...</div>}

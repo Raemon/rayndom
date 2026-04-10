@@ -20,11 +20,12 @@ Where possible, diagrams should be similarly structured to whatever architecture
 
 - Keep visual chrome minimal: no unnecessary borders, shadows, or 3D effects. Every visual element should encode information.
 
-- Do not give a top-level title to the diagram. Instead, put a caption at the bottom that explains the core concept the diagram is trying to convey (in one line)
+- Do not give a top-level title to the diagram. Instead, put a caption at the bottom that explains the core concept the diagram is trying to convey. (This should be ~1 line worth of content, but should wrap if it's larger than the column)
 
 – except for variable names, all labels should be 11px. Variables should be 9px.
 
 – make sure all box/shapes are large enough you can fix their text label on top of them.
+
 
 ## Helper vocabulary (helpers.jsx)
 
