@@ -2,7 +2,7 @@
 import Tooltip from '@/app/common/Tooltip';
 import { C } from '../colors';
 
-export const FS = 11;
+export const FS = 9;
 export const FSV = 9;
 
 const arrM = <marker id="ah" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5" fill={C.dim}/></marker>;

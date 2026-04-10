@@ -14,6 +14,7 @@
 //   year:         number | string — year or year range
 //   name:         string — display name of the innovation
 //   diag:         string — key matching a diagram component
+//   oneLiner:     string — <60 char layman-friendly takeaway
 //   problem:      string — technical description of the problem solved
 //   whyNotSooner: string — why this wasn't invented earlier
 //   examples:     string — comma-separated notable models (rendered as bullet list)
@@ -29,6 +30,7 @@ import { entry as transformer } from './transformer';
 import { entry as gpt1 } from './gpt1';
 import { entry as bert } from './bert';
 import { entry as gpt2 } from './gpt2';
+import { entry as scalinglaws } from './scalinglaws';
 import { entry as gpt3 } from './gpt3';
 import { entry as vit } from './vit';
 import { entry as moe } from './moe';
@@ -42,7 +44,8 @@ import { entry as gpt4 } from './gpt4';
 import { entry as longctx } from './longctx';
 import { entry as ttc } from './ttc';
 import { entry as ssm } from './ssm';
-import { entry as agentic } from './agentic';
+import { entry as tooluse } from './tooluse';
+import { entry as scaffold } from './scaffold';
 
 export const data = [
   perceptron,
@@ -56,6 +59,7 @@ export const data = [
   gpt1,
   bert,
   gpt2,
+  scalinglaws,
   gpt3,
   vit,
   moe,
@@ -69,5 +73,6 @@ export const data = [
   longctx,
   ttc,
   ssm,
-  agentic,
+  tooluse,
+  scaffold,
 ];

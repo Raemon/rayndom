@@ -2,6 +2,7 @@ export const entry = {
   year: 1958,
   name: "The Perceptron",
   diag: "perceptron",
+  oneLiner: "A machine that learns from examples, not rules",
   problem: `Before 1958, computers could only follow rules that humans explicitly programmed. If you wanted a machine to recognize a handwritten letter, you had to write out every rule yourself. There was no way for a machine to learn patterns from examples on its own.
 
 The perceptron introduced trainable weights — a set of numbers, one per input, that the machine adjusts automatically. The math is simple: multiply each input by its weight, sum them up, and check if the total exceeds a threshold. If the answer is wrong, nudge the weights toward the correct answer. The weights are the learned knowledge, and they update from data — no human rule-writing required.

@@ -81,4 +81,13 @@ export const entries = [
     term: "Distributional hypothesis",
     definition: "Words appearing in similar contexts have similar meanings (Firth, 1957). The linguistic foundation for all embedding methods.",
   },
+  {
+    term: "BPE",
+    altTerms: ["Byte Pair Encoding"],
+    definition: "Subword tokenization algorithm that iteratively merges the most frequent byte/character pairs into larger units. Used by GPT, Llama, and most LLMs.",
+  },
+  {
+    term: "Subword tokenization",
+    definition: "Splitting text into data-learned units between whole words and individual characters (e.g., 'unhappiness' → 'un' + 'happi' + 'ness').",
+  },
 ];

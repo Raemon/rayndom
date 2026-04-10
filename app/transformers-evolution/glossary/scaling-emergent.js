@@ -80,4 +80,12 @@ export const entries = [
     term: "Inference",
     definition: "Using a trained model to generate predictions or outputs, as opposed to training it.",
   },
+  {
+    term: "Power law",
+    definition: "A mathematical relationship where one quantity varies as a power of another (y = ax^b). Neural scaling follows power laws.",
+  },
+  {
+    term: "Compute budget",
+    definition: "Total FLOPs allocated for a training run, determining the feasible combinations of model size and data amount.",
+  },
 ];

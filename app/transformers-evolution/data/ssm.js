@@ -2,6 +2,7 @@ export const entry = {
   year: "2023–26",
   name: "SSM Hybrids (Mamba, RWKV, Jamba)",
   diag: "ssm",
+  oneLiner: "Linear-cost alternatives to quadratic attention",
   problem: `Even with FlashAttention, the Transformer's attention mechanism has a fundamental O(N²) cost: every token must attend to every other token. Double the sequence length and you quadruple the computation. For very long sequences (100K+ tokens), this becomes a hardware bottleneck — the actual math is the limiting factor, not just memory management.
 
 State-space models (SSMs) offer an alternative rooted in control theory — a branch of mathematics dealing with dynamical systems. Instead of computing all pairwise interactions, an SSM processes each token in sequence, updating a fixed-size hidden state — similar to an RNN, but with structured state transitions derived from continuous-time differential equations, discretized for sequential data. This gives O(N) time complexity — linear in sequence length. The catch: pure SSMs struggle to match attention's ability to retrieve specific information from earlier in the sequence.

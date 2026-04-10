@@ -17,4 +17,20 @@ export const entries = [
     term: "Structured output",
     definition: "Model output in a defined, parseable format (JSON, XML, function calls) rather than free-form text.",
   },
+  {
+    term: "Context-reset loop",
+    definition: "Running an agent in repeated fresh sessions, persisting state through files/git rather than conversation context. Core pattern of RALPH.",
+  },
+  {
+    term: "Agent scaffolding",
+    definition: "Engineering infrastructure (prompt assembly, permissions, memory, planning) built around a model to create reliable autonomous agents.",
+  },
+  {
+    term: "ReAct",
+    definition: "Reasoning + Acting pattern: the model alternates between thinking steps and tool-use actions in a loop.",
+  },
+  {
+    term: "Persistent memory",
+    definition: "File-based state (SOUL.md, MEMORY.md) that survives across agent sessions, enabling cross-session learning.",
+  },
 ];

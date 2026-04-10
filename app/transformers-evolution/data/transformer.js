@@ -2,6 +2,7 @@ export const entry = {
   year: 2017,
   name: "The Transformer",
   diag: "transformer",
+  oneLiner: "Process all words at once, not one by one",
   problem: `RNNs and LSTMs processed tokens one at a time in sequence — each step's computation depended on the previous step's result. This sequential dependency is as much a hardware constraint as an architectural one: modern GPUs excel at parallel computation (doing thousands of operations simultaneously), but sequential processing leaves most of the GPU idle. Training on long sequences was extremely slow, and even with LSTMs, information from distant tokens was diluted.
 
 The Transformer ("Attention Is All You Need," Vaswani et al.) replaced sequential recurrence entirely with self-attention — a computation pattern where every token directly computes a relationship score with every other token, all at once. Each token is projected into three vectors: a query ("what am I looking for?"), a key ("what do I contain?"), and a value ("what information do I carry?"). Attention scores are computed as dot products between queries and keys, scaled and passed through softmax to get weights, then used to produce a weighted sum of values. This runs in parallel across all positions.

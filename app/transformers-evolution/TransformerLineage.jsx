@@ -1,20 +1,16 @@
 'use client';
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { C } from './colors';
 import { data } from './data';
-import { TransformerRow } from './TransformerRow';
+import { TransformerCard } from './TransformerCard';
 import GlossarySidebar from './GlossarySidebar';
 
 export default function TransformerLineage() {
-  const [collapsed, setCollapsed] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [rows, setRows] = useState(data);
-  const handleRowChange = useCallback((idx, newRow) => {
-    setRows(prev => prev.map((r, i) => i === idx ? newRow : r));
-  }, []);
 
-  const headers = ["Year", "Innovation", "Architecture", "Problem Solved", "Why Not Sooner?", "Notable Models"];
-  const widths = ["4%", "8%", "24%", "24%", "22%", "12%"];
+  const headers = ["Year", "", "Architecture"];
+  const widths = ["5%", "55%", "40%"];
 
   return (
     <div style={{ display: 'flex', height: '100vh', fontFamily: "var(--font-cormorant-garamond), Georgia, serif" ,  background: C.bg, }}>
@@ -41,17 +37,6 @@ export default function TransformerLineage() {
               A technical genealogy of major innovations. Hover over diagram elements for detailed explanations.
             </p>
           </div>
-          <button
-            onClick={() => setCollapsed(c => !c)}
-            style={{
-              background: collapsed ? "#e8e5e0" : "#d5d0c8",
-              border: "1px solid rgba(0,0,0,0.1)", color: "#1a1a1a",
-              padding: "8px 18px", borderRadius: 6, cursor: "pointer",
-              fontFamily: "inherit", fontSize: "inherit",
-            }}
-          >
-            {collapsed ? "⤢ Expand All" : "⤡ Collapse All"}
-          </button>
         </div>
 
         {/* Table */}
@@ -59,7 +44,7 @@ export default function TransformerLineage() {
           <thead>
             <tr>
               {headers.map((h, i) => (
-                <th key={h} style={{
+                <th key={i} style={{
                   textAlign: "left", padding: "10px 14px", fontWeight: 600,
                   textTransform: "uppercase", letterSpacing: "0.1em",
                   color: C.headerText, borderBottom: "1px solid rgba(0,0,0,0.08)",
@@ -73,13 +58,7 @@ export default function TransformerLineage() {
           </thead>
           <tbody>
             {rows.map((row, idx) => (
-              <TransformerRow
-                key={idx}
-                row={row}
-                idx={idx}
-                collapsed={collapsed}
-                onRowChange={newRow => handleRowChange(idx, newRow)}
-              />
+              <TransformerCard key={idx} row={row} />
             ))}
           </tbody>
         </table>

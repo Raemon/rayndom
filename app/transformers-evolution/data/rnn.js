@@ -2,6 +2,7 @@ export const entry = {
   year: 1986,
   name: "Recurrent Neural Networks (RNNs)",
   diag: "rnn",
+  oneLiner: "Networks that remember what came before",
   problem: `Feedforward networks (including multi-layer perceptrons) processed each input independently — they had no memory and no notion of order. Feed in the word "bank" and the network has no idea whether it appeared after "river" or "savings." For tasks like speech or language, where meaning depends on what came before, this was a fundamental limitation.
 
 Recurrent Neural Networks added a loop: at each timestep, the network takes two inputs — the current data and its own output from the previous step. This previous output is called the hidden state — a vector of numbers acting as "working memory." The formula is: h_t = f(W·x_t + U·h_{t-1}), where h_t is the new hidden state, x_t is the current input, and W and U are learned weight matrices. This gives the network short-term memory across a sequence.

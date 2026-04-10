@@ -2,6 +2,7 @@ export const entry = {
   year: "2025–26",
   name: "Agentic Tool Use & Planning",
   diag: "agentic",
+  oneLiner: "Models that act in loops: try, observe, adapt",
   problem: `No matter how capable, a language model fundamentally just produces text. It can write code but not run it. It can describe a web search but not perform one. It can recommend a file edit but not execute it. The boundary is clear: the model generates a string of characters, and any actual effect on the world requires a human to take action.
 
 Agentic frameworks break this boundary by giving the model a loop: generate a tool call (a structured request, typically JSON, specifying which function to invoke and with what arguments), observe the result, and decide what to do next. The model might write code, execute it in a sandboxed environment (an isolated runtime that prevents unsafe operations), observe the output or error, and revise its approach. This is re-planning — adapting strategy based on observed outcomes, not just generating a fixed response.

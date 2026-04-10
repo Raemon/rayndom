@@ -23,6 +23,9 @@ import { LongctxDiagram } from './diagrams/LongctxDiagram';
 import { TtcDiagram } from './diagrams/TtcDiagram';
 import { SsmDiagram } from './diagrams/SsmDiagram';
 import { AgenticDiagram } from './diagrams/AgenticDiagram';
+import { ScalingLawsDiagram } from './diagrams/ScalingLawsDiagram';
+import { ToolUseDiagram } from './diagrams/ToolUseDiagram';
+import { ScaffoldDiagram } from './diagrams/ScaffoldDiagram';
 
 const diagramComponents = {
   perceptron: PerceptronDiagram,
@@ -50,6 +53,9 @@ const diagramComponents = {
   ttc: TtcDiagram,
   ssm: SsmDiagram,
   agentic: AgenticDiagram,
+  scalinglaws: ScalingLawsDiagram,
+  tooluse: ToolUseDiagram,
+  scaffold: ScaffoldDiagram,
 };
 
 function Diagram({ type }) {
