@@ -14,24 +14,25 @@ function findTerm(part) {
   return sortedTerms.find(t => t.toLowerCase() === lower);
 }
 
-const MAX_DEPTH = 2;
+const EMPTY_SET = new Set();
 
-export const JargonSpan = ({ term, matchedText, depth }) => {
+export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET }) => {
   const def = glossary[term];
-  const canNest = depth < MAX_DEPTH - 1;
+  const nextSeen = new Set(seenTerms);
+  nextSeen.add(term);
   return (
     <Tooltip
       content={
         <>
           <strong style={{ color: C.textAccent }}>{term}:</strong>{' '}
-          {canNest ? <JargonText depth={depth + 1}>{def}</JargonText> : def}
+          <JargonText seenTerms={nextSeen}>{def}</JargonText>
         </>
       }
-      interactive={canNest}
-      leaveDelayMs={canNest ? 200 : 0}
+      interactive
+      leaveDelayMs={200}
       placement="bottom-start"
       maxWidth={300}
-      zIndex={1000 + depth * 10}
+      zIndex={1000 + seenTerms.size * 10}
       contentClassName="!bg-white !text-[#1a1a1a] border border-neutral-300 shadow-lg text-[0.85em] leading-normal font-['Source_Serif_4',Georgia,serif]"
       wrapperStyle={{ cursor: 'help', borderBottom: '1px dashed rgba(0,0,0,0.3)' }}
     >
@@ -40,12 +41,12 @@ export const JargonSpan = ({ term, matchedText, depth }) => {
   );
 };
 
-export const JargonText = ({ children, depth = 0 }) => {
-  if (typeof children !== 'string' || !jargonRegex || depth >= MAX_DEPTH) return children || null;
+export const JargonText = ({ children, seenTerms = EMPTY_SET }) => {
+  if (typeof children !== 'string' || !jargonRegex) return children || null;
   const parts = children.split(jargonRegex);
   return parts.map((part, i) => {
     const term = findTerm(part);
-    if (term) return <JargonSpan key={i} term={term} matchedText={part} depth={depth} />;
+    if (term && !seenTerms.has(term)) return <JargonSpan key={i} term={term} matchedText={part} seenTerms={seenTerms} />;
     return part;
   });
 };

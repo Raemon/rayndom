@@ -14,7 +14,7 @@ export default function TransformerLineage() {
   }, []);
 
   const headers = ["Year", "Innovation", "Architecture", "Problem Solved", "Why Not Sooner?", "Notable Models"];
-  const widths = ["4%", "9%", "17%", "27%", "24%", "13%"];
+  const widths = ["4%", "8%", "24%", "24%", "22%", "12%"];
 
   return (
     <div style={{ display: 'flex', height: '100vh', fontFamily: "var(--font-cormorant-garamond), Georgia, serif" ,  background: C.bg, }}>

@@ -1,17 +1,31 @@
 import { C } from '../colors';
-import { getDiagramHelpers, arr, lbl, defs, vb, ss, DiagramTip } from './helpers';
+import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, FS, FSV } from './helpers';
 
 export function ResnetDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox={vb} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}{lbl(105,10,"Residual Learning: F(x) + x")}
-    {box(30,24,60,16,C.token,"Input x","Activation from previous layer.",6.5)}
-    {arr(60,40,60,48)}
-    {box(30,50,60,18,C.ffn,"Conv + ReLU","Weight layer 1. Learns features.",6.5)}
-    {arr(60,68,60,76)}
-    {box(30,78,60,18,C.ffn,"Conv","Weight layer 2. Together these learn the RESIDUAL F(x).",6.5)}
-    <DiagramTip detail="THE KEY INNOVATION: Skip connection carries input x directly to the output. The layers only need to learn F(x) = desired − x, not the full mapping. If F(x)=0, this block is a no-op (identity). This makes depth free — extra layers can't hurt."><path d="M92,32 L130,32 L130,92 L92,92" fill="none" stroke={C.novel} strokeWidth={2} markerEnd="url(#ah)"/>{lbl(140,62,"x (skip)",6,C.novel)}</DiagramTip>
-    {box(30,100,60,16,C.novel,"F(x) + x","Add skip connection to layer output, then ReLU. Gradients flow through both paths.",6.5)}
-    {arr(60,96,60,100)}
-    {lbl(105,125,"Enabled 152+ layers; used in every Transformer block",6.5,C.novel)}
-    {box(150,50,50,30,C.dim,"Degradation","Without skip: 56-layer net has HIGHER error than 20-layer. Not overfitting — optimization failure.",6)}</svg>);
+  const vbw = '0 0 260 174';
+  return (<svg viewBox={vbw} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+    {box(35, 22, 60, 20, C.token, 'Input', 'Activation from previous layer.', FS)}
+    {lbl(102, 32, 'x', FSV, C.token)}
+    {arr(65, 42, 65, 48)}
+    {lbl(52, 44, 'x', FSV, '#666')}
+    {box(35, 48, 60, 22, C.ffn, 'Conv + ReLU', 'Weight layer 1. Learns features.', FS)}
+    {arr(65, 70, 65, 76)}
+    {lbl(52, 72, 'F path', FSV, '#666')}
+    {box(35, 76, 60, 22, C.ffn, 'Conv', 'Weight layer 2. Together these learn the residual F(x).', FS)}
+    {arr(65, 98, 65, 92)}
+    {lbl(52, 94, 'F(x)', FSV, '#666')}
+    <DiagramTip detail="THE KEY INNOVATION: Skip connection carries input x directly to the output. The layers only need to learn F(x) = desired − x, not the full mapping. If F(x)=0, this block is a no-op (identity). This makes depth free — extra layers can't hurt.">
+      <path d="M95,32 L178,32 L178,102 L76,102" fill="none" stroke={C.novel} strokeWidth={1.2} markerEnd="url(#ah)"/>
+    </DiagramTip>
+    {lbl(188, 64, 'x skip', FSV, C.novel)}
+    {op(65, 102, '+', 'Element-wise add: output before activation is F(x) + x.', { r: 10, color: C.novel, fill: 'none' })}
+    {arr(65, 112, 65, 118)}
+    {lbl(52, 114, 'sum', FSV, '#666')}
+    {box(35, 118, 60, 20, C.ffn, 'ReLU', 'Nonlinearity after the residual sum.', FS)}
+    {arr(65, 138, 65, 144)}
+    {lbl(52, 140, 'y', FSV, '#666')}
+    {box(35, 144, 60, 18, C.novel, 'Output y', 'y = ReLU(F(x) + x). Gradients flow through both paths.', FS)}
+    {box(168, 48, 82, 40, C.dim, 'Degradation\n(no skip)', 'Without skip: 56-layer net has HIGHER error than 20-layer. Not overfitting — optimization failure.', FS)}
+    {lbl(130, 168, 'Residual sum lets very deep nets train; the same idea appears inside every Transformer block.', FS, C.novel)}</svg>);
 }

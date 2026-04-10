@@ -67,7 +67,7 @@ export const TransformerRow = ({ row, idx, collapsed, onRowChange }) => {
       >
         {row.name}
       </EditableCell>
-      <td style={{ padding: "10px", minWidth: 200 }}>
+      <td style={{ padding: "10px", minWidth: 300 }}>
         <Diagram type={row.diag} />
       </td>
       <EditableCell

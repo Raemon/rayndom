@@ -12,16 +12,10 @@ This folder is an essay-with-diagrams/widgets that is meant to help me think abo
 
 5. How exactly do current frontier models work, and what are the implications about what kind of thinking is difficult for them.
 
-# Tactical Research Goals
+# Sub-documents
 
-To accomplish that, I want to:
+Detailed rules for specific subsystems are split into their own files:
 
-- Get an accurate and complete history of the most important parts of the transformer evolution (from perceptron through today's best models)
-
-- Make sure that history is reasonably concise, even in it's full, expanded form.
-
-- Present information about that in an even more abbreviated overview form that conveys the most important details, with an expanded mode for the full details
-
-
-
-# Why 
+- [claude-history.md](./claude-history.md) — rules for the transformer history timeline, research accuracy, and conciseness
+- [claude-diagrams.md](./claude-diagrams.md) — rules for architecture diagrams (style, visual language, diffing against predecessors)
+- [claude-glossary.md](./claude-glossary.md) — rules for glossary definitions (pedagogy, structure, accessibility)

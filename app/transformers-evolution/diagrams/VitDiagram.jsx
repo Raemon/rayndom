@@ -1,11 +1,27 @@
 import { C } from '../colors';
-import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip } from './helpers';
+import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, ghostBox, op, FS, FSV } from './helpers';
 
 export function VitDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 220 130" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}{lbl(110,10,"Vision Transformer (ViT)")}
-    <DiagramTip detail="Input image split into non-overlapping patches (e.g., 16×16 pixels). This replaces CNN convolutions — the Transformer processes patches as if they were word tokens."><rect x={5} y={20} width={40} height={40} rx={2} fill="none" stroke={C.novel} strokeWidth={1}/><line x1={5} y1={33} x2={45} y2={33} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/><line x1={5} y1={46} x2={45} y2={46} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/><line x1={18} y1={20} x2={18} y2={60} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/><line x1={32} y1={20} x2={32} y2={60} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/>{lbl(23,70,"Image→Patches",5.5,C.novel)}</DiagramTip>
-    {arr(47,40,55,40)}{box(57,28,42,24,C.novel,"Linear Proj","Each patch flattened and projected into model embedding dim. The ONLY image-specific part.",6.5)}{arr(99,40,107,40)}
-    {box(109,20,16,14,C.gate,"CLS","Learnable class token. Final repr → classification.",5.5)}{box(109,36,16,14,C.token,"P₁","Patch 1",5.5)}{box(109,52,16,14,C.token,"P₂","",5.5)}{box(109,68,16,14,C.token,"..","",5.5)}{lbl(117,90,"+Pos Enc",5.5)}{arr(130,46,138,46)}
-    {box(140,26,70,42,C.attn,"Transformer Encoder","IDENTICAL to text Transformer. Patches attend to each other like words. Needs large-scale data to match CNNs.",6.5)}{arr(175,68,175,80)}{box(140,82,70,18,C.ffn,"Classify","MLP on [CLS] token output. Proved Transformers generalize beyond text.",6.5)}</svg>);
+  const vbw = '0 0 270 168';
+  return (<svg viewBox={vbw} style={{...ss,minWidth:200}} xmlns="http://www.w3.org/2000/svg">{defs}
+    {ghostBox(8, 20, 46, 32, 'CNN stem', 'Convolutional front-end with local receptive fields — ViT swaps this for patch tokens at scale.', FSV)}
+    <DiagramTip detail="Input image split into non-overlapping patches (e.g., 16×16 pixels). Patches replace convolutions — the Transformer treats them like word tokens."><rect x={60} y={18} width={40} height={40} rx={2} fill="none" stroke={C.novel} strokeWidth={1}/><line x1={60} y1={32} x2={100} y2={32} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/><line x1={60} y1={45} x2={100} y2={45} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/><line x1={73} y1={18} x2={73} y2={58} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/><line x1={87} y1={18} x2={87} y2={58} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/>{lbl(80, 64, 'patch grid', FS, C.novel)}</DiagramTip>
+    {arr(102, 38, 110, 38)}{lbl(106, 34, 'unfold', FS, '#666')}
+    <rect x={114} y={28} width={8} height={3} fill={C.token} opacity={0.85}/><rect x={114} y={33} width={8} height={3} fill={C.token} opacity={0.85}/><rect x={114} y={38} width={8} height={3} fill={C.token} opacity={0.85}/><rect x={114} y={43} width={8} height={3} fill={C.token} opacity={0.85}/>
+    {lbl(118, 52, 'N·P²·C', FSV, '#666')}
+    {arr(126, 38, 134, 38)}{lbl(130, 34, 'rows', FSV, '#666')}
+    {box(136, 22, 52, 32, C.novel, 'Linear\nprojection', 'Each patch flattened then projected to embedding dim d — the only image-specific layer.', FS)}
+    {lbl(162, 18, '→ d_model', FSV, '#666')}
+    {arr(190, 38, 198, 38)}{lbl(194, 34, 'patch embeds', FS, '#666')}
+    {box(200, 14, 24, 14, C.gate, 'CLS', 'Learnable class token; its final state drives classification.', FS)}
+    {box(200, 30, 24, 18, C.token, 'patches', 'One vector per patch after projection.', FS)}
+    {lbl(212, 54, 'z_i', FSV, '#666')}
+    {arr(226, 36, 232, 36)}{lbl(230, 32, 'stack', FSV, '#666')}
+    {op(242, 36, '+', 'Add absolute position encodings to CLS and every patch embedding.', { r: 10, color: C.dim, fill: 'none' })}
+    {arr(242, 46, 242, 64)}{lbl(248, 56, 'E', FSV, '#666')}
+    {box(18, 64, 234, 34, C.attn, 'Transformer encoder', 'Same self-attention + FFN blocks as in NLP; patches attend across the whole image.', FS)}
+    {arr(135, 98, 135, 106)}{lbl(142, 102, 'contextualized', FS, '#666')}
+    {box(78, 108, 114, 22, C.ffn, 'Classifier on CLS', 'MLP on the final CLS vector — generalizes Transformers beyond language.', FS)}
+    {lbl(135, 160, 'Images become patch token sequences; one linear map to d_model, then a standard Transformer and CLS head.', FS, C.novel)}</svg>);
 }

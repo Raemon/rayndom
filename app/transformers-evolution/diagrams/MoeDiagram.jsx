@@ -1,7 +1,28 @@
 import { C } from '../colors';
-import { getDiagramHelpers, arr, lbl, defs, vb, ss } from './helpers';
+import { getDiagramHelpers, arr, lbl, defs, ss, ghostBox, op, FS, FSV } from './helpers';
 
 export function MoeDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox={vb} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}{lbl(105,10,"Mixture of Experts")}{box(65,18,80,16,C.token,"Input Token","Each token routed independently. Dense model: all params. MoE: only top-k experts.",6.5)}{arr(105,34,105,42)}{box(55,44,100,20,C.novel,"Router / Gate","Learned network computing probability over experts per token. Top-k selection (usually 2). Load-balancing loss prevents collapse.",6.5)}{arr(75,64,35,74)}{arr(105,64,105,74)}{arr(135,64,175,74)}{box(10,76,50,22,C.ffn,"Expert 1","Independent FFN. Can specialize (e.g., code vs. prose). Same structure as standard Transformer FFN.")}{box(80,76,50,22,C.ffn,"Expert 2","Only selected experts compute. Rest skipped = conditional computation.")}{box(150,76,50,22,C.ffn,"Expert N","Mixtral: 8 experts. Switch Transformer: 128. More = more params, same per-token cost.")}{lbl(105,72,"top-k",5.5,C.novel)}{arr(35,98,80,108)}{arr(105,98,105,108)}{arr(175,98,130,108)}{box(60,110,90,16,C.novel,"Weighted Sum","Router weights × expert outputs. Total params 8× larger with same inference cost.",6.5)}</svg>);
+  const vb2 = '0 0 260 162';
+  return (<svg viewBox={vb2} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+{ghostBox(6,24,50,70,'Dense FFN','Predecessor: one shared MLP; every token uses the same weights — full compute per token.',FSV)}
+{lbl(31,98,'(replaced)',FSV,C.dim)}
+{box(72,12,176,18,C.token,'Token embedding xₜ','Per-token hidden vector entering the MoE layer.',FS)}
+{arr(160,30,160,38)}{lbl(172,35,'hₜ',FSV,C.dim)}
+{box(70,40,180,20,C.novel,'Router / gate','Learned scores over experts; top-k indices + softmax weights (typical k=2).',FS)}
+{arr(118,60,42,74)}{lbl(72,65,'top-2 route',FSV,C.novel)}
+{arr(160,60,160,74)}{lbl(172,65,'router logits',FSV,C.dim)}
+{arr(202,60,222,74)}{lbl(218,65,'top-2 route',FSV,C.novel)}
+{box(10,76,54,22,C.ffn,'Expert 1','Sparse FFN; runs only when selected for this token.',FS)}
+{box(103,76,54,22,C.ffn,'Expert 2','',FS)}
+{box(196,76,54,22,C.ffn,'Expert N','Many experts total; only k active.',FS)}
+{op(37,108,'×','Scalar multiply router weight w₁ with expert output y₁.',{r:8,color:C.dim,fill:'none'})}
+{op(130,108,'×','w₂ · y₂',{r:8,color:C.dim,fill:'none'})}
+{op(223,108,'×','wₖ · yₖ',{r:8,color:C.dim,fill:'none'})}
+{arr(37,98,37,100)}{arr(130,98,130,100)}{arr(223,98,223,100)}
+{arr(37,116,152,126)}{arr(130,116,160,124)}{arr(223,116,168,126)}
+{op(160,132,'+','Sum of top-k weighted expert outputs = layer output.',{r:9,color:C.dim,fill:'none'})}
+{lbl(200,134,'Σ wᵢyᵢ',FSV,C.dim)}
+{lbl(130,156,'SPARSE EXPERTS PER TOKEN — LARGE PARAM POOL, SMALL ACTIVE SET PER STEP',FSV,'#444')}
+</svg>);
 }

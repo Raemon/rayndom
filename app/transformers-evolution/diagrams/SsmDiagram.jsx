@@ -1,12 +1,27 @@
 import { C } from '../colors';
-import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip } from './helpers';
+import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, ghostBox, FS, FSV } from './helpers';
 
 export function SsmDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 220 130" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}{lbl(110,10,"SSM / Mamba vs Attention")}{lbl(55,24,"Transformer Attention",6,"#666")}{lbl(165,24,"Mamba / SSM",6,C.novel)}
-    <DiagramTip detail="Standard attention: every token attends to every other. Powerful but O(N²). Prohibitive for very long sequences or on-device."><rect x={5} y={28} width={100} height={40} rx={3} fill={C.attn} opacity={0.12}/>{lbl(55,42,"All-to-all attention",6,C.attn)}{lbl(55,52,"O(N²) time & memory",6,C.attn)}{lbl(55,62,"Highly parallel (GPU ✓)",6,C.attn)}</DiagramTip>
-    <DiagramTip detail="SSMs replace N×N attention with a hidden state updated recurrently. O(N) time, O(1) memory per step. Can be parallelized via scan."><rect x={115} y={28} width={100} height={40} rx={3} fill={C.novel} opacity={0.12}/>{lbl(165,42,"Recurrent state update",6,C.novel)}{lbl(165,52,"O(N) time, O(1) memory",6,C.novel)}{lbl(165,62,"Parallel scan (GPU ✓)",6,C.novel)}</DiagramTip>
-    {box(115,76,100,20,C.novel,"Selective Gating","Mamba's key: input-dependent gating for selective remember/forget. Closed the quality gap with Transformers.",6.5)}
-    {arr(55,68,55,100)}{arr(165,96,165,100)}
-    {box(20,102,180,22,C.ffn,"Hybrid (Jamba)","Alternate SSM (efficient) + attention (precise retrieval) layers. O(N) scaling with attention-level quality.",6.5)}</svg>);
+  return (<svg viewBox="0 0 260 170" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+    {lbl(65,16,"Transformer attention",FS,"#666")}{lbl(195,16,"SSM / Mamba core",FS,C.novel)}
+    <DiagramTip detail="Dense self-attention lets every token attend to every other in O(N²) time and memory—great quality, painful at megabase lengths.">
+      <rect x={8} y={22} width={114} height={48} rx={2} fill={C.attn} opacity={0.08}/>
+      {ghostBox(14,28,102,18,"All-to-all pairwise scores","Classic self-attention materializes broad receptive fields at quadratic cost.",FS)}
+      {lbl(65,54,"O(N²) time & memory",FS,C.attn)}
+      {lbl(65,64,"massively parallel matmuls",FS,C.attn)}
+    </DiagramTip>
+    <DiagramTip detail="Structured state-space models maintain a fixed-size state and recurrently ingest tokens in O(N) time with O(1) state per step, parallelized via scans.">
+      <rect x={138} y={22} width={114} height={48} rx={2} fill={C.novel} opacity={0.08}/>
+      {lbl(195,36,"Recurrent state update",FS,C.novel)}
+      {lbl(195,46,"O(N) time, O(1) state",FS,C.novel)}
+      {lbl(195,56,"parallel prefix scan on GPU",FS,C.novel)}
+    </DiagramTip>
+    {arr(65,70,65,86)}{lbl(48,78,"attention bottleneck",FS,"#666")}
+    {arr(195,70,195,86)}{lbl(212,78,"sequential scan",FS,"#666")}
+    {box(128,88,124,24,C.novel,"Selective gating","Input-dependent gates let Mamba remember or forget per channel, closing much of the quality gap.",FS)}
+    {op(244,100,"×","Pointwise gate mixes projected input with the recurrent state update.",{r:8,color:C.gate,fill:'none'})}
+    {box(40,118,180,26,C.ffn,"Hybrid stacks (e.g., Jamba)","Interleave SSM layers for cheap context with a few attention layers for precise retrieval.",FS)}
+    {lbl(130,158,"SSMs trade all-to-all attention for recurrent state updates; selective gates and hybrid stacks recover transformer-like quality.",FS,C.novel)}
+  </svg>);
 }

@@ -1,14 +1,22 @@
 import { C } from '../colors';
-import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip } from './helpers';
+import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, ghostBox, FS, FSV } from './helpers';
 
 export function LongctxDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 220 130" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}{lbl(110,10,"Long Context: 2K → 1M+")}
-    <DiagramTip detail="Original: 512–2048 tokens. Limited by O(N²) memory, position encoding degradation, and lack of long-document training data."><rect x={10} y={24} width={30} height={12} rx={2} fill={C.dim}/>{lbl(25,33,"2K",5.5)}</DiagramTip>
-    <DiagramTip detail="Modern: 128K–1M+. Required solving multiple independent problems simultaneously."><rect x={10} y={24} width={200} height={12} rx={2} fill="none" stroke={C.novel} strokeWidth={1}/>{lbl(200,33,"1M+",5.5,C.novel)}</DiagramTip>
-    {box(10,46,95,18,C.novel,"RoPE + NTK Scaling","Adjust RoPE frequencies so model extrapolates to unseen positions. Based on Neural Tangent Kernel theory.",6.5)}
-    {box(115,46,95,18,C.novel,"FlashAttention-2","Tiled attention: O(N²) → O(N) memory. Without it, 128K tokens ≈ 1TB attention memory.",6.5)}
-    {box(10,72,95,18,C.novel,"Ring Attention","Split sequence across GPUs. Each computes on its segment. K,V blocks passed in ring topology.",6.5)}
-    {box(115,72,95,18,C.novel,"Progressive Training","Train on longer documents gradually. Short-trained models can't use long context even if arch supports it.",6.5)}
-    {arr(110,90,110,100)}{box(30,102,160,20,C.ffn,"128K–1M+ Context","All four combined. Process entire codebases, books, long conversations in one pass.",6.5)}</svg>);
+  return (<svg viewBox="0 0 260 158" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+    <DiagramTip detail="Early LMs were trained for hundreds to a couple thousand tokens; length was limited by quadratic attention memory, weak length extrapolation, and short-document corpora.">
+      {ghostBox(14,20,48,16,"~2K window","512–2K token budgets were typical before long-context systems matured.",FS)}
+    </DiagramTip>
+    <DiagramTip detail="Modern stacks reach 128K–1M+ tokens by combining better position scaling, IO-aware attention, distributed kernels, and curricula that teach models to use length.">
+      <rect x={14} y={20} width={232} height={16} rx={2} fill="none" stroke={C.novel} strokeWidth={1}/>
+      {lbl(220,31,"128K–1M+ span",FS,C.novel)}
+    </DiagramTip>
+    {box(14,44,112,24,C.novel,"RoPE + NTK-style scaling","Rescale or interpolate rotary bases so attention stays coherent far past pretraining lengths.",FS)}
+    {box(134,44,112,24,C.novel,"FlashAttention-2 (tiling)","Cuts attention memory from materialized N×N to a streaming tile footprint.",FS)}
+    {box(14,74,112,24,C.novel,"Ring / shard attention","Partition sequence across devices and pass K,V blocks in a ring so no single GPU holds all pairs.",FS)}
+    {box(134,74,112,24,C.novel,"Progressive length curriculum","Gradually increase training context so weights actually learn to exploit the extra span.",FS)}
+    {arr(130,98,130,106)}{lbl(188,102,"stacked enablers",FS,"#666")}
+    {box(30,108,200,26,C.ffn,"Long-context LM pass","Together these let one forward pass cover codebases, books, or hour-long chats.",FS)}
+    {lbl(130,152,"Long context pairs scaled position methods, memory-aware attention, distributed kernels, and training that teaches models to use length.",FS,C.novel)}
+  </svg>);
 }

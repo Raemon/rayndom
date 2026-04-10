@@ -1,11 +1,38 @@
 import { C } from '../colors';
-import { getDiagramHelpers, arr, lbl, defs, vb, ss, DiagramTip } from './helpers';
+import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, FS, FSV } from './helpers';
 
 export function Gpt4Diagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox={vb} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}{lbl(105,10,"Multimodal Transformer")}
-    <DiagramTip detail="Input image → processed by visual encoder. Pre-trained ViT or CLIP encodes patches into embeddings aligned with text space."><rect x={5} y={24} width={30} height={30} rx={2} fill="none" stroke={C.novel} strokeWidth={1}/><line x1={5} y1={34} x2={35} y2={34} stroke={C.novel} strokeWidth={0.4}/><line x1={5} y1={44} x2={35} y2={44} stroke={C.novel} strokeWidth={0.4}/><line x1={15} y1={24} x2={15} y2={54} stroke={C.novel} strokeWidth={0.4}/><line x1={25} y1={24} x2={25} y2={54} stroke={C.novel} strokeWidth={0.4}/>{lbl(20,62,"Image",6)}</DiagramTip>
-    {arr(35,39,45,39)}{box(47,28,50,22,C.novel,"ViT Encoder","Vision model converts patches → embeddings. Pre-trained (e.g., CLIP) for vision-language alignment.",6.5)}{arr(97,39,107,39)}{box(109,30,35,18,C.novel,"Project","Linear proj maps visual embeddings into LM's token space.",6)}{arr(144,39,153,39)}
-    {box(155,24,20,14,C.novel,"v₁","Visual token.",5.5)}{box(155,40,20,14,C.novel,"v₂","",5.5)}{box(177,24,20,14,C.token,"t₁","Text token.",5.5)}{box(177,40,20,14,C.token,"t₂","",5.5)}{lbl(176,62,"mixed",5.5)}{arr(176,64,105,74)}
-    {box(30,76,150,22,C.attn,"Transformer Decoder","SAME decoder as text-only models. Visual and text tokens attend to each other. Cross-modal reasoning via standard self-attention.")}{arr(105,98,105,106)}{box(45,108,120,18,C.ffn,"Multimodal Output","Describe images, answer visual questions, reason about charts.",6.5)}</svg>);
+  const vb2 = '0 0 268 156';
+  return (<svg viewBox={vb2} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+<DiagramTip detail="Raw image → fixed grid of patches. ViT/CLIP-style encoder maps each patch to a vector; sequence length grows with patch count.">
+<rect x={6} y={18} width={28} height={28} fill="none" stroke={C.novel} strokeWidth={0.9}/>
+<line x1={6} y1={28} x2={34} y2={28} stroke={C.novel} strokeWidth={0.35}/>
+<line x1={6} y1={38} x2={34} y2={38} stroke={C.novel} strokeWidth={0.35}/>
+<line x1={16} y1={18} x2={16} y2={46} stroke={C.novel} strokeWidth={0.35}/>
+<line x1={24} y1={18} x2={24} y2={46} stroke={C.novel} strokeWidth={0.35}/>
+{lbl(20,54,'patches',FS,C.dim)}
+</DiagramTip>
+{arr(34,32,44,32)}{lbl(50,29,'pixels',FSV,C.dim)}
+{box(46,20,52,24,C.novel,'ViT encoder','Splits image into patches; stacked transformer blocks output one embedding per patch.',FS)}
+{arr(98,32,108,32)}{lbl(114,29,'patch emb\n(high d)',FSV,C.dim)}
+{box(110,22,38,20,C.novel,'Project W','Linear map aligns visual feature dim with language model d_model.',FS)}
+{arr(148,32,158,32)}{lbl(164,29,'d_model',FSV,C.dim)}
+<rect x={160} y={20} width={10} height={8} fill={C.novel} opacity={0.35}/>
+<rect x={172} y={20} width={10} height={8} fill={C.novel} opacity={0.35}/>
+{lbl(181,27,'…',FSV,C.dim)}
+<rect x={186} y={20} width={22} height={8} fill={C.token} opacity={0.35}/>
+<rect x={210} y={20} width={22} height={8} fill={C.token} opacity={0.35}/>
+{lbl(166,38,'narrow P×d',FSV,C.dim)}{lbl(218,38,'text rows',FSV,C.dim)}
+{box(158,44,24,14,C.novel,'v₁','Visual token embedding in LM space.',FSV)}
+{box(184,44,24,14,C.novel,'v₂','',FSV)}
+{box(210,44,24,14,C.token,'t₁','Text token embedding.',FSV)}
+{box(236,44,22,14,C.token,'t₂','',FSV)}
+{lbl(200,62,'interleaved sequence',FS,'#666')}
+{arr(200,64,134,78)}{lbl(168,72,'concat / order',FSV,C.dim)}
+{box(40,82,228,22,C.attn,'Transformer decoder','Same self-attention over mixed modalities: vision and text tokens attend to each other in one sequence.',FS)}
+{arr(154,104,154,110)}{lbl(166,107,'hidden → LM head',FSV,C.dim)}
+{box(52,112,204,20,C.ffn,'Multimodal output','Captions, VQA, chart reading — one forward pass over fused tokens.',FS)}
+{lbl(134,148,'VISION AS EXTRA TOKENS IN ONE DECODER — DIMENSIONS ALIGNED BY PROJECTION',FSV,'#444')}
+</svg>);
 }

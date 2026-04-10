@@ -92,7 +92,7 @@ export default function GlossarySidebar({ onSelectPost }) {
                 padding: '2px 8px', margin: '1px 0',
                 fontSize: '0.8em', color: '#1a1a1a',
               }}>
-                <JargonSpan term={term} matchedText={term} depth={0} />
+                <JargonSpan term={term} matchedText={term} />
               </li>
             ))}
           </ul>
