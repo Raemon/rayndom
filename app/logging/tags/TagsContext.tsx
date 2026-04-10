@@ -7,6 +7,7 @@ import { runOptimisticMutation } from '../lib/optimisticMutation'
 type TagsContextType = {
   tags: Tag[]
   setTags: React.Dispatch<React.SetStateAction<Tag[]>>
+  isLoading: boolean
   load: () => Promise<void>
   createTag: (args: { name: string, type: string }) => Promise<Tag>
   updateTag: (args: { id: number, name?: string, type?: string, subtype?: string | null, description?: string | null, parentTagId?: number | null, suggestedTagIds?: number[] | null, noAiSuggest?: boolean }) => Promise<void>
@@ -17,6 +18,7 @@ const TagsContext = createContext<TagsContextType | null>(null)
 
 export const TagsProvider = ({ children }:{ children: ReactNode }) => {
   const [tags, setTags] = useState<Tag[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   const load = useCallback(async () => {
     try {
@@ -30,7 +32,9 @@ export const TagsProvider = ({ children }:{ children: ReactNode }) => {
   }, [])
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
-  useEffect(() => { load() }, [load])
+  useEffect(() => {
+    load().finally(() => setIsLoading(false))
+  }, [load])
 
   const createTag = useCallback(async ({ name, type }:{ name: string, type: string }) => {
     const optimistic: Tag = { id: -Date.now(), name, type }
@@ -110,7 +114,7 @@ export const TagsProvider = ({ children }:{ children: ReactNode }) => {
   }, [tags])
 
   return (
-    <TagsContext.Provider value={{ tags, setTags, load, createTag, updateTag, deleteTag }}>
+    <TagsContext.Provider value={{ tags, setTags, isLoading, load, createTag, updateTag, deleteTag }}>
       {children}
     </TagsContext.Provider>
   )
