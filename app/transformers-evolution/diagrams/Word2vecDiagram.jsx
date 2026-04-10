@@ -1,8 +1,8 @@
 import { C } from '../colors';
 import { getDiagramHelpers, arr, lbl, defs, vb, ss } from './helpers';
 
-export function Word2vecDiagram({ onTip }) {
-  const { t, box } = getDiagramHelpers(onTip);
+export function Word2vecDiagram() {
+  const { box } = getDiagramHelpers();
   return (<svg viewBox={vb} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}{lbl(105,10,"Word2Vec: Skip-Gram")}
     {box(10,24,55,22,C.dim,"One-Hot\n[0,0,1,0...]","Sparse input: 10,000+ dims, all zeros except one. 'cat' and 'kitten' are equidistant.",6)}
     {arr(65,35,75,35)}

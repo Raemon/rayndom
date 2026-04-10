@@ -1,8 +1,8 @@
 import { C } from '../colors';
 import { getDiagramHelpers, arr, lbl, defs, ss } from './helpers';
 
-export function SftDiagram({ onTip }) {
-  const { t, box } = getDiagramHelpers(onTip);
+export function SftDiagram() {
+  const { box } = getDiagramHelpers();
   return (<svg viewBox="0 0 220 130" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}{lbl(110,10,"Instruction Tuning (SFT)")}
     {box(5,24,65,20,C.attn,"Pre-trained LM","Predicts next token. Fluent but treats everything as text continuation — ignores instructions.",6.5)}
     {arr(70,34,80,34)}

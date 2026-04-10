@@ -7,10 +7,8 @@ import GlossarySidebar from './GlossarySidebar';
 
 export default function TransformerLineage() {
   const [collapsed, setCollapsed] = useState(false);
-  const [tip, setTip] = useState(null);
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [rows, setRows] = useState(data);
-  const onTip = useCallback((t) => setTip(t), []);
   const handleRowChange = useCallback((idx, newRow) => {
     setRows(prev => prev.map((r, i) => i === idx ? newRow : r));
   }, []);
@@ -26,21 +24,6 @@ export default function TransformerLineage() {
       color: C.textPrimary,
       height: "100vh", overflow: "auto", position: "relative",
     }}>
-      {/* Tooltip */}
-      {tip && (
-        <div style={{
-          position: "fixed",
-          left: Math.min(tip.x + 12, window.innerWidth - 320),
-          top: Math.max(tip.y - 10, 10),
-          background: "#fff", border: "1px solid #ccc", borderRadius: 6,
-          padding: "8px 12px", maxWidth: 300, fontSize: "0.85em",
-          lineHeight: 1.5, color: "#1a1a1a", zIndex: 1000,
-          pointerEvents: "none", boxShadow: "0 4px 20px rgba(0,0,0,0.12)",
-        }}>
-          {tip.text}
-        </div>
-      )}
-
       <div style={{ maxWidth: 1600, margin: "0 auto", padding: "32px 20px" }}>
         {/* Header */}
         <div style={{
@@ -95,7 +78,6 @@ export default function TransformerLineage() {
                 row={row}
                 idx={idx}
                 collapsed={collapsed}
-                onTip={onTip}
                 onRowChange={newRow => handleRowChange(idx, newRow)}
               />
             ))}

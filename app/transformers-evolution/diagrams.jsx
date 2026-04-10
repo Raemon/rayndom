@@ -52,10 +52,10 @@ const diagramComponents = {
   agentic: AgenticDiagram,
 };
 
-function Diagram({ type, onTip }) {
+function Diagram({ type }) {
   const Component = diagramComponents[type];
   if (!Component) return null;
-  return <Component onTip={onTip} />;
+  return <Component />;
 }
 
 export { Diagram };

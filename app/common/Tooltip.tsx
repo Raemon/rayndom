@@ -1,6 +1,15 @@
 "use client"
 
-import { ReactElement, useEffect, useLayoutEffect, useRef, useState } from "react"
+import {
+  type CSSProperties,
+  type MouseEvent,
+  type ReactNode,
+  type RefObject,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react"
 import { createPortal } from "react-dom"
 
 type Placement =
@@ -17,6 +26,8 @@ type Placement =
   | 'right-start'
   | 'right-end'
 
+type TooltipAs = 'span' | 'g'
+
 const MyTooltip = ({
   children,
   content,
@@ -27,8 +38,13 @@ const MyTooltip = ({
   wrapperClassName = '',
   noMargin=true,
   inlineBlock = false,
+  as = 'span',
+  wrapperStyle,
+  contentClassName = '',
+  zIndex = 50,
+  leaveDelayMs = 0,
 }: {
-  children: ReactElement;
+  children: ReactNode;
   content: React.ReactNode;
   placement?: Placement;
   interactive?: boolean;
@@ -37,25 +53,58 @@ const MyTooltip = ({
   wrapperClassName?: string;
   noMargin?: boolean;
   inlineBlock?: boolean;
+  /** Use `g` for tooltip triggers inside SVG (invalid to wrap SVG nodes in `span`). */
+  as?: TooltipAs;
+  wrapperStyle?: CSSProperties;
+  /** Appended to the portal tooltip box (Tailwind `!` overrides default box styles). */
+  contentClassName?: string;
+  zIndex?: number;
+  /** Delay before hiding after pointer leaves (helps cross gaps to an interactive tooltip). */
+  leaveDelayMs?: number;
 }) => {
-  const wrapperRef = useRef<HTMLSpanElement | null>(null)
+  const wrapperRef = useRef<HTMLSpanElement | SVGGElement | null>(null)
   const tooltipRef = useRef<HTMLDivElement | null>(null)
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const [position, setPosition] = useState<{ top: number, left: number }>({ top: 0, left: 0 })
-  const handleMouseEnter = () => setIsVisible(true)
-  const handleMouseLeave = (e: React.MouseEvent) => {
-    if (interactive && tooltipRef.current && e.relatedTarget instanceof Node && tooltipRef.current.contains(e.relatedTarget)) return
-    setIsVisible(false)
+
+  const clearHideTimer = () => {
+    if (hideTimerRef.current !== null) {
+      clearTimeout(hideTimerRef.current)
+      hideTimerRef.current = null
+    }
   }
-  const handleTooltipMouseLeave = (e: React.MouseEvent) => {
+
+  const scheduleHide = () => {
+    clearHideTimer()
+    if (leaveDelayMs > 0) {
+      hideTimerRef.current = setTimeout(() => setIsVisible(false), leaveDelayMs)
+    } else {
+      setIsVisible(false)
+    }
+  }
+
+  const handleMouseEnter = () => {
+    clearHideTimer()
+    setIsVisible(true)
+  }
+
+  const handleMouseLeave = (e: MouseEvent) => {
+    if (interactive && tooltipRef.current && e.relatedTarget instanceof Node && tooltipRef.current.contains(e.relatedTarget)) return
+    scheduleHide()
+  }
+
+  const handleTooltipMouseLeave = (e: MouseEvent) => {
     if (interactive && wrapperRef.current && e.relatedTarget instanceof Node && wrapperRef.current.contains(e.relatedTarget)) return
-    setIsVisible(false)
+    scheduleHide()
   }
 
   useEffect(() => {
     setIsMounted(true)
   }, [])
+
+  useEffect(() => () => clearHideTimer(), [])
 
   useLayoutEffect(() => {
     if (!isVisible) return
@@ -104,42 +153,72 @@ const MyTooltip = ({
       top = rect.bottom - tipRect.height
       left = rect.right + margin
     }
+    const pad = 8
+    const vw = typeof window !== 'undefined' ? window.innerWidth : 0
+    const vh = typeof window !== 'undefined' ? window.innerHeight : 0
+    if (vw > 0 && vh > 0) {
+      left = Math.max(pad, Math.min(left, vw - tipRect.width - pad))
+      top = Math.max(pad, Math.min(top, vh - tipRect.height - pad))
+    }
     setPosition({ top, left })
   }, [isVisible, placement, noMargin, content, maxWidth])
+
+  const portal = isMounted && isVisible ? createPortal(
+    <div
+      ref={tooltipRef}
+      onMouseEnter={interactive ? handleMouseEnter : undefined}
+      onMouseLeave={interactive ? handleTooltipMouseLeave : undefined}
+      className={`
+            fixed
+            ${noBox ? 'bg-transparent' : 'bg-black/65 text-white rounded-lg p-2'}
+            text-sm
+            ${interactive ? '' : 'pointer-events-none'}
+            ${contentClassName}
+          `}
+      style={{
+        maxWidth: maxWidth,
+        width: 'max-content',
+        top: position.top,
+        left: position.left,
+        zIndex,
+      }}
+    >
+      {content}
+    </div>,
+    document.body
+  ) : null
+
+  if (as === 'g') {
+    return (
+      <g
+        className={`outline-none focus:outline-none ${wrapperClassName}`}
+        tabIndex={0}
+        ref={wrapperRef as RefObject<SVGGElement>}
+        style={wrapperStyle}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onFocus={() => { clearHideTimer(); setIsVisible(true) }}
+        onBlur={() => { clearHideTimer(); setIsVisible(false) }}
+      >
+        {children}
+        {portal}
+      </g>
+    )
+  }
 
   return (
     <span
       className={`relative ${inlineBlock ? 'inline-block' : 'inline'} group focus:outline-none ${wrapperClassName}`}
       tabIndex={0}
-      ref={wrapperRef}
+      ref={wrapperRef as RefObject<HTMLSpanElement>}
+      style={wrapperStyle}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onFocus={() => setIsVisible(true)}
-      onBlur={() => setIsVisible(false)}
+      onFocus={() => { clearHideTimer(); setIsVisible(true) }}
+      onBlur={() => { clearHideTimer(); setIsVisible(false) }}
     >
       {children}
-      {isMounted && isVisible ? createPortal(
-        <div
-          ref={tooltipRef}
-          onMouseEnter={interactive ? handleMouseEnter : undefined}
-          onMouseLeave={interactive ? handleTooltipMouseLeave : undefined}
-          className={`
-            fixed z-50
-            ${noBox ? 'bg-transparent' : 'bg-black/65 text-white rounded-lg p-2'}
-            text-sm
-            ${interactive ? '' : 'pointer-events-none'}
-          `}
-          style={{
-            maxWidth: maxWidth,
-            width: 'max-content',
-            top: position.top,
-            left: position.left
-          }}
-        >
-          {content}
-        </div>,
-        document.body
-      ) : null}
+      {portal}
     </span>
   )
 }

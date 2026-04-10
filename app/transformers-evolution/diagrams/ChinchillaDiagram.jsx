@@ -1,8 +1,8 @@
 import { C } from '../colors';
 import { getDiagramHelpers, arr, lbl, defs, ss } from './helpers';
 
-export function ChinchillaDiagram({ onTip }) {
-  const { t, box } = getDiagramHelpers(onTip);
+export function ChinchillaDiagram() {
+  const { box } = getDiagramHelpers();
   return (<svg viewBox="0 0 220 130" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}{lbl(110,10,"Compute-Optimal Scaling")}
     {lbl(55,24,"Model Size (params)",6,"#666")}{lbl(165,24,"Training Tokens",6,"#666")}
     {box(10,30,90,18,C.dim,"Gopher: 280B params","Previous approach: maximize model size. Undertrained on only 300B tokens.",6.5)}

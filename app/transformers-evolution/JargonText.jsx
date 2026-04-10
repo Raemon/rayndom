@@ -1,6 +1,5 @@
 'use client';
-import { useState, useRef } from 'react';
-import { createPortal } from 'react-dom';
+import Tooltip from '@/app/common/Tooltip';
 import { glossary } from './glossary';
 import { C } from './colors';
 
@@ -18,50 +17,26 @@ function findTerm(part) {
 const MAX_DEPTH = 2;
 
 export const JargonSpan = ({ term, matchedText, depth }) => {
-  const [show, setShow] = useState(false);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const hideRef = useRef(null);
   const def = glossary[term];
-  const enter = (e) => {
-    clearTimeout(hideRef.current);
-    setShow(true);
-    setPos({ x: e.clientX, y: e.clientY });
-  };
-  const leave = () => {
-    hideRef.current = setTimeout(() => setShow(false), depth < MAX_DEPTH - 1 ? 200 : 0);
-  };
-  const keepOpen = () => clearTimeout(hideRef.current);
+  const canNest = depth < MAX_DEPTH - 1;
   return (
-    <>
-      <span
-        onMouseEnter={enter}
-        onMouseLeave={leave}
-        style={{ cursor: 'help', borderBottom: '1px dashed rgba(0,0,0,0.3)' }}
-      >
-        {matchedText}
-      </span>
-      {show && createPortal(
-        <div
-          onMouseEnter={depth < MAX_DEPTH - 1 ? keepOpen : undefined}
-          onMouseLeave={depth < MAX_DEPTH - 1 ? leave : undefined}
-          style={{
-            position: 'fixed',
-            left: Math.min(pos.x + 12, window.innerWidth - 320),
-            top: Math.max(pos.y + 16, 10),
-            background: '#fff', border: '1px solid #ccc', borderRadius: 6,
-            padding: '8px 12px', maxWidth: 300, fontSize: '0.85em',
-            lineHeight: 1.5, color: '#1a1a1a', zIndex: 1000 + depth * 10,
-            pointerEvents: depth < MAX_DEPTH - 1 ? 'auto' : 'none',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
-            fontFamily: "'Source Serif 4', Georgia, serif",
-          }}
-        >
+    <Tooltip
+      content={
+        <>
           <strong style={{ color: C.textAccent }}>{term}:</strong>{' '}
-          {depth < MAX_DEPTH - 1 ? <JargonText depth={depth + 1}>{def}</JargonText> : def}
-        </div>,
-        document.body
-      )}
-    </>
+          {canNest ? <JargonText depth={depth + 1}>{def}</JargonText> : def}
+        </>
+      }
+      interactive={canNest}
+      leaveDelayMs={canNest ? 200 : 0}
+      placement="bottom-start"
+      maxWidth={300}
+      zIndex={1000 + depth * 10}
+      contentClassName="!bg-white !text-[#1a1a1a] border border-neutral-300 shadow-lg text-[0.85em] leading-normal font-['Source_Serif_4',Georgia,serif]"
+      wrapperStyle={{ cursor: 'help', borderBottom: '1px dashed rgba(0,0,0,0.3)' }}
+    >
+      <span>{matchedText}</span>
+    </Tooltip>
   );
 };
 

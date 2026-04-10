@@ -46,7 +46,7 @@ const Cell = ({ text, collapsed: c }) => {
   );
 };
 
-export const TransformerRow = ({ row, idx, collapsed, onTip, onRowChange }) => {
+export const TransformerRow = ({ row, idx, collapsed, onRowChange }) => {
   const bg = C.rowEven;
   const updateField = (field, val) => {
     onRowChange?.({ ...row, [field]: val });
@@ -68,7 +68,7 @@ export const TransformerRow = ({ row, idx, collapsed, onTip, onRowChange }) => {
         {row.name}
       </EditableCell>
       <td style={{ padding: "10px", minWidth: 200 }}>
-        <Diagram type={row.diag} onTip={onTip} />
+        <Diagram type={row.diag} />
       </td>
       <EditableCell
         value={row.problem}
