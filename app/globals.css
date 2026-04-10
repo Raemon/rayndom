@@ -164,3 +164,91 @@ li {
 .tiptap li::marker {
   color: var(--foreground);
 }
+.glossarify-content {
+  font-family: var(--font-lora);
+  line-height: 1.8;
+  color: #ddd;
+  font-size: 17px;
+}
+.glossarify-content h1 {
+  font-family: var(--font-cormorant-garamond);
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1.2em 0 0.4em;
+  color: #fff;
+}
+.glossarify-content h2 {
+  font-family: var(--font-cormorant-garamond);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1em 0 0.3em;
+  color: #eee;
+}
+.glossarify-content h3 {
+  font-family: var(--font-cormorant-garamond);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.8em 0 0.2em;
+  color: #eee;
+}
+.glossarify-content h4, .glossarify-content h5, .glossarify-content h6 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.6em 0 0.2em;
+  color: #ddd;
+}
+.glossarify-content p {
+  margin: 0.5em 0;
+}
+.glossarify-content ul, .glossarify-content ol {
+  padding-left: 1.5em;
+  margin: 0.4em 0;
+}
+.glossarify-content li {
+  margin: 0.15em 0;
+}
+.glossarify-content ul {
+  list-style-type: disc;
+}
+.glossarify-content ol {
+  list-style-type: decimal;
+}
+.glossarify-content blockquote {
+  border-left: 3px solid #666;
+  padding-left: 1em;
+  margin: 0.5em 0;
+  color: #aaa;
+  font-style: italic;
+}
+.glossarify-content table {
+  border-collapse: collapse;
+  margin: 0.5em 0;
+  font-size: 15px;
+}
+.glossarify-content th, .glossarify-content td {
+  padding: 4px 10px;
+  border-bottom: 1px solid #555;
+  text-align: left;
+}
+.glossarify-content th {
+  color: #fff;
+  font-weight: 600;
+}
+.glossarify-content hr {
+  border: none;
+  border-top: 1px solid #555;
+  margin: 1em 0;
+}
+.glossarify-content strong {
+  font-weight: 700;
+  color: #fff;
+}
+.glossarify-content em {
+  font-style: italic;
+}
+.glossarify-content a {
+  color: #8bc3ff;
+}
+.glossarify-content img {
+  max-width: 100%;
+}

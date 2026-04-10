@@ -5,6 +5,7 @@ import { runOptimisticMutation } from '../lib/optimisticMutation'
 
 export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, end: string, autoLoad?: boolean }) => {
   const [tagInstances, setTagInstances] = useState<TagInstance[]>([])
+  const [isLoading, setIsLoading] = useState(autoLoad)
 
   const load = useCallback(async () => {
     const res = await fetch(`/api/timer/tag-instances?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}`)
@@ -18,7 +19,10 @@ export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, e
   }, [start, end])
 
   // eslint-disable-next-line react-hooks/set-state-in-effect 
-  useEffect(() => { if (autoLoad) load() }, [start, end])
+  useEffect(() => {
+    if (!autoLoad) return
+    load().finally(() => setIsLoading(false))
+  }, [start, end])
 
   const createTagInstance = async ({ tagId, datetime, llmPredicted=false, approved=true }:{ tagId: number, datetime: string, llmPredicted?: boolean, approved?: boolean }) => {
     const optimistic: TagInstance = { id: -Date.now(), tagId, datetime, llmPredicted, approved }
@@ -121,5 +125,5 @@ export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, e
     })
   }
 
-  return { tagInstances, setTagInstances, load, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance }
+  return { tagInstances, setTagInstances, isLoading, load, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance }
 }

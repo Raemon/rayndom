@@ -6,9 +6,15 @@ export async function GET(request: NextRequest) {
   const auth = await requireUserPrisma(request)
   if ('error' in auth) return auth.error
   const { prisma } = auth
+  const searchParams = request.nextUrl.searchParams
+  const take = searchParams.get('take') ? Number(searchParams.get('take')) : undefined
+  const skip = searchParams.get('skip') ? Number(searchParams.get('skip')) : undefined
   try {
-    const tags = await prisma.tag.findMany({ include: { parentTag: true }, orderBy: [{ type: 'asc' }, { name: 'asc' }] })
-    return NextResponse.json({ tags })
+    const [tags, total] = await Promise.all([
+      prisma.tag.findMany({ include: { parentTag: true }, orderBy: [{ type: 'asc' }, { name: 'asc' }], ...(take !== undefined && { take }), ...(skip !== undefined && { skip }) }),
+      take !== undefined ? prisma.tag.count() : Promise.resolve(undefined),
+    ])
+    return NextResponse.json({ tags, ...(total !== undefined && { total }) })
   } catch (error) {
     console.error('Error fetching tags:', error)
     return NextResponse.json({ error: 'Failed to fetch tags', tags: [] }, { status: 500 })

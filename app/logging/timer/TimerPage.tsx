@@ -14,10 +14,12 @@ import Timer from './Timer'
 import { getCurrentSection } from '../checklist/sectionUtils'
 import RunAiCommandButton from '../zen/RunAiCommandButton'
 import { useAiTags } from '../hooks/useAiTags'
+import { useTags } from '../tags/TagsContext'
 import { allTagInstancesStartIso, allTagInstancesEndIso } from '../tagInstanceConstants'
 
 const TimerPageInner = () => {
   const { isPredicting, predictTags } = useAiTags()
+  const { isLoading: isLoadingTags } = useTags()
   const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
   const [collapsedWeeks, setCollapsedWeeks] = useState<Record<string, boolean>>({})
   const [collapsedMonths, setCollapsedMonths] = useState<Record<string, boolean>>({})
@@ -39,8 +41,8 @@ const TimerPageInner = () => {
   endDate.setHours(0, 0, 0, 0)
   const startIso = startDate.toISOString()
   const endIso = endDate.toISOString()
-  const { timeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused, load: loadTimeblocks } = useTimeblocks({ start: startIso, end: endIso })
-  const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: allTagInstancesStartIso, end: allTagInstancesEndIso })
+  const { timeblocks, isLoading: isLoadingTimeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused, load: loadTimeblocks } = useTimeblocks({ start: startIso, end: endIso })
+  const { tagInstances, isLoading: isLoadingTagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: allTagInstancesStartIso, end: allTagInstancesEndIso })
   const handleRunAiCommand = useCallback(async (datetime: string) => {
     const result = await predictTags({ datetime })
     if (result?.createdInstances && result.createdInstances.length > 0) loadTagInstances()
@@ -109,6 +111,14 @@ const TimerPageInner = () => {
               day.setHours(0, 0, 0, 0)
               allDays.push(day)
             }
+            const allDayKeys = new Set(allDays.map(d => d.toISOString().slice(0, 10)))
+            const historicalSources = [...timeblocks.map(tb => tb.datetime), ...tagInstances.map(ti => ti.datetime)]
+            for (const dt of historicalSources) {
+              const d = new Date(dt); d.setHours(0, 0, 0, 0)
+              const key = d.toISOString().slice(0, 10)
+              if (!allDayKeys.has(key)) { allDayKeys.add(key); allDays.push(new Date(d)) }
+            }
+            allDays.sort((a, b) => b.getTime() - a.getTime())
             const currentWeekDays = allDays.filter(d => d >= currentMonday)
             const previousDays = allDays.filter(d => d < currentMonday)
             const weekGroupsMap = new Map<string, { monday: Date, days: Date[] }>()
@@ -189,6 +199,12 @@ const TimerPageInner = () => {
         </div>
       </div>
       <Checklist ref={checklistRef} section={currentSection} />
+      {(isLoadingTimeblocks || isLoadingTagInstances || isLoadingTags) && (
+        <div className="flex items-center gap-2 py-4 text-gray-500">
+          <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+          Loading...
+        </div>
+      )}
     </div>
   )
 }

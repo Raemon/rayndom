@@ -5,12 +5,18 @@ import { runOptimisticMutation } from '../lib/optimisticMutation'
 
 export const useTimeblocks = ({ start, end, autoLoad=true }:{ start: string, end: string, autoLoad?: boolean }) => {
   const [timeblocks, setTimeblocks] = useState<Timeblock[]>([])
+  const [isLoading, setIsLoading] = useState(autoLoad)
   const debouncersRef = useRef<Record<number, ReturnType<typeof setTimeout> | null>>({})
 
   const load = async () => {
     const res = await fetch(`/api/timer/timeblocks?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}`)
     const json = await res.json()
-    setTimeblocks(json.timeblocks || [])
+    const freshTimeblocks: Timeblock[] = json.timeblocks || []
+    setTimeblocks(prev => {
+      const startDate = new Date(start)
+      const historicalTimeblocks = prev.filter(tb => new Date(tb.datetime) < startDate)
+      return [...historicalTimeblocks, ...freshTimeblocks]
+    })
   }
 
   // Fetch fresh data and selectively update timeblocks, skipping focused note fields
@@ -42,7 +48,23 @@ export const useTimeblocks = ({ start, end, autoLoad=true }:{ start: string, end
   }, [start, end])
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
-  useEffect(() => { if (autoLoad) load() }, [start, end])
+  useEffect(() => {
+    if (!autoLoad) return
+    const loadAll = async () => {
+      const primaryRes = await fetch(`/api/timer/timeblocks?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}`)
+      const primaryJson = await primaryRes.json()
+      setTimeblocks(primaryJson.timeblocks || [])
+      const historicalStart = encodeURIComponent(new Date(2000, 0, 1).toISOString())
+      const historicalEnd = encodeURIComponent(start)
+      const historicalRes = await fetch(`/api/timer/timeblocks?start=${historicalStart}&end=${historicalEnd}`)
+      const historicalJson = await historicalRes.json()
+      const historicalTimeblocks: Timeblock[] = historicalJson.timeblocks || []
+      if (historicalTimeblocks.length > 0) {
+        setTimeblocks(prev => [...historicalTimeblocks, ...prev])
+      }
+    }
+    loadAll().finally(() => setIsLoading(false))
+  }, [start, end])
 
   const createTimeblock = async ({ datetime, rayNotes=null, assistantNotes=null, aiNotes=null }:{ datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => {
     const optimistic: Timeblock = { id: -Date.now(), datetime, rayNotes, assistantNotes, aiNotes }
@@ -96,5 +118,5 @@ export const useTimeblocks = ({ start, end, autoLoad=true }:{ start: string, end
     debouncersRef.current[id] = setTimeout(() => patchTimeblock({ id, rayNotes, assistantNotes, aiNotes }), debounceMs)
   }
 
-  return { timeblocks, setTimeblocks, load, refreshUnfocused, createTimeblock, patchTimeblock, patchTimeblockDebounced }
+  return { timeblocks, setTimeblocks, isLoading, load, refreshUnfocused, createTimeblock, patchTimeblock, patchTimeblockDebounced }
 }

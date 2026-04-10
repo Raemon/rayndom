@@ -9,8 +9,14 @@ export async function GET(request: NextRequest) {
   const start = searchParams.get('start')
   const end = searchParams.get('end')
   if (!start || !end) return NextResponse.json({ error: 'Missing start or end' }, { status: 400 })
-  const timeblocks = await prisma.timeblock.findMany({ where: { datetime: { gte: new Date(start), lt: new Date(end) } }, orderBy: { datetime: 'asc' } })
-  return NextResponse.json({ timeblocks })
+  const where = { datetime: { gte: new Date(start), lt: new Date(end) } }
+  const take = searchParams.get('take') ? Number(searchParams.get('take')) : undefined
+  const skip = searchParams.get('skip') ? Number(searchParams.get('skip')) : undefined
+  const [timeblocks, total] = await Promise.all([
+    prisma.timeblock.findMany({ where, orderBy: { datetime: 'asc' }, ...(take !== undefined && { take }), ...(skip !== undefined && { skip }) }),
+    take !== undefined ? prisma.timeblock.count({ where }) : Promise.resolve(undefined),
+  ])
+  return NextResponse.json({ timeblocks, ...(total !== undefined && { total }) })
 }
 
 export async function POST(request: NextRequest) {

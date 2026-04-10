@@ -1,2 +1,4 @@
 shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
 /bin/bash: /Users/raymondarnold/Documents/coding/rayndom/scripts/run-daily-log.sh: Operation not permitted
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+/bin/bash: /Users/raymondarnold/Documents/coding/rayndom/scripts/run-daily-log.sh: Operation not permitted
