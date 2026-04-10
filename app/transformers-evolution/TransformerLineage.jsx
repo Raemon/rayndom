@@ -2,47 +2,28 @@
 import { useState, useCallback } from 'react';
 import { C } from './colors';
 import { data } from './data';
-import { Diagram } from './diagrams';
-import { JargonText } from './JargonText';
+import { TransformerRow } from './TransformerRow';
 import GlossarySidebar from './GlossarySidebar';
 
 export default function TransformerLineage() {
   const [collapsed, setCollapsed] = useState(false);
   const [tip, setTip] = useState(null);
   const [selectedPostId, setSelectedPostId] = useState(null);
+  const [rows, setRows] = useState(data);
   const onTip = useCallback((t) => setTip(t), []);
-
-  const Cell = ({ text, collapsed: c }) => {
-    const paragraphs = text.split('\n\n');
-    const isLong = text.length > 180;
-    return (
-      <div style={{ position: "relative" }}>
-        <div style={{ overflow: "hidden", maxHeight: c && isLong ? "3.2em" : "none", lineHeight: "1.6" }}>
-          {paragraphs.map((p, i) => (
-            <div key={i} style={{ marginBottom: i < paragraphs.length - 1 ? '0.6em' : 0 }}>
-              <JargonText>{p}</JargonText>
-            </div>
-          ))}
-        </div>
-        {c && isLong && (
-          <div style={{
-            position: "absolute", bottom: 0, left: 0, right: 0, height: "1.8em",
-            background: "linear-gradient(transparent, var(--row-bg, #f7f6f4))", pointerEvents: "none",
-          }} />
-        )}
-      </div>
-    );
-  };
+  const handleRowChange = useCallback((idx, newRow) => {
+    setRows(prev => prev.map((r, i) => i === idx ? newRow : r));
+  }, []);
 
   const headers = ["Year", "Innovation", "Architecture", "Problem Solved", "Why Not Sooner?", "Notable Models"];
   const widths = ["4%", "9%", "17%", "27%", "24%", "13%"];
 
   return (
-    <div style={{ display: 'flex', height: '100vh', fontFamily: "var(--font-cormorant-garamond), Georgia, serif" }}>
-      <GlossarySidebar onSelectPost={setSelectedPostId} />
+    <div style={{ display: 'flex', height: '100vh', fontFamily: "var(--font-cormorant-garamond), Georgia, serif" ,  background: C.bg, }}>
+      {/* <GlossarySidebar onSelectPost={setSelectedPostId} /> */}
     <div style={{
       flex: 1,
-      background: C.bg, color: C.textPrimary,
+      color: C.textPrimary,
       height: "100vh", overflow: "auto", position: "relative",
     }}>
       {/* Tooltip */}
@@ -108,41 +89,16 @@ export default function TransformerLineage() {
             </tr>
           </thead>
           <tbody>
-            {data.map((row, idx) => {
-              const bg = idx % 2 === 0 ? C.rowEven : C.rowOdd;
-              return (
-                <tr key={idx} style={{ "--row-bg": bg, background: bg, verticalAlign: "top" }}>
-                  <td style={{
-                    padding: "14px", fontWeight: 600, color: C.textAccent,
-                    whiteSpace: "nowrap", borderRadius: "6px 0 0 6px", fontSize: "1.05em",
-                  }}>
-                    {row.year}
-                  </td>
-                  <td style={{ padding: "14px", fontWeight: 600, color: "#1a1a1a", lineHeight: 1.4 }}>
-                    {row.name}
-                  </td>
-                  <td style={{ padding: "10px", minWidth: 200 }}>
-                    <Diagram type={row.diag} onTip={onTip} />
-                  </td>
-                  <td style={{ padding: "14px", lineHeight: 1.6 }}>
-                    <Cell text={row.problem} collapsed={collapsed} />
-                  </td>
-                  <td style={{ padding: "14px", lineHeight: 1.6, color: C.textSecondary }}>
-                    <Cell text={row.whyNotSooner} collapsed={collapsed} />
-                  </td>
-                  <td style={{
-                    padding: "14px", lineHeight: 1.2,
-                    borderRadius: "0 6px 6px 0", color: C.textAccent,
-                    fontFamily: "system-ui, -apple-system, sans-serif", fontSize: "0.88em",
-                  }}>
-                    <ul>
-                    {row.examples.split(",").map((ex, i) => (
-                      <li key={i} style={{ marginBottom: 12 }}>{ex.trim()}</li>
-                    ))}</ul>
-                  </td>
-                </tr>
-              );
-            })}
+            {rows.map((row, idx) => (
+              <TransformerRow
+                key={idx}
+                row={row}
+                idx={idx}
+                collapsed={collapsed}
+                onTip={onTip}
+                onRowChange={newRow => handleRowChange(idx, newRow)}
+              />
+            ))}
           </tbody>
         </table>
       </div>

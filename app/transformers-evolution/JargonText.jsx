@@ -17,7 +17,7 @@ function findTerm(part) {
 
 const MAX_DEPTH = 2;
 
-const JargonSpan = ({ term, matchedText, depth }) => {
+export const JargonSpan = ({ term, matchedText, depth }) => {
   const [show, setShow] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const hideRef = useRef(null);
