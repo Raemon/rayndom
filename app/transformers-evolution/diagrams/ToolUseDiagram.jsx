@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, ghostBox, FS, FSV } from './help
 
 export function ToolUseDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 155" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 155" className={`${ss} min-w-[190px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {box(80,10,100,20,C.token,"User request","A task requiring actions beyond text generation — run code, search the web, edit files.",FS)}
     {ghostBox(188,10,62,18,"Text-only reply","Without tools, the model can only describe what to do, not do it.",FSV)}
     {arr(130,30,130,38)}{lbl(188,34,"parse intent",FS,"#666")}

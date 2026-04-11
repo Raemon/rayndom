@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, ghostBox, FS, FSV } 
 
 export function BertDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 150" style={{...ss,minWidth:220}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 150" className={`${ss} min-w-[220px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {box(5,10,36,22,C.token,"[CLS]","Classification token. Its final representation = sentence-level embedding.")}
     {box(45,10,36,22,C.token,"The","Regular token — attends to ALL tokens left AND right.")}
     {box(85,10,44,22,C.novel,"[MASK]","15% of tokens replaced with [MASK]. Model predicts original using BOTH sides — forcing bidirectional understanding.")}

@@ -1,56 +1,48 @@
 'use client';
 import { useState } from 'react';
-import { C } from './colors';
 import { data } from './data';
-import { TransformerCard } from './TransformerCard';
+import { TransformerRow } from './TransformerRow';
 import GlossarySidebar from './GlossarySidebar';
 
 export default function TransformerLineage() {
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [rows, setRows] = useState(data);
+  const [collapsed, setCollapsed] = useState(true);
+  const [expandedRowIdx, setExpandedRowIdx] = useState(null);
 
-  const headers = ["Year", "", "Architecture"];
-  const widths = ["5%", "55%", "40%"];
+  const headers = ["Year", "Innovation",  "Problem", "Why Not Sooner?", "Architecture","Examples"];
+  const widths = ["1%", "18%", "24%", "22%", "22%", "10%"];
+  const toggleCollapsed = () => {
+    setCollapsed(c => !c);
+    setExpandedRowIdx(null);
+  };
 
   return (
-    <div style={{ display: 'flex', height: '100vh', fontFamily: "var(--font-cormorant-garamond), Georgia, serif" ,  background: C.bg, }}>
+    <div className="flex h-screen font-[var(--font-cormorant-garamond),Georgia,serif] bg-te-bg">
       {/* <GlossarySidebar onSelectPost={setSelectedPostId} /> */}
-    <div style={{
-      flex: 1,
-      color: C.textPrimary,
-      height: "100vh", overflow: "auto", position: "relative",
-    }}>
-      <div style={{ maxWidth: 1600, margin: "0 auto", padding: "32px 20px" }}>
+    <div className="flex-1 text-te-primary h-screen overflow-auto relative">
+      <div className="max-w-[2000px] mx-auto py-8 px-5">
         {/* Header */}
-        <div style={{
-          marginBottom: 32, display: "flex", justifyContent: "space-between",
-          alignItems: "flex-end", flexWrap: "wrap", gap: 16,
-        }}>
+        <div className="mb-8 flex justify-between items-end flex-wrap gap-4">
           <div>
-            <h1 style={{
-              fontFamily: "inherit", fontSize: "2.6em", fontWeight: 400,
-              color: "#1a1a1a", letterSpacing: "-0.02em", lineHeight: 1.1,
-            }}>
+            <h1 className="font-[inherit] text-[2.6em] font-normal text-te-primary tracking-[-0.02em] leading-[1.1]">
               The Transformer Lineage
             </h1>
-            <p style={{ marginTop: 8, maxWidth: 600 }}>
+            <p className="mt-2 max-w-[600px]">
               A technical genealogy of major innovations. Hover over diagram elements for detailed explanations.
             </p>
           </div>
+          <button onClick={toggleCollapsed} className="text-[0.82em] uppercase tracking-widest px-3 py-1.5 text-te-secondary hover:text-te-primary transition-colors cursor-pointer">
+            {collapsed ? '▸ Expand rows' : '▾ Collapse rows'}
+          </button>
         </div>
 
         {/* Table */}
-        <table style={{ width: "100%", borderCollapse: "separate", borderSpacing: "0 6px" }}>
+        <table className="w-full border-separate border-spacing-y-1.5">
           <thead>
             <tr>
               {headers.map((h, i) => (
-                <th key={i} style={{
-                  textAlign: "left", padding: "10px 14px", fontWeight: 600,
-                  textTransform: "uppercase", letterSpacing: "0.1em",
-                  color: C.headerText, borderBottom: "1px solid rgba(0,0,0,0.08)",
-                  position: "sticky", top: 0, background: C.bg,
-                  zIndex: 10, width: widths[i], fontSize: "0.78em",
-                }}>
+                <th key={i} className="text-left px-3.5 py-2.5 font-semibold uppercase tracking-widest text-black border-b border-black/[0.08] sticky top-0 bg-te-bg z-10 text-[0.78em]" style={{ width: widths[i] }}>
                   {h}
                 </th>
               ))}
@@ -58,7 +50,12 @@ export default function TransformerLineage() {
           </thead>
           <tbody>
             {rows.map((row, idx) => (
-              <TransformerCard key={idx} row={row} />
+              <TransformerRow
+                key={idx}
+                row={row}
+                collapsed={collapsed ? expandedRowIdx !== idx : false}
+                onToggleExpand={collapsed ? () => setExpandedRowIdx(currentIdx => currentIdx === idx ? null : idx) : undefined}
+              />
             ))}
           </tbody>
         </table>

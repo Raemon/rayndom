@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, ghostBox, FS, FS
 
 export function RnnDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 240 140" style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 240 140" className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {lbl(45,14,"t−1",FSV,"#666")}{lbl(120,14,"t",FSV,"#666")}{lbl(195,14,"t+1",FSV,"#666")}
     {ghostBox(85,44,70,18,"feedforward","GHOST: A feedforward net processes each input independently — no memory. The RNN adds the recurrent connection.",FSV)}
     {box(20,30,50,24,C.gate,"hₜ₋₁","Hidden state at previous timestep. Carries memory of all prior inputs (in theory).")}

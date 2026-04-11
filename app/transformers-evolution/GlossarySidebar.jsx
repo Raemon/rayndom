@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { glossary } from './glossary';
-import { C } from './colors';
 import { JargonSpan } from './JargonText';
 
 const sortedTerms = Object.keys(glossary).sort((a, b) => a.localeCompare(b));
@@ -19,48 +18,26 @@ export default function GlossarySidebar({ onSelectPost }) {
   }, []);
 
   return (
-    <div style={{
-      width: 260,
-      minWidth: 260,
-      height: '100vh',
-      overflowY: 'auto',
-      padding: '16px 0',
-      fontFamily: "'Source Serif 4', Georgia, serif",
-      fontSize: '0.85em',
-    }}>
+    <div className="w-[260px] min-w-[260px] h-screen overflow-y-auto py-4 font-['Source_Serif_4',Georgia,serif] text-[0.85em]">
       {/* Posts section */}
-      <div style={{ marginBottom: 8 }}>
+      <div className="mb-2">
         <button
           onClick={() => setPostsOpen(o => !o)}
-          style={{
-            display: 'flex', alignItems: 'center', gap: 6, width: '100%',
-            padding: '8px 16px', background: 'none', border: 'none',
-            cursor: 'pointer', fontWeight: 600, fontSize: '0.9em',
-            textTransform: 'uppercase', letterSpacing: '0.08em',
-            color: C.headerText, fontFamily: 'inherit',
-          }}
+          className="flex items-center gap-1.5 w-full py-2 px-4 bg-transparent border-none cursor-pointer font-semibold text-[0.9em] uppercase tracking-[0.08em] text-black font-[inherit]"
         >
-          <span style={{ transform: postsOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.15s', display: 'inline-block' }}>&#9654;</span>
+          <span className={`inline-block transition-transform duration-150 ${postsOpen ? 'rotate-90' : 'rotate-0'}`}>&#9654;</span>
           Markdown Posts
         </button>
         {postsOpen && (
-          <ul style={{ listStyle: 'none', margin: 0, padding: '0 16px' }}>
+          <ul className="list-none m-0 px-4">
             {posts.length === 0 && (
-              <li style={{ color: C.dim, fontStyle: 'italic', padding: '4px 0' }}>No posts yet</li>
+              <li className="text-te-dim italic py-1">No posts yet</li>
             )}
             {posts.map(post => (
               <li key={post.id}>
                 <button
                   onClick={() => onSelectPost?.(post.id)}
-                  style={{
-                    display: 'block', width: '100%', textAlign: 'left',
-                    padding: '6px 8px', margin: '2px 0',
-                    background: 'none', border: 'none', cursor: 'pointer',
-                    color: C.textAccent, fontFamily: 'inherit', fontSize: 'inherit',
-                    borderRadius: 4,
-                  }}
-                  onMouseOver={e => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
-                  onMouseOut={e => e.currentTarget.style.background = 'none'}
+                  className="block w-full text-left py-1.5 px-2 my-0.5 bg-transparent border-none cursor-pointer text-te-accent font-[inherit] text-[length:inherit] rounded hover:bg-black/5"
                 >
                   {post.title}
                 </button>
@@ -74,24 +51,15 @@ export default function GlossarySidebar({ onSelectPost }) {
       <div>
         <button
           onClick={() => setGlossaryOpen(o => !o)}
-          style={{
-            display: 'flex', alignItems: 'center', gap: 6, width: '100%',
-            padding: '8px 16px', background: 'none', border: 'none',
-            cursor: 'pointer', fontWeight: 600, fontSize: '0.9em',
-            textTransform: 'uppercase', letterSpacing: '0.08em',
-            color: C.headerText, fontFamily: 'inherit',
-          }}
+          className="flex items-center gap-1.5 w-full py-2 px-4 bg-transparent border-none cursor-pointer font-semibold text-[0.9em] uppercase tracking-[0.08em] text-black font-[inherit]"
         >
-          <span style={{ transform: glossaryOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.15s', display: 'inline-block' }}>&#9654;</span>
+          <span className={`inline-block transition-transform duration-150 ${glossaryOpen ? 'rotate-90' : 'rotate-0'}`}>&#9654;</span>
           Glossary Terms
         </button>
         {glossaryOpen && (
-          <ul style={{ listStyle: 'none', margin: 0, padding: '0 16px' }}>
+          <ul className="list-none m-0 px-4">
             {sortedTerms.map(term => (
-              <li key={term} style={{
-                padding: '2px 8px', margin: '1px 0',
-                fontSize: '0.8em', color: '#1a1a1a',
-              }}>
+              <li key={term} className="py-0.5 px-2 my-px text-[0.8em] text-te-primary">
                 <JargonSpan term={term} matchedText={term} />
               </li>
             ))}

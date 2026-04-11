@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, FS, FSV } from '
 
 export function TransformerDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 175" style={{...ss,minWidth:220}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 175" className={`${ss} min-w-[220px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {box(65,8,130,18,C.token,"Tokens + Pos Encoding","Embeddings SUMMED with positional encodings. Replaces recurrence — position injected as a signal.")}
     {arr(130,26,130,34)}
     {lbl(130,33,"x",FSV)}

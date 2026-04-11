@@ -4,7 +4,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, ghostBox, op, FS, FS
 export function VitDiagram() {
   const { box } = getDiagramHelpers();
   const vbw = '0 0 270 168';
-  return (<svg viewBox={vbw} style={{...ss,minWidth:200}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox={vbw} className={`${ss} min-w-[200px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {ghostBox(8, 20, 46, 32, 'CNN stem', 'Convolutional front-end with local receptive fields — ViT swaps this for patch tokens at scale.', FSV)}
     <DiagramTip detail="Input image split into non-overlapping patches (e.g., 16×16 pixels). Patches replace convolutions — the Transformer treats them like word tokens."><rect x={60} y={18} width={40} height={40} rx={2} fill="none" stroke={C.novel} strokeWidth={1}/><line x1={60} y1={32} x2={100} y2={32} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/><line x1={60} y1={45} x2={100} y2={45} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/><line x1={73} y1={18} x2={73} y2={58} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/><line x1={87} y1={18} x2={87} y2={58} stroke={C.novel} strokeWidth={0.4} opacity={0.5}/>{lbl(80, 64, 'patch grid', FS, C.novel)}</DiagramTip>
     {arr(102, 38, 110, 38)}{lbl(106, 34, 'unfold', FS, '#666')}

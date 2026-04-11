@@ -4,7 +4,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, ghostBox, FS, FSV } from './help
 export function Gpt1Diagram() {
   const { box } = getDiagramHelpers();
   const vbw = '0 0 260 198';
-  return (<svg viewBox={vbw} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox={vbw} className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {ghostBox(12, 6, 236, 24, 'Before: random init → lots of labels → task-only training', 'Pre-GPT baseline: no unsupervised pre-training; hard to generalize from small labeled sets.', FSV)}
     {box(20, 38, 220, 22, C.token, 'Unlabeled text corpus', 'Massive corpus. No human labels needed — model learns by predicting the next word.', FS)}
     {arr(130, 60, 130, 68)}

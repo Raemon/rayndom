@@ -4,7 +4,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, ghostBox, FS, FS
 export function RopeDiagram() {
   const { box } = getDiagramHelpers();
   const vbw = '0 0 260 158';
-  return (<svg viewBox={vbw} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox={vbw} className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {ghostBox(12, 6, 236, 26, 'Before: q + p_m (absolute PE)', 'Additive position vectors fused into embeddings — encodes absolute index, weaker length extrapolation.', FSV)}
     {box(8, 40, 48, 22, C.attn, 'Query q', 'Raw query vector at position m before rotation.', FS)}
     {arr(56, 51, 66, 51)}{lbl(61, 46, 'q', FSV, '#666')}

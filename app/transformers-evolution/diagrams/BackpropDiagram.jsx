@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, FS, FSV } from '
 
 export function BackpropDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 240 130" style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 240 130" className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {lbl(30,12,"Input",FS,"#666")}{lbl(105,12,"Hidden",FS,"#666")}{lbl(190,12,"Output",FS,"#666")}
     {box(10,20,40,18,C.token,"x₁","",FSV)}{box(10,44,40,18,C.token,"x₂","",FSV)}{box(10,68,40,18,C.token,"x₃","",FSV)}
     {op(105,29,"σ","Hidden unit with activation. Learns internal representations the perceptron couldn't — solves XOR.",{r:9,color:C.gate})}

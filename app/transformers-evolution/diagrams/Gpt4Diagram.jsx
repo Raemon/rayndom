@@ -4,7 +4,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, FS, FSV } from './he
 export function Gpt4Diagram() {
   const { box } = getDiagramHelpers();
   const vb2 = '0 0 268 156';
-  return (<svg viewBox={vb2} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox={vb2} className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
 <DiagramTip detail="Raw image → fixed grid of patches. ViT/CLIP-style encoder maps each patch to a vector; sequence length grows with patch count.">
 <rect x={6} y={18} width={28} height={28} fill="none" stroke={C.novel} strokeWidth={0.9}/>
 <line x1={6} y1={28} x2={34} y2={28} stroke={C.novel} strokeWidth={0.35}/>

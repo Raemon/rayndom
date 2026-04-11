@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, ghostBox, FS, FS
 
 export function SsmDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 170" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 170" className={`${ss} min-w-[190px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {lbl(65,16,"Transformer attention",FS,"#666")}{lbl(195,16,"SSM / Mamba core",FS,C.novel)}
     <DiagramTip detail="Dense self-attention lets every token attend to every other in O(N²) time and memory—great quality, painful at megabase lengths.">
       <rect x={8} y={22} width={114} height={48} rx={2} fill={C.attn} opacity={0.08}/>

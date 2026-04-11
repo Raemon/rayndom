@@ -1,7 +1,6 @@
 'use client';
 import Tooltip from '@/app/common/Tooltip';
 import { glossary } from './glossary';
-import { C } from './colors';
 
 const sortedTerms = Object.keys(glossary).sort((a, b) => b.length - a.length);
 const escaped = sortedTerms.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
@@ -24,7 +23,7 @@ export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET }) => {
     <Tooltip
       content={
         <>
-          <strong style={{ color: C.textAccent }}>{term}:</strong>{' '}
+          <strong className="text-te-accent">{term}:</strong>{' '}
           <JargonText seenTerms={nextSeen}>{def}</JargonText>
         </>
       }
@@ -34,7 +33,7 @@ export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET }) => {
       maxWidth={300}
       zIndex={1000 + seenTerms.size * 10}
       contentClassName="!bg-white !text-[#1a1a1a] border border-neutral-300 shadow-lg text-[0.85em] leading-normal font-['Source_Serif_4',Georgia,serif]"
-      wrapperStyle={{ cursor: 'help', borderBottom: '1px dashed rgba(0,0,0,0.3)' }}
+      wrapperClassName="cursor-help border-b border-dashed border-black/30"
     >
       <span>{matchedText}</span>
     </Tooltip>

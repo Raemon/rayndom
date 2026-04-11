@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, ghostBox, FS, FSV } from './help
 
 export function ChinchillaDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 155" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 155" className={`${ss} min-w-[190px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {lbl(75,18,"Model size (params)",FS,"#666")}{lbl(185,18,"Training tokens seen",FS,"#666")}
     {ghostBox(12,24,108,22,"Gopher-scale: 280B","Prior trend: push parameter count; ~1 token per parameter is severely undertrained.",FS)}
     {ghostBox(140,24,108,22,"~300B tokens","Huge model, modest token budget; compute skewed toward width over depth of data.",FS)}

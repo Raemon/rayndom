@@ -4,7 +4,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, ghostBox, FS, FSV } from './help
 export function Gpt2Diagram() {
   const { box } = getDiagramHelpers();
   const vb2 = '0 0 260 158';
-  return (<svg viewBox={vb2} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox={vb2} className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
 {ghostBox(8,14,78,17,'Decoder layer','Single GPT-1-style decoder block: masked self-attention + FFN.',FSV)}
 {ghostBox(11,35,72,17,'Decoder layer','',FSV)}
 {ghostBox(14,56,66,17,'Decoder layer','',FSV)}

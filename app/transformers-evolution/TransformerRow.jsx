@@ -1,44 +1,24 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
-import { C } from './colors';
 import { Diagram } from './diagrams';
 import { JargonText } from './JargonText';
+import { EditableContent } from './EditableContent';
 
-const EditableCell = ({ value, onChange, style, children }) => {
-  const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState(value);
-  const ref = useRef(null);
-  useEffect(() => { if (editing && ref.current) ref.current.focus(); }, [editing]);
-  if (editing) {
-    return (
-      <td style={style} onBlur={() => { onChange(draft); setEditing(false); }}>
-        <textarea
-          ref={ref}
-          value={draft}
-          onChange={e => setDraft(e.target.value)}
-          onKeyDown={e => {
-            if (e.key === 'Escape') { setDraft(value); setEditing(false); }
-            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); onChange(draft); setEditing(false); }
-          }}
-          style={{
-            width: "100%", minHeight: 60, padding: 4, fontFamily: "inherit",
-            fontSize: "inherit", lineHeight: "inherit", border: "1px solid #ccc",
-            background: "rgba(255,255,255,0.9)", resize: "vertical",
-          }}
-        />
-      </td>
-    );
-  }
-  return <td style={{ ...style, cursor: "default" }} onDoubleClick={() => setEditing(true)}>{children}</td>;
+const EditableCell = ({ value, onChange, className, children, onClick }) => {
+  return (
+    <td className={`${className}${onClick ? ' cursor-pointer' : ''}`} onClick={e => { if (e.target === e.currentTarget) onClick?.(); }}>
+      <EditableContent value={value} onChange={onChange} onClick={onClick}>{children}</EditableContent>
+    </td>
+  );
 };
 
 const Cell = ({ text, collapsed: c }) => {
   const paragraphs = text.split('\n\n');
-  const isLong = text.length > 180;
+  const visible = c ? paragraphs.slice(0, 1) : paragraphs;
   return (
-    <div style={{ overflow: "hidden", maxHeight: c && isLong ? "3.2em" : "none", lineHeight: "1.6" }}>
-      {paragraphs.map((p, i) => (
-        <div key={i} style={{ marginBottom: i < paragraphs.length - 1 ? '0.6em' : 0 }}>
+    <div className="overflow-hidden leading-relaxed">
+      {visible.map((p, i) => (
+        <div key={i} className={i < visible.length - 1 ? 'mb-[0.6em]' : ''}>
           <JargonText>{p}</JargonText>
         </div>
       ))}
@@ -46,59 +26,59 @@ const Cell = ({ text, collapsed: c }) => {
   );
 };
 
-export const TransformerRow = ({ row, idx, collapsed, onRowChange }) => {
-  const bg = C.rowEven;
+export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) => {
   const updateField = (field, val) => {
     onRowChange?.({ ...row, [field]: val });
   };
   return (
-    <tr style={{ "--row-bg": bg, background: bg, verticalAlign: "top", fontSize: ".86em" }}>
+    <tr className="bg-te-row-even align-top text-[.86em] font-serif">
       <EditableCell
         value={String(row.year)}
         onChange={v => updateField("year", v)}
-        style={{ padding: "14px", fontWeight: 600, color: C.textAccent, whiteSpace: "nowrap", borderRadius: "6px 0 0 6px" }}
+        onClick={onToggleExpand}
+        className="px-2 py-3.5 font-semibold text-te-accent whitespace-nowrap rounded-l-md w-px"
       >
         {row.year}
       </EditableCell>
-      <EditableCell
-        value={row.name}
-        onChange={v => updateField("name", v)}
-        style={{ padding: "14px", fontWeight: 600, color: "#1a1a1a", lineHeight: 1.4 }}
-      >
-        {row.name}
-      </EditableCell>
-      <td style={{ padding: "10px", minWidth: 300 }}>
-        <Diagram type={row.diag} />
+      <td className={`p-3.5 leading-[1.4]${onToggleExpand ? ' cursor-pointer' : ''}`} onClick={e => { if (e.target === e.currentTarget) onToggleExpand?.(); }}>
+        <EditableContent value={row.name} onChange={v => updateField("name", v)} onClick={onToggleExpand} className="font-semibold text-te-primary">
+          {row.name}
+        </EditableContent>
+        <EditableContent value={row.oneLiner} onChange={v => updateField("oneLiner", v)} onClick={onToggleExpand} className="text-te-secondary text-[0.9em] mt-1 font-normal">
+          {row.oneLiner}
+        </EditableContent>
       </td>
-      <EditableCell
+      {/* <EditableCell
         value={row.problem}
         onChange={v => updateField("problem", v)}
-        style={{ padding: "14px", lineHeight: 1.6 }}
+        onClick={onToggleExpand}
+        className="p-3.5 leading-relaxed"
       >
         <Cell text={row.problem} collapsed={collapsed} />
       </EditableCell>
       <EditableCell
         value={row.whyNotSooner}
         onChange={v => updateField("whyNotSooner", v)}
-        style={{ padding: "14px", lineHeight: 1.6, color: C.textSecondary }}
+        onClick={onToggleExpand}
+        className="p-3.5 leading-relaxed text-te-secondary"
       >
         <Cell text={row.whyNotSooner} collapsed={collapsed} />
-      </EditableCell>
-      <EditableCell
+      </EditableCell> */}
+      {/* <td className={`p-2.5 min-w-[300px]${onToggleExpand ? ' cursor-pointer' : ''}`} onClick={onToggleExpand}>
+        <Diagram type={row.diag} />
+      </td> */}
+      {/* <EditableCell
         value={row.examples}
         onChange={v => updateField("examples", v)}
-        style={{
-          padding: "14px", lineHeight: 1.2,
-          borderRadius: "0 6px 6px 0", color: C.textAccent,
-          fontFamily: "system-ui, -apple-system, sans-serif", fontSize: "0.88em",
-        }}
+        onClick={onToggleExpand}
+        className="p-3.5 leading-[1.2] w-full min-w-[300px] rounded-r-md text-te-accent font-[system-ui,-apple-system,sans-serif] text-[0.88em]"
       >
         <ul>
           {row.examples.split(",").map((ex, i) => (
-            <li key={i} style={{ marginBottom: 12, fontSize: "0.88em" }}>{ex.trim()}</li>
+            <li key={i} className="mb-3 text-[0.88em]">{ex.trim()}</li>
           ))}
         </ul>
-      </EditableCell>
+      </EditableCell> */}
     </tr>
   );
 };

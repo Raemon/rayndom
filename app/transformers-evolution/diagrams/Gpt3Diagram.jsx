@@ -4,7 +4,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, FS, FSV } from './helpers';
 export function Gpt3Diagram() {
   const { box } = getDiagramHelpers();
   const vb2 = '0 0 260 164';
-  return (<svg viewBox={vb2} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox={vb2} className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
 {box(10,8,240,22,C.novel,'Prompt = instruction +\nfew-shot examples + query','Weights never update on the new task: format and skill are read from the context window.',FS)}
 {lbl(130,40,'demonstrations → query (one concatenated context)',FS,'#666')}
 {box(12,44,112,20,C.gate,'Ex.1: Q: 2+3? → A: 5','Shot 1: model should infer Q→A pattern.',FS)}

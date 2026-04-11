@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, op, FS, FSV } from './helpers';
 
 export function CotDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 176" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 176" className={`${ss} min-w-[190px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {box(15,6,230,32,C.token,"Q: Roger has 5 balls.\nBuys 2 cans of 3. How many?","Without CoT, models often skip steps and fail multi-step word problems.",FS)}
     {arr(130,38,130,46)}{lbl(198,42,"tokens in context",FS,"#666")}
     {box(20,48,220,20,C.novel,"Step 1: Start with 5 balls.","Intermediate steps allocate more serial reasoning; each line conditions on prior text.",FS)}

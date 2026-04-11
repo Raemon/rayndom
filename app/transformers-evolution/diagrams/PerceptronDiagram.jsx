@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, FS, FSV } from '
 
 export function PerceptronDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 240 130" style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 240 130" className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {box(10,20,45,22,C.token,"x₁","Input feature 1. Could be a pixel intensity, sensor reading, or any numeric input.")}
     {box(10,50,45,22,C.token,"x₂","Input feature 2. The perceptron sees all inputs simultaneously — no notion of sequence or time.")}
     {box(10,80,45,22,C.token,"x₃","Input feature 3. Mark I Perceptron had 400 photocells as inputs.")}

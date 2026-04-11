@@ -4,7 +4,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, FS, FSV } from './helpers';
 export function Word2vecDiagram() {
   const { box } = getDiagramHelpers();
   const vbw = '0 0 260 158';
-  return (<svg viewBox={vbw} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox={vbw} className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {lbl(58, 18, '|V|-dim', FSV, '#666')}
     {lbl(130, 18, 'd ≪ |V|', FSV, '#666')}
     {lbl(202, 18, 'd-dim', FSV, '#666')}

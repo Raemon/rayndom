@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, ghostBox, FS, FSV } 
 
 export function LongctxDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 158" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 158" className={`${ss} min-w-[190px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     <DiagramTip detail="Early LMs were trained for hundreds to a couple thousand tokens; length was limited by quadratic attention memory, weak length extrapolation, and short-document corpora.">
       {ghostBox(14,20,48,16,"~2K window","512–2K token budgets were typical before long-context systems matured.",FS)}
     </DiagramTip>

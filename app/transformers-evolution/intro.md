@@ -1,4 +1,9 @@
-# Timeline of LLM Innovations
+# Which AI innovations required conceptual breakthroughs?
+
+A question that's been on my mind awhile is "do LLMs require another conceptual breakthrough, to reach AGI, or is it just a matter of continuing to do the obvious things?"
+
+To help me think about it, I built a 
+
 
 I had several questions about frontier models I was confused about, such as:
 
@@ -13,14 +18,13 @@ I had several questions about frontier models I was confused about, such as:
 - they still aren't that good at openended creativity.
 
 
-
+Or, alternately: **How exactly do frontier models work?**, in particular aspects that shape the limitations of their capabilities?
 
 
 **Which LLM innovations required conceptual breakthroughs,** vs being fairly obvious?
 
 
 **How likely is it that we need another conceptual breakthrough,** to get special sauce?
-
 
 
 How exactly do current frontier models work, and what are the implications about what kind of thinking is difficult for them.

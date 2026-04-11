@@ -9,7 +9,7 @@ const arrM = <marker id="ah" markerWidth="7" markerHeight="5" refX="7" refY="2.5
 
 export const defs = <defs>{arrM}</defs>;
 export const vb = "0 0 210 130";
-export const ss = { display:'block', width:'100%', height:'auto', minWidth:180 };
+export const ss = "block w-full h-auto";
 
 const diagramTooltipContentClass =
   '!bg-[#fff] !text-[#1a1a1a] border border-neutral-300 shadow-lg text-[0.85em] leading-normal rounded-md p-2 font-[inherit]';
@@ -24,7 +24,7 @@ export function DiagramTip({ detail, children }) {
       maxWidth={300}
       noMargin
       contentClassName={diagramTooltipContentClass}
-      wrapperStyle={{ cursor: 'help' }}
+      wrapperClassName="cursor-help"
     >
       {children}
     </Tooltip>
@@ -40,7 +40,7 @@ export function getDiagramHelpers() {
       maxWidth={300}
       noMargin
       contentClassName={diagramTooltipContentClass}
-      wrapperStyle={{ cursor: 'help' }}
+      wrapperClassName="cursor-help"
     >
       <rect x={x} y={y} width={w} height={h} rx={3} fill={fill} opacity={0.9}/>
       {lines.length === 1 ? <text x={x+w/2} y={y+h/2+3} textAnchor="middle" fill="#f0ece4" fontSize={fs} fontFamily="sans-serif">{label}</text> : <text x={x+w/2} y={y+h/2+3} textAnchor="middle" fill="#f0ece4" fontSize={fs} fontFamily="sans-serif">{lines.map((l,i) => <tspan key={i} x={x+w/2} dy={i===0?`${-(lines.length-1)*0.55}em`:'1.1em'}>{l}</tspan>)}</text>}

@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, ghostBox, FS, FS
 
 export function FlashDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 172" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 172" className={`${ss} min-w-[190px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     <DiagramTip detail="GPU HBM is large but high-latency. Classic attention reads/writes a dense N×N map here, which becomes the bandwidth bottleneck.">
       <rect x={6} y={18} width={102} height={112} rx={2} fill="none" stroke={C.token} strokeWidth={1} strokeDasharray="3,2"/>
       {lbl(57,30,"HBM (slow, large)",FS,C.token)}

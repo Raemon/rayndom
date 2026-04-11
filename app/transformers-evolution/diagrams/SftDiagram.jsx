@@ -4,7 +4,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, FS, FSV } from './helpers';
 export function SftDiagram() {
   const { box } = getDiagramHelpers();
   const vbw = '0 0 260 156';
-  return (<svg viewBox={vbw} style={{...ss,minWidth:200}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox={vbw} className={`${ss} min-w-[200px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {box(8, 22, 78, 26, C.attn, 'Pre-trained LM', 'Next-token objective only — fluent continuation but no notion of “follow this instruction”.', FS)}
     {arr(86, 35, 96, 35)}{lbl(91, 31, 'base params θ', FSV, '#666')}
     {box(98, 16, 154, 38, C.novel, 'Instruction ↔ response data', 'Many (prompt, ideal answer) pairs teach format and task coverage — diversity matters more than sheer size.', FS)}

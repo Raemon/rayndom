@@ -16,6 +16,18 @@ This folder is an essay-with-diagrams/widgets that is meant to help me think abo
 
 5. How exactly do current frontier models work, and what are the implications about what kind of thinking is difficult for them.
 
+Note: I am somewhat confused about how to unify all this into a single web page. The topics all feel connected to me, it's not clear what the throughline should be.
+
+# Styling: Tailwind
+
+All React component styling in this folder MUST use Tailwind CSS classes, not inline `style={{}}` objects.
+
+- Custom color tokens are defined in `globals.css` under `@theme inline` with prefix `te-`: `text-te-accent`, `bg-te-bg`, `text-black`, etc.
+- SVG diagram files (`diagrams/*.jsx`) may still use `colors.js` for SVG `fill`/`stroke` attributes (these cannot be Tailwind classes), but the SVG element itself should use Tailwind for layout (`className` not `style`).
+- `colors.js` exists only for SVG attribute values. Non-SVG components must NOT import it.
+- The Tooltip component supports both `wrapperClassName` and `contentClassName` — use these instead of `wrapperStyle`.
+- For values without exact Tailwind utilities, use arbitrary values: `text-[0.82em]`, `tracking-[0.08em]`, `max-w-[1600px]`, etc.
+
 # Sub-documents
 
 Detailed rules for specific subsystems are split into their own files:

@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, ghostBox, FS, FSV } from './help
 
 export function AgenticDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 158" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 158" className={`${ss} min-w-[190px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {box(80,12,100,20,C.token,"User request","Open-ended tasks that need actions beyond a single chat completion.",FS)}
     {ghostBox(188,12,62,18,"Chat-only reply","Baseline assistant answers in one shot without tools or environment feedback.",FSV)}
     {arr(130,32,130,40)}{lbl(188,36,"intent + constraints",FS,"#666")}

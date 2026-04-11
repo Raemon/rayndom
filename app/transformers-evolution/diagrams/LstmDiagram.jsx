@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, ghostBox, FS, FS
 
 export function LstmDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 165" style={{...ss,minWidth:220}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 165" className={`${ss} min-w-[220px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     <DiagramTip detail="Cell state: a 'conveyor belt' of long-term memory. Updated by ADDITION (not multiplication), so gradients flow unchanged — solving vanishing gradients.">
       <line x1={10} y1={30} x2={250} y2={30} stroke={C.cellState} strokeWidth={3}/>
       {lbl(130,23,"cₜ  (cell state — long-term memory)",FS,C.cellState)}

@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, ghostBox, FS, FSV } from './help
 
 export function ScaffoldDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 158" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 158" className={`${ss} min-w-[190px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {ghostBox(10,8,80,20,"Single long session","Context fills up, model performance degrades, loses track of plan.",FS)}
     {lbl(180,18,"RALPH outer loop",FS,C.novel)}
     {box(110,8,140,20,C.novel,"Reset context each iteration","Fresh context window every loop. State persists through files and git, not conversation.",FS)}

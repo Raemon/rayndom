@@ -4,7 +4,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, FS, FSV } from './helpers';
 export function RlhfDiagram() {
   const { box } = getDiagramHelpers();
   const vbw = '0 0 275 168';
-  return (<svg viewBox={vbw} style={{...ss,minWidth:200}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox={vbw} className={`${ss} min-w-[200px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {box(8, 20, 62, 24, C.attn, 'Base LM', 'Pre-trained but not aligned — capable yet may be unsafe or unhelpful.', FS)}
     {arr(70, 32, 82, 32)}{lbl(76, 28, 'sample', FSV, '#666')}
     {box(84, 20, 78, 24, C.token, 'Rollouts', 'Generate several completions per prompt for ranking or RM training.', FS)}

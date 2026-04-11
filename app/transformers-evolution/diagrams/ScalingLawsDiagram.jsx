@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, ghostBox, FS, FSV } from './help
 
 export function ScalingLawsDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 155" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 155" className={`${ss} min-w-[190px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {lbl(60,14,"log(Compute)",FS,"#666")}{lbl(200,14,"log(Loss)",FS,"#666")}
     {ghostBox(10,20,100,22,"Ad-hoc training","Before scaling laws, labs chose model size and data by intuition — no way to predict final performance.",FS)}
     {ghostBox(150,20,100,22,"Unpredictable","Each training run was a gamble; no formula connected inputs to outcomes.",FS)}

@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, ghostBox, FS, FSV } from './help
 
 export function TtcDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 260 168" style={{...ss,minWidth:190}} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 260 168" className={`${ss} min-w-[190px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {box(80,14,100,20,C.token,"Hard prompt","Tasks where a single greedy decode often fails without extra deliberation.",FS)}
     {arr(130,34,130,42)}{lbl(188,38,"start reasoning trace",FS,"#666")}
     {ghostBox(158,14,92,18,"Single-pass guess","Baseline: one forward, immediate answer—no explicit scratch space.",FSV)}

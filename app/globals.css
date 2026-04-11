@@ -5,6 +5,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-te-bg: #e8e7cf;
+  --color-te-row-even: #f7f6f4;
+  --color-te-row-odd: #eeedeb;
+  --color-te-primary: #1a1a1a;
+  --color-te-accent: #8a6d3b;
+  --color-te-secondary: #333;
+  --color-te-header: #777;
+  --color-te-dim: #999;
 }
 
   :root {

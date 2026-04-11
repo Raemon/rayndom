@@ -4,7 +4,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, FS, FSV } from '
 export function ResnetDiagram() {
   const { box } = getDiagramHelpers();
   const vbw = '0 0 260 174';
-  return (<svg viewBox={vbw} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox={vbw} className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {box(35, 22, 60, 20, C.token, 'Input', 'Activation from previous layer.', FS)}
     {lbl(102, 32, 'x', FSV, C.token)}
     {arr(65, 42, 65, 48)}

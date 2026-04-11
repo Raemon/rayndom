@@ -3,7 +3,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, DiagramTip, op, ghostBox, FS, FS
 
 export function AttentionDiagram() {
   const { box } = getDiagramHelpers();
-  return (<svg viewBox="0 0 240 140" style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox="0 0 240 140" className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
     {lbl(120,12,"Encoder Hidden States",FS)}
     {box(10,18,48,22,C.token,"h₁","Encoder state for position 1.")}
     {box(64,18,48,22,C.token,"h₂","Encoder state 2.")}

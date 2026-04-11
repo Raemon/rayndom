@@ -4,7 +4,7 @@ import { getDiagramHelpers, arr, lbl, defs, ss, ghostBox, op, FS, FSV } from './
 export function MoeDiagram() {
   const { box } = getDiagramHelpers();
   const vb2 = '0 0 260 162';
-  return (<svg viewBox={vb2} style={ss} xmlns="http://www.w3.org/2000/svg">{defs}
+  return (<svg viewBox={vb2} className={`${ss} min-w-[180px]`} xmlns="http://www.w3.org/2000/svg">{defs}
 {ghostBox(6,24,50,70,'Dense FFN','Predecessor: one shared MLP; every token uses the same weights — full compute per token.',FSV)}
 {lbl(31,98,'(replaced)',FSV,C.dim)}
 {box(72,12,176,18,C.token,'Token embedding xₜ','Per-token hidden vector entering the MoE layer.',FS)}
