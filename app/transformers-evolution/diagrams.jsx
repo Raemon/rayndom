@@ -5,6 +5,7 @@ import { LstmDiagram } from './diagrams/LstmDiagram';
 import { Word2vecDiagram } from './diagrams/Word2vecDiagram';
 import { AttentionDiagram } from './diagrams/AttentionDiagram';
 import { ResnetDiagram } from './diagrams/ResnetDiagram';
+import { TokenizationDiagram } from './diagrams/TokenizationDiagram';
 import { TransformerDiagram } from './diagrams/TransformerDiagram';
 import { Gpt1Diagram } from './diagrams/Gpt1Diagram';
 import { BertDiagram } from './diagrams/BertDiagram';
@@ -35,6 +36,7 @@ const diagramComponents = {
   word2vec: Word2vecDiagram,
   attention: AttentionDiagram,
   resnet: ResnetDiagram,
+  tokenization: TokenizationDiagram,
   transformer: TransformerDiagram,
   gpt1: Gpt1Diagram,
   bert: BertDiagram,

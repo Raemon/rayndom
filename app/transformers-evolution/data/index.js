@@ -26,6 +26,7 @@ import { entry as lstm } from './lstm';
 import { entry as word2vec } from './word2vec';
 import { entry as attention } from './attention';
 import { entry as resnet } from './resnet';
+import { entry as tokenization } from './tokenization';
 import { entry as transformer } from './transformer';
 import { entry as gpt1 } from './gpt1';
 import { entry as bert } from './bert';
@@ -55,6 +56,7 @@ export const data = [
   word2vec,
   attention,
   resnet,
+  tokenization,
   transformer,
   gpt1,
   bert,

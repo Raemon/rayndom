@@ -52,7 +52,7 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
         value={row.problem}
         onChange={v => updateField("problem", v)}
         onClick={onToggleExpand}
-        className="p-3.5 leading-relaxed text-sm font-sans"
+        className="p-3.5 leading-relaxed text-base font-sans"
       >
         <Cell text={row.problem} collapsed={collapsed} />
       </EditableCell>
@@ -60,7 +60,7 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
         value={row.whyNotSooner}
         onChange={v => updateField("whyNotSooner", v)}
         onClick={onToggleExpand}
-        className="p-3.5 leading-relaxed text-te-secondary text-sm font-sans"
+        className="p-3.5 text-te-secondary text-base font-sans"
       >
         <Cell text={row.whyNotSooner} collapsed={collapsed} />
       </EditableCell>
