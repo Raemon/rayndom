@@ -18,20 +18,12 @@ export default function TransformerLineage() {
   };
 
   return (
-    <div className="flex h-screen font-[var(--font-cormorant-garamond),Georgia,serif] bg-te-bg">
+    <div className="flex font-[var(--font-cormorant-garamond),Georgia,serif] bg-te-bg">
       {/* <GlossarySidebar onSelectPost={setSelectedPostId} /> */}
-    <div className="flex-1 text-te-primary h-screen overflow-auto relative">
+    <div className="flex-1 text-te-primary relative">
       <div className="max-w-[2000px] mx-auto py-8 px-5">
         {/* Header */}
         <div className="mb-8 flex justify-between items-end flex-wrap gap-4">
-          <div>
-            <h1 className="font-[inherit] text-[2.6em] font-normal text-te-primary tracking-[-0.02em] leading-[1.1]">
-              The Transformer Lineage
-            </h1>
-            <p className="mt-2 max-w-[600px]">
-              A technical genealogy of major innovations. Hover over diagram elements for detailed explanations.
-            </p>
-          </div>
           <button onClick={toggleCollapsed} className="text-[0.82em] uppercase tracking-widest px-3 py-1.5 text-te-secondary hover:text-te-primary transition-colors cursor-pointer">
             {collapsed ? '▸ Expand rows' : '▾ Collapse rows'}
           </button>

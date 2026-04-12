@@ -1,5 +1,5 @@
 export const entry = {
-  year: "2024–25",
+  year: "2024",
   name: "Test-Time Compute / Thinking Models",
   diag: "ttc",
   oneLiner: "Let models think harder on harder problems",

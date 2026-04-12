@@ -1,5 +1,5 @@
 export const entry = {
-  year: "2025–26",
+  year: "2025",
   name: "Agent Scaffolding & Context Loops",
   diag: "scaffold",
   oneLiner: "Infrastructure for agents that work for hours",

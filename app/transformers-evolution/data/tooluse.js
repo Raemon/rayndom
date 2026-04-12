@@ -1,5 +1,5 @@
 export const entry = {
-  year: "2023–24",
+  year: "2023",
   name: "Function Calling & Tool Use",
   diag: "tooluse",
   oneLiner: "Models that call APIs and run code, not just talk",

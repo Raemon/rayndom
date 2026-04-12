@@ -11,5 +11,5 @@ The LSTM solved this by introducing a cell state — a separate memory vector th
   whyNotSooner: `The fix required the non-obvious idea of a linear memory path controlled by multiplicative gates.
 
 Hochreiter's 1991 diploma thesis identified the vanishing gradient problem, but the solution required the insight that a linear self-connection (the cell state) could be modulated by multiplicative gates. Hardware limitations also meant that the LSTM's higher per-step cost relative to simple RNNs was a serious concern in 1997.`,
-  examples: "Google Translate (2016–2020 era),Siri,Alexa voice models,OpenAI Sentiment Neuron (2017)",
+  examples: "Google Translate (2016),Siri,Alexa voice models,OpenAI Sentiment Neuron (2017)",
 };

@@ -58,10 +58,11 @@ const diagramComponents = {
   scaffold: ScaffoldDiagram,
 };
 
-function Diagram({ type }) {
+function Diagram({ type, className }) {
   const Component = diagramComponents[type];
   if (!Component) return null;
-  return <Component />;
+  if (!className) return <Component />;
+  return <div className={className}><Component /></div>;
 }
 
 export { Diagram };

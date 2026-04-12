@@ -1,5 +1,5 @@
 export const entry = {
-  year: "2023–24",
+  year: "2023",
   name: "Long Context (100K+ Tokens)",
   diag: "longctx",
   oneLiner: "Read entire books, not just a few pages",

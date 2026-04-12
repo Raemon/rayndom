@@ -1,5 +1,5 @@
 export const entry = {
-  year: "2021–22",
+  year: "2021",
   name: "Instruction Tuning (SFT)",
   diag: "sft",
   oneLiner: "Teach the model to follow instructions",

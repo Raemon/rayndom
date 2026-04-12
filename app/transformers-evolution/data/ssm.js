@@ -1,5 +1,5 @@
 export const entry = {
-  year: "2023–26",
+  year: "2023",
   name: "SSM Hybrids (Mamba, RWKV, Jamba)",
   diag: "ssm",
   oneLiner: "Linear-cost alternatives to quadratic attention",

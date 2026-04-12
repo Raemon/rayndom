@@ -1,4 +1,4 @@
-import TransformerLineage from './TransformerLineage'
+import TransformerLineagePage from './TransformerLineagePage'
 export default function Page() {
-  return <TransformerLineage />
+  return <TransformerLineagePage />
 }

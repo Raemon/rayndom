@@ -1,5 +1,5 @@
 export const entry = {
-  year: "2020–21",
+  year: "2020",
   name: "Mixture of Experts (MoE)",
   diag: "moe",
   oneLiner: "Only activate a fraction of the network per input",

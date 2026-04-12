@@ -48,7 +48,7 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
           {row.oneLiner}
         </EditableContent>
       </td>
-      {/* <EditableCell
+      <EditableCell
         value={row.problem}
         onChange={v => updateField("problem", v)}
         onClick={onToggleExpand}
@@ -63,11 +63,11 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
         className="p-3.5 leading-relaxed text-te-secondary"
       >
         <Cell text={row.whyNotSooner} collapsed={collapsed} />
-      </EditableCell> */}
-      {/* <td className={`p-2.5 min-w-[300px]${onToggleExpand ? ' cursor-pointer' : ''}`} onClick={onToggleExpand}>
+      </EditableCell>
+      <td className={`p-2.5 min-w-[300px]${onToggleExpand ? ' cursor-pointer' : ''}`} onClick={onToggleExpand}>
         <Diagram type={row.diag} />
-      </td> */}
-      {/* <EditableCell
+      </td>
+      <EditableCell
         value={row.examples}
         onChange={v => updateField("examples", v)}
         onClick={onToggleExpand}
@@ -78,7 +78,7 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
             <li key={i} className="mb-3 text-[0.88em]">{ex.trim()}</li>
           ))}
         </ul>
-      </EditableCell> */}
+      </EditableCell>
     </tr>
   );
 };
