@@ -57,7 +57,7 @@ const TransformerLineageEntry = ({ row }) => {
         </div>
         <div>
           <Label>Example Models</Label>
-          <ExampleModels diag={row.diag} text={row.examples} className="leading-relaxed text-te-accent" />
+          <ExampleModels text={row.examples} className="leading-relaxed text-te-accent" />
         </div>
       </div>
       <div className="pt-2">

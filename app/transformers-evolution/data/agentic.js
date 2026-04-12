@@ -9,5 +9,5 @@ Agentic frameworks break this boundary by giving the model a loop: generate a to
 
 The reason this only became practical in 2024 is reliability: agentic tasks chain multiple steps, and errors compound. If each step has 95% accuracy, a 10-step task succeeds only 60% of the time. Instruction following, structured output generation, and long context — all prerequisites — only reached sufficient quality in 2023.`,
   whyNotSooner: `Model capability — instruction following, structured output, long context — only reached sufficient quality in 2023. Reliable tool use requires ~99% per-step accuracy — 95% compounds to 60% over 10 steps. Safety infrastructure also needed to mature.`,
-  examples: "Claude with tool use,ChatGPT Actions,Devin,Claude Code,Cursor,OpenAI Codex agent",
+  examples: "Claude with tool use,Devin",
 };

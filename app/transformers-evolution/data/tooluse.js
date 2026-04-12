@@ -9,5 +9,5 @@ Function calling gave models a structured way to request actions: output a JSON 
 
 The key enablers were reliable structured output and instruction following. Without near-perfect JSON formatting, tool calls fail silently — a malformed function call doesn't produce a helpful error, it just does the wrong thing. The difference between 95% and 99.5% reliability in structured output is the difference between an unusable system and a practical one, because agentic tasks chain multiple steps and errors compound: 95% per step over 10 steps gives only 60% end-to-end success.`,
   whyNotSooner: `Without near-perfect structured output formatting, tool calls fail silently. The conceptual shift from treating LLMs as text generators to action-taking agents was also required.`,
-  examples: "ChatGPT plugins (2023),GPT-4 function calling,Claude tool use,Gorilla",
+  examples: "ChatGPT plugins (2023),GPT-4 function calling",
 };

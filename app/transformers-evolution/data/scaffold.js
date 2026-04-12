@@ -11,5 +11,5 @@ Dynamic prompt orchestration: a production agent needs different instructions fo
 
 Persistent memory across sessions: most agents are stateless between sessions — each conversation starts from zero. OpenClaw introduced persistent file-based memory: SOUL.md (agent identity and personality), MEMORY.md (long-term facts learned from past sessions), and guardrails.md (lessons about what to avoid). Combined with a model-agnostic runtime, this enables agents that accumulate knowledge across runs rather than starting fresh each time.`,
   whyNotSooner: `Required tool-using models to be reliable enough that scaffolding — not model capability — became the bottleneck. RALPH emerged from practitioners running agents for hours and watching context degradation firsthand.`,
-  examples: "RALPH/Ralphify,Claude Code,OpenClaw,Cursor,Devin,OpenAI Codex agent",
+  examples: "RALPH/Ralphify,Cursor",
 };

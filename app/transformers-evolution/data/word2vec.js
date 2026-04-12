@@ -7,5 +7,5 @@ export const entry = {
 
 Word2Vec learned dense embeddings — compact vectors of ~300 numbers — where semantic relationships become geometric relationships. The training method (called skip-gram) is surprisingly simple: given a word in a sentence, predict the words surrounding it. A word that consistently appears near "fur" and "purr" gets pulled close to other animal words in vector space. The result: vec("king") − vec("man") + vec("woman") ≈ vec("queen"). Meaning is encoded as direction and distance in a continuous space, and these vectors became the standard input representation for all subsequent neural NLP — including every Transformer.`,
   whyNotSooner: `Latent Semantic Analysis (1990) and neural language models (Bengio, 2003) explored similar ideas, but were either linear or computationally expensive. Mikolov's key contribution was a simplified architecture (no hidden layer) with negative sampling, making it feasible to train on billions of words. The specific training objectives (skip-gram, CBOW) were non-obvious simplifications that worked far better than expected.`,
-  examples: "Word2Vec,GloVe (2014),FastText,Foundation for all Transformer embedding layers",
+  examples: "Word2Vec,GloVe (2014)",
 };

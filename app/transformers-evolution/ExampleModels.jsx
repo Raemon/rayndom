@@ -1,21 +1,16 @@
 'use client';
 import Tooltip from '@/app/common/Tooltip';
-import { exampleModelsByDiag } from './data/exampleModels';
-
-const getExampleModels = (diag, text) => {
-  const curatedExampleModels = exampleModelsByDiag[diag];
-  if (curatedExampleModels?.length) return curatedExampleModels;
-  return text.split(',').map(exampleModel => ({ name: exampleModel.trim() }));
-};
+import { exampleModelDescriptions } from './data/exampleModels';
 
 const ExampleModelText = ({ exampleModel }) => {
-  if (!exampleModel.usedFor) return <span>{exampleModel.name}</span>;
+  const usedFor = exampleModelDescriptions[exampleModel.name];
+  if (!usedFor) return <span>{exampleModel.name}</span>;
   return (
     <Tooltip
       content={
         <>
           <strong className="text-te-accent">{exampleModel.name}:</strong>{' '}
-          {exampleModel.usedFor}
+          {usedFor}
         </>
       }
       interactive
@@ -30,8 +25,8 @@ const ExampleModelText = ({ exampleModel }) => {
   );
 };
 
-export const ExampleModels = ({ diag, text, as = 'div', className = '', itemClassName = '' }) => {
-  const exampleModels = getExampleModels(diag, text);
+export const ExampleModels = ({ text, as = 'div', className = '', itemClassName = '' }) => {
+  const exampleModels = text.split(',').map(exampleModel => ({ name: exampleModel.trim() }));
   if (as === 'ul') {
     return (
       <ul className={className}>

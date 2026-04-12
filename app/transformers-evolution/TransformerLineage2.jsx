@@ -81,7 +81,7 @@ const TransformerLineage2 = () => {
           <EditableCell value={hoveredRow.problem} onChange={v => updateHoveredRow({ problem: v })} />
           <EditableCell value={hoveredRow.whyNotSooner} onChange={v => updateHoveredRow({ whyNotSooner: v })} />
           <EditableCell value={hoveredRow.examples} onChange={v => updateHoveredRow({ examples: v })}>
-            <ExampleModels diag={hoveredRow.diag} text={hoveredRow.examples} className="text-te-accent leading-relaxed" itemClassName="mb-2" />
+            <ExampleModels text={hoveredRow.examples} className="text-te-accent leading-relaxed" itemClassName="mb-2" />
           </EditableCell>
         </div>
       </div>

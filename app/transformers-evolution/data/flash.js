@@ -7,5 +7,5 @@ export const entry = {
 
 FlashAttention exploited the GPU's memory hierarchy: GPUs have a small but very fast on-chip memory called SRAM, roughly 100x faster than HBM. Instead of materializing the full N×N matrix, FlashAttention computes attention in tiles — small blocks that fit in SRAM — and fuses multiple operations (the matrix multiply, softmax, and value weighting) into a single GPU kernel. Memory usage drops from O(N²) to O(N), and the operation runs 2–4x faster despite doing the exact same math. This is pure systems engineering — no change to the model or its outputs, just a dramatically more efficient implementation.`,
   whyNotSooner: `Most ML researchers think in FLOPS, not memory bandwidth. Dao et al. bridged systems engineering and ML research — typically separate communities.`,
-  examples: "Every modern Transformer stack (PyTorch,JAX,vLLM,TensorRT-LLM)",
+  examples: "Mistral 7B,Claude 3.5 Sonnet",
 };

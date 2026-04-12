@@ -74,7 +74,7 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
         onClick={onToggleExpand}
         className="p-3.5 leading-[1.2] w-full min-w-[300px] rounded-r-md text-te-accent font-[system-ui,-apple-system,sans-serif] text-[0.88em]"
       >
-        <ExampleModels diag={row.diag} text={row.examples} as="ul" itemClassName="mb-3 text-[0.88em]" />
+        <ExampleModels text={row.examples} as="ul" itemClassName="mb-3 text-[0.88em]" />
       </EditableCell>
     </tr>
   );
