@@ -20,6 +20,6 @@ export function RopeDiagram() {
     {box(98, 88, 52, 22, C.attn, 'Rotated k′', 'Key vector after the same rotary map.', FS)}
     {arr(170, 62, 170, 68)}{lbl(176, 64, "q'", FSV, '#666')}
     {arr(170, 99, 170, 88)}{lbl(176, 92, "k'", FSV, '#666')}
-    <DiagramTip detail="Because rotations compose, q′·k′ depends on θ(m−n): only relative distance matters — models extrapolate beyond training length more easily."><rect x={132} y={68} width={76} height={20} rx={3} fill={C.novel} opacity={0.9}/><text x={170} y={81} textAnchor="middle" fill="#f0ece4" fontSize={FS} fontFamily="sans-serif">q′·k′ ∝ f(m − n)</text></DiagramTip>
+    {box(132,68,76,20,C.novel,"q′·k′ ∝ f(m − n)","Because rotations compose, q′·k′ depends on θ(m−n): only relative distance matters — models extrapolate beyond training length more easily.")}
     {lbl(130, 148, 'RoPE rotates q and k so attention scores encode relative position, not a separate added PE vector.', FS, C.novel)}</svg>);
 }

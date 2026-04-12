@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { data } from './data';
 import { TransformerRow } from './TransformerRow';
 import GlossarySidebar from './GlossarySidebar';
+import { saveTransformerEntry } from './saveTransformerEntry';
 
 export default function TransformerLineageTable() {
   const [selectedPostId, setSelectedPostId] = useState(null);
@@ -15,6 +16,15 @@ export default function TransformerLineageTable() {
   const toggleCollapsed = () => {
     setCollapsed(c => !c);
     setExpandedRowIdx(null);
+  };
+  const updateRow = async (previousRow, nextRow) => {
+    setRows(currentRows => currentRows.map(currentRow => currentRow.diag === nextRow.diag ? nextRow : currentRow));
+    try {
+      await saveTransformerEntry(nextRow);
+    } catch (error) {
+      console.error('Failed to save transformer entry:', error);
+      setRows(currentRows => currentRows.map(currentRow => currentRow.diag === previousRow.diag ? previousRow : currentRow));
+    }
   };
 
   return (
@@ -45,6 +55,7 @@ export default function TransformerLineageTable() {
               <TransformerRow
                 key={idx}
                 row={row}
+                onRowChange={nextRow => updateRow(row, nextRow)}
                 collapsed={collapsed ? expandedRowIdx !== idx : false}
                 onToggleExpand={collapsed ? () => setExpandedRowIdx(currentIdx => currentIdx === idx ? null : idx) : undefined}
               />

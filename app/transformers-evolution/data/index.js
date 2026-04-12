@@ -2,7 +2,8 @@
 // INNOVATION DATA — aggregated from individual entry files
 // ============================================================
 // Each file in this folder exports a single { entry } object.
-// This index imports them in chronological order.
+// This index imports them in chronological order and applies
+// curated example models from ./exampleModels.
 //
 // ADDING A NEW ENTRY:
 //   1. Create a new file in this folder (use the `diag` key as filename)
@@ -17,7 +18,7 @@
 //   oneLiner:     string — <60 char layman-friendly takeaway
 //   problem:      string — detailed description of the problem solved
 //   whyNotSooner: string — detailed explanation of why this wasn't invented earlier
-//   examples:     string — comma-separated notable models (rendered as bullet list)
+//   examples:     string — two curated example models (rendered as a bullet list)
 // ============================================================
 import { entry as perceptron } from './perceptron';
 import { entry as backprop } from './backprop';
@@ -47,8 +48,9 @@ import { entry as ttc } from './ttc';
 import { entry as ssm } from './ssm';
 import { entry as tooluse } from './tooluse';
 import { entry as scaffold } from './scaffold';
+import { exampleModelsByDiag } from './exampleModels';
 
-export const data = [
+const entries = [
   perceptron,
   backprop,
   rnn,
@@ -78,3 +80,12 @@ export const data = [
   tooluse,
   scaffold,
 ];
+
+export const data = entries.map(entry => {
+  const curatedExampleModels = exampleModelsByDiag[entry.diag];
+  if (!curatedExampleModels?.length) return entry;
+  return {
+    ...entry,
+    examples: curatedExampleModels.map(exampleModel => exampleModel.name).join(','),
+  };
+});

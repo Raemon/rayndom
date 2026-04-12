@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Diagram } from './diagrams';
 import { JargonText } from './JargonText';
 import { EditableContent } from './EditableContent';
+import { ExampleModels } from './ExampleModels';
 
 const EditableCell = ({ value, onChange, className, children, onClick }) => {
   return (
@@ -73,11 +74,7 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
         onClick={onToggleExpand}
         className="p-3.5 leading-[1.2] w-full min-w-[300px] rounded-r-md text-te-accent font-[system-ui,-apple-system,sans-serif] text-[0.88em]"
       >
-        <ul>
-          {row.examples.split(",").map((ex, i) => (
-            <li key={i} className="mb-3 text-[0.88em]">{ex.trim()}</li>
-          ))}
-        </ul>
+        <ExampleModels diag={row.diag} text={row.examples} as="ul" itemClassName="mb-3 text-[0.88em]" />
       </EditableCell>
     </tr>
   );

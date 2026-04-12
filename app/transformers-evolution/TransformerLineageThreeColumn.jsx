@@ -2,6 +2,7 @@
 import { data } from './data';
 import { Diagram } from './diagrams';
 import { JargonText } from './JargonText';
+import { ExampleModels } from './ExampleModels';
 
 const TextBlock = ({ text }) => {
   const paragraphs = text.split('\n\n');
@@ -11,17 +12,6 @@ const TextBlock = ({ text }) => {
         <div key={idx} className={idx < paragraphs.length - 1 ? 'mb-[0.6em]' : ''}>
           <JargonText>{paragraph}</JargonText>
         </div>
-      ))}
-    </div>
-  );
-};
-
-const ExampleModels = ({ text }) => {
-  const exampleModels = text.split(',');
-  return (
-    <div className="leading-relaxed text-te-accent">
-      {exampleModels.map((exampleModel, idx) => (
-        <div key={idx}>{exampleModel.trim()}</div>
       ))}
     </div>
   );
@@ -67,7 +57,7 @@ const TransformerLineageEntry = ({ row }) => {
         </div>
         <div>
           <Label>Example Models</Label>
-          <ExampleModels text={row.examples} />
+          <ExampleModels diag={row.diag} text={row.examples} className="leading-relaxed text-te-accent" />
         </div>
       </div>
       <div className="pt-2">

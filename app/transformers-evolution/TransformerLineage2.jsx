@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { data } from './data';
 import { Diagram } from './diagrams';
 import { EditableContent } from './EditableContent';
+import { saveTransformerEntry } from './saveTransformerEntry';
+import { ExampleModels } from './ExampleModels';
 
-const EditableCell = ({ value, onChange, className }) => {
-  return <EditableContent value={value} onChange={onChange} className={className}>{value}</EditableContent>;
+const EditableCell = ({ value, onChange, className, children }) => {
+  return <EditableContent value={value} onChange={onChange} className={className}>{children ?? value}</EditableContent>;
 };
 
 const tableHeaders = [
@@ -20,9 +22,17 @@ const TransformerLineage2 = () => {
   const [rows, setRows] = useState(data);
   const [hoveredDiag, setHoveredDiag] = useState(rows[0]?.diag ?? null);
   const hoveredRow = rows.find(row => row.diag === hoveredDiag) ?? rows[0];
-  const updateHoveredRow = fields => {
+  const updateHoveredRow = async fields => {
     if (!hoveredRow) return;
-    setRows(currentRows => currentRows.map(row => row.diag === hoveredRow.diag ? { ...row, ...fields } : row));
+    const previousRow = hoveredRow;
+    const nextRow = { ...hoveredRow, ...fields };
+    setRows(currentRows => currentRows.map(row => row.diag === hoveredRow.diag ? nextRow : row));
+    try {
+      await saveTransformerEntry(nextRow);
+    } catch (error) {
+      console.error('Failed to save transformer entry:', error);
+      setRows(currentRows => currentRows.map(row => row.diag === previousRow.diag ? previousRow : row));
+    }
   };
 
   return (
@@ -70,7 +80,9 @@ const TransformerLineage2 = () => {
           {/* <EditableCell value={hoveredRow.oneLiner} onChange={v => updateHoveredRow({ oneLiner: v })} /> */}
           <EditableCell value={hoveredRow.problem} onChange={v => updateHoveredRow({ problem: v })} />
           <EditableCell value={hoveredRow.whyNotSooner} onChange={v => updateHoveredRow({ whyNotSooner: v })} />
-          <EditableCell value={hoveredRow.examples} onChange={v => updateHoveredRow({ examples: v })} />
+          <EditableCell value={hoveredRow.examples} onChange={v => updateHoveredRow({ examples: v })}>
+            <ExampleModels diag={hoveredRow.diag} text={hoveredRow.examples} className="text-te-accent leading-relaxed" itemClassName="mb-2" />
+          </EditableCell>
         </div>
       </div>
     </div>

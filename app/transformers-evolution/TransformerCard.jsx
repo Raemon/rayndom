@@ -1,6 +1,7 @@
 'use client';
 import { Diagram } from './diagrams';
 import { JargonText } from './JargonText';
+import { ExampleModels } from './ExampleModels';
 
 const TextBlock = ({ text }) => {
   const paragraphs = text.split('\n\n');
@@ -36,11 +37,7 @@ export const TransformerCard = ({ row }) => {
       <td className="p-2.5 max-w-[500px] w-full p-8">
         <Diagram type={row.diag} />
         <div className="font-semibold text-[0.82em] uppercase tracking-[0.08em] text-black mb-0.5">Notable Models</div>
-          <ul className="m-0 pl-4">
-            {row.examples.split(",").map((ex, i) => (
-              <li key={i} className="text-[0.88em] text-te-accent mb-0.5">{ex.trim()}</li>
-            ))}
-          </ul>
+          <ExampleModels diag={row.diag} text={row.examples} as="ul" className="m-0 pl-4" itemClassName="text-[0.88em] text-te-accent mb-0.5" />
       </td>
     </tr>
   );

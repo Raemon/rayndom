@@ -7,10 +7,7 @@ export function TransformerDiagram() {
     {box(65,8,130,18,C.token,"Tokens + Pos Encoding","Embeddings SUMMED with positional encodings. Replaces recurrence — position injected as a signal.")}
     {arr(130,26,130,34)}
     {lbl(130,33,"x",FSV)}
-    <DiagramTip detail="THE KEY INNOVATION: Each token is projected into Q, K, V via three separate learned matrices. This SPLIT is the data operation — one vector becomes three.">
-      <rect x={35} y={36} width={190} height={18} rx={3} fill={C.novel} opacity={0.9}/>
-      <text x={130} y={48} textAnchor="middle" fill="#f0ece4" fontSize={FS} fontFamily="sans-serif">Linear Projections → Q, K, V</text>
-    </DiagramTip>
+    {box(35,36,190,18,C.novel,"Linear Projections → Q, K, V","THE KEY INNOVATION: Each token is projected into Q, K, V via three separate learned matrices. This SPLIT is the data operation — one vector becomes three.")}
     <line x1={70} y1={54} x2={70} y2={64} stroke={C.novel} strokeWidth={1.5} markerEnd="url(#ah)"/>
     <line x1={130} y1={54} x2={130} y2={64} stroke={C.novel} strokeWidth={1.5} markerEnd="url(#ah)"/>
     <line x1={190} y1={54} x2={190} y2={64} stroke={C.novel} strokeWidth={1.5} markerEnd="url(#ah)"/>
