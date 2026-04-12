@@ -52,10 +52,10 @@ const TransformerLineage2 = () => {
                     <div className="text-te-primary">{row.oneLiner}</div>
                   </td> */}
                   <td className="px-3 py-3 leading-normal">
-                    <div className="line-clamp-1">{row.problemOneLiner}</div>
+                    <div className="line-clamp-1">{row.problem}</div>
                   </td>
                   {/* <td className="px-3 py-3 leading-normal text-te-secondary">
-                    <div className="line-clamp-1">{row.whyNotSoonerOneLiner}</div>
+                    <div className="line-clamp-1">{row.whyNotSooner}</div>
                   </td> */}
                 </tr>
               );

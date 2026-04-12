@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from 'react';
 import { Diagram } from './diagrams';
 import { JargonText } from './JargonText';
 import { EditableContent } from './EditableContent';
-import { joinEntrySectionText, splitEntrySectionText } from './entryText';
 
 const EditableCell = ({ value, onChange, className, children, onClick }) => {
   return (
@@ -13,14 +12,14 @@ const EditableCell = ({ value, onChange, className, children, onClick }) => {
   );
 };
 
-const Cell = ({ oneLiner, text, collapsed: c }) => {
-  const paragraphs = c ? [oneLiner] : [oneLiner, ...text.split('\n\n')].filter(Boolean);
+const Cell = ({ text, collapsed: c }) => {
+  const paragraphs = text.split('\n\n').filter(Boolean);
   const visible = c ? paragraphs.slice(0, 1) : paragraphs;
   return (
     <div className="overflow-hidden leading-relaxed">
       {visible.map((p, i) => (
         <div key={i} className={i < visible.length - 1 ? 'mb-[0.6em]' : ''}>
-          <JargonText>{p}</JargonText>
+          <JargonText wrapperClassName="cursor-help text-te-accent">{p}</JargonText>
         </div>
       ))}
     </div>
@@ -30,10 +29,6 @@ const Cell = ({ oneLiner, text, collapsed: c }) => {
 export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) => {
   const updateField = (field, val) => {
     onRowChange?.({ ...row, [field]: val });
-  };
-  const updateSection = (oneLinerField, field, value) => {
-    const nextSection = splitEntrySectionText(value);
-    onRowChange?.({ ...row, [oneLinerField]: nextSection.oneLiner, [field]: nextSection.text });
   };
   return (
     <tr className="bg-te-row-even align-top text-[.86em] font-serif">
@@ -54,20 +49,20 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
         </EditableContent>
       </td>
       <EditableCell
-        value={joinEntrySectionText(row.problemOneLiner, row.problem)}
-        onChange={v => updateSection("problemOneLiner", "problem", v)}
+        value={row.problem}
+        onChange={v => updateField("problem", v)}
         onClick={onToggleExpand}
-        className="p-3.5 leading-relaxed"
+        className="p-3.5 leading-relaxed text-sm font-sans"
       >
-        <Cell oneLiner={row.problemOneLiner} text={row.problem} collapsed={collapsed} />
+        <Cell text={row.problem} collapsed={collapsed} />
       </EditableCell>
       <EditableCell
-        value={joinEntrySectionText(row.whyNotSoonerOneLiner, row.whyNotSooner)}
-        onChange={v => updateSection("whyNotSoonerOneLiner", "whyNotSooner", v)}
+        value={row.whyNotSooner}
+        onChange={v => updateField("whyNotSooner", v)}
         onClick={onToggleExpand}
-        className="p-3.5 leading-relaxed text-te-secondary"
+        className="p-3.5 leading-relaxed text-te-secondary text-sm font-sans"
       >
-        <Cell oneLiner={row.whyNotSoonerOneLiner} text={row.whyNotSooner} collapsed={collapsed} />
+        <Cell text={row.whyNotSooner} collapsed={collapsed} />
       </EditableCell>
       <td className={`p-2.5 min-w-[300px]${onToggleExpand ? ' cursor-pointer' : ''}`} onClick={onToggleExpand}>
         <Diagram type={row.diag} />

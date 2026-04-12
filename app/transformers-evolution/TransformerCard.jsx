@@ -1,7 +1,6 @@
 'use client';
 import { Diagram } from './diagrams';
 import { JargonText } from './JargonText';
-import { joinEntrySectionText } from './entryText';
 
 const TextBlock = ({ text }) => {
   const paragraphs = text.split('\n\n');
@@ -27,11 +26,11 @@ export const TransformerCard = ({ row }) => {
         <div className="text-te-secondary italic mb-6 text-[1.1em]">{row.oneLiner}</div>
         <div className="mb-2 max-w-[500px]">
           <h3 className="font-semibold text-[0.82em] uppercase tracking-[0.08em] text-black mb-3">The Problem</h3>
-          <TextBlock text={joinEntrySectionText(row.problemOneLiner, row.problem)} />
+          <TextBlock text={row.problem} />
         </div>
         <div className="mb-2 max-w-[500px]">
           <h3 className="font-semibold text-[0.82em] uppercase tracking-[0.08em] text-black mb-3">Why Not Sooner?</h3>
-          <TextBlock text={joinEntrySectionText(row.whyNotSoonerOneLiner, row.whyNotSooner)} />
+          <TextBlock text={row.whyNotSooner} />
         </div>
       </td>
       <td className="p-2.5 max-w-[500px] w-full p-8">

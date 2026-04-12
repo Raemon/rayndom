@@ -24,7 +24,7 @@ export default function TransformerLineageTable() {
       <div className="max-w-[2000px] mx-auto py-8 px-5">
         {/* Header */}
         <div className="mb-8 flex justify-between items-end flex-wrap gap-4">
-          <button onClick={toggleCollapsed} className="text-[0.82em] uppercase tracking-widest px-3 py-1.5 text-te-secondary hover:text-te-primary transition-colors cursor-pointer">
+          <button onClick={toggleCollapsed} className="text-[0.82em] uppercase tracking-widest px-3 py-1.5 text-black! transition-colors cursor-pointer">
             {collapsed ? '▸ Expand rows' : '▾ Collapse rows'}
           </button>
         </div>

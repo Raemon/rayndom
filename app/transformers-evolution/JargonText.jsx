@@ -15,7 +15,7 @@ function findTerm(part) {
 
 const EMPTY_SET = new Set();
 
-export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET }) => {
+export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET, wrapperClassName = 'cursor-help border-b border-dashed border-black/30' }) => {
   const def = glossary[term];
   const nextSeen = new Set(seenTerms);
   nextSeen.add(term);
@@ -33,19 +33,19 @@ export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET }) => {
       maxWidth={300}
       zIndex={1000 + seenTerms.size * 10}
       contentClassName="!bg-white !text-[#1a1a1a] border border-neutral-300 shadow-lg text-sm leading-normal whitespace-pre-wrap font-sans"
-      wrapperClassName="cursor-help border-b border-dashed border-black/30"
+      wrapperClassName={wrapperClassName}
     >
       <span>{matchedText}</span>
     </Tooltip>
   );
 };
 
-export const JargonText = ({ children, seenTerms = EMPTY_SET }) => {
+export const JargonText = ({ children, seenTerms = EMPTY_SET, wrapperClassName }) => {
   if (typeof children !== 'string' || !jargonRegex) return children || null;
   const parts = children.split(jargonRegex);
   return parts.map((part, i) => {
     const term = findTerm(part);
-    if (term && !seenTerms.has(term)) return <JargonSpan key={i} term={term} matchedText={part} seenTerms={seenTerms} />;
+    if (term && !seenTerms.has(term)) return <JargonSpan key={i} term={term} matchedText={part} seenTerms={seenTerms} wrapperClassName={wrapperClassName} />;
     return part;
   });
 };
