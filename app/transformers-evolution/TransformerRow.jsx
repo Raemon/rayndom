@@ -65,6 +65,14 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
       >
         <Cell text={row.whyNotSooner} collapsed={collapsed} />
       </EditableCell>
+      <EditableCell
+        value={row.howInvented}
+        onChange={v => updateField("howInvented", v)}
+        onClick={onToggleExpand}
+        className="p-3.5 text-te-secondary text-base font-sans"
+      >
+        <Cell text={row.howInvented} collapsed={collapsed} />
+      </EditableCell>
       <td className={`p-2.5 min-w-[300px]${onToggleExpand ? ' cursor-pointer' : ''}`} onClick={onToggleExpand}>
         <Diagram type={row.diag} />
       </td>

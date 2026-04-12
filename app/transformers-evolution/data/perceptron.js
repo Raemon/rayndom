@@ -9,5 +9,6 @@ The perceptron introduced trainable weights — a set of numbers, one per input,
 
 The fatal limitation: a perceptron can only draw a straight line to separate categories (this property is called "linear separability"). If the data needs a curved boundary — or even something as simple as XOR ("true when exactly one input is on") — a single perceptron cannot learn it. This limit, proven mathematically by Minsky and Papert in 1969, froze the field for over a decade.`,
   whyNotSooner: `McCulloch-Pitts' mathematical neuron model (1943) and Hebb's learning principle (1949) were prerequisites. The idea that a machine could learn from examples was radical, and available hardware (the Mark I Perceptron was electromechanical) barely sufficed for even single-layer experiments.`,
+  howInvented: `Rosenblatt combined earlier neuron math with Hebbian-style learning into a trainable linear classifier, then made it concrete with hardware demos like the Mark I Perceptron. Independent convergence: mostly 1 main group built the full perceptron, though the broader cybernetics community had several closely related neuron-learning ideas in circulation.`,
   examples: "Mark I Perceptron (hardware),Character recognition prototypes",
 };

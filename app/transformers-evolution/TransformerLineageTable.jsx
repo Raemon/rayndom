@@ -11,8 +11,8 @@ export default function TransformerLineageTable() {
   const [collapsed, setCollapsed] = useState(true);
   const [expandedRowIdx, setExpandedRowIdx] = useState(null);
 
-  const headers = ["Year", "Innovation",  "Problem", "Why Not Sooner?", "Architecture","Examples"];
-  const widths = ["1%", "18%", "24%", "22%", "22%", "10%"];
+  const headers = ["Year", "Innovation",  "Problem", "Why Not Sooner?", "How Invented / Independent Groups", "Architecture","Examples"];
+  const widths = ["1%", "14%", "18%", "15%", "18%", "24%", "10%"];
   const toggleCollapsed = () => {
     setCollapsed(c => !c);
     setExpandedRowIdx(null);

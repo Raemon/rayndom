@@ -6,7 +6,7 @@
 //
 // ADDING A NEW ENTRY:
 //   1. Create a new file in this folder (use the `diag` key as filename)
-//   2. Export: export const entry = { year, name, diag, problem, whyNotSooner, examples }
+//   2. Export: export const entry = { year, name, diag, problem, whyNotSooner, howInvented, examples }
 //   3. Import it here and add to the array in chronological order
 //   4. Create a matching diagram in ../diagrams/ using the same diag key
 //
@@ -17,6 +17,7 @@
 //   oneLiner:     string — <60 char layman-friendly takeaway
 //   problem:      string — detailed description of the problem solved
 //   whyNotSooner: string — detailed explanation of why this wasn't invented earlier
+//   howInvented:  string — how the idea was discovered and how many groups converged on it
 //   examples:     string — comma-separated example models (rendered as a bullet list)
 // ============================================================
 import { entry as perceptron } from './perceptron';

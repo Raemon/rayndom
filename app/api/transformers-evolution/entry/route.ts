@@ -13,6 +13,7 @@ const normalizeEntry = (entry: Record<string, unknown>) => {
     oneLiner: typeof entry.oneLiner === 'string' ? entry.oneLiner : '',
     problem: typeof entry.problem === 'string' ? entry.problem : '',
     whyNotSooner: typeof entry.whyNotSooner === 'string' ? entry.whyNotSooner : '',
+    howInvented: typeof entry.howInvented === 'string' ? entry.howInvented : '',
     examples: typeof entry.examples === 'string' ? entry.examples : '',
   }
 }
@@ -34,6 +35,7 @@ const serializeEntry = (entry: ReturnType<typeof normalizeEntry>) => `export con
   oneLiner: ${escapeQuotedString(entry.oneLiner)},
   problem: ${escapeTemplateLiteral(entry.problem)},
   whyNotSooner: ${escapeTemplateLiteral(entry.whyNotSooner)},
+  howInvented: ${escapeTemplateLiteral(entry.howInvented)},
   examples: ${escapeQuotedString(entry.examples)},
 };
 `
