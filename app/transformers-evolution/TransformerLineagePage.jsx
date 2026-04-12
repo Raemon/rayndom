@@ -1,4 +1,5 @@
 import TransformerLineage2 from './TransformerLineage2';
+import TransformerLineageTable from './TransformerLineageTable';
 
 export default function TransformerLineagePage() {
   return (
@@ -8,7 +9,8 @@ export default function TransformerLineagePage() {
           The Transformer Lineage
         </h1>
       </header> */}
-      <TransformerLineage2 />
+      <TransformerLineageTable/>
+      {/* <TransformerLineage2 /> */}
     </div>
   );
 }

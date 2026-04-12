@@ -4,7 +4,7 @@ import { data } from './data';
 import { TransformerRow } from './TransformerRow';
 import GlossarySidebar from './GlossarySidebar';
 
-export default function TransformerLineage() {
+export default function TransformerLineageTable() {
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [rows, setRows] = useState(data);
   const [collapsed, setCollapsed] = useState(true);

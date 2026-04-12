@@ -27,7 +27,7 @@ const TransformerLineage2 = () => {
 
   return (
     <div className="flex font-serif text-te-primary">
-      <div className="w-[1000px] shrink-0 h-[calc(100vh)] overflow-y-auto">
+      <div className="w-[600px] shrink-0 h-[calc(100vh)] overflow-y-auto">
         <table className="w-full table-fixed border-separate border-spacing-y-1">
           {/* <thead>
             <tr>
@@ -42,7 +42,7 @@ const TransformerLineage2 = () => {
             {rows.map(row => {
               return (
                 <tr key={row.diag} className={`align-top text-sm font-sans bg-white hover:bg-white/60`} onMouseEnter={() => setHoveredDiag(row.diag)}>
-                  <td className="px-3 py-3 font-semibold text-te-accent whitespace-nowrap">
+                  <td className="px-5 py-3 font-semibold text-te-accent whitespace-nowrap w-[64px]">
                     {row.year}
                   </td>
                   <td className="px-3 py-3 leading-tight">
