@@ -20,6 +20,8 @@ Note: I am somewhat confused about how to unify all this into a single web page.
 
 # Styling: Tailwind
 
+This folder should be designed for light mode only. Do not add dark mode styles, dark mode variants, or design assumptions that depend on a dark theme unless I explicitly ask for it.
+
 All React component styling in this folder MUST use Tailwind CSS classes, not inline `style={{}}` objects.
 
 - Custom color tokens are defined in `globals.css` under `@theme inline` with prefix `te-`: `text-te-accent`, `bg-te-bg`, `text-black`, etc.

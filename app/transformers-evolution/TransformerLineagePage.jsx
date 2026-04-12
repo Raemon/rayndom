@@ -22,9 +22,9 @@ export default function TransformerLineagePage() {
         </h1>
       </header> */}
       <div className="max-w-[2000px] mx-auto px-5 pt-4">
-        <div className="flex gap-4 text-[0.82em] uppercase tracking-widest text-black">
+        <div className="flex gap-4 text-[0.82em] uppercase tracking-widest">
           {lineageViews.map(view => (
-            <button key={view.key} type="button" onClick={() => setActiveViewKey(view.key)} className="cursor-pointer" style={{ textDecoration: activeViewKey === view.key ? 'underline' : 'none', textUnderlineOffset: '4px' }}>
+            <button key={view.key} type="button" onClick={() => setActiveViewKey(view.key)} className={`cursor-pointer !text-black underline-offset-4 ${activeViewKey === view.key ? 'underline' : 'no-underline'}`}>
               {view.label}
             </button>
           ))}
