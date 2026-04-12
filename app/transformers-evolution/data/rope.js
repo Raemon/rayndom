@@ -7,8 +7,15 @@ export const entry = {
 
 RoPE encodes position through rotation rather than addition. Instead of adding a position vector, RoPE rotates the query and key vectors in 2D subspaces by an angle proportional to their position. The mathematical insight: when you compute the dot product of a rotated query at position m and a rotated key at position n, the rotation angles partially cancel, and the result depends only on the relative distance (m − n), not the absolute positions. This uses Euler's formula (e^{iθ} = cosθ + i·sinθ) to encode positions as rotations. The model naturally generalizes to longer sequences because it only needs to understand relative distances, not memorize specific position indices.`,
   whyNotSooner: `Relative position encodings existed but required complex attention modifications. RoPE's use of Euler's formula to encode positions as rotations was mathematically elegant but non-obvious.`,
-  whoInvented: `relative position groups (12), 2018 - 2022, 4 years.
-Su, Lu, Pan (6), 2021 - 2022, 1 year.
-linear bias position groups (6), 2021 - 2022, 1 year.`,
+  whoInvented: `Su, Lu, Pan (6)
+2021 - 2022, 1 year.
+
+relative position groups (12)
+2018 - 2022, 4 years.
+
+linear bias position groups (6)
+2021 - 2022, 1 year.
+
+Roughly 24 people across these groups were fixing position handling in Transformers; about 18 worked on relative-position or linear-bias schemes neck-and-neck with RoPE-style ideas.`,
   examples: "Llama 1,Llama 3",
 };

@@ -7,7 +7,12 @@ export const entry = {
 
 Instruction tuning (also called Supervised Fine-Tuning, or SFT) solves this by training the model on thousands of (instruction, ideal response) pairs across diverse task types — question answering, summarization, translation, coding, creative writing. The training uses standard supervised learning (the same loss function used in pre-training), but the data explicitly demonstrates what "following an instruction" looks like. The key insight: training on a diverse set of tasks teaches the model the general pattern of instruction-following, so it generalizes to new instruction types it has never seen. This was also shown to be the essential first step before RLHF — without SFT, reinforcement-learning-based alignment largely fails.`,
   whyNotSooner: `Earlier fine-tuning was task-specific (one model per task), and required large enough base models with latent capabilities worth unlocking. The insight that diverse multi-task instruction data could produce a general-purpose assistant contradicted the "specialist beats generalist" intuition.`,
-  whoInvented: `Wei, Bosma, Zhao, Guu (9), 2021 - 2022, 1 year.
-Ouyang, Wu, Jiang, Almeida (20), 2021 - 2022, 1 year.`,
+  whoInvented: `Ouyang, Wu, Jiang, Almeida (20)
+2021 - 2022, 1 year.
+
+Wei, Bosma, Zhao, Guu (9)
+2021 - 2022, 1 year.
+
+Roughly 29 people across these groups were aligning LMs with human intent; about 9 worked on instruction-tuning lines as close as InstructGPT's SFT stage.`,
   examples: "FLAN (Google 2021),InstructGPT SFT stage",
 };

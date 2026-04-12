@@ -7,8 +7,15 @@ export const entry = {
 
 GPT introduced a two-phase approach. First, pre-training (a training technique): take a Transformer decoder and train it on a simple objective — predict the next word, given all preceding words. This is autoregressive language modeling, and it requires no labels, just raw text. Through billions of next-word predictions, the model absorbs grammar, facts, and reasoning patterns. Second, fine-tuning (an adaptation technique): take the pre-trained model and train it further on a small labeled dataset for your specific task. The linguistic knowledge transfers, so you need far less labeled data than training from scratch.`,
   whyNotSooner: `Word2Vec and ELMo showed pre-trained representations helped, but were shallow or feature-based. Pre-training an entire deep generative model end-to-end required confidence that Transformers were expressive enough and that enough unlabeled text existed.`,
-  whoInvented: `Howard, Ruder (2), 2017 - 2018, 1 year.
-Radford, Narasimhan, Salimans, Sutskever (4), 2017 - 2018, 1 year.
-contextual pretraining teams (12), 2017 - 2018, 1 year.`,
+  whoInvented: `Radford, Narasimhan, Salimans, Sutskever (4)
+2017 - 2018, 1 year.
+
+Howard, Ruder (2)
+2017 - 2018, 1 year.
+
+contextual pretraining teams (12)
+2017 - 2018, 1 year.
+
+Roughly 18 people across these groups were pretraining deep LMs for transfer; about 14 worked on ULMFiT-style or contextual-pretraining lines very close to GPT-1's recipe.`,
   examples: "GPT-1,ChatGPT",
 };

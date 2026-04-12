@@ -12,9 +12,9 @@ const EditableCell = ({ value, onChange, className, children, onClick }) => {
   );
 };
 
-const Cell = ({ text, collapsed: c }) => {
+const Cell = ({ text, collapsed: c, onlyFirstParagraphWhenCollapsed = true }) => {
   const paragraphs = text.split('\n\n').filter(Boolean);
-  const visible = c ? paragraphs.slice(0, 1) : paragraphs;
+  const visible = c && onlyFirstParagraphWhenCollapsed ? paragraphs.slice(0, 1) : paragraphs;
   return (
     <div className="overflow-hidden leading-relaxed whitespace-pre-line">
       {visible.map((p, i) => (
@@ -73,7 +73,7 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
         onClick={onToggleExpand}
         className="p-3.5 text-te-secondary text-sm font-sans"
       >
-        <Cell text={row.whoInvented} collapsed={collapsed} />
+        <Cell text={row.whoInvented} collapsed={collapsed} onlyFirstParagraphWhenCollapsed={false} />
       </EditableCell>
     </tr>
   );

@@ -7,7 +7,12 @@ export const entry = {
 
 Mixture of Experts breaks this link between total parameters and per-token cost. Instead of one large feed-forward network in each Transformer layer, MoE uses several smaller "expert" sub-networks. A gating function (a small learned router) examines each token and sends it to just 1–2 of the available experts. A model can have, say, 8x7B = 56B total parameters but only activate 7B per token — the same cost as a regular 7B model, but with access to far more specialized knowledge. The engineering challenge is load-balancing: making sure all experts get used roughly equally, so no expert is wasted and no expert is overloaded.`,
   whyNotSooner: `MoE was proposed in 1991 (Jacobs et al.) and Shazeer et al. (2017) demonstrated it at scale with LSTMs, but engineering challenges — load-balancing, preventing expert collapse, and communication overhead — delayed widespread adoption. It took Switch Transformer (2021) and auxiliary losses to make it reliable in production Transformers.`,
-  whoInvented: `Shazeer, Lepikhin, Fedus (3), 2017 - 2021, 4 years.
-sparse routing groups (12), 2017 - 2021, 4 years.`,
+  whoInvented: `Shazeer, Lepikhin, Fedus (3)
+2017 - 2021, 4 years.
+
+sparse routing groups (12)
+2017 - 2021, 4 years.
+
+Roughly 15 people across these groups were sparsifying giant FFNs; about 12 worked on mixture-of-experts and conditional routing ideas in parallel.`,
   examples: "Mixtral 8x7B,GPT-4 (rumored MoE)",
 };

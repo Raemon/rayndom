@@ -9,7 +9,12 @@ The Transformer ("Attention Is All You Need," Vaswani et al.) replaced sequentia
 
 The original architecture was an encoder-decoder model designed for machine translation. Subsequent work split it: GPT used only the decoder (for generation), BERT used only the encoder (for understanding). To compensate for removing sequential processing (which inherently encodes word order), the Transformer adds positional encodings — fixed signals injected into the input that tell the model where each token sits. Each Transformer block also uses residual connections (the skip connections from ResNet) and layer normalization (a numerical stabilization technique) to keep training stable.`,
   whyNotSooner: `The core math (scaled dot-product attention) was simple. The breakthrough was architectural boldness — entirely removing recurrence when LSTMs were state-of-the-art. It also required sufficient GPU memory for the O(n²) attention matrix, and cultural inertia of the RNN paradigm delayed the leap.`,
-  whoInvented: `attention heavy sequence modelers (12), 2015 - 2017, 2 years.
-Vaswani, Shazeer, Parmar, Uszkoreit (8), 2016 - 2017, 1 year.`,
+  whoInvented: `Vaswani, Shazeer, Parmar, Uszkoreit (8)
+2016 - 2017, 1 year.
+
+attention heavy sequence modelers (12)
+2015 - 2017, 2 years.
+
+Roughly 20 people across these groups were replacing recurrence with attention; about 12 worked on attention-heavy sequence models in the same design neighborhood.`,
   examples: "GPT-1,GPT-4",
 };

@@ -7,7 +7,12 @@ export const entry = {
 
 He et al.'s solution was the skip connection — an architectural pattern where, instead of each layer learning the full desired output H(x), it only learns the residual F(x) = H(x) − x, and the layer's output is F(x) + x. The "+ x" is a direct wire from input to output, bypassing the layer entirely. If the optimal behavior for a layer is "do nothing," it just needs to learn F(x) = 0, which is far easier than learning H(x) = x. This simple change made training 100+ layer networks feasible, and is now a structural component of every Transformer block.`,
   whyNotSooner: `Highway Networks (2015, Schmidhuber) introduced gated skip connections months earlier, but required learned gating parameters. He et al.'s insight was that parameter-free identity shortcuts worked better — simpler was superior. That adding layers could hurt optimization took careful empirical work to diagnose.`,
-  whoInvented: `Srivastava, Greff, Schmidhuber (3), 2014 - 2015, 1 year.
-He, Zhang, Ren, Sun (4), 2014 - 2015, 1 year.`,
+  whoInvented: `He, Zhang, Ren, Sun (4)
+2014 - 2015, 1 year.
+
+Srivastava, Greff, Schmidhuber (3)
+2014 - 2015, 1 year.
+
+Roughly 7 people across these groups were pushing very deep convnets; about 3 worked on highway-style skip-gating as close as ResNet's residual shortcut idea.`,
   examples: "ResNet-50,GPT-4",
 };

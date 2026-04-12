@@ -7,7 +7,12 @@ export const entry = {
 
 Chain-of-thought prompting showed that simply asking the model to "think step by step" — or providing examples that include intermediate reasoning — dramatically improved accuracy on math, logic, and multi-step problems. By producing intermediate tokens ("60 x 2.5 = 150, so the answer is 150 miles"), the model effectively gets more serial compute: each token generation step becomes a "thinking" step that decomposes the problem. This required no architectural change and no retraining — just a different prompt. It revealed that LLMs can reason more accurately when given the "space" to work through problems sequentially, token by token.`,
   whyNotSooner: `Researchers treated LLMs as Q&A systems rather than reasoning systems that could benefit from "thinking out loud." The prompting paradigm itself was new.`,
-  whoInvented: `Wei, Wang, Zhou (9), 2022 - 2022, 1 year.
-prompt engineering groups (20), 2021 - 2022, 1 year.`,
+  whoInvented: `Wei, Wang, Zhou (9)
+2022 - 2022, 1 year.
+
+prompt engineering groups (20)
+2021 - 2022, 1 year.
+
+Roughly 29 people across these groups were eliciting multi-step reasoning from LMs; about 20 were exploring chain-of-thought-style prompting in parallel.`,
   examples: "PaLM 540B,OpenAI o1",
 };

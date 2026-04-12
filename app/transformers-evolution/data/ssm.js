@@ -9,8 +9,15 @@ State-space models (SSMs) offer an alternative rooted in control theory — a br
 
 Hybrid architectures get the best of both by interleaving SSM layers (for efficient long-range processing) with sparse attention layers (for precise information retrieval). Models like Mamba introduced selective gating, which lets the SSM dynamically decide what to store in its state based on input content, closing much of the quality gap with full attention.`,
   whyNotSooner: `SSMs existed in control theory for decades. Making them competitive on language required selective gating (Mamba) and hardware-aware implementations. Full attention remains a strong baseline with a persistent quality gap.`,
-  whoInvented: `Peng (34), 2021 - 2023, 2 years.
-Gu, Dao (2), 2023 - 2024, 1 year.
-Lieber, Lenz (22), 2023 - 2024, 1 year.`,
+  whoInvented: `Gu, Dao (2)
+2023 - 2024, 1 year.
+
+Lieber, Lenz (22)
+2023 - 2024, 1 year.
+
+Peng (34)
+2021 - 2023, 2 years.
+
+Roughly 58 people across these groups were seeking subquadratic sequence models; about 56 worked on SSM, linear-attention, or RWKV-class ideas in the same design space.`,
   examples: "RWKV-6,Mamba-2",
 };

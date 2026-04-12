@@ -7,7 +7,12 @@ export const entry = {
 
 FlashAttention exploited the GPU's memory hierarchy: GPUs have a small but very fast on-chip memory called SRAM, roughly 100x faster than HBM. Instead of materializing the full N×N matrix, FlashAttention computes attention in tiles — small blocks that fit in SRAM — and fuses multiple operations (the matrix multiply, softmax, and value weighting) into a single GPU kernel. Memory usage drops from O(N²) to O(N), and the operation runs 2–4x faster despite doing the exact same math. This is pure systems engineering — no change to the model or its outputs, just a dramatically more efficient implementation.`,
   whyNotSooner: `Most ML researchers think in FLOPS, not memory bandwidth. Dao et al. bridged systems engineering and ML research — typically separate communities.`,
-  whoInvented: `Dao, Fu, Ermon, Rudra, Re (5), 2022 - 2022, 1 year.
-IO aware kernel groups (15), 2021 - 2022, 1 year.`,
+  whoInvented: `Dao, Fu, Ermon, Rudra, Re (5)
+2022 - 2022, 1 year.
+
+IO aware kernel groups (15)
+2021 - 2022, 1 year.
+
+Roughly 20 people across these groups were rethinking attention on GPUs; about 15 worked on IO-aware or fused-kernel attention ideas in the same technical vein.`,
   examples: "Mistral 7B,Claude 3.5 Sonnet",
 };

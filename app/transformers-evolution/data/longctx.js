@@ -7,9 +7,18 @@ export const entry = {
 
 Extending to 100K+ tokens required solving several sub-problems simultaneously. RoPE with NTK-aware scaling (a mathematical adjustment to rotation frequencies) allowed position encodings to extrapolate to unseen lengths. FlashAttention-2 made the O(N²) computation feasible for long sequences. Ring attention (a distributed computing technique) split the sequence across multiple GPUs along the sequence dimension. And progressive training — starting with short contexts and gradually lengthening them — taught models to actually use the additional context rather than ignoring distant tokens. No single technique was sufficient; the breakthrough was combining all of them.`,
   whyNotSooner: `Each sub-problem (position encoding, attention cost, training data) was a separate research area, and the combination required solving all simultaneously. Models trained on short documents couldn't utilize long contexts even when the architecture supported it.`,
-  whoInvented: `Anthropic long-context team (15), 2023 - 2024, 1 year.
-Gemini long-context team (25), 2023 - 2024, 1 year.
-OpenAI long-context team (20), 2023 - 2024, 1 year.
-open weight long context builders (20), 2023 - 2024, 1 year.`,
+  whoInvented: `Anthropic long-context team (15)
+2023 - 2024, 1 year.
+
+Gemini long-context team (25)
+2023 - 2024, 1 year.
+
+OpenAI long-context team (20)
+2023 - 2024, 1 year.
+
+open weight long context builders (20)
+2023 - 2024, 1 year.
+
+Roughly 80 people across these groups were extending context windows; about 65 were in labs shipping comparably long-context stacks (position tweaks, efficient attention, training curricula).`,
   examples: "Claude (200K),Gemini 1.5 (1M+)",
 };

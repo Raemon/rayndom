@@ -9,7 +9,12 @@ The core framework — learning a reward model from human preference comparisons
 
 RLHF aligns the model in two stages. First, train a reward model (a separate neural network): show human raters two different model responses to the same prompt, and they pick the better one. The reward model learns to predict which response humans would prefer. Second, use reinforcement learning — specifically PPO (Proximal Policy Optimization, a stable RL algorithm) — to adjust the language model's weights to maximize the reward model's score, with a KL penalty (a mathematical constraint) that prevents the model from drifting too far from its pre-trained behavior. Later work, notably DPO (2023), showed this could be simplified to a single supervised-learning step on preference pairs, eliminating the RL loop entirely.`,
   whyNotSooner: `Components existed separately — Christiano et al. (2017) established the framework for Atari and robotics. But reward models need expensive human annotation, KL-constrained optimization needs careful tuning, and the human data pipeline was the bottleneck. Later simplified by DPO (2023), which derived a closed-form solution eliminating the RL loop entirely.`,
-  whoInvented: `Christiano, Leike, Brown (6), 2017 - 2018, 1 year.
-Ouyang, Wu, Jiang, Almeida (20), 2021 - 2022, 1 year.`,
+  whoInvented: `Christiano, Leike, Brown (6)
+2017 - 2018, 1 year.
+
+Ouyang, Wu, Jiang, Almeida (20)
+2021 - 2022, 1 year.
+
+Roughly 26 people across these groups were aligning models with human feedback; about 20 worked on reward-model-plus-RLHF pipelines in the same style as InstructGPT.`,
   examples: "InstructGPT,ChatGPT",
 };
