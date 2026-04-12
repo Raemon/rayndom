@@ -7,6 +7,8 @@ export const entry = {
 
 GPT-4 and its contemporaries added vision by connecting a visual encoder (typically a Vision Transformer that converts an image into a sequence of embedding vectors) to the language model. The image embeddings are projected into the same vector space as text token embeddings, and from the Transformer's perspective, an image is just another sequence of tokens interleaved with text. This enables cross-modal reasoning: the model can answer questions about an image, describe a chart, or follow instructions that reference visual content.`,
   whyNotSooner: `Individual pieces existed, but challenges remained: training stability when combining vision and language at scale, curating balanced datasets, and enormous compute requirements. CLIP (2021) was a prerequisite for vision-language alignment.`,
-  howInvented: `Multimodal LLMs were invented by joining strong vision encoders to strong language models and training the combined system so images and text share a usable representation space. Independent convergence: at least 3 major groups were converging quickly — OpenAI, Google/DeepMind, and Anthropic-era competitors building vision-language assistants on similar principles.`,
+  whoInvented: `OpenAI multimodal team (20), 2022 - 2024, 2 years.
+Gemini multimodal team (30), 2022 - 2024, 2 years.
+Anthropic multimodal group (15), 2023 - 2024, 1 year.`,
   examples: "GPT-4,GPT-4o",
 };

@@ -9,6 +9,8 @@ Function calling gave models a structured way to request actions: output a JSON 
 
 The key enablers were reliable structured output and instruction following. Without near-perfect JSON formatting, tool calls fail silently — a malformed function call doesn't produce a helpful error, it just does the wrong thing. The difference between 95% and 99.5% reliability in structured output is the difference between an unusable system and a practical one, because agentic tasks chain multiple steps and errors compound: 95% per step over 10 steps gives only 60% end-to-end success.`,
   whyNotSooner: `Without near-perfect structured output formatting, tool calls fail silently. The conceptual shift from treating LLMs as text generators to action-taking agents was also required.`,
-  howInvented: `Tool use was invented by wrapping LLMs in an observe-think-act loop and giving them a structured output channel for requesting external actions. Independent convergence: many groups were converging simultaneously — ReAct prompting, plugins/function-calling APIs, and open-source agent frameworks were all rediscovering the same core loop from different directions.`,
+  whoInvented: `Yao, Zhao, Yu, Du (7), 2022 - 2023, 1 year.
+API tool use platforms (20), 2023 - 2024, 1 year.
+open source agent framework groups (25), 2023 - 2024, 1 year.`,
   examples: "ChatGPT plugins (2023),GPT-4 function calling",
 };

@@ -9,6 +9,7 @@ Kaplan et al. at OpenAI discovered that language model performance follows smoot
 
 This transformed model development from an empirical art into something closer to engineering. Labs could now plan training runs rationally: given a fixed compute budget, the scaling laws prescribed an optimal model size. This predictability justified the hundred-million-dollar investments behind GPT-3 and its successors. However, the paper's specific recommendations about how to allocate compute between model size and data turned out to be significantly wrong — a correction Chinchilla would later provide.`,
   whyNotSooner: `Training dozens of models at multiple scales and fitting precise curves was an experiment few labs could run. The idea that a simple power-law formula could predict performance of a system as complex as a language model was not obvious a priori.`,
-  howInvented: `OpenAI invented modern scaling laws by running a disciplined grid of model sizes, dataset sizes, and compute budgets, then fitting simple power laws to the results. Independent convergence: about 2 groups were on similar terrain — earlier deep-learning scaling-law work and OpenAI's language-model-specific analysis, with DeepMind soon producing the Chinchilla correction.`,
+  whoInvented: `deep learning scaling researchers (15), 2015 - 2020, 5 years.
+Kaplan, McCandlish, Henighan (10), 2019 - 2020, 1 year.`,
   examples: "Kaplan et al. 'Scaling Laws for Neural Language Models' (2020),GPT-3",
 };

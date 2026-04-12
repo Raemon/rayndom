@@ -14,8 +14,10 @@ function findTerm(part) {
 }
 
 const EMPTY_SET = new Set();
+const DEFAULT_WRAPPER_CLASS_NAME = 'cursor-help border-b border-dashed border-black/30';
+const TOOLTIP_WRAPPER_CLASS_NAME = 'cursor-help text-te-accent';
 
-export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET, wrapperClassName = 'cursor-help border-b border-dashed border-black/30' }) => {
+export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET, wrapperClassName = DEFAULT_WRAPPER_CLASS_NAME, tooltipWrapperClassName = TOOLTIP_WRAPPER_CLASS_NAME }) => {
   const def = glossary[term];
   const nextSeen = new Set(seenTerms);
   nextSeen.add(term);
@@ -24,7 +26,7 @@ export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET, wrapperCl
       content={
         <>
           <strong className="text-te-accent">{term}:</strong>{' '}
-          <JargonText seenTerms={nextSeen}>{def}</JargonText>
+          <JargonText seenTerms={nextSeen} wrapperClassName={tooltipWrapperClassName} tooltipWrapperClassName={tooltipWrapperClassName}>{def}</JargonText>
         </>
       }
       interactive
@@ -32,7 +34,7 @@ export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET, wrapperCl
       placement="bottom-start"
       maxWidth={300}
       zIndex={1000 + seenTerms.size * 10}
-      contentClassName="!bg-white !text-[#1a1a1a] border border-neutral-300 shadow-lg text-sm leading-normal whitespace-pre-wrap font-sans"
+      contentClassName="!bg-white !text-[#1a1a1a] border border-neutral-300 shadow-2xl text-sm leading-normal whitespace-pre-wrap font-sans"
       wrapperClassName={wrapperClassName}
     >
       <span>{matchedText}</span>
@@ -40,12 +42,12 @@ export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET, wrapperCl
   );
 };
 
-export const JargonText = ({ children, seenTerms = EMPTY_SET, wrapperClassName }) => {
+export const JargonText = ({ children, seenTerms = EMPTY_SET, wrapperClassName, tooltipWrapperClassName = TOOLTIP_WRAPPER_CLASS_NAME }) => {
   if (typeof children !== 'string' || !jargonRegex) return children || null;
   const parts = children.split(jargonRegex);
   return parts.map((part, i) => {
     const term = findTerm(part);
-    if (term && !seenTerms.has(term)) return <JargonSpan key={i} term={term} matchedText={part} seenTerms={seenTerms} wrapperClassName={wrapperClassName} />;
+    if (term && !seenTerms.has(term)) return <JargonSpan key={i} term={term} matchedText={part} seenTerms={seenTerms} wrapperClassName={wrapperClassName} tooltipWrapperClassName={tooltipWrapperClassName} />;
     return part;
   });
 };

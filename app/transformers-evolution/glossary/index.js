@@ -29,6 +29,7 @@ import { entries as longContext } from './long-context';
 import { entries as testTimeCompute } from './test-time-compute';
 import { entries as ssmHybrids } from './ssm-hybrids';
 import { entries as agentic } from './agentic';
+import { entries as inventorGroups } from './inventor-groups';
 
 const allEntries = [
   ...foundationalMl,
@@ -47,6 +48,7 @@ const allEntries = [
   ...testTimeCompute,
   ...ssmHybrids,
   ...agentic,
+  ...inventorGroups,
 ];
 
 const built = {};

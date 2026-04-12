@@ -17,7 +17,7 @@ const Cell = ({ text, collapsed: c }) => {
   const paragraphs = text.split('\n\n').filter(Boolean);
   const visible = c ? paragraphs.slice(0, 1) : paragraphs;
   return (
-    <div className="overflow-hidden leading-relaxed">
+    <div className="overflow-hidden leading-relaxed whitespace-pre-line">
       {visible.map((p, i) => (
         <div key={i} className={i < visible.length - 1 ? 'mb-[0.6em]' : ''}>
           <JargonText wrapperClassName="cursor-help text-te-accent">{p}</JargonText>
@@ -48,41 +48,36 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
         <EditableContent value={row.oneLiner} onChange={v => updateField("oneLiner", v)} onClick={onToggleExpand} className="text-te-secondary text-[0.9em] mt-1 font-normal">
           {row.oneLiner}
         </EditableContent>
+        <EditableContent value={row.examples} onChange={v => updateField("examples", v)} onClick={onToggleExpand} className="text-te-accent text-[0.82em] mt-2 font-[system-ui,-apple-system,sans-serif] leading-[1.25]">
+          <ExampleModels text={row.examples} itemClassName="mt-1" />
+        </EditableContent>
       </td>
       <EditableCell
         value={row.problem}
         onChange={v => updateField("problem", v)}
         onClick={onToggleExpand}
-        className="p-3.5 leading-relaxed text-base font-sans"
+        className="p-3.5 leading-relaxed text-sm font-sans"
       >
         <Cell text={row.problem} collapsed={collapsed} />
-      </EditableCell>
-      <EditableCell
-        value={row.whyNotSooner}
-        onChange={v => updateField("whyNotSooner", v)}
-        onClick={onToggleExpand}
-        className="p-3.5 text-te-secondary text-base font-sans"
-      >
-        <Cell text={row.whyNotSooner} collapsed={collapsed} />
-      </EditableCell>
-      <EditableCell
-        value={row.howInvented}
-        onChange={v => updateField("howInvented", v)}
-        onClick={onToggleExpand}
-        className="p-3.5 text-te-secondary text-base font-sans"
-      >
-        <Cell text={row.howInvented} collapsed={collapsed} />
       </EditableCell>
       <td className={`p-2.5 min-w-[300px]${onToggleExpand ? ' cursor-pointer' : ''}`} onClick={onToggleExpand}>
         <Diagram type={row.diag} />
       </td>
       <EditableCell
-        value={row.examples}
-        onChange={v => updateField("examples", v)}
+        value={row.whyNotSooner}
+        onChange={v => updateField("whyNotSooner", v)}
         onClick={onToggleExpand}
-        className="p-3.5 leading-[1.2] w-full min-w-[300px] rounded-r-md text-te-accent font-[system-ui,-apple-system,sans-serif] text-[0.88em]"
+        className="p-3.5 text-te-secondary text-sm font-sans"
       >
-        <ExampleModels text={row.examples} as="ul" itemClassName="mb-3 text-[0.88em]" />
+        <Cell text={row.whyNotSooner} collapsed={collapsed} />
+      </EditableCell>
+      <EditableCell
+        value={row.whoInvented}
+        onChange={v => updateField("whoInvented", v)}
+        onClick={onToggleExpand}
+        className="p-3.5 text-te-secondary text-sm font-sans"
+      >
+        <Cell text={row.whoInvented} collapsed={collapsed} />
       </EditableCell>
     </tr>
   );

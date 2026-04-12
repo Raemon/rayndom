@@ -11,6 +11,9 @@ Dynamic prompt orchestration: a production agent needs different instructions fo
 
 Persistent memory across sessions: most agents are stateless between sessions — each conversation starts from zero. OpenClaw introduced persistent file-based memory: SOUL.md (agent identity and personality), MEMORY.md (long-term facts learned from past sessions), and guardrails.md (lessons about what to avoid). Combined with a model-agnostic runtime, this enables agents that accumulate knowledge across runs rather than starting fresh each time.`,
   whyNotSooner: `Required tool-using models to be reliable enough that scaffolding — not model capability — became the bottleneck. RALPH emerged from practitioners running agents for hours and watching context degradation firsthand.`,
-  howInvented: `Agent scaffolding was invented bottom-up by practitioners watching long-running agents fail, then adding looped execution, prompt routing, disk-based memory, and permission systems one reliability hack at a time. Independent convergence: many groups were converging in parallel — at least 4-5 serious teams and open-source communities built similar context-reset, planner/executor, and persistent-memory patterns independently.`,
+  whoInvented: `RALPH loop builders (10), 2025 - 2025, 1 year.
+Claude Code orchestration team (15), 2025 - 2026, 1 year.
+OpenClaw memory team (4), 2025 - 2026, 1 year.
+open source agent harness builders (30), 2024 - 2026, 2 years.`,
   examples: "RALPH/Ralphify,Cursor",
 };

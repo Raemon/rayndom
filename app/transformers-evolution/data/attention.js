@@ -7,6 +7,7 @@ export const entry = {
 
 Attention removed the bottleneck by letting the decoder look at all of the encoder's outputs at every step. At each generation step, the decoder computes a relevance score for each encoder position, producing a set of weights that sum to 1 (via softmax — a mathematical function that converts raw scores into a probability distribution). The decoder then takes a weighted sum of all encoder states, focusing on the most relevant parts. The model dynamically decides where to look based on what it's currently producing — a form of learned, differentiable addressing.`,
   whyNotSooner: `The idea of "soft addressing" existed in associative memory literature, but connecting it to gradient-based end-to-end training in NLP required the seq2seq paradigm to mature. Before neural machine translation took off (~2013), there was no compelling large-scale task where the bottleneck was painfully obvious enough to motivate the mechanism.`,
-  howInvented: `Bahdanau, Cho, and Bengio invented neural attention by asking how a seq2seq translator could peek back at the relevant encoder states instead of compressing everything into one vector. Independent convergence: about 2 groups were nearby — the Montreal NMT line and the differentiable-memory/soft-attention line from Graves and related work.`,
+  whoInvented: `Bahdanau, Cho, Bengio (3), 2013 - 2014, 1 year.
+differentiable memory group (8), 2014 - 2015, 1 year.`,
   examples: "Google Neural Machine Translation (GNMT),The Transformer",
 };

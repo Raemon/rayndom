@@ -3,6 +3,7 @@ import { BackpropDiagram } from './diagrams/BackpropDiagram';
 import { RnnDiagram } from './diagrams/RnnDiagram';
 import { LstmDiagram } from './diagrams/LstmDiagram';
 import { Word2vecDiagram } from './diagrams/Word2vecDiagram';
+import { Seq2seqDiagram } from './diagrams/Seq2seqDiagram';
 import { AttentionDiagram } from './diagrams/AttentionDiagram';
 import { ResnetDiagram } from './diagrams/ResnetDiagram';
 import { TokenizationDiagram } from './diagrams/TokenizationDiagram';
@@ -34,6 +35,7 @@ const diagramComponents = {
   rnn: RnnDiagram,
   lstm: LstmDiagram,
   word2vec: Word2vecDiagram,
+  seq2seq: Seq2seqDiagram,
   attention: AttentionDiagram,
   resnet: ResnetDiagram,
   tokenization: TokenizationDiagram,

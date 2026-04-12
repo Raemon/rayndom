@@ -7,6 +7,7 @@ export const entry = {
 
 The Vision Transformer (ViT) asked: what if you just treat an image like a sentence? It splits an image into a grid of patches (e.g., 16x16 pixel squares), flattens each patch into a vector, and feeds the sequence of patch vectors into a standard Transformer — the same architecture used for text. With no built-in spatial knowledge, ViT needs large datasets to learn spatial relationships from scratch. But given enough data, it matched or exceeded CNNs, proving the Transformer is a general-purpose sequence processor, not just a language model.`,
   whyNotSooner: `ViT required large-scale datasets (JFT-300M) to overcome the lack of spatial inductive bias. The leap of "just flatten patches into a sequence" seemed too simplistic to researchers.`,
-  howInvented: `ViT was invented by Google researchers asking the deliberately simple question: what if an image is just a sequence of patches and we reuse the text Transformer almost unchanged? Independent convergence: about 2 groups were near the same insight — pure patch-as-token vision models and adjacent "images as sequences" projects like iGPT/DETR-era work.`,
+  whoInvented: `sequence vision groups (12), 2019 - 2021, 2 years.
+Dosovitskiy, Beyer, Kolesnikov (12), 2020 - 2021, 1 year.`,
   examples: "ViT,CLIP",
 };
