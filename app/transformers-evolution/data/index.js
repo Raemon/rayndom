@@ -8,12 +8,11 @@
 //   1. Create a new file in this folder (use the `diag` key as filename)
 //   2. Export: export const entry = { year, name, diag, problem, whyNotSooner, whoInvented, examples }
 //   3. Import it here and add to the array in chronological order
-//   4. Create a matching diagram in ../diagrams/ using the same diag key
 //
 // SCHEMA per entry:
 //   year:         number | string — year or year range
 //   name:         string — display name of the innovation
-//   diag:         string — key matching a diagram component
+//   diag:         string — stable unique key for the entry
 //   oneLiner:     string — <60 char layman-friendly takeaway
 //   problem:      string — detailed description of the problem solved
 //   whyNotSooner: string — detailed explanation of why this wasn't invented earlier

@@ -1,6 +1,5 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
-import { Diagram } from './diagrams';
 import { JargonText } from './JargonText';
 import { EditableContent } from './EditableContent';
 import { ExampleModels } from './ExampleModels';
@@ -60,9 +59,6 @@ export const TransformerRow = ({ row, collapsed, onRowChange, onToggleExpand }) 
       >
         <Cell text={row.problem} collapsed={collapsed} />
       </EditableCell>
-      <td className={`p-2.5 min-w-[300px]${onToggleExpand ? ' cursor-pointer' : ''}`} onClick={onToggleExpand}>
-        <Diagram type={row.diag} />
-      </td>
       <EditableCell
         value={row.whyNotSooner}
         onChange={v => updateField("whyNotSooner", v)}

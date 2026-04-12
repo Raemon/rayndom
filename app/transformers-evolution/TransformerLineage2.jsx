@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { data } from './data';
-import { Diagram } from './diagrams';
 import { EditableContent } from './EditableContent';
 import { saveTransformerEntry } from './saveTransformerEntry';
 import { ExampleModels } from './ExampleModels';
@@ -20,8 +19,8 @@ const tableHeaders = [
 
 const TransformerLineage2 = () => {
   const [rows, setRows] = useState(data);
-  const [hoveredDiag, setHoveredDiag] = useState(rows[0]?.diag ?? null);
-  const hoveredRow = rows.find(row => row.diag === hoveredDiag) ?? rows[0];
+  const [hoveredEntryKey, setHoveredEntryKey] = useState(rows[0]?.diag ?? null);
+  const hoveredRow = rows.find(row => row.diag === hoveredEntryKey) ?? rows[0];
   const updateHoveredRow = async fields => {
     if (!hoveredRow) return;
     const previousRow = hoveredRow;
@@ -51,7 +50,7 @@ const TransformerLineage2 = () => {
           <tbody>
             {rows.map(row => {
               return (
-                <tr key={row.diag} className={`align-top text-sm font-sans bg-white hover:bg-white/60`} onMouseEnter={() => setHoveredDiag(row.diag)}>
+                <tr key={row.diag} className={`align-top text-sm font-sans bg-white hover:bg-white/60`} onMouseEnter={() => setHoveredEntryKey(row.diag)}>
                   <td className="px-5 py-3 font-semibold text-te-accent whitespace-nowrap w-[64px]">
                     {row.year}
                   </td>
@@ -76,7 +75,6 @@ const TransformerLineage2 = () => {
       <div className="flex-1 sticky top-0 h-screen overflow-y-auto">
         <div className="flex flex-col min-h-full items-stretch justify-start px-6 py-8 w-[600px] mx-auto gap-6 font-sans text-base">
           {hoveredRow?.name ? <div className="text-2xl font-serif text-te-primary text-center shrink-0"><EditableCell value={hoveredRow.name} onChange={v => updateHoveredRow({ name: v })} /></div> : null}
-          <Diagram type={hoveredRow.diag} className="w-full shrink-0" />
           {/* <EditableCell value={hoveredRow.oneLiner} onChange={v => updateHoveredRow({ oneLiner: v })} /> */}
           <EditableCell value={hoveredRow.problem} onChange={v => updateHoveredRow({ problem: v })} />
           <EditableCell value={hoveredRow.whyNotSooner} onChange={v => updateHoveredRow({ whyNotSooner: v })} />

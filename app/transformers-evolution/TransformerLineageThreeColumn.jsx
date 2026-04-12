@@ -1,6 +1,5 @@
 'use client';
 import { data } from './data';
-import { Diagram } from './diagrams';
 import { JargonText } from './JargonText';
 import { ExampleModels } from './ExampleModels';
 
@@ -40,7 +39,7 @@ const TransformerTocRow = ({ row, onSelect }) => {
 
 const TransformerLineageEntry = ({ row }) => {
   return (
-    <section id={`entry-${row.diag}`} className="font-serif grid grid-cols-[minmax(320px,520px)_minmax(320px,320px)] gap-x-8 items-start scroll-mt-6">
+    <section id={`entry-${row.diag}`} className="font-serif max-w-[520px] scroll-mt-6">
       <div>
         <div className="font-[inherit] text-[2em] font-normal text-te-primary tracking-[-0.02em] leading-[1.05]">
           <div className="text-te-accent font-sans text-base">{row.year}</div>
@@ -60,16 +59,13 @@ const TransformerLineageEntry = ({ row }) => {
           <ExampleModels text={row.examples} className="leading-relaxed text-te-accent" />
         </div>
       </div>
-      <div className="pt-2">
-        <Diagram type={row.diag} />
-      </div>
     </section>
   );
 };
 
 export default function TransformerLineageThreeColumn() {
-  const scrollToEntry = diag => {
-    document.getElementById(`entry-${diag}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const scrollToEntry = entryKey => {
+    document.getElementById(`entry-${entryKey}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (

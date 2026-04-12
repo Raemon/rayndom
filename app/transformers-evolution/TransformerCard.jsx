@@ -1,5 +1,4 @@
 'use client';
-import { Diagram } from './diagrams';
 import { JargonText } from './JargonText';
 import { ExampleModels } from './ExampleModels';
 
@@ -35,7 +34,6 @@ export const TransformerCard = ({ row }) => {
         </div>
       </td>
       <td className="p-2.5 max-w-[500px] w-full p-8">
-        <Diagram type={row.diag} />
         <div className="font-semibold text-[0.82em] uppercase tracking-[0.08em] text-black mb-0.5">Notable Models</div>
           <ExampleModels text={row.examples} as="ul" className="m-0 pl-4" itemClassName="text-[0.88em] text-te-accent mb-0.5" />
       </td>
