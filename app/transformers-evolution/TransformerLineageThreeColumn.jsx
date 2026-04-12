@@ -2,6 +2,7 @@
 import { data } from './data';
 import { Diagram } from './diagrams';
 import { JargonText } from './JargonText';
+import { joinEntrySectionText } from './entryText';
 
 const TextBlock = ({ text }) => {
   const paragraphs = text.split('\n\n');
@@ -59,11 +60,11 @@ const TransformerLineageEntry = ({ row }) => {
         <div className="text-te-secondary italic text-[1.06em] mt-1 mb-5">{row.oneLiner}</div>
         <div className="my-10">
           <Label>Problem</Label>
-          <TextBlock text={row.problem} />
+          <TextBlock text={joinEntrySectionText(row.problemOneLiner, row.problem)} />
         </div>
         <div className="mb-5">
           <Label>Why Not Sooner?</Label>
-          <TextBlock text={row.whyNotSooner} />
+          <TextBlock text={joinEntrySectionText(row.whyNotSoonerOneLiner, row.whyNotSooner)} />
         </div>
         <div>
           <Label>Example Models</Label>

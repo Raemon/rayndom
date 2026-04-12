@@ -3,35 +3,35 @@
 export const entries = [
   {
     term: "Autoregressive",
-    definition: "A method of generating text one word at a time, where each word is chosen based on all the words before it — like writing a sentence left-to-right without skipping ahead. Given 'The cat sat on the,' the model picks 'mat' by considering those five words, then uses all six to pick the next.",
+    definition: "Autoregressive generation means each new token is chosen conditioned on all prior tokens in order, like strict left-to-right writing where the model never conditions on future text.\n\nTraining matches deployment: the objective is next-token prediction along real prefixes.\n\nExample: after \"The cat sat on the\" the model scores \"mat\" high; after emitting \"mat,\" it conditions on the full six-token prefix to pick the following word.",
   },
   {
     term: "Pre-training",
-    definition: "The first phase of training, where a model reads massive amounts of text — books, websites, code — to learn general patterns of language before being specialized for any particular task. Like a medical student's broad education before choosing a specialty.",
+    definition: "Pre-training is the large-scale first phase where a model learns broad language (or code) statistics from huge unlabeled text before any task-specific adaptation.\n\nIt answers the cold-start problem: random weights know nothing about grammar or facts until they have read internet-scale data.\n\nExample: train for weeks on hundreds of billions of tokens scraped from books and the web with a next-token loss; accuracy on random trivia later partly reflects what repeated in that corpus.",
   },
   {
     term: "Fine-tuning",
-    definition: "After pre-training gives a model broad language knowledge, fine-tuning adapts it to a specific task using a smaller, curated dataset. The broad foundation remains, but performance on the target task improves dramatically — like a generalist doing specialized on-the-job training.",
+    definition: "Fine-tuning continues training a pre-trained model on a smaller, task-shaped dataset so weights shift toward the target behavior while retaining general language competence.\n\nContrast training from scratch on the small set alone, which often overfits or underfits.\n\nExample: start from a web-trained LM, then train a few epochs on 50k (question, short answer) pairs so replies become concise and on-topic for a support bot.",
   },
   {
     term: "Masked language modeling",
-    definition: "A training method that hides random words in a sentence and asks the model to fill in the blanks using surrounding context. Given 'The ___ sat on the mat,' the model learns to predict 'cat' by reading words on both sides — unlike autoregressive training, which only reads left-to-right.",
+    definition: "Masked language modeling hides a random subset of tokens in a sequence and trains the model to predict those hidden tokens from the visible ones on both sides.\n\nUnlike autoregressive training, every position can attend to future context in the encoder stack — useful for learning deep bidirectional representations.\n\nExample: input \"The [MASK] sat on the mat\" with label \"cat\"; the model must use left and right words jointly to raise \"cat\" above \"dog\" or \"robot.\"",
   },
   {
     term: "Bidirectional context",
-    definition: "Using words both before and after a position to understand it. Autoregressive models read left-to-right like writing a sentence; bidirectional models see the full sentence at once, like a human re-reading a paragraph to understand a tricky word.",
+    definition: "Bidirectional context means the representation at a position may depend on tokens both before and after it in the sequence, as in BERT-style encoders that see the full sentence at once.\n\nAutoregressive decoders used for generation are constrained to past-only context so they never condition on tokens that have not been generated yet.\n\nExample: in \"She sat on the river bank,\" the encoder can move information from \"river\" backward into the vector for \"bank\" in one pass, favoring shoreline over finance.",
   },
   {
     term: "SFT",
     altTerms: ["Supervised fine-tuning"],
-    definition: "Supervised Fine-Tuning — a pre-trained model can generate text but doesn't know how to be a helpful assistant. SFT teaches it by training on curated (question, ideal answer) pairs so the model learns to respond in the desired format and style.",
+    definition: "Supervised fine-tuning (SFT) is training on curated input-output demonstrations — chats, instructions with ideal replies — so a base LM that only continued text learns to follow prompts in a helpful format.\n\nIt shapes style and obedience more than raw world knowledge.\n\nExample: thousands of rows like user: \"Summarize in three bullets:\" assistant: \"- ...\\n- ...\" teach the model to emit bullets instead of rambling prose.",
   },
   {
     term: "Instruction following",
-    definition: "A model's ability to do what you ask in plain language. A base model might respond to 'Summarize this article' by continuing the text as though writing a document; an instruction-following model recognizes it as a command and produces a summary.",
+    definition: "Instruction following is the behavior where the model treats natural-language requests as commands to perform a task (summarize, translate, list steps) rather than as text to imitate or extend.\n\nBase LMs often continue the pattern of the prompt; instruction-tuned models answer it.\n\nExample: prompt \"Translate to French: Hello\" should yield \"Bonjour\" or a short French sentence, not \"Translate to French: Hello how are you today\" as if co-writing a worksheet.",
   },
   {
     term: "Task diversity",
-    definition: "Training on a wide variety of task types — question-answering, summarization, translation, coding — so the model generalizes to new instructions it hasn't seen. Without task diversity, a model fine-tuned only on Q&A might fail when asked to write a poem.",
+    definition: "Task diversity is the practice of mixing many kinds of supervised examples during alignment — QA, rewriting, coding, classification as text — so the model generalizes to novel instructions instead of overfitting one format.\n\nA narrow mix yields brittle assistants.\n\nExample: a fine-tune set with math word problems, email drafting, and JSON extraction produces a model that still obeys when asked for a haiku about databases; a set with only trivia QA may collapse when asked to format output as a table.",
   },
 ];

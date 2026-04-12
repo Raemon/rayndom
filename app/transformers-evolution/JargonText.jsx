@@ -32,7 +32,7 @@ export const JargonSpan = ({ term, matchedText, seenTerms = EMPTY_SET }) => {
       placement="bottom-start"
       maxWidth={300}
       zIndex={1000 + seenTerms.size * 10}
-      contentClassName="!bg-white !text-[#1a1a1a] border border-neutral-300 shadow-lg text-[0.85em] leading-normal font-['Source_Serif_4',Georgia,serif]"
+      contentClassName="!bg-white !text-[#1a1a1a] border border-neutral-300 shadow-lg text-[0.85em] leading-normal whitespace-pre-wrap font-['Source_Serif_4',Georgia,serif]"
       wrapperClassName="cursor-help border-b border-dashed border-black/30"
     >
       <span>{matchedText}</span>

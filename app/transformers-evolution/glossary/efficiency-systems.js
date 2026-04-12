@@ -3,50 +3,51 @@
 export const entries = [
   {
     term: "HBM",
-    definition: "High Bandwidth Memory — the main memory on a GPU. It can store large amounts of data (gigabytes), but reading from and writing to it is relatively slow. When AI models compute attention, they repeatedly shuffle large tables of numbers through this memory, making it the primary speed bottleneck.",
+    definition: "HBM (High Bandwidth Memory) is the large, off-chip-style memory pool on a GPU that holds model weights and big activation tensors.\n\nIt offers plenty of gigabytes but each read and write is slow compared to compute on the processor, so algorithms that shuttle huge matrices through HBM repeatedly become memory-bound.\n\nComputing full attention on a long document may stream an N×N attention-related workspace through this memory many times — often the dominant cost even when the arithmetic units sit idle.",
   },
   {
     term: "SRAM",
-    definition: "Static RAM — a tiny, ultra-fast memory built directly onto the GPU chip. Like a small workbench versus a large warehouse: you can work much faster, but only a small amount of data fits at once. Efficient algorithms try to do as much math as possible here before accessing the slower main memory.",
+    definition: "SRAM is fast on-chip memory that sits next to the execution units but only holds a small working set at once.\n\nGPUs pair a large but slower pool (HBM) with a tiny but fast scratchpad (SRAM): you cannot fit whole models in SRAM, so efficient kernels shuttle small tiles into SRAM, finish the math there, and avoid extra trips to HBM.\n\nA fused kernel keeps intermediate tiles in SRAM while multiplying small blocks, instead of writing every intermediate back to HBM between steps.",
   },
   {
     term: "Tiling",
-    definition: "When a matrix is too large to fit in fast on-chip memory, it must be loaded from slow main memory — a major bottleneck. Tiling solves this by breaking the computation into small blocks that each fit in fast memory, processing one block at a time.",
+    definition: "Tiling is blocking a large matrix operation into sub-blocks each small enough to live in fast on-chip memory while they are processed.\n\nWhen a full attention matrix for thousands of tokens cannot fit in SRAM, naive code spills to slow memory repeatedly; tiling reorders work so each block is loaded once, used heavily, then discarded.\n\nMultiplying two 8192×8192 matrices might proceed in 128×128 tiles: the chip finishes one tile's worth of multiply-adds before fetching the next slab from HBM.",
   },
   {
     term: "Kernel fusion",
-    definition: "Each GPU operation normally reads its inputs from slow memory and writes its results back — so chaining many operations multiplies the slowdown. Kernel fusion combines several operations into one, so intermediate results stay in fast memory instead of making round trips.",
+    definition: "Kernel fusion is implementing several GPU operations as one compiled kernel so intermediate tensors are not written to HBM between steps.\n\nChaining separate kernels means each step reads inputs from slow memory and writes outputs back — round trips that dominate runtime for memory-bound workloads.\n\nFusing softmax with the preceding matmul lets the chip keep rows of scores in registers or SRAM through normalization instead of materializing a full score tensor in HBM.",
   },
   {
     term: "FlashAttention",
-    definition: "Standard attention builds an enormous table comparing every token to every other token, which fills up slow GPU memory and creates a speed bottleneck. FlashAttention avoids ever building that full table by using tiling and kernel fusion to compute attention in small, fast chunks — achieving the same result 2–4× faster.",
+    definition: "FlashAttention is an attention implementation that avoids materializing the full N×N attention matrix in HBM by computing attention in SRAM-sized blocks with fused kernels.\n\nStandard attention for length N creates a huge score table and pays multiple HBM passes; the goal is the same mathematical output with far fewer bytes moved.\n\nOn a 2,048-token batch, FlashAttention-style blocking recomputes or streams chunks so peak HBM traffic drops sharply versus storing every pairwise score explicitly — often yielding several-fold wall-clock speedups at long lengths.",
   },
   {
     term: "Quadratic attention",
-    definition: "Standard attention compares every token to every other token, so cost grows with the square of sequence length — doubling the input quadruples the work. A 1,000-token input requires 1 million comparisons; a 10,000-token input requires 100 million.",
+    definition: "Quadratic attention means standard dense attention whose work and memory for pairwise interactions scale like N squared in sequence length N.\n\nEach token compares to every other token, so doubling length multiplies comparisons by four — the core reason long documents are expensive.\n\n1,000 tokens imply on the order of a million token pairs; 10,000 tokens imply on the order of a hundred million — ten times the length, one hundred times the pairwise work.",
   },
   {
     term: "Sparse attention",
-    definition: "Quadratic attention becomes prohibitively expensive for long sequences because every token attends to every other. Sparse attention reduces cost by having each token attend to only a selected subset — for example, nearby tokens plus a few distant ones — rather than all of them.",
+    definition: "Sparse attention is any pattern where each token only attends to a chosen subset of positions instead of all N, cutting cost below quadratic.\n\nWhen full attention is unaffordable for long inputs, the model trades complete pairwise access for a structured neighborhood — nearby tokens, strided hops, or learned patterns.\n\nA document model might let each word attend to the previous 128 tokens plus one summary token per paragraph, slashing pairs from N×N to roughly N×129 for large N.",
   },
   {
     term: "KV cache",
-    definition: "During text generation, the model produces one token at a time but needs the attention keys and values from all previous tokens at each step. Without caching, it would recompute them from scratch every time. The KV cache stores these values so each new token can reuse the prior work.",
+    definition: "The KV cache stores the key and value vectors already computed for past tokens so autoregressive generation does not recompute them each step.\n\nWithout it, generating token 500 would rerun attention prep for tokens 1–499 again; caching turns that into one append per new token.\n\nAfter the model emits \"The\", \"cat\", \"sat\", each new word only computes query-key-value for the fresh token while reusing stored keys and values for the prefix — saving huge redundant work across long replies.",
   },
   {
     term: "Query/key/value heads",
-    definition: "In attention, the model examines each token from multiple independent perspectives called 'heads.' Each head has its own learned query, key, and value projections — like asking several different questions about the same text simultaneously and combining the answers.",
+    definition: "Query, key, and value heads are the per-head linear projections that turn hidden states into the three vector types attention mixes.\n\nEach head learns its own Q/K/V views so multiple mixing patterns can run in parallel under multi-head attention.\n\nHead 2 might route pronouns to antecedents while head 5 tracks verb-argument structure, even though both read the same underlying token embeddings.",
   },
   {
     term: "GQA",
-    definition: "Grouped-Query Attention — storing separate key-value pairs for every attention head uses a lot of memory during inference. GQA reduces this by having several query heads share a single set of key-value pairs, cutting memory use with minimal quality loss.",
+    altTerms: ["Grouped-Query Attention"],
+    definition: "GQA (Grouped-Query Attention) is a layout where several query heads share one key head and one value head, shrinking the KV cache compared with full multi-head attention.\n\nInference memory grows with how many distinct K/V vectors you store per layer; the problem is paying full storage for every head when quality often allows sharing.\n\nEight query heads might pair with two shared KV pairs: each query still asks its own question, but only two K/V copies are kept for the prefix when generating the next token.",
   },
   {
     term: "Multi-Query Attention",
-    definition: "An extreme version of Grouped-Query Attention where all query heads share a single key-value head. This maximizes speed and minimizes memory, but can reduce quality because every perspective must share the same key-value information.",
+    definition: "Multi-Query Attention is the extreme case of grouping where every query head shares a single key head and single value head.\n\nIt minimizes KV-cache footprint and memory bandwidth for decoding at the cost of giving all heads identical key-value context.\n\nA 32-head decoder might emit 32 different queries each step but maintain one shared K and one shared V across the whole prefix — fastest and leanest, sometimes with a small quality hit versus many independent KV heads.",
   },
   {
     term: "Ablations",
-    definition: "Despite sounding medical, an ablation study in ML means systematically removing or disabling parts of a model to measure how much each one contributes. For example, removing residual connections from a transformer to quantify how much accuracy they provide.",
+    definition: "An ablation study removes or disables a component and measures the impact, to show what that piece actually contributes.\n\nDespite the surgical name, it is an engineering experiment: you isolate causality by comparing full model versus model-minus-feature on the same data.\n\nTo test residual connections, train the same Transformer with skips removed and report accuracy drop — the gap credits the skipped pathway for that gain.",
   },
 ];

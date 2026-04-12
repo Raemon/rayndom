@@ -3,15 +3,13 @@ export const entry = {
   name: "The Transformer",
   diag: "transformer",
   oneLiner: "Process all words at once, not one by one",
-  problem: `Token-by-token recurrence wasted GPU parallelism, so self-attention processed all positions together in one pass.
-
-RNNs and LSTMs processed tokens one at a time — each step's computation depended on the previous step's result. Modern GPUs excel at parallel computation, but sequential processing leaves most of the GPU idle. Training on long sequences was extremely slow, and even with LSTMs, information from distant tokens was diluted.
+  problemOneLiner: `Token-by-token recurrence wasted GPU parallelism, so self-attention processed all positions together in one pass.`,
+  problem: `RNNs and LSTMs processed tokens one at a time — each step's computation depended on the previous step's result. Modern GPUs excel at parallel computation, but sequential processing leaves most of the GPU idle. Training on long sequences was extremely slow, and even with LSTMs, information from distant tokens was diluted.
 
 The Transformer ("Attention Is All You Need," Vaswani et al.) replaced sequential recurrence entirely with self-attention — a computation pattern where every token directly computes a relationship score with every other token, all at once. Each token is projected into three vectors: a query ("what am I looking for?"), a key ("what do I contain?"), and a value ("what information do I carry?"). Attention scores are computed as dot products between queries and keys, scaled and passed through softmax to get weights, then used to produce a weighted sum of values. This runs in parallel across all positions.
 
 The original architecture was an encoder-decoder model designed for machine translation. Subsequent work split it: GPT used only the decoder (for generation), BERT used only the encoder (for understanding). To compensate for removing sequential processing (which inherently encodes word order), the Transformer adds positional encodings — fixed signals injected into the input that tell the model where each token sits. Each Transformer block also uses residual connections (the skip connections from ResNet) and layer normalization (a numerical stabilization technique) to keep training stable.`,
-  whyNotSooner: `Dropping recurrence entirely was a risky architectural leap, and early hardware made quadratic attention feel dangerous.
-
-The core math (scaled dot-product attention) was simple. The breakthrough was architectural boldness — entirely removing recurrence when LSTMs were state-of-the-art. It also required sufficient GPU memory for the O(n²) attention matrix, and cultural inertia of the RNN paradigm delayed the leap.`,
+  whyNotSoonerOneLiner: `Dropping recurrence entirely was a risky architectural leap, and early hardware made quadratic attention feel dangerous.`,
+  whyNotSooner: `The core math (scaled dot-product attention) was simple. The breakthrough was architectural boldness — entirely removing recurrence when LSTMs were state-of-the-art. It also required sufficient GPU memory for the O(n²) attention matrix, and cultural inertia of the RNN paradigm delayed the leap.`,
   examples: "Every modern LLM — GPT-4,Claude,Gemini,Llama,Mistral,DeepSeek all descend from this",
 };

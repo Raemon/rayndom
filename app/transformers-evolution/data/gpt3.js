@@ -3,13 +3,11 @@ export const entry = {
   name: "GPT-3 / Few-Shot In-Context Learning",
   diag: "gpt3",
   oneLiner: "Show a few examples in the prompt; no retraining",
-  problem: `Each new task still needed training, so in-context learning let examples in the prompt act like temporary training.
-
-Even with GPT-2's surprising zero-shot abilities, practical tasks still typically required collecting labeled data and running additional training — a significant barrier.
+  problemOneLiner: `Each new task still needed training, so in-context learning let examples in the prompt act like temporary training.`,
+  problem: `Even with GPT-2's surprising zero-shot abilities, practical tasks still typically required collecting labeled data and running additional training — a significant barrier.
 
 GPT-3 (175B parameters, over 100x GPT-2) demonstrated in-context learning: you place a few examples of the desired task directly in the prompt — say, three pairs of "English: ... French: ..." translations — and the model continues the pattern correctly for new inputs. No weight updates occur; the model "learns" the task purely from the examples provided in a single forward pass. This is called few-shot prompting. The mechanism is still not fully understood — the model appears to implicitly run a learning algorithm during inference. This capability scales with model size; smaller models cannot do it reliably.`,
-  whyNotSooner: `Few-shot prompting only becomes reliable at huge scale, and most labs could not test models large enough to see it.
-
-Smaller models can't do it reliably. The $4.6M training cost was inaccessible to most. The idea that a forward pass could implicitly implement a learning algorithm was not anticipated.`,
+  whyNotSoonerOneLiner: `Few-shot prompting only becomes reliable at huge scale, and most labs could not test models large enough to see it.`,
+  whyNotSooner: `Smaller models can't do it reliably. The $4.6M training cost was inaccessible to most. The idea that a forward pass could implicitly implement a learning algorithm was not anticipated.`,
   examples: "GPT-3 via API; foundation for ChatGPT,Copilot,The entire LLM application ecosystem",
 };

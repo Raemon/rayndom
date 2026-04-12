@@ -4,18 +4,18 @@ export const entries = [
   {
     term: "State-space model",
     altTerms: ["State-space models", "SSM"],
-    definition: "Transformers compare every token to every other token, which gets quadratically more expensive as input length grows. A state-space model (SSM) is an alternative architecture that processes sequences by maintaining a compressed running summary, achieving linear cost — doubling the input length only doubles (rather than quadruples) the computation.",
+    definition: "A state-space model (SSM) is a sequence architecture that updates a compact hidden state as each new token arrives, instead of comparing every token to every other token.\n\nTransformers pay roughly N² cost for length N because each position attends to all positions; SSMs aim for roughly linear cost by summarizing the past into a fixed-size state that rolls forward.\n\nReading a 100,000-token log file: a Transformer-style layer might budget hundreds of billions of pairwise touches; an SSM-style layer walks the file once while carrying a state vector whose size does not grow with how far you have read.",
   },
   {
     term: "Linear attention",
-    definition: "Standard attention compares every token to every other token, costing O(N²) — processing 10× more tokens costs 100× more compute. Linear attention reformulates the attention operation using mathematical tricks (kernel approximations) to achieve O(N) cost, but often sacrifices some of the precise token-to-token matching that makes standard attention powerful.",
+    definition: "Linear attention is a reformulation of attention-like mixing whose cost scales linearly with sequence length rather than quadratically.\n\nStandard attention materializes all pairwise scores between N tokens; linear variants reassociate the mathematics so the same output can be built by accumulating sufficient statistics in one pass.\n\nProcessing 20,000 tokens might remain tractable where dense attention would require ~400 million score cells per layer; the tradeoff is often weaker exact pairwise matching than full softmax attention.",
   },
   {
     term: "Hybrid",
-    definition: "Attention layers excel at precise long-range lookups but are expensive; SSM layers handle sequential flow cheaply but are weaker at exact retrieval. A hybrid architecture interleaves both types, using SSM layers for most processing and inserting attention layers where precise recall matters — combining efficiency with accuracy.",
+    definition: "A hybrid model interleaves cheap long-range mixers (often SSM- or conv-style blocks) with a smaller number of full attention layers.\n\nAttention is strong at arbitrary token-to-token lookup but expensive at scale; SSM-style blocks stream efficiently but can miss precise long-distance retrieval unless paired with attention.\n\nA stack might let SSM layers carry narrative state across a whole chapter, then use attention layers at the end of each section so the model can pull an exact date or name from hundreds of paragraphs back.",
   },
   {
     term: "Selective gating",
-    definition: "Standard SSMs apply the same compression rules to every token, which means they can't distinguish important information from noise. Selective gating — Mamba's key innovation — makes the SSM's compression parameters depend on the input, letting the model decide on the fly what to remember and what to discard. Like a note-taker who writes down key facts but skips filler words.",
+    definition: "Selective gating lets a state-space block change how much of the incoming token enters the recurrent state and how much of the old state persists, based on the token content itself.\n\nA fixed update rule treats noise and keywords the same; the problem is preserving rare facts (a PIN, a name) while discarding boilerplate without growing state size.\n\nDuring a transcript full of \"um\" and \"like\", the gate can shrink updates on filler syllables yet open wide when a speaker states a nine-digit account number worth remembering in the hidden state.",
   },
 ];

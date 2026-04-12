@@ -3,91 +3,91 @@
 export const entries = [
   {
     term: "NLP",
-    definition: "Natural Language Processing — the branch of AI focused on getting computers to understand, interpret, and generate human language. Applications range from spam filters and autocomplete to chatbots and translation.",
+    definition: "Natural Language Processing (NLP) is the field of building systems that read, label, retrieve, or generate human language with computers.\n\nIt spans narrow tools (spam filters, spell check) and broad models that draft email or translate.\n\nExample: given the sentence \"Refund my order,\" an NLP classifier routes it to the billing queue; a generator might draft a polite reply asking for an order number.",
   },
   {
     term: "Token",
     altTerms: ["Tokens"],
-    definition: "In everyday English, a 'token' is a small piece representing something larger. In AI, it's the smallest unit of text a model reads — roughly a word, but uncommon words get split into pieces. 'Chatbot' might become two tokens: 'Chat' + 'bot.'",
+    definition: "In ML, a token is one chunk of text the model treats as a single symbol in its vocabulary — often a common word, but rare words are split into subword pieces so nothing is out-of-vocabulary.\n\nEveryday \"token\" means a stand-in object; here it means an atomic unit in the model's input stream.\n\nExample: GPT-style tokenizers might map \"Chatbot\" to two tokens such as \"Chat\" and \"bot,\" while \"the\" stays one token.",
   },
   {
     term: "Corpus",
-    definition: "A large body of text collected for training AI — ranging from thousands of documents to billions of web pages. The word comes from Latin for 'body' (as in 'body of work'). A model's abilities are shaped by what's in its training corpus.",
+    definition: "A corpus is the collected text (or speech transcripts) used to train or evaluate a language system — from a few thousand labeled tweets to billions of pages scraped from the web.\n\nScale matters: a model sees grammar, facts, and biases present in that body of text.\n\nExample: a 50 GB snapshot of Wikipedia plus books might be on the order of tens of billions of word tokens; the model's factual quirks often mirror what appears often there.",
   },
   {
     term: "Language modeling",
-    definition: "The task of predicting what word comes next in a sentence. This deceptively simple objective — guess the next word, over and over, across billions of sentences — turns out to teach a model grammar, facts, and reasoning patterns. It is the core training method behind most modern AI language systems.",
+    definition: "Language modeling is the training objective of predicting the next token (or a masked token) from surrounding context, repeated across huge text.\n\nThat narrow game forces the system to internalize syntax, some facts, and discourse patterns because only accurate context use drives the score down.\n\nExample: on \"The capital of France is ,\" the trained model assigns high probability to \"Paris\" because the training corpus rewarded that continuation thousands of times.",
   },
   {
     term: "Language model",
     altTerms: ["Language models"],
-    definition: "An AI system trained on large amounts of text to predict and generate language. It learns by reading billions of sentences and practicing 'guess the next word.' The resulting model can write essays, answer questions, and translate languages — all emerging from that one training task.",
+    definition: "A language model is a system trained on text to assign probabilities to upcoming tokens (or to sample coherent continuations), produced by optimizing next-token prediction (or a close variant) on large corpora.\n\nDownstream assistants add alignment on top of this core capability.\n\nExample: the same base LM can autocomplete code, finish a poem, or score how surprising a headline is, all from the shared next-token machinery.",
   },
   {
     term: "Next-token prediction",
-    definition: "The training method where a model reads text one piece at a time and tries to guess what comes next. For 'The cat sat on the ___', it should predict 'mat' or similar. By practicing this across billions of sentences, the model absorbs patterns of grammar, facts, and reasoning.",
+    definition: "Next-token prediction is the training game where the model sees a prefix of text and must assign probability to the true next piece; cross-entropy loss pushes mass onto the correct token.\n\nIt is the workhorse objective behind GPT-style models.\n\nExample: for input \"The cat sat on the \" the label token might be \"mat\"; the model is penalized if it puts low probability on \"mat\" and high probability on unrelated words.",
   },
   {
     term: "Downstream task",
-    definition: "A specific real-world application — like classifying emails as spam, answering questions, or translating languages — that a pre-trained model is adapted to handle. 'Downstream' because it comes after the general training: first learn language broadly, then specialize.",
+    definition: "A downstream task is the specific job you care about after (or on top of) general training — sentiment tagging, translation, SQL generation — where metrics match a product need.\n\n\"Downstream\" signals it comes after a broad upstream training phase.\n\nExample: a model pre-trained on the web is fine-tuned on 10k customer tickets labeled \"urgent\" or \"routine\" so the deployment task is ticket triage.",
   },
   {
     term: "Labeled dataset",
     altTerms: ["Labeled datasets"],
-    definition: "Training data where a human has marked the correct answer for each example — e.g., tagging 1,000 emails as 'spam' or 'not spam.' These are expensive to create because they require human judgment, but they teach the model what 'right' looks like for a specific task.",
+    definition: "A labeled dataset pairs each example with a human-chosen or human-verified target — class name, span tags, rating — so supervised training can minimize prediction error against that target.\n\nLabels cost time and money, so sets are often smaller than raw text piles.\n\nExample: 20k emails each marked \"spam\" or \"not spam\" trains a classifier; the model never sees the engineer's rules, only the examples and tags.",
   },
   {
     term: "Embedding",
     altTerms: ["Embeddings"],
-    definition: "In everyday English, 'embedding' means placing something within something else. In AI, it means converting a word or other item into a list of numbers that captures its meaning. Similar words get similar numbers — 'king' and 'queen' end up close together, while 'king' and 'banana' are far apart.",
+    definition: "In ML, an embedding is a fixed-length list of numbers representing a discrete item (word, token, user) such that useful similarity in the task lines up with distance in that vector space.\n\nEveryday \"embed\" means to place inside something; here it means map into coordinates for computation.\n\nExample: after training, vectors for \"king\" and \"queen\" lie nearer each other than either does to \"banana,\" so nearest-neighbor search retrieves related words.",
   },
   {
     term: "Neural machine translation",
-    definition: "Using neural networks to translate text between languages. This task drove major AI breakthroughs — early systems struggled with long sentences because they had to compress the entire input into a fixed-size summary before translating. The need to let the translator look back at specific input words motivated the invention of 'attention.'",
+    definition: "Neural machine translation is machine translation where a neural network maps a source sentence to a target sentence, usually with an encoder-decoder stack and (in modern systems) attention so long inputs are not crushed into one tiny vector.\n\nThe field's struggle with long sentences helped motivate attention mechanisms.\n\nExample: English \"The committee approved the budget\" becomes French \"Le comité a approuvé le budget\" with the model attending back to \"committee\" when emitting \"comité.\"",
   },
   {
     term: "Word2Vec",
-    definition: "A method (2013) that learns to represent words as lists of numbers by training on a simple task: predict a word's neighbors in a sentence. Words with similar meanings end up near each other in this number space. Its famous demo: king − man + woman ≈ queen.",
+    definition: "Word2Vec is a family of shallow neural methods (circa 2013) that learn word embeddings by predicting context words from a center word (skip-gram) or the center from context (CBOW), so co-occurrence structure becomes geometry.\n\nEach word maps to one vector regardless of sentence context.\n\nExample: vector arithmetic on trained embeddings famously yields king − man + woman ≈ queen in the nearest-neighbor sense.",
   },
   {
     term: "ELMo",
-    definition: "Embeddings from Language Models (2018) — a system that gives each word a different numerical representation depending on context. Unlike Word2Vec, where 'bank' always gets the same numbers, ELMo produces different representations for 'river bank' vs. 'bank account.' A key stepping stone toward modern AI language models.",
+    definition: "ELMo (Embeddings from Language Models) is a way to represent a word with a vector that depends on the whole sentence, built from the internal states of a deep bidirectional language model run left-to-right and right-to-left.\n\nIt fixes the Word2Vec limitation where \"bank\" always shares one vector for \"river bank\" and \"bank account.\"\n\nExample: in \"She sat on the river bank,\" the ELMo vector for \"bank\" moves toward shoreline semantics; in \"She deposited cash at the bank,\" it moves toward finance semantics.",
   },
   {
     term: "Unidirectional",
-    definition: "Processing text in one direction only — left to right — so the model can see previous words but not future ones. Like reading with a card covering everything to the right. This is the natural constraint for text generation: you can't peek at words you haven't written yet.",
+    definition: "Unidirectional modeling reads the sequence in one time order (typically left-to-right) so the representation at position t may use tokens ≤ t but not tokens > t.\n\nThat matches text generation, where future tokens do not exist yet, unlike bidirectional encoders that may see the whole sentence at once.\n\nExample: when predicting the next word after \"The doctor told the patient that\" the model must not peek at words after the blank.",
   },
   {
     term: "Seq2seq",
-    definition: "Sequence-to-sequence — a two-part architecture for transforming one sequence into another (e.g., English to French). The first part (encoder) reads and compresses the input; the second part (decoder) generates the output one piece at a time.",
+    definition: "Seq2seq (sequence-to-sequence) is an encoder-decoder setup: the encoder reads the source sequence into a representation, the decoder generates the target sequence one token at a time conditioned on that representation.\n\nIt replaced many pipeline MT systems with one trainable stack.\n\nExample: encoder ingests English tokens for \"Where is the station?\"; decoder emits French tokens \"Où est la gare ?\" step by step.",
   },
   {
     term: "Information bottleneck",
-    definition: "The problem that arises when a network must compress an entire input into a single fixed-size summary before producing output. Short inputs compress fine, but long ones lose crucial details — like summarizing a novel into one sentence. This limitation motivated the invention of attention.",
+    definition: "An information bottleneck is the failure mode where a model must squeeze a long, rich input through a single small summary vector before producing output, so details needed later are already discarded.\n\nAttention was introduced partly so decoders could pull specific source words instead of relying on one compressed bag.\n\nExample: translating a 80-word legal sentence through one 500-dimensional vector may lose whether the obligation is on the buyer or the seller; the wrong \"who must pay\" appears in the translation.",
   },
   {
     term: "Weighted sum",
-    definition: "A calculation where each item gets an importance score, and the result is the sum of each item multiplied by its score. If three words have scores 0.7, 0.2, and 0.1, the output is mostly influenced by the first word. This is the core math behind how AI models decide what to focus on.",
+    definition: "A weighted sum multiplies each item by a nonnegative (or signed) weight and adds the results, producing one number that tilts toward the heavily weighted items.\n\nAttention uses normalized weights so the sum is a soft blend of value vectors.\n\nExample: vectors for \"cat,\" \"sat,\" and \"mat\" with weights 0.6, 0.3, 0.1 yield a context vector mostly shaped like \"cat\" but with some \"sat\" mixed in.",
   },
   {
     term: "One-hot encoding",
-    definition: "Representing a word as a list of numbers that's all zeros except for a single 1 at that word's position. In a 10,000-word vocabulary, 'cat' might be a list with a 1 only at position 537 and zeros everywhere else. The problem: this gives the model no clue that 'cat' and 'kitten' are related.",
+    definition: "One-hot encoding represents a categorical item as a vector of zeros with a single 1 in the slot for that category's index.\n\nIt gives no learned notion that nearby categories are similar — every word is equally far from every other in cosine distance.\n\nExample: in a 10k-word vocabulary, \"cat\" might be index 537, so the vector has 1 at position 537 and 0 elsewhere; \"kitten\" at index 812 is orthogonal, not close.",
   },
   {
     term: "Skip-gram",
-    definition: "A training method for learning word meanings: given a word in a sentence, try to predict the words surrounding it. By practicing this millions of times, the model is forced to encode what words mean into their number representations — words that appear near similar neighbors end up with similar numbers.",
+    definition: "Skip-gram is a Word2Vec training objective: given a center word in a sentence, predict the words that appear within a window around it, training embeddings so predictive context is possible.\n\nWords that share neighbors end up with similar vectors.\n\nExample: for \"physician treated the patient\" with center \"physician,\" the model might predict \"treated,\" \"patient,\" and nearby tokens; after training, \"physician\" and \"doctor\" sit near each other because their contexts overlap.",
   },
   {
     term: "Distributional hypothesis",
-    definition: "The idea that a word's meaning is defined by the company it keeps — words appearing in similar contexts have similar meanings. 'Doctor' and 'physician' appear near the same words ('patient,' 'hospital,' 'diagnosed'), so they must mean similar things. This principle (Firth, 1957) is the foundation of all modern methods for teaching AI word meanings.",
+    definition: "The distributional hypothesis is the linguistic idea that words appearing in similar contexts tend to have similar meanings — \"you shall know a word by the company it keeps\" (Firth, 1957).\n\nModern static and contextual embeddings operationalize this with statistics over huge corpora.\n\nExample: \"physician\" and \"doctor\" both neighbor \"patient,\" \"hospital,\" \"diagnosed,\" so embedding methods pull their vectors together without a synonym list.",
   },
   {
     term: "BPE",
     altTerms: ["Byte Pair Encoding"],
-    definition: "Byte Pair Encoding — an algorithm for splitting text into pieces between whole words and individual characters. It starts with single characters and repeatedly merges the most common pairs: 'l'+'o'→'lo', 'lo'+'w'→'low.' The result is a vocabulary of common subword pieces, used by GPT, Llama, and most modern AI systems.",
+    definition: "BPE (byte pair encoding) is a subword tokenizer: start from characters or bytes, repeatedly merge the most frequent adjacent pair in the training text, and stop at a chosen vocabulary size.\n\nRare words decompose into known pieces instead of an unknown-token bucket.\n\nExample: many merges might yield pieces \"un,\" \"happi,\" \"ness\" so \"unhappiness\" tokenizes without a dedicated whole-word id.",
   },
   {
     term: "Subword tokenization",
-    definition: "Splitting text into learned pieces between whole words and individual characters. 'Unhappiness' might become 'un' + 'happi' + 'ness.' This lets the model handle rare or invented words by combining familiar pieces, while keeping common words like 'the' as single units.",
+    definition: "Subword tokenization splits text into pieces between whole words and single characters so the vocabulary covers open-ended text with a finite symbol table.\n\nUnlike pure word tokenization, it handles typos, rare compounds, and morphology by reuse of fragments.\n\nExample: \"tokenization\" might become \"token\" + \"ization\" in one scheme, letting the model share structure with \"visualization\" and \"civilization.\"",
   },
 ];

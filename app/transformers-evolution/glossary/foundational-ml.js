@@ -3,74 +3,74 @@
 export const entries = [
   {
     term: "Perceptron",
-    definition: "The first trainable AI model (1958) — a single unit that takes in numbers, multiplies each by a learned weight, and outputs a yes-or-no decision. It can only solve problems where the categories can be separated by a straight line, which turned out to be a severe limitation.",
+    definition: "The perceptron is a trainable decision unit from 1958 that maps a list of numbers to yes-or-no by multiplying each input by a learned weight, summing, and comparing to a threshold — an early way to let a machine learn a rule from examples instead of programming it by hand.\n\nIt only works when the two classes can be separated by a straight line (or flat surface in higher dimensions); many real patterns violate that, which exposed limits of single-layer models.\n\nExample: classify emails as spam or not using counts of words like \"free\" and \"winner\"; if the weighted sum crosses the threshold, output spam.",
   },
   {
     term: "Backpropagation",
     altTerms: ["Backprop"],
-    definition: "The algorithm that lets neural networks learn. After the network makes a prediction, backprop works backward through each layer, calculating how much each weight contributed to the error and nudging it in the right direction. Before this technique (popularized 1986), there was no efficient way to train networks with more than one layer.",
+    definition: "Backpropagation is an algorithm that computes how much each weight in a multi-layer network contributed to the final error, layer by layer from output back toward input, so training can adjust every connection.\n\nBefore efficient backprop became standard (popularized around 1986), training deep stacks of layers was impractical: there was no systematic way to assign blame for a wrong answer to thousands of internal knobs.\n\nExample: the network outputs 0.2 for \"dog\" when the label was \"cat\"; backprop propagates that mistake backward so weights that pushed toward \"dog\" get nudged down and weights that would raise \"cat\" get nudged up.",
   },
   {
     term: "Chain rule",
-    definition: "A rule from calculus for computing how a change ripples through a sequence of steps. If step A feeds into step B, the chain rule tells you how a small tweak in A's input affects B's output. Backpropagation uses this to trace how each weight in a multi-layer network affects the final error.",
+    definition: "The chain rule is a calculus tool that says how a small change at an early step changes a later step when steps are composed: multiply the local sensitivities along the path.\n\nNeural nets are chains of functions (layer after layer); backpropagation applies the chain rule repeatedly so each weight learns how it affected the loss.\n\nExample: final loss depends on layer 3, which depends on layer 2, which depends on weight w in layer 1; the chain rule combines ∂loss/∂layer3 × ∂layer3/∂layer2 × ∂layer2/∂w to get the update direction for w.",
   },
   {
     term: "Gradient",
     altTerms: ["Gradients"],
-    definition: "A value that tells you which direction to adjust a weight to reduce error, and by how much. Think of standing on a foggy hillside: the gradient tells you which way is downhill and how steep the slope is. During training, each weight gets a gradient pointing toward less error.",
+    definition: "A gradient is a vector of partial derivatives that reports how fast the loss changes as you nudge each weight — which direction decreases error and how steep the slope is there.\n\nPicture standing on a hillside in fog: the gradient at your feet points downhill; training uses that direction (or its negative, depending on convention) to step toward lower loss.\n\nExample: if raising weight w₁ slightly increases loss a lot but raising w₂ barely matters, the gradient has a large component for w₁ and a small one for w₂, so the optimizer moves w₁ more.",
   },
   {
     term: "Gradient descent",
-    definition: "The core training loop for neural networks: measure how wrong the model is, compute which direction to adjust each weight to reduce the error, and take a small step in that direction. Repeating this thousands or millions of times is how models learn.",
+    definition: "Gradient descent is a training loop that measures how wrong the model is, computes the gradient of the loss with respect to every weight, and moves each weight a small step along that direction, repeating until the loss stops improving meaningfully.\n\nIt turns \"find good weights\" into repeated local improvements rather than guessing all parameters at once.\n\nExample: start with random weights, run one batch of images through the net, get average loss 2.4, take one step using the gradient so loss on the next batch drops toward 2.1, and continue for thousands of steps.",
   },
   {
     term: "Loss function",
-    definition: "In ML, 'loss' doesn't mean something is missing — it's a score measuring how wrong the model's prediction was. The loss function computes this score, and the entire goal of training is to make it as small as possible. If the model predicts 80% chance of 'cat' but the answer was 'dog,' the loss is high.",
+    definition: "In ML, \"loss\" does not mean something disappeared — it is a single number scoring how wrong the model's outputs are on an example or batch, and the loss function is the recipe that computes that number from predictions and labels.\n\nTraining minimizes this score (or its average over data) by adjusting weights.\n\nExample: for classification, if the model assigns 0.8 probability to the wrong class, the loss is high; if it assigns 0.99 to the correct class, the loss is low.",
   },
   {
     term: "Hidden layer",
     altTerms: ["Hidden layers"],
-    definition: "A layer of calculations between a network's input and output that the designer never directly sees or prescribes — it discovers useful patterns on its own during training. Adding hidden layers is what lets networks learn complex tasks that a single input-to-output layer cannot.",
+    definition: "A hidden layer is a stack of learned computations between the network's inputs and outputs — not chosen by hand feature-by-feature, but filled in by training so intermediate representations capture structure the task needs.\n\nWithout hidden layers, many problems stay impossible; with them, the network can build hierarchical features.\n\nExample: in image digits, one hidden layer might combine edges into loops and lines; the next combines those into digit parts; the output layer reads those parts into a digit label.",
   },
   {
     term: "Hidden state",
     altTerms: ["Hidden states"],
-    definition: "A network's internal memory — a bundle of numbers that gets updated as it reads each item in a sequence. Think of it as a running summary: after processing each word, the hidden state captures what the network 'remembers' so far, carrying context forward through the sequence.",
+    definition: "A hidden state is a vector of numbers a recurrent model updates each time it consumes another item in a sequence, acting as a compact running summary of what it has seen so far.\n\nThe name \"hidden\" means it is internal, not a direct input or final prediction.\n\nExample: reading \"The bank by the river ...\", after \"river\" the hidden state encodes that \"bank\" likely means shoreline; that state is passed forward when the model reads the next word.",
   },
   {
     term: "Feedforward",
-    definition: "A network architecture where data flows in one direction — from input, through processing layers, to output — with no loops. Like an assembly line: each stage processes the data and passes it forward, never circling back.",
+    definition: "A feedforward network is an architecture where activations move in one direction only — input layer to output through intermediate layers — with no cycles, so the same datum never passes through a node twice in one forward pass.\n\nContrast this with recurrent models, which feed prior outputs back in for the next timestep.\n\nExample: classify a fixed-size vector of patient vitals: layer 1 transforms vitals, layer 2 transforms those features, the output layer emits \"high risk\" or \"low risk\" with no loop.",
   },
   {
     term: "Activation function",
-    definition: "A mathematical function applied after each layer that lets the network learn complex, curved patterns instead of only straight-line relationships. Without it, stacking layers would be no better than one layer. Common ones include ReLU (keep positive values, zero out negatives) and sigmoid (squash any number to between 0 and 1).",
+    definition: "An activation function is a nonlinear map applied to each neuron's summed input before it leaves a layer, so stacking layers can represent curved boundaries instead of collapsing to a single linear map.\n\nWithout nonlinear activations, ten linear layers in a row behave like one linear layer.\n\nExample: ReLU replaces negative values with zero and leaves positives unchanged, so the network can turn regions of input space on or off; sigmoid squashes a score to between 0 and 1 for a probability-like output.",
   },
   {
     term: "Sigmoid",
-    definition: "A function that squashes any number into a value between 0 and 1, producing an S-shaped curve. Useful whenever the network needs to output a probability or a 'how much' dial — for example, deciding '73% of this memory should be kept.'",
+    definition: "Sigmoid is an S-shaped function that maps any real number to the open interval (0,1), turning an unbounded score into a bounded \"strength\" or probability-like value.\n\nIt was a standard choice before ReLU became common for inner layers.\n\nExample: the model emits raw score 3.2 for \"keep this memory\"; sigmoid turns it into about 0.96, interpreted as \"mostly keep.\"",
   },
   {
     term: "Linearly separable",
-    definition: "Data that can be split into categories by drawing a straight line (or flat surface in higher dimensions). If you can separate red dots from blue dots with a ruler on a page, they're linearly separable. Many real-world patterns are not, which is why we need multi-layer networks.",
+    definition: "Linearly separable data is data you can split into two classes with a single straight line in 2D, a flat plane in 3D, or the higher-dimensional analogue — one linear decision boundary.\n\nMany interesting datasets fail this test, which is why multi-layer networks matter.\n\nExample: red points in the upper-left and blue points in the lower-right of a chart are linearly separable by a diagonal line; red in two opposite corners with blue in the other two corners is not.",
   },
   {
     term: "XOR",
-    definition: "Exclusive OR — a logic operation that outputs 'true' when exactly one of two inputs is true (not both, not neither). A single-layer network cannot learn XOR because the pattern can't be split with a straight line. This was proven in 1969 and helped trigger the first AI winter.",
+    definition: "XOR (exclusive OR) is the logical rule: true when exactly one of two inputs is true, false when both are true or both are false.\n\nA single-layer threshold network cannot represent XOR in 2D because no straight line separates the four corner points of the truth table; that impossibility result (often tied to Minsky and Papert, 1969) helped cool early perceptron hype.\n\nExample: inputs (0,1) and (1,0) should output 1; inputs (0,0) and (1,1) should output 0.",
   },
   {
     term: "End-to-end training",
-    definition: "Training the entire model as one unit from raw input to final output, letting it figure out every intermediate step on its own. The alternative — hand-designing separate stages and optimizing each independently — was standard before deep learning made end-to-end approaches practical.",
+    definition: "End-to-end training optimizes every stage from raw input to final output with one objective and one learning procedure, so intermediate representations are learned rather than hand-piped between separate modules.\n\nThe alternative is a pipeline of handcrafted steps each tuned on its own.\n\nExample: speech recognition learns filters, phoneme-like units, and word predictions jointly from waveforms to transcript, instead of fixing a hand-built phoneme detector and only training the last stage.",
   },
   {
     term: "AI winter",
-    definition: "Periods in AI history (1970s, late 1980s–90s) when funding dried up and researchers left the field. Each winter followed a hype cycle: bold predictions about imminent human-level AI, then the reality that the technology wasn't ready yet.",
+    definition: "An AI winter is a stretch of years when AI research funding, hiring, and public optimism collapse after earlier hype outran what models could deliver.\n\nThe phrase borrows \"winter\" metaphorically — a cold season for the field, not weather forecasting.\n\nExample: after bold 1960s claims, limited results on real tasks and the XOR limitation narrative contributed to reduced support in the 1970s; a similar trough hit after expert-system hype in the late 1980s and early 1990s.",
   },
   {
     term: "Weight update rule",
-    definition: "The rule a perceptron uses to learn from mistakes: when it predicts wrong, adjust the weights to make the correct answer more likely next time. If the answer should have been 'yes,' increase the weights for the inputs that were active; if 'no,' decrease them.",
+    definition: "A weight update rule is the perceptron's learning prescription: after each mistake, nudge weights so the same input would move the summed score toward the correct side of the threshold.\n\nIt is an early, explicit error-correction scheme rather than gradient descent on a smooth loss.\n\nExample: the true label is \"yes\" but the unit said \"no\"; increase weights on inputs that were 1 and decrease the bias so the next time that pattern fires, the sum crosses the threshold.",
   },
   {
     term: "Threshold function",
-    definition: "The simplest decision rule: add up all the weighted inputs, and if the total exceeds a set cutoff, output 1 (yes); otherwise output 0 (no). Like a vote: if enough evidence accumulates past a threshold, the answer flips to 'yes.'",
+    definition: "A threshold function is a decision rule: add weighted inputs (plus bias), compare the sum to a cutoff, output one value if above and another if below — the binary switch at the heart of a classical perceptron.\n\nIt turns a weighted vote into a hard yes/no.\n\nExample: if 0.7×feature_A + 0.3×feature_B − 0.5 > 0, output class 1; otherwise output class 0.",
   },
 ];
