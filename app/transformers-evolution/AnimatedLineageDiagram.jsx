@@ -6,36 +6,43 @@ const stageDefinitions = [
     id: 'perceptron',
     label: 'Perceptron',
     detail: 'A single learned node combines inputs into one decision.',
+    detailLines: ['A single learned node combines inputs into one decision.'],
   },
   {
     id: 'mlpNoBackprop',
     label: 'Multilayer network with no backprop',
     detail: 'Adding layers makes the network expressive enough in theory, but the hidden layers still have no practical training rule.',
+    detailLines: ['Adding layers makes the network expressive enough in theory,', 'but the hidden layers still have no practical training rule.'],
   },
   {
     id: 'mlpBackprop',
     label: 'Backpropagation',
     detail: 'The same multilayer network becomes trainable once error signals can flow backward through it.',
+    detailLines: ['The same multilayer network becomes trainable once error signals can flow', 'backward through it.'],
   },
   {
     id: 'rnnCell',
     label: 'Single recurrent cell',
     detail: 'A recurrent cell is the earlier learned network plus a hidden-state input, so the same core can be reused over time.',
+    detailLines: ['A recurrent cell is the earlier learned network plus a hidden-state input,', 'so the same core can be reused over time.'],
   },
   {
     id: 'unrolledRnn',
     label: 'Unrolled RNN',
     detail: 'That same recurrent cell is then repeated across several timesteps so sequence processing becomes visible.',
+    detailLines: ['That same recurrent cell is then repeated across several timesteps', 'so sequence processing becomes visible.'],
   },
   {
     id: 'lstmCellDetail',
     label: 'Single LSTM cell detail',
     detail: 'Before showing a whole sequence, the gates and cell state are unpacked inside one upgraded recurrent cell.',
+    detailLines: ['Before showing a whole sequence, the gates and cell state are unpacked', 'inside one upgraded recurrent cell.'],
   },
   {
     id: 'fullLstm',
     label: 'Full LSTM',
     detail: 'The upgraded cell now repeats across time, preserving longer-range state with gated memory.',
+    detailLines: ['The upgraded cell now repeats across time, preserving longer-range state', 'with gated memory.'],
   },
 ];
 
@@ -93,18 +100,19 @@ const Line = ({ x1, y1, x2, y2, opacity = 1, dashed = false, markerEnd = 'url(#a
   return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#111111" strokeWidth="1.2" opacity={opacity} strokeDasharray={dashed ? '4 4' : undefined} markerEnd={markerEnd} />;
 };
 
-const Label = ({ x, y, children, anchor = 'middle', opacity = 1, size = 12, fill = '#111111' }) => {
-  return <text x={x} y={y} textAnchor={anchor} fontSize={size} fill={fill} opacity={opacity}>{children}</text>;
+const Label = ({ x, y, children, anchor = 'middle', opacity = 1, size = 12, fill = '#111111', fontFamily }) => {
+  return <text x={x} y={y} textAnchor={anchor} fontSize={size} fill={fill} opacity={opacity} fontFamily={fontFamily}>{children}</text>;
 };
 
-const StageHeading = ({ label, detail, isFallback }) => {
+const DiagramStageText = ({ label, detailLines, isFallback }) => {
   return (
-    <div className="mb-4 font-sans">
-      <div className="text-[0.72em] uppercase tracking-[0.18em] text-black">Animated Early Arc</div>
-      <div className="mt-2 text-[1.15em] text-te-primary">{label}</div>
-      <div className="mt-1 text-[0.92em] leading-relaxed text-te-secondary">{detail}</div>
-      {isFallback ? <div className="mt-2 text-[0.76em] uppercase tracking-[0.14em] text-te-accent">Later innovations still route through this early arc for now.</div> : null}
-    </div>
+    <g>
+      <Label x={350} y={76} size={21}>{label}</Label>
+      {detailLines.map((detailLine, detailLineIndex) => (
+        <Label key={`${label}-${detailLineIndex}`} x={350} y={107 + detailLineIndex * 18} size={13} fill="#3d3d3d" fontFamily="Arial, sans-serif">{detailLine}</Label>
+      ))}
+      {isFallback ? <Label x={350} y={107 + detailLines.length * 18 + 4} size={10} fill="#8b3b1f">Later innovations still route through this early arc for now.</Label> : null}
+    </g>
   );
 };
 
@@ -161,7 +169,7 @@ const PerceptronToNetwork = ({ stageIndex }) => {
   const recurrentNetworkScale = showUnrolledRnn ? 0.44 : 0.48;
   const recurrentNetworkOpacity = showUnrolledRnn ? 0.28 : 0.4;
   return (
-    <g style={getMotionStyle({ opacity: isRecurrentStage ? recurrentNetworkOpacity : 1, x: isRecurrentStage ? recurrentNetworkOffsetX : 0, y: isRecurrentStage ? recurrentNetworkOffsetY : 0, scale: isRecurrentStage ? recurrentNetworkScale : 1 })}>
+    <g style={getMotionStyle({ opacity: isRecurrentStage ? recurrentNetworkOpacity : 1, x: isRecurrentStage ? 0 : recurrentNetworkOffsetX, y: isRecurrentStage ? recurrentNetworkOffsetY : 0, scale: isRecurrentStage ? recurrentNetworkScale : 1 })}>
       {layerNodeYs.map(inputY => (
         <Node key={`input-${inputY}`} cx={inputX} cy={inputY} r={8} />
       ))}
@@ -199,16 +207,6 @@ const PerceptronToNetwork = ({ stageIndex }) => {
         <Node cx={outputX} cy={210} r={8} opacity={0.88} />
       </g>
 
-      <g style={getVisibilityStyle({ isVisible: isPerceptronStage, opacity: 1, x: 0, y: 0, scale: 1 })}>
-        <Label x={perceptronHiddenX} y={330}>Perceptron</Label>
-        <Label x={perceptronHiddenX} y={348} size={10} fill="#6b5f4b">weighted sum + threshold</Label>
-      </g>
-
-      <g style={getVisibilityStyle({ isVisible: isNetworkVisible && !isRecurrentStage, opacity: 1, x: 0, y: 0, scale: 1 })}>
-        <Label x={204} y={84}>{showBackprop ? 'Trainable multilayer network' : 'Multilayer network with no backprop'}</Label>
-        <Label x={204} y={102} size={10} fill="#6b5f4b">{showBackprop ? 'the original perceptron becomes one hidden unit as more trainable structure appears around it' : 'the original perceptron now sits inside a larger hidden layer, but training it remains impractical'}</Label>
-      </g>
-
       <g style={getVisibilityStyle({ isVisible: showBackprop, opacity: 1, x: 0, y: 0, scale: 1 })}>
         <path d="M334 142 C286 118, 246 122, 182 150" fill="none" stroke="#8b3b1f" strokeWidth="1.8" markerEnd="url(#arrowhead)" />
         <path d="M334 210 C286 210, 246 210, 182 210" fill="none" stroke="#8b3b1f" strokeWidth="1.8" markerEnd="url(#arrowhead)" />
@@ -225,9 +223,6 @@ const PerceptronToNetwork = ({ stageIndex }) => {
           <Line x1={recurrentAnchorRightX} y1={210} x2={recurrentAnchorRightX + 52} y2={210} />
           <Label x={recurrentAnchorRightX + 62} y={202} anchor="start" size={10}>h_t</Label>
           <path d={`M${recurrentAnchorRightX - 4} 124 C${recurrentAnchorRightX + 44} 72, ${recurrentAnchorLeftX - 44} 72, ${recurrentAnchorLeftX + 4} 124`} fill="none" stroke="#111111" strokeWidth="1.2" markerEnd="url(#arrowhead)" />
-          <Label x={recurrentAnchorCellX} y={90} size={10}>the earlier learned network now sits inside one recurrent cell</Label>
-          <Label x={recurrentAnchorCellX} y={310}>Single recurrent cell</Label>
-          <Label x={recurrentAnchorCellX} y={326} size={10} fill="#6b5f4b">we zoom out, keep the trained network visible, and route the previous hidden state back into it</Label>
         </g>
       </g>
     </g>
@@ -295,8 +290,6 @@ const RnnSequence = ({ stageIndex }) => {
             </g>
           );
         })}
-        <Label x={350} y={96}>The same recurrent cell, unrolled across time</Label>
-        <Label x={350} y={114} size={10} fill="#6b5f4b">the middle cell is still the earlier trained network, while neighboring timesteps fade in around it</Label>
         <Label x={350} y={306} size={10} fill="#6b5f4b">...</Label>
     </g>
   );
@@ -325,8 +318,6 @@ const SingleLstmCellDetail = ({ stageIndex }) => {
           <Label x={gateX} y={258} size={9}>{gateLabels[gateIndex]}</Label>
         </g>
       ))}
-      <Label x={270} y={88}>A single LSTM cell exposes the gates explicitly</Label>
-      <Label x={270} y={104} size={10} fill="#6b5f4b">each gate is still built from learned transforms, but now it controls memory flow</Label>
     </g>
   );
 };
@@ -349,8 +340,6 @@ const FullLstm = ({ stageIndex }) => {
           {cellIndex < namedRecurrentStepXs.length - 1 ? <Line x1={cellX + 62} y1={220} x2={namedRecurrentStepXs[cellIndex + 1] - 62} y2={220} /> : <Line x1={cellX + 62} y1={220} x2={cellX + 112} y2={220} />}
         </g>
       ))}
-      <Label x={350} y={92}>Full LSTM sequence</Label>
-      <Label x={350} y={108} size={10} fill="#2d6a4f">the upgraded recurrent cell repeats across time while carrying a gated cell state</Label>
     </g>
   );
 };
@@ -373,8 +362,7 @@ export const AnimatedLineageDiagram = ({ type, className, targetStageIndex }) =>
 
   return (
     <div className={className}>
-      <StageHeading label={currentStage.label} detail={currentStage.detail} isFallback={isFallbackType} />
-      <svg viewBox="0 0 700 420" className="w-full h-auto overflow-visible">
+      <svg viewBox="0 60 700 300" className="w-full h-auto overflow-visible">
         <defs>
           <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
             <path d="M0,0 L8,3 L0,6 z" fill="#111111" />
@@ -385,6 +373,7 @@ export const AnimatedLineageDiagram = ({ type, className, targetStageIndex }) =>
           <RnnSequence stageIndex={displayStageIndex} />
           <SingleLstmCellDetail stageIndex={displayStageIndex} />
           <FullLstm stageIndex={displayStageIndex} />
+          <DiagramStageText label={currentStage.label} detailLines={currentStage.detailLines} isFallback={isFallbackType} />
         </g>
       </svg>
     </div>

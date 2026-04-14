@@ -139,11 +139,11 @@ export default function TransformerLineageThreeColumn() {
             ))}
           </div>
         </aside>
-        <div className="fixed top-0 h-screen py-6" style={{ left: 'calc(var(--lineage-fixed-left) + 1030px)', width: '680px' }}>
+        <div className="fixed top-0 flex h-screen items-center" style={{ left: 'calc(var(--lineage-fixed-left) + 1030px)', width: '680px' }}>
           <Diagram type={activeDiag} className="w-full max-w-[680px]" targetStageIndex={diagramTargetStageIndex} />
         </div>
         <div style={{ paddingLeft: '470px' }}>
-          <div className="space-y-12 max-w-[520px]">
+          <div className="space-y-[400px] max-w-[520px]">
             {data.map(row => (
               <TransformerLineageEntry key={row.diag} row={row} sectionRef={element => { sectionRefs.current[row.diag] = element; }} whyNotSoonerRef={element => { whyNotSoonerRefs.current[row.diag] = element; }} />
             ))}
