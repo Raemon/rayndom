@@ -6,6 +6,8 @@ export type TagInstance = { id: number, tagId: number, datetime: string, llmPred
 
 export type Command = { id: number, name: string, html: string, order: number }
 
+export type Prompt = { id: number, title: string, text: string }
+
 export type TimerAllData = { timeblocks: Timeblock[], tags: Tag[], tagInstances: TagInstance[] }
 
 export type SectionKey = 'morning' | 'afternoon' | 'evening' | 'night'

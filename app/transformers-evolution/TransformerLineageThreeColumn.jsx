@@ -71,7 +71,7 @@ export default function TransformerLineageThreeColumn() {
   const [diagramTargetStageIndex, setDiagramTargetStageIndex] = useState(getTargetStageIndex(data[0]?.diag ?? null));
   const sectionRefs = useRef({});
   const whyNotSoonerRefs = useRef({});
-  const fixedColumnLeft = 'max(20px, calc((100vw - 1800px) / 2 + 20px))';
+  const fixedColumnLeft = 'max(20px, calc((100vw - 1630px) / 2 + 20px))';
 
   useEffect(() => {
     let animationFrameId = null;
@@ -131,7 +131,7 @@ export default function TransformerLineageThreeColumn() {
 
   return (
     <div className="font-serif text-te-primary">
-      <div className="relative max-w-[1800px] mx-auto px-5 py-8" style={{ '--lineage-fixed-left': fixedColumnLeft }}>
+      <div className="relative max-w-[1630px] mx-auto px-5 py-8" style={{ '--lineage-fixed-left': fixedColumnLeft }}>
         <aside className="fixed top-0 h-screen overflow-y-auto pt-8 pb-8" style={{ left: 'var(--lineage-fixed-left)', width: '430px' }}>
           <div>
             {data.map(row => (
@@ -139,8 +139,8 @@ export default function TransformerLineageThreeColumn() {
             ))}
           </div>
         </aside>
-        <div className="fixed top-0 flex h-screen items-center" style={{ left: 'calc(var(--lineage-fixed-left) + 1030px)', width: '680px' }}>
-          <Diagram type={activeDiag} className="w-full max-w-[680px]" targetStageIndex={diagramTargetStageIndex} />
+        <div className="fixed top-0 flex h-screen items-center" style={{ left: 'calc(var(--lineage-fixed-left) + 1010px)', width: '520px' }}>
+          <Diagram type={activeDiag} className="w-full max-w-[500px]" targetStageIndex={diagramTargetStageIndex} />
         </div>
         <div style={{ paddingLeft: '470px' }}>
           <div className="space-y-[400px] max-w-[520px]">

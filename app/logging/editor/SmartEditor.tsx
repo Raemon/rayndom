@@ -34,7 +34,7 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
   const isFocusedRef = useRef(false)
   const [isFocused, setIsFocused] = useState(false)
   const [showSuggestedTagsModal, setShowSuggestedTagsModal] = useState(false)
-  const [directSuggestions, setDirectSuggestions] = useState<Tag[]>([])
+  const [parentTagForModal, setParentTagForModal] = useState<Tag | undefined>(undefined)
   const [suggestedTagType, setSuggestedTagType] = useState('')
   const { registerFocus, unregisterFocus } = useFocusedNotes()
   const { tags } = useTags()
@@ -72,7 +72,7 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
                   .filter(id => !state.allTagInstances.some(ati => ati.tagId === id && ati.datetime === dt))
                   .map(id => getCachedMentionTags().find(t => t.id === id))
                   .filter((t): t is Tag => t !== undefined)
-                if (suggestedTagsToOffer.length > 0) state.onSuggestTags?.(suggestedTagsToOffer, mentionedTag.type)
+                if (suggestedTagsToOffer.length > 0) state.onSuggestTags?.(suggestedTagsToOffer, mentionedTag.type, mentionedTag)
               }
               const ti = await createTi({ tagId, datetime: dt })
               editor.chain().focus().deleteRange(range).insertContent({
@@ -166,7 +166,7 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
       setEditorCallbacks(editor, { datetime, onCreateTagInstance, onDeleteTagInstance })
       const editorState = getEditorTagInstanceState(editor)
       editorState.allTagInstances = allTagInstances || []
-      editorState.onSuggestTags = (suggestions, type) => { setDirectSuggestions(suggestions); setSuggestedTagType(type); setShowSuggestedTagsModal(true) }
+      editorState.onSuggestTags = (suggestions, type, parentTag) => { setParentTagForModal(parentTag); setSuggestedTagType(type); setShowSuggestedTagsModal(true) }
     }
   }, [editor, datetime, allTagInstances, onCreateTagInstance, onDeleteTagInstance])
   const shouldExpand = alwaysExpanded || (isFocused && expandable)
@@ -192,7 +192,7 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
         <EditorContent editor={editor} className={`notes-input-editor ${isFloating ? 'notes-input-expanded' : ''}`} />
       </div>
       {showSuggestedTagsModal && onCreateTagInstance && onDeleteTagInstance && datetime && (
-        <SuggestedTagsModal type={suggestedTagType} tags={tags} allTagInstances={allTagInstances || []} datetime={datetime} directSuggestions={directSuggestions} onCreateTagInstance={onCreateTagInstance} onDeleteTagInstance={onDeleteTagInstance} onClose={() => { setShowSuggestedTagsModal(false); setDirectSuggestions([]) }} />
+        <SuggestedTagsModal type={suggestedTagType} tags={tags} allTagInstances={allTagInstances || []} datetime={datetime} parentTag={parentTagForModal} onCreateTagInstance={onCreateTagInstance} onDeleteTagInstance={onDeleteTagInstance} onClose={() => { setShowSuggestedTagsModal(false); setParentTagForModal(undefined) }} />
       )}
     </div>
   )

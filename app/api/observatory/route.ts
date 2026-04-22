@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 import fs from 'fs'
 import path from 'path'
-import { parseKeylogText, parseScreenshotSummaries } from '../timer/shared/keylogUtils'
+import { getTodayData } from '../timer/shared/keylogUtils'
 import { getGoalsPrompt } from './prompts'
 
 const OBSERVATORY_DIR = path.join(process.cwd(), 'data', 'observatory')
@@ -61,22 +61,9 @@ export async function GET(request: NextRequest) {
 export async function POST() {
   try {
     ensureDirs()
-    const [todayRes, screenshotsRes] = await Promise.all([
-      fetch('http://localhost:8765/today').catch(() => null),
-      fetch('http://localhost:8765/today/screenshots/summaries').catch(() => null),
-    ])
-    let keylogText = ''
-    if (todayRes?.ok) {
-      const raw = await todayRes.text()
-      const keylogs = parseKeylogText(raw)
-      keylogText = keylogs.map(k => `[${k.timestamp}]${k.app ? ` (${k.app})` : ''} ${k.text}`).join('\n')
-    }
-    let screenshotText = ''
-    if (screenshotsRes?.ok) {
-      const raw = await screenshotsRes.text()
-      const summaries = parseScreenshotSummaries(raw)
-      screenshotText = summaries.map(s => `[${s.timestamp}] ${s.summary}`).join('\n')
-    }
+    const todayResult = await getTodayData()
+    const keylogText = 'error' in todayResult ? '' : todayResult.keylogText
+    const screenshotText = 'error' in todayResult ? '' : todayResult.screenshotSummariesText
     if (!keylogText && !screenshotText) {
       return NextResponse.json({ error: 'No data available from localhost:8765' }, { status: 200 })
     }

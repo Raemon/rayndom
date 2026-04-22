@@ -13,11 +13,11 @@ export const useAiTags = () => {
   const [result, setResult] = useState<PredictTagsResult | null>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const predictTags = useCallback(async ({ datetime }:{ datetime: string }) => {
+  const predictTags = useCallback(async ({ datetime, promptId, model }:{ datetime: string, promptId?: number, model?: string }) => {
     setIsPredicting(true)
     setError(null)
     try {
-      const res = await fetch('/api/timer/predict-tags', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ datetime }) })
+      const res = await fetch('/api/timer/predict-tags', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ datetime, promptId, model }) })
       const json = await res.json()
       if (!res.ok) {
         setError(json.error || 'Failed to predict tags')

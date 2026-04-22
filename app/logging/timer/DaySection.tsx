@@ -1,12 +1,12 @@
 'use client'
-import { useMemo, useState, useEffect } from 'react'
+import { memo, useMemo, useState, useEffect } from 'react'
 import { countBy, orderBy } from 'lodash'
 import TimeBlockRow from './TimeBlockRow'
 import TagListItem from '../tags/TagListItem'
 import { useTags } from '../tags/TagsContext'
 import type { Tag, TagInstance, Timeblock } from '../types'
 import { SECTION_DEFINITIONS } from '../checklist/sectionUtils'
-import CollapsedNotesSummary from './CollapsedNotesSummary'
+import DayNotesSummary from './DayNotesSummary'
 
 const formatDayLabel = (day: Date) => day.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })
 
@@ -24,12 +24,14 @@ const makeSlotsForDay = ({ day, startMinutes=0, endMinutes=23*60+45 }:{ day: Dat
   return slots
 }
 
-const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
+const DaySection = memo(({ dayKey, day, isCollapsed, onToggleCollapsed, dayTimeblocks, dayTagInstances, allTagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
+  dayKey: string,
   day: Date,
   isCollapsed: boolean,
-  onToggleCollapsed: () => void,
-  timeblocks: Timeblock[],
-  tagInstances: TagInstance[],
+  onToggleCollapsed: (key: string) => void,
+  dayTimeblocks: Timeblock[],
+  dayTagInstances: TagInstance[],
+  allTagInstances: TagInstance[],
   onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => Promise<Timeblock>,
   onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => void,
   onCreateTagInstance: (args: { tagId: number, datetime: string, approved?: boolean }) => Promise<TagInstance>,
@@ -48,14 +50,6 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
   }, [tags])
   const dayStart = useMemo(() => new Date(dayStartIso(day)), [day])
   const dayEnd = useMemo(() => new Date(dayStart.getTime() + 24 * 60 * 60 * 1000), [dayStart])
-  const dayTimeblocks = useMemo(() => timeblocks.filter(tb => {
-    const d = new Date(tb.datetime)
-    return d >= dayStart && d < dayEnd
-  }), [timeblocks, dayStart, dayEnd])
-  const dayTagInstances = useMemo(() => tagInstances.filter(ti => {
-    const d = new Date(ti.datetime)
-    return d >= dayStart && d < dayEnd
-  }), [tagInstances, dayStart, dayEnd])
 
   const tagCountsByType = useMemo(() => {
     const counts = countBy(dayTagInstances, ti => ti.tagId)
@@ -155,10 +149,10 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
       {isCollapsed ? (
         <div className="flex gap-4 items-start py-4">
           <div className="shrink-0" style={{ width: '40%' }}>
-            <button className="text-left font-semibold whitespace-nowrap" onClick={onToggleCollapsed}>
+            <button className="text-left font-semibold whitespace-nowrap" onClick={() => onToggleCollapsed(dayKey)}>
               ▶ <span className="text-2xl">{formatDayLabel(day)}</span>
             </button>
-            <CollapsedNotesSummary timeblocks={dayTimeblocks} onPatchTimeblockDebounced={onPatchTimeblockDebounced} />
+            <DayNotesSummary timeblocks={dayTimeblocks} />
           </div>
           {tagTypes.map(type => (
             <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-1 overflow-hidden">
@@ -169,7 +163,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
           ))}
         </div>
       ) : (
-        <button className="text-left w-full" onClick={onToggleCollapsed}>
+        <button className="text-left w-full" onClick={() => onToggleCollapsed(dayKey)}>
           <div className="font-semibold">▼ <span className="text-2xl">{formatDayLabel(day)}</span></div>
         </button>
       )}
@@ -220,7 +214,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
                         const key = `${slotMs}:${type}`
                         return [type, slotKeyToTagInstances.get(key) || []]
                       }))}
-                      allTagInstances={tagInstances}
+                      allTagInstances={allTagInstances}
                       isCurrent={slotMs === currentSlotMs}
                       onCreateTimeblock={onCreateTimeblock}
                       onPatchTimeblockDebounced={onPatchTimeblockDebounced}
@@ -238,6 +232,7 @@ const DaySection = ({ day, isCollapsed, onToggleCollapsed, timeblocks, tagInstan
       )}
     </div>
   )
-}
+})
+DaySection.displayName = 'DaySection'
 
 export default DaySection

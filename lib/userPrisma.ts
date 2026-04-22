@@ -18,7 +18,7 @@ export async function getSessionUser(request: NextRequest): Promise<UserContext 
 }
 
 // Models that have user_id field and should be filtered
-const USER_SCOPED_MODELS = ['checklistItem', 'timeblock', 'tag', 'tagInstance', 'command', 'post'] as const
+const USER_SCOPED_MODELS = ['checklistItem', 'timeblock', 'tag', 'tagInstance', 'command', 'post', 'prompt'] as const
 type UserScopedModel = typeof USER_SCOPED_MODELS[number]
 
 function isUserScopedModel(model: string): model is UserScopedModel {

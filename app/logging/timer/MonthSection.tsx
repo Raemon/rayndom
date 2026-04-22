@@ -1,5 +1,5 @@
 'use client'
-import { useMemo } from 'react'
+import { memo, useMemo } from 'react'
 import { countBy, orderBy } from 'lodash'
 import WeekSection from './WeekSection'
 import TagListItem from '../tags/TagListItem'
@@ -9,17 +9,19 @@ import CollapsedNotesSummary from './CollapsedNotesSummary'
 
 const formatMonthLabel = (date: Date) => date.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })
 
-const MonthSection = ({ month, weeks, isCollapsed, onToggleCollapsed, collapsedWeeks, onToggleWeekCollapsed, collapsedDays, onToggleDayCollapsed, timeblocks, tagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
+const MonthSection = memo(({ monthKey, month, weeks, isCollapsed, onToggleCollapsed, collapsedWeeks, onToggleWeekCollapsed, collapsedDays, onToggleDayCollapsed, timeblocksByDay, tagInstancesByDay, allTagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
+  monthKey: string,
   month: Date,
   weeks: { monday: Date, days: Date[] }[],
   isCollapsed: boolean,
-  onToggleCollapsed: () => void,
+  onToggleCollapsed: (key: string) => void,
   collapsedWeeks: Record<string, boolean>,
   onToggleWeekCollapsed: (key: string) => void,
   collapsedDays: Record<string, boolean>,
   onToggleDayCollapsed: (key: string) => void,
-  timeblocks: Timeblock[],
-  tagInstances: TagInstance[],
+  timeblocksByDay: Map<string, Timeblock[]>,
+  tagInstancesByDay: Map<string, TagInstance[]>,
+  allTagInstances: TagInstance[],
   onCreateTimeblock: (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => Promise<Timeblock>,
   onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => void,
   onCreateTagInstance: (args: { tagId: number, datetime: string, approved?: boolean }) => Promise<TagInstance>,
@@ -32,16 +34,26 @@ const MonthSection = ({ month, weeks, isCollapsed, onToggleCollapsed, collapsedW
     const availableTypes = ['Projects', 'Triggers', 'Techniques']
     return availableTypes.filter(t => tags.some(tag => tag.type === t))
   }, [tags])
-  const monthStart = useMemo(() => new Date(month.getFullYear(), month.getMonth(), 1, 0, 0, 0, 0), [month])
-  const monthEnd = useMemo(() => new Date(month.getFullYear(), month.getMonth() + 1, 1, 0, 0, 0, 0), [month])
-  const monthTimeblocks = useMemo(() => timeblocks.filter(tb => {
-    const d = new Date(tb.datetime)
-    return d >= monthStart && d < monthEnd
-  }), [timeblocks, monthStart, monthEnd])
-  const monthTagInstances = useMemo(() => tagInstances.filter(ti => {
-    const d = new Date(ti.datetime)
-    return d >= monthStart && d < monthEnd
-  }), [tagInstances, monthStart, monthEnd])
+  const monthTimeblocks = useMemo(() => {
+    const result: Timeblock[] = []
+    for (const week of weeks) {
+      for (const day of week.days) {
+        const slice = timeblocksByDay.get(day.toISOString().slice(0, 10))
+        if (slice) result.push(...slice)
+      }
+    }
+    return result
+  }, [weeks, timeblocksByDay])
+  const monthTagInstances = useMemo(() => {
+    const result: TagInstance[] = []
+    for (const week of weeks) {
+      for (const day of week.days) {
+        const slice = tagInstancesByDay.get(day.toISOString().slice(0, 10))
+        if (slice) result.push(...slice)
+      }
+    }
+    return result
+  }, [weeks, tagInstancesByDay])
   const tagCountsByType = useMemo(() => {
     const counts = countBy(monthTagInstances, ti => ti.tagId)
     const usefulCounts = countBy(monthTagInstances.filter(ti => ti.useful), ti => ti.tagId)
@@ -65,13 +77,13 @@ const MonthSection = ({ month, weeks, isCollapsed, onToggleCollapsed, collapsedW
       <div className="flex gap-4 items-start py-4">
         {isCollapsed ? (
           <div className="shrink-0" style={{ width: '40%' }}>
-            <button className="text-left font-semibold whitespace-nowrap" onClick={onToggleCollapsed}>
+            <button className="text-left font-semibold whitespace-nowrap" onClick={() => onToggleCollapsed(monthKey)}>
               ▶ <span className="text-4xl">{formatMonthLabel(month)}</span>
             </button>
             <CollapsedNotesSummary timeblocks={monthTimeblocks} onPatchTimeblockDebounced={onPatchTimeblockDebounced} />
           </div>
         ) : (
-          <button className="text-left font-semibold shrink-0 whitespace-nowrap" onClick={onToggleCollapsed}>
+          <button className="text-left font-semibold shrink-0 whitespace-nowrap" onClick={() => onToggleCollapsed(monthKey)}>
             ▼ <span className="text-4xl">{formatMonthLabel(month)}</span>
           </button>
         )}
@@ -89,14 +101,16 @@ const MonthSection = ({ month, weeks, isCollapsed, onToggleCollapsed, collapsedW
         return (
           <WeekSection
             key={weekKey}
+            weekKey={weekKey}
             monday={monday}
             days={days}
             isCollapsed={isWeekCollapsed}
-            onToggleCollapsed={() => onToggleWeekCollapsed(weekKey)}
+            onToggleCollapsed={onToggleWeekCollapsed}
             collapsedDays={collapsedDays}
             onToggleDayCollapsed={onToggleDayCollapsed}
-            timeblocks={timeblocks}
-            tagInstances={tagInstances}
+            timeblocksByDay={timeblocksByDay}
+            tagInstancesByDay={tagInstancesByDay}
+            allTagInstances={allTagInstances}
             onCreateTimeblock={onCreateTimeblock}
             onPatchTimeblockDebounced={onPatchTimeblockDebounced}
             onCreateTagInstance={onCreateTagInstance}
@@ -108,6 +122,7 @@ const MonthSection = ({ month, weeks, isCollapsed, onToggleCollapsed, collapsedW
       })}
     </div>
   )
-}
+})
+MonthSection.displayName = 'MonthSection'
 
 export default MonthSection

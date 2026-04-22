@@ -4,6 +4,7 @@ import type { Tag, TagInstance } from '../types'
 import { buildTagIdToCounts, getSuggestedTags, getSuggestedTagsForTag } from './tagUtils'
 import TagSuggestionColumn from './TagSuggestionColumn'
 import TagEditModal from './TagEditModal'
+import TagTypeahead from './TagTypeahead'
 import { useTags } from './TagsContext'
 
 type SuggestedTagsModalProps = {
@@ -11,17 +12,27 @@ type SuggestedTagsModalProps = {
   tags: Tag[]
   allTagInstances: TagInstance[]
   datetime: string
-  directSuggestions?: Tag[]
+  parentTag?: Tag
   onCreateTagInstance: (args: { tagId: number, datetime: string, approved?: boolean }) => Promise<TagInstance>
   onDeleteTagInstance: (args: { id: number }) => Promise<void> | void
   onClose: () => void
 }
 
-const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, directSuggestions = [], onCreateTagInstance, onDeleteTagInstance, onClose }: SuggestedTagsModalProps) => {
-  const { updateTag, deleteTag, load } = useTags()
+const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, onCreateTagInstance, onDeleteTagInstance, onClose }: SuggestedTagsModalProps) => {
+  const { createTag, updateTag, deleteTag, load } = useTags()
   const tagIdToCounts = useMemo(() => buildTagIdToCounts(allTagInstances), [allTagInstances])
   const suggestedTags = useMemo(() => getSuggestedTags(tags, type, tagIdToCounts), [tagIdToCounts, tags, type])
+  const typeFilteredTags = useMemo(() => type ? tags.filter(t => t.type === type) : tags, [tags, type])
   const existingTagIdsForDatetime = useMemo(() => new Set(allTagInstances.filter(ti => ti.datetime === datetime).map(ti => ti.tagId)), [allTagInstances, datetime])
+  const liveParentTag = useMemo(() => parentTag ? (tags.find(t => t.id === parentTag.id) || parentTag) : undefined, [parentTag, tags])
+  const directSuggestions = useMemo(() => {
+    if (!liveParentTag) return [] as Tag[]
+    const ids = Array.isArray(liveParentTag.suggestedTagIds) ? liveParentTag.suggestedTagIds : []
+    return ids
+      .filter(id => !existingTagIdsForDatetime.has(id))
+      .map(id => tags.find(t => t.id === id))
+      .filter((t): t is Tag => t !== undefined)
+  }, [liveParentTag, tags, existingTagIdsForDatetime])
   const [selectedTagIds, setSelectedTagIds] = useState<number[]>([])
   const [createdTagInstanceIds, setCreatedTagInstanceIds] = useState<Map<number, number>>(new Map())
   const [hoveredTagId, setHoveredTagId] = useState<number | null>(null)
@@ -91,6 +102,22 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, directSugge
       <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center" onClick={onClose}>
         <div className="relative bg-neutral-800 min-w-[320px] max-w-[90vw] p-4" onClick={e => e.stopPropagation()}>
           <button className="ml-auto text-white/30 hover:text-white text-lg absolute top-4 right-4 leading-none cursor-pointer" onClick={onClose}>×</button>
+          {liveParentTag && (
+            <div className="mb-2 mr-8 text-xs">
+              <TagTypeahead
+                tags={typeFilteredTags.filter(t => t.id !== liveParentTag.id && !(liveParentTag.suggestedTagIds || []).includes(t.id))}
+                allTagInstances={allTagInstances}
+                placeholder="Add suggested tag"
+                onSelectTag={async (tag) => {
+                  if (tag.id === liveParentTag.id) return
+                  const existingIds = liveParentTag.suggestedTagIds || []
+                  if (existingIds.includes(tag.id)) return
+                  await updateTag({ id: liveParentTag.id, suggestedTagIds: [...existingIds, tag.id] })
+                }}
+                onCreateTag={async (name) => createTag({ name, type })}
+              />
+            </div>
+          )}
           <div className="flex items-start max-h-[90vh]">
             <TagSuggestionColumn tags={directSuggestions} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="mb-3" />
             {suggestedColumnTags.length === 0 && directSuggestions.length === 0 && !selectedFlowColumns.some(col => col.hasSuggestedTags) ? (

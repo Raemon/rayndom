@@ -21,7 +21,7 @@ const TagCell = ({ type, placeholder='+', tagInstances, allTagInstances, datetim
   const { tags, createTag, updateTag } = useTags()
   const [isEditing, setIsEditing] = useState(false)
   const [showSuggestedTagsModal, setShowSuggestedTagsModal] = useState(false)
-  const [directSuggestions, setDirectSuggestions] = useState<typeof tags>([]);
+  const [parentTagForModal, setParentTagForModal] = useState<Tag | undefined>(undefined);
   const [pendingTagInstances, setPendingTagInstances] = useState<TagInstance[]>([])
   const typeTags = tags.filter(t => t.type === type)
   const handleSetParent = (childId: number, parentId: number) => {
@@ -46,7 +46,7 @@ const TagCell = ({ type, placeholder='+', tagInstances, allTagInstances, datetim
   const removePendingCreateKey = (tagId: number) => pendingCreateKeysRef.current.delete(buildPendingCreateKey(tagId))
 
   return (
-    <div className="flex items-center justify-start gap-1 min-w-0 flex-wrap h-full" onContextMenu={(e) => { e.preventDefault(); setShowSuggestedTagsModal(true) }}>
+    <div className="flex items-center justify-start gap-1 min-w-0 flex-wrap h-full">
       {[...visibleTagInstances].sort((a, b) => a.id - b.id).map(ti => {
         const tag = ti.tag || typeTags.find(t => t.id === ti.tagId)
         if (!tag) return null
@@ -76,7 +76,7 @@ const TagCell = ({ type, placeholder='+', tagInstances, allTagInstances, datetim
             .map(id => tags.find(t => t.id === id))
             .filter((t): t is typeof tags[number] => t !== undefined)
           if (suggestedTagsToOffer.length > 0) {
-            setDirectSuggestions(suggestedTagsToOffer)
+            setParentTagForModal(tag)
             setShowSuggestedTagsModal(true)
           }
           const ancestorIdsInOrder = getAllAncestorTagIds(tag, tags).reverse()
@@ -120,7 +120,7 @@ const TagCell = ({ type, placeholder='+', tagInstances, allTagInstances, datetim
           }
         }}
       />
-      {showSuggestedTagsModal && <SuggestedTagsModal type={type} tags={tags} allTagInstances={allTagInstances} datetime={datetime} directSuggestions={directSuggestions} onCreateTagInstance={onCreateTagInstance} onDeleteTagInstance={onDeleteTagInstance} onClose={() => { setShowSuggestedTagsModal(false); setDirectSuggestions([]) }} />}
+      {showSuggestedTagsModal && <SuggestedTagsModal type={type} tags={tags} allTagInstances={allTagInstances} datetime={datetime} parentTag={parentTagForModal} onCreateTagInstance={onCreateTagInstance} onDeleteTagInstance={onDeleteTagInstance} onClose={() => { setShowSuggestedTagsModal(false); setParentTagForModal(undefined) }} />}
     </div>
   )
 }

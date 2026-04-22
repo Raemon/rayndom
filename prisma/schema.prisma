@@ -20,6 +20,7 @@ model User {
   tagInstances   TagInstance[]
   commands       Command[]
   posts          Post[]
+  prompts        Prompt[]
 
   @@map("users")
 }
@@ -98,6 +99,7 @@ model TagInstance {
   user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
 
+  @@index([userId, datetime])
   @@map("tag_instances")
 }
 
@@ -124,4 +126,16 @@ model Post {
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
 
   @@map("posts")
+}
+
+model Prompt {
+  id        Int      @id @default(autoincrement())
+  title     String
+  text      String
+  userId    Int?     @map("user_id")
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("prompts")
 }

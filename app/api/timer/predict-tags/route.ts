@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { requireUserPrisma } from '@/lib/userPrisma'
 import OpenAI from 'openai'
 import { getAiNotesPrompt, getPredictSingleTagPrompt, getPredictTagsByTypePrompt, getOverallStoryPrompt } from './aiNotesPrompt'
-import { getKeylogsForTimeblock, getScreenshotSummariesForTimeblock } from '../shared/keylogUtils'
+import { renderPromptTemplate } from './defaultAiNotesPromptText'
+import { getTodayData } from '../shared/keylogUtils'
 import { marked } from 'marked'
 import fs from 'fs'
 import path from 'path'
@@ -100,22 +101,24 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const datetime = body?.datetime // The datetime for the timeblock we're predicting tags for
-    console.log('[predict-tags] Request received for datetime:', datetime)
+    const promptId: number | undefined = body?.promptId ? Number(body.promptId) : undefined
+    const aiNotesModel: string = typeof body?.model === 'string' && body.model.trim() ? body.model.trim() : 'anthropic/claude-opus-4.5'
+    console.log('[predict-tags] Request received for datetime:', datetime, 'promptId:', promptId, 'model:', aiNotesModel)
     if (!datetime) return NextResponse.json({ error: 'Missing datetime' }, { status: 400 })
     const blockDatetime = new Date(datetime)
     // Apply tags to the previous timeblock (15 minutes before)
     const prevBlockDatetime = new Date(blockDatetime.getTime() - 15 * 60 * 1000)
     console.log('[predict-tags] Will apply tags to previous block:', prevBlockDatetime.toISOString())
-    const keylogResult = await getKeylogsForTimeblock(datetime)
-    const keylogs = 'error' in keylogResult ? [] : keylogResult.keylogs
-    const keylogText = 'error' in keylogResult ? '' : keylogResult.keylogText
-    if ('error' in keylogResult) {
-      console.log('[predict-tags] No keylogs found for the past hour, continuing with screenshot summaries only')
+    const todayResult = await getTodayData({ withinMs: 60 * 60 * 1000 })
+    const keylogs = 'error' in todayResult ? [] : todayResult.keylogs
+    const keylogText = 'error' in todayResult ? '' : todayResult.keylogText
+    const screenshotSummariesText = 'error' in todayResult ? '' : todayResult.screenshotSummariesText
+    if ('error' in todayResult) {
+      console.log('[predict-tags] /today fetch failed:', todayResult.error)
     }
-    const screenshotSummariesText = await getScreenshotSummariesForTimeblock()
-    if (!screenshotSummariesText) {
-      console.log('[predict-tags] No screenshots available, skipping prediction')
-      return NextResponse.json({ error: 'No screenshots available', predictions: [], createdInstances: [], keylogCount: keylogs.length, aiNotes: null }, { status: 200 })
+    if (!keylogText && !screenshotSummariesText) {
+      console.log('[predict-tags] No keylogs or screenshots available, skipping prediction')
+      return NextResponse.json({ error: 'No data available from /today', predictions: [], createdInstances: [], keylogCount: 0, aiNotes: null }, { status: 200 })
     }
     // 2. Get all tags
     console.log('[predict-tags] Fetching tags from database...')
@@ -218,10 +221,24 @@ export async function POST(request: NextRequest) {
     }
     let aiNotes: string | null = null
     try {
-      console.log('[predict-tags] Sending request to LLM for aiNotes (anthropic/claude-opus-4.5)...')
+      console.log(`[predict-tags] Sending request to LLM for aiNotes (${aiNotesModel})...`)
+      let aiNotesPromptContent: string
+      if (promptId) {
+        const promptRow = await prisma.prompt.findFirst({ where: { id: promptId } })
+        if (!promptRow) {
+          throw new Error(`Prompt id ${promptId} not found`)
+        }
+        aiNotesPromptContent = renderPromptTemplate(promptRow.text, {
+          keylogText: keylogText || '',
+          screenshotSummariesText: screenshotSummariesText || '',
+          openRouterBalance: openRouterBalance || '',
+        })
+      } else {
+        aiNotesPromptContent = getAiNotesPrompt({ keylogText, screenshotSummariesText, openRouterBalance })
+      }
       const aiNotesCompletion = await client.chat.completions.create({
-        model: 'anthropic/claude-opus-4.5',
-        messages: [{ role: 'user', content: getAiNotesPrompt({ keylogText, screenshotSummariesText, openRouterBalance }) }],
+        model: aiNotesModel,
+        messages: [{ role: 'user', content: aiNotesPromptContent }],
         max_tokens: 800,
       })
       const aiNotesMarkdown = aiNotesCompletion.choices[0]?.message?.content || null

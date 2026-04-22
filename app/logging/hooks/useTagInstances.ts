@@ -18,6 +18,25 @@ export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, e
     })
   }, [start, end])
 
+  // Fetch a sub-range and merge the results into existing state, preserving items
+  // outside the range and any pending optimistic entries. Use this for cheap polling
+  // (e.g. just today) without throwing away the rest of the cached history.
+  const loadRange = useCallback(async ({ start: rangeStart, end: rangeEnd }:{ start: string, end: string }) => {
+    const res = await fetch(`/api/timer/tag-instances?start=${encodeURIComponent(rangeStart)}&end=${encodeURIComponent(rangeEnd)}`)
+    const json = await res.json()
+    const serverInstances: TagInstance[] = json.tagInstances || []
+    const startMs = new Date(rangeStart).getTime()
+    const endMs = new Date(rangeEnd).getTime()
+    setTagInstances(prev => {
+      const outsideRange = prev.filter(ti => {
+        if (ti.id < 0) return true
+        const t = new Date(ti.datetime).getTime()
+        return t < startMs || t >= endMs
+      })
+      return [...outsideRange, ...serverInstances]
+    })
+  }, [])
+
   // eslint-disable-next-line react-hooks/set-state-in-effect 
   useEffect(() => {
     if (!autoLoad) return
@@ -125,5 +144,5 @@ export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, e
     })
   }
 
-  return { tagInstances, setTagInstances, isLoading, load, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance }
+  return { tagInstances, setTagInstances, isLoading, load, loadRange, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance }
 }

@@ -14,7 +14,7 @@ type EditorTagInstanceState = {
   callbacks: TagInstanceCallbacks,
   trackedIds: Set<number>,
   allTagInstances: TagInstance[],
-  onSuggestTags?: (suggestions: Tag[], type: string) => void,
+  onSuggestTags?: (suggestions: Tag[], type: string, parentTag: Tag) => void,
 }
 
 // WeakMap to store per-editor state without modifying the editor object

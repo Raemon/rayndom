@@ -20,6 +20,7 @@
     "fetch-lw": "tsx scripts/fetchLWNews.ts",
     "fetch-arxiv": "tsx scripts/fetchArxiv.ts",
     "daily-log": "tsx scripts/daily-log.ts",
+    "expressions:sidecar": "bash tools/expression-sidecar/run.sh",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:migrate:deploy": "prisma migrate deploy",

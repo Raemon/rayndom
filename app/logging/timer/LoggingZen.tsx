@@ -7,7 +7,7 @@ import { TagsProvider, useTags } from '../tags/TagsContext'
 import MarkdownContent from '../../common/MarkdownContent'
 import Checklist from '../checklist/Checklist'
 import ZenRow from '../zen/ZenRow'
-import type { Timeblock } from '../types'
+import type { TagInstance, Timeblock } from '../types'
 import Timer from './Timer'
 import RunAiCommandButton from '../zen/RunAiCommandButton'
 import { useAiTags } from '../hooks/useAiTags'
@@ -22,7 +22,10 @@ const LoggingZenInner = () => {
   const startIso = today.toISOString()
   const endIso = tomorrow.toISOString()
   const { timeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused } = useTimeblocks({ start: startIso, end: endIso })
-  const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: allTagInstancesStartIso, end: allTagInstancesEndIso })
+  // Two-phase load: today's tag instances first (fast, ~150 ms) so the rows render immediately,
+  // then the full historical set in the background for tag suggestion counts. Polling only
+  // refreshes today since older tag instances don't change.
+  const { tagInstances, loadRange: loadTagInstancesRange, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso, autoLoad: false })
   const { tags } = useTags()
   const tagTypes = useMemo(() => {
     const availableTypes = ['Projects', 'Triggers','Techniques']
@@ -54,23 +57,54 @@ const LoggingZenInner = () => {
     })
     .sort((a, b) => new Date(b.datetime).getTime() - new Date(a.datetime).getTime())
 
-  // Poll database every 5 seconds
+  // Initial load: today first (fast, unblocks row render), then full history in background
+  // for the suggestion counts / typeahead.
+  useEffect(() => {
+    let cancelled = false
+    const runInitialLoad = async () => {
+      await loadTagInstancesRange({ start: startIso, end: endIso })
+      if (cancelled) return
+      loadTagInstancesRange({ start: allTagInstancesStartIso, end: allTagInstancesEndIso })
+    }
+    runInitialLoad()
+    return () => { cancelled = true }
+  }, [loadTagInstancesRange, startIso, endIso])
+
+  // Poll today every 5 seconds. Older tag instances are immutable, so no need to refetch them.
   useEffect(() => {
     const interval = setInterval(() => {
       refreshUnfocused(focusedNoteKeys)
-      loadTagInstances()
+      loadTagInstancesRange({ start: startIso, end: endIso })
     }, 5000)
     return () => clearInterval(interval)
-  }, [refreshUnfocused, focusedNoteKeys, loadTagInstances])
+  }, [refreshUnfocused, focusedNoteKeys, loadTagInstancesRange, startIso, endIso])
+
+  // Bucket tag instances by 15-minute slot once per tagInstances change, instead of
+  // re-scanning all ~1.5k rows for each ZenRow on every render.
+  const tagInstancesBySlotMs = useMemo(() => {
+    const bySlot = new Map<number, TagInstance[]>()
+    for (const tagInstance of tagInstances) {
+      const slotMs = floorTo15(new Date(tagInstance.datetime)).getTime()
+      let bucket = bySlot.get(slotMs)
+      if (!bucket) { bucket = []; bySlot.set(slotMs, bucket) }
+      bucket.push(tagInstance)
+    }
+    return bySlot
+  }, [tagInstances])
+
+  const tagTypeById = useMemo(() => {
+    const lookup = new Map<number, string>()
+    for (const tag of tags) lookup.set(tag.id, tag.type)
+    return lookup
+  }, [tags])
 
   const getTagInstancesByType = (datetime: string) => {
     const slotMs = floorTo15(new Date(datetime)).getTime()
-    const byType: Record<string, typeof tagInstances> = {}
+    const slotInstances = tagInstancesBySlotMs.get(slotMs) || []
+    const byType: Record<string, TagInstance[]> = {}
     for (const type of tagTypes) byType[type] = []
-    for (const tagInstance of tagInstances) {
-      const tagSlotMs = floorTo15(new Date(tagInstance.datetime)).getTime()
-      if (tagSlotMs !== slotMs) continue
-      const type = tagInstance.tag?.type || tags.find(t => t.id === tagInstance.tagId)?.type || ''
+    for (const tagInstance of slotInstances) {
+      const type = tagInstance.tag?.type || tagTypeById.get(tagInstance.tagId) || ''
       if (byType[type]) byType[type].push(tagInstance)
     }
     return byType
