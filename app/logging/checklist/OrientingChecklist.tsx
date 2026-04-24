@@ -45,6 +45,8 @@ const OrientingChecklist = ({ maxWidth=600, onHasRelevantUnchecked }:{ maxWidth?
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     refreshItems()
+    const interval = setInterval(refreshItems, 2000)
+    return () => clearInterval(interval)
   }, [])
 
   useEffect(() => {
