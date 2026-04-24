@@ -12,9 +12,10 @@ const AddChecklistItem = ({ onAdd, placeholder = 'Add checklist item', textSize 
   const [newItem, setNewItem] = useState('')
   const handleAdd = async () => {
     if (newItem.trim()) {
-      await onAdd(newItem.trim())
+      const title = newItem.trim()
       setNewItem('')
       setIsExpanded(false)
+      await onAdd(title)
     }
   }
   if (!isExpanded) {
