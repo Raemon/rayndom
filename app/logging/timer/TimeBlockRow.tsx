@@ -114,7 +114,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
           </td>
         )}
         {tagTypes.map(type => (
-          <td key={type} className="px-2 py-2" style={{ width: `${45 / (tagTypes.length || 1)}%`, verticalAlign: 'top', height: '1px' }}>
+          <td key={type} className="px-2 py-2" style={{ width: `${45 / (tagTypes.length || 1)}%`, verticalAlign: 'top' }}>
             <TagCell
               type={type}
               tagInstances={tagInstancesByType[type] || []}
@@ -132,7 +132,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
         <tr className={isCurrent ? 'bg-orange-500/5 border-b border-white/10' : 'border-b border-white/10'}>
           <td></td>
           <td colSpan={3}></td>
-          <td colSpan={tagTypes.length} className="px-2 py-2 relative" style={{ height: '1px' }}>
+          <td colSpan={tagTypes.length} className="px-2 py-2 relative">
             <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', maxWidth: '400px', width: '100%' }}>
               <OrientingChecklist maxWidth={400} />
             </div>
