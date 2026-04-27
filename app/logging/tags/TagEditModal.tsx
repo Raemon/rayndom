@@ -1,38 +1,15 @@
 'use client'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 import groupBy from 'lodash/groupBy'
 import type { Tag } from '../types'
 import TagEditor from './TagEditor'
+import TagTypeahead from './TagTypeahead'
 import { useTags } from './TagsContext'
 import Link from 'next/link'
 import { getTagColor, getParentTag, wouldCreateCycle } from './tagUtils'
 
-const TagPicker = ({ tags, placeholder, onSelect }:{ tags: Tag[], placeholder: string, onSelect: (tag: Tag) => void }) => {
-  const [query, setQuery] = useState('')
-  const [focused, setFocused] = useState(false)
-  const matches = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    const filtered = q ? tags.filter(t => t.name.toLowerCase().includes(q)) : tags
-    return filtered.slice(0, 8)
-  }, [query, tags])
-  return (
-    <div className="relative">
-      <input className="px-2 py-1 bg-gray-700 outline-none w-full text-xs!" value={query} onChange={e => { setQuery(e.target.value) }} onFocus={() => setFocused(true)} onBlur={() => setTimeout(() => setFocused(false), 150)} placeholder={placeholder} />
-      {focused && matches.length > 0 && (
-        <div className="absolute z-10 mt-1 bg-gray-900 text-white text-xs max-h-[120px] overflow-y-auto">
-          {matches.map(t => (
-            <button key={t.id} className="block text-left px-2 py-1 w-full hover:bg-white/10 cursor-pointer" onMouseDown={e => { e.preventDefault(); onSelect(t); setQuery('') }}>
-              <span className="px-1 text-white" style={{ backgroundColor: getTagColor(t.name) }}>{t.name}</span>
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
-
 const TagEditModal = ({ tag: initialTag, onSave, onDelete, onClose }:{ tag: Tag, onSave: (args: { id: number, name: string, type: string, subtype: string | null, description: string | null }) => Promise<void> | void, onDelete: (args: { id: number }) => Promise<void> | void, onClose: () => void }) => {
-  const { tags, updateTag } = useTags()
+  const { tags, createTag, updateTag } = useTags()
   const tag = tags.find(t => t.id === initialTag.id) || initialTag
   const parentTag = getParentTag(tag, tags)
   const suggestedTags = useMemo(() => (tag.suggestedTagIds || []).map(id => tags.find(t => t.id === id)).filter((t): t is Tag => t !== undefined), [tag.suggestedTagIds, tags])
@@ -72,21 +49,21 @@ const TagEditModal = ({ tag: initialTag, onSave, onDelete, onClose }:{ tag: Tag,
             No AI suggest
           </label>
           <div>
-            <div className="text-white/50 text-[10px] mb-1">Parent tag</div>
+            <div className="text-white/50 text-xs mb-1">Parent tag</div>
             {parentTag ? (
               <div className="flex items-center gap-1 text-xs">
                 <span className="px-1 text-white" style={{ backgroundColor: getTagColor(parentTag.name) }}>{parentTag.name}</span>
                 <button className="text-white/40 hover:text-white" onClick={() => updateTag({ id: tag.id, parentTagId: null })}>×</button>
               </div>
             ) : (
-              <TagPicker tags={sameTypeTags.filter(t => !wouldCreateCycle(tags, tag.id, t.id))} placeholder="Set parent..." onSelect={t => updateTag({ id: tag.id, parentTagId: t.id })} />
+              <TagTypeahead tags={sameTypeTags.filter(t => !wouldCreateCycle(tags, tag.id, t.id))} placeholder="Set parent..." onSelectTag={t => updateTag({ id: tag.id, parentTagId: t.id })} onCreateTag={async (name) => createTag({ name, type: tag.type })} />
             )}
           </div>
           <div>
-            <div className="text-white/50 text-[10px] mb-1">Suggested tags</div>
+            <div className="text-white/50 text-xs mb-1">Suggested tags</div>
             {Object.entries(groupBy(suggestedTags, 'type')).map(([type, typeTags]) => (
               <div key={type} className="mb-1">
-                <span className="text-white/30 text-[10px]">{type}</span>
+                <span className="text-white/30 text-xs">{type}</span>
                 <div className="flex flex-wrap gap-1">
                   {typeTags.map(st => (
                     <span key={st.id} className="flex items-center gap-0.5 text-xs">
@@ -97,7 +74,7 @@ const TagEditModal = ({ tag: initialTag, onSave, onDelete, onClose }:{ tag: Tag,
                 </div>
               </div>
             ))}
-            <TagPicker tags={availableSuggestedTags} placeholder="Add suggested..." onSelect={t => updateTag({ id: tag.id, suggestedTagIds: [...(tag.suggestedTagIds || []), t.id] })} />
+            <TagTypeahead tags={availableSuggestedTags} placeholder="Add suggested..." onSelectTag={t => updateTag({ id: tag.id, suggestedTagIds: [...(tag.suggestedTagIds || []), t.id] })} onCreateTag={async (name) => createTag({ name, type: tag.type })} />
           </div>
         </div>
       </div>

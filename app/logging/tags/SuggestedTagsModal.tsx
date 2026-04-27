@@ -22,7 +22,6 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
   const { createTag, updateTag, deleteTag, load } = useTags()
   const tagIdToCounts = useMemo(() => buildTagIdToCounts(allTagInstances), [allTagInstances])
   const suggestedTags = useMemo(() => getSuggestedTags(tags, type, tagIdToCounts), [tagIdToCounts, tags, type])
-  const typeFilteredTags = useMemo(() => type ? tags.filter(t => t.type === type) : tags, [tags, type])
   const existingTagIdsForDatetime = useMemo(() => new Set(allTagInstances.filter(ti => ti.datetime === datetime).map(ti => ti.tagId)), [allTagInstances, datetime])
   const liveParentTag = useMemo(() => parentTag ? (tags.find(t => t.id === parentTag.id) || parentTag) : undefined, [parentTag, tags])
   const directSuggestions = useMemo(() => {
@@ -105,7 +104,7 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
           {liveParentTag && (
             <div className="mb-2 mr-8 text-xs">
               <TagTypeahead
-                tags={typeFilteredTags.filter(t => t.id !== liveParentTag.id && !(liveParentTag.suggestedTagIds || []).includes(t.id))}
+                tags={tags.filter(t => t.id !== liveParentTag.id && !(liveParentTag.suggestedTagIds || []).includes(t.id))}
                 allTagInstances={allTagInstances}
                 placeholder="Add suggested tag"
                 onSelectTag={async (tag) => {

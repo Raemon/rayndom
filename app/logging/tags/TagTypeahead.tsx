@@ -3,7 +3,7 @@ import { useMemo, useState, useRef, useEffect } from 'react'
 import type { Tag, TagInstance } from '../types'
 import { getTagColor } from './tagUtils'
 
-const TagTypeahead = ({ tags, allTagInstances, placeholder, onSelectTag, onCreateTag }:{ tags: Tag[], allTagInstances: TagInstance[], placeholder: string, onSelectTag: (tag: Tag) => void, onCreateTag: (name: string) => Promise<Tag> }) => {
+const TagTypeahead = ({ tags, allTagInstances = [], placeholder, onSelectTag, onCreateTag, inputClassName }:{ tags: Tag[], allTagInstances?: TagInstance[], placeholder: string, onSelectTag: (tag: Tag) => void, onCreateTag: (name: string) => Promise<Tag>, inputClassName?: string }) => {
   const [query, setQuery] = useState('')
   const [isEditing, setIsEditing] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -54,7 +54,7 @@ const TagTypeahead = ({ tags, allTagInstances, placeholder, onSelectTag, onCreat
   return (
     <div className="relative" ref={containerRef}>
       <input
-        className="px-2 py-1 outline-none w-40 bg-transparent! hover:bg-white/10! w-full"
+        className={`px-2 py-1 outline-none w-full text-sm ${inputClassName ?? 'bg-gray-700'}`}
         placeholder={placeholder}
         value={query}
         onChange={(e) => { setQuery(e.target.value); setSelectedIndex(0) }}
@@ -82,9 +82,14 @@ const TagTypeahead = ({ tags, allTagInstances, placeholder, onSelectTag, onCreat
             }
           }
           if (e.key === 'Escape') {
-            setQuery('')
-            setIsEditing(false)
-            ;(e.target as HTMLInputElement).blur()
+            if (query) {
+              e.stopPropagation()
+              setQuery('')
+              setSelectedIndex(0)
+            } else {
+              setIsEditing(false)
+              ;(e.target as HTMLInputElement).blur()
+            }
           }
         }}
       />
