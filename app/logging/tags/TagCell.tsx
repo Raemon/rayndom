@@ -68,7 +68,7 @@ const TagCell = ({ type, placeholder='+', tagInstances, allTagInstances, datetim
         tags={typeTags}
         allTagInstances={allTagInstances}
         placeholder={placeholder}
-        inputClassName="bg-transparent! hover:bg-white/10!"
+        inputClassName="bg-transparent! hover:bg-white/10! text-sm"
         onSelectTag={async (tag) => {
           setPendingTagInstances(prev => prev.filter(ti => ti.tag?.name !== tag.name || ti.tag?.type !== tag.type))
           const suggestedTagIds = Array.isArray(tag.suggestedTagIds) ? tag.suggestedTagIds : []

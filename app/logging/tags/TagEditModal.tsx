@@ -1,6 +1,5 @@
 'use client'
-import { useEffect, useMemo } from 'react'
-import groupBy from 'lodash/groupBy'
+import { useEffect, useMemo, useState } from 'react'
 import type { Tag } from '../types'
 import TagEditor from './TagEditor'
 import TagTypeahead from './TagTypeahead'
@@ -14,11 +13,8 @@ const TagEditModal = ({ tag: initialTag, onSave, onDelete, onClose }:{ tag: Tag,
   const parentTag = getParentTag(tag, tags)
   const suggestedTags = useMemo(() => (tag.suggestedTagIds || []).map(id => tags.find(t => t.id === id)).filter((t): t is Tag => t !== undefined), [tag.suggestedTagIds, tags])
   const sameTypeTags = useMemo(() => tags.filter(t => t.type === tag.type && t.id !== tag.id), [tags, tag])
-  const allOtherTags = useMemo(() => tags.filter(t => t.id !== tag.id), [tags, tag])
-  const availableSuggestedTags = useMemo(() => {
-    const existingIds = new Set(tag.suggestedTagIds || [])
-    return allOtherTags.filter(t => !existingIds.has(t.id))
-  }, [allOtherTags, tag.suggestedTagIds])
+  const allTypes = useMemo(() => [...new Set(tags.map(t => t.type))].sort(), [tags])
+  const [addingForType, setAddingForType] = useState<string | null>(null)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -61,20 +57,36 @@ const TagEditModal = ({ tag: initialTag, onSave, onDelete, onClose }:{ tag: Tag,
           </div>
           <div>
             <div className="text-white/50 text-xs mb-1">Suggested tags</div>
-            {Object.entries(groupBy(suggestedTags, 'type')).map(([type, typeTags]) => (
-              <div key={type} className="mb-1">
-                <span className="text-white/30 text-xs">{type}</span>
-                <div className="flex flex-wrap gap-1">
-                  {typeTags.map(st => (
-                    <span key={st.id} className="flex items-center gap-0.5 text-xs">
-                      <span className="px-1 text-white" style={{ backgroundColor: getTagColor(st.name) }}>{st.name}</span>
-                      <button className="text-white/40 hover:text-white" onClick={() => updateTag({ id: tag.id, suggestedTagIds: (tag.suggestedTagIds || []).filter(id => id !== st.id) })}>×</button>
-                    </span>
-                  ))}
+            {allTypes.map(type => {
+              const typeSuggestedTags = suggestedTags.filter(t => t.type === type)
+              const existingIds = new Set(tag.suggestedTagIds || [])
+              return (
+                <div key={type} className="mb-1">
+                  <span className="text-white/30 text-xs">{type}</span>
+                  <div className="flex flex-wrap gap-1 items-center">
+                    {typeSuggestedTags.map(st => (
+                      <span key={st.id} className="flex items-center gap-0.5 text-xs">
+                        <span className="px-1 text-white" style={{ backgroundColor: getTagColor(st.name) }}>{st.name}</span>
+                        <button className="text-white/40 hover:text-white" onClick={() => updateTag({ id: tag.id, suggestedTagIds: (tag.suggestedTagIds || []).filter(id => id !== st.id) })}>×</button>
+                      </span>
+                    ))}
+                    {addingForType === type ? (
+                      <TagTypeahead
+                        tags={tags.filter(t => t.type === type && t.id !== tag.id && !existingIds.has(t.id))}
+                        placeholder={`Add ${type}...`}
+                        onSelectTag={t => updateTag({ id: tag.id, suggestedTagIds: [...(tag.suggestedTagIds || []), t.id] })}
+                        onCreateTag={async (name) => createTag({ name, type })}
+                        inputClassName="bg-gray-700 text-xs"
+                        autoFocus
+                        onBlur={() => setAddingForType(null)}
+                      />
+                    ) : (
+                      <button className="text-white/30 hover:text-white text-sm leading-none cursor-pointer" onClick={() => setAddingForType(type)}>+</button>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
-            <TagTypeahead tags={availableSuggestedTags} placeholder="Add suggested..." onSelectTag={t => updateTag({ id: tag.id, suggestedTagIds: [...(tag.suggestedTagIds || []), t.id] })} onCreateTag={async (name) => createTag({ name, type: tag.type })} />
+              )
+            })}
           </div>
         </div>
       </div>

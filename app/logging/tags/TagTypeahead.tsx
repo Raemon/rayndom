@@ -3,7 +3,7 @@ import { useMemo, useState, useRef, useEffect } from 'react'
 import type { Tag, TagInstance } from '../types'
 import { getTagColor } from './tagUtils'
 
-const TagTypeahead = ({ tags, allTagInstances = [], placeholder, onSelectTag, onCreateTag, inputClassName }:{ tags: Tag[], allTagInstances?: TagInstance[], placeholder: string, onSelectTag: (tag: Tag) => void, onCreateTag: (name: string) => Promise<Tag>, inputClassName?: string }) => {
+const TagTypeahead = ({ tags, allTagInstances = [], placeholder, onSelectTag, onCreateTag, inputClassName, autoFocus, onBlur }:{ tags: Tag[], allTagInstances?: TagInstance[], placeholder: string, onSelectTag: (tag: Tag) => void, onCreateTag: (name: string) => Promise<Tag>, inputClassName?: string, autoFocus?: boolean, onBlur?: () => void }) => {
   const [query, setQuery] = useState('')
   const [isEditing, setIsEditing] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -54,12 +54,13 @@ const TagTypeahead = ({ tags, allTagInstances = [], placeholder, onSelectTag, on
   return (
     <div className="relative" ref={containerRef}>
       <input
-        className={`px-2 py-1 outline-none w-full text-sm ${inputClassName ?? 'bg-gray-700'}`}
+        className={`px-2 py-1 outline-none w-full ${inputClassName ?? 'bg-gray-700 text-sm'}`}
         placeholder={placeholder}
         value={query}
+        autoFocus={autoFocus}
         onChange={(e) => { setQuery(e.target.value); setSelectedIndex(0) }}
         onFocus={() => setIsEditing(true)}
-        onBlur={() => setIsEditing(false)}
+        onBlur={() => { setIsEditing(false); onBlur?.() }}
         onKeyDown={async (e) => {
           if (e.key === 'ArrowDown') {
             e.preventDefault()

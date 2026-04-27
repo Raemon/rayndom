@@ -1,7 +1,7 @@
 'use client'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { Tag, TagInstance } from '../types'
-import { buildTagIdToCounts, getSuggestedTags, getSuggestedTagsForTag } from './tagUtils'
+import { buildTagIdToCounts, getTagColor, getSuggestedTags, getSuggestedTagsForTag } from './tagUtils'
 import TagSuggestionColumn from './TagSuggestionColumn'
 import TagEditModal from './TagEditModal'
 import TagTypeahead from './TagTypeahead'
@@ -32,6 +32,13 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
       .map(id => tags.find(t => t.id === id))
       .filter((t): t is Tag => t !== undefined)
   }, [liveParentTag, tags, existingTagIdsForDatetime])
+  const allTypes = useMemo(() => [...new Set(tags.map(t => t.type))].sort(), [tags])
+  const parentSuggestedTags = useMemo(() => {
+    if (!liveParentTag) return [] as Tag[]
+    const ids = Array.isArray(liveParentTag.suggestedTagIds) ? liveParentTag.suggestedTagIds : []
+    return ids.map(id => tags.find(t => t.id === id)).filter((t): t is Tag => t !== undefined)
+  }, [liveParentTag, tags])
+  const [addingForType, setAddingForType] = useState<string | null>(null)
   const [selectedTagIds, setSelectedTagIds] = useState<number[]>([])
   const [createdTagInstanceIds, setCreatedTagInstanceIds] = useState<Map<number, number>>(new Map())
   const [hoveredTagId, setHoveredTagId] = useState<number | null>(null)
@@ -103,18 +110,39 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
           <button className="ml-auto text-white/30 hover:text-white text-lg absolute top-4 right-4 leading-none cursor-pointer" onClick={onClose}>×</button>
           {liveParentTag && (
             <div className="mb-2 mr-8 text-xs">
-              <TagTypeahead
-                tags={tags.filter(t => t.id !== liveParentTag.id && !(liveParentTag.suggestedTagIds || []).includes(t.id))}
-                allTagInstances={allTagInstances}
-                placeholder="Add suggested tag"
-                onSelectTag={async (tag) => {
-                  if (tag.id === liveParentTag.id) return
-                  const existingIds = liveParentTag.suggestedTagIds || []
-                  if (existingIds.includes(tag.id)) return
-                  await updateTag({ id: liveParentTag.id, suggestedTagIds: [...existingIds, tag.id] })
-                }}
-                onCreateTag={async (name) => createTag({ name, type })}
-              />
+              {allTypes.map(t => {
+                const typeSuggestedTags = parentSuggestedTags.filter(st => st.type === t)
+                const existingIds = new Set(liveParentTag.suggestedTagIds || [])
+                return (
+                  <div key={t} className="mb-1">
+                    <span className="text-white/30 text-xs">{t}</span>
+                    <div className="flex flex-wrap gap-1 items-center">
+                      {typeSuggestedTags.map(st => (
+                        <span key={st.id} className="flex items-center gap-0.5 text-xs">
+                          <span className="px-1 text-white" style={{ backgroundColor: getTagColor(st.name) }}>{st.name}</span>
+                          <button className="text-white/40 hover:text-white" onClick={() => updateTag({ id: liveParentTag.id, suggestedTagIds: (liveParentTag.suggestedTagIds || []).filter(id => id !== st.id) })}>×</button>
+                        </span>
+                      ))}
+                      {addingForType === t ? (
+                        <TagTypeahead
+                          tags={tags.filter(tag => tag.type === t && tag.id !== liveParentTag.id && !existingIds.has(tag.id))}
+                          allTagInstances={allTagInstances}
+                          placeholder={`Add ${t}...`}
+                          onSelectTag={async (tag) => {
+                            await updateTag({ id: liveParentTag.id, suggestedTagIds: [...(liveParentTag.suggestedTagIds || []), tag.id] })
+                          }}
+                          onCreateTag={async (name) => createTag({ name, type: t })}
+                          inputClassName="bg-gray-700 text-xs"
+                          autoFocus
+                          onBlur={() => setAddingForType(null)}
+                        />
+                      ) : (
+                        <button className="text-white/30 hover:text-white text-sm leading-none cursor-pointer" onClick={() => setAddingForType(t)}>+</button>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           )}
           <div className="flex items-start max-h-[90vh]">
