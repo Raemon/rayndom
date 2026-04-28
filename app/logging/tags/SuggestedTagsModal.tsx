@@ -4,6 +4,7 @@ import type { Tag, TagInstance } from '../types'
 import { buildTagIdToCounts, getSuggestedTags, getSuggestedTagsForTag } from './tagUtils'
 import TagSuggestionColumn from './TagSuggestionColumn'
 import TagEditModal from './TagEditModal'
+import TagTypeahead from './TagTypeahead'
 import { useTags } from './TagsContext'
 
 type SuggestedTagsModalProps = {
@@ -27,11 +28,12 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
     if (!liveParentTag) return [] as Tag[]
     const ids = Array.isArray(liveParentTag.suggestedTagIds) ? liveParentTag.suggestedTagIds : []
     return ids
-      .filter(id => !existingTagIdsForDatetime.has(id))
       .map(id => tags.find(t => t.id === id))
       .filter((t): t is Tag => t !== undefined)
-  }, [liveParentTag, tags, existingTagIdsForDatetime])
+  }, [liveParentTag, tags])
   const allTypes = useMemo(() => [...new Set(tags.map(t => t.type))].sort(), [tags])
+  const suggestedTagIds = useMemo(() => new Set(directSuggestions.map(t => t.id)), [directSuggestions])
+  const [addingForType, setAddingForType] = useState<string | null>(null)
   const [selectedTagIds, setSelectedTagIds] = useState<number[]>([])
   const [createdTagInstanceIds, setCreatedTagInstanceIds] = useState<Map<number, number>>(new Map())
   const [hoveredTagId, setHoveredTagId] = useState<number | null>(null)
@@ -76,9 +78,7 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
     if (!liveParentTag) return
     updateTag({ id: liveParentTag.id, suggestedTagIds: (liveParentTag.suggestedTagIds || []).filter(id => id !== tag.id) })
   }, [liveParentTag, updateTag])
-  const handleCreateTag = useCallback(async (name: string, type: string) => {
-    return await createTag({ name, type })
-  }, [createTag])
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -86,7 +86,7 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [onClose])
-  const { suggestedColumnTags, selectedFlowColumns, hoverPreviewTags, hoverShowsFlow } = useMemo(() => {
+  const { suggestedColumnTags, selectedFlowColumns, hoverPreviewTags } = useMemo(() => {
     const showTag = (t: Tag) => !existingTagIdsForDatetime.has(t.id) || selectedTagIds.includes(t.id)
     const selectedColumns: { tagId: number, tags: Tag[], hasSuggestedTags: boolean }[] = []
     for (const tagId of selectedTagIds) {
@@ -96,18 +96,16 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
       selectedColumns.push({ tagId, tags: hasSuggestedTags ? getSuggestedTagsForTag(tag, tags, tagIdToCounts).filter(showTag) : [], hasSuggestedTags })
     }
     let hover: Tag[] = []
-    let hoverHasSuggestedTags = false
     if (hoveredTagId) {
       const lastSelectedId = selectedTagIds[selectedTagIds.length - 1]
       if (hoveredTagId !== lastSelectedId) {
         const hoveredTag = tags.find(t => t.id === hoveredTagId)
         if (hoveredTag?.suggestedTagIds?.length) {
-          hoverHasSuggestedTags = true
           hover = getSuggestedTagsForTag(hoveredTag, tags, tagIdToCounts).filter(showTag)
         }
       }
     }
-    return { suggestedColumnTags: suggestedTags.filter(showTag), selectedFlowColumns: selectedColumns, hoverPreviewTags: hover, hoverShowsFlow: hoverHasSuggestedTags }
+    return { suggestedColumnTags: suggestedTags.filter(showTag), selectedFlowColumns: selectedColumns, hoverPreviewTags: hover }
   }, [suggestedTags, selectedTagIds, tags, tagIdToCounts, existingTagIdsForDatetime, hoveredTagId])
   return (
     <>
@@ -115,7 +113,32 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
         <div className="relative bg-neutral-800 min-w-[320px] max-w-[90vw] p-4" onClick={e => e.stopPropagation()}>
           <button className="ml-auto text-white/30 hover:text-white text-lg absolute top-4 right-4 leading-none cursor-pointer" onClick={onClose}>×</button>
           <div className="flex items-start max-h-[90vh]">
-            <TagSuggestionColumn tags={directSuggestions} allTypes={allTypes} allTags={tags} allTagInstances={allTagInstances} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} onAddSuggestedTag={handleAddSuggestedTag} onRemoveSuggestedTag={handleRemoveSuggestedTag} onCreateTag={handleCreateTag} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="mb-3" />
+            {liveParentTag && <TagSuggestionColumn
+              tags={directSuggestions}
+              allTypes={allTypes}
+              tagIdToCounts={tagIdToCounts}
+              onTagClick={handleTagClick}
+              selectedTagIds={selectedTagIds}
+              onTagHover={setHoveredTagId}
+              onTagContextMenu={setEditingTag}
+              isTagDimmed={(tag) => existingTagIdsForDatetime.has(tag.id) && !selectedTagIds.includes(tag.id)}
+              headerExtra={(type) => addingForType === type ? (
+                <TagTypeahead
+                  tags={tags.filter(t => t.type === type && !suggestedTagIds.has(t.id))}
+                  allTagInstances={allTagInstances}
+                  placeholder={`Add ${type}...`}
+                  onSelectTag={(tag) => { handleAddSuggestedTag(tag); setAddingForType(null) }}
+                  onCreateTag={async (name) => createTag({ name, type })}
+                  inputClassName="py-0 bg-gray-700 text-xs!"
+                  autoFocus
+                  onBlur={() => setAddingForType(null)}
+                />
+              ) : (
+                <button className="text-white/30 hover:text-white text-sm leading-none cursor-pointer" onClick={() => setAddingForType(type)}>+</button>
+              )}
+              rowExtra={(tag) => <button className="text-white/40 hover:text-white text-xs leading-none cursor-pointer" onClick={e => { e.stopPropagation(); handleRemoveSuggestedTag(tag) }}>×</button>}
+              className="mb-3"
+            />}
             {suggestedColumnTags.length === 0 && directSuggestions.length === 0 && !selectedFlowColumns.some(col => col.hasSuggestedTags) ? (
               <div className="text-white/50 text-xs">No tags with positive/negative uses yet.</div>
             ) : (
