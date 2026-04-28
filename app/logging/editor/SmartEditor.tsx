@@ -9,6 +9,7 @@ import Mention from '@tiptap/extension-mention'
 import { useFocusedNotes } from '../context/FocusedNotesContext'
 import { useTags } from '../tags/TagsContext'
 import { createMentionSuggestion, updateCachedMentionTags, getCachedMentionTags } from './mentionSuggestion'
+import { getTagUsageTimestamps } from '../tags/tagUsageTracker'
 import { createCommandSuggestion, updateCachedCommands, getCachedCommands } from './commandSuggestion'
 import BubbleMenuToolbar from './BubbleMenuToolbar'
 import { TagInstanceExtension, type TagInstanceCallbacks, getEditorTagInstanceState, setEditorCallbacks } from './TagInstanceExtension'
@@ -41,6 +42,7 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
   const { commands } = useCommands()
   useEffect(() => { updateCachedCommands(commands) }, [commands])
   useEffect(() => { updateCachedMentionTags(tags) }, [tags])
+  useEffect(() => { getTagUsageTimestamps() }, [])
   const mentionSuggestion = useMemo(() => createMentionSuggestion(), [])
   const commandSuggestion = useMemo(() => createCommandSuggestion(), [])
   const saveContent = useCallback((content: string) => {

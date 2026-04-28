@@ -9,9 +9,9 @@ let cachedMentionTags: Tag[] = []
 export const updateCachedMentionTags = (tags: Tag[]) => { cachedMentionTags = tags }
 export const getCachedMentionTags = () => cachedMentionTags
 export const createMentionSuggestion = () => ({
-  items: async ({ query }:{ query: string }) => {
+  items: ({ query }:{ query: string }) => {
     const normalizedQuery = query.trim().toLowerCase()
-    const usageTimestamps = await getTagUsageTimestamps()
+    const usageTimestamps = getTagUsageTimestamps()
     const sortedTags = [...cachedMentionTags].sort((a, b) => {
       const aTime = usageTimestamps[a.id] || 0
       const bTime = usageTimestamps[b.id] || 0
