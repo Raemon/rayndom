@@ -5,7 +5,7 @@ import { sortTagsByCounts, type TagCounts } from './tagUtils'
 import SuggestedTagRow from './SuggestedTagRow'
 import TagTypeahead from './TagTypeahead'
 
-const TagSuggestionColumn = ({ tags, allTypes, allTags, allTagInstances, tagIdToCounts, onTagClick, onAddSuggestedTag, onCreateTag, selectedTagIds, onTagHover, onTagContextMenu, className }: {
+const TagSuggestionColumn = ({ tags, allTypes, allTags, allTagInstances, tagIdToCounts, onTagClick, onAddSuggestedTag, onRemoveSuggestedTag, onCreateTag, selectedTagIds, onTagHover, onTagContextMenu, className }: {
   tags: Tag[],
   allTypes?: string[],
   allTags?: Tag[],
@@ -13,6 +13,7 @@ const TagSuggestionColumn = ({ tags, allTypes, allTags, allTagInstances, tagIdTo
   tagIdToCounts?: Map<number, TagCounts>,
   onTagClick?: (tag: Tag) => void,
   onAddSuggestedTag?: (tag: Tag, type: string) => void,
+  onRemoveSuggestedTag?: (tag: Tag) => void,
   onCreateTag?: (name: string, type: string) => Promise<Tag>,
   selectedTagIds?: number[],
   onTagHover?: (tagId: number | null) => void,
@@ -65,7 +66,7 @@ const TagSuggestionColumn = ({ tags, allTypes, allTags, allTagInstances, tagIdTo
               <div key={`${type}-${subtype}`} className="flex flex-col">
                 {subtype ? <div className="text-xs text-white/40 my-2 ml-1">{subtype}</div> : null}
                 {sortTagsByCounts(subtypeTags, countsMap).map(tag => (
-                  <SuggestedTagRow key={tag.id} tag={tag} counts={tagIdToCounts?.get(tag.id)} onClick={() => onTagClick?.(tag)} isSelected={selectedSet.has(tag.id)} onMouseEnter={() => onTagHover?.(tag.id)} onMouseLeave={() => onTagHover?.(null)} onContextMenu={() => onTagContextMenu?.(tag)} />
+                  <SuggestedTagRow key={tag.id} tag={tag} counts={tagIdToCounts?.get(tag.id)} onClick={() => onTagClick?.(tag)} onRemove={onRemoveSuggestedTag ? () => onRemoveSuggestedTag(tag) : undefined} isSelected={selectedSet.has(tag.id)} onMouseEnter={() => onTagHover?.(tag.id)} onMouseLeave={() => onTagHover?.(null)} onContextMenu={() => onTagContextMenu?.(tag)} />
                 ))}
               </div>
             ))}

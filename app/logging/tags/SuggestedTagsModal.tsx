@@ -72,6 +72,10 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
     if (existing.includes(tag.id)) return
     updateTag({ id: liveParentTag.id, suggestedTagIds: [...existing, tag.id] })
   }, [liveParentTag, updateTag])
+  const handleRemoveSuggestedTag = useCallback((tag: Tag) => {
+    if (!liveParentTag) return
+    updateTag({ id: liveParentTag.id, suggestedTagIds: (liveParentTag.suggestedTagIds || []).filter(id => id !== tag.id) })
+  }, [liveParentTag, updateTag])
   const handleCreateTag = useCallback(async (name: string, type: string) => {
     return await createTag({ name, type })
   }, [createTag])
@@ -111,7 +115,7 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
         <div className="relative bg-neutral-800 min-w-[320px] max-w-[90vw] p-4" onClick={e => e.stopPropagation()}>
           <button className="ml-auto text-white/30 hover:text-white text-lg absolute top-4 right-4 leading-none cursor-pointer" onClick={onClose}>×</button>
           <div className="flex items-start max-h-[90vh]">
-            <TagSuggestionColumn tags={directSuggestions} allTypes={allTypes} allTags={tags} allTagInstances={allTagInstances} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} onAddSuggestedTag={handleAddSuggestedTag} onCreateTag={handleCreateTag} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="mb-3" />
+            <TagSuggestionColumn tags={directSuggestions} allTypes={allTypes} allTags={tags} allTagInstances={allTagInstances} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} onAddSuggestedTag={handleAddSuggestedTag} onRemoveSuggestedTag={handleRemoveSuggestedTag} onCreateTag={handleCreateTag} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="mb-3" />
             {suggestedColumnTags.length === 0 && directSuggestions.length === 0 && !selectedFlowColumns.some(col => col.hasSuggestedTags) ? (
               <div className="text-white/50 text-xs">No tags with positive/negative uses yet.</div>
             ) : (
