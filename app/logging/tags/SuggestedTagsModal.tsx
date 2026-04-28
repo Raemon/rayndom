@@ -132,7 +132,7 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
                             await updateTag({ id: liveParentTag.id, suggestedTagIds: [...(liveParentTag.suggestedTagIds || []), tag.id] })
                           }}
                           onCreateTag={async (name) => createTag({ name, type: t })}
-                          inputClassName="bg-gray-700 text-xs"
+                          inputClassName="py-0 bg-gray-700 text-xs!"
                           autoFocus
                           onBlur={() => setAddingForType(null)}
                         />

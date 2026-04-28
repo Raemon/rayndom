@@ -54,7 +54,7 @@ const TagTypeahead = ({ tags, allTagInstances = [], placeholder, onSelectTag, on
   return (
     <div className="relative" ref={containerRef}>
       <input
-        className={`px-2 py-1 outline-none w-full ${inputClassName ?? 'bg-gray-700 text-sm'}`}
+        className={`px-2 outline-none w-full ${inputClassName ?? 'py-1 bg-gray-700 text-sm!'}`}
         placeholder={placeholder}
         value={query}
         autoFocus={autoFocus}

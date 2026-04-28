@@ -76,7 +76,7 @@ const TagEditModal = ({ tag: initialTag, onSave, onDelete, onClose }:{ tag: Tag,
                         placeholder={`Add ${type}...`}
                         onSelectTag={t => updateTag({ id: tag.id, suggestedTagIds: [...(tag.suggestedTagIds || []), t.id] })}
                         onCreateTag={async (name) => createTag({ name, type })}
-                        inputClassName="bg-gray-700 text-xs"
+                        inputClassName="py-0 bg-gray-700 text-xs!"
                         autoFocus
                         onBlur={() => setAddingForType(null)}
                       />
