@@ -54,7 +54,7 @@ export const createMentionSuggestion = () => ({
         const row = document.createElement('div')
         row.className = `flex items-center gap-2 px-2 py-1 text-xs ${i === selectedIndex ? 'bg-white/10' : ''}`
         const badge = document.createElement('span')
-        badge.className = 'px-1 text-white'
+        badge.className = 'px-1 text-white text-sm'
         badge.style.backgroundColor = item.badgeColor || 'transparent'
         badge.textContent = item.label || item.id || ''
         row.appendChild(badge)

@@ -103,7 +103,7 @@ const TagTypeahead = ({ tags, allTagInstances = [], placeholder, onSelectTag, on
         <div className="absolute z-10 mt-1 bg-gray-900 text-white text-xs">
           {matches.map((t, i) => (
             <div key={t.id} className={`flex items-center gap-2 text-left px-2 py-1 w-full text-xs! rounded-xs ${selectedIndex === i ? 'bg-white/40!' : 'bg-gray-700!'}`} onMouseDown={(e) => { e.preventDefault(); onSelectTag(t); setQuery('') }}>
-              <span className="px-1 rounded-xs text-white" style={{ backgroundColor: getTagColor(t.name) }}>
+              <span className="px-1 rounded-xs text-white text-sm" style={{ backgroundColor: getTagColor(t.name) }}>
                {t.name}
               </span>
             </div>
