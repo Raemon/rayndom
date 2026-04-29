@@ -9,11 +9,12 @@ import CollapsedNotesSummary from './CollapsedNotesSummary'
 
 const formatMonthLabel = (date: Date) => date.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })
 
-const MonthSection = memo(({ monthKey, month, weeks, isCollapsed, onToggleCollapsed, collapsedWeeks, onToggleWeekCollapsed, collapsedDays, onToggleDayCollapsed, timeblocksByDay, tagInstancesByDay, allTagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
+const MonthSection = memo(({ monthKey, month, weeks, isCollapsed, isNewestMonth, onToggleCollapsed, collapsedWeeks, onToggleWeekCollapsed, collapsedDays, onToggleDayCollapsed, timeblocksByDay, tagInstancesByDay, allTagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
   monthKey: string,
   month: Date,
   weeks: { monday: Date, days: Date[] }[],
   isCollapsed: boolean,
+  isNewestMonth?: boolean,
   onToggleCollapsed: (key: string) => void,
   collapsedWeeks: Record<string, boolean>,
   onToggleWeekCollapsed: (key: string) => void,
@@ -95,9 +96,9 @@ const MonthSection = memo(({ monthKey, month, weeks, isCollapsed, onToggleCollap
           </div>
         ))}
       </div>
-      {!isCollapsed && sortedWeeks.map(({ monday, days }) => {
+      {!isCollapsed && sortedWeeks.map(({ monday, days }, weekIdx) => {
         const weekKey = monday.toISOString().slice(0, 10)
-        const isWeekCollapsed = collapsedWeeks[weekKey] ?? true
+        const isWeekCollapsed = collapsedWeeks[weekKey] ?? !(isNewestMonth && weekIdx === 0)
         return (
           <WeekSection
             key={weekKey}

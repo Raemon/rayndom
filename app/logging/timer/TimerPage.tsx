@@ -70,10 +70,10 @@ const TimerPageInner = () => {
     setCollapsedDays(prev => ({ ...prev, [key]: !(prev[key] ?? !(key === todayKey)) }))
   }, [])
   const onToggleWeekCollapsed = useCallback((key: string) => {
-    setCollapsedWeeks(prev => ({ ...prev, [key]: !(prev[key] ?? true) }))
+    setCollapsedWeeks(prev => ({ ...prev, [key]: !(prev[key] ?? (key !== newestKeysRef.current.week)) }))
   }, [])
   const onToggleMonthCollapsed = useCallback((key: string) => {
-    setCollapsedMonths(prev => ({ ...prev, [key]: !(prev[key] ?? true) }))
+    setCollapsedMonths(prev => ({ ...prev, [key]: !(prev[key] ?? (key !== newestKeysRef.current.month)) }))
   }, [])
 
   const timeblocksByDay = useMemo(() => {
@@ -144,6 +144,19 @@ const TimerPageInner = () => {
     const previousMonths = [...monthGroupsMap.values()].sort((a, b) => b.month.getTime() - a.month.getTime())
     return { today, currentWeekDays, previousMonths }
   }, [timeblocks, tagInstances])
+
+  const newestKeys = useMemo(() => {
+    if (groupedDays.previousMonths.length === 0) return { month: null as string | null, week: null as string | null }
+    const m = groupedDays.previousMonths[0].month
+    const month = `${m.getFullYear()}-${String(m.getMonth() + 1).padStart(2, '0')}`
+    const weeks = groupedDays.previousMonths[0].weeks
+    const week = weeks.length > 0
+      ? weeks.reduce((a, b) => a.monday.getTime() > b.monday.getTime() ? a : b).monday.toISOString().slice(0, 10)
+      : null
+    return { month, week }
+  }, [groupedDays])
+  const newestKeysRef = useRef(newestKeys)
+  useLayoutEffect(() => { newestKeysRef.current = newestKeys }, [newestKeys])
 
   const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
   const currentBlockDatetime = floorTo15(new Date()).toISOString()
@@ -226,9 +239,9 @@ const TimerPageInner = () => {
               />
             )
           })}
-          {groupedDays.previousMonths.map(({ month, weeks }) => {
+          {groupedDays.previousMonths.map(({ month, weeks }, monthIdx) => {
             const monthKey = `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, '0')}`
-            const isMonthCollapsed = collapsedMonths[monthKey] ?? true
+            const isMonthCollapsed = collapsedMonths[monthKey] ?? (monthIdx > 0)
             return (
               <MonthSection
                 key={monthKey}
@@ -236,6 +249,7 @@ const TimerPageInner = () => {
                 month={month}
                 weeks={weeks}
                 isCollapsed={isMonthCollapsed}
+                isNewestMonth={monthIdx === 0}
                 onToggleCollapsed={onToggleMonthCollapsed}
                 collapsedWeeks={collapsedWeeks}
                 onToggleWeekCollapsed={onToggleWeekCollapsed}
