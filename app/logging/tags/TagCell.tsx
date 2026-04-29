@@ -1,10 +1,10 @@
 'use client'
-import { useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import TagTypeahead from './TagTypeahead'
 import { useTags } from './TagsContext'
 import type { Tag, TagInstance } from '../types'
 import DraggableTag from './DraggableTag'
-import { wouldCreateCycle, getParentTag, getAllAncestorTagIds } from './tagUtils'
+import { wouldCreateCycle, getParentTag, getAllAncestorTagIds, getBoostedTagIds } from './tagUtils'
 import SuggestedTagsModal from './SuggestedTagsModal'
 
 const TagCell = ({ type, placeholder='+', tagInstances, allTagInstances, datetime, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
@@ -24,6 +24,7 @@ const TagCell = ({ type, placeholder='+', tagInstances, allTagInstances, datetim
   const [parentTagForModal, setParentTagForModal] = useState<Tag | undefined>(undefined);
   const [pendingTagInstances, setPendingTagInstances] = useState<TagInstance[]>([])
   const typeTags = tags.filter(t => t.type === type)
+  const boostedTagIds = useMemo(() => getBoostedTagIds(datetime, allTagInstances, tags), [datetime, allTagInstances, tags])
   const handleSetParent = (childId: number, parentId: number) => {
     const childTag = tags.find(t => t.id === childId)
     const parentTag = tags.find(t => t.id === parentId)
@@ -67,6 +68,7 @@ const TagCell = ({ type, placeholder='+', tagInstances, allTagInstances, datetim
       <TagTypeahead
         tags={typeTags}
         allTagInstances={allTagInstances}
+        boostedTagIds={boostedTagIds}
         placeholder={placeholder}
         inputClassName="py-1 bg-transparent! hover:bg-white/10! text-sm!"
         onSelectTag={async (tag) => {

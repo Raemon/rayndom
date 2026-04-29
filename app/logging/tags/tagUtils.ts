@@ -73,6 +73,24 @@ export const getParentTag = (tag: Tag, tags: Tag[]): Tag | null => {
   return tag.parentTag || (tag.parentTagId ? tags.find(t => t.id === tag.parentTagId) : null) || null
 }
 
+const floorTo15 = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), Math.floor(d.getMinutes() / 15) * 15, 0, 0)
+
+export const getBoostedTagIds = (datetime: string, allTagInstances: TagInstance[], tags: Tag[]): Set<number> => {
+  const currentSlotMs = floorTo15(new Date(datetime)).getTime()
+  const previousSlotMs = currentSlotMs - 15 * 60 * 1000
+  const ids = new Set<number>()
+  for (const ti of allTagInstances) {
+    const slotMs = floorTo15(new Date(ti.datetime)).getTime()
+    if (slotMs === currentSlotMs || slotMs === previousSlotMs) {
+      const tag = tags.find(t => t.id === ti.tagId)
+      if (tag?.suggestedTagIds) {
+        for (const id of tag.suggestedTagIds) ids.add(id)
+      }
+    }
+  }
+  return ids
+}
+
 export const getAllAncestorTagIds = (tag: Tag, tags: Tag[]): number[] => {
   const ancestorIds: number[] = []
   const visited = new Set<number>()

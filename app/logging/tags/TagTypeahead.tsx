@@ -3,7 +3,7 @@ import { useMemo, useState, useRef, useEffect } from 'react'
 import type { Tag, TagInstance } from '../types'
 import { getTagColor } from './tagUtils'
 
-const TagTypeahead = ({ tags, allTagInstances = [], placeholder, onSelectTag, onCreateTag, inputClassName, autoFocus, onBlur }:{ tags: Tag[], allTagInstances?: TagInstance[], placeholder: string, onSelectTag: (tag: Tag) => void, onCreateTag: (name: string) => Promise<Tag>, inputClassName?: string, autoFocus?: boolean, onBlur?: () => void }) => {
+const TagTypeahead = ({ tags, allTagInstances = [], boostedTagIds, placeholder, onSelectTag, onCreateTag, inputClassName, autoFocus, onBlur }:{ tags: Tag[], allTagInstances?: TagInstance[], boostedTagIds?: Set<number>, placeholder: string, onSelectTag: (tag: Tag) => void, onCreateTag: (name: string) => Promise<Tag>, inputClassName?: string, autoFocus?: boolean, onBlur?: () => void }) => {
   const [query, setQuery] = useState('')
   const [isEditing, setIsEditing] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -25,6 +25,11 @@ const TagTypeahead = ({ tags, allTagInstances = [], placeholder, onSelectTag, on
         const bPrefix = b.name.toLowerCase().startsWith(q) ? 0 : 1
         if (aPrefix !== bPrefix) return aPrefix - bPrefix
       }
+      if (boostedTagIds && boostedTagIds.size > 0) {
+        const aBoosted = boostedTagIds.has(a.id) ? 0 : 1
+        const bBoosted = boostedTagIds.has(b.id) ? 0 : 1
+        if (aBoosted !== bBoosted) return aBoosted - bBoosted
+      }
       const aLatest = tagToLatestInstance.get(a.id)
       const bLatest = tagToLatestInstance.get(b.id)
       if (!aLatest && !bLatest) return 0
@@ -33,7 +38,7 @@ const TagTypeahead = ({ tags, allTagInstances = [], placeholder, onSelectTag, on
       return new Date(bLatest.datetime).getTime() - new Date(aLatest.datetime).getTime()
     })
     return sorted.slice(0, 8)
-  }, [query, tags, tagToLatestInstance])
+  }, [query, tags, tagToLatestInstance, boostedTagIds])
 
   const exactMatch = useMemo(() => {
     const q = query.trim().toLowerCase()

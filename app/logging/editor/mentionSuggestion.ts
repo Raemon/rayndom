@@ -1,23 +1,33 @@
 import type { MentionNodeAttrs } from '@tiptap/extension-mention'
 import type { SuggestionProps, SuggestionKeyDownProps } from '@tiptap/suggestion'
+import type { Editor } from '@tiptap/core'
 import type { MentionItem } from './editorConstants'
 import type { Tag } from '../types'
-import { getTagColor } from '../tags/tagUtils'
+import { getTagColor, getBoostedTagIds } from '../tags/tagUtils'
 import { getTagUsageTimestamps } from '../tags/tagUsageTracker'
+import { getEditorTagInstanceState } from './TagInstanceExtension'
 
 let cachedMentionTags: Tag[] = []
 export const updateCachedMentionTags = (tags: Tag[]) => { cachedMentionTags = tags }
 export const getCachedMentionTags = () => cachedMentionTags
 export const createMentionSuggestion = () => ({
-  items: ({ query }:{ query: string }) => {
+  items: ({ query, editor }:{ query: string, editor: Editor }) => {
     const normalizedQuery = query.trim().toLowerCase()
     const usageTimestamps = getTagUsageTimestamps()
+    const editorState = getEditorTagInstanceState(editor)
+    const datetime = editorState.callbacks.datetime
+    const boostedTagIds = datetime ? getBoostedTagIds(datetime, editorState.allTagInstances, cachedMentionTags) : new Set<number>()
     const filtered = normalizedQuery ? cachedMentionTags.filter(tag => tag.name.toLowerCase().includes(normalizedQuery)) : [...cachedMentionTags]
     const matchingTags = filtered.sort((a, b) => {
       if (normalizedQuery) {
         const aPrefix = a.name.toLowerCase().startsWith(normalizedQuery) ? 0 : 1
         const bPrefix = b.name.toLowerCase().startsWith(normalizedQuery) ? 0 : 1
         if (aPrefix !== bPrefix) return aPrefix - bPrefix
+      }
+      if (boostedTagIds.size > 0) {
+        const aBoosted = boostedTagIds.has(a.id) ? 0 : 1
+        const bBoosted = boostedTagIds.has(b.id) ? 0 : 1
+        if (aBoosted !== bBoosted) return aBoosted - bBoosted
       }
       const aTime = usageTimestamps[a.id] || 0
       const bTime = usageTimestamps[b.id] || 0
