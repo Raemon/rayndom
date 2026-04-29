@@ -18,8 +18,13 @@ const TagTypeahead = ({ tags, allTagInstances = [], placeholder, onSelectTag, on
   }, [allTagInstances])
   const matches = useMemo(() => {
     const q = query.trim().toLowerCase()
-    const filtered = q ? tags.filter(t => t.name.toLowerCase().includes(q)) : tags
-    const sorted = [...filtered].sort((a, b) => {
+    const filtered = q ? tags.filter(t => t.name.toLowerCase().includes(q)) : [...tags]
+    const sorted = filtered.sort((a, b) => {
+      if (q) {
+        const aPrefix = a.name.toLowerCase().startsWith(q) ? 0 : 1
+        const bPrefix = b.name.toLowerCase().startsWith(q) ? 0 : 1
+        if (aPrefix !== bPrefix) return aPrefix - bPrefix
+      }
       const aLatest = tagToLatestInstance.get(a.id)
       const bLatest = tagToLatestInstance.get(b.id)
       if (!aLatest && !bLatest) return 0

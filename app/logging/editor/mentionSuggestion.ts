@@ -12,12 +12,17 @@ export const createMentionSuggestion = () => ({
   items: ({ query }:{ query: string }) => {
     const normalizedQuery = query.trim().toLowerCase()
     const usageTimestamps = getTagUsageTimestamps()
-    const sortedTags = [...cachedMentionTags].sort((a, b) => {
+    const filtered = normalizedQuery ? cachedMentionTags.filter(tag => tag.name.toLowerCase().includes(normalizedQuery)) : [...cachedMentionTags]
+    const matchingTags = filtered.sort((a, b) => {
+      if (normalizedQuery) {
+        const aPrefix = a.name.toLowerCase().startsWith(normalizedQuery) ? 0 : 1
+        const bPrefix = b.name.toLowerCase().startsWith(normalizedQuery) ? 0 : 1
+        if (aPrefix !== bPrefix) return aPrefix - bPrefix
+      }
       const aTime = usageTimestamps[a.id] || 0
       const bTime = usageTimestamps[b.id] || 0
       return bTime - aTime
     })
-    const matchingTags = normalizedQuery ? sortedTags.filter(tag => tag.name.toLowerCase().includes(normalizedQuery)) : sortedTags
     const suggestionItems = matchingTags.slice(0, 8).map(tag => ({ id: tag.id.toString(), label: tag.name, badgeColor: getTagColor(tag.name) }))
     return suggestionItems
   },
