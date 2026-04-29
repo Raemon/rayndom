@@ -1,30 +1,27 @@
 'use client'
-import { createContext, useContext, useState, useCallback, ReactNode } from 'react'
+import { createContext, useContext, useRef, useCallback, useMemo, ReactNode } from 'react'
 
 type FocusedNotesContextType = {
-  focusedNoteKeys: Set<string>
+  focusedNoteKeysRef: React.RefObject<Set<string>>
   registerFocus: (key: string) => void
   unregisterFocus: (key: string) => void
-  isFocused: (key: string) => boolean
 }
 
 const FocusedNotesContext = createContext<FocusedNotesContextType | null>(null)
 
 export const FocusedNotesProvider = ({ children }:{ children: ReactNode }) => {
-  const [focusedNoteKeys, setFocusedNoteKeys] = useState<Set<string>>(new Set())
+  const focusedNoteKeysRef = useRef<Set<string>>(new Set())
   const registerFocus = useCallback((key: string) => {
-    setFocusedNoteKeys(prev => new Set([...prev, key]))
+    focusedNoteKeysRef.current = new Set([...focusedNoteKeysRef.current, key])
   }, [])
   const unregisterFocus = useCallback((key: string) => {
-    setFocusedNoteKeys(prev => {
-      const next = new Set(prev)
-      next.delete(key)
-      return next
-    })
+    const next = new Set(focusedNoteKeysRef.current)
+    next.delete(key)
+    focusedNoteKeysRef.current = next
   }, [])
-  const isFocused = useCallback((key: string) => focusedNoteKeys.has(key), [focusedNoteKeys])
+  const value = useMemo(() => ({ focusedNoteKeysRef, registerFocus, unregisterFocus }), [registerFocus, unregisterFocus])
   return (
-    <FocusedNotesContext.Provider value={{ focusedNoteKeys, registerFocus, unregisterFocus, isFocused }}>
+    <FocusedNotesContext.Provider value={value}>
       {children}
     </FocusedNotesContext.Provider>
   )

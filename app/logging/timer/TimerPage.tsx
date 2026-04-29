@@ -29,7 +29,7 @@ const TimerPageInner = () => {
   const handleTimerComplete = useCallback(() => {
     checklistRef.current?.resetAllItems()
   }, [])
-  const { focusedNoteKeys } = useFocusedNotes()
+  const { focusedNoteKeysRef } = useFocusedNotes()
 
   const endDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
   const startDate = new Date(new Date().getTime() - 14 * 24 * 60 * 60 * 1000)
@@ -171,12 +171,12 @@ const TimerPageInner = () => {
   // Poll the visible window every 5 seconds. Older tag instances are immutable.
   useEffect(() => {
     const interval = setInterval(() => {
-      refreshUnfocused(focusedNoteKeys)
+      refreshUnfocused(focusedNoteKeysRef.current)
       loadTagInstancesRange({ start: startIso, end: endIso })
       checklistRef.current?.refreshItems()
     }, 5000)
     return () => clearInterval(interval)
-  }, [refreshUnfocused, focusedNoteKeys, loadTagInstancesRange, startIso, endIso])
+  }, [refreshUnfocused, focusedNoteKeysRef, loadTagInstancesRange, startIso, endIso])
 
   return (
     <div className="p-4 text-sm">

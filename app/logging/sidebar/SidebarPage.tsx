@@ -24,7 +24,7 @@ const SidebarPageInner = () => {
   const startIso = startDate.toISOString()
   const endIso = endDate.toISOString()
   const { tagInstances, load: loadTagInstances, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: allTagInstancesStartIso, end: allTagInstancesEndIso })
-  const { focusedNoteKeys } = useFocusedNotes()
+  const { focusedNoteKeysRef } = useFocusedNotes()
   const { timeblocks, refreshUnfocused, createTimeblock, patchTimeblockDebounced } = useTimeblocks({ start: startIso, end: endIso })
   const { tags } = useTags()
   const slotSizeMs = 15 * 60 * 1000
@@ -78,9 +78,9 @@ const SidebarPageInner = () => {
     return () => clearInterval(interval)
   }, [loadTagInstances])
   useEffect(() => {
-    const interval = setInterval(() => refreshUnfocused(focusedNoteKeys), 5000)
+    const interval = setInterval(() => refreshUnfocused(focusedNoteKeysRef.current), 5000)
     return () => clearInterval(interval)
-  }, [refreshUnfocused, focusedNoteKeys])
+  }, [refreshUnfocused, focusedNoteKeysRef])
   return (
     <div className="w-full h-full flex flex-col gap-4 overflow-y-auto p-4 text-sm md:flex-row">
       <div className="hidden flex-col gap-2 md:flex md:flex-1 min-w-0">

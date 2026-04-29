@@ -28,6 +28,21 @@ export const useTagInstances = ({ start, end, autoLoad=true }:{ start: string, e
     const startMs = new Date(rangeStart).getTime()
     const endMs = new Date(rangeEnd).getTime()
     setTagInstances(prev => {
+      // Quick check: bail out if server data matches what we already have in range
+      const prevInRange = prev.filter(ti => {
+        if (ti.id < 0) return false
+        const t = new Date(ti.datetime).getTime()
+        return t >= startMs && t < endMs
+      })
+      if (prevInRange.length === serverInstances.length) {
+        const serverById = new Map(serverInstances.map(si => [si.id, si]))
+        const allMatch = prevInRange.every(ti => {
+          const si = serverById.get(ti.id)
+          return si && ti.approved === si.approved && ti.useful === si.useful
+            && ti.antiUseful === si.antiUseful && ti.llmPredicted === si.llmPredicted
+        })
+        if (allMatch) return prev
+      }
       const outsideRange = prev.filter(ti => {
         if (ti.id < 0) return true
         const t = new Date(ti.datetime).getTime()

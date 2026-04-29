@@ -27,22 +27,22 @@ export const useTimeblocks = ({ start, end, autoLoad=true }:{ start: string, end
     setTimeblocks(prev => {
       const freshById = new Map(freshTimeblocks.map(tb => [tb.id, tb]))
       const existingIds = new Set(prev.map(tb => tb.id))
-      // Update existing timeblocks, add new ones
+      const newTimeblocks = freshTimeblocks.filter(tb => !existingIds.has(tb.id))
+      // Update existing timeblocks, preserving identity when unchanged
       const updated = prev.map(tb => {
         const fresh = freshById.get(tb.id)
         if (!fresh) return tb
         const rayNotesFocused = focusedNoteKeys.has(`${tb.id}:rayNotes`)
         const assistantNotesFocused = focusedNoteKeys.has(`${tb.id}:assistantNotes`)
         const aiNotesFocused = focusedNoteKeys.has(`${tb.id}:aiNotes`)
-        return {
-          ...tb,
-          rayNotes: rayNotesFocused ? tb.rayNotes : fresh.rayNotes,
-          assistantNotes: assistantNotesFocused ? tb.assistantNotes : fresh.assistantNotes,
-          aiNotes: aiNotesFocused ? tb.aiNotes : fresh.aiNotes,
-        }
+        const newRayNotes = rayNotesFocused ? tb.rayNotes : fresh.rayNotes
+        const newAssistantNotes = assistantNotesFocused ? tb.assistantNotes : fresh.assistantNotes
+        const newAiNotes = aiNotesFocused ? tb.aiNotes : fresh.aiNotes
+        if (newRayNotes === tb.rayNotes && newAssistantNotes === tb.assistantNotes && newAiNotes === tb.aiNotes) return tb
+        return { ...tb, rayNotes: newRayNotes, assistantNotes: newAssistantNotes, aiNotes: newAiNotes }
       })
-      // Add any new timeblocks that weren't in prev
-      const newTimeblocks = freshTimeblocks.filter(tb => !existingIds.has(tb.id))
+      // Bail out if nothing actually changed to avoid unnecessary re-renders
+      if (newTimeblocks.length === 0 && updated.every((tb, i) => tb === prev[i])) return prev
       return [...updated, ...newTimeblocks]
     })
   }, [start, end])

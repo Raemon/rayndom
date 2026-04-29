@@ -15,7 +15,7 @@ import { allTagInstancesStartIso, allTagInstancesEndIso } from '../tagInstanceCo
 
 const LoggingZenInner = () => {
   const { isPredicting, predictTags } = useAiTags()
-  const { focusedNoteKeys } = useFocusedNotes()
+  const { focusedNoteKeysRef } = useFocusedNotes()
   const today = new Date()
   today.setHours(0, 0, 0, 0)
   const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000)
@@ -73,11 +73,11 @@ const LoggingZenInner = () => {
   // Poll today every 5 seconds. Older tag instances are immutable, so no need to refetch them.
   useEffect(() => {
     const interval = setInterval(() => {
-      refreshUnfocused(focusedNoteKeys)
+      refreshUnfocused(focusedNoteKeysRef.current)
       loadTagInstancesRange({ start: startIso, end: endIso })
     }, 5000)
     return () => clearInterval(interval)
-  }, [refreshUnfocused, focusedNoteKeys, loadTagInstancesRange, startIso, endIso])
+  }, [refreshUnfocused, focusedNoteKeysRef, loadTagInstancesRange, startIso, endIso])
 
   // Bucket tag instances by 15-minute slot once per tagInstances change, instead of
   // re-scanning all ~1.5k rows for each ZenRow on every render.
