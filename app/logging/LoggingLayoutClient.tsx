@@ -23,7 +23,7 @@ const LoggingLayoutClient = ({ children }:{ children: React.ReactNode }) => {
       <div>
         <header className="fixed top-0 left-0 right-0 z-50 bg-black flex items-center justify-between p-2">
           {showHeaderTimer && <HeaderTimer />}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 ml-auto">
             <nav className="flex gap-4 text-xs">
               {navLinks.map(({ href, label }) => (
                 <Link key={href} href={href} className={pathname === href ? 'font-bold text-white!' : 'text-gray-500! hover:text-white!'}>
