@@ -21,6 +21,7 @@ export const createCommandSuggestion = () => ({
     let currentItems: CommandItem[] = []
     let currentCommand: ((item: MentionNodeAttrs) => void) | null = null
     let currentQuery = ''
+    let blurCleanup: (() => void) | null = null
     const updatePosition = (clientRect: DOMRect | null) => {
       if (!container || !clientRect) return
       container.style.left = `${clientRect.left}px`
@@ -92,6 +93,12 @@ export const createCommandSuggestion = () => ({
         document.body.appendChild(container)
         renderItems(props.items as CommandItem[], props.command)
         updatePosition(props.clientRect ? props.clientRect() : null)
+        const handleBlur = () => {
+          if (container) container.remove()
+          container = null
+        }
+        props.editor.on('blur', handleBlur)
+        blurCleanup = () => props.editor.off('blur', handleBlur)
       },
       onUpdate: (props: SuggestionProps<CommandItem, MentionNodeAttrs>) => {
         currentCommand = props.command
@@ -128,6 +135,7 @@ export const createCommandSuggestion = () => ({
         return false
       },
       onExit: () => {
+        if (blurCleanup) { blurCleanup(); blurCleanup = null }
         if (container) container.remove()
         container = null
       }

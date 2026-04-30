@@ -31,7 +31,12 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
       .map(id => tags.find(t => t.id === id))
       .filter((t): t is Tag => t !== undefined)
   }, [liveParentTag, tags])
-  const allTypes = useMemo(() => [...new Set(tags.map(t => t.type))].sort(), [tags])
+  const allTypes = useMemo(() => {
+    const directSuggestionTypes = new Set(directSuggestions.map(t => t.type))
+    return [...new Set(tags.map(t => t.type))].sort().filter(type =>
+      type.toLowerCase() !== 'projects' || directSuggestionTypes.has(type)
+    )
+  }, [tags, directSuggestions])
   const suggestedTagIds = useMemo(() => new Set(directSuggestions.map(t => t.id)), [directSuggestions])
   const [addingForType, setAddingForType] = useState<string | null>(null)
   const [selectedTagIds, setSelectedTagIds] = useState<number[]>([])
@@ -112,7 +117,7 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
       <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center" onClick={onClose}>
         <div className="relative bg-neutral-800 min-w-[320px] max-w-[90vw] p-4" onClick={e => e.stopPropagation()}>
           <button className="ml-auto text-white/30 hover:text-white text-lg absolute top-4 right-4 leading-none cursor-pointer" onClick={onClose}>×</button>
-          <div className="flex items-start max-h-[90vh]">
+          <div className="flex h-[70vh]">
             {liveParentTag && <TagSuggestionColumn
               tags={directSuggestions}
               allTypes={allTypes}
@@ -137,27 +142,27 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
                 <button className="text-white/30 hover:text-white text-sm leading-none cursor-pointer" onClick={() => setAddingForType(type)}>+</button>
               )}
               rowExtra={(tag) => <button className="text-white/40 hover:text-white text-xs leading-none cursor-pointer" onClick={e => { e.stopPropagation(); handleRemoveSuggestedTag(tag) }}>×</button>}
-              className="mb-3"
+              className="mb-3 overflow-y-auto"
             />}
             {suggestedColumnTags.length === 0 && directSuggestions.length === 0 && !selectedFlowColumns.some(col => col.hasSuggestedTags) ? (
               <div className="text-white/50 text-xs">No tags with positive/negative uses yet.</div>
             ) : (
-              <div className="flex items-start max-h-[90vh] overflow-x-auto overflow-y-auto">
+              <div className="flex overflow-x-auto">
                 {suggestedColumnTags.length > 0 && directSuggestions.length === 0 ? (
-                  <div className="flex items-start flex-shrink-0">
-                    <TagSuggestionColumn tags={suggestedColumnTags} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="w-[240px] flex-shrink-0" />
+                  <div className="flex flex-shrink-0">
+                    <TagSuggestionColumn tags={suggestedColumnTags} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="w-[240px] flex-shrink-0 overflow-y-auto" />
                   </div>
                 ) : null}
                 {selectedFlowColumns.filter(col => col.hasSuggestedTags).map(column => (
-                  <div key={column.tagId} className="flex items-start flex-shrink-0">
+                  <div key={column.tagId} className="flex flex-shrink-0">
                     {column.tags.length > 0
-                      ? <TagSuggestionColumn tags={column.tags} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="w-[240px] flex-shrink-0" />
+                      ? <TagSuggestionColumn tags={column.tags} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="w-[240px] flex-shrink-0 overflow-y-auto" />
                       : <div className="min-w-[320px] flex-shrink-0" />}
                   </div>
                 ))}
-                <div className="flex items-start flex-shrink-0 min-w-[320px]">
+                <div className="flex flex-shrink-0 min-w-[320px]">
                   {hoverPreviewTags.length > 0
-                    ? <TagSuggestionColumn tags={hoverPreviewTags} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="w-[240px] flex-shrink-0" />
+                    ? <TagSuggestionColumn tags={hoverPreviewTags} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="w-[240px] flex-shrink-0 overflow-y-auto" />
                     : <div className="min-w-[320px] flex-shrink-0" />}
                 </div>
               </div>

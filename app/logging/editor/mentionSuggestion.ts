@@ -41,6 +41,7 @@ export const createMentionSuggestion = () => ({
     let selectedIndex = 0
     let currentItems: MentionItem[] = []
     let currentCommand: ((item: MentionNodeAttrs) => void) | null = null
+    let blurCleanup: (() => void) | null = null
     const updatePosition = (clientRect: DOMRect | null) => {
       if (!container || !clientRect) return
       container.style.left = `${clientRect.left}px`
@@ -88,6 +89,12 @@ export const createMentionSuggestion = () => ({
         document.body.appendChild(container)
         renderItems(props.items as MentionItem[], props.command)
         updatePosition(props.clientRect ? props.clientRect() : null)
+        const handleBlur = () => {
+          if (container) container.remove()
+          container = null
+        }
+        props.editor.on('blur', handleBlur)
+        blurCleanup = () => props.editor.off('blur', handleBlur)
       },
       onUpdate: (props: SuggestionProps<MentionItem, MentionNodeAttrs>) => {
         currentCommand = props.command
@@ -123,6 +130,7 @@ export const createMentionSuggestion = () => ({
         return false
       },
       onExit: () => {
+        if (blurCleanup) { blurCleanup(); blurCleanup = null }
         if (container) container.remove()
         container = null
       }
