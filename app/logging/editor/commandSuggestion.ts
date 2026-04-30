@@ -93,12 +93,11 @@ export const createCommandSuggestion = () => ({
         document.body.appendChild(container)
         renderItems(props.items as CommandItem[], props.command)
         updatePosition(props.clientRect ? props.clientRect() : null)
-        const handleBlur = () => {
-          if (container) container.remove()
-          container = null
-        }
+        const handleBlur = () => { if (container) container.style.display = 'none' }
+        const handleFocus = () => { if (container) container.style.display = '' }
         props.editor.on('blur', handleBlur)
-        blurCleanup = () => props.editor.off('blur', handleBlur)
+        props.editor.on('focus', handleFocus)
+        blurCleanup = () => { props.editor.off('blur', handleBlur); props.editor.off('focus', handleFocus) }
       },
       onUpdate: (props: SuggestionProps<CommandItem, MentionNodeAttrs>) => {
         currentCommand = props.command
