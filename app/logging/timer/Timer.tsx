@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { getNextQuarterHourMs } from '../lib/timeUtils'
 
 type TimerProps = {
@@ -47,6 +47,36 @@ const Timer = (props: TimerProps) => {
   const lastPredictMarkRef = useRef<number | null>(null)
   const lastBingMarkRef = useRef<number | null>(null)
   const isRunningRef = useRef(false)
+  const [audioAllowed, setAudioAllowed] = useState(true)
+
+  useEffect(() => {
+    try {
+      const AudioContextClass = window.AudioContext || (window as typeof window & { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+      if (!AudioContextClass) return
+      const testCtx = new AudioContextClass()
+      const needsInteraction = testCtx.state !== 'running'
+      testCtx.close().catch(() => {})
+      if (!needsInteraction) return
+      setAudioAllowed(false)
+      const handleInteraction = () => {
+        setAudioAllowed(true)
+        for (const event of ['click', 'keydown', 'touchstart'] as const) {
+          document.removeEventListener(event, handleInteraction)
+        }
+      }
+      for (const event of ['click', 'keydown', 'touchstart'] as const) {
+        document.addEventListener(event, handleInteraction)
+      }
+      return () => {
+        for (const event of ['click', 'keydown', 'touchstart'] as const) {
+          document.removeEventListener(event, handleInteraction)
+        }
+      }
+    } catch {
+      // AudioContext not available
+    }
+  }, [])
+
   const requestFocus = useCallback(() => {
     try {
       if (typeof window === 'undefined') return
@@ -112,6 +142,19 @@ const Timer = (props: TimerProps) => {
       document.removeEventListener('visibilitychange', handleVisibility)
     }
   }, [onTimerComplete, requestFocus, runAiCommand])
+
+  if (!audioAllowed) {
+    return (
+      <div
+        className="flex items-center gap-2 px-3 py-1.5 mb-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded cursor-pointer select-none"
+      >
+        <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707A1 1 0 0112 5.586v12.828a1 1 0 01-1.707.707L5.586 15z" />
+        </svg>
+        Click anywhere on the page to enable timer sounds
+      </div>
+    )
+  }
 
   return null
 }
