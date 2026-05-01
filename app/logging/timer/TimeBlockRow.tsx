@@ -2,7 +2,6 @@
 import { useState } from 'react'
 import NotesInput from '../editor/NotesInput'
 import TagCell from '../tags/TagCell'
-import OrientingChecklist from '../checklist/OrientingChecklist'
 import type { TagInstance, Timeblock } from '../types'
 
 const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesByType, allTagInstances, isCurrent, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
@@ -34,8 +33,7 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
 
   const isOrientingBlock = isExpanded
   return (
-    <>
-      <tr className={`${isCurrent ? 'bg-black/50' : ''} ${!isOrientingBlock ? 'border-b border-white/10' : ''}`}>
+      <tr className={`${isCurrent ? 'bg-black/50' : ''} border-b border-white/10`}>
         <td className="text-gray-300 whitespace-nowrap px-2 py-2" style={{ width: '10%', verticalAlign: 'top' }}>
           <span className="flex items-center gap-1 cursor-pointer" onClick={handleToggleOrient}>
             {timeLabel}
@@ -128,18 +126,6 @@ const TimeBlockRow = ({ slotStart, timeLabel, timeblock, tagTypes, tagInstancesB
           </td>
         ))}
       </tr>
-      {isOrientingBlock && (
-        <tr className={isCurrent ? 'bg-orange-500/5 border-b border-white/10' : 'border-b border-white/10'}>
-          <td></td>
-          <td colSpan={3}></td>
-          <td colSpan={tagTypes.length} className="px-2 py-2 relative">
-            <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', maxWidth: '400px', width: '100%' }}>
-              <OrientingChecklist maxWidth={400} />
-            </div>
-          </td>
-        </tr>
-      )}
-    </>
   )
 }
 
