@@ -129,7 +129,7 @@ const SidebarPageInner = () => {
           ))}
         </div>
         <div className="mt-auto min-h-0">
-          <Checklist inline fullWidth section={currentSection} />
+          <Checklist fullWidth section={currentSection} />
         </div>
       </div>
     </div>

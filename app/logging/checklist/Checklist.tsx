@@ -24,12 +24,11 @@ export type ChecklistRef = {
 
 export type ChecklistProps = {
   orientingOnly?: boolean
-  inline?: boolean
   fullWidth?: boolean
   section?: string
 }
 
-const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = false, inline = false, fullWidth = false, section }, ref) => {
+const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = false, fullWidth = false, section }, ref) => {
   const [checklistItems, setChecklistItems] = useState<ChecklistItem[]>([])
   const checklistItemsRef = useRef<ChecklistItem[]>([])
 
@@ -179,23 +178,21 @@ const Checklist = forwardRef<ChecklistRef, ChecklistProps>(({ orientingOnly = fa
   }
 
   const [hasRelevantUnchecked, setHasRelevantUnchecked] = useState(false)
-  const allCompleted = checklistItems.length > 0 && checklistItems.every(item => item.completed)
-  const shouldExpand = !allCompleted || hasRelevantUnchecked
-  const width = shouldExpand ? '600px' : '200px'
-  const height = shouldExpand ? 'auto' : 'auto'
+  const hasUnchecked = checklistItems.length > 0 && !checklistItems.every(item => item.completed)
+  const shouldExpand = hasUnchecked || hasRelevantUnchecked
+  const width = shouldExpand ? '400px' : '200px'
   const textSize = shouldExpand ? 'text-2xl' : 'text-sm'
-  const padding = shouldExpand ? 'p-6' : 'p-3'
+  const paddingValue = shouldExpand ? '1.5rem' : '0'
   const gap = shouldExpand ? 'gap-4' : 'gap-2'
   const itemGap = shouldExpand ? 'gap-3' : 'gap-1'
   const inputPadding = shouldExpand ? 'px-4 py-3' : 'px-2 py-1'
   const checkboxSize = shouldExpand ? 'w-6 h-6' : 'w-4 h-4'
-  const justifySelfClass = shouldExpand ? 'justify-self-center' : 'justify-self-end'
 
-  const positionClass = inline ? '' : 'fixed bottom-4 right-4'
-  const bgClass = inline ? '' : 'bg-gray-900'
-  const inlineStyle = inline ? (fullWidth ? { width: '100%', height } : { width: '100%', maxWidth: width, height }) : { width, height }
+  const bgClass = shouldExpand ? 'bg-gray-900 rounded-lg' : ''
+  const transition = 'max-width 0.3s ease, width 0.3s ease, padding 0.3s ease'
+  const inlineStyle = fullWidth ? { width: '100%', padding: paddingValue, transition } : { width: '100%', maxWidth: width, padding: paddingValue, transition }
   return (
-    <div className={`${positionClass} ${bgClass} ${padding} ${justifySelfClass} overflow-y-auto`} style={inlineStyle}>
+    <div className={`${bgClass} overflow-y-auto`} style={inlineStyle}>
       <div className="flex items-center justify-between">
         <div className={`mb-2 font-semibold ${textSize}`}>Checklist:</div>
         <div className={`mb-2`}>

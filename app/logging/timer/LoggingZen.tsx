@@ -179,7 +179,7 @@ const LoggingZenInner = () => {
         })}
       </div>
       <div style={{ flex: 1, overflow: 'auto' }} className="p-2">
-        <Checklist inline />
+        <Checklist />
       </div>
     </div>
   )

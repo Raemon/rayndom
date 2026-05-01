@@ -2,7 +2,6 @@
 import { useEffect, useLayoutEffect, useMemo, useState, useRef, useCallback } from 'react'
 import DaySection from './DaySection'
 import MonthSection from './MonthSection'
-import TagSidebar from '../tags/TagSidebar'
 import { useTimeblocks } from '../hooks/useTimeblocks'
 import { useTagInstances } from '../hooks/useTagInstances'
 import { FocusedNotesProvider, useFocusedNotes } from '../context/FocusedNotesContext'
@@ -14,7 +13,6 @@ import Timer from './Timer'
 import RunAiCommandPanel from './RunAiCommandPanel'
 import { useAiTags } from '../hooks/useAiTags'
 import { useTags } from '../tags/TagsContext'
-import { allTagInstancesStartIso, allTagInstancesEndIso } from '../tagInstanceConstants'
 
 const EMPTY_TIMEBLOCKS: Timeblock[] = []
 const EMPTY_TAG_INSTANCES: TagInstance[] = []
@@ -38,10 +36,6 @@ const TimerPageInner = () => {
   const startIso = startDate.toISOString()
   const endIso = endDate.toISOString()
   const { timeblocks, isLoading: isLoadingTimeblocks, createTimeblock, patchTimeblockDebounced, refreshUnfocused, load: loadTimeblocks } = useTimeblocks({ start: startIso, end: endIso })
-  // Two-phase load: visible window first (fast, hits the (user_id, datetime) index) so the
-  // day rows render immediately, then the full historical set in the background for the
-  // TagSidebar counts / suggestion typeahead. Polling only refreshes the visible window
-  // since older tag instances are immutable.
   const { tagInstances, loadRange: loadTagInstancesRange, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance } = useTagInstances({ start: startIso, end: endIso, autoLoad: false })
   const [isLoadingVisibleTagInstances, setIsLoadingVisibleTagInstances] = useState(true)
   const handleRunAiCommand = useCallback(async (datetime: string) => {
@@ -167,18 +161,8 @@ const TimerPageInner = () => {
     return created as Timeblock
   }
 
-  // Initial load: visible 14-day window first (fast, unblocks day row render), then full
-  // history in background for the TagSidebar / suggestion counts.
   useEffect(() => {
-    let cancelled = false
-    const runInitialLoad = async () => {
-      await loadTagInstancesRange({ start: startIso, end: endIso })
-      if (cancelled) return
-      setIsLoadingVisibleTagInstances(false)
-      loadTagInstancesRange({ start: allTagInstancesStartIso, end: allTagInstancesEndIso })
-    }
-    runInitialLoad()
-    return () => { cancelled = true }
+    loadTagInstancesRange({ start: startIso, end: endIso }).then(() => setIsLoadingVisibleTagInstances(false))
   }, [loadTagInstancesRange, startIso, endIso])
 
   // Poll the visible window every 5 seconds. Older tag instances are immutable.
@@ -214,7 +198,7 @@ const TimerPageInner = () => {
           }}
         />
       </div>
-      <div className="flex gap-6">
+      <div className="flex gap-2">
         <div className="flex-1 min-w-0">
           {groupedDays.currentWeekDays.map(day => {
             const key = day.toISOString().slice(0, 10)
@@ -268,11 +252,10 @@ const TimerPageInner = () => {
             )
           })}
         </div>
-        <div className="w-72">
-          <TagSidebar tagInstances={tagInstances} />
+        <div className={`w-fit self-start sticky top-14 mt-10`}>
+          <Checklist ref={checklistRef} />
         </div>
       </div>
-      <Checklist ref={checklistRef} />
       {(isLoadingTimeblocks || isLoadingVisibleTagInstances || isLoadingTags) && (
         <div className="flex items-center gap-2 py-4 text-gray-500">
           <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
