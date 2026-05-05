@@ -31,14 +31,15 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
       .map(id => tags.find(t => t.id === id))
       .filter((t): t is Tag => t !== undefined)
   }, [liveParentTag, tags])
+  const allTagTypes = useMemo(() => [...new Set(tags.map(t => t.type))].sort(), [tags])
   const allTypes = useMemo(() => {
-    const directSuggestionTypes = new Set(directSuggestions.map(t => t.type))
-    return [...new Set(tags.map(t => t.type))].sort().filter(type =>
-      type.toLowerCase() !== 'projects' || directSuggestionTypes.has(type)
+    const suggestionTypes = new Set(directSuggestions.map(t => t.type))
+    return allTagTypes.filter(type =>
+      type.toLowerCase() !== 'projects' || suggestionTypes.has(type)
     )
-  }, [tags, directSuggestions])
+  }, [allTagTypes, directSuggestions])
   const suggestedTagIds = useMemo(() => new Set(directSuggestions.map(t => t.id)), [directSuggestions])
-  const [addingForType, setAddingForType] = useState<string | null>(null)
+  const [addingFor, setAddingFor] = useState<{ parentTagId: number, type: string } | null>(null)
   const [selectedTagIds, setSelectedTagIds] = useState<number[]>([])
   const [createdTagInstanceIds, setCreatedTagInstanceIds] = useState<Map<number, number>>(new Map())
   const [hoveredTagId, setHoveredTagId] = useState<number | null>(null)
@@ -73,16 +74,14 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
       await handleAddTag(tag)
     }
   }, [selectedTagIds, existingTagIdsForDatetime, handleAddTag, handleRemoveTag])
-  const handleAddSuggestedTag = useCallback((tag: Tag) => {
-    if (!liveParentTag) return
-    const existing = Array.isArray(liveParentTag.suggestedTagIds) ? liveParentTag.suggestedTagIds : []
+  const handleAddSuggestedTagTo = useCallback((parentTag: Tag, tag: Tag) => {
+    const existing = Array.isArray(parentTag.suggestedTagIds) ? parentTag.suggestedTagIds : []
     if (existing.includes(tag.id)) return
-    updateTag({ id: liveParentTag.id, suggestedTagIds: [...existing, tag.id] })
-  }, [liveParentTag, updateTag])
-  const handleRemoveSuggestedTag = useCallback((tag: Tag) => {
-    if (!liveParentTag) return
-    updateTag({ id: liveParentTag.id, suggestedTagIds: (liveParentTag.suggestedTagIds || []).filter(id => id !== tag.id) })
-  }, [liveParentTag, updateTag])
+    updateTag({ id: parentTag.id, suggestedTagIds: [...existing, tag.id] })
+  }, [updateTag])
+  const handleRemoveSuggestedTagFrom = useCallback((parentTag: Tag, tag: Tag) => {
+    updateTag({ id: parentTag.id, suggestedTagIds: (parentTag.suggestedTagIds || []).filter(id => id !== tag.id) })
+  }, [updateTag])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -93,12 +92,24 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
   }, [onClose])
   const { suggestedColumnTags, selectedFlowColumns, hoverPreviewTags } = useMemo(() => {
     const showTag = (t: Tag) => !existingTagIdsForDatetime.has(t.id) || selectedTagIds.includes(t.id)
-    const selectedColumns: { tagId: number, tags: Tag[], hasSuggestedTags: boolean }[] = []
+    const selectedColumns: { tagId: number, parentTag: Tag, tags: Tag[], suggestedIds: Set<number>, allTypes: string[], hasSuggestedTags: boolean }[] = []
     for (const tagId of selectedTagIds) {
       const tag = tags.find(t => t.id === tagId)
       if (!tag) continue
       const hasSuggestedTags = !!tag.suggestedTagIds?.length
-      selectedColumns.push({ tagId, tags: hasSuggestedTags ? getSuggestedTagsForTag(tag, tags, tagIdToCounts).filter(showTag) : [], hasSuggestedTags })
+      if (hasSuggestedTags) {
+        const allSuggestions = getSuggestedTagsForTag(tag, tags, tagIdToCounts)
+        const suggestionTypes = new Set(allSuggestions.map(t => t.type))
+        selectedColumns.push({
+          tagId, parentTag: tag,
+          tags: allSuggestions.filter(showTag),
+          suggestedIds: new Set((tag.suggestedTagIds || []) as number[]),
+          allTypes: allTagTypes.filter(type => type.toLowerCase() !== 'projects' || suggestionTypes.has(type)),
+          hasSuggestedTags,
+        })
+      } else {
+        selectedColumns.push({ tagId, parentTag: tag, tags: [], suggestedIds: new Set<number>(), allTypes: [], hasSuggestedTags })
+      }
     }
     let hover: Tag[] = []
     if (hoveredTagId) {
@@ -111,7 +122,24 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
       }
     }
     return { suggestedColumnTags: suggestedTags.filter(showTag), selectedFlowColumns: selectedColumns, hoverPreviewTags: hover }
-  }, [suggestedTags, selectedTagIds, tags, tagIdToCounts, existingTagIdsForDatetime, hoveredTagId])
+  }, [suggestedTags, selectedTagIds, tags, tagIdToCounts, existingTagIdsForDatetime, hoveredTagId, allTagTypes])
+  const buildEditableColumnProps = (columnParentTag: Tag, columnSuggestedIds: Set<number>) => ({
+    headerExtra: (type: string) => addingFor?.parentTagId === columnParentTag.id && addingFor.type === type ? (
+      <TagTypeahead
+        tags={tags.filter(t => t.type === type && !columnSuggestedIds.has(t.id))}
+        allTagInstances={allTagInstances}
+        placeholder={`Add ${type}...`}
+        onSelectTag={(tag: Tag) => { handleAddSuggestedTagTo(columnParentTag, tag); setAddingFor(null) }}
+        onCreateTag={async (name: string) => createTag({ name, type })}
+        inputClassName="py-0 bg-gray-700 text-xs!"
+        autoFocus
+        onBlur={() => setAddingFor(null)}
+      />
+    ) : (
+      <button className="text-white/30 hover:text-white text-sm leading-none cursor-pointer" onClick={() => setAddingFor({ parentTagId: columnParentTag.id, type })}>+</button>
+    ),
+    rowExtra: (tag: Tag) => <button className="text-white/40 hover:text-white text-xs leading-none cursor-pointer" onClick={e => { e.stopPropagation(); handleRemoveSuggestedTagFrom(columnParentTag, tag) }}>×</button>,
+  })
   return (
     <>
       <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center" onClick={onClose}>
@@ -127,21 +155,7 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
               onTagHover={setHoveredTagId}
               onTagContextMenu={setEditingTag}
               isTagDimmed={(tag) => existingTagIdsForDatetime.has(tag.id) && !selectedTagIds.includes(tag.id)}
-              headerExtra={(type) => addingForType === type ? (
-                <TagTypeahead
-                  tags={tags.filter(t => t.type === type && !suggestedTagIds.has(t.id))}
-                  allTagInstances={allTagInstances}
-                  placeholder={`Add ${type}...`}
-                  onSelectTag={(tag) => { handleAddSuggestedTag(tag); setAddingForType(null) }}
-                  onCreateTag={async (name) => createTag({ name, type })}
-                  inputClassName="py-0 bg-gray-700 text-xs!"
-                  autoFocus
-                  onBlur={() => setAddingForType(null)}
-                />
-              ) : (
-                <button className="text-white/30 hover:text-white text-sm leading-none cursor-pointer" onClick={() => setAddingForType(type)}>+</button>
-              )}
-              rowExtra={(tag) => <button className="text-white/40 hover:text-white text-xs leading-none cursor-pointer" onClick={e => { e.stopPropagation(); handleRemoveSuggestedTag(tag) }}>×</button>}
+              {...buildEditableColumnProps(liveParentTag, suggestedTagIds)}
               className="mb-3 overflow-y-auto"
             />}
             {suggestedColumnTags.length === 0 && directSuggestions.length === 0 && !selectedFlowColumns.some(col => col.hasSuggestedTags) ? (
@@ -155,9 +169,17 @@ const SuggestedTagsModal = ({ type, tags, allTagInstances, datetime, parentTag, 
                 ) : null}
                 {selectedFlowColumns.filter(col => col.hasSuggestedTags).map(column => (
                   <div key={column.tagId} className="flex flex-shrink-0">
-                    {column.tags.length > 0
-                      ? <TagSuggestionColumn tags={column.tags} tagIdToCounts={tagIdToCounts} onTagClick={handleTagClick} selectedTagIds={selectedTagIds} onTagHover={setHoveredTagId} onTagContextMenu={setEditingTag} className="w-[240px] flex-shrink-0 overflow-y-auto" />
-                      : <div className="min-w-[320px] flex-shrink-0" />}
+                    <TagSuggestionColumn
+                      tags={column.tags}
+                      allTypes={column.allTypes}
+                      tagIdToCounts={tagIdToCounts}
+                      onTagClick={handleTagClick}
+                      selectedTagIds={selectedTagIds}
+                      onTagHover={setHoveredTagId}
+                      onTagContextMenu={setEditingTag}
+                      {...buildEditableColumnProps(column.parentTag, column.suggestedIds)}
+                      className="w-[240px] flex-shrink-0 overflow-y-auto"
+                    />
                   </div>
                 ))}
                 <div className="flex flex-shrink-0 min-w-[320px]">
