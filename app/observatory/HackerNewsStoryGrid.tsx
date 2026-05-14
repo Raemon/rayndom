@@ -1,10 +1,8 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import Ar5ivViewer from './Ar5ivViewer'
-import HackerNewsIframe from './HackerNewsIframe'
-import ProxyContentViewer from './ProxyContentViewer'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import HackerNewsStoryRow, { ClickedSide } from './HackerNewsStoryRow'
+import { StoryPanel, useStoryPanel } from './StoryPanel'
 import { StoryCard } from './hackerNewsTypes'
 
 const LOADING_SNIPPET = 'Loading article text...'
@@ -42,24 +40,12 @@ const buildStoryRows = (storyCards: StoryCard[]) => {
   return rows
 }
 
-type ViewMode = 'iframe' | 'html'
-type IframeState = { url: string, rowIndex: number, side: ClickedSide }
-
-const IFRAME_TRANSITION_MS = 300
-
-const DEFAULT_PANEL_PCT = 50
-const MIN_PANEL_PCT = 20
-const MAX_PANEL_PCT = 80
+type ClickState = { rowIndex: number, side: ClickedSide }
 
 const HackerNewsStoryGrid = ({ initialCards }:{ initialCards: StoryCard[] }) => {
   const [cards, setCards] = useState(initialCards)
-  const [iframeState, setIframeState] = useState<IframeState | null>(null)
-  const [iframeVisible, setIframeVisible] = useState(false)
-  const [viewMode, setViewMode] = useState<ViewMode>('iframe')
-  const iframeOpenRef = useRef(false)
-  const [panelPct, setPanelPct] = useState(DEFAULT_PANEL_PCT)
-  const [isDragging, setIsDragging] = useState(false)
-  const isDraggingRef = useRef(false)
+  const [clickState, setClickState] = useState<ClickState | null>(null)
+  const panel = useStoryPanel()
   const storyIdsToHydrate = useMemo(() => initialCards.filter(card => card.snippet === LOADING_SNIPPET).map(card => card.id), [initialCards])
   const filteredCards = useMemo(() => cards.filter(card => card.snippet !== FALLBACK_SNIPPET), [cards])
   const storyRows = useMemo(() => buildStoryRows(filteredCards), [filteredCards])
@@ -87,58 +73,14 @@ const HackerNewsStoryGrid = ({ initialCards }:{ initialCards: StoryCard[] }) => 
       isCancelled = true
     }
   }, [storyIdsToHydrate])
-  useEffect(() => {
-    return () => { document.documentElement.removeAttribute('data-iframe-open') }
-  }, [])
-  const handleCloseIframe = useCallback(() => {
-    setIframeVisible(false)
-    iframeOpenRef.current = false
-    document.documentElement.removeAttribute('data-iframe-open')
-    setTimeout(() => { setIframeState(null); setPanelPct(DEFAULT_PANEL_PCT) }, IFRAME_TRANSITION_MS)
-  }, [])
-  const handleDividerMouseDown = useCallback((e: React.MouseEvent) => {
-    e.preventDefault()
-    isDraggingRef.current = true
-    setIsDragging(true)
-    const onMouseMove = (me: MouseEvent) => {
-      if (!isDraggingRef.current) return
-      const pct = Math.min(MAX_PANEL_PCT, Math.max(MIN_PANEL_PCT, ((window.innerWidth - me.clientX) / window.innerWidth) * 100))
-      setPanelPct(pct)
-    }
-    const onMouseUp = () => {
-      isDraggingRef.current = false
-      setIsDragging(false)
-      document.removeEventListener('mousemove', onMouseMove)
-      document.removeEventListener('mouseup', onMouseUp)
-    }
-    document.addEventListener('mousemove', onMouseMove)
-    document.addEventListener('mouseup', onMouseUp)
-  }, [])
   const handleStoryClick = useCallback((rowIndex: number) => (url: string, side: ClickedSide) => {
     const card = filteredCards.find(c => c.url === url)
-    setViewMode(card?.iframe === false ? 'html' : 'iframe')
-    setIframeState({ url, rowIndex, side })
-    if (!iframeOpenRef.current) {
-      iframeOpenRef.current = true
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        setIframeVisible(true)
-        document.documentElement.setAttribute('data-iframe-open', '')
-      }))
-    }
-  }, [filteredCards])
-  useEffect(() => {
-    if (!iframeState) return
-    const onKeyDown = (e: KeyboardEvent) => { if (e.key === 'Escape') handleCloseIframe() }
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [iframeState, handleCloseIframe])
+    setClickState({ rowIndex, side })
+    panel.openPanel(url, card?.iframe === false)
+  }, [filteredCards, panel.openPanel])
   return (
     <>
-      <style>{`
-        main { transition: max-width ${IFRAME_TRANSITION_MS}ms ease-in-out; }
-        html[data-iframe-open] main { max-width: ${100 - panelPct}vw; }
-        html[data-iframe-open] { overflow: hidden; }
-      `}</style>
+      <StoryPanel {...panel} />
       <div className="grid gap-y-12 font-[Georgia,serif]">
         {storyRows.map((rowStories, rowIndex) => (
           <HackerNewsStoryRow
@@ -146,30 +88,10 @@ const HackerNewsStoryGrid = ({ initialCards }:{ initialCards: StoryCard[] }) => 
             rowStories={rowStories}
             rowIndex={rowIndex}
             onStoryClick={handleStoryClick(rowIndex)}
-            clickedSide={iframeState?.rowIndex === rowIndex ? iframeState.side : null}
+            clickedSide={clickState?.rowIndex === rowIndex ? clickState.side : null}
           />
         ))}
       </div>
-      {isDragging && <div className="fixed inset-0 z-[60] cursor-col-resize select-none" />}
-      {iframeState && (
-        <div
-          className={`fixed top-0 right-0 h-screen z-50 bg-[#fffff8] border-l border-gray-500 transition-transform ease-in-out ${iframeVisible ? 'translate-x-0' : 'translate-x-full'}`}
-          style={{ width: `${panelPct}vw`, transitionDuration: `${IFRAME_TRANSITION_MS}ms`, pointerEvents: isDragging ? 'none' : 'auto' }}
-        >
-          <div className="absolute left-0 top-0 h-full w-[5px] cursor-col-resize z-10 -translate-x-1/2" onMouseDown={handleDividerMouseDown} />
-          <div className="flex items-center h-[28px] px-2 gap-1 bg-[#f5f5ec] text-[11px] font-[system-ui,sans-serif]">
-            {(['iframe', 'html'] as const).map(mode => (
-              <button key={mode} onClick={() => setViewMode(mode)} style={{ color: viewMode === mode ? '#111' : '#999' }} className={`px-2 py-0.5 cursor-pointer border-0 bg-transparent ${viewMode === mode ? 'underline underline-offset-2' : ''}`}>{mode}</button>
-            ))}
-          </div>
-          <div className="h-[calc(100vh-28px)]">
-            {viewMode === 'iframe'
-              ? <HackerNewsIframe url={iframeState.url} />
-              : /arxiv\.org\//.test(iframeState.url) ? <Ar5ivViewer url={iframeState.url} />
-              : <ProxyContentViewer url={iframeState.url} />}
-          </div>
-        </div>
-      )}
     </>
   )
 }

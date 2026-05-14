@@ -28,6 +28,7 @@ export default async function Page({ params }: { params: Promise<{ tabSlug: stri
 
   if (tab.key === 'foryou') {
     const items = await prisma.forYouItem.findMany({
+      where: { story: { source: 'hackernews' } }, // TODO: remove filter once other sources are included in foryou generation
       include: { story: true },
       orderBy: { sortOrder: 'asc' },
     })
