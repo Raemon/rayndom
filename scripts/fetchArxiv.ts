@@ -1,9 +1,9 @@
-import * as fs from 'fs'
-import * as path from 'path'
+import 'dotenv/config'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { JSDOM } from 'jsdom'
 import { truncateForPreview } from '../app/observatory/extractStoryContent'
+import { prisma } from '../lib/prisma'
 
 const execFileAsync = promisify(execFile)
 
@@ -21,7 +21,7 @@ type StoryCard = {
 const ARXIV_API_URL = 'http://export.arxiv.org/api/query'
 const CATEGORIES = ['cs.AI', 'cs.LG', 'cs.CL']
 const STORIES_TO_FETCH = 100
-const OUTPUT_PATH = path.resolve(__dirname, '../app/observatory/arxivData.json')
+const SOURCE = 'arxiv'
 
 const buildSearchQuery = () => {
   const categoryQueries = CATEGORIES.map(cat => `cat:${cat}`)
@@ -100,14 +100,27 @@ const main = async () => {
   const canIframe = sampleUrl ? await checkCanIframe(sampleUrl) : true
   console.log(`arxiv.org iframe-able: ${canIframe}`)
   const finalCards = canIframe ? cards : cards.map(card => ({ ...card, iframe: false as const }))
-  const outputDir = path.dirname(OUTPUT_PATH)
-  if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true })
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify({ fetchedAt: new Date().toISOString(), stories: finalCards }, null, 2))
-  console.log(`Wrote ${finalCards.length} cards to ${OUTPUT_PATH}`)
+  console.log(`Upserting ${finalCards.length} stories into database...`)
+  const fetchedAt = new Date()
+  const DB_BATCH = 10
+  for (let i = 0; i < finalCards.length; i += DB_BATCH) {
+    const batch = finalCards.slice(i, i + DB_BATCH)
+    await Promise.all(batch.map((card, j) => {
+      const rank = i + j
+      return prisma.story.upsert({
+        where: { source_url: { source: SOURCE, url: card.url } },
+        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, fetchedAt },
+        create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, fetchedAt },
+      })
+    }))
+    console.log(`  DB: ${Math.min(i + DB_BATCH, finalCards.length)}/${finalCards.length}`)
+  }
+  const currentUrls = finalCards.map(c => c.url)
+  await prisma.story.deleteMany({ where: { source: SOURCE, url: { notIn: currentUrls } } })
   console.log('Done!')
 }
 
 main().catch(err => {
   console.error('Error:', err)
   process.exit(1)
-})
+}).finally(() => prisma.$disconnect())

@@ -1,55 +1,45 @@
-import fs from 'fs'
-import path from 'path'
 import { notFound } from 'next/navigation'
 import { StoryCard } from '../hackerNewsTypes'
 import ObservatoryPage from '../ObservatoryPage'
-import { Tab, TABS } from '../constants'
+import { TABS } from '../constants'
+import { prisma } from '@/lib/prisma'
 
-const STORIES_TO_RENDER = 100
-const DATA_PATHS: Record<Exclude<Tab, 'foryou'>, { path: string, count: number }> = {
-  hackernews: { path: path.join(process.cwd(), 'app/observatory/hackerNewsData.json'), count: STORIES_TO_RENDER },
-  lw: { path: path.join(process.cwd(), 'app/observatory/lwNewsData.json'), count: 50 },
-  arxiv: { path: path.join(process.cwd(), 'app/observatory/arxivData.json'), count: STORIES_TO_RENDER },
+const STORY_LIMITS: Record<string, number> = {
+  hackernews: 100,
+  lw: 50,
+  arxiv: 100,
 }
 
-type ForYouItem = { tab: string, url: string, reason: string }
-
-const loadStories = (dataPath: string, count: number): StoryCard[] => {
-  try {
-    const raw = JSON.parse(fs.readFileSync(dataPath, 'utf-8')) as { stories: StoryCard[] }
-    return raw.stories.slice(0, count)
-  } catch { return [] }
-}
-
-const loadForYouStories = (): StoryCard[] => {
-  try {
-    const forYouPath = path.join(process.cwd(), 'app/foryou/forYouData.json')
-    const forYouItems = JSON.parse(fs.readFileSync(forYouPath, 'utf-8')).items as ForYouItem[]
-    const sourceStories: Record<string, StoryCard[]> = {}
-    const sourceTabs = ['hackernews', 'arxiv', 'lw'] as const
-    for (const tab of sourceTabs) {
-      const config = DATA_PATHS[tab]
-      if (config) sourceStories[tab] = loadStories(config.path, STORIES_TO_RENDER)
-    }
-    const cards: StoryCard[] = []
-    for (const item of forYouItems) {
-      const stories = sourceStories[item.tab] || []
-      const match = stories.find(s => s.url === item.url)
-      if (match) cards.push({ ...match, reason: item.reason })
-    }
-    return cards
-  } catch { return [] }
-}
+const storyToCard = (story: { externalId: number, title: string, url: string, domain: string, byline: string, snippet: string, snippetHtml: string | null, iframe: boolean | null }): StoryCard => ({
+  id: story.externalId,
+  title: story.title,
+  url: story.url,
+  domain: story.domain,
+  byline: story.byline,
+  snippet: story.snippet,
+  snippetHtml: story.snippetHtml ?? undefined,
+  iframe: story.iframe ?? undefined,
+})
 
 export default async function Page({ params }: { params: Promise<{ tabSlug: string }> }) {
   const { tabSlug } = await params
   const tab = TABS.find(t => t.key === tabSlug)
   if (!tab) return notFound()
+
   if (tab.key === 'foryou') {
-    const cards = loadForYouStories()
+    const items = await prisma.forYouItem.findMany({
+      include: { story: true },
+      orderBy: { sortOrder: 'asc' },
+    })
+    const cards = items.map(item => ({ ...storyToCard(item.story), reason: item.reason }))
     return <ObservatoryPage activeTab={tab.key} cards={cards} />
   }
-  const dataConfig = DATA_PATHS[tab.key]
-  const cards = loadStories(dataConfig.path, dataConfig.count)
+
+  const stories = await prisma.story.findMany({
+    where: { source: tab.key },
+    orderBy: { rank: 'asc' },
+    take: STORY_LIMITS[tab.key] ?? 100,
+  })
+  const cards = stories.map(storyToCard)
   return <ObservatoryPage activeTab={tab.key} cards={cards} />
 }

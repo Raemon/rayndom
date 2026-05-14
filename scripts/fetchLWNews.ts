@@ -1,9 +1,9 @@
-import * as fs from 'fs'
-import * as path from 'path'
+import 'dotenv/config'
 import { JSDOM } from 'jsdom'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { extractStoryContent, extractStoryContentHtml, truncateForPreview } from '../app/observatory/extractStoryContent'
+import { prisma } from '../lib/prisma'
 
 const execFileAsync = promisify(execFile)
 
@@ -12,7 +12,7 @@ const STORIES_TO_FETCH = 50
 const POSTS_PER_PAGE = 20
 const SNIPPET_CONCURRENCY = 5
 const FALLBACK_SNIPPET = 'No readable body text found for this URL.'
-const OUTPUT_PATH = path.resolve(__dirname, '../app/observatory/lwNewsData.json')
+const SOURCE = 'lw'
 
 type StoryCard = {
   id: number
@@ -158,14 +158,27 @@ const main = async () => {
     }
     console.log(`  Snippets: ${Math.min(i + SNIPPET_CONCURRENCY, posts.length)}/${posts.length}`)
   }
-  console.log(`Writing ${hydratedCards.length} cards to ${OUTPUT_PATH}...`)
-  const outputDir = path.dirname(OUTPUT_PATH)
-  if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true })
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify({ fetchedAt: new Date().toISOString(), stories: hydratedCards }, null, 2))
+  console.log(`Upserting ${hydratedCards.length} stories into database...`)
+  const fetchedAt = new Date()
+  const DB_BATCH = 10
+  for (let i = 0; i < hydratedCards.length; i += DB_BATCH) {
+    const batch = hydratedCards.slice(i, i + DB_BATCH)
+    await Promise.all(batch.map((card, j) => {
+      const rank = i + j
+      return prisma.story.upsert({
+        where: { source_url: { source: SOURCE, url: card.url } },
+        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: null, rank, fetchedAt },
+        create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: null, rank, fetchedAt },
+      })
+    }))
+    console.log(`  DB: ${Math.min(i + DB_BATCH, hydratedCards.length)}/${hydratedCards.length}`)
+  }
+  const currentUrls = hydratedCards.map(c => c.url)
+  await prisma.story.deleteMany({ where: { source: SOURCE, url: { notIn: currentUrls } } })
   console.log('Done!')
 }
 
 main().catch(err => {
   console.error('Error:', err)
   process.exit(1)
-})
+}).finally(() => prisma.$disconnect())

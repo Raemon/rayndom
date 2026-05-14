@@ -139,3 +139,34 @@ model Prompt {
 
   @@map("prompts")
 }
+
+model Story {
+  id          Int          @id @default(autoincrement())
+  source      String
+  externalId  Int          @map("external_id")
+  title       String
+  url         String
+  domain      String
+  byline      String
+  snippet     String
+  snippetHtml String?      @map("snippet_html")
+  iframe      Boolean?
+  rank        Int          @default(0)
+  fetchedAt   DateTime     @map("fetched_at") @db.Timestamptz
+  createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  forYouItems ForYouItem[]
+
+  @@unique([source, url])
+  @@map("stories")
+}
+
+model ForYouItem {
+  id        Int      @id @default(autoincrement())
+  storyId   Int      @map("story_id")
+  story     Story    @relation(fields: [storyId], references: [id], onDelete: Cascade)
+  reason    String
+  sortOrder Int      @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("for_you_items")
+}
