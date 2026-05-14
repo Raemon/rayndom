@@ -13,6 +13,7 @@ type HackerNewsItem = {
   by?: string
   score?: number
   descendants?: number
+  time?: number
 }
 
 type StoryCard = {
@@ -159,7 +160,12 @@ const main = async () => {
   }
   const storyItems = storyBatches.flat()
   const validStoryItems = storyItems.filter((item): item is HackerNewsItem => Boolean(item))
-  const cards = validStoryItems.map(buildStoryCard).filter((card): card is StoryCard => Boolean(card))
+  const cardsWithMeta = validStoryItems.map(item => {
+    const card = buildStoryCard(item)
+    if (!card) return null
+    return { card, postedAt: item.time ? new Date(item.time * 1000) : null }
+  }).filter((entry): entry is { card: StoryCard, postedAt: Date | null } => Boolean(entry))
+  const cards = cardsWithMeta.map(e => e.card)
   console.log(`Built ${cards.length} story cards. Fetching snippets (${SNIPPET_CONCURRENCY} at a time)...`)
   const hydratedCards: StoryCard[] = []
   for (let i = 0; i < cards.length; i += SNIPPET_CONCURRENCY) {
@@ -175,10 +181,11 @@ const main = async () => {
     const batch = hydratedCards.slice(i, i + DB_BATCH)
     await Promise.all(batch.map((card, j) => {
       const rank = i + j
+      const postedAt = cardsWithMeta[i + j].postedAt
       return prisma.story.upsert({
         where: { source_url: { source: SOURCE, url: card.url } },
-        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, fetchedAt },
-        create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, fetchedAt },
+        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, postedAt, fetchedAt },
+        create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, postedAt, fetchedAt },
       })
     }))
     console.log(`  DB: ${Math.min(i + DB_BATCH, hydratedCards.length)}/${hydratedCards.length}`)

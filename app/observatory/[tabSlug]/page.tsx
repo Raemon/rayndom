@@ -31,7 +31,12 @@ export default async function Page({ params }: { params: Promise<{ tabSlug: stri
       include: { story: true },
       orderBy: { sortOrder: 'asc' },
     })
-    const cards = items.map(item => ({ ...storyToCard(item.story), reason: item.reason }))
+    const cards = items.map(item => ({
+      ...storyToCard(item.story),
+      reason: item.reason,
+      relevance: item.relevance,
+      postedAt: item.story.postedAt?.toISOString(),
+    }))
     return <ObservatoryPage activeTab={tab.key} cards={cards} />
   }
 

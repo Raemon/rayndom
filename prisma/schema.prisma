@@ -152,6 +152,7 @@ model Story {
   snippetHtml String?      @map("snippet_html")
   iframe      Boolean?
   rank        Int          @default(0)
+  postedAt    DateTime?    @map("posted_at") @db.Timestamptz
   fetchedAt   DateTime     @map("fetched_at") @db.Timestamptz
   createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamptz
   forYouItems ForYouItem[]
@@ -165,6 +166,7 @@ model ForYouItem {
   storyId   Int      @map("story_id")
   story     Story    @relation(fields: [storyId], references: [id], onDelete: Cascade)
   reason    String
+  relevance Int      @default(0)
   sortOrder Int      @default(0) @map("sort_order")
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
 

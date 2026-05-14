@@ -31,6 +31,7 @@ type ParsedPost = {
   author: string
   score: number
   commentCount: number
+  postedAt: Date | null
 }
 
 const fetchHtmlWithCurl = async (url: string): Promise<string> => {
@@ -65,7 +66,10 @@ const parseListingPage = (html: string): ParsedPost[] => {
     const commentEl = postMeta.querySelector('a.comment-count')
     const commentText = commentEl?.textContent?.replace(/[^0-9]/g, '') ?? '0'
     const commentCount = parseInt(commentText, 10) || 0
-    posts.push({ postId, title: rawTitle, slug, author, score, commentCount })
+    const dateEl = postMeta.querySelector('.date')
+    const dateMs = dateEl?.getAttribute('data-js-date')
+    const postedAt = dateMs ? new Date(parseInt(dateMs, 10)) : null
+    posts.push({ postId, title: rawTitle, slug, author, score, commentCount, postedAt })
   }
   return posts
 }
@@ -165,10 +169,11 @@ const main = async () => {
     const batch = hydratedCards.slice(i, i + DB_BATCH)
     await Promise.all(batch.map((card, j) => {
       const rank = i + j
+      const postedAt = posts[i + j]?.postedAt ?? null
       return prisma.story.upsert({
         where: { source_url: { source: SOURCE, url: card.url } },
-        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: null, rank, fetchedAt },
-        create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: null, rank, fetchedAt },
+        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: null, rank, postedAt, fetchedAt },
+        create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: null, rank, postedAt, fetchedAt },
       })
     }))
     console.log(`  DB: ${Math.min(i + DB_BATCH, hydratedCards.length)}/${hydratedCards.length}`)

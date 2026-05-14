@@ -16,6 +16,7 @@ type StoryCard = {
   snippet: string
   snippetHtml?: string
   iframe?: boolean
+  postedAt?: Date
 }
 
 const ARXIV_API_URL = 'http://export.arxiv.org/api/query'
@@ -68,6 +69,7 @@ const parseArxivXml = (xml: string): StoryCard[] => {
       byline: `${authorDisplay} · ${date}`,
       snippet: truncateForPreview(abstractText),
       snippetHtml: `<p>${abstractText}</p>`,
+      postedAt: published ? new Date(published) : undefined,
     })
   }
   return cards
@@ -109,8 +111,8 @@ const main = async () => {
       const rank = i + j
       return prisma.story.upsert({
         where: { source_url: { source: SOURCE, url: card.url } },
-        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, fetchedAt },
-        create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, fetchedAt },
+        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, postedAt: card.postedAt ?? null, fetchedAt },
+        create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, postedAt: card.postedAt ?? null, fetchedAt },
       })
     }))
     console.log(`  DB: ${Math.min(i + DB_BATCH, finalCards.length)}/${finalCards.length}`)

@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import HackerNewsStoryGrid from './HackerNewsStoryGrid'
+import ForYouTable from './ForYouTable'
 import { StoryCard } from './hackerNewsTypes'
 import { Tab, TABS } from './constants'
 
@@ -33,6 +34,8 @@ const ActionButton = ({ endpoint, label, loadingLabel }: { endpoint: string, lab
 
 const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard[] }) => {
   const currentTab = TABS.find(t => t.key === activeTab)!
+  const [tableView, setTableView] = useState(false)
+  const showTableToggle = activeTab === 'foryou'
   return (
     <main className="light-page min-h-screen bg-[#fffff8] px-3 pt-[10px] pb-3 font-[Georgia,serif] text-[#1f1f1f]">
       <div className="max-w-[1500px] mt-[36px] pb-[36px] mb-[36px] mx-auto border-b-2 border-b-[#3f3f3f]">
@@ -45,6 +48,12 @@ const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard
             >{tab.label}</Link>
             ))}
           </div>
+          {showTableToggle && (
+            <button
+              onClick={() => setTableView(v => !v)}
+              className="text-[12px] text-[#333] hover:text-[#1f1f1f] bg-transparent border-0 cursor-pointer whitespace-nowrap"
+            >{tableView ? 'Grid View' : 'Table View'}</button>
+          )}
           <ActionButton endpoint="/api/observatory/fetch" label="Fetch Latest" loadingLabel="Fetching..." />
           <ActionButton endpoint="/api/observatory/generate-foryou" label="Generate For You" loadingLabel="Generating..." />
           <Link href="/observatory/filter-prompt" className="text-[12px] text-[#333] hover:text-[#1f1f1f] no-underline whitespace-nowrap">Filter Prompt</Link>
@@ -54,7 +63,9 @@ const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard
           <h3 className="m-0 text-[14px] uppercase leading-[1.25] font-medium tracking-[0.5px]">{currentTab.subtitle}</h3>
         </div>
       </div>
-      <HackerNewsStoryGrid key={activeTab} initialCards={cards} />
+      {showTableToggle && tableView
+        ? <div className="max-w-[1500px] mx-auto"><ForYouTable cards={cards} /></div>
+        : <HackerNewsStoryGrid key={activeTab} initialCards={cards} />}
     </main>
   )
 }

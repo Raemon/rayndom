@@ -76,13 +76,13 @@ const main = async () => {
   const allStories = await prisma.story.findMany({ select: { id: true, source: true, url: true } })
   const storyBySourceUrl = new Map(allStories.map(s => [`${s.source}:${s.url}`, s.id]))
 
-  const rows: { storyId: number, reason: string, sortOrder: number }[] = []
+  const rows: { storyId: number, reason: string, relevance: number, sortOrder: number }[] = []
   for (let i = 0; i < relevant.length; i++) {
     const item = relevant[i]
     const source = PROMPT_TO_SOURCE[item.source] ?? item.source
     const storyId = storyBySourceUrl.get(`${source}:${item.url}`)
     if (!storyId) { console.log(`  Story not found: [${source}] ${item.url}`); continue }
-    rows.push({ storyId, reason: item.explanation, sortOrder: i })
+    rows.push({ storyId, reason: item.explanation, relevance: item.relevance, sortOrder: i })
   }
 
   await prisma.forYouItem.deleteMany()
