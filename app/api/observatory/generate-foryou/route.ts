@@ -7,9 +7,6 @@ const execFileAsync = promisify(execFile)
 let running = false
 
 export async function POST() {
-  if (process.env.NODE_ENV === 'production') {
-    return NextResponse.json({ ok: false, error: 'Not available in production' }, { status: 403 })
-  }
   if (running) {
     return NextResponse.json({ ok: false, error: 'Generation already in progress' }, { status: 409 })
   }
