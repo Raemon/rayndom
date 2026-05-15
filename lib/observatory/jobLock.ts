@@ -18,6 +18,7 @@ export const withJobLock = async <T>(lockId: number, fn: () => Promise<T>): Prom
     const value = await fn()
     return { acquired: true, value }
   }
+  let poisoned = false
   try {
     let acquired = false
     try {
@@ -25,6 +26,7 @@ export const withJobLock = async <T>(lockId: number, fn: () => Promise<T>): Prom
       acquired = !!rows[0]?.acquired
     } catch (err) {
       console.error('[jobLock] advisory lock query failed; running without lock:', err)
+      poisoned = true
       const value = await fn()
       return { acquired: true, value }
     }
@@ -32,14 +34,18 @@ export const withJobLock = async <T>(lockId: number, fn: () => Promise<T>): Prom
     try {
       const value = await fn()
       return { acquired: true, value }
+    } catch (err) {
+      poisoned = true
+      throw err
     } finally {
       try {
         await client.query('SELECT pg_advisory_unlock($1)', [lockId])
       } catch (err) {
         console.error('[jobLock] advisory unlock failed:', err)
+        poisoned = true
       }
     }
   } finally {
-    client.release()
+    client.release(poisoned ? new Error('jobLock work failed; discarding connection to release any held locks') : undefined)
   }
 }

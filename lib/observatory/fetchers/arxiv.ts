@@ -1,4 +1,4 @@
-import { JSDOM } from 'jsdom'
+import { DOMParser } from 'linkedom'
 import { truncateForPreview } from '@/app/observatory/extractStoryContent'
 import { prisma } from '@/lib/prisma'
 import { checkCanIframe } from './util'
@@ -39,8 +39,7 @@ const fetchArxivEntries = async (): Promise<string> => {
 }
 
 const parseArxivXml = (xml: string): StoryCard[] => {
-  const dom = new JSDOM(xml, { contentType: 'text/xml' })
-  const doc = dom.window.document
+  const doc = new DOMParser().parseFromString(xml, 'text/xml')
   const entries = doc.querySelectorAll('entry')
   const cards: StoryCard[] = []
   let index = 0
@@ -49,7 +48,7 @@ const parseArxivXml = (xml: string): StoryCard[] => {
     const abstractText = normalizeWhitespace(entry.querySelector('summary')?.textContent ?? '')
     const absLink = entry.querySelector('id')?.textContent?.trim() ?? ''
     const authorElements = entry.querySelectorAll('author name')
-    const authorNames = Array.from(authorElements).map(el => el.textContent?.trim() ?? '')
+    const authorNames = Array.from(authorElements as ArrayLike<Element>).map(el => el.textContent?.trim() ?? '')
     const published = entry.querySelector('published')?.textContent?.trim() ?? ''
     const date = published ? published.slice(0, 10) : ''
     const authorDisplay = authorNames.length <= 3

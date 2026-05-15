@@ -1,4 +1,4 @@
-import { JSDOM } from 'jsdom'
+import { parseHTML } from 'linkedom'
 import { extractStoryContent, extractStoryContentHtml, truncateForPreview } from '@/app/observatory/extractStoryContent'
 import { prisma } from '@/lib/prisma'
 import { fetchHtml } from './util'
@@ -31,8 +31,7 @@ type ParsedPost = {
 }
 
 const parseListingPage = (html: string): ParsedPost[] => {
-  const dom = new JSDOM(html)
-  const doc = dom.window.document
+  const { document: doc } = parseHTML(html)
   const posts: ParsedPost[] = []
   const titleLinks = doc.querySelectorAll('a.post-title-link')
   for (const titleLink of titleLinks) {
@@ -88,8 +87,8 @@ const stripTocFromBody = (bodyEl: Element | null) => {
 }
 const stripTocFromExtractedHtml = (html: string): string => {
   if (!html) return html
-  const tocDom = new JSDOM(`<div>${html}</div>`)
-  const container = tocDom.window.document.querySelector('div')!
+  const { document: tocDoc } = parseHTML(`<!DOCTYPE html><html><body><div>${html}</div></body></html>`)
+  const container = tocDoc.body.querySelector('div')!
   const paragraphs = container.querySelectorAll('p')
   for (const p of paragraphs) {
     if (p.textContent?.trim() === 'Contents') {
@@ -105,8 +104,8 @@ const fetchSnippetForPost = async (post: ParsedPost): Promise<{ snippet: string,
     const postUrl = `${GW_BASE_URL}/posts/${post.postId}/${post.slug}`
     const html = await fetchHtml(postUrl)
     if (!html) return { snippet: FALLBACK_SNIPPET }
-    const dom = new JSDOM(html)
-    const bodyEl = dom.window.document.querySelector('.body-text.post-body')
+    const { document } = parseHTML(html)
+    const bodyEl = document.querySelector('.body-text.post-body')
     stripTocFromBody(bodyEl)
     const bodyHtml = bodyEl?.innerHTML ?? ''
     if (!bodyHtml.trim()) return { snippet: FALLBACK_SNIPPET }

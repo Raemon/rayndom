@@ -22,7 +22,7 @@ export const generateForYou = async () => {
   const prompt = fs.readFileSync(PROMPT_PATH, 'utf-8')
 
   const stories = await prisma.story.findMany({
-    where: { source: { in: ['hackernews', 'lw', 'arxiv'] } },
+    where: { source: 'hackernews' }, // TODO: expand to lw + arxiv once page filter is removed
     orderBy: { rank: 'asc' },
     select: { url: true, title: true, source: true, snippet: true },
   })

@@ -1,5 +1,5 @@
 import { Readability } from '@mozilla/readability'
-import { JSDOM } from 'jsdom'
+import { parseHTML } from 'linkedom'
 
 const decodeHtmlEntities = (text: string) => {
   return text
@@ -22,6 +22,7 @@ const escapeHtml = (text: string) => {
 
 const normalizeText = (text: string) => {
   return decodeHtmlEntities(text)
+    .replace(/\x00/g, '')
     .replace(/\r/g, ' ')
     .replace(/\t/g, ' ')
     .replace(/\n{3,}/g, '\n\n')
@@ -123,10 +124,10 @@ const extractFromParagraphWindows = (html: string) => {
   return bestWindowText
 }
 
-const extractWithReadability = (html: string, url?: string) => {
+const extractWithReadability = (html: string, _url?: string) => {
   try {
-    const dom = new JSDOM(html, { url: url ?? 'https://news.ycombinator.com/' })
-    const reader = new Readability(dom.window.document)
+    const { document } = parseHTML(html)
+    const reader = new Readability(document as unknown as Document)
     return reader.parse()
   } catch {
     return null
@@ -135,10 +136,10 @@ const extractWithReadability = (html: string, url?: string) => {
 
 const ALLOWED_READABILITY_TAGS = new Set(['P', 'BR', 'EM', 'STRONG', 'B', 'I', 'A', 'BLOCKQUOTE', 'UL', 'OL', 'LI', 'CODE', 'PRE'])
 
-const sanitizeReadabilityHtml = (html: string, url?: string) => {
+const sanitizeReadabilityHtml = (html: string, _url?: string) => {
   try {
-    const dom = new JSDOM(`<article>${html}</article>`, { url: url ?? 'https://news.ycombinator.com/' })
-    const candidateElements = [...dom.window.document.body.querySelectorAll('*')]
+    const { document } = parseHTML(`<!DOCTYPE html><html><body>${html}</body></html>`)
+    const candidateElements = [...document.body.querySelectorAll('*')]
     for (const candidateElement of candidateElements) {
       if (!ALLOWED_READABILITY_TAGS.has(candidateElement.tagName)) {
         candidateElement.replaceWith(...candidateElement.childNodes)
@@ -155,7 +156,7 @@ const sanitizeReadabilityHtml = (html: string, url?: string) => {
         }
       }
     }
-    return dom.window.document.body.innerHTML.trim()
+    return document.body.innerHTML.replace(/\x00/g, '').trim()
   } catch {
     return ''
   }
