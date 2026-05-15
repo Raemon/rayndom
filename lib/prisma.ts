@@ -5,7 +5,7 @@ import { Pool } from 'pg'
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClientInterface, pool: Pool }
 
-const pool = globalForPrisma.pool || new Pool({ connectionString: process.env.DATABASE_URL })
+export const pool: Pool = globalForPrisma.pool || new Pool({ connectionString: process.env.DATABASE_URL })
 const adapter = new PrismaPg(pool)
 
 export const prisma: PrismaClientInterface = globalForPrisma.prisma || new PrismaClient({ adapter }) as PrismaClientInterface

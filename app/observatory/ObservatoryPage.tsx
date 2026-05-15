@@ -6,26 +6,36 @@ import ForYouTable from './ForYouTable'
 import { StoryCard } from './hackerNewsTypes'
 import { Tab, TABS } from './constants'
 
-const ActionButton = ({ endpoint, label, loadingLabel }: { endpoint: string, label: string, loadingLabel: string }) => {
+const labelForEndpoint = (endpoint: string) => endpoint.split('/').pop() ?? endpoint
+
+const ActionButton = ({ endpoints, label, loadingLabel }: { endpoints: string[], label: string, loadingLabel: string }) => {
   const [busy, setBusy] = useState(false)
   return (
     <button
       disabled={busy}
       onClick={async () => {
         setBusy(true)
-        try {
-          const res = await fetch(endpoint, { method: 'POST' })
-          if (!res.ok) {
-            const body = await res.json().catch(() => null)
-            alert(body?.error ?? `${label} failed (${res.status})`)
-            setBusy(false)
-            return
+        const failures: string[] = []
+        for (const endpoint of endpoints) {
+          try {
+            const res = await fetch(endpoint, { method: 'POST' })
+            if (!res.ok) {
+              const body = await res.json().catch(() => null)
+              failures.push(`${labelForEndpoint(endpoint)}: ${body?.error ?? `HTTP ${res.status}`}`)
+            }
+          } catch {
+            failures.push(`${labelForEndpoint(endpoint)}: network error`)
           }
-          window.location.reload()
-        } catch {
-          alert(`Network error during ${label.toLowerCase()}`)
-          setBusy(false)
         }
+        if (failures.length === endpoints.length) {
+          alert(`${label} failed:\n\n${failures.join('\n')}`)
+          setBusy(false)
+          return
+        }
+        if (failures.length > 0) {
+          alert(`${label} partially succeeded.\nFailed:\n\n${failures.join('\n')}`)
+        }
+        window.location.reload()
       }}
       className="text-[12px] text-[#333] hover:text-[#1f1f1f] bg-transparent border-0 cursor-pointer whitespace-nowrap disabled:opacity-40 disabled:cursor-wait"
     >{busy ? loadingLabel : label}</button>
@@ -54,8 +64,8 @@ const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard
               className="text-[12px] text-[#333] hover:text-[#1f1f1f] bg-transparent border-0 cursor-pointer whitespace-nowrap"
             >{tableView ? 'Grid View' : 'Table View'}</button>
           )}
-          <ActionButton endpoint="/api/observatory/fetch" label="Fetch Latest" loadingLabel="Fetching..." />
-          <ActionButton endpoint="/api/observatory/generate-foryou" label="Generate For You" loadingLabel="Generating..." />
+          <ActionButton endpoints={['/api/observatory/fetch/hackernews', '/api/observatory/fetch/lw', '/api/observatory/fetch/arxiv']} label="Fetch Latest" loadingLabel="Fetching..." />
+          <ActionButton endpoints={['/api/observatory/generate-foryou']} label="Generate For You" loadingLabel="Generating..." />
           <Link href="/observatory/filter-prompt" className="text-[12px] text-[#333] hover:text-[#1f1f1f] no-underline whitespace-nowrap">Filter Prompt</Link>
         </div>
         <div className="text-center">

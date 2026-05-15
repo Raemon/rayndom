@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server'
-import { generateForYou } from '@/lib/observatory/generate-foryou'
+import { fetchArxiv } from '@/lib/observatory/fetchers/arxiv'
 import { withJobLock, JOB_LOCK_IDS } from '@/lib/observatory/jobLock'
 
 export const maxDuration = 300
 
 export async function POST() {
   try {
-    const result = await withJobLock(JOB_LOCK_IDS.generateForYou, generateForYou)
+    const result = await withJobLock(JOB_LOCK_IDS.fetchArxiv, fetchArxiv)
     if (!result.acquired) {
-      return NextResponse.json({ ok: false, error: 'Generation already in progress' }, { status: 409 })
+      return NextResponse.json({ ok: false, error: 'arXiv fetch already in progress' }, { status: 409 })
     }
     return NextResponse.json({ ok: true })
   } catch (error) {
