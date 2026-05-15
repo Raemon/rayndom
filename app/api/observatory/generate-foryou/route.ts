@@ -14,7 +14,6 @@ export async function POST() {
   } catch (error) {
     console.error('[generate-foryou] failed:', error)
     const message = error instanceof Error ? error.message : 'Unknown error'
-    const stack = error instanceof Error ? error.stack : undefined
-    return NextResponse.json({ ok: false, error: message, stack }, { status: 500 })
+    return NextResponse.json({ ok: false, error: message }, { status: 500 })
   }
 }

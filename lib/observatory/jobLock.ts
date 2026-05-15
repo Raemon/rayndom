@@ -14,7 +14,7 @@ export const withJobLock = async <T>(lockId: number, fn: () => Promise<T>): Prom
   try {
     client = await pool.connect()
   } catch (err) {
-    console.error('[jobLock] pool.connect failed; running without lock:', err)
+    console.error(`[jobLock ${lockId}] pool.connect failed; running without lock:`, err)
     const value = await fn()
     return { acquired: true, value }
   }
@@ -24,8 +24,9 @@ export const withJobLock = async <T>(lockId: number, fn: () => Promise<T>): Prom
     try {
       const { rows } = await client.query<{ acquired: boolean }>('SELECT pg_try_advisory_lock($1) AS acquired', [lockId])
       acquired = !!rows[0]?.acquired
+      console.log(`[jobLock ${lockId}] acquire => ${acquired}`)
     } catch (err) {
-      console.error('[jobLock] advisory lock query failed; running without lock:', err)
+      console.error(`[jobLock ${lockId}] advisory lock query failed; running without lock:`, err)
       poisoned = true
       const value = await fn()
       return { acquired: true, value }
@@ -33,19 +34,23 @@ export const withJobLock = async <T>(lockId: number, fn: () => Promise<T>): Prom
     if (!acquired) return { acquired: false }
     try {
       const value = await fn()
+      console.log(`[jobLock ${lockId}] fn completed successfully`)
       return { acquired: true, value }
     } catch (err) {
+      console.error(`[jobLock ${lockId}] fn threw:`, err)
       poisoned = true
       throw err
     } finally {
       try {
-        await client.query('SELECT pg_advisory_unlock($1)', [lockId])
+        const { rows } = await client.query<{ released: boolean }>('SELECT pg_advisory_unlock($1) AS released', [lockId])
+        console.log(`[jobLock ${lockId}] unlock query returned released=${rows[0]?.released}`)
       } catch (err) {
-        console.error('[jobLock] advisory unlock failed:', err)
+        console.error(`[jobLock ${lockId}] advisory unlock failed:`, err)
         poisoned = true
       }
     }
   } finally {
+    console.log(`[jobLock ${lockId}] releasing client (poisoned=${poisoned})`)
     client.release(poisoned ? new Error('jobLock work failed; discarding connection to release any held locks') : undefined)
   }
 }
