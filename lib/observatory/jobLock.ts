@@ -10,15 +10,34 @@ export const JOB_LOCK_IDS = {
 export type JobLockResult<T> = { acquired: true, value: T } | { acquired: false }
 
 export const withJobLock = async <T>(lockId: number, fn: () => Promise<T>): Promise<JobLockResult<T>> => {
-  const client = await pool.connect()
+  let client
   try {
-    const { rows } = await client.query<{ acquired: boolean }>('SELECT pg_try_advisory_lock($1) AS acquired', [lockId])
-    if (!rows[0]?.acquired) return { acquired: false }
+    client = await pool.connect()
+  } catch (err) {
+    console.error('[jobLock] pool.connect failed; running without lock:', err)
+    const value = await fn()
+    return { acquired: true, value }
+  }
+  try {
+    let acquired = false
+    try {
+      const { rows } = await client.query<{ acquired: boolean }>('SELECT pg_try_advisory_lock($1) AS acquired', [lockId])
+      acquired = !!rows[0]?.acquired
+    } catch (err) {
+      console.error('[jobLock] advisory lock query failed; running without lock:', err)
+      const value = await fn()
+      return { acquired: true, value }
+    }
+    if (!acquired) return { acquired: false }
     try {
       const value = await fn()
       return { acquired: true, value }
     } finally {
-      await client.query('SELECT pg_advisory_unlock($1)', [lockId])
+      try {
+        await client.query('SELECT pg_advisory_unlock($1)', [lockId])
+      } catch (err) {
+        console.error('[jobLock] advisory unlock failed:', err)
+      }
     }
   } finally {
     client.release()
