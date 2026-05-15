@@ -6,7 +6,7 @@ import { Pool } from 'pg'
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClientInterface, pool: Pool }
 
 const isNewPool = !globalForPrisma.pool
-export const pool: Pool = globalForPrisma.pool || new Pool({ connectionString: process.env.DATABASE_URL })
+const pool: Pool = globalForPrisma.pool || new Pool({ connectionString: process.env.DATABASE_URL })
 if (isNewPool) pool.on('error', err => console.error('[pg pool] idle client error:', err))
 const adapter = new PrismaPg(pool)
 

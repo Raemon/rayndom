@@ -21,7 +21,6 @@
     "fetch-arxiv": "tsx scripts/fetchArxiv.ts",
     "fetch-all": "tsx scripts/fetchAll.ts",
     "generate-foryou": "tsx scripts/generateForYou.ts",
-    "unstick-locks": "tsx scripts/unstickLocks.ts",
     "daily-log": "tsx scripts/daily-log.ts",
     "expressions:sidecar": "bash tools/expression-sidecar/run.sh",
     "db:generate": "prisma generate",
