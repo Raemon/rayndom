@@ -108,7 +108,7 @@ const buildStoryCard = (item: HackerNewsItem): StoryCard | null => {
     url: item.url,
     domain: getStoryUrlDomain(item.url),
     byline: `${score} points, ${commentsCount} comments`,
-    snippet: 'Loading article text...',
+    snippet: '',
   }
 }
 

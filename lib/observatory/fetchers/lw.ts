@@ -127,7 +127,7 @@ const buildStoryCard = (post: ParsedPost, index: number): StoryCard => {
     url: `https://www.lesswrong.com/posts/${post.postId}/${post.slug}`,
     domain: 'lesswrong.com',
     byline: `${post.score} points, ${post.commentCount} comments`,
-    snippet: 'Loading article text...',
+    snippet: '',
   }
 }
 

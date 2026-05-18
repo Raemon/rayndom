@@ -1,36 +1,12 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import HackerNewsStoryRow, { ClickedSide } from './HackerNewsStoryRow'
 import { StoryPanel, useStoryPanel } from './StoryPanel'
 import { StoryCard } from './hackerNewsTypes'
 
-const LOADING_SNIPPET = 'Loading article text...'
 const FALLBACK_SNIPPET = 'No readable body text found for this URL.'
-const SNIPPET_WORKER_COUNT = 3
 const STORIES_PER_ROW = 5
-
-const snippetCache = new Map<number, { snippet: string; snippetHtml: string }>()
-
-const updateStoryCardSnippet = (cards: StoryCard[], storyId: number, snippet: string, snippetHtml: string) => {
-  return cards.map(card => card.id === storyId ? { ...card, snippet, snippetHtml } : card)
-}
-
-const fetchStorySnippet = async (storyId: number) => {
-  const cached = snippetCache.get(storyId)
-  if (cached) return cached
-  try {
-    const response = await fetch(`/api/hackernews/story-snippet?id=${storyId}`, { method: 'GET', cache: 'no-store' })
-    if (!response.ok) return { snippet: FALLBACK_SNIPPET, snippetHtml: '' }
-    const payload = await response.json() as { snippet?: unknown, snippetHtml?: unknown }
-    const snippet = typeof payload.snippet === 'string' && payload.snippet.trim() ? payload.snippet : FALLBACK_SNIPPET
-    const snippetHtml = typeof payload.snippetHtml === 'string' ? payload.snippetHtml : ''
-    snippetCache.set(storyId, { snippet, snippetHtml })
-    return { snippet, snippetHtml }
-  } catch {
-    return { snippet: FALLBACK_SNIPPET, snippetHtml: '' }
-  }
-}
 
 const buildStoryRows = (storyCards: StoryCard[]) => {
   const rows: StoryCard[][] = []
@@ -43,36 +19,10 @@ const buildStoryRows = (storyCards: StoryCard[]) => {
 type ClickState = { rowIndex: number, side: ClickedSide }
 
 const HackerNewsStoryGrid = ({ initialCards }:{ initialCards: StoryCard[] }) => {
-  const [cards, setCards] = useState(initialCards)
   const [clickState, setClickState] = useState<ClickState | null>(null)
   const panel = useStoryPanel()
-  const storyIdsToHydrate = useMemo(() => initialCards.filter(card => card.snippet === LOADING_SNIPPET).map(card => card.id), [initialCards])
-  const filteredCards = useMemo(() => cards.filter(card => card.snippet !== FALLBACK_SNIPPET), [cards])
+  const filteredCards = useMemo(() => initialCards.filter(card => card.snippet !== FALLBACK_SNIPPET), [initialCards])
   const storyRows = useMemo(() => buildStoryRows(filteredCards), [filteredCards])
-  useEffect(() => {
-    if (!storyIdsToHydrate.length) return
-    let isCancelled = false
-    let nextStoryIndex = 0
-    const workerCount = Math.min(SNIPPET_WORKER_COUNT, storyIdsToHydrate.length)
-    const workerIndexes = Array.from({ length: workerCount }, (_, index) => index)
-    const processNextStory = async () => {
-      while (!isCancelled) {
-        const storyId = storyIdsToHydrate[nextStoryIndex]
-        nextStoryIndex += 1
-        if (storyId === undefined) return
-        const { snippet, snippetHtml } = await fetchStorySnippet(storyId)
-        if (isCancelled) return
-        setCards(currentCards => updateStoryCardSnippet(currentCards, storyId, snippet, snippetHtml))
-      }
-    }
-    for (const workerIndex of workerIndexes) {
-      void workerIndex
-      void processNextStory()
-    }
-    return () => {
-      isCancelled = true
-    }
-  }, [storyIdsToHydrate])
   const handleStoryClick = useCallback((rowIndex: number) => (url: string, side: ClickedSide) => {
     const card = filteredCards.find(c => c.url === url)
     setClickState({ rowIndex, side })

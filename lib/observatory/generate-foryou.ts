@@ -84,7 +84,9 @@ export const generateForYou = async () => {
     rows.push({ storyId, reason: item.explanation, relevance: item.relevance, sortOrder: i })
   }
 
-  await prisma.forYouItem.deleteMany()
-  await prisma.forYouItem.createMany({ data: rows })
+  await prisma.$transaction([
+    prisma.forYouItem.deleteMany(),
+    prisma.forYouItem.createMany({ data: rows }),
+  ])
   console.log(`Saved ${rows.length} ForYou items`)
 }
