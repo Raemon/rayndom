@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { StoryCard } from './hackerNewsTypes'
 import { StoryPanel, useStoryPanel } from './StoryPanel'
 
@@ -31,6 +31,16 @@ const buildDayLabeler = () => {
 
 const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolean }) => {
   const panel = useStoryPanel()
+  const [expanded, setExpanded] = useState<Set<string>>(new Set())
+
+  const toggleExpanded = (url: string) => {
+    setExpanded(prev => {
+      const next = new Set(prev)
+      if (next.has(url)) next.delete(url)
+      else next.add(url)
+      return next
+    })
+  }
 
   const groups = useMemo(() => {
     const map = new Map<string, StoryCard[]>()
@@ -77,7 +87,23 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
                       className="text-[16px] leading-[1.3] text-[#1f1f1f] hover:text-[#555] no-underline hover:underline cursor-pointer"
                     >{card.title}</a>
                     {card.snippet && (
-                      <p className="m-0 mt-1 text-[13px] text-[#666] leading-[1.4] line-clamp-2">{card.snippet}</p>
+                      expanded.has(card.url) && card.snippetHtml ? (
+                        <div
+                          onClick={(e) => {
+                            if ((e.target as HTMLElement).closest('a')) return
+                            toggleExpanded(card.url)
+                          }}
+                          className="m-0 mt-1 text-[13px] text-[#666] leading-[1.4] max-h-[150px] overflow-hidden cursor-pointer break-words [mask-image:linear-gradient(to_bottom,black_70%,transparent)] [&_a]:text-[#666] [&_a]:no-underline [&_p]:mt-0 [&_p]:mb-[0.4em] [&_pre]:overflow-hidden [&_img]:hidden"
+                          dangerouslySetInnerHTML={{ __html: card.snippetHtml }}
+                        />
+                      ) : card.snippetHtml ? (
+                        <p
+                          onClick={() => toggleExpanded(card.url)}
+                          className="m-0 mt-1 text-[13px] text-[#666] leading-[1.4] line-clamp-2 cursor-pointer"
+                        >{card.snippet}</p>
+                      ) : (
+                        <p className="m-0 mt-1 text-[13px] text-[#666] leading-[1.4] line-clamp-2">{card.snippet}</p>
+                      )
                     )}
                   </div>
                   <div className="text-[12px] text-[#999] italic text-right pt-1">{card.byline}</div>
