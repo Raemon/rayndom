@@ -10,7 +10,10 @@ const STORY_LIMITS: Record<string, number> = {
   arxiv: 100,
 }
 
-const storyToCard = (story: { externalId: number, title: string, url: string, domain: string, byline: string, snippet: string, snippetHtml: string | null, iframe: boolean | null }): StoryCard => ({
+const FALLBACK_SNIPPET = 'No readable body text found for this URL.'
+const isDisplayable = (card: StoryCard) => card.snippet !== FALLBACK_SNIPPET
+
+const storyToCard = (story: { externalId: number, title: string, url: string, domain: string, byline: string, snippet: string, snippetHtml: string | null, iframe: boolean | null, postedAt: Date | null }): StoryCard => ({
   id: story.externalId,
   title: story.title,
   url: story.url,
@@ -19,6 +22,7 @@ const storyToCard = (story: { externalId: number, title: string, url: string, do
   snippet: story.snippet,
   snippetHtml: story.snippetHtml ?? undefined,
   iframe: story.iframe ?? undefined,
+  postedAt: story.postedAt?.toISOString(),
 })
 
 export default async function Page({ params }: { params: Promise<{ tabSlug: string }> }) {
@@ -36,8 +40,7 @@ export default async function Page({ params }: { params: Promise<{ tabSlug: stri
       ...storyToCard(item.story),
       reason: item.reason,
       relevance: item.relevance,
-      postedAt: item.story.postedAt?.toISOString(),
-    }))
+    })).filter(isDisplayable)
     return <ObservatoryPage activeTab={tab.key} cards={cards} />
   }
 
@@ -46,6 +49,6 @@ export default async function Page({ params }: { params: Promise<{ tabSlug: stri
     orderBy: { rank: 'asc' },
     take: STORY_LIMITS[tab.key] ?? 100,
   })
-  const cards = stories.map(storyToCard)
+  const cards = stories.map(storyToCard).filter(isDisplayable)
   return <ObservatoryPage activeTab={tab.key} cards={cards} />
 }

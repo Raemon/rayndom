@@ -1,0 +1,89 @@
+'use client'
+
+import { useMemo } from 'react'
+import { StoryCard } from './hackerNewsTypes'
+import { StoryPanel, useStoryPanel } from './StoryPanel'
+
+const extractScore = (card: StoryCard): number | null => {
+  if (card.relevance != null) return card.relevance
+  const match = card.byline.match(/^(-?\d+)\s+points?/i)
+  return match ? parseInt(match[1], 10) : null
+}
+
+const dayKey = (iso: string | undefined): string => {
+  if (!iso) return 'undated'
+  const d = new Date(iso)
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`
+}
+
+const buildDayLabeler = () => {
+  const now = new Date()
+  const todayKey = dayKey(now.toISOString())
+  const yesterdayKey = dayKey(new Date(now.getTime() - 86400000).toISOString())
+  return (key: string): string => {
+    if (key === 'undated') return 'Undated'
+    if (key === todayKey) return 'Today'
+    if (key === yesterdayKey) return 'Yesterday'
+    const d = new Date(`${key}T00:00:00Z`)
+    return d.toLocaleDateString(undefined, { month: 'long', day: 'numeric', timeZone: 'UTC' })
+  }
+}
+
+const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolean }) => {
+  const panel = useStoryPanel()
+
+  const groups = useMemo(() => {
+    const map = new Map<string, StoryCard[]>()
+    for (const card of cards) {
+      const key = dayKey(card.postedAt)
+      const bucket = map.get(key) ?? []
+      bucket.push(card)
+      map.set(key, bucket)
+    }
+    const sortedKeys = [...map.keys()].sort((a, b) => {
+      if (a === 'undated') return 1
+      if (b === 'undated') return -1
+      return b.localeCompare(a)
+    })
+    const labelFor = buildDayLabeler()
+    return sortedKeys.map(key => ({ key, label: labelFor(key), cards: map.get(key)! }))
+  }, [cards])
+
+  const gridCols = showScore ? 'grid-cols-[48px_1fr_180px]' : 'grid-cols-[1fr_180px]'
+
+  return (
+    <>
+      <StoryPanel {...panel} />
+      <div className="max-w-[900px] mx-auto font-[Georgia,serif] text-[#1f1f1f]">
+        {groups.map(group => (
+          <section key={group.key} className="mb-8">
+            <h2 className="font-sans text-[11px] uppercase tracking-[1px] text-[#999] border-b border-[#ddd] pb-1 mb-2 mt-0">{group.label}</h2>
+            {group.cards.map(card => {
+              const score = showScore ? extractScore(card) : null
+              return (
+                <article key={card.url} className={`grid ${gridCols} gap-x-4 py-3 border-b border-[#eee] items-baseline`}>
+                  {showScore && (
+                    <div className="text-[18px] text-[#666] font-sans tabular-nums text-right pt-1">{score ?? ''}</div>
+                  )}
+                  <div>
+                    <a
+                      href={card.url}
+                      onClick={(e) => { e.preventDefault(); panel.openPanel(card.url, card.iframe === false) }}
+                      className="text-[16px] leading-[1.3] text-[#1f1f1f] hover:text-[#555] no-underline hover:underline cursor-pointer"
+                    >{card.title}</a>
+                    {card.snippet && (
+                      <p className="m-0 mt-1 text-[13px] text-[#666] leading-[1.4] line-clamp-2">{card.snippet}</p>
+                    )}
+                  </div>
+                  <div className="text-[12px] text-[#999] italic text-right pt-1">{card.byline}</div>
+                </article>
+              )
+            })}
+          </section>
+        ))}
+      </div>
+    </>
+  )
+}
+
+export default StoryList

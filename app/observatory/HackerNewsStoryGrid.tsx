@@ -5,7 +5,6 @@ import HackerNewsStoryRow, { ClickedSide } from './HackerNewsStoryRow'
 import { StoryPanel, useStoryPanel } from './StoryPanel'
 import { StoryCard } from './hackerNewsTypes'
 
-const FALLBACK_SNIPPET = 'No readable body text found for this URL.'
 const STORIES_PER_ROW = 5
 
 const buildStoryRows = (storyCards: StoryCard[]) => {
@@ -21,13 +20,12 @@ type ClickState = { rowIndex: number, side: ClickedSide }
 const HackerNewsStoryGrid = ({ initialCards }:{ initialCards: StoryCard[] }) => {
   const [clickState, setClickState] = useState<ClickState | null>(null)
   const panel = useStoryPanel()
-  const filteredCards = useMemo(() => initialCards.filter(card => card.snippet !== FALLBACK_SNIPPET), [initialCards])
-  const storyRows = useMemo(() => buildStoryRows(filteredCards), [filteredCards])
+  const storyRows = useMemo(() => buildStoryRows(initialCards), [initialCards])
   const handleStoryClick = useCallback((rowIndex: number) => (url: string, side: ClickedSide) => {
-    const card = filteredCards.find(c => c.url === url)
+    const card = initialCards.find(c => c.url === url)
     setClickState({ rowIndex, side })
     panel.openPanel(url, card?.iframe === false)
-  }, [filteredCards, panel.openPanel])
+  }, [initialCards, panel.openPanel])
   return (
     <>
       <StoryPanel {...panel} />
