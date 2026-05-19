@@ -63,7 +63,12 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
               return (
                 <article key={card.url} className={`grid ${gridCols} gap-x-4 py-3 border-b border-[#eee] items-baseline`}>
                   {showScore && (
-                    <div className="text-[18px] text-[#666] font-sans tabular-nums text-right pt-1">{score ?? ''}</div>
+                    <div className="relative group text-[18px] text-[#666] font-sans tabular-nums text-right pt-1">
+                      {score ?? ''}
+                      {card.reason && (
+                        <div className="hidden group-hover:block absolute left-full top-0 ml-2 z-10 w-[280px] p-2 bg-white border border-[#ddd] shadow-md text-left text-[12px] font-[Georgia,serif] italic text-[#8b6914] leading-[1.4] normal-nums">{card.reason}</div>
+                      )}
+                    </div>
                   )}
                   <div>
                     <a
