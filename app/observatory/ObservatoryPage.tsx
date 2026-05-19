@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import HackerNewsStoryGrid from './HackerNewsStoryGrid'
-import ForYouTable from './ForYouTable'
+import StoryTable from './StoryTable'
 import StoryList from './StoryList'
 import { StoryCard } from './hackerNewsTypes'
 import { Tab, TABS } from './constants'
@@ -63,7 +63,7 @@ const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard
     const query = params.toString()
     window.history.replaceState(null, '', query ? `${window.location.pathname}?${query}` : window.location.pathname)
   }
-  const availableViews: ViewMode[] = activeTab === 'foryou' ? ['grid', 'table', 'list'] : ['grid', 'list']
+  const availableViews: ViewMode[] = ['grid', 'table', 'list']
   const effectiveView: ViewMode = availableViews.includes(viewMode) ? viewMode : 'grid'
   const tabHref = (key: string) => viewMode === 'grid' ? `/observatory/${key}` : `/observatory/${key}?view=${viewMode}`
   return (
@@ -98,7 +98,7 @@ const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard
         </div>
       </div>
       {effectiveView === 'table'
-        ? <div className="max-w-[1500px] mx-auto"><ForYouTable cards={cards} /></div>
+        ? <div className="max-w-[1500px] mx-auto"><StoryTable key={activeTab} cards={cards} showRelevance={activeTab === 'foryou'} /></div>
         : effectiveView === 'list'
         ? <StoryList key={activeTab} cards={cards} showScore={activeTab === 'foryou'} />
         : <HackerNewsStoryGrid key={activeTab} initialCards={cards} />}
