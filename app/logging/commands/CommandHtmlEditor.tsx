@@ -6,6 +6,7 @@ import Placeholder from '@tiptap/extension-placeholder'
 import TaskList from '@tiptap/extension-task-list'
 import TaskItem from '@tiptap/extension-task-item'
 import BubbleMenuToolbar from '../editor/BubbleMenuToolbar'
+import { ClassedHeading, HeadingShortcuts } from '../editor/headingExtensions'
 
 const CommandHtmlEditor = ({ value, onChange, placeholder = 'HTML content...' }: { value: string, onChange: (html: string) => void, placeholder?: string }) => {
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
@@ -20,7 +21,9 @@ const CommandHtmlEditor = ({ value, onChange, placeholder = 'HTML content...' }:
   }, [onChange])
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({ heading: { levels: [1, 2, 3] } }),
+      StarterKit.configure({ heading: false }),
+      ClassedHeading.configure({ levels: [1, 2] }),
+      HeadingShortcuts,
       Placeholder.configure({ placeholder }),
       TaskList,
       TaskItem.configure({ nested: true }),

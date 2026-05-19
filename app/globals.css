@@ -160,6 +160,19 @@ label {
     font-size: 15px;
     line-height: 1.5;
 }
+.tiptap h1.heading {
+    font-size: 24px;
+    line-height: 24px;
+    margin: 0;
+    font-weight: 600;
+}
+.tiptap h2.smallHeading {
+    font-size: 12px;
+    line-height: 14px;
+    margin: 0;
+    opacity: 0.5;
+    font-weight: normal;
+}
 
 a {
   color: #8bc3ff;

@@ -12,6 +12,7 @@ import { createMentionSuggestion, updateCachedMentionTags, getCachedMentionTags 
 import { getTagUsageTimestamps } from '../tags/tagUsageTracker'
 import { createCommandSuggestion, updateCachedCommands, getCachedCommands } from './commandSuggestion'
 import BubbleMenuToolbar from './BubbleMenuToolbar'
+import { ClassedHeading, HeadingShortcuts } from './headingExtensions'
 import { TagInstanceExtension, type TagInstanceCallbacks, getEditorTagInstanceState, setEditorCallbacks } from './TagInstanceExtension'
 import { useCommands } from '../hooks/useCommands'
 import SuggestedTagsModal from '../tags/SuggestedTagsModal'
@@ -53,7 +54,9 @@ const SmartEditor = ({ noteKey, initialValue, externalValue, placeholder, onSave
   }, [onSave])
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({ heading: { levels: [1, 2, 3] } }),
+      StarterKit.configure({ heading: false }),
+      ClassedHeading.configure({ levels: [1, 2, 3] }),
+      HeadingShortcuts,
       Placeholder.configure({ placeholder }),
       TaskList,
       TaskItem.configure({ nested: true }),
