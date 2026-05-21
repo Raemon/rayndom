@@ -19,6 +19,24 @@ import { EMPTY_TIMEBLOCKS, EMPTY_TAG_INSTANCES } from './constants'
 import { dayKey } from '../lib/timeUtils'
 import { LOGGING_HEADER_OFFSET } from '../layoutConstants'
 
+const timeblockMs = (tb: Timeblock) => new Date(tb.datetime).getTime()
+const tagInstanceMs = (ti: TagInstance) => new Date(ti.datetime).getTime()
+
+// Referentially stable "before the boundary" slice. The full timeblocks/tagInstances arrays get
+// a new identity on every today-only edit (one element is replaced), which would otherwise
+// rebuild the historical grouping and every month's aggregates each keystroke. The historical
+// elements keep their identity, so when the kept slice is element-wise unchanged we keep the
+// previous reference via React's "adjust state during render" pattern (re-renders synchronously,
+// no flash, no ref reads in render).
+const useHistoricalSlice = <T,>(items: T[], boundaryMs: number, getMs: (item: T) => number): T[] => {
+  const next = useMemo(() => items.filter(item => getMs(item) < boundaryMs), [items, boundaryMs, getMs])
+  const [stable, setStable] = useState(next)
+  if (stable !== next && !(stable.length === next.length && stable.every((item, i) => item === next[i]))) {
+    setStable(next)
+  }
+  return stable
+}
+
 const LoggingZenInner = () => {
   const { isPredicting, predictTags } = useAiTags()
   const { focusedNoteKeysRef } = useFocusedNotes()
@@ -119,7 +137,12 @@ const LoggingZenInner = () => {
 
   // Group everything before today into collapsible day/week/month sections (shared with the
   // main page) so historical days render as cheap summaries instead of mounting an editor each.
-  const { timeblocksByDay, tagInstancesByDay, groupedDays } = useTimelineGrouping(timeblocks, tagInstances)
+  // Feed the grouping only the immutable historical slice (stable across today-only edits) so
+  // typing in the current block doesn't recompute every month's aggregates.
+  const todayStartMs = today.getTime()
+  const historicalTimeblocks = useHistoricalSlice(timeblocks, todayStartMs, timeblockMs)
+  const historicalTagInstances = useHistoricalSlice(tagInstances, todayStartMs, tagInstanceMs)
+  const { timeblocksByDay, tagInstancesByDay, groupedDays } = useTimelineGrouping(historicalTimeblocks, historicalTagInstances)
   const previousWeekDays = useMemo(
     () => groupedDays.currentWeekDays.filter(d => d.getTime() !== groupedDays.today.getTime()),
     [groupedDays]
