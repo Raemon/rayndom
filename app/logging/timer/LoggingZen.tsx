@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState, useRef, useLayoutEffect, useCallback } from 'react'
 import { useTimeblocks } from '../hooks/useTimeblocks'
 import { useTagInstances } from '../hooks/useTagInstances'
 import { FocusedNotesProvider, useFocusedNotes } from '../context/FocusedNotesContext'
@@ -7,11 +7,17 @@ import { TagsProvider, useTags } from '../tags/TagsContext'
 import MarkdownContent from '../../common/MarkdownContent'
 import Checklist from '../checklist/Checklist'
 import ZenRow from '../zen/ZenRow'
+import DaySection from './DaySection'
+import MonthSection from './MonthSection'
+import { useTimelineGrouping } from './useTimelineGrouping'
 import type { TagInstance, Timeblock } from '../types'
 import Timer from './Timer'
 import RunAiCommandButton from '../zen/RunAiCommandButton'
 import { useAiTags } from '../hooks/useAiTags'
 import { allTagInstancesStartIso, allTagInstancesEndIso } from '../tagInstanceConstants'
+import { EMPTY_TIMEBLOCKS, EMPTY_TAG_INSTANCES } from './constants'
+import { dayKey } from '../lib/timeUtils'
+import { LOGGING_HEADER_OFFSET } from '../layoutConstants'
 
 const LoggingZenInner = () => {
   const { isPredicting, predictTags } = useAiTags()
@@ -49,11 +55,12 @@ const LoggingZenInner = () => {
   const prevBlockDatetime = new Date(new Date(currentBlockDatetime).getTime() - 15 * 60 * 1000).toISOString()
   const previousTimeblock = timeblocks.find(tb => new Date(tb.datetime).toISOString() === prevBlockDatetime)
 
-  // All other earlier timeblocks today with notes (excluding the previous one)
+  // All other earlier timeblocks today with notes (excluding the previous one). Earlier
+  // days are rendered below as collapsed sections instead of as live editor rows.
   const otherBlocksWithNotes = timeblocks
     .filter(tb => {
       const tbTime = new Date(tb.datetime).toISOString()
-      return tbTime < currentBlockDatetime && tbTime !== prevBlockDatetime && (tb.rayNotes || tb.assistantNotes || tb.aiNotes)
+      return tbTime >= startIso && tbTime < currentBlockDatetime && tbTime !== prevBlockDatetime && (tb.rayNotes || tb.assistantNotes || tb.aiNotes)
     })
     .sort((a, b) => new Date(b.datetime).getTime() - new Date(a.datetime).getTime())
 
@@ -110,6 +117,32 @@ const LoggingZenInner = () => {
     return byType
   }
 
+  // Group everything before today into collapsible day/week/month sections (shared with the
+  // main page) so historical days render as cheap summaries instead of mounting an editor each.
+  const { timeblocksByDay, tagInstancesByDay, groupedDays } = useTimelineGrouping(timeblocks, tagInstances)
+  const previousWeekDays = useMemo(
+    () => groupedDays.currentWeekDays.filter(d => d.getTime() !== groupedDays.today.getTime()),
+    [groupedDays]
+  )
+  const [collapsedDays, setCollapsedDays] = useState<Record<string, boolean>>({})
+  const [collapsedMonths, setCollapsedMonths] = useState<Record<string, boolean>>({})
+  // Previous days and months start collapsed; the zen view doesn't group by weeks at all,
+  // so an expanded month lists its days directly.
+  const onToggleDayCollapsed = useCallback((key: string) => setCollapsedDays(prev => ({ ...prev, [key]: !(prev[key] ?? true) })), [])
+  const onToggleMonthCollapsed = useCallback((key: string) => setCollapsedMonths(prev => ({ ...prev, [key]: !(prev[key] ?? true) })), [])
+
+  // Stable callback identities so the memoized day/month sections don't re-render every poll cycle.
+  const callbacksRef = useRef({ createTimeblock, patchTimeblockDebounced, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance })
+  useLayoutEffect(() => {
+    callbacksRef.current = { createTimeblock, patchTimeblockDebounced, createTagInstance, approveTagInstance, patchTagInstance, deleteTagInstance }
+  })
+  const onCreateTimeblock = useCallback(async (args: { datetime: string, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null }) => (await callbacksRef.current.createTimeblock(args)) as Timeblock, [])
+  const onPatchTimeblockDebounced = useCallback((args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, aiNotes?: string | null, debounceMs?: number }) => callbacksRef.current.patchTimeblockDebounced(args), [])
+  const onCreateTagInstance = useCallback((args: { tagId: number, datetime: string, approved?: boolean }) => callbacksRef.current.createTagInstance(args), [])
+  const onApproveTagInstance = useCallback((args: { id: number }) => callbacksRef.current.approveTagInstance(args), [])
+  const onPatchTagInstance = useCallback((args: { id: number, useful?: boolean, antiUseful?: boolean }) => callbacksRef.current.patchTagInstance(args), [])
+  const onDeleteTagInstance = useCallback((args: { id: number }) => callbacksRef.current.deleteTagInstance(args), [])
+
   const currentTime = new Date(currentBlockDatetime)
   const currentTimeStr = currentTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
   const handleRunAiCommand = async (datetime: string) => {
@@ -118,7 +151,7 @@ const LoggingZenInner = () => {
   }
 
   return (
-    <div className="flex" style={{ height: '100vh', overflow: 'hidden' }}>
+    <div className="flex" style={{ height: `calc(100vh - ${LOGGING_HEADER_OFFSET})`, overflow: 'hidden' }}>
       <div style={{ flex: 1, overflow: 'auto' }} className="p-2 text-sm">
         <Timer isPredicting={isPredicting} onRunAiCommand={handleRunAiCommand} />
         <RunAiCommandButton datetime={currentBlockDatetime} onComplete={() => refreshUnfocused(new Set())} />
@@ -130,7 +163,7 @@ const LoggingZenInner = () => {
           timeLabel={currentTimeStr}
           ensureTimeblock={ensureCurrentTimeblock}
           onPatchTimeblockDebounced={patchTimeblockDebounced}
-          minHeight="calc(100vh - 32px)"
+          minHeight={`calc(100vh - ${LOGGING_HEADER_OFFSET} - 32px)`}
           datetime={currentBlockDatetime}
           tagTypes={tagTypes}
           tagInstancesByType={getTagInstancesByType(currentBlockDatetime)}
@@ -174,6 +207,52 @@ const LoggingZenInner = () => {
               onApproveTagInstance={approveTagInstance}
               onPatchTagInstance={patchTagInstance}
               onDeleteTagInstance={deleteTagInstance}
+            />
+          )
+        })}
+        {previousWeekDays.map(day => {
+          const key = dayKey(day)
+          return (
+            <DaySection
+              key={key}
+              dayKey={key}
+              day={day}
+              isCollapsed={collapsedDays[key] ?? true}
+              onToggleCollapsed={onToggleDayCollapsed}
+              dayTimeblocks={timeblocksByDay.get(key) || EMPTY_TIMEBLOCKS}
+              dayTagInstances={tagInstancesByDay.get(key) || EMPTY_TAG_INSTANCES}
+              allTagInstances={tagInstances}
+              onCreateTimeblock={onCreateTimeblock}
+              onPatchTimeblockDebounced={onPatchTimeblockDebounced}
+              onCreateTagInstance={onCreateTagInstance}
+              onApproveTagInstance={onApproveTagInstance}
+              onPatchTagInstance={onPatchTagInstance}
+              onDeleteTagInstance={onDeleteTagInstance}
+            />
+          )
+        })}
+        {groupedDays.previousMonths.map(({ month, weeks }) => {
+          const monthKey = `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, '0')}`
+          return (
+            <MonthSection
+              key={monthKey}
+              monthKey={monthKey}
+              month={month}
+              weeks={weeks}
+              isCollapsed={collapsedMonths[monthKey] ?? true}
+              groupByWeeks={false}
+              onToggleCollapsed={onToggleMonthCollapsed}
+              collapsedDays={collapsedDays}
+              onToggleDayCollapsed={onToggleDayCollapsed}
+              timeblocksByDay={timeblocksByDay}
+              tagInstancesByDay={tagInstancesByDay}
+              allTagInstances={tagInstances}
+              onCreateTimeblock={onCreateTimeblock}
+              onPatchTimeblockDebounced={onPatchTimeblockDebounced}
+              onCreateTagInstance={onCreateTagInstance}
+              onApproveTagInstance={onApproveTagInstance}
+              onPatchTagInstance={onPatchTagInstance}
+              onDeleteTagInstance={onDeleteTagInstance}
             />
           )
         })}

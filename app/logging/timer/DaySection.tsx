@@ -169,7 +169,7 @@ const DaySection = memo(({ dayKey, day, isCollapsed, onToggleCollapsed, dayTimeb
       {isCollapsed ? (
         <div className="flex gap-4 items-start py-4">
           <div className="shrink-0" style={{ width: '40%' }}>
-            <button className="text-left font-semibold whitespace-nowrap" onClick={() => onToggleCollapsed(dayKey)}>
+            <button className="text-left font-semibold" onClick={() => onToggleCollapsed(dayKey)}>
               ▶ <span className="text-2xl">{formatDayLabel(day)}</span>
             </button>
             <CollapsedNotesSummary timeblocks={dayTimeblocks} onPatchTimeblockDebounced={onPatchTimeblockDebounced} />

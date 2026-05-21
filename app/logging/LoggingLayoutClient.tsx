@@ -5,6 +5,7 @@ import HeaderTimer from './HeaderTimer'
 import { AuthProvider } from './auth/AuthContext'
 import AuthHeader from './auth/AuthHeader'
 import AuthGate from './auth/AuthGate'
+import { LOGGING_HEADER_OFFSET } from './layoutConstants'
 
 const navLinks = [
   { href: '/logging', label: 'Timer' },
@@ -35,7 +36,7 @@ const LoggingLayoutClient = ({ children }:{ children: React.ReactNode }) => {
           </div>
         </header>
         <AuthGate>
-          <div className="pt-12">
+          <div style={{ paddingTop: LOGGING_HEADER_OFFSET }}>
             {children}
           </div>
         </AuthGate>

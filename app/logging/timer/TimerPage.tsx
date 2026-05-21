@@ -1,21 +1,21 @@
 'use client'
-import { useEffect, useLayoutEffect, useMemo, useState, useRef, useCallback } from 'react'
+import { useEffect, useLayoutEffect, useState, useRef, useCallback } from 'react'
 import DaySection from './DaySection'
 import MonthSection from './MonthSection'
+import { useTimelineGrouping } from './useTimelineGrouping'
 import { useTimeblocks } from '../hooks/useTimeblocks'
 import { useTagInstances } from '../hooks/useTagInstances'
 import { FocusedNotesProvider, useFocusedNotes } from '../context/FocusedNotesContext'
 import { TagsProvider } from '../tags/TagsContext'
 import NotesInput from '../editor/NotesInput'
-import type { TagInstance, Timeblock } from '../types'
+import type { Timeblock } from '../types'
 import Checklist, { type ChecklistRef } from '../checklist/Checklist'
 import Timer from './Timer'
 import RunAiCommandPanel from './RunAiCommandPanel'
 import { useAiTags } from '../hooks/useAiTags'
 import { useTags } from '../tags/TagsContext'
-
-const EMPTY_TIMEBLOCKS: Timeblock[] = []
-const EMPTY_TAG_INSTANCES: TagInstance[] = []
+import { EMPTY_TIMEBLOCKS, EMPTY_TAG_INSTANCES } from './constants'
+import { dayKey } from '../lib/timeUtils'
 
 const TimerPageInner = () => {
   const { isPredicting, predictTags } = useAiTags()
@@ -59,8 +59,7 @@ const TimerPageInner = () => {
   const onPatchTagInstance = useCallback((args: { id: number, useful?: boolean, antiUseful?: boolean }) => callbacksRef.current.patchTagInstance(args), [])
   const onDeleteTagInstance = useCallback((args: { id: number }) => callbacksRef.current.deleteTagInstance(args), [])
   const onToggleDayCollapsed = useCallback((key: string) => {
-    const t = new Date(); t.setHours(0, 0, 0, 0)
-    const todayKey = t.toISOString().slice(0, 10)
+    const todayKey = dayKey(new Date())
     setCollapsedDays(prev => ({ ...prev, [key]: !(prev[key] ?? !(key === todayKey)) }))
   }, [])
   const onToggleWeekCollapsed = useCallback((key: string) => {
@@ -70,85 +69,7 @@ const TimerPageInner = () => {
     setCollapsedMonths(prev => ({ ...prev, [key]: !(prev[key] ?? (key !== newestKeysRef.current.month)) }))
   }, [])
 
-  const timeblocksByDay = useMemo(() => {
-    const map = new Map<string, Timeblock[]>()
-    for (const tb of timeblocks) {
-      const d = new Date(tb.datetime); d.setHours(0, 0, 0, 0)
-      const key = d.toISOString().slice(0, 10)
-      const existing = map.get(key)
-      if (existing) existing.push(tb)
-      else map.set(key, [tb])
-    }
-    return map
-  }, [timeblocks])
-  const tagInstancesByDay = useMemo(() => {
-    const map = new Map<string, TagInstance[]>()
-    for (const ti of tagInstances) {
-      const d = new Date(ti.datetime); d.setHours(0, 0, 0, 0)
-      const key = d.toISOString().slice(0, 10)
-      const existing = map.get(key)
-      if (existing) existing.push(ti)
-      else map.set(key, [ti])
-    }
-    return map
-  }, [tagInstances])
-
-  const groupedDays = useMemo(() => {
-    const getMonday = (date: Date) => {
-      const d = new Date(date)
-      const dow = d.getDay()
-      d.setDate(d.getDate() - dow + (dow === 0 ? -6 : 1))
-      d.setHours(0, 0, 0, 0)
-      return d
-    }
-    const today = new Date()
-    today.setHours(0, 0, 0, 0)
-    const currentMonday = getMonday(today)
-    const allDays: Date[] = []
-    for (let i = 0; i < 14; i++) {
-      const day = new Date()
-      day.setDate(day.getDate() - i)
-      day.setHours(0, 0, 0, 0)
-      allDays.push(day)
-    }
-    const allDayKeys = new Set(allDays.map(d => d.toISOString().slice(0, 10)))
-    const historicalSources = [...timeblocks.map(tb => tb.datetime), ...tagInstances.map(ti => ti.datetime)]
-    for (const dt of historicalSources) {
-      const d = new Date(dt); d.setHours(0, 0, 0, 0)
-      const key = d.toISOString().slice(0, 10)
-      if (!allDayKeys.has(key)) { allDayKeys.add(key); allDays.push(new Date(d)) }
-    }
-    allDays.sort((a, b) => b.getTime() - a.getTime())
-    const currentWeekDays = allDays.filter(d => d >= currentMonday)
-    const previousDays = allDays.filter(d => d < currentMonday)
-    const weekGroupsMap = new Map<string, { monday: Date, days: Date[] }>()
-    for (const day of previousDays) {
-      const mon = getMonday(day)
-      const key = mon.toISOString().slice(0, 10)
-      if (!weekGroupsMap.has(key)) weekGroupsMap.set(key, { monday: mon, days: [] })
-      weekGroupsMap.get(key)!.days.push(day)
-    }
-    const previousWeeks = [...weekGroupsMap.values()].sort((a, b) => b.monday.getTime() - a.monday.getTime())
-    const monthGroupsMap = new Map<string, { month: Date, weeks: { monday: Date, days: Date[] }[] }>()
-    for (const week of previousWeeks) {
-      const monthKey = `${week.monday.getFullYear()}-${String(week.monday.getMonth() + 1).padStart(2, '0')}`
-      if (!monthGroupsMap.has(monthKey)) monthGroupsMap.set(monthKey, { month: new Date(week.monday.getFullYear(), week.monday.getMonth(), 1), weeks: [] })
-      monthGroupsMap.get(monthKey)!.weeks.push(week)
-    }
-    const previousMonths = [...monthGroupsMap.values()].sort((a, b) => b.month.getTime() - a.month.getTime())
-    return { today, currentWeekDays, previousMonths }
-  }, [timeblocks, tagInstances])
-
-  const newestKeys = useMemo(() => {
-    if (groupedDays.previousMonths.length === 0) return { month: null as string | null, week: null as string | null }
-    const m = groupedDays.previousMonths[0].month
-    const month = `${m.getFullYear()}-${String(m.getMonth() + 1).padStart(2, '0')}`
-    const weeks = groupedDays.previousMonths[0].weeks
-    const week = weeks.length > 0
-      ? weeks.reduce((a, b) => a.monday.getTime() > b.monday.getTime() ? a : b).monday.toISOString().slice(0, 10)
-      : null
-    return { month, week }
-  }, [groupedDays])
+  const { timeblocksByDay, tagInstancesByDay, groupedDays, newestKeys } = useTimelineGrouping(timeblocks, tagInstances)
   const newestKeysRef = useRef(newestKeys)
   useLayoutEffect(() => { newestKeysRef.current = newestKeys }, [newestKeys])
 
@@ -201,7 +122,7 @@ const TimerPageInner = () => {
       <div className="flex gap-2">
         <div className="flex-1 min-w-0">
           {groupedDays.currentWeekDays.map(day => {
-            const key = day.toISOString().slice(0, 10)
+            const key = dayKey(day)
             const isToday = day.getTime() === groupedDays.today.getTime()
             const isCollapsed = collapsedDays[key] ?? !isToday
             return (

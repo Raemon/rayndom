@@ -6,9 +6,8 @@ import TagListItem from '../tags/TagListItem'
 import { useTags } from '../tags/TagsContext'
 import type { Tag, TagInstance, Timeblock } from '../types'
 import CollapsedNotesSummary from './CollapsedNotesSummary'
-
-const EMPTY_TIMEBLOCKS: Timeblock[] = []
-const EMPTY_TAG_INSTANCES: TagInstance[] = []
+import { EMPTY_TIMEBLOCKS, EMPTY_TAG_INSTANCES } from './constants'
+import { dayKey } from '../lib/timeUtils'
 
 const formatWeekLabel = (monday: Date) => {
   const sunday = new Date(monday)
@@ -43,7 +42,7 @@ const WeekSection = memo(({ weekKey, monday, days, isCollapsed, onToggleCollapse
   const weekTimeblocks = useMemo(() => {
     const result: Timeblock[] = []
     for (const day of days) {
-      const slice = timeblocksByDay.get(day.toISOString().slice(0, 10))
+      const slice = timeblocksByDay.get(dayKey(day))
       if (slice) result.push(...slice)
     }
     return result
@@ -51,7 +50,7 @@ const WeekSection = memo(({ weekKey, monday, days, isCollapsed, onToggleCollapse
   const weekTagInstances = useMemo(() => {
     const result: TagInstance[] = []
     for (const day of days) {
-      const slice = tagInstancesByDay.get(day.toISOString().slice(0, 10))
+      const slice = tagInstancesByDay.get(dayKey(day))
       if (slice) result.push(...slice)
     }
     return result
@@ -79,7 +78,7 @@ const WeekSection = memo(({ weekKey, monday, days, isCollapsed, onToggleCollapse
       <div className="flex gap-4 items-start py-4">
         {isCollapsed ? (
           <div className="shrink-0" style={{ width: '40%' }}>
-            <button className="text-left font-semibold whitespace-nowrap" onClick={() => onToggleCollapsed(weekKey)}>
+            <button className="text-left font-semibold" onClick={() => onToggleCollapsed(weekKey)}>
               ▶ <span className="text-3xl">{formatWeekLabel(monday)}</span>
             </button>
             <CollapsedNotesSummary timeblocks={weekTimeblocks} onPatchTimeblockDebounced={onPatchTimeblockDebounced} />
@@ -98,7 +97,7 @@ const WeekSection = memo(({ weekKey, monday, days, isCollapsed, onToggleCollapse
         ))}
       </div>
       {!isCollapsed && sortedDays.map(day => {
-        const key = day.toISOString().slice(0, 10)
+        const key = dayKey(day)
         const isDayCollapsed = collapsedDays[key] ?? true
         return (
           <DaySection

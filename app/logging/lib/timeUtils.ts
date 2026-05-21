@@ -1,3 +1,9 @@
+// Local calendar-day key (YYYY-MM-DD). Uses local date components so days bucket by the
+// user's wall-clock date regardless of UTC offset (toISOString would shift positive-offset
+// timezones to the previous day).
+export const dayKey = (date: Date) =>
+  `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+
 export const getNextQuarterHourMs = (now: Date) => {
   const nextQuarterMinutes = Math.floor(now.getMinutes() / 15) * 15 + 15
   const next = new Date(now)
