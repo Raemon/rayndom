@@ -7,11 +7,10 @@ import { useTags } from '../tags/TagsContext'
 import type { TagInstance, Timeblock } from '../types'
 import { SECTION_DEFINITIONS } from '../checklist/sectionUtils'
 import CollapsedNotesSummary from './CollapsedNotesSummary'
-import DayNotesSummary from './DayNotesSummary'
+import CollapsedDayNotes from './CollapsedDayNotes'
+import { formatHm } from '../lib/timeUtils'
 
 const formatDayLabel = (day: Date) => day.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' })
-
-const formatHm = (d: Date) => d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })
 
 const dayStartIso = (day: Date) => new Date(day.getFullYear(), day.getMonth(), day.getDate(), 0, 0, 0, 0).toISOString()
 
@@ -77,25 +76,6 @@ const DaySection = memo(({ dayKey, day, isCollapsed, zen, onToggleCollapsed, day
     return map
   }, [dayTagInstances, tags])
 
-  const [notesExpanded, setNotesExpanded] = useState(false)
-  useEffect(() => { if (isCollapsed) setNotesExpanded(false) }, [isCollapsed])
-  const notesExcerpt = useMemo(() => {
-    if (typeof window === 'undefined') return []
-    const sorted = [...dayTimeblocks].sort((a, b) => new Date(a.datetime).getTime() - new Date(b.datetime).getTime())
-    const parser = new DOMParser()
-    const lines: { time: string, text: string }[] = []
-    for (const tb of sorted) {
-      const time = formatHm(new Date(tb.datetime))
-      for (const field of ['rayNotes', 'assistantNotes', 'aiNotes'] as const) {
-        const html = tb[field]
-        if (!html) continue
-        const doc = parser.parseFromString(html, 'text/html')
-        const text = doc.body.textContent?.trim()
-        if (text) lines.push({ time, text })
-      }
-    }
-    return lines
-  }, [dayTimeblocks])
   const [currentSlotMs, setCurrentSlotMs] = useState<number | null>(null)
   const [sectionOverrides, setSectionOverrides] = useState<Record<string, boolean>>({})
   useEffect(() => {
@@ -162,22 +142,7 @@ const DaySection = memo(({ dayKey, day, isCollapsed, zen, onToggleCollapsed, day
               ▶ <span className="text-2xl">{formatDayLabel(day)}</span>
             </button>
             <CollapsedNotesSummary timeblocks={dayTimeblocks} onPatchTimeblockDebounced={onPatchTimeblockDebounced} />
-            {notesExpanded ? (
-              <div className="cursor-pointer" onClick={(e) => {
-                if ((e.target as HTMLElement).closest('a')) return
-                e.stopPropagation()
-                setNotesExpanded(false)
-              }}>
-                <DayNotesSummary timeblocks={dayTimeblocks} />
-              </div>
-            ) : notesExcerpt.length > 0 ? (
-              <div className="mt-3 text-sm text-gray-400 cursor-pointer space-y-0.5" onClick={(e) => { e.stopPropagation(); setNotesExpanded(true) }}>
-                {notesExcerpt.slice(0, 8).map((item, i) => (
-                  <div key={i} className="truncate"><span className="text-gray-500">{item.time}</span> {item.text}</div>
-                ))}
-                {notesExcerpt.length > 8 && <div className="text-gray-500 text-xs">+ {notesExcerpt.length - 8} more...</div>}
-              </div>
-            ) : null}
+            <CollapsedDayNotes timeblocks={dayTimeblocks} />
           </>}
         />
       ) : (
