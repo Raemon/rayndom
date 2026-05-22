@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { StoryCard } from './hackerNewsTypes'
 import { StoryPanel, useStoryPanel } from './StoryPanel'
@@ -84,6 +84,57 @@ const updateUrlParam = (key: string, value: string | null) => {
   else params.set(key, value)
   const query = params.toString()
   window.history.replaceState(null, '', query ? `${window.location.pathname}?${query}` : window.location.pathname)
+}
+
+const COLLAPSED_SNIPPET_MAX_H = 180
+const SNIPPET_TRANSITION_MS = 300
+
+// When expanded, grow to the snippet's full height but never taller than this, so a
+// long snippet can't push the rest of the list off-screen. Floored at the collapsed
+// height so expanding never shrinks the preview on very short viewports.
+const expandedSnippetCap = () => {
+  const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16
+  return Math.max(window.innerHeight - 20 * rem, COLLAPSED_SNIPPET_MAX_H)
+}
+
+// Rich-HTML snippet that shows a faded 180px preview by default and animates out to
+// its full height (capped at expandedSnippetCap) when expanded. We measure
+// scrollHeight at click time and animate max-height to that pixel value (rather than
+// a fixed large value) so the grow is smooth. The fade stays whenever content is
+// still clipped. Clicks on links inside the snippet don't toggle.
+const HtmlSnippet = ({ html, expanded, onToggle }: {
+  html: string
+  expanded: boolean
+  onToggle: () => void
+}) => {
+  const ref = useRef<HTMLDivElement>(null)
+  const [maxH, setMaxH] = useState(COLLAPSED_SNIPPET_MAX_H)
+  const [clamped, setClamped] = useState(false)
+  const handleClick = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('a')) return
+    const el = ref.current
+    if (el) {
+      if (expanded) {
+        setMaxH(COLLAPSED_SNIPPET_MAX_H)
+        setClamped(false)
+      } else {
+        const cap = expandedSnippetCap()
+        setMaxH(Math.min(el.scrollHeight, cap))
+        setClamped(el.scrollHeight > cap)
+      }
+    }
+    onToggle()
+  }
+  const faded = !expanded || clamped
+  return (
+    <div
+      ref={ref}
+      onClick={handleClick}
+      style={{ maxHeight: maxH, transitionDuration: `${SNIPPET_TRANSITION_MS}ms` }}
+      className={`m-0 mt-1 text-[14px] text-[#444] leading-[1.4] overflow-hidden cursor-pointer break-words transition-[max-height] ease-in-out [&_a]:text-[#444] [&_a]:no-underline [&_p]:my-[0.7em] [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_pre]:overflow-hidden [&_img]:hidden ${faded ? '[mask-image:linear-gradient(to_bottom,black_70%,transparent)]' : ''}`}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  )
 }
 
 const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolean }) => {
@@ -217,9 +268,11 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
             )}
             {group.cards.map(card => {
               const score = showScore ? extractScore(card) : null
-              const effectiveMode: SnippetMode = overrides.has(card.url)
-                ? (snippetMode === 'html' ? 'twoLine' : 'html')
-                : snippetMode
+              const isOverridden = overrides.has(card.url)
+              // In HTML mode, clicking expands the snippet to full height; in
+              // two-line mode it reveals the (still-capped) HTML preview.
+              const showHtml = !!card.snippetHtml && (snippetMode === 'html' || isOverridden)
+              const expanded = snippetMode === 'html' && isOverridden
               return (
                 <article key={card.url} className={`grid ${gridCols} gap-x-4 py-3 border-b border-[#eee] items-baseline`}>
                   {showScore && (
@@ -237,14 +290,11 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
                       className="text-[16px] leading-[1.3] text-[#1f1f1f] hover:text-[#555] no-underline hover:underline cursor-pointer"
                     >{card.title}</a>
                     {card.snippet && (
-                      effectiveMode === 'html' && card.snippetHtml ? (
-                        <div
-                          onClick={(e) => {
-                            if ((e.target as HTMLElement).closest('a')) return
-                            toggleOverride(card.url)
-                          }}
-                          className="m-0 mt-1 text-[14px] text-[#444] leading-[1.4] max-h-[180px] overflow-hidden cursor-pointer break-words [mask-image:linear-gradient(to_bottom,black_70%,transparent)] [&_a]:text-[#444] [&_a]:no-underline [&_p]:my-[0.7em] [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_pre]:overflow-hidden [&_img]:hidden"
-                          dangerouslySetInnerHTML={{ __html: card.snippetHtml }}
+                      showHtml ? (
+                        <HtmlSnippet
+                          html={card.snippetHtml!}
+                          expanded={expanded}
+                          onToggle={() => toggleOverride(card.url)}
                         />
                       ) : card.snippetHtml ? (
                         <p

@@ -53,19 +53,19 @@ const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard
   const searchParams = useSearchParams()
   const [viewMode, setViewModeState] = useState<ViewMode>(() => {
     const v = searchParams.get('view')
-    return isViewMode(v) ? v : 'grid'
+    return isViewMode(v) ? v : 'list'
   })
   const setViewMode = (mode: ViewMode) => {
     setViewModeState(mode)
     const params = new URLSearchParams(window.location.search)
-    if (mode === 'grid') params.delete('view')
+    if (mode === 'list') params.delete('view')
     else params.set('view', mode)
     const query = params.toString()
     window.history.replaceState(null, '', query ? `${window.location.pathname}?${query}` : window.location.pathname)
   }
   const availableViews: ViewMode[] = ['grid', 'table', 'list']
-  const effectiveView: ViewMode = availableViews.includes(viewMode) ? viewMode : 'grid'
-  const tabHref = (key: string) => viewMode === 'grid' ? `/observatory/${key}` : `/observatory/${key}?view=${viewMode}`
+  const effectiveView: ViewMode = availableViews.includes(viewMode) ? viewMode : 'list'
+  const tabHref = (key: string) => viewMode === 'list' ? `/observatory/${key}` : `/observatory/${key}?view=${viewMode}`
   return (
     <main className="light-page min-h-screen bg-[#fffff8] px-3 pt-[10px] pb-3 font-[Georgia,serif] text-[#1f1f1f]">
       <div className="max-w-[1500px] mt-[36px] pb-[36px] mb-[36px] mx-auto border-b-2 border-b-[#3f3f3f]">
