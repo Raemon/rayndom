@@ -3,6 +3,7 @@ import { StoryCard } from '../hackerNewsTypes'
 import ObservatoryPage from '../ObservatoryPage'
 import { TABS } from '../constants'
 import { prisma } from '@/lib/prisma'
+import type { Story } from '@/lib/generated/prisma/client'
 
 const STORY_LIMITS: Record<string, number> = {
   hackernews: 100,
@@ -13,7 +14,7 @@ const STORY_LIMITS: Record<string, number> = {
 const FALLBACK_SNIPPET = 'No readable body text found for this URL.'
 const isDisplayable = (card: StoryCard) => card.snippet !== FALLBACK_SNIPPET
 
-const storyToCard = (story: { externalId: number, title: string, url: string, domain: string, byline: string, snippet: string, snippetHtml: string | null, iframe: boolean | null, postedAt: Date | null }): StoryCard => ({
+const storyToCard = (story: Story): StoryCard => ({
   id: story.externalId,
   title: story.title,
   url: story.url,
@@ -23,6 +24,7 @@ const storyToCard = (story: { externalId: number, title: string, url: string, do
   snippetHtml: story.snippetHtml ?? undefined,
   iframe: story.iframe ?? undefined,
   postedAt: story.postedAt?.toISOString(),
+  importedAt: story.createdAt.toISOString(),
 })
 
 export default async function Page({ params }: { params: Promise<{ tabSlug: string }> }) {

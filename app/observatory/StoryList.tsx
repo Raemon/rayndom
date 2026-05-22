@@ -34,6 +34,14 @@ const dayKey = (iso: string | undefined): string => {
   return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`
 }
 
+// Date-only display, pinned to UTC so server and client render the same string.
+const formatImported = (iso: string | undefined): string => {
+  if (!iso) return ''
+  const d = new Date(iso)
+  if (Number.isNaN(d.getTime())) return ''
+  return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })
+}
+
 const buildDayLabeler = () => {
   const now = new Date()
   const todayKey = dayKey(now.toISOString())
@@ -224,7 +232,7 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
     return sortedKeys.map(key => ({ key, label: labelFor(key) as string | null, cards: map.get(key)! }))
   }, [sortedCards, effectiveSortKey, sortDir])
 
-  const gridCols = showScore ? 'grid-cols-[48px_1fr_180px]' : 'grid-cols-[1fr_180px]'
+  const gridCols = showScore ? 'grid-cols-[48px_1fr_180px_100px]' : 'grid-cols-[1fr_180px_100px]'
 
   return (
     <>
@@ -307,6 +315,7 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
                     )}
                   </div>
                   <div className="text-[12px] text-[#999] italic text-right pt-1">{card.byline}</div>
+                  <div className="text-[12px] text-[#999] text-right pt-1 whitespace-nowrap">{formatImported(card.importedAt)}</div>
                 </article>
               )
             })}

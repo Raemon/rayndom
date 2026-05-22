@@ -9,5 +9,6 @@ export type StoryCard = {
   reason?: string
   relevance?: number
   postedAt?: string
+  importedAt?: string
   iframe?: boolean
 }
