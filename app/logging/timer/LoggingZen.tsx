@@ -240,6 +240,7 @@ const LoggingZenInner = () => {
               key={key}
               dayKey={key}
               day={day}
+              zen
               isCollapsed={collapsedDays[key] ?? true}
               onToggleCollapsed={onToggleDayCollapsed}
               dayTimeblocks={timeblocksByDay.get(key) || EMPTY_TIMEBLOCKS}
@@ -263,7 +264,7 @@ const LoggingZenInner = () => {
               month={month}
               weeks={weeks}
               isCollapsed={collapsedMonths[monthKey] ?? true}
-              groupByWeeks={false}
+              zen
               onToggleCollapsed={onToggleMonthCollapsed}
               collapsedDays={collapsedDays}
               onToggleDayCollapsed={onToggleDayCollapsed}

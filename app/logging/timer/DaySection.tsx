@@ -1,10 +1,10 @@
 'use client'
 import { memo, useMemo, useState, useEffect } from 'react'
-import { countBy, orderBy } from 'lodash'
 import TimeBlockRow from './TimeBlockRow'
-import TagListItem from '../tags/TagListItem'
+import CollapsedSummary from './CollapsedSummary'
+import { useCollapsedTagCounts } from './useCollapsedTagCounts'
 import { useTags } from '../tags/TagsContext'
-import type { Tag, TagInstance, Timeblock } from '../types'
+import type { TagInstance, Timeblock } from '../types'
 import { SECTION_DEFINITIONS } from '../checklist/sectionUtils'
 import CollapsedNotesSummary from './CollapsedNotesSummary'
 import DayNotesSummary from './DayNotesSummary'
@@ -25,10 +25,12 @@ const makeSlotsForDay = ({ day, startMinutes=0, endMinutes=23*60+45 }:{ day: Dat
   return slots
 }
 
-const DaySection = memo(({ dayKey, day, isCollapsed, onToggleCollapsed, dayTimeblocks, dayTagInstances, allTagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
+const DaySection = memo(({ dayKey, day, isCollapsed, zen, onToggleCollapsed, dayTimeblocks, dayTagInstances, allTagInstances, onCreateTimeblock, onPatchTimeblockDebounced, onCreateTagInstance, onApproveTagInstance, onPatchTagInstance, onDeleteTagInstance }:{
   dayKey: string,
   day: Date,
   isCollapsed: boolean,
+  // Zen view: stack the collapsed summary as a column (header above its tag-category row) for the narrow panel.
+  zen?: boolean,
   onToggleCollapsed: (key: string) => void,
   dayTimeblocks: Timeblock[],
   dayTagInstances: TagInstance[],
@@ -52,23 +54,7 @@ const DaySection = memo(({ dayKey, day, isCollapsed, onToggleCollapsed, dayTimeb
   const dayStart = useMemo(() => new Date(dayStartIso(day)), [day])
   const dayEnd = useMemo(() => new Date(dayStart.getTime() + 24 * 60 * 60 * 1000), [dayStart])
 
-  const tagCountsByType = useMemo(() => {
-    const counts = countBy(dayTagInstances, ti => ti.tagId)
-    const usefulCounts = countBy(dayTagInstances.filter(ti => ti.useful), ti => ti.tagId)
-    const antiUsefulCounts = countBy(dayTagInstances.filter(ti => ti.antiUseful), ti => ti.tagId)
-    const tagCountPairs = Object.entries(counts).map(([tagId, count]) => {
-      const tag = tags.find(t => t.id === Number(tagId))
-      return { tag, count, usefulCount: usefulCounts[tagId] || 0, antiUsefulCount: antiUsefulCounts[tagId] || 0 }
-    }).filter((pair): pair is { tag: Tag, count: number, usefulCount: number, antiUsefulCount: number } => pair.tag !== undefined)
-    const sorted = orderBy(tagCountPairs, [p => p.usefulCount > 0 ? 2 : p.antiUsefulCount > 0 ? 1 : 0, 'count'], ['desc', 'desc'])
-    const byType: Record<string, { tag: Tag, count: number, usefulCount: number, antiUsefulCount: number }[]> = {}
-    for (const type of tagTypes) byType[type] = []
-    for (const pair of sorted) {
-      const type = pair.tag.type
-      if (byType[type]) byType[type].push(pair)
-    }
-    return byType
-  }, [dayTagInstances, tags, tagTypes])
+  const tagCountsByType = useCollapsedTagCounts(dayTagInstances, tags, tagTypes)
 
   const slotToTimeblock = useMemo(() => {
     const map = new Map<number, Timeblock>()
@@ -167,9 +153,12 @@ const DaySection = memo(({ dayKey, day, isCollapsed, onToggleCollapsed, dayTimeb
   return (
     <div className={`border-b border-gray-200 px-4 pb-3 ${isCollapsed ? 'bg-white/10' : ''}`}>
       {isCollapsed ? (
-        <div className="flex gap-4 items-start py-4">
-          <div className="shrink-0" style={{ width: '40%' }}>
-            <button className="text-left font-semibold" onClick={() => onToggleCollapsed(dayKey)}>
+        <CollapsedSummary
+          zen={zen}
+          tagTypes={tagTypes}
+          tagCountsByType={tagCountsByType}
+          header={<>
+            <button className="text-left font-semibold whitespace-nowrap" onClick={() => onToggleCollapsed(dayKey)}>
               ▶ <span className="text-2xl">{formatDayLabel(day)}</span>
             </button>
             <CollapsedNotesSummary timeblocks={dayTimeblocks} onPatchTimeblockDebounced={onPatchTimeblockDebounced} />
@@ -189,15 +178,8 @@ const DaySection = memo(({ dayKey, day, isCollapsed, onToggleCollapsed, dayTimeb
                 {notesExcerpt.length > 8 && <div className="text-gray-500 text-xs">+ {notesExcerpt.length - 8} more...</div>}
               </div>
             ) : null}
-          </div>
-          {tagTypes.map(type => (
-            <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-1 overflow-hidden">
-              {tagCountsByType[type]?.map(({ tag, count, usefulCount, antiUsefulCount }) => (
-                <TagListItem key={tag.id} tag={tag} instanceCount={count} usefulCount={usefulCount} antiUsefulCount={antiUsefulCount} readonly hideRelations />
-              ))}
-            </div>
-          ))}
-        </div>
+          </>}
+        />
       ) : (
         <button className="text-left w-full" onClick={() => onToggleCollapsed(dayKey)}>
           <div className="font-semibold">▼ <span className="text-2xl">{formatDayLabel(day)}</span></div>

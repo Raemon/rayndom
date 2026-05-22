@@ -1,10 +1,10 @@
 'use client'
 import { memo, useMemo } from 'react'
-import { countBy, orderBy } from 'lodash'
 import DaySection from './DaySection'
-import TagListItem from '../tags/TagListItem'
+import CollapsedSummary from './CollapsedSummary'
+import { useCollapsedTagCounts } from './useCollapsedTagCounts'
 import { useTags } from '../tags/TagsContext'
-import type { Tag, TagInstance, Timeblock } from '../types'
+import type { TagInstance, Timeblock } from '../types'
 import CollapsedNotesSummary from './CollapsedNotesSummary'
 import { EMPTY_TIMEBLOCKS, EMPTY_TAG_INSTANCES } from './constants'
 import { dayKey } from '../lib/timeUtils'
@@ -55,47 +55,28 @@ const WeekSection = memo(({ weekKey, monday, days, isCollapsed, onToggleCollapse
     }
     return result
   }, [days, tagInstancesByDay])
-  const tagCountsByType = useMemo(() => {
-    const counts = countBy(weekTagInstances, ti => ti.tagId)
-    const usefulCounts = countBy(weekTagInstances.filter(ti => ti.useful), ti => ti.tagId)
-    const antiUsefulCounts = countBy(weekTagInstances.filter(ti => ti.antiUseful), ti => ti.tagId)
-    const tagCountPairs = Object.entries(counts).map(([tagId, count]) => {
-      const tag = tags.find(t => t.id === Number(tagId))
-      return { tag, count, usefulCount: usefulCounts[tagId] || 0, antiUsefulCount: antiUsefulCounts[tagId] || 0 }
-    }).filter((pair): pair is { tag: Tag, count: number, usefulCount: number, antiUsefulCount: number } => pair.tag !== undefined)
-    const sorted = orderBy(tagCountPairs, [p => p.usefulCount > 0 ? 2 : p.antiUsefulCount > 0 ? 1 : 0, 'count'], ['desc', 'desc'])
-    const byType: Record<string, { tag: Tag, count: number, usefulCount: number, antiUsefulCount: number }[]> = {}
-    for (const type of tagTypes) byType[type] = []
-    for (const pair of sorted) {
-      const type = pair.tag.type
-      if (byType[type]) byType[type].push(pair)
-    }
-    return byType
-  }, [weekTagInstances, tags, tagTypes])
+  const tagCountsByType = useCollapsedTagCounts(weekTagInstances, tags, tagTypes)
   const sortedDays = useMemo(() => [...days].sort((a, b) => b.getTime() - a.getTime()), [days])
   return (
     <div className="border-b border-gray-200 px-4 pb-3">
-      <div className="flex gap-4 items-start py-4">
-        {isCollapsed ? (
-          <div className="shrink-0" style={{ width: '40%' }}>
-            <button className="text-left font-semibold" onClick={() => onToggleCollapsed(weekKey)}>
+      {isCollapsed ? (
+        <CollapsedSummary
+          tagTypes={tagTypes}
+          tagCountsByType={tagCountsByType}
+          header={<>
+            <button className="text-left font-semibold whitespace-nowrap" onClick={() => onToggleCollapsed(weekKey)}>
               ▶ <span className="text-3xl">{formatWeekLabel(monday)}</span>
             </button>
             <CollapsedNotesSummary timeblocks={weekTimeblocks} onPatchTimeblockDebounced={onPatchTimeblockDebounced} />
-          </div>
-        ) : (
-          <button className="text-left font-semibold shrink-0 whitespace-nowrap" onClick={() => onToggleCollapsed(weekKey)}>
+          </>}
+        />
+      ) : (
+        <div className="py-4">
+          <button className="text-left font-semibold whitespace-nowrap" onClick={() => onToggleCollapsed(weekKey)}>
             ▼ <span className="text-3xl">{formatWeekLabel(monday)}</span>
           </button>
-        )}
-        {isCollapsed && tagTypes.map(type => (
-          <div key={type} className="flex-1 flex flex-wrap gap-x-2 gap-y-1 overflow-hidden">
-            {tagCountsByType[type]?.map(({ tag, count, usefulCount, antiUsefulCount }) => (
-              <TagListItem key={tag.id} tag={tag} instanceCount={count} usefulCount={usefulCount} antiUsefulCount={antiUsefulCount} readonly hideRelations />
-            ))}
-          </div>
-        ))}
-      </div>
+        </div>
+      )}
       {!isCollapsed && sortedDays.map(day => {
         const key = dayKey(day)
         const isDayCollapsed = collapsedDays[key] ?? true
