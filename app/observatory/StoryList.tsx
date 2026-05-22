@@ -230,7 +230,7 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
                       )}
                     </div>
                   )}
-                  <div>
+                  <div className="min-w-0">
                     <a
                       href={card.url}
                       onClick={(e) => { e.preventDefault(); panel.openPanel(card.url, card.iframe === false) }}
