@@ -73,6 +73,22 @@ export const useStoryPanel = () => {
   return { panelUrl, panelVisible, viewMode, setViewMode, panelPct, isDragging, openPanel, closePanel, handleDividerMouseDown }
 }
 
+const ArticleUrl = ({ url }: { url: string }) => {
+  let origin = url, domain = url, remainder = ''
+  try {
+    const u = new URL(url)
+    origin = u.origin
+    domain = u.hostname.replace(/^www\./, '')
+    remainder = (u.pathname + u.search + u.hash).replace(/\/+$/, '')
+  } catch { /* not a parseable URL — fall back to the raw string */ }
+  return (
+    <span className="min-w-0 flex-1 truncate">
+      <a href={origin} target="_blank" rel="noreferrer" className="text-[#111] no-underline">{domain}</a>
+      {remainder && <a href={url} target="_blank" rel="noreferrer" className="text-[#111] no-underline opacity-50 hover:opacity-100 focus:opacity-100 active:opacity-100">{remainder}</a>}
+    </span>
+  )
+}
+
 export const StoryPanel = ({ panelUrl, panelVisible, viewMode, setViewMode, panelPct, isDragging, handleDividerMouseDown, closePanel }: {
   panelUrl: string | null
   panelVisible: boolean
@@ -110,6 +126,7 @@ export const StoryPanel = ({ panelUrl, panelVisible, viewMode, setViewMode, pane
           {(['iframe', 'html'] as const).map(mode => (
             <button key={mode} onClick={() => setViewMode(mode)} style={{ color: viewMode === mode ? '#111' : '#999' }} className={`px-2 py-0.5 cursor-pointer border-0 bg-transparent ${viewMode === mode ? 'underline underline-offset-2' : ''}`}>{mode}</button>
           ))}
+          <ArticleUrl url={panelUrl} />
         </div>
         <div className="h-[calc(100vh-28px)]">
           {viewMode === 'iframe'
