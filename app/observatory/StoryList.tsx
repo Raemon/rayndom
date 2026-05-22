@@ -131,7 +131,7 @@ const HtmlSnippet = ({ html, expanded, onToggle }: {
       ref={ref}
       onClick={handleClick}
       style={{ maxHeight: maxH, transitionDuration: `${SNIPPET_TRANSITION_MS}ms` }}
-      className={`m-0 mt-1 text-[14px] text-[#444] leading-[1.4] overflow-hidden cursor-pointer break-words transition-[max-height] ease-in-out [&_a]:text-[#444] [&_a]:no-underline [&_p]:my-[0.7em] [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_pre]:overflow-hidden [&_img]:hidden ${faded ? '[mask-image:linear-gradient(to_bottom,black_70%,transparent)]' : ''}`}
+      className={`m-0 mt-1 text-[14px] text-[#444] leading-[1.4] overflow-hidden cursor-pointer break-words transition-[max-height] ease-in-out [&_a]:text-[#1f1f1f] [&_a]:underline [&_a]:underline-offset-2 [&_p]:my-[0.7em] [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_pre]:overflow-hidden [&_img]:hidden ${faded ? '[mask-image:linear-gradient(to_bottom,black_70%,transparent)]' : ''}`}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   )
