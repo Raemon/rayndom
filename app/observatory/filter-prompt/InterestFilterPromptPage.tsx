@@ -1,11 +1,12 @@
 'use client'
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { BubbleMenu } from '@tiptap/react/menus'
 import { marked } from 'marked'
 import TurndownService from 'turndown'
 import Link from 'next/link'
+import './filter-prompt.css'
 
 const turndown = new TurndownService({ headingStyle: 'atx', hr: '---', bulletListMarker: '-', codeBlockStyle: 'fenced' })
 
@@ -15,7 +16,6 @@ const InterestFilterPromptPage = () => {
   const [editing, setEditing] = useState(false)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
-  const contentRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     fetch('/api/observatory/prompt')
       .then(r => r.json())
@@ -96,26 +96,13 @@ const InterestFilterPromptPage = () => {
         <div>
           {loading && <div className="text-[13px] text-[#999]">Loading...</div>}
           {!loading && !editing && (
-            <div ref={contentRef} onDoubleClick={handleDoubleClick}
-              className="text-[14px] leading-[1.6] font-sans cursor-default
-                [&_h1]:text-[22px] [&_h1]:font-bold [&_h1]:mt-5 [&_h1]:mb-2
-                [&_h2]:text-[18px] [&_h2]:font-bold [&_h2]:mt-4 [&_h2]:mb-2
-                [&_h3]:text-[15px] [&_h3]:font-semibold [&_h3]:mt-3 [&_h3]:mb-1
-                [&_p]:my-2
-                [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-2
-                [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:my-2
-                [&_li]:my-0.5
-                [&_strong]:font-bold
-                [&_em]:italic
-                [&_hr]:my-4 [&_hr]:border-[#ccc]
-                [&_code]:bg-[#f0f0e8] [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-[13px] [&_code]:font-mono
-                [&_pre]:bg-[#f0f0e8] [&_pre]:p-3 [&_pre]:overflow-x-auto [&_pre]:my-2
-                [&_blockquote]:border-l-3 [&_blockquote]:border-[#ccc] [&_blockquote]:pl-3 [&_blockquote]:italic [&_blockquote]:text-[#666]"
+            <div onDoubleClick={handleDoubleClick}
+              className="prompt-prose font-sans cursor-default"
               dangerouslySetInnerHTML={{ __html: html }}
             />
           )}
           {!loading && editing && editor && (
-            <div className="text-[14px] font-sans tiptap">
+            <div className="prompt-prose font-sans">
               <BubbleMenu editor={editor}>
                 <div className="flex gap-1 bg-[#333] text-white px-1 py-0.5 text-xs">
                   <button onClick={() => editor.chain().focus().toggleBold().run()} className={`px-1 cursor-pointer border-0 bg-transparent text-white ${editor.isActive('bold') ? 'bg-[#555]' : ''}`}>B</button>
