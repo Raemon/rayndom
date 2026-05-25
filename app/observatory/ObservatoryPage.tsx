@@ -1,16 +1,9 @@
 'use client'
 import { useState } from 'react'
-import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import HackerNewsStoryGrid from './HackerNewsStoryGrid'
-import StoryTable from './StoryTable'
 import StoryList from './StoryList'
 import { StoryCard } from './hackerNewsTypes'
 import { Tab, TABS } from './constants'
-
-type ViewMode = 'grid' | 'table' | 'list'
-const VIEW_LABELS: Record<ViewMode, string> = { grid: 'Grid', table: 'Table', list: 'List' }
-const isViewMode = (v: string | null): v is ViewMode => v === 'grid' || v === 'table' || v === 'list'
 
 const labelForEndpoint = (endpoint: string) => endpoint.split('/').pop() ?? endpoint
 
@@ -50,22 +43,7 @@ const ActionButton = ({ endpoints, label, loadingLabel }: { endpoints: string[],
 
 const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard[] }) => {
   const currentTab = TABS.find(t => t.key === activeTab)!
-  const searchParams = useSearchParams()
-  const [viewMode, setViewModeState] = useState<ViewMode>(() => {
-    const v = searchParams.get('view')
-    return isViewMode(v) ? v : 'list'
-  })
-  const setViewMode = (mode: ViewMode) => {
-    setViewModeState(mode)
-    const params = new URLSearchParams(window.location.search)
-    if (mode === 'list') params.delete('view')
-    else params.set('view', mode)
-    const query = params.toString()
-    window.history.replaceState(null, '', query ? `${window.location.pathname}?${query}` : window.location.pathname)
-  }
-  const availableViews: ViewMode[] = ['grid', 'table', 'list']
-  const effectiveView: ViewMode = availableViews.includes(viewMode) ? viewMode : 'list'
-  const tabHref = (key: string) => viewMode === 'list' ? `/observatory/${key}` : `/observatory/${key}?view=${viewMode}`
+  const tabHref = (key: string) => `/observatory/${key}`
   return (
     <main className="light-page min-h-screen bg-[#fffff8] px-3 pt-[10px] pb-3 font-[Georgia,serif] text-[#1f1f1f]">
       <div className="max-w-[1500px] mt-[36px] pb-[36px] mb-[36px] mx-auto border-b-2 border-b-[#3f3f3f]">
@@ -78,16 +56,6 @@ const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard
             >{tab.label}</Link>
             ))}
           </div>
-          <div className="flex gap-3 items-baseline">
-            {availableViews.map(mode => (
-              <button
-                key={mode}
-                onClick={() => setViewMode(mode)}
-                className="text-[12px] bg-transparent border-0 cursor-pointer whitespace-nowrap p-0"
-                style={{ color: effectiveView === mode ? '#1f1f1f' : '#999', textDecoration: effectiveView === mode ? 'underline' : 'none', textUnderlineOffset: '4px' }}
-              >{VIEW_LABELS[mode]}</button>
-            ))}
-          </div>
           <ActionButton endpoints={['/api/observatory/fetch/hackernews', '/api/observatory/fetch/lw', '/api/observatory/fetch/arxiv']} label="Fetch Latest" loadingLabel="Fetching..." />
           <ActionButton endpoints={['/api/observatory/generate-foryou']} label="Generate For You" loadingLabel="Generating..." />
           <Link href="/observatory/filter-prompt" className="text-[12px] text-[#333] hover:text-[#1f1f1f] no-underline whitespace-nowrap">Filter Prompt</Link>
@@ -97,11 +65,7 @@ const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard
           <h3 className="m-0 text-[14px] uppercase leading-[1.25] font-medium tracking-[0.5px]">{currentTab.subtitle}</h3>
         </div>
       </div>
-      {effectiveView === 'table'
-        ? <div className="max-w-[1500px] mx-auto"><StoryTable key={activeTab} cards={cards} showRelevance={activeTab === 'foryou'} /></div>
-        : effectiveView === 'list'
-        ? <StoryList key={activeTab} cards={cards} showScore={activeTab === 'foryou'} />
-        : <HackerNewsStoryGrid key={activeTab} initialCards={cards} />}
+      <StoryList key={activeTab} cards={cards} showScore={activeTab === 'foryou'} />
     </main>
   )
 }
