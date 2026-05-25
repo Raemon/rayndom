@@ -198,9 +198,13 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
     })
   }
 
-  const sortedCards = useMemo(() => {
-    if (effectiveSortKey === 'default') return cards
-    return [...cards].sort((a, b) => {
+  // Group by import day (the pagination axis), newest day first so the order
+  // matches how stories load — the day order never changes with the sort. Each day
+  // loads atomically, so the active sort safely reorders entries *within* a day
+  // (no partial-data problem from sorting across not-yet-loaded days). Default
+  // keeps the server's rank order within each day.
+  const groups = useMemo(() => {
+    const compare = effectiveSortKey === 'default' ? null : (a: StoryCard, b: StoryCard) => {
       const av = sortValue(a, effectiveSortKey)
       const bv = sortValue(b, effectiveSortKey)
       if (av === bv) return 0
@@ -208,29 +212,25 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
       if (bv == null) return -1
       const cmp = av - bv
       return sortDir === 'desc' ? -cmp : cmp
-    })
-  }, [cards, effectiveSortKey, sortDir])
-
-  const groups = useMemo(() => {
-    if (effectiveSortKey !== 'default' && effectiveSortKey !== 'postedAt') {
-      return [{ key: 'all', label: null as string | null, cards: sortedCards }]
     }
     const map = new Map<string, StoryCard[]>()
-    for (const card of sortedCards) {
-      const key = dayKey(card.postedAt)
+    for (const card of cards) {
+      const key = dayKey(card.importedAt)
       const bucket = map.get(key) ?? []
       bucket.push(card)
       map.set(key, bucket)
     }
-    const dayDir = effectiveSortKey === 'postedAt' ? sortDir : 'desc'
     const sortedKeys = [...map.keys()].sort((a, b) => {
       if (a === 'undated') return 1
       if (b === 'undated') return -1
-      return dayDir === 'asc' ? a.localeCompare(b) : b.localeCompare(a)
+      return b.localeCompare(a)
     })
     const labelFor = buildDayLabeler()
-    return sortedKeys.map(key => ({ key, label: labelFor(key) as string | null, cards: map.get(key)! }))
-  }, [sortedCards, effectiveSortKey, sortDir])
+    return sortedKeys.map(key => {
+      const dayCards = map.get(key)!
+      return { key, label: labelFor(key) as string | null, cards: compare ? [...dayCards].sort(compare) : dayCards }
+    })
+  }, [cards, effectiveSortKey, sortDir])
 
   const gridCols = showScore ? 'grid-cols-[48px_1fr_180px_100px]' : 'grid-cols-[1fr_180px_100px]'
 

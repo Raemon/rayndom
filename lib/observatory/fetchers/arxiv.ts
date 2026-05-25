@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma'
 import { checkCanIframe } from './util'
 
 type StoryCard = {
-  id: number
+  id: string
   title: string
   url: string
   domain: string
@@ -42,7 +42,6 @@ const parseArxivXml = (xml: string): StoryCard[] => {
   const doc = new DOMParser().parseFromString(xml, 'text/xml')
   const entries = doc.querySelectorAll('entry')
   const cards: StoryCard[] = []
-  let index = 0
   for (const entry of entries) {
     const title = normalizeWhitespace(entry.querySelector('title')?.textContent ?? '')
     const abstractText = normalizeWhitespace(entry.querySelector('summary')?.textContent ?? '')
@@ -55,9 +54,9 @@ const parseArxivXml = (xml: string): StoryCard[] => {
       ? authorNames.join(', ')
       : `${authorNames.slice(0, 3).join(', ')} et al.`
     if (!title || !absLink) continue
-    index++
+    const arxivId = absLink.match(/\/abs\/(.+)$/)?.[1] ?? absLink
     cards.push({
-      id: index,
+      id: arxivId,
       title,
       url: absLink,
       domain: 'arxiv.org',
@@ -86,15 +85,16 @@ export const fetchArxiv = async () => {
     const batch = finalCards.slice(i, i + DB_BATCH)
     await Promise.all(batch.map((card, j) => {
       const rank = i + j
+      // rank is set only on create, so a story keeps its original front-page position.
       return prisma.story.upsert({
         where: { source_url: { source: SOURCE, url: card.url } },
-        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, postedAt: card.postedAt ?? null, fetchedAt },
+        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, postedAt: card.postedAt ?? null, fetchedAt },
         create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, postedAt: card.postedAt ?? null, fetchedAt },
       })
     }))
     console.log(`  DB: ${Math.min(i + DB_BATCH, finalCards.length)}/${finalCards.length}`)
   }
-  const currentUrls = finalCards.map(c => c.url)
-  await prisma.story.deleteMany({ where: { source: SOURCE, url: { notIn: currentUrls } } })
+  // Stories that fell off the front page are kept, not deleted — the observatory
+  // is an accumulating archive, browsed day-by-day on the page.
   console.log('Done!')
 }

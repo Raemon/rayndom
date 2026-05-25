@@ -1,5 +1,5 @@
 export type StoryCard = {
-  id: number
+  id: string
   title: string
   url: string
   domain: string

@@ -11,7 +11,7 @@ const FALLBACK_SNIPPET = 'No readable body text found for this URL.'
 const SOURCE = 'lw'
 
 type StoryCard = {
-  id: number
+  id: string
   title: string
   url: string
   domain: string
@@ -120,9 +120,9 @@ const fetchSnippetForPost = async (post: ParsedPost): Promise<{ snippet: string,
   }
 }
 
-const buildStoryCard = (post: ParsedPost, index: number): StoryCard => {
+const buildStoryCard = (post: ParsedPost): StoryCard => {
   return {
-    id: index + 1,
+    id: post.postId,
     title: post.title,
     url: `https://www.lesswrong.com/posts/${post.postId}/${post.slug}`,
     domain: 'lesswrong.com',
@@ -135,7 +135,7 @@ export const fetchLWNews = async () => {
   console.log(`Fetching top ${STORIES_TO_FETCH} LW posts via GreaterWrong...`)
   const posts = await fetchListingPages()
   console.log(`Got ${posts.length} posts. Building story cards...`)
-  const cards = posts.map((post, index) => buildStoryCard(post, index))
+  const cards = posts.map(post => buildStoryCard(post))
   console.log(`Fetching snippets (${SNIPPET_CONCURRENCY} at a time)...`)
   const hydratedCards: StoryCard[] = []
   for (let i = 0; i < posts.length; i += SNIPPET_CONCURRENCY) {
@@ -155,15 +155,16 @@ export const fetchLWNews = async () => {
     await Promise.all(batch.map((card, j) => {
       const rank = i + j
       const postedAt = posts[i + j]?.postedAt ?? null
+      // rank is set only on create, so a story keeps its original front-page position.
       return prisma.story.upsert({
         where: { source_url: { source: SOURCE, url: card.url } },
-        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: null, rank, postedAt, fetchedAt },
+        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: null, postedAt, fetchedAt },
         create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: null, rank, postedAt, fetchedAt },
       })
     }))
     console.log(`  DB: ${Math.min(i + DB_BATCH, hydratedCards.length)}/${hydratedCards.length}`)
   }
-  const currentUrls = hydratedCards.map(c => c.url)
-  await prisma.story.deleteMany({ where: { source: SOURCE, url: { notIn: currentUrls } } })
+  // Stories that fell off the front page are kept, not deleted — the observatory
+  // is an accumulating archive, browsed day-by-day on the page.
   console.log('Done!')
 }

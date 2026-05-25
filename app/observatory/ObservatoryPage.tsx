@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import StoryList from './StoryList'
 import { StoryCard } from './hackerNewsTypes'
@@ -41,9 +41,65 @@ const ActionButton = ({ endpoints, label, loadingLabel }: { endpoints: string[],
   )
 }
 
-const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard[] }) => {
+const ObservatoryPage = ({ activeTab, initialCards, initialCursor, initialHasMore }: {
+  activeTab: Tab
+  initialCards: StoryCard[]
+  initialCursor: string | null
+  initialHasMore: boolean
+}) => {
   const currentTab = TABS.find(t => t.key === activeTab)!
   const tabHref = (key: string) => `/observatory/${key}`
+
+  // Day-by-day infinite scroll: the server renders the most recent import-day,
+  // and each subsequent day is fetched as the sentinel near the bottom comes into
+  // view. State resets on tab change because the page keys this component by tab.
+  const [cards, setCards] = useState(initialCards)
+  const [cursor, setCursor] = useState(initialCursor)
+  const [hasMore, setHasMore] = useState(initialHasMore)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const sentinelRef = useRef<HTMLDivElement>(null)
+  // Synchronous in-flight guard: state updates are async, so two IntersectionObserver
+  // callbacks firing before `loading` commits would otherwise fetch the same day twice
+  // and append duplicates (duplicate React keys). The ref flips immediately.
+  const loadingRef = useRef(false)
+
+  // `auto` is true for scroll-triggered loads and false for an explicit retry click.
+  // Auto loads back off while an error is showing so a failing request can't be
+  // retried in a tight loop by the observer; the retry button passes auto=false to
+  // clear the error and try again.
+  const loadDay = useCallback(async (auto: boolean) => {
+    if (loadingRef.current || !hasMore || !cursor) return
+    if (auto && error) return
+    loadingRef.current = true
+    setLoading(true)
+    setError(null)
+    try {
+      const res = await fetch(`/api/observatory/stories?source=${encodeURIComponent(activeTab)}&before=${encodeURIComponent(cursor)}`)
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const data = await res.json() as { cards: StoryCard[], nextCursor: string | null, hasMore: boolean }
+      setCards(prev => [...prev, ...data.cards])
+      setCursor(data.nextCursor)
+      setHasMore(data.hasMore)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Failed to load earlier days')
+    } finally {
+      loadingRef.current = false
+      setLoading(false)
+    }
+  }, [hasMore, cursor, activeTab, error])
+
+  useEffect(() => {
+    const node = sentinelRef.current
+    if (!node) return
+    const observer = new IntersectionObserver(
+      entries => { if (entries[0]?.isIntersecting) loadDay(true) },
+      { rootMargin: '600px' },
+    )
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [loadDay])
+
   return (
     <main className="light-page min-h-screen bg-[#fffff8] px-3 pt-[10px] pb-3 font-[Georgia,serif] text-[#1f1f1f]">
       <div className="max-w-[1500px] mt-[36px] pb-[36px] mb-[36px] mx-auto border-b-2 border-b-[#3f3f3f]">
@@ -66,6 +122,14 @@ const ObservatoryPage = ({ activeTab, cards }:{ activeTab: Tab, cards: StoryCard
         </div>
       </div>
       <StoryList key={activeTab} cards={cards} showScore={activeTab === 'foryou'} />
+      {hasMore && <div ref={sentinelRef} className="h-px" />}
+      {loading && <p className="text-center text-[12px] text-[#999] font-sans py-4 m-0">Loading earlier days…</p>}
+      {error && (
+        <p className="text-center text-[12px] text-[#a33] font-sans py-4 m-0">
+          {error} ·{' '}
+          <button onClick={() => loadDay(false)} className="underline bg-transparent border-0 cursor-pointer text-[#a33] p-0">retry</button>
+        </p>
+      )}
     </main>
   )
 }

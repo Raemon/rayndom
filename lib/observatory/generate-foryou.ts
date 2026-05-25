@@ -21,9 +21,13 @@ type ScoredItem = { url: string, source: string, relevance: number, explanation:
 export const generateForYou = async () => {
   const prompt = fs.readFileSync(PROMPT_PATH, 'utf-8')
 
+  // Only curate the current front page. Stories now accumulate forever (old ones
+  // are no longer deleted), so scope to the freshest fetch — all rows from a run
+  // share one fetchedAt — to keep the prompt bounded.
   const stories = await prisma.story.findMany({
     where: { source: 'hackernews' }, // TODO: expand to lw + arxiv once page filter is removed
-    orderBy: { rank: 'asc' },
+    orderBy: [{ fetchedAt: 'desc' }, { rank: 'asc' }],
+    take: 100,
     select: { url: true, title: true, source: true, snippet: true },
   })
   console.log(`Loaded ${stories.length} stories from database`)
@@ -72,7 +76,7 @@ export const generateForYou = async () => {
     .sort((a, b) => b.relevance - a.relevance)
   console.log(`${relevant.length}/${scored.length} items scored >= ${MIN_RELEVANCE}`)
 
-  const allStories = await prisma.story.findMany({ select: { id: true, source: true, url: true } })
+  const allStories = await prisma.story.findMany({ where: { source: 'hackernews' }, select: { id: true, source: true, url: true } })
   const storyBySourceUrl = new Map(allStories.map(s => [`${s.source}:${s.url}`, s.id]))
 
   const rows: { storyId: number, reason: string, relevance: number, sortOrder: number }[] = []

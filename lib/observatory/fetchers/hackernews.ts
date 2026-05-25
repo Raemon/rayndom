@@ -13,7 +13,7 @@ type HackerNewsItem = {
 }
 
 type StoryCard = {
-  id: number
+  id: string
   title: string
   url: string
   domain: string
@@ -103,7 +103,7 @@ const buildStoryCard = (item: HackerNewsItem): StoryCard | null => {
   const commentsCount = item.descendants ?? 0
   const score = item.score ?? 0
   return {
-    id: item.id,
+    id: String(item.id),
     title: item.title,
     url: item.url,
     domain: getStoryUrlDomain(item.url),
@@ -148,15 +148,16 @@ export const fetchHackerNews = async () => {
     await Promise.all(batch.map((card, j) => {
       const rank = i + j
       const postedAt = cardsWithMeta[i + j].postedAt
+      // rank is set only on create, so a story keeps its original front-page position.
       return prisma.story.upsert({
         where: { source_url: { source: SOURCE, url: card.url } },
-        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, postedAt, fetchedAt },
+        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, postedAt, fetchedAt },
         create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, postedAt, fetchedAt },
       })
     }))
     console.log(`  DB: ${Math.min(i + DB_BATCH, hydratedCards.length)}/${hydratedCards.length}`)
   }
-  const currentUrls = hydratedCards.map(c => c.url)
-  await prisma.story.deleteMany({ where: { source: SOURCE, url: { notIn: currentUrls } } })
+  // Stories that fell off the front page are kept, not deleted — the observatory
+  // is an accumulating archive, browsed day-by-day on the page.
   console.log('Done!')
 }

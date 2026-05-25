@@ -143,7 +143,7 @@ model Prompt {
 model Story {
   id          Int          @id @default(autoincrement())
   source      String
-  externalId  Int          @map("external_id")
+  externalId  String       @map("external_id")
   title       String
   url         String
   domain      String
@@ -158,6 +158,7 @@ model Story {
   forYouItems ForYouItem[]
 
   @@unique([source, url])
+  @@index([source, createdAt])
   @@map("stories")
 }
 
