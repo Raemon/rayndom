@@ -3,7 +3,10 @@
 import { useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { StoryCard } from './hackerNewsTypes'
+import { MIN_RELEVANCE } from './constants'
 import { StoryPanel, useStoryPanel } from './StoryPanel'
+
+const isHidden = (card: StoryCard) => card.relevance != null && card.relevance < MIN_RELEVANCE
 
 const extractPoints = (card: StoryCard): number | null => {
   const match = card.byline.match(/^(-?\d+)\s+points?/i)
@@ -171,6 +174,16 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
     return isSortDir(v) ? v : 'desc'
   })
   const [overrides, setOverrides] = useState<Set<string>>(new Set())
+  const [expandedHidden, setExpandedHidden] = useState<Set<string>>(new Set())
+
+  const toggleHidden = (key: string) => {
+    setExpandedHidden(prev => {
+      const next = new Set(prev)
+      if (next.has(key)) next.delete(key)
+      else next.add(key)
+      return next
+    })
+  }
 
   const effectiveSortKey: SortKey = availableSortKeys.includes(sortKey) ? sortKey : 'default'
 
@@ -228,7 +241,14 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
     const labelFor = buildDayLabeler()
     return sortedKeys.map(key => {
       const dayCards = map.get(key)!
-      return { key, label: labelFor(key) as string | null, cards: compare ? [...dayCards].sort(compare) : dayCards }
+      const sorted = compare ? [...dayCards].sort(compare) : dayCards
+      // Hidden cards (foryou items below the relevance threshold) are kept in a
+      // separate bucket so the day's batch shows only high-scoring stories by
+      // default; the user can click the footer to append the rest below.
+      const visible: StoryCard[] = []
+      const hidden: StoryCard[] = []
+      for (const card of sorted) (isHidden(card) ? hidden : visible).push(card)
+      return { key, label: labelFor(key) as string | null, visible, hidden }
     })
   }, [cards, effectiveSortKey, sortDir])
 
@@ -269,58 +289,70 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
             ))}
           </div>
         </div>
-        {groups.map(group => (
-          <section key={group.key} className="mb-8">
-            {group.label && (
-              <h2 className="font-sans text-[11px] uppercase tracking-[1px] text-[#999] border-b border-[#ddd] pb-1 mb-2 mt-0">{group.label}</h2>
-            )}
-            {group.cards.map(card => {
-              const score = showScore ? extractScore(card) : null
-              const isOverridden = overrides.has(card.url)
-              // In HTML mode, clicking expands the snippet to full height; in
-              // two-line mode it reveals the (still-capped) HTML preview.
-              const showHtml = !!card.snippetHtml && (snippetMode === 'html' || isOverridden)
-              const expanded = snippetMode === 'html' && isOverridden
-              return (
-                <article key={card.url} className={`grid ${gridCols} gap-x-4 py-3 border-b border-[#eee] items-baseline`}>
-                  {showScore && (
-                    <div className="relative group text-[18px] text-[#666] font-sans tabular-nums text-right pt-1">
-                      {score ?? ''}
-                      {card.reason && (
-                        <div className="hidden group-hover:block absolute left-full top-0 ml-2 z-10 w-[280px] p-2 bg-white border border-[#ddd] shadow-md text-left text-[12px] font-[Georgia,serif] italic text-[#8b6914] leading-[1.4] normal-nums">{card.reason}</div>
-                      )}
-                    </div>
-                  )}
-                  <div className="min-w-0">
-                    <a
-                      href={card.url}
-                      onClick={(e) => { e.preventDefault(); panel.openPanel(card.url, card.iframe === false) }}
-                      className="text-[16px] leading-[1.3] text-[#1f1f1f] hover:text-[#555] no-underline hover:underline cursor-pointer"
-                    >{card.title}</a>
-                    {card.snippet && (
-                      showHtml ? (
-                        <HtmlSnippet
-                          html={card.snippetHtml!}
-                          expanded={expanded}
-                          onToggle={() => toggleOverride(card.url)}
-                        />
-                      ) : card.snippetHtml ? (
-                        <p
-                          onClick={() => toggleOverride(card.url)}
-                          className="m-0 mt-1 text-[13px] text-[#666] leading-[1.4] line-clamp-2 cursor-pointer"
-                        >{card.snippet}</p>
-                      ) : (
-                        <p className="m-0 mt-1 text-[13px] text-[#666] leading-[1.4] line-clamp-2">{card.snippet}</p>
-                      )
+        {groups.map(group => {
+          const renderCard = (card: StoryCard) => {
+            const score = showScore ? extractScore(card) : null
+            const isOverridden = overrides.has(card.url)
+            // In HTML mode, clicking expands the snippet to full height; in
+            // two-line mode it reveals the (still-capped) HTML preview.
+            const showHtml = !!card.snippetHtml && (snippetMode === 'html' || isOverridden)
+            const expanded = snippetMode === 'html' && isOverridden
+            return (
+              <article key={card.url} className={`grid ${gridCols} gap-x-4 py-3 border-b border-[#eee] items-baseline`}>
+                {showScore && (
+                  <div className="relative group text-[18px] text-[#666] font-sans tabular-nums text-right pt-1">
+                    {score ?? ''}
+                    {card.reason && (
+                      <div className="hidden group-hover:block absolute left-full top-0 ml-2 z-10 w-[280px] p-2 bg-white border border-[#ddd] shadow-md text-left text-[12px] font-[Georgia,serif] italic text-[#8b6914] leading-[1.4] normal-nums">{card.reason}</div>
                     )}
                   </div>
-                  <div className="text-[12px] text-[#999] italic text-right pt-1">{card.byline}</div>
-                  <div className="text-[12px] text-[#999] text-right pt-1 whitespace-nowrap">{formatImported(card.importedAt)}</div>
-                </article>
-              )
-            })}
-          </section>
-        ))}
+                )}
+                <div className="min-w-0">
+                  <a
+                    href={card.url}
+                    onClick={(e) => { e.preventDefault(); panel.openPanel(card.url, card.iframe === false) }}
+                    className="text-[16px] leading-[1.3] text-[#1f1f1f] hover:text-[#555] no-underline hover:underline cursor-pointer"
+                  >{card.title}</a>
+                  {card.snippet && (
+                    showHtml ? (
+                      <HtmlSnippet
+                        html={card.snippetHtml!}
+                        expanded={expanded}
+                        onToggle={() => toggleOverride(card.url)}
+                      />
+                    ) : card.snippetHtml ? (
+                      <p
+                        onClick={() => toggleOverride(card.url)}
+                        className="m-0 mt-1 text-[13px] text-[#666] leading-[1.4] line-clamp-2 cursor-pointer"
+                      >{card.snippet}</p>
+                    ) : (
+                      <p className="m-0 mt-1 text-[13px] text-[#666] leading-[1.4] line-clamp-2">{card.snippet}</p>
+                    )
+                  )}
+                </div>
+                <div className="text-[12px] text-[#999] italic text-right pt-1">{card.byline}</div>
+                <div className="text-[12px] text-[#999] text-right pt-1 whitespace-nowrap">{formatImported(card.importedAt)}</div>
+              </article>
+            )
+          }
+          const hiddenExpanded = expandedHidden.has(group.key)
+          return (
+            <section key={group.key} className="mb-8">
+              {group.label && (
+                <h2 className="font-sans text-[11px] uppercase tracking-[1px] text-[#999] border-b border-[#ddd] pb-1 mb-2 mt-0">{group.label}</h2>
+              )}
+              {group.visible.map(renderCard)}
+              {hiddenExpanded && group.hidden.map(renderCard)}
+              {group.hidden.length > 0 && (
+                <button
+                  onClick={() => toggleHidden(group.key)}
+                  style={{ fontSize: '11px', color: '#999', fontWeight: 600 }}
+                  className="block w-full font-sans uppercase tracking-[1px] bg-transparent border-0 cursor-pointer p-0 mt-2 text-left"
+                >{hiddenExpanded ? `Hide ${group.hidden.length} again` : `${group.hidden.length} hidden`}</button>
+              )}
+            </section>
+          )
+        })}
       </div>
     </>
   )

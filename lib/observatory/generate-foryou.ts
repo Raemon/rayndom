@@ -2,10 +2,10 @@ import * as fs from 'fs'
 import * as path from 'path'
 import OpenAI from 'openai'
 import { prisma } from '@/lib/prisma'
+import { MIN_RELEVANCE } from '@/app/observatory/constants'
 
 const PROMPT_PATH = path.resolve(process.cwd(), 'scripts/interestFilterPrompt.md')
 const MODEL = 'anthropic/claude-sonnet-4'
-const MIN_RELEVANCE = 2
 
 const SOURCE_TO_PROMPT: Record<string, string> = { hackernews: 'hackernews', lw: 'lesswrong', arxiv: 'arxiv' }
 const PROMPT_TO_SOURCE: Record<string, string> = { hackernews: 'hackernews', lesswrong: 'lw', arxiv: 'arxiv' }
@@ -71,17 +71,19 @@ export const generateForYou = async () => {
       console.log(`  Skipping unparseable block (${block.length} chars)`)
     }
   }
-  const relevant = scored
-    .filter(item => item.relevance >= MIN_RELEVANCE)
-    .sort((a, b) => b.relevance - a.relevance)
-  console.log(`${relevant.length}/${scored.length} items scored >= ${MIN_RELEVANCE}`)
+  // Store every scored item (not just the high-scoring ones) so the UI can offer
+  // a "n hidden" reveal — the display cutoff lives in MIN_RELEVANCE
+  // (app/observatory/constants.ts) and is applied at render time.
+  const sorted = scored.sort((a, b) => b.relevance - a.relevance)
+  const aboveThreshold = sorted.filter(s => s.relevance >= MIN_RELEVANCE).length
+  console.log(`Scored ${scored.length} items (${aboveThreshold} above display threshold of ${MIN_RELEVANCE})`)
 
   const allStories = await prisma.story.findMany({ where: { source: 'hackernews' }, select: { id: true, source: true, url: true } })
   const storyBySourceUrl = new Map(allStories.map(s => [`${s.source}:${s.url}`, s.id]))
 
   const rows: { storyId: number, reason: string, relevance: number, sortOrder: number }[] = []
-  for (let i = 0; i < relevant.length; i++) {
-    const item = relevant[i]
+  for (let i = 0; i < sorted.length; i++) {
+    const item = sorted[i]
     const source = PROMPT_TO_SOURCE[item.source] ?? item.source
     const storyId = storyBySourceUrl.get(`${source}:${item.url}`)
     if (!storyId) { console.log(`  Story not found: [${source}] ${item.url}`); continue }
