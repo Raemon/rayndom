@@ -29,7 +29,15 @@ export async function POST(request: NextRequest) {
   const llmPredicted = body?.llmPredicted ?? false
   const approved = body?.approved ?? true
   if (!tagId || !datetime) return NextResponse.json({ error: 'Missing tagId or datetime' }, { status: 400 })
-  const tagInstance = await prisma.tagInstance.create({ data: { tagId: Number(tagId), datetime: new Date(datetime), llmPredicted, approved }, include: { tag: { include: { parentTag: true } } } })
+  // Upsert so repeat clicks (or clicks on a tag that was already LLM-suggested
+  // at this datetime) are idempotent. A manual click is an explicit assertion
+  // the tag applies, so override llmPredicted/approved on the existing row.
+  const tagInstance = await prisma.tagInstance.upsert({
+    where: { tagId_datetime: { tagId: Number(tagId), datetime: new Date(datetime) } },
+    create: { tagId: Number(tagId), datetime: new Date(datetime), llmPredicted, approved },
+    update: { llmPredicted, approved },
+    include: { tag: { include: { parentTag: true } } },
+  })
   return NextResponse.json({ tagInstance })
 }
 

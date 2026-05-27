@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
         if (!name) continue
         const tag = await prisma.tag.upsert({ where: { name_type: { name, type } }, create: { name, type }, update: {} })
         if (tag) createdTags += 0
-        await prisma.tagInstance.create({ data: { tagId: tag.id, datetime: dt } })
+        await prisma.tagInstance.upsert({ where: { tagId_datetime: { tagId: tag.id, datetime: dt } }, create: { tagId: tag.id, datetime: dt }, update: {} })
         createdInstances += 1
       }
     }

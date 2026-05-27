@@ -179,17 +179,17 @@ export async function POST(request: NextRequest) {
         console.log('[predict-tags] Tag not found:', pred.type, pred.name)
         continue
       }
-      // Check if this tag already exists for the previous timeblock
-      const existing = await prisma.tagInstance.findFirst({ where: { tagId: tag.id, datetime: prevBlockDatetime } })
-      if (existing) {
-        console.log('[predict-tags] Tag instance already exists:', pred.type, pred.name)
-        continue
-      }
-      const tagInstance = await prisma.tagInstance.create({
-        data: { tagId: tag.id, datetime: prevBlockDatetime, llmPredicted: true, approved: false, llmReason: pred.reason || null },
+      // Upsert keyed on (tag, datetime) so two concurrent predict-tags calls
+      // for the same timeblock can't both pass a findFirst check and then both
+      // insert. If a manually-approved instance already exists, leave it alone
+      // (only fill in llmReason/llmPredicted, never override user intent).
+      const tagInstance = await prisma.tagInstance.upsert({
+        where: { tagId_datetime: { tagId: tag.id, datetime: prevBlockDatetime } },
+        create: { tagId: tag.id, datetime: prevBlockDatetime, llmPredicted: true, approved: false, llmReason: pred.reason || null },
+        update: { llmReason: pred.reason || null, llmPredicted: true },
         include: { tag: { include: { parentTag: true } } }
       })
-      console.log('[predict-tags] Created tag instance:', pred.type, pred.name, '(id:', tagInstance.id, ')')
+      console.log('[predict-tags] Upserted tag instance:', pred.type, pred.name, '(id:', tagInstance.id, ')')
       createdInstances.push(tagInstance)
     }
     console.log('[predict-tags] Done. Created', createdInstances.length, 'tag instances')

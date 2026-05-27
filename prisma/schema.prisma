@@ -99,6 +99,7 @@ model TagInstance {
   user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
 
+  @@unique([tagId, datetime])
   @@index([userId, datetime])
   @@map("tag_instances")
 }

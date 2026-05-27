@@ -70,9 +70,11 @@ async function main() {
           update: {}
         })
         createdTags += 1
-        // Create tag instance for this datetime
-        await prisma.tagInstance.create({
-          data: { tagId: tag.id, datetime: dt }
+        // Upsert so re-running the importer doesn't double-insert.
+        await prisma.tagInstance.upsert({
+          where: { tagId_datetime: { tagId: tag.id, datetime: dt } },
+          create: { tagId: tag.id, datetime: dt },
+          update: {},
         })
         createdInstances += 1
       }

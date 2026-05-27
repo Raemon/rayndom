@@ -15,7 +15,6 @@
     "electron:logging:dev:watch": "concurrently -k -n TSC,ELECTRON \"npm run electron:compile:watch\" \"electronmon electron-dist/app/logging/electron/main.js\"",
     "electron:logging:build": "rm -rf electron-resources && npm run build && npm run electron:compile && npm run electron:prepare-next",
     "electron:logging:dist": "npm run electron:logging:build && electron-builder --config app/logging/electron-builder.json --mac",
-    "migrate": "tsx scripts/migrate.ts",
     "fetch-hn": "tsx scripts/fetchHackerNews.ts",
     "fetch-lw": "tsx scripts/fetchLWNews.ts",
     "fetch-arxiv": "tsx scripts/fetchArxiv.ts",
