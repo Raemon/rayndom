@@ -141,21 +141,25 @@ model Prompt {
 }
 
 model Story {
-  id          Int          @id @default(autoincrement())
-  source      String
-  externalId  String       @map("external_id")
-  title       String
-  url         String
-  domain      String
-  byline      String
-  snippet     String
-  snippetHtml String?      @map("snippet_html")
-  iframe      Boolean?
-  rank        Int          @default(0)
-  postedAt    DateTime?    @map("posted_at") @db.Timestamptz
-  fetchedAt   DateTime     @map("fetched_at") @db.Timestamptz
-  createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamptz
-  forYouItems ForYouItem[]
+  id           Int          @id @default(autoincrement())
+  source       String
+  externalId   String       @map("external_id")
+  title        String
+  url          String
+  domain       String
+  // Used only by sources without structured points/comments (arxiv: "Author · Date").
+  // HN/LW leave this null and render from points/commentCount.
+  byline       String?
+  points       Int?
+  commentCount Int?         @map("comment_count")
+  snippet      String
+  snippetHtml  String?      @map("snippet_html")
+  iframe       Boolean?
+  rank         Int          @default(0)
+  postedAt     DateTime?    @map("posted_at") @db.Timestamptz
+  fetchedAt    DateTime     @map("fetched_at") @db.Timestamptz
+  createdAt    DateTime     @default(now()) @map("created_at") @db.Timestamptz
+  forYouItems  ForYouItem[]
 
   @@unique([source, url])
   @@index([source, createdAt])

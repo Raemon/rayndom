@@ -8,27 +8,21 @@ import { StoryPanel, useStoryPanel } from './StoryPanel'
 
 const isHidden = (card: StoryCard) => card.relevance != null && card.relevance < MIN_RELEVANCE
 
-const extractPoints = (card: StoryCard): number | null => {
-  const match = card.byline.match(/^(-?\d+)\s+points?/i)
-  return match ? parseInt(match[1], 10) : null
-}
-
-const extractScore = (card: StoryCard): number | null => {
+const displayScore = (card: StoryCard): number | null => {
   if (card.relevance != null) return card.relevance
-  return extractPoints(card)
+  return card.points
 }
 
-// HN's public ranking formula applied generically to any source with a points
-// byline (HN, LW). Real HN folds in penalty factors we don't have; LW's actual
-// ranking is different again — this is a reasonable "fresh + popular" proxy.
+// HN's public ranking formula applied generically to any source with points (HN,
+// LW). Real HN folds in penalty factors we don't have; LW's actual ranking is
+// different again — this is a reasonable "fresh + popular" proxy.
 const siteAlgorithmScore = (card: StoryCard): number | null => {
-  const points = extractPoints(card)
-  if (points == null || !card.postedAt) return null
+  if (card.points == null || !card.postedAt) return null
   const t = new Date(card.postedAt).getTime()
   if (Number.isNaN(t)) return null
   const ageHours = (Date.now() - t) / 3_600_000
   if (ageHours < 0) return null
-  return (points - 1) / Math.pow(ageHours + 2, 1.8)
+  return (card.points - 1) / Math.pow(ageHours + 2, 1.8)
 }
 
 const dayKey = (iso: string | undefined): string => {
@@ -74,7 +68,7 @@ const SNIPPET_LABELS: Record<SnippetMode, string> = { html: 'HTML', twoLine: 'Tw
 
 const sortValue = (card: StoryCard, key: SortKey): number | null => {
   if (key === 'relevance') return card.relevance ?? null
-  if (key === 'points') return extractPoints(card)
+  if (key === 'points') return card.points
   if (key === 'siteAlgorithm') return siteAlgorithmScore(card)
   if (key === 'postedAt') {
     if (!card.postedAt) return null
@@ -155,11 +149,19 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
   const availableSortKeys = useMemo<SortKey[]>(() => {
     const keys: SortKey[] = ['default']
     if (cards.some(c => c.relevance != null)) keys.push('relevance')
-    if (cards.some(c => extractPoints(c) != null)) keys.push('points')
-    if (cards.some(c => extractPoints(c) != null && c.postedAt)) keys.push('siteAlgorithm')
+    if (cards.some(c => c.points != null)) keys.push('points')
+    if (cards.some(c => c.points != null && c.postedAt)) keys.push('siteAlgorithm')
     if (cards.some(c => c.postedAt)) keys.push('postedAt')
     return keys
   }, [cards])
+
+  // Use the wider single-byline column only when no card has points/comments to
+  // show — i.e., a pure-arxiv listing. Foryou mixes sources, so a single arxiv
+  // card causes the split layout, and that card renders its byline col-spanned.
+  const splitByline = useMemo(
+    () => cards.some(c => c.points != null || c.commentCount != null),
+    [cards],
+  )
 
   const [snippetMode, setSnippetModeState] = useState<SnippetMode>(() => {
     const v = searchParams.get('snippet')
@@ -252,7 +254,10 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
     })
   }, [cards, effectiveSortKey, sortDir])
 
-  const gridCols = showScore ? 'grid-cols-[48px_1fr_180px_100px]' : 'grid-cols-[1fr_180px_100px]'
+  // Tailwind JIT only picks up full literal class strings, so each variant is spelled out.
+  const gridCols = showScore
+    ? (splitByline ? 'grid-cols-[48px_1fr_70px_90px_100px]' : 'grid-cols-[48px_1fr_180px_100px]')
+    : (splitByline ? 'grid-cols-[1fr_70px_90px_100px]' : 'grid-cols-[1fr_180px_100px]')
 
   return (
     <>
@@ -291,7 +296,7 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
         </div>
         {groups.map(group => {
           const renderCard = (card: StoryCard) => {
-            const score = showScore ? extractScore(card) : null
+            const score = showScore ? displayScore(card) : null
             const isOverridden = overrides.has(card.url)
             // In HTML mode, clicking expands the snippet to full height; in
             // two-line mode it reveals the (still-capped) HTML preview.
@@ -330,7 +335,20 @@ const StoryList = ({ cards, showScore }: { cards: StoryCard[], showScore: boolea
                     )
                   )}
                 </div>
-                <div className="text-[12px] text-[#999] italic text-right pt-1">{card.byline}</div>
+                {splitByline ? (
+                  card.points != null || card.commentCount != null ? (
+                    <>
+                      <div className="text-[12px] text-[#999] italic text-right pt-1 whitespace-nowrap">{card.points != null ? `${card.points} ${card.points === 1 ? 'point' : 'points'}` : ''}</div>
+                      <div className="text-[12px] text-[#999] italic text-right pt-1 whitespace-nowrap">{card.commentCount != null ? `${card.commentCount} ${card.commentCount === 1 ? 'comment' : 'comments'}` : ''}</div>
+                    </>
+                  ) : (
+                    // arxiv card in a foryou-style mixed listing: fall back to the
+                    // free-text byline spanning both number columns.
+                    <div className="col-span-2 text-[12px] text-[#999] italic text-right pt-1">{card.byline}</div>
+                  )
+                ) : (
+                  <div className="text-[12px] text-[#999] italic text-right pt-1">{card.byline}</div>
+                )}
                 <div className="text-[12px] text-[#999] text-right pt-1 whitespace-nowrap">{formatImported(card.importedAt)}</div>
               </article>
             )

@@ -17,7 +17,8 @@ type StoryCard = {
   title: string
   url: string
   domain: string
-  byline: string
+  points: number
+  commentCount: number
   snippet: string
   snippetHtml?: string
   iframe?: boolean
@@ -107,7 +108,8 @@ const buildStoryCard = (item: HackerNewsItem): StoryCard | null => {
     title: item.title,
     url: item.url,
     domain: getStoryUrlDomain(item.url),
-    byline: `${score} points, ${commentsCount} comments`,
+    points: score,
+    commentCount: commentsCount,
     snippet: '',
   }
 }
@@ -151,8 +153,8 @@ export const fetchHackerNews = async () => {
       // rank is set only on create, so a story keeps its original front-page position.
       return prisma.story.upsert({
         where: { source_url: { source: SOURCE, url: card.url } },
-        update: { externalId: card.id, title: card.title, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, postedAt, fetchedAt },
-        create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, byline: card.byline, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, postedAt, fetchedAt },
+        update: { externalId: card.id, title: card.title, domain: card.domain, points: card.points, commentCount: card.commentCount, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, postedAt, fetchedAt },
+        create: { source: SOURCE, externalId: card.id, title: card.title, url: card.url, domain: card.domain, points: card.points, commentCount: card.commentCount, snippet: card.snippet, snippetHtml: card.snippetHtml ?? null, iframe: card.iframe ?? null, rank, postedAt, fetchedAt },
       })
     }))
     console.log(`  DB: ${Math.min(i + DB_BATCH, hydratedCards.length)}/${hydratedCards.length}`)

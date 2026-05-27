@@ -12,6 +12,8 @@ export const storyToCard = (story: Story): StoryCard => ({
   url: story.url,
   domain: story.domain,
   byline: story.byline,
+  points: story.points,
+  commentCount: story.commentCount,
   snippet: story.snippet,
   snippetHtml: story.snippetHtml ?? undefined,
   iframe: story.iframe ?? undefined,

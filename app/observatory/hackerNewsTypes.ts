@@ -3,7 +3,9 @@ export type StoryCard = {
   title: string
   url: string
   domain: string
-  byline: string
+  byline: string | null
+  points: number | null
+  commentCount: number | null
   snippet: string
   snippetHtml?: string
   reason?: string
