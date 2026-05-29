@@ -186,7 +186,7 @@ const LoggingZenInner = () => {
           timeLabel={currentTimeStr}
           ensureTimeblock={ensureCurrentTimeblock}
           onPatchTimeblockDebounced={patchTimeblockDebounced}
-          minHeight={`calc(100vh - ${LOGGING_HEADER_OFFSET} - 32px)`}
+          minHeight="50vh"
           datetime={currentBlockDatetime}
           tagTypes={tagTypes}
           tagInstancesByType={getTagInstancesByType(currentBlockDatetime)}

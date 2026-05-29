@@ -8,8 +8,8 @@ import AuthGate from './auth/AuthGate'
 import { LOGGING_HEADER_OFFSET } from './layoutConstants'
 
 const navLinks = [
-  { href: '/logging', label: 'Timer' },
-  { href: '/logging/zen', label: 'Zen' },
+  { href: '/logging', label: 'Zen' },
+  { href: '/logging/table', label: 'Table' },
   { href: '/logging/sidebar', label: 'Sidebar' },
   { href: '/logging/tags', label: 'Tags' },
   { href: '/logging/commands', label: 'Commands' },
@@ -18,7 +18,7 @@ const navLinks = [
 
 const LoggingLayoutClient = ({ children }:{ children: React.ReactNode }) => {
   const pathname = usePathname()
-  const showHeaderTimer = pathname === '/logging' || pathname === '/logging/zen' || pathname === '/logging/sidebar'
+  const showHeaderTimer = pathname === '/logging' || pathname === '/logging/table' || pathname === '/logging/sidebar'
   return (
     <AuthProvider>
       <div>

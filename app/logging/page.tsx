@@ -1,5 +1,5 @@
-import TimerPage from './timer/TimerPage'
+import LoggingZen from './timer/LoggingZen'
 
 export default function Page() {
-  return <TimerPage />
+  return <LoggingZen />
 }

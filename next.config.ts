@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
     '/api/cron/observatory-daily': ['./scripts/interestFilterPrompt.md'],
     '/api/observatory/generate-foryou': ['./scripts/interestFilterPrompt.md'],
   },
+  async redirects() {
+    return [
+      { source: '/logging/zen', destination: '/logging', permanent: false },
+    ]
+  },
 };
 
 export default nextConfig;
