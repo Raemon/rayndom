@@ -57,7 +57,7 @@ export const extractOutstandingNotesTasks = (timeblocks: Timeblock[]): NotesTask
   if (typeof window === 'undefined') return []
   const tasks: NotesTaskItem[] = []
   const parser = new DOMParser()
-  const noteFields = ['rayNotes', 'assistantNotes'] as const
+  const noteFields = ['rayNotes'] as const
   for (const tb of timeblocks) {
     for (const field of noteFields) {
       if (!tb[field]) continue

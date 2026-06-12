@@ -6,10 +6,13 @@ import { extractNotesTasksAndLinks, toggleTaskInHtml, type NotesTaskItem } from 
 
 const CollapsedNotesSummary = ({ timeblocks, onPatchTimeblockDebounced }: {
   timeblocks: Timeblock[],
-  onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, debounceMs?: number }) => void,
+  onPatchTimeblockDebounced: (args: { id: number, rayNotes?: string | null, assistantNotes?: string | null, debounceMs?: number }) => void,
 }) => {
   const [checkedKeys, setCheckedKeys] = useState(() => new Set<string>())
+  const [showAssistant, setShowAssistant] = useState(false)
   const { tasks, fatebookLinks } = useMemo(() => extractNotesTasksAndLinks(timeblocks, checkedKeys), [timeblocks, checkedKeys])
+  const notesTasks = useMemo(() => tasks.filter(t => t.source === 'rayNotes'), [tasks])
+  const assistantTasks = useMemo(() => tasks.filter(t => t.source === 'assistantNotes'), [tasks])
 
   if (tasks.length === 0 && fatebookLinks.length === 0) return null
   
@@ -31,9 +34,22 @@ const CollapsedNotesSummary = ({ timeblocks, onPatchTimeblockDebounced }: {
   
   return (
     <div className="text-xs text-gray-200 mt-4 flex flex-col gap-2">
-      {tasks.map((task) => (
+      {notesTasks.map((task) => (
         <NotesTaskCheckbox key={`${task.timeblockId}:${task.text}`} checked={task.checked} text={task.text} onToggle={() => handleToggleTask(task)} />
       ))}
+      {assistantTasks.length > 0 && (
+        <>
+          <button
+            className="self-start text-gray-400 hover:text-gray-200"
+            onClick={e => { e.stopPropagation(); setShowAssistant(prev => !prev) }}
+          >
+            {showAssistant ? '▼' : '▶'} Assistant ({assistantTasks.length})
+          </button>
+          {showAssistant && assistantTasks.map((task) => (
+            <NotesTaskCheckbox key={`${task.timeblockId}:${task.text}`} checked={task.checked} text={task.text} onToggle={() => handleToggleTask(task)} className="ml-3" />
+          ))}
+        </>
+      )}
       {fatebookLinks.map((link) => (
         <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="block truncate text-blue-200 hover:text-blue-100 text-sm" onClick={e => e.stopPropagation()}>
           {link.text}
