@@ -1,6 +1,7 @@
 'use client'
-import { memo, useMemo, useState, useEffect } from 'react'
+import { memo, useMemo, useState, useEffect, useCallback } from 'react'
 import TimeBlockRow from './TimeBlockRow'
+import ZenRow from '../zen/ZenRow'
 import CollapsedSummary from './CollapsedSummary'
 import { useCollapsedTagCounts } from './useCollapsedTagCounts'
 import { useTags } from '../tags/TagsContext'
@@ -130,6 +131,33 @@ const DaySection = memo(({ dayKey, day, isCollapsed, zen, onToggleCollapsed, day
     return autoCollapsed
   }, [sections, dayStart, currentSlotMs])
 
+  // Collapsed sections show only filled slots; expanded sections show every slot.
+  const slotHasContent = useCallback((slotStart: Date) => {
+    const slotMs = slotStart.getTime()
+    const tb = slotToTimeblock.get(slotMs)
+    const hasNotes = tb && (tb.rayNotes || tb.assistantNotes || tb.aiNotes)
+    const hasTagInstances = tagTypes.some(type => (slotKeyToTagInstances.get(`${slotMs}:${type}`) || []).length > 0)
+    return hasNotes || hasTagInstances
+  }, [slotToTimeblock, tagTypes, slotKeyToTagInstances])
+
+  const tagInstancesByTypeForSlot = (slotMs: number) => Object.fromEntries(
+    tagTypes.map(type => [type, slotKeyToTagInstances.get(`${slotMs}:${type}`) || []])
+  )
+
+  // Shared per-section view model so the table and zen layouts select identical slots, differing
+  // only in the row component. Excludes allTagInstances so the 5s poll doesn't recompute it.
+  const sectionViews = useMemo(() => sections.map(section => {
+    const slotsInSection = visibleSlots.filter(slotStart => {
+      const slotMinutes = slotStart.getHours() * 60 + slotStart.getMinutes()
+      return slotMinutes >= section.startMinutes && slotMinutes <= section.endMinutes
+    })
+    const isSectionCollapsed = sectionOverrides[section.key] ?? sectionAutoCollapsed[section.key]
+    const filledSlots = slotsInSection.filter(slotHasContent)
+    return { section, isSectionCollapsed, slotsInSection, filledSlots }
+  }), [sections, visibleSlots, sectionOverrides, sectionAutoCollapsed, slotHasContent])
+  const toggleSection = (key: string, isSectionCollapsed: boolean) =>
+    setSectionOverrides(prev => ({ ...prev, [key]: !isSectionCollapsed }))
+
   return (
     <div className={`border-b border-gray-200 px-4 pb-3 ${isCollapsed ? 'bg-white/10' : ''}`}>
       {isCollapsed ? (
@@ -150,7 +178,39 @@ const DaySection = memo(({ dayKey, day, isCollapsed, zen, onToggleCollapsed, day
           <div className="font-semibold">▼ <span className="text-2xl">{formatDayLabel(day)}</span></div>
         </button>
       )}
-      {!isCollapsed && (
+      {!isCollapsed && zen && (
+        <div className="mt-2">
+          {sectionViews.map(({ section, isSectionCollapsed, slotsInSection, filledSlots }) => (
+            <div key={section.key}>
+              <button className="text-left font-semibold" onClick={() => toggleSection(section.key, isSectionCollapsed)}>
+                {isSectionCollapsed ? '▶' : '▼'} {section.label}
+              </button>
+              {(isSectionCollapsed ? filledSlots : slotsInSection).map(slotStart => {
+                const slotMs = slotStart.getTime()
+                const tb = slotToTimeblock.get(slotMs)
+                return (
+                  <ZenRow
+                    key={slotMs}
+                    timeblock={tb}
+                    timeLabel={formatHm(slotStart)}
+                    ensureTimeblock={async () => tb ?? await onCreateTimeblock({ datetime: slotStart.toISOString(), rayNotes: null, assistantNotes: null, aiNotes: null })}
+                    onPatchTimeblockDebounced={onPatchTimeblockDebounced}
+                    datetime={slotStart.toISOString()}
+                    tagTypes={tagTypes}
+                    tagInstancesByType={tagInstancesByTypeForSlot(slotMs)}
+                    allTagInstances={allTagInstances}
+                    onCreateTagInstance={onCreateTagInstance}
+                    onApproveTagInstance={onApproveTagInstance}
+                    onPatchTagInstance={onPatchTagInstance}
+                    onDeleteTagInstance={onDeleteTagInstance}
+                  />
+                )
+              })}
+            </div>
+          ))}
+        </div>
+      )}
+      {!isCollapsed && !zen && (
         <table className="mt-2 w-full">
           <thead className="sticky top-0 bg-gray-900 z-10">
             <tr className="text-gray-400 text-sm">
@@ -161,56 +221,39 @@ const DaySection = memo(({ dayKey, day, isCollapsed, zen, onToggleCollapsed, day
               {tagTypes.map(type => <th key={type} className="text-left px-2 py-2" style={{ width: `${45 / (tagTypes.length || 1)}%` }}>{type}</th>)}
             </tr>
           </thead>
-          {sections.map(section => {
-            const slotsInSection = visibleSlots.filter(slotStart => {
-              const slotMinutes = slotStart.getHours() * 60 + slotStart.getMinutes()
-              return slotMinutes >= section.startMinutes && slotMinutes <= section.endMinutes
-            })
-            const autoCollapsed = sectionAutoCollapsed[section.key]
-            const isSectionCollapsed = sectionOverrides[section.key] ?? autoCollapsed
-            return (
-              <tbody key={section.key}>
-                <tr>
-                  <td colSpan={4 + tagTypes.length} className="px-2 py-2">
-                    <button className="text-left font-semibold" onClick={() => setSectionOverrides(prev => ({ ...prev, [section.key]: !isSectionCollapsed }))}>
-                      {isSectionCollapsed ? '▶' : '▼'} {section.label}
-                    </button>
-                  </td>
-                </tr>
-                {(isSectionCollapsed ? slotsInSection.filter(slotStart => {
-                  const slotMs = slotStart.getTime()
-                  const tb = slotToTimeblock.get(slotMs)
-                  const hasNotes = tb && (tb.rayNotes || tb.assistantNotes || tb.aiNotes)
-                  const hasTagInstances = tagTypes.some(type => (slotKeyToTagInstances.get(`${slotMs}:${type}`) || []).length > 0)
-                  return hasNotes || hasTagInstances
-                }) : slotsInSection).map(slotStart => {
-                  const slotMs = slotStart.getTime()
-                  const tb = slotToTimeblock.get(slotMs)
-                  return (
-                    <TimeBlockRow
-                      key={slotMs}
-                      slotStart={slotStart}
-                      timeLabel={formatHm(slotStart)}
-                      timeblock={tb}
-                      tagTypes={tagTypes}
-                      tagInstancesByType={Object.fromEntries(tagTypes.map(type => {
-                        const key = `${slotMs}:${type}`
-                        return [type, slotKeyToTagInstances.get(key) || []]
-                      }))}
-                      allTagInstances={allTagInstances}
-                      isCurrent={slotMs === currentSlotMs}
-                      onCreateTimeblock={onCreateTimeblock}
-                      onPatchTimeblockDebounced={onPatchTimeblockDebounced}
-                      onCreateTagInstance={onCreateTagInstance}
-                      onApproveTagInstance={onApproveTagInstance}
-                      onPatchTagInstance={onPatchTagInstance}
-                      onDeleteTagInstance={onDeleteTagInstance}
-                    />
-                  )
-                })}
-              </tbody>
-            )
-          })}
+          {sectionViews.map(({ section, isSectionCollapsed, slotsInSection, filledSlots }) => (
+            <tbody key={section.key}>
+              <tr>
+                <td colSpan={4 + tagTypes.length} className="px-2 py-2">
+                  <button className="text-left font-semibold" onClick={() => toggleSection(section.key, isSectionCollapsed)}>
+                    {isSectionCollapsed ? '▶' : '▼'} {section.label}
+                  </button>
+                </td>
+              </tr>
+              {(isSectionCollapsed ? filledSlots : slotsInSection).map(slotStart => {
+                const slotMs = slotStart.getTime()
+                const tb = slotToTimeblock.get(slotMs)
+                return (
+                  <TimeBlockRow
+                    key={slotMs}
+                    slotStart={slotStart}
+                    timeLabel={formatHm(slotStart)}
+                    timeblock={tb}
+                    tagTypes={tagTypes}
+                    tagInstancesByType={tagInstancesByTypeForSlot(slotMs)}
+                    allTagInstances={allTagInstances}
+                    isCurrent={slotMs === currentSlotMs}
+                    onCreateTimeblock={onCreateTimeblock}
+                    onPatchTimeblockDebounced={onPatchTimeblockDebounced}
+                    onCreateTagInstance={onCreateTagInstance}
+                    onApproveTagInstance={onApproveTagInstance}
+                    onPatchTagInstance={onPatchTagInstance}
+                    onDeleteTagInstance={onDeleteTagInstance}
+                  />
+                )
+              })}
+            </tbody>
+          ))}
         </table>
       )}
     </div>
