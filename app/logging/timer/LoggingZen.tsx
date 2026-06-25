@@ -175,12 +175,12 @@ const LoggingZenInner = () => {
 
   return (
     <div className="flex" style={{ height: `calc(100vh - ${LOGGING_HEADER_OFFSET})`, overflow: 'hidden' }}>
-      <div style={{ flex: 1, overflow: 'auto' }} className="p-2 text-sm">
+      <div className="hidden lg:block lg:flex-1 overflow-auto p-2 text-sm">
         <Timer isPredicting={isPredicting} onRunAiCommand={handleRunAiCommand} />
         <RunAiCommandButton datetime={currentBlockDatetime} onComplete={() => refreshUnfocused(new Set())} />
         <MarkdownContent html={currentTimeblock?.aiNotes || ''} />
       </div>
-      <div style={{ flex: '0 0 640px', minWidth: 640, overflow: 'auto' }} className="p-2">
+      <div className="shrink-0 grow-0 basis-2/3 lg:basis-[640px] overflow-auto p-2">
         <ZenRow
           timeblock={currentTimeblock}
           timeLabel={currentTimeStr}
@@ -281,7 +281,7 @@ const LoggingZenInner = () => {
           )
         })}
       </div>
-      <div style={{ flex: 1, overflow: 'auto' }} className="p-2">
+      <div className="shrink-0 grow-0 basis-1/3 lg:flex-1 overflow-auto p-2">
         <Checklist />
       </div>
     </div>
